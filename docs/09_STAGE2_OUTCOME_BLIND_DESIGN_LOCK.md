@@ -1,20 +1,20 @@
-# Stage 2 outcome-blind design lock — scientific-gate repair report
+# Stage 2 outcome-blind design lock — human scientific approval record
 
-**Stage gate:** `STOP_DESIGN_IDENTIFICATION_FAILURE`
-**Human scientific decision:** `REVISION_REQUIRED`
-**Validation:** `LOCAL_VALIDATION_PASS_AND_REPAIR_COMMIT_GITHUB_ACTIONS_RUN_15_PASS`
+**Stage gate:** `PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED`
+**Human scientific decision:** `APPROVED_SOURCE_POINT_PRIMARY`
+**Validation:** `PENDING_HUMAN_APPROVAL_GATE_CI`
 
 > SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE. Current analyses remain exploratory and estimand-refining until prospective confirmation.
 
 ## Executive conclusion
 
-The repair is complete except for a hard design-identification failure: the protected shoreline bundle does not cover the intended coastwide core regions. EDGE_TYPE 100 is the candidate-primary coastline class, but a coastwide core cannot be locked from this incomplete geometry. The branch therefore stops at `STOP_DESIGN_IDENTIFICATION_FAILURE`; it is not ready for response modelling or human approval as a passing lock.
+Human scientific approval selects immutable source points as the primary event geometry. EDGE_TYPE 100 alongshore geometry is restricted to SoG and WCVI as a sensitivity; EDGE_TYPE 150 remains unavailable until local visual validation. Incomplete shoreline coverage stays visible and is never treated as coastwide, but it no longer prevents identification of the separately defined source-point primary. Stage 3 entry and response models remain unauthorized.
 
 No herring–bird response model was fitted. No exposure-specific bird summary, contrast, coefficient, p-value, interval, posterior summary, spawn-phase co-occurrence change, or biological response plot was calculated or displayed. Free-text comments were not read.
 
 ## Design freeze and amendment chain
 
-The original candidate grid remains unchanged: canonical-LF SHA-256 `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`, original Windows-CRLF SHA-256 `f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91`, frozen `2026-07-20 05:27:38 UTC`. The scientific-gate amendment SHA-256 is `7323b02f2c5ea3e2fccde6de73f123200694242d24cca087561e5939a7aa6835`; the prospective specification SHA-256 is `3f69cda08e3e1963df068a1ee96e66c4e5da1e4f03fa1b132c2d2e448170609d`.
+The original candidate grid remains unchanged: canonical-LF SHA-256 `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`, original Windows-CRLF SHA-256 `f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91`, frozen `2026-07-20 05:27:38 UTC`. The scientific-gate amendment SHA-256 is `7323b02f2c5ea3e2fccde6de73f123200694242d24cca087561e5939a7aa6835`; the human-approval record SHA-256 is `c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18`; the prospective specification SHA-256 is `3f69cda08e3e1963df068a1ee96e66c4e5da1e4f03fa1b132c2d2e448170609d`.
 
 The candidate grid was frozen and hashed before any species detection or numeric-count values were read. The repair amendment preserves those original timestamps and hashes and records its implementation-only YAML correction history.
 
@@ -30,12 +30,12 @@ SED-only checklists are structural unknowns, never observed absences. They are e
 
 | Geometry | Role | Available | Common set | EDGE100 median m | EDGE100 p90 m | >2 km | Actual line built | Gate |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| source_point | safe_source_geometry | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT |
-| edge100_nearest_shoreline_point | candidate_primary_linkage_blocked_by_gate | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT |
-| edge150_nearest_shoreline_point | separate_sensitivity_after_visual_validation | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT |
-| derived_alongshore_length | candidate_core_blocked_by_gate |  3899 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT |
-| derived_alongshore_length_width | registered_sensitivity |  3851 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT |
-| event_complex_member_union | registered_sensitivity |  1364 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT |
+| source_point | coastwide_primary_human_approved | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
+| edge100_nearest_shoreline_point | supported_region_sensitivity_human_approved | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
+| edge150_nearest_shoreline_point | separate_sensitivity_after_visual_validation | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
+| derived_alongshore_length | supported_region_sensitivity_human_approved |  3899 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
+| derived_alongshore_length_width | registered_sensitivity |  3851 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
+| event_complex_member_union | registered_sensitivity |  1364 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
 
 | Region | Valid source points | Inside-bundle share | Median snap km | >2 km | Core eligible | Coverage |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ SED-only checklists are structural unknowns, never observed absences. They are e
 | source_point | common_eligible_events |  3899 | same eligible event set for geometry comparison |
 | derived_alongshore_length | common_eligible_events |  3899 | same eligible event set for geometry comparison |
 
-Provider dictionary meaning is locked as EDGE_TYPE 100 = coastline and EDGE_TYPE 150 = construction-line coastline. Class 150 is sensitivity-only after local visual validation. Actual observed-Length alongshore substrings were constructed and verified locally; exact geometry is not released. Geometry comparisons use the same common eligible event set. The large snap distances are attributable to incomplete bundle extent, so the geometry gate fails.
+The human-approved primary is the immutable source point, available for 13,208 source records. EDGE_TYPE 100 and actual alongshore substrings are restricted to SoG/WCVI sensitivities on a common eligible event set. Class 150 remains unavailable until local visual validation. Large snap distances continue to document incomplete bundle coverage and unsupported regions never enter shoreline-linked sensitivities.
 
 ## Repair resolution 3 — event complexes and review packet
 
@@ -180,12 +180,10 @@ The response-access audit lists these EBD fields: `CATEGORY`, `TAXON CONCEPT ID`
 | Western Gull | approve_exact_v2025_species_concept | named_species_core | eligible_primary_guild_membership | positive_count_component_eligible | pairwise_support_audit_eligible |
 | White-winged Scoter | approve_exact_v2025_species_concept | named_species_core | eligible_primary_guild_membership | positive_count_component_eligible | pairwise_support_audit_eligible |
 
-## Remaining human scientific decisions
+## Human scientific approval and next gate
 
-1. Supply and verify a complete coastwide shoreline bundle containing EDGE_TYPE 100 for every intended core region; rerun the geometry gate.
-2. Validate EDGE_TYPE 150 locally before retaining it as a sensitivity.
-3. After geometry passes, approve the sustained region-year thresholds and the SoG-2005/WCVI-2015 primary periods.
-4. Approve source-record primary event identity and decide whether the anti-chained rule should replace the provisional 2 km / 7 day complex.
-5. Approve standardized effort, shared-group disagreement handling, registry exclusivity, support dispositions, count-family simulation rule, and prospective protocol.
+Approval record `stage2_human_scientific_approval_v1` selects immutable source points as primary and approves the repaired Stage 2 rules. Its SHA-256 is `c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18`.
 
-Stop here. No Stage 3 response model may be opened or fitted until the shoreline hard stop is resolved and a human scientist approves the repaired lock.
+EDGE_TYPE 100 alongshore analyses are limited to SoG and WCVI sensitivities. EDGE_TYPE 150 remains pending local visual validation and cannot enter an analysis until validation is recorded.
+
+Stop here. Stage 2 approval does not authorize Stage 3 entry implementation or a herring–bird response model. A separate authorization is required after the remaining checklist-construction and blocked-validation safeguards are ready.
