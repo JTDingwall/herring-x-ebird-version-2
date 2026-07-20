@@ -1,13 +1,26 @@
 # Stage 3 entry plan
 
-**Status:** `AWAITING_HUMAN_SCIENTIFIC_APPROVAL`  
+**Status:** `BLOCKED_BY_STAGE2_DESIGN_IDENTIFICATION_FAILURE`  
+**Stage 2 gate:** `STOP_DESIGN_IDENTIFICATION_FAILURE`  
 **Response models authorized:** no  
 **Prospective 2026+ holdout:** frozen  
 **Stage 2 design grid:** unchanged
 
 ## Purpose
 
-This plan incorporates the post-freeze eBird checklist-methods review into the project workflow. It adds data-handling and interpretation gates without adding a large adjustment set or examining biological response contrasts.
+This plan incorporates the post-freeze eBird checklist-methods review into the project workflow. It adds data-handling and interpretation gates without adding a large adjustment set or examining biological response contrasts. Stage 3 cannot begin until the incomplete shoreline-bundle coverage identified by the repaired Stage 2 gate is resolved.
+
+## Phase −1 — resolve the upstream geometry failure
+
+The protected shoreline bundle provides candidate coverage for Strait of Georgia, West Coast Vancouver Island and North Area, but does not support the intended coastwide core. Human reviewers must choose and document one scientifically defensible path:
+
+1. obtain and verify a coastwide marine shoreline bundle, then rerun the outcome-blind geometry audit and repair report; or
+2. approve a geographically scoped primary design limited to regions with validated shoreline support, with other regions explicitly descriptive or deferred; or
+3. approve another source-geometry design only after its estimand and limitations are fully specified and the repaired gate is rerun.
+
+The choice must be made without examining herring–bird response contrasts. The current `STOP_DESIGN_IDENTIFICATION_FAILURE` classification remains until the rerun produces a reviewable gate.
+
+**Exit criterion:** shoreline coverage and geometry identification pass for the approved primary geography and representation.
 
 ## Required human decisions
 
@@ -15,9 +28,9 @@ The scientific approver must record all of the following before Stage 3 begins:
 
 | Decision | Recommended choice | Alternatives retained | Approval effect |
 | --- | --- | --- | --- |
-| Independent checklist event | one event per `GROUP IDENTIFIER`; sampling-event ID otherwise | frozen disagreement sensitivity for edited group copies | blocks response-frame construction until approved |
-| Primary effort set | 5–300 minutes, traveling ≤5 km, 1–10 observers | ≤2 km spatial-precision and frozen ≤10 km broad sensitivities | resolves mismatch between local exposure and route footprint |
-| Shared-count reconciliation | deterministic, documented rule chosen before response summaries | bounded/disagreement sensitivity | prevents outcome-dependent selection among group copies |
+| Independent checklist event | accept implemented composite event per `GROUP IDENTIFIER`; sampling-event ID otherwise | retained private component crosswalk | confirms the repaired implementation |
+| Primary effort set | accept implemented 5–300 minutes, traveling ≤5 km, 1–10 observers | ≤2 km spatial-precision and frozen ≤10 km broad sensitivities | resolves mismatch between local exposure and route footprint |
+| Shared-count reconciliation | accept primary exclusion of effort-disagreement groups | registered disagreement sensitivity | prevents outcome-dependent selection among group copies |
 | Estimand language | checklist reporting probability and reported conditional count | justified repeat-visit occupancy only as separate future work | controls scientific claims |
 | Validation unit | event-complex or shoreline-time blocks | stricter observer/event grouping when feasible | prevents train/test leakage |
 | Raw BCCWS integration | do not pool without deterministic crosswalk | separate external validation with overlap caveat | prevents duplicate data streams |
@@ -26,7 +39,7 @@ Approval must be versioned and linked to the exact branch commit. Approval does 
 
 ## Phase 0 — record approval
 
-1. Complete the human decision record for every pending item in `metadata/ebird_checklist_handling_gate.csv`.
+1. Confirm that Phase −1 has passed and complete the human decision record for every pending or implemented-pending-acceptance item in `metadata/ebird_checklist_handling_gate.csv`.
 2. Record approver, UTC timestamp, selected options, branch commit and retained alternatives.
 3. Recompute and record the hash of the approved Stage 3 entry specification.
 4. Keep the Stage 2 candidate-grid file and its two retained hashes unchanged.
