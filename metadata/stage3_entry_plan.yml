@@ -1,0 +1,62 @@
+plan_version: stage3_entry_v1
+created_at_utc: 2026-07-20
+source_stage2_commit: f625bdacad802f9e36c41a7b642646690d8de8cd
+stage2_candidate_grid_sha256: 8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81
+stage2_grid_changed: false
+stage_gate: PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL
+response_models_authorized: false
+prospective_holdout_2026_plus_locked: true
+scope_control:
+  add_new_primary_ecological_covariates: false
+  purpose: checklist_independence_spatial_support_estimands_and_validation
+human_decisions:
+  independent_checklist_event:
+    status: pending
+    recommendation: one_event_per_group_identifier_else_sampling_event_identifier
+    blocking: true
+  primary_effort_set:
+    status: pending
+    recommendation:
+      duration_minutes: [5, 300]
+      traveling_distance_max_km: 5
+      observers: [1, 10]
+    sensitivities:
+      high_spatial_precision_max_km: 2
+      broad_max_km: 10
+    blocking: true
+  shared_count_reconciliation:
+    status: pending
+    recommendation: deterministic_rule_frozen_before_response_summary
+    blocking: true
+  estimand_language:
+    status: pending
+    detection: probability_reported_on_eligible_complete_checklist
+    positive_count: reported_numeric_count_conditional_on_detection_and_count_availability
+    forbidden_unless_separately_justified: [true_absence, absolute_population_abundance, occupancy]
+    blocking: true
+  validation_unit:
+    status: pending
+    recommendation: event_complex_or_shoreline_time_block
+    blocking: true
+  raw_bccws_integration:
+    status: pending
+    recommendation: no_pooling_without_deterministic_checklist_crosswalk
+    fallback: separate_external_validation_with_overlap_caveat
+    blocking: false
+phases:
+  - id: phase_0
+    name: record_human_approval
+    response_access: none
+  - id: phase_1
+    name: construct_independent_checklist_denominator
+    response_access: count_state_parsing_only
+  - id: phase_2
+    name: metadata_only_sampling_support_audit
+    response_access: none
+  - id: phase_3
+    name: validation_and_estimand_safeguards
+    response_access: fixture_or_synthetic_only
+  - id: phase_4
+    name: exploratory_registered_response_analysis
+    response_access: requires_all_prior_gates
+required_invariants: [E02, E05, E06, E07, E09, E10, E12, E13, E14]
