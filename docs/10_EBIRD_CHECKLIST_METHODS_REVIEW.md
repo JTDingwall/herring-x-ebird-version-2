@@ -1,0 +1,103 @@
+# eBird checklist methods review and Stage 2 addendum
+
+**Review date:** 2026-07-20  
+**Stage gate:** `PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL`  
+**Response models authorized:** no  
+**Candidate grid changed:** no  
+**Candidate-grid SHA-256 retained:** `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`
+
+> SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE. This review used published methods and the reported Stage 2 design. It did not inspect exposure-specific bird responses or fit a registered model.
+
+## Executive conclusion
+
+The reported workflow is aligned with the central requirements for using eBird checklists: complete checklists define the denominator, EBD observations are joined to SED sampling events, `X` remains detection-only, detection is separated from positive-count magnitude, taxonomy is versioned, and complete-area protocols remain separate.
+
+Three items now require explicit human approval before Stage 3:
+
+1. prove that all submissions sharing a `GROUP IDENTIFIER` contribute exactly one independent checklist event to every analysis table;
+2. choose a travel-distance rule compatible with a local 2 km herring exposure; and
+3. lock the estimand language as checklist reporting and reported conditional count, not true absence, population abundance, or occupancy.
+
+These recommendations do not add ecological covariates. They clarify the sampling unit, exposure footprint, validation unit, and interpretation.
+
+## What the literature requires
+
+### Independent checklist event
+
+Shared eBird checklists are duplicate accounts of one birding event. Cornell's `auk_unique()` documentation states that grouped copies are collapsed using `GROUP IDENTIFIER`; the default implementation selects the component record with the lowest checklist identifier and retains the contributing checklist and observer identifiers.
+
+The Stage 2 shared-report disagreement state is valuable, but disagreement auditing and event deduplication are different operations. The analysis frame must have one row per independent checklist event × species after a frozen reconciliation rule has been applied.
+
+Primary sources:
+
+- [Best Practices for Using eBird Data: shared checklists](https://ebird.github.io/ebird-best-practices/ebird.html#shared-checklists)
+- [`auk_unique()` reference](https://cornelllabofornithology.github.io/auk/reference/auk_unique.html)
+- [`auk_zerofill()` reference](https://cornelllabofornithology.github.io/auk/reference/auk_zerofill.html)
+
+### Zero-filling and count state
+
+An unreported focal species can be converted to an inferred checklist-level non-detection only when the checklist is complete. The SED is necessary because complete sampling events with no focal EBD row still belong in the denominator. A zero means not reported or detected on that eligible checklist; it does not prove ecological absence.
+
+`X` means detected but not numerically counted. It must map to detection = 1 and numeric count = missing. The project's separate detection, numeric, `X`, lower-bound and ambiguity states are therefore retained.
+
+Primary source: [Best Practices for Using eBird Data: zero-filling and count handling](https://ebird.github.io/ebird-best-practices/ebird.html#zero-filling).
+
+### Effort and spatial footprint
+
+Cornell's current worked guidance filters stationary and traveling checklists to at most 6 hours, 10 km and 10 observers for a weekly 3 km product, and explicitly recommends stricter travel-distance filtering when finer spatial precision is required. The public EBD/SED supplies one checklist coordinate, not the public route geometry. A hotspot point may also differ from the observer's exact survey position.
+
+The frozen Stage 2 report names 1–360 minutes, up to 10 km and 1–20 observers as the broad candidate primary, with 5–300 minutes, up to 5 km and 1–10 observers as the standardized sensitivity. The project config already uses the latter standardized limits. Because the herring design contains a 2 km local exposure threshold, the following outcome-blind recommendation is added for human decision:
+
+- candidate primary: complete stationary/traveling checklists, 5–300 minutes, traveling distance at most 5 km, 1–10 observers;
+- spatial-precision sensitivity: stationary and traveling checklists at most 2 km;
+- broad sensitivity: the frozen 1–360 minute, at most 10 km set; cap observers at 10 unless reviewers approve evidence for 11–20;
+- complete-area protocols remain separate.
+
+This is a recommendation, not a post-freeze change to the candidate grid.
+
+Primary source: [Best Practices for Using eBird Data: effort and spatial precision](https://ebird.github.io/ebird-best-practices/ebird.html#accounting-for-variation-in-effort).
+
+### Estimands and occupancy language
+
+The defensible primary quantities are:
+
+- `P(species reported | eligible complete checklist, exposure, modeled observation process)`; and
+- `E(reported numeric count | detected, numeric count available, eligible checklist)`.
+
+The second quantity is a relative reported-count index, not a census. Standard occupancy language requires repeat visits and closure assumptions. Hochachka, Ruiz-Gutierrez and Johnston (2023) show that pseudo-repeat construction from eBird can be biased when observer-selected sites are not representative and that adding single visits can worsen occupancy bias when detection is low.
+
+Primary sources:
+
+- [Cornell eBird relative-abundance guidance](https://ebird.github.io/ebird-best-practices/abundance.html)
+- [Hochachka et al. 2023](https://doi.org/10.1093/ornithology/ukad035)
+
+### Preferential sampling and validation
+
+Birders may preferentially visit conspicuous spawn events. Complete-checklist filtering and effort adjustment do not make checklist locations random. Before response access, produce a metadata-only support table containing eligible checklist counts and unique observers by region × event-time × distance × protocol, plus duration, distance, observer-number and start-time-availability summaries. Do not add these summaries as automatic biological covariates.
+
+Train/test splits must hold out whole herring event complexes or shoreline-time blocks. Random checklist-row splits can leak closely related events, sites or observers across train and test data.
+
+Supporting sources:
+
+- [Johnston et al. 2021](https://doi.org/10.1111/ddi.13271)
+- [Tang et al. 2021](https://doi.org/10.1007/s10651-021-00508-1)
+- [Grade et al. 2022](https://doi.org/10.1371/journal.pone.0277223)
+- [Stuber et al. 2022](https://doi.org/10.1016/j.biocon.2022.109556)
+
+## British Columbia Coastal Waterbird Survey overlap
+
+Birds Canada documents that NatureCounts users can enable automatic export of app-entered checklists to eBird. Because BCCWS is a NatureCounts checklist protocol, some BCCWS records may also occur in EBD. Public documentation does not establish the fraction exported or provide a universal public crosswalk.
+
+Published BCCWS analyses remain valid background literature. Raw BCCWS and eBird records must not be pooled as independent samples unless checklist-level identifiers or a deterministic crosswalk can remove overlap. Otherwise BCCWS may be used only as a separate external validation stream with the potential overlap acknowledged.
+
+Source: [Birds Canada: NatureCounts and eBird](https://learn.birdscanada.org/additional-resources/naturecounts/naturecountsapp/naturecounts-and-ebird/).
+
+## Machine-readable gate
+
+`metadata/ebird_checklist_handling_gate.csv` defines the aligned, verification and human-decision items. Blocking items must pass before a Stage 3 response model is opened.
+
+The complete interactive review is in `reports/ebird_checklist_methods_audit.html`; the expanded evidence map is in `reports/herring_ebird_broad_literature_survey.html` with its source table in `metadata/herring_ebird_literature_matrix.csv`.
+
+## Review limitation
+
+This addendum assesses the reported design and current methodological literature. It does not independently prove that protected-data code executed each rule. The executable invariants in the gate table and Stage 3 plan provide that verification path without consulting exposure-specific bird responses.
