@@ -51,7 +51,7 @@ Run `scripts/01_validate_input_metadata.R` only in an authorized local session w
 
 ## Stage 2 scientific approval and Stage 3 entry
 
-Stage 2 is frozen at the human scientific approval gate. The post-freeze eBird methods review does not alter the 105-option candidate grid or its canonical hash.
+Stage 2 currently stops at `STOP_DESIGN_IDENTIFICATION_FAILURE`: the protected shoreline bundle does not support the intended coastwide core. The original 105-option candidate grid and its retained hashes remain unchanged. Stage 3 is blocked until reviewers repair the shoreline source, approve a primary geography limited to validated support, or approve another source geometry and rerun the outcome-blind gate.
 
 - `docs/09_STAGE2_OUTCOME_BLIND_DESIGN_LOCK.md`: frozen Stage 2 design-lock report.
 - `docs/10_EBIRD_CHECKLIST_METHODS_REVIEW.md`: checklist-level methods and literature addendum.
@@ -61,7 +61,7 @@ Stage 2 is frozen at the human scientific approval gate. The post-freeze eBird m
 - `reports/ebird_checklist_methods_audit.html`: interactive checklist-methods review.
 - `reports/herring_ebird_broad_literature_survey.html` and `metadata/herring_ebird_literature_matrix.csv`: expanded 54-source evidence map.
 
-No Stage 3 response model is authorized until the blocking checklist-independence, spatial-footprint, estimand, and validation decisions are approved and verified. The 2026+ prospective holdout remains frozen.
+No Stage 3 response model is authorized until the upstream shoreline failure is resolved and the checklist-independence, spatial-footprint, estimand, and validation decisions are approved and verified. The 2026+ prospective holdout remains frozen.
 
 ## Reports and provenance
 
