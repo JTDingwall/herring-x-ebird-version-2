@@ -2,15 +2,14 @@
 
 ## Hard stop
 
-Do not run this prompt until every blocking decision in
-`metadata/ebird_checklist_handling_gate.csv` has a versioned human approval
-record and `metadata/stage3_entry_plan.yml` has been updated from pending to the
-approved choices.
+Stage 2 human approval is recorded, but this prompt remains disabled. Do not run
+until `metadata/stage3_entry_plan.yml` sets
+`stage3_entry_implementation_authorized: true` under a separate human decision.
+The current value is false.
 
-Do not run while `outputs/stage2_design_lock/stage_gate.json` is classified as
-`STOP_DESIGN_IDENTIFICATION_FAILURE`. First resolve the Phase -1 shoreline
-geometry decision in `docs/11_STAGE3_ENTRY_PLAN.md`, rerun the outcome-blind
-design checks, and obtain a new human scientific decision.
+The approved primary geometry is immutable source point. EDGE_TYPE 100 may enter
+only SoG/WCVI sensitivities, and EDGE_TYPE 150 may not enter any analysis until
+local visual validation is recorded. Never infer missing shoreline extents.
 
 Do not modify `metadata/stage2_candidate_design_grid.csv` or either retained
 Stage 2 hash. Do not access any 2026-or-later herring or bird response record.
