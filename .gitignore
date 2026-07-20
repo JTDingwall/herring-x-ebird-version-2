@@ -65,6 +65,10 @@ Thumbs.db
 !outputs/stage3_phase1_repair/*.csv
 !outputs/stage3_phase1_repair/*.json
 !outputs/stage3_phase1_repair/*.sha256
+!outputs/stage3_phase2_sampling_support/
+!outputs/stage3_phase2_sampling_support/*.csv
+!outputs/stage3_phase2_sampling_support/*.json
+!outputs/stage3_phase2_sampling_support/*.sha256
 !outputs/stage2_design_lock/*.sha256
 
 # Local raw-input audit products may contain machine paths

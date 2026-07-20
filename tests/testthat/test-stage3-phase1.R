@@ -27,8 +27,9 @@ testthat::test_that("Stage 3 Phase 1 aggregate gates are complete and scoped", {
   testthat::expect_identical(execution$phase, "phase_1")
   testthat::expect_false(execution$phase_2_started)
   testthat::expect_identical(plan$phases[[3L]]$status,
-    "repaired_executed_pending_human_denominator_and_zero_provenance_review")
-  testthat::expect_identical(plan$phases[[4L]]$status, "authorized_not_yet_executed")
+    "completed_human_approved")
+  testthat::expect_identical(plan$phases[[4L]]$status,
+    "executed_pending_human_sampling_support_review")
 })
 
 testthat::test_that("Phase 1 specification and execution records match their hashes", {
