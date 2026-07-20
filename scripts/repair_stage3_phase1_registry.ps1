@@ -10,7 +10,14 @@ function Write-Sha256Sidecar {
     [string]$SidecarRelativePath = "$RelativePath.sha256"
   )
   $full = Join-Path $RepoRoot $RelativePath
-  $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $full).Hash.ToLowerInvariant()
+  $normalized = [IO.File]::ReadAllText($full, [Text.Encoding]::UTF8).Replace("`r`n", "`n").Replace("`r", "`n")
+  $bytes = [Text.UTF8Encoding]::new($false).GetBytes($normalized)
+  $sha = [Security.Cryptography.SHA256]::Create()
+  try {
+    $hash = ([BitConverter]::ToString($sha.ComputeHash($bytes))).Replace('-', '').ToLowerInvariant()
+  } finally {
+    $sha.Dispose()
+  }
   $sidecar = Join-Path $RepoRoot $SidecarRelativePath
   [IO.File]::WriteAllText($sidecar, "$hash  $RelativePath`n", [Text.UTF8Encoding]::new($false))
 }
