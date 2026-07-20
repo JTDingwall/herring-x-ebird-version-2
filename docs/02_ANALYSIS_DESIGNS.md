@@ -23,7 +23,7 @@ where `w_j` is 1 or a transformed relative-index/extent weight, `d_ij` is distan
 
 ## Design B — Discrete phase × non-overlapping distance rings
 
-**Rings:** 0–1, 1–2, 2–3, 3–4, 4–5, 5–10, 10–25, 25–50 km.
+**Rings:** 0–0.5, 0.5–1, 1–2, 2–3, 3–4, 4–5, 5–10, and 10–20 km.
 
 **Time bins:** early pre, pre, immediate pre, spawn start, early egg, late egg, post 1, post 2.
 
@@ -91,7 +91,7 @@ Instead of stopping whenever one year-period cell is thin, Version 2 uses partia
 
 ### H1. Ring difference-in-changes
 
-Estimate changes in 0–5, 5–25, and 25–50 km bands on the same calendar dates. Redistribution is supported when near-ring changes are positive and outer-ring changes are smaller or negative.
+Estimate changes in prespecified near (0–5 km), intermediate (5–10 km), and outer (10–20 km) bands on the same calendar dates. Redistribution is supported when near-ring changes are positive and outer-ring changes are smaller or negative, while regional totals remain visible.
 
 ### H2. Conditional allocation
 

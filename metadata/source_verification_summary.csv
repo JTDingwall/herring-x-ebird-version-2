@@ -1,0 +1,16 @@
+check_id,status,n_primary,n_secondary,detail
+ebd_size_sha256,PASS,14590250503,,expected bytes and SHA-256 match
+sed_size_sha256,PASS,757638279,,expected bytes and SHA-256 match
+herring_size_sha256,PASS,3545779,,expected bytes and SHA-256 match
+shoreline_bundle,PASS,20548809,5,required sidecars complete and bundle SHA-256 matches
+sections_bundle,PASS,316944,8,required sidecars complete and bundle SHA-256 matches
+ebd_required_header,PASS,9,9,all registered required fields present
+sed_required_header,PASS,16,16,all registered required fields present
+herring_required_header,PASS,17,17,all authoritative source fields present
+ebd_sed_many_to_one,PASS,37407250,2944079,zero EBD keys unmatched to the unique SED key table
+sed_key_uniqueness,PASS,2961400,17321,SED keys unique; secondary count is SED keys without EBD rows
+shoreline_crs,PASS,3005,,NAD83 BC Albers metre units with line geometry
+sections_crs,PASS,3005,,NAD83 BC Albers metre units with polygon geometry
+sed_metadata_profile,PASS,2961400,39113,effort-only profile completed; no bird response columns read
+herring_metadata_profile,PASS,31167,8,source metadata profile completed; missing components remain missing
+bird_response_outcomes_opened,PASS,0,,no Version 2 bird-response outcomes opened

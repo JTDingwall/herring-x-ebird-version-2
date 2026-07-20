@@ -1,0 +1,15 @@
+table_id,title,data_class,module_id,status
+T01,Repository provenance,aggregate_metadata,A01,design_ready
+T02,Input checksum audit,aggregate_metadata,A01,design_ready
+T03,Registry reconciliation,aggregate_metadata,A01,design_ready
+T04,Species registry,design_metadata,L01,design_ready
+T05,Guild registry,design_metadata,C01,design_ready
+T06,Estimand registry,design_metadata,L03,design_ready
+T07,Model registry,design_metadata,L03,design_ready
+T08,Analysis module registry,design_metadata,L03,design_ready
+T09,Count state audit,aggregate_metadata,A02,not_run
+T10,Exposure support,aggregate_metadata,A03,not_run
+T11,Herring field audit,aggregate_metadata,H01,not_run
+T12,CRS and bundle audit,aggregate_metadata,A03,not_run
+T13,Privacy scan summary,aggregate_metadata,A01,design_ready
+T14,Unresolved scientific decisions,design_metadata,L03,design_ready

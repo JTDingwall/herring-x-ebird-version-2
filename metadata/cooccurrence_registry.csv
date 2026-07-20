@@ -1,0 +1,10 @@
+cooccurrence_id,label,unit,design_requirement,interpretation_guard,module_id,model_id,status
+CO01,Raw pairwise codetection,checklist_species_pair,Report prevalence and checklist richness strata,Descriptive association only,G01,,registered_not_run
+CO02,Null adjusted cooccurrence,checklist_species_pair,Preserve prevalence effort date location and observer strata,Not proof of interaction,G02,M34,registered_not_run
+CO03,Detection latent factor model,checklist_species_matrix,Use multiple validated latent factors and hash identical pilot,Residual association may reflect omitted habitat,G03,M35,registered_not_run
+CO04,Reduced set abundance latent factor model,checklist_species_matrix,Eligibility requires outcome blind coverage gate,Reported count is not true abundance,G04,,registered_not_run
+CO05,Phase and distance association contrast,stratum_species_pair,Compare registered strata with uncertainty,Changes are not direct facilitation,G05,M36,registered_not_run
+CO06,Mixed species network summary,stratum_network,Report density modularity centrality and guild mixing,Network edges are associations,G05,M37,registered_not_run
+CO07,Leave block out network stability,heldout_network,Leave event year and region out,Instability limits interpretation,K04,,registered_not_run
+CO08,Community composition and diversity,checklist_community,Report richness Hill diversity total and composition,Diversity shifts do not establish mechanism,G06,M22,registered_not_run
+CO09,Privacy safe behaviour support,aggregate_keyword_summary,Local-only keyword audit with aggregate export,Supporting evidence only,J04,M42,registered_not_run

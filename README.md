@@ -1,138 +1,60 @@
-# Herring × eBird Version 2
+# Herring x eBird Version 2
 
-A metadata-first, multi-model R project for testing whether Pacific herring spawning
-changes the **number, occurrence, composition, and spatial allocation of coastal birds**
-in British Columbia.
+This is a clean-history, metadata-first R project for designing tests of how Pacific herring spawning relates to coastal bird occurrence, reported counts, spatial allocation, community composition, and co-occurrence in British Columbia.
 
-Repository slug: `herring-x-ebird-version-2`
+The current gate is **repository construction and outcome-blind design readiness**. No Version 2 bird-response outcome may be opened or modeled at this stage. Current analyses are exploratory and estimand-refining until prospective confirmation.
 
-## Why restart
+## Canonical design assets
 
-Version 1 established a careful, reproducible foundation, but its main estimand was
-narrow: checklist encounter probability during days 0–14 after a recorded spawn start
-versus days −14 to −1 at the same event, within 5 km, for five species. That design did
-not directly test flock size, total birds, complete event trajectories, coastwide
-responses, or redistribution.
+- `metadata/canonical_species_registry.csv`: 58 auditable taxon rows with explicit support and approval states.
+- `metadata/canonical_guild_registry.csv`: 8 biological or falsification guilds.
+- `metadata/estimand_registry.csv`: 15 approved design estimands.
+- `metadata/model_registry.csv`: 45 prespecified models, all registered and not fitted.
+- `metadata/cooccurrence_registry.csv`: 9 prespecified multispecies architectures.
+- `metadata/analysis_module_registry.csv`: 50 descriptive, diagnostic, inferential, validation, and synthesis modules.
+- `metadata/source_taxonomy_crosswalk.csv` and `metadata/ambiguous_taxon_rules.csv`: pinned eBird Taxonomy v2025 evidence.
 
-The strongest reason for Version 2 is already visible in the Version 1 diagnostics:
-conditional positive reported-count models were positive for all five focal species and
-remained similar after excluding the largest 1% of counts. Version 2 therefore makes
-**reported count and spatial allocation co-primary with encounter probability**, while
-retaining observation-process controls and transparent uncertainty.
+Counts are validated by code and CI. Conflicting provisional registries from the initial scaffold have been removed.
 
-Version 2 is a new analysis, not a rerun of the old model. It starts from the authoritative
-raw EBD, SED, herring table, shoreline, and section layers. It must not import Version 1
-derived outcomes, fitted models, weights, or selected coefficients.
+## Protected local inputs
 
-## Main biological hypotheses
+Raw EBD/SED files and all record-level derivatives are restricted and never committed. Configure only local environment variables using `.Renviron.example`:
 
-1. **Local aggregation:** herring-associated birds have higher reported counts close to
-   active spawn and egg-bearing shoreline.
-2. **Guild response:** roe-diving sea ducks, gulls, intertidal roe foragers, piscivores,
-   and shoreline scavengers show different timing and distance responses.
-3. **Distance decay:** response magnitude declines from the spawn footprint through
-   1, 2, 3, 4, 5, 10, and 20 km.
-4. **Redistribution:** increases close to spawn are accompanied by reduced allocation
-   of the same birds to simultaneous comparison shorelines.
-5. **Dose response:** larger or more extensive spawn records produce stronger bird
-   responses, after accounting for survey method and component completeness.
-6. **Community reorganization:** total herring-associated bird count, guild richness,
-   and community composition change around spawning.
-7. **Phenological tracking:** mobile taxa track the northward and seasonal progression
-   of spawn events.
-8. **Observation process:** birder visitation can change around spawn and must be
-   estimated separately from bird response.
+- `HERRING_EBIRD_V2_EBD`
+- `HERRING_EBIRD_V2_SED`
+- `HERRING_EBIRD_V2_HERRING`
+- `HERRING_EBIRD_V2_SHORELINE`
+- `HERRING_EBIRD_V2_SECTIONS`
 
-These hypotheses are directional, but all models report full effect sizes and uncertainty.
-Null and opposite-direction results remain part of the analysis.
+The tracked `metadata/input_manifest.csv` contains only provider/version metadata, sizes, and expected checksums. Local audit products are ignored because they may contain paths.
 
-## Data sources
-
-The expected source versions are recorded in `metadata/source_inventory.csv`.
-
-- eBird Basic Dataset, British Columbia, release May 2026
-- matching eBird Sampling Event Data
-- DFO Pacific Herring Spawn Index Data, 2025 CSV
-- BC Freshwater Atlas coastline layer
-- DFO herring sections layer
-
-Raw eBird data are restricted and are never committed. Configure local paths through
-environment variables; see `.Renviron.example`.
-
-## What is different in Version 2
-
-- all supportable BC herring regions, with Strait of Georgia reported as a high-support
-  regional subset;
-- 45 legacy curated taxa plus additional candidate species and guild-level ambiguous taxa;
-- reported counts, encounter probability, total guild count, richness, composition, and
-  spatial allocation;
-- multiple temporal periods and continuous event-time trajectories;
-- concentric distance rings and continuous distance-decay kernels;
-- event complexes and spawn-footprint uncertainty instead of only one source point per row;
-- tiered herring-record quality rather than excluding every record with any metadata issue;
-- explicit modeling of birder visitation and observer turnover;
-- multiple complementary models registered before fitting, with hierarchical synthesis
-  rather than declaring success from whichever model is significant.
-
-
-## Comprehensive Version 2 blueprint
-
-- [`reports/comprehensive_analysis_plan.html`](reports/comprehensive_analysis_plan.html): self-contained reader report with 18 synthetic example figures, filterable tables, technical specifications, and lay summaries.
-- [`docs/07_COMPREHENSIVE_ANALYSIS_PLAN.md`](docs/07_COMPREHENSIVE_ANALYSIS_PLAN.md): concise repository index for the HTML plan.
-- [`metadata/analysis_module_registry.csv`](metadata/analysis_module_registry.csv): 50 estimand-oriented modules spanning data audit, counts, timing, distance, redistribution, community, co-occurrence, herring measurement, phenology, observation process, validation, and synthesis.
-- [`prompts/02_CODEX_BUILD_REPO_AND_PORT_V1_ASSETS.md`](prompts/02_CODEX_BUILD_REPO_AND_PORT_V1_ASSETS.md): clean-repository build and allowlisted Version 1 asset-port prompt.
-
-Every figure in the HTML is explicitly labelled illustrative/synthetic and is not a Version 2 result.
-
-## Initial repository status
-
-Completed in the initial commit:
-
-- source metadata and field audit;
-- a source-repository evidence ledger pinned to the audited Version 1 commit;
-- expanded species and guild registries;
-- a 33-model analysis registry;
-- data contracts and scientific hypotheses;
-- executable R code for input/header auditing and registry validation;
-- privacy and reproducibility rules.
-
-No Version 2 bird-response model has been fitted in this repository yet.
-
-## Start
+## Reproducible setup
 
 ```r
-file.copy(".Renviron.example", ".Renviron")
-# Edit .Renviron to point to the five existing raw inputs.
-
-source("scripts/00_setup.R")
-source("scripts/01_audit_inputs.R")
+renv::restore()
 source("scripts/02_validate_registries.R")
+source("scripts/04_run_privacy_scan.R")
+testthat::test_dir("tests/testthat")
 targets::tar_make()
 ```
 
-## Key documents
+Run `scripts/01_validate_input_metadata.R` only in an authorized local session with the five protected environment variables configured. It reads source headers and metadata only; it does not inspect focal bird outcomes.
 
-- `docs/00_METADATA_AUDIT.md`
-- `docs/01_SCIENTIFIC_HYPOTHESES.md`
-- `docs/02_MULTI_MODEL_ANALYSIS.md`
-- `docs/03_DATA_CONTRACTS.md`
-- `docs/04_DECISION_LOG.md`
-- `docs/05_OLD_TO_V2_CROSSWALK.md`
-- `docs/06_IMPLEMENTATION_ROADMAP.md`
-- `docs/07_COMPREHENSIVE_ANALYSIS_PLAN.md`
-- `reports/comprehensive_analysis_plan.html`
-- `prompts/00_CODEX_MASTER_PROMPT.md`
-- `prompts/02_CODEX_BUILD_REPO_AND_PORT_V1_ASSETS.md`
-- `docs/07_GITHUB_PUBLISHING.md`
+## Scientific guardrails
 
-## Interpretation boundaries
+- Detection, numeric count, `X`, lower-bound count, ambiguity, and missingness remain distinct.
+- Missing herring components are not zero; the relative spawn index is not absolute biomass.
+- All concurrent event links contribute to additive exposure; duplicated event-checklist links are not independent rows.
+- Every join declares and tests its cardinality.
+- All prespecified models are reported regardless of sign.
+- Hard stops and warnings follow `docs/04_DECISION_RULES.md`.
 
-- eBird counts are **reported counts or relative count indices**, not absolute population
-  abundance.
-- “No recorded active spawn nearby” is not verified absence of spawn.
-- the DFO component sum is a relative spawn index, not literal measured biomass.
-- event date, event geometry, survey method, observer behavior, and checklist effort are
-  observation/measurement processes that must remain visible.
-- Version 2 is post-result exploratory because Version 1 outcomes have already been seen.
-  Prospective confirmation requires later years, a frozen external region, or structured
-  shoreline surveys.
+## Reports and provenance
+
+- `reports/comprehensive_analysis_plan.html` is the self-contained scientific blueprint with 18 explicitly synthetic example figures and paired lay/technical views.
+- `docs/comprehensive_analysis_plan.html` is its reader copy.
+- `reports/repository_setup_audit.html` records construction readiness.
+- `metadata/v1_source_provenance.json` pins the Version 1 source commit.
+- `metadata/v1_asset_port_manifest.csv` records every considered allowlisted asset as copied, generalized, reference-only, or rejected.
+
+Version 2 is not a branch or fork of Version 1. No Version 1 Git history, raw data, record-level derivative, fitted object, coefficient, weight, or outcome-dependent output is imported.

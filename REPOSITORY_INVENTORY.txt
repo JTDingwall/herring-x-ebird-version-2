@@ -1,50 +1,14 @@
-.Renviron.example
-.gitignore
-AGENTS.md
-DESCRIPTION
-LICENSE
-R/assert.R
-R/config.R
-R/exposure_surfaces.R
-R/metadata_audit.R
-R/model_helpers.R
-R/model_registry.R
-R/outcomes.R
-R/species_registry.R
-R/validation.R
-README.md
-REMOTE_SETUP.md
-REPOSITORY_INVENTORY.txt
-_targets.R
-config/model_registry.yml
-config/project.yml
-config/sensitivity_grid.yml
-data/derived/.gitkeep
-data/interim/.gitkeep
-data/raw/README.md
-docs/00_METADATA_AUDIT.md
-docs/01_SCIENTIFIC_FRAMEWORK.md
-docs/02_ANALYSIS_DESIGNS.md
-docs/03_MODEL_CATALOGUE.md
-docs/04_DECISION_RULES.md
-docs/05_DATA_GOVERNANCE.md
-docs/06_CODEX_EXECUTION_PLAN.md
-metadata/data_dictionary_v2.csv
-metadata/guild_registry_v2.csv
-metadata/input_manifest_template.csv
-metadata/species_registry_v2.csv
-outputs/.gitkeep
-prompts/CODEX_BOOTSTRAP.md
-prompts/CODEX_PHASE1_METADATA_AUDIT.md
-references/references.bib
-reports/analysis_plan.qmd
-reports/metadata_audit.qmd
-scripts/00_setup.R
-scripts/01_validate_input_metadata.R
-scripts/02_validate_registries.R
-scripts/03_profile_source_metadata.R
-tests/testthat.R
-tests/testthat/test-counts.R
-tests/testthat/test-exposure.R
-tests/testthat/test-privacy.R
-tests/testthat/test-registries.R
+Canonical repository inventory
+
+Governance: AGENTS.md, README.md, .Renviron.example, .gitignore
+Environment: DESCRIPTION, NAMESPACE, .Rprofile, renv.lock, renv/
+Pipeline: _targets.R, R/, scripts/
+Canonical registries: metadata/canonical_species_registry.csv, metadata/canonical_guild_registry.csv, metadata/estimand_registry.csv, metadata/model_registry.csv, metadata/cooccurrence_registry.csv, metadata/analysis_module_registry.csv
+Taxonomy evidence: metadata/source_taxonomy_crosswalk.csv, metadata/ambiguous_taxon_rules.csv
+Input/provenance evidence: metadata/input_manifest.csv, metadata/source_field_registry.csv, metadata/source_verification_summary.csv, metadata/v1_source_provenance.json, metadata/v1_asset_port_manifest.csv
+Tests and CI: tests/testthat/, .github/workflows/ci.yml
+Scientific documentation: docs/, reports/repository_inventory_and_reconciliation.md
+Reader artifacts: reports/comprehensive_analysis_plan.html, docs/comprehensive_analysis_plan.html, reports/repository_setup_audit.html
+Authoritative construction prompt: prompts/02_CODEX_BUILD_REPO_AND_PORT_V1_ASSETS.md
+
+Raw inputs, local audits, row-level derivatives, exact coordinates, source identifiers, and fitted objects are excluded from version control.

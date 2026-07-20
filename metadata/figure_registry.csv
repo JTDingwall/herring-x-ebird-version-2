@@ -1,0 +1,19 @@
+figure_id,filename,title,data_class,synthetic_label_required,module_id,status
+F01,01_coverage_over_time.png,Coverage over time,aggregate_metadata,TRUE,A01,illustrative_only
+F02,02_spatial_support_map.png,Spatial support map,synthetic,TRUE,A03,illustrative_only
+F03,03_event_time_guild_curves.png,Event time guild curves,synthetic,TRUE,D02,illustrative_only
+F04,04_hurdle_decomposition.png,Hurdle decomposition,synthetic,TRUE,B02,illustrative_only
+F05,05_distance_decay.png,Distance decay,synthetic,TRUE,E02,illustrative_only
+F06,06_time_distance_surface.png,Time distance surface,synthetic,TRUE,E03,illustrative_only
+F07,07_redistribution_mass_balance.png,Redistribution mass balance,synthetic,TRUE,F02,illustrative_only
+F08,08_spawn_intensity_response.png,Spawn intensity response,synthetic,TRUE,H01,illustrative_only
+F09,09_species_forest.png,Species forest,synthetic,TRUE,L01,illustrative_only
+F10,10_cooccurrence_network.png,Cooccurrence network,synthetic,TRUE,G05,illustrative_only
+F11,11_association_change_heatmap.png,Association change heatmap,synthetic,TRUE,G05,illustrative_only
+F12,12_observer_placebo.png,Observer placebo,synthetic,TRUE,K01,illustrative_only
+F13,13_specification_curve.png,Specification curve,synthetic,TRUE,E05,illustrative_only
+F14,14_silver_wave.png,Silver wave,synthetic,TRUE,I01,illustrative_only
+F15,15_community_ordination.png,Community ordination,synthetic,TRUE,G06,illustrative_only
+F16,16_evidence_synthesis.png,Evidence synthesis,synthetic,TRUE,L03,illustrative_only
+F17,17_event_heterogeneity.png,Event heterogeneity,synthetic,TRUE,H03,illustrative_only
+F18,18_count_tail.png,Count upper tail,synthetic,TRUE,B05,illustrative_only

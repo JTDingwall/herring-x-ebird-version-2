@@ -1,54 +1,20 @@
 # Model catalogue
 
-The machine-readable registry is `config/model_registry.yml`. Models are grouped by role rather than ranked by their likelihood of producing a positive result.
+The authoritative implementations are in `metadata/model_registry.csv`; ecological quantities are defined separately in `metadata/estimand_registry.csv` and workflow mappings in `metadata/analysis_module_registry.csv`.
 
-## Core triangulation set
+The registry contains 45 prespecified models:
 
-1. **M10 species detection surface** — Bernoulli event-time × distance GAMM.
-2. **M11 species phase × ring** — interpretable discrete event-study contrasts at 1-, 2-, 3-, 4-, and 5-km scales.
-3. **M12 additive spawn kernel** — all concurrent events contribute to exposure.
-4. **M20 species hurdle count** — encounter plus positive reported flock size.
-5. **M23 aggregation exceedance** — tests rare large-flock pulses.
-6. **M30 guild responses** — any detection, richness, total count, and aggregation.
-7. **M31 hierarchical species/guild model** — guild means plus species deviations, without forced common sign.
-8. **M40 calendar-matched difference-in-differences** — near spawn versus simultaneous no-recorded-active-spawn shorelines.
-9. **M41 ring redistribution** — near-ring increase and outer-ring decrease.
-10. **M50 intensity dose-response** — event time/distance modified by relative index and extent.
+- core detection, positive-count, zero-inclusive count, guild-bound, richness, timing, distance, additive-exposure, allocation, intensity, and phenology models;
+- supporting matched-observer, fixed-place, mass-balance, hierarchical, ordination, lagged, co-occurrence, and regional-synthesis models;
+- diagnostic visitation, count-reporting, awareness, placebo, and missingness models;
+- exploratory synthetic-control, network, behaviour, and dynamic-use substudies.
 
-## Supporting models
+Every model maps to one approved estimand and one analysis module. All are currently `registered_not_fitted`. No implementation may be chosen or dropped based on the sign of a Version 2 result, and all prespecified results will be reported.
 
-- same-location event study;
-- same-observer case-crossover;
-- Tweedie and robust positive-count alternatives;
-- GLLVM/JSDM and community composition;
-- regional allocation shares;
-- BACI-style recurrent-location comparison;
-- distributed lags;
-- latitudinal silver-wave phenology;
-- observer visitation.
+## Co-occurrence boundary
 
-## Exploratory models
+The multispecies design uses multiple validated latent factors or another validated covariance architecture and requires a hash-identical pilot before a full fit. Residual association is not evidence of direct interaction, facilitation, or shared travel. Contemporaneous other-bird count is not an ordinary primary-model covariate.
 
-- dynamic occupancy on repeated-site subsets;
-- N-mixture only after closure and identifiability simulation;
-- cross-fitted heterogeneity discovery;
-- geometry/date model averaging.
+## Current gate
 
-## Model reporting contract
-
-Each model record must include:
-
-- exact estimand and analysis population;
-- response and units;
-- exposure and comparison;
-- event, observer, location, year, and calendar structure;
-- row and cluster counts;
-- effective sample size or posterior information;
-- convergence/identifiability status;
-- predictive validation;
-- effect scale and uncertainty;
-- compatibility with other model families;
-- interpretation boundary;
-- all prespecified sensitivity results.
-
-No model is promoted because it is significant. No model is dropped because its sign is inconvenient.
+This setup task stops at metadata and outcome-blind design readiness. Model fitting requires later human approval after the hard stops and warnings in `docs/04_DECISION_RULES.md` are reviewed.

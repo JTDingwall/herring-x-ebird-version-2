@@ -1,0 +1,16 @@
+estimand_id,estimand_label,unit_of_analysis,quantity,outcome_state_policy,spatial_scope,temporal_scope,approval_status
+E01,Encounter probability,checklist_taxon,Probability of detecting a registered taxon on a complete checklist,detection distinct from count,all BC with prespecified regional strata,event relative windows,approved_design
+E02,Positive reported abundance,checklist_taxon,Expected numeric reported count conditional on detection,numeric only with separate X audit,all BC,event relative windows,approved_design
+E03,Zero inclusive reported abundance,checklist_taxon,Expected reported count including structural zero fills,numeric zero distinct from X and ambiguity,all BC,event relative windows,approved_design
+E04,Guild abundance bounds,checklist_guild,Lower and upper reported guild count bounds,ambiguous mappings contribute only under registered bound rule,all BC,event relative windows,approved_design
+E05,Diversity and richness,checklist,Registered-species richness and diversity,detection primary with bounded count sensitivity,all BC,event relative windows,approved_design
+E06,Spatiotemporal response,checklist_event,Change across prespecified event time and distance,all concurrent links additive and not independent rows,all BC,event relative windows and distance rings,approved_design
+E07,Regional allocation and mass balance,region_time,Near far and total allocation of bird use,relative use not absolute population size,all BC with regional strata,seasonal and event windows,approved_design
+E08,Spawn intensity response,checklist_event,Response gradient across source herring intensity components,missing herring components are not zero,all BC,event relative windows,approved_design
+E09,Cooccurrence association,checklist_species_pair,Association beyond registered observation and prevalence structure,residual association is not direct interaction,all BC,phase and distance strata,approved_design
+E10,Observation process,checklist_or_observer,Visitation reporting and awareness processes,no focal effect selection,all BC,calendar and event windows,approved_design
+E11,Phenology and lag,section_year_or_checklist,Seasonal timing and lagged relative response,relative index not absolute biomass,all BC,within and across years,approved_design
+E12,Community composition,checklist_species,Composition and species to guild heterogeneity,detection first and count-state preserving,all BC,event relative windows,approved_design
+E13,Falsification and sensitivity,matched_design,Deviation under prespecified placebo or construction choices,all registered outcomes reported regardless of sign,matched scopes,matched windows,approved_design
+E14,Generalization and prediction,heldout_block,Out of block predictive stability,prospective confirmation required,heldout region year or event,prospective or blocked windows,approved_design
+E15,Concentration and upper tail,checklist_taxon,Spatial concentration and extreme flock probability,numeric threshold and X reported separately,all BC,event relative windows,approved_design

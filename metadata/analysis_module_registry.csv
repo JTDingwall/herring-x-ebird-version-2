@@ -1,51 +1,51 @@
-ID,Priority,Analysis,Outcome,Technical plan,Lay summary
-A01,core,Sampling and metadata atlas,checklist/event metadata,"Map effort, dates, protocols, observers, localities, sections, event quality, and missingness before looking at bird effects.",Shows where the data are strong enough to answer questions and where they are not.
-A02,core,Count-quality audit,"numeric, X, lower-bound, heaped, extreme counts","Quantify count availability, rounding/heaping, duplicated shared-checklist disagreements, and upper-tail influence by species and guild.",Checks whether a reported flock of 500 can be compared fairly with a report of X or 5.
-A03,core,Exposure support atlas,event day × distance × region × year,"Count independent events, checklists, observers, and localities in every proposed time-distance cell before modelling.",Prevents fitting impressive-looking curves where almost no data exist.
-B01,core,Species encounter model,detection/non-detection,"Binomial GAMM/GLMM with event time, distance, effort, observer, locality, year, and calendar controls.",Asks whether a species is more likely to appear on a complete checklist near spawn.
-B02,core,Species hurdle model,detection + positive reported count,Two-part model: probability of detection and flock size conditional on a numeric report.,Separates ‘does it show up?’ from ‘how many are there when it does?’
-B03,supporting,Zero-inclusive count model,reported count including zeros,"Negative-binomial, generalized Poisson, or Tweedie benchmark selected by simulation diagnostics.",Provides one overall count response while checking whether one distribution can handle many zeros and huge flocks.
-B04,supporting,Ordinal flock-size model,"0, 1, 2–5, 6–20, 21–100, >100, X",Cumulative-link model robust to heaping and extreme numerical counts.,Tests whether large flocks become more common without pretending every count is exact.
-B05,exploratory,Upper-tail aggregation model,large-flock exceedance / extreme counts,"Threshold exceedance, quantile, or generalized Pareto sensitivity for well-supported taxa.",Targets spectacular aggregations that ordinary averages can hide.
-C01,core,Guild hurdle models,guild detection and positive total count,Mechanistic guild totals with species contribution audits and leave-one-species-out checks.,Tests whether groups such as roe-diving ducks or gulls respond even when individual species are noisy.
-C02,core,Total herring-associated bird count,sum of supported reported counts,Tweedie/NB/hurdle model with dominant-species decomposition.,Asks the broad question: are more herring-associated birds recorded near spawning events?
-C03,core,Guild/species richness,number of detected taxa,Poisson/NB or occupancy-adjusted richness with effort controls.,"Tests whether spawn attracts a more diverse bird assemblage, not only more individuals."
-C04,supporting,Diversity and evenness,Hill numbers / Shannon / Simpson,Checklist-level and event-area diversity with sample-size and effort standardization.,Distinguishes a genuinely diverse gathering from one giant flock of a single species.
-D01,core,Categorical event study,"pre, spawn, egg, post periods",Non-overlapping event-time bins with simultaneous calendar controls and event-cluster uncertainty.,"Shows when the response begins, peaks, and fades."
-D02,core,Continuous event-time trajectory,smooth response over days from spawn,Restricted low-rank smooth or distributed-lag model inside supported periods.,Avoids forcing the biological response into one arbitrary two-week box.
-D03,supporting,Timing uncertainty model,start/end/midpoint/interval-jittered event dates,Repeated imputation or latent date interval sensitivity.,Acknowledges that the recorded date may not be the exact day birds first respond.
-E01,core,Concentric distance-ring model,"0–1, 1–2, 2–3, 3–4, 4–5, 5–10, 10–20 km",Ring-specific event-time effects with support and spatial-precision checks.,Directly answers how close birds need to be to spawn for the signal to appear.
-E02,core,Continuous distance-decay model,smooth or monotone distance response,"Log-distance smooth or monotonic effect, with protocol-specific spatial precision.",Estimates how rapidly the response weakens with distance rather than choosing only one radius.
-E03,core,Time × distance response surface,2-D event-day/distance surface,Tensor-product GAM or spatial-temporal field restricted to well-supported cells.,"Shows whether the response is brief and very local, or broader and longer-lasting."
-E04,supporting,Cumulative multi-event exposure,weighted exposure to all concurrent events,"Distance-decay kernels summed over overlapping events, with alternative bandwidths.",Handles coastlines where birds may be responding to several nearby spawns at once.
-E05,supporting,Spawn-footprint sensitivity,"point, length-based shoreline segment, event complex",Compare point distance with conservative extent buffers and shoreline-linked exposure.,Checks whether a long spawn was wrongly represented by one point.
-F01,core,Regional allocation model,"share of birds in near, middle, and far zones",Multinomial or Dirichlet-multinomial model conditional on the regional observed total.,Tests whether birds are redistributed toward spawn even when total regional numbers stay similar.
-F02,core,Near–far–total mass balance,"near count, far count, regional total",Joint or stacked models with common event-day risk sets.,Separates local concentration from a broader regional influx.
-F03,core,Repeated-locality panel,same locality across exposed and unexposed dates/years,"Locality fixed effects, year/calendar controls, and event clustering.","Compares a place with itself, reducing bias from some sites always having more birds."
-F04,core,Same-observer matched analysis,same observer across roles/periods,Observer-stratified conditional models or fixed effects.,Reduces differences caused by some birders being more skilled or more likely to visit spawn.
-F05,supporting,Stacked difference-in-differences,active vs comparison location changes,Event-specific risk sets with pre-trend checks and event-cluster bootstrap.,Asks whether active shorelines changed more than similar shorelines on the same dates.
-F06,exploratory,Synthetic-control event studies,dense sites with donor pools,Weighted donor locations or matrix-completion methods for very well-observed events.,Builds a custom ‘what would have happened without spawn’ comparison for the best-monitored places.
-G01,core,Raw pairwise co-occurrence,same-checklist species pairs,"Jaccard, phi, odds ratios, conditional detection, and count correlations by phase and distance.","Identifies which species tend to be reported together, while recognizing that one checklist is not proof of one mixed flock."
-G02,core,Null-adjusted co-occurrence,observed minus expected pair association,"Permutation/null models preserving species prevalence, checklist richness, location, date, and effort strata.",Checks whether species occur together more often than expected just because both are common.
-G03,core,Detection JSDM/GLLVM,multispecies detection matrix,Species-specific herring/effort effects plus multiple latent factors and residual association matrices.,Separates shared responses to spawn and habitat from leftover species associations.
-G04,supporting,Abundance JSDM,multispecies reported-count matrix,"Count-capable latent-variable model for a reduced, well-supported species set.",Tests whether flock sizes of different species rise and fall together after adjustment.
-G05,core,Phase- and distance-specific association networks,change in residual association,"Compare pre, active, egg, and post networks and inner/outer distance zones.",Tests whether mixed-species gatherings become more tightly connected during spawn.
-G06,supporting,Community composition model,species-by-checklist composition,GLLVM plus constrained ordination/PERMANOVA as a transparent benchmark.,"Asks whether the whole bird community changes, even when total bird numbers do not."
-H01,core,Spawn intensity components,"Surface, Macrocystis, Understory, length, width",Component-specific modifiers with missingness indicators and method interactions.,Tests whether stronger or more extensive spawn records draw larger responses without treating missing measurements as zero.
-H02,supporting,Latent/measurement-error intensity,uncertain underlying spawn magnitude,Bayesian measurement model or multiple-indicator latent score.,Combines imperfect herring measures while keeping their uncertainty visible.
-H03,supporting,Source event vs event complex,alternative event definitions,Repeat core models using source rows and adjacency-based event complexes.,Checks whether one biological spawn was split into several database records.
-I01,supporting,Phenological ‘silver wave’,latitude × event date × bird response,Spatiotemporal GAM/hierarchical migration model.,Tests whether mobile birds track the northward progression of spawning.
-I02,exploratory,Interannual and lagged response,annual bird metrics vs current/lagged spawn,Region-year time-series model with effort standardization and autocorrelation.,Looks for broader food-web effects that persist beyond the immediate event.
-I03,exploratory,Age/sex and behaviour-code response,demographic/behaviour subsets,Descriptive and hierarchical models only where reporting is sufficiently complete.,Explores whether particular age groups or feeding behaviours are especially associated with spawn.
-J01,core diagnostic,Birder visitation model,"checklists, unique observers, observer continuity",Event-area submission allocation and repeated-observer choice models.,Measures whether birders—not only birds—shift toward active spawn.
-J02,diagnostic,Count reporting model,numeric vs X/unquantified,"Model count availability among detections by exposure, observer, species, and flock size proxies.",Checks whether big spawn flocks are more likely to be reported as X instead of a number.
-J03,diagnostic,Checklist richness/detection process,all-bird checklist richness,"Model whether conspicuous aggregations change search duration, reporting completeness, or detection of unrelated taxa.",Checks whether seeing a huge flock makes observers notice or report more species overall.
-J04,exploratory diagnostic,Comment/behaviour text audit,local-only keyword flags,"Privacy-safe local text mining for spawn, roe, feeding, and mixed-flock terms; no public quotes or identifiers.",Uses observers’ notes only as supporting evidence and never exposes personal or exact-location information.
-K01,diagnostic,False-date placebos,shifted event dates,"Repeat core contrasts at ±14, ±28, and matched random dates.",A true spawn signal should weaken when the event date is deliberately wrong.
-K02,diagnostic,False-location placebos,shifted or nonspawn shorelines,Geographically plausible placebo exposures and no-recorded-spawn years.,A true spatial signal should be stronger at real spawn shorelines than at fake ones.
-K03,diagnostic,Falsification taxa,species without a verified mechanism,Separate habitat-matched falsification models; never force a triple difference without exchangeability.,"Checks for broad seasonal artifacts, while admitting that no control species is perfect."
-K04,validation,Blocked prediction and stability,"held-out events, years, regions, localities","Leave-event/year/region-out validation, spatial blocks, influence deletion, and posterior predictive checks.",Tests whether conclusions survive new places and years rather than only fitting the data already seen.
-K05,validation,Prospective holdout,future eBird releases and new spawn events,Freeze the model now and evaluate later data without changing it.,Provides the strongest future confirmation because Version 2 is designed after seeing Version 1 results.
-L01,synthesis,Species-to-guild hierarchy,species-specific effect estimates,Second-stage multivariate meta-analysis with traits and cross-species covariance.,Summarizes the average guild response without hiding species that behave differently.
-L02,synthesis,Region meta-analysis,region-specific effects,Hierarchical partial pooling or multivariate meta-analysis across stock regions.,Shows whether the relationship is general or mainly a Strait of Georgia phenomenon.
-L03,synthesis,Evidence triangulation dashboard,all compatible estimands,"Direction, magnitude, uncertainty, predictive performance, and placebo evidence summarized without averaging incompatible outcomes.",Combines many analyses into one transparent conclusion instead of selecting the most favourable model.
+module_id,priority,analysis,estimand_ids,model_ids,outcome_class,status
+A01,core,Sampling and metadata atlas,E10,,metadata_only,design_ready
+A02,core,Count quality audit,E10,,count_state_metadata,design_ready
+A03,core,Exposure support atlas,E06,,exposure_metadata,design_ready
+B01,core,Species encounter model,E01,M11,detection,registered_not_fitted
+B02,core,Species hurdle model,E01|E02,M02|M12,detection_and_positive_count,registered_not_fitted
+B03,supporting,Zero inclusive count model,E03,M13,zero_inclusive_count,registered_not_fitted
+B04,supporting,Ordinal flock size model,E15,M14,ordered_count_state,registered_not_fitted
+B05,supporting,Upper tail aggregation model,E15,M39,exceedance_or_quantile,registered_not_fitted
+C01,core,Guild hurdle and bounds models,E04,M01|M33,guild_detection_and_count_bounds,registered_not_fitted
+C02,core,Total associated bird count,E03,M03,community_count,registered_not_fitted
+C03,core,Guild and species richness,E05,M04,richness,registered_not_fitted
+C04,supporting,Diversity and evenness,E05,,diversity,registered_not_fitted
+D01,core,Categorical event study,E06,M05,detection_and_count,registered_not_fitted
+D02,core,Continuous event time trajectory,E06,,detection_and_count,registered_not_fitted
+D03,sensitivity,Timing uncertainty model,E13,,core_response,registered_not_fitted
+E01,core,Concentric distance ring model,E06,,detection_and_count,registered_not_fitted
+E02,core,Continuous distance decay,E06|E15,M38,detection_and_concentration,registered_not_fitted
+E03,core,Time by distance response surface,E06,M06,detection_and_count,registered_not_fitted
+E04,core,Cumulative multi event exposure,E06,M17,detection_and_count,registered_not_fitted
+E05,sensitivity,Spawn footprint sensitivity,E13,M16,core_response,registered_not_fitted
+F01,core,Regional allocation model,E07,M07|M45,zone_share_or_modifier,registered_not_fitted
+F02,core,Near far total mass balance,E07,M08,count_by_zone,registered_not_fitted
+F03,core,Repeated locality panel,E06,M09,detection_and_count,registered_not_fitted
+F04,supporting,Same observer matched analysis,E06,M10,detection_and_count,registered_not_fitted
+F05,supporting,Stacked difference in differences,E06,M24,detection_and_count,registered_not_fitted
+F06,exploratory,Synthetic control event studies,E06,M25,aggregated_index,registered_not_fitted
+G01,descriptive,Raw pairwise cooccurrence,E09,,codetection_association,registered_not_run
+G02,supporting,Null adjusted cooccurrence,E09,M34,codetection_association,registered_not_fitted
+G03,core,Detection JSDM or GLLVM,E09|E12,M21|M35,detection_matrix,registered_not_fitted
+G04,exploratory,Abundance JSDM,E09,,reduced_count_matrix,registered_not_fitted
+G05,supporting,Phase and distance association networks,E09,M36|M37,residual_association,registered_not_fitted
+G06,supporting,Community composition model,E12,M22,composition,registered_not_fitted
+H01,core,Spawn intensity components,E08,M18,detection_and_count,registered_not_fitted
+H02,supporting,Latent or measurement error intensity,E08,M19,detection_and_count,registered_not_fitted
+H03,sensitivity,Source event versus event complex,E13,M15,core_response,registered_not_fitted
+I01,core,Phenological silver wave,E11,M23,timing_or_count,registered_not_fitted
+I02,supporting,Interannual and lagged response,E11,M43,seasonal_index,registered_not_fitted
+I03,exploratory,Age sex and behaviour response,E12,M41,behaviour_composition,registered_not_fitted
+J01,diagnostic,Birder visitation model,E10,M26,visit_counts,registered_not_fitted
+J02,diagnostic,Count reporting model,E10,M32,numeric_vs_unquantified,registered_not_fitted
+J03,diagnostic,Checklist richness and detection process,E10,M40,richness_and_reporting,registered_not_fitted
+J04,diagnostic,Comment and behaviour text audit,E10,M42,aggregate_awareness,local_only_not_run
+K01,diagnostic,False date placebos,E13,M27,core_response,registered_not_fitted
+K02,diagnostic,False location placebos,E13,M28,core_response,registered_not_fitted
+K03,diagnostic,Falsification taxa,E13,M29,falsification_response,registered_not_fitted
+K04,core,Blocked prediction and stability,E14,M44,heldout_prediction,registered_not_fitted
+K05,core,Prospective holdout,E14,M31,heldout_prediction,registered_not_fitted
+L01,supporting,Species to guild hierarchy,E12,M20,effect_hierarchy,registered_not_fitted
+L02,supporting,Region meta analysis,E14,M30,regional_effects,registered_not_fitted
+L03,core,Evidence triangulation dashboard,E13|E14,,synthesis,design_ready

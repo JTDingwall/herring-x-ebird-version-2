@@ -1,0 +1,26 @@
+dataset_id,analysis_field,source_field,required,handling
+ebird_ebd,taxon_concept_id,TAXON CONCEPT ID,TRUE,preserve_for_taxonomy_join
+ebird_ebd,common_name,COMMON NAME,TRUE,schema_validation_only
+ebird_ebd,scientific_name,SCIENTIFIC NAME,TRUE,schema_validation_only
+ebird_ebd,taxon_category,CATEGORY,TRUE,preserve_distinct_categories
+ebird_ebd,observation_count,OBSERVATION COUNT,TRUE,preserve_numeric_X_lower_bound_ambiguity
+ebird_ebd,observation_date,OBSERVATION DATE,TRUE,parse_date
+ebird_ebd,sampling_event_identifier,SAMPLING EVENT IDENTIFIER,TRUE,restricted_join_key
+ebird_ebd,approved,APPROVED,TRUE,quality_flag
+ebird_ebd,reviewed,REVIEWED,TRUE,quality_flag
+ebird_sed,sampling_event_identifier,SAMPLING EVENT IDENTIFIER,TRUE,restricted_join_key
+ebird_sed,observer_id,OBSERVER ID,TRUE,restricted_nuisance_key
+ebird_sed,locality_id,LOCALITY ID,TRUE,restricted_nuisance_key
+ebird_sed,locality_type,LOCALITY TYPE,TRUE,effort_metadata
+ebird_sed,latitude,LATITUDE,TRUE,restricted_coordinate
+ebird_sed,longitude,LONGITUDE,TRUE,restricted_coordinate
+ebird_sed,observation_date,OBSERVATION DATE,TRUE,parse_date
+ebird_sed,start_time,TIME OBSERVATIONS STARTED,TRUE,effort_metadata
+ebird_sed,protocol_name,PROTOCOL NAME,TRUE,filter_metadata
+ebird_sed,duration_minutes,DURATION MINUTES,TRUE,filter_metadata
+ebird_sed,effort_distance_km,EFFORT DISTANCE KM,TRUE,filter_metadata
+ebird_sed,effort_area_ha,EFFORT AREA HA,TRUE,effort_metadata
+ebird_sed,number_observers,NUMBER OBSERVERS,TRUE,filter_metadata
+ebird_sed,all_species_reported,ALL SPECIES REPORTED,TRUE,complete_checklist_filter
+ebird_sed,group_identifier,GROUP IDENTIFIER,TRUE,shared_checklist_collapse
+ebird_sed,county,COUNTY,TRUE,aggregate_geography
