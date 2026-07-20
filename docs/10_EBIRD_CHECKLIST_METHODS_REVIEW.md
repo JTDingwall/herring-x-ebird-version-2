@@ -1,8 +1,8 @@
 # eBird checklist methods review and Stage 2 addendum
 
 **Review date:** 2026-07-20  
-**Stage gate:** `STOP_DESIGN_IDENTIFICATION_FAILURE`  
-**Human scientific decision:** `REVISION_REQUIRED`  
+**Stage gate:** `PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED`  
+**Human scientific decision:** `APPROVED_SOURCE_POINT_PRIMARY`  
 **Response models authorized:** no  
 **Candidate grid changed:** no  
 **Candidate-grid SHA-256 retained:** `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`
@@ -11,22 +11,17 @@
 
 ## Relationship to the repaired Stage 2 gate
 
-After this checklist review was added, the Stage 2 scientific-gate repair found that the protected shoreline bundle does not cover the intended coastwide core. The current upstream gate is therefore `STOP_DESIGN_IDENTIFICATION_FAILURE`, not approval-ready. The original 105-option grid and both of its retained hashes remain unchanged.
+The Stage 2 scientific-gate repair found that the protected shoreline bundle does not cover the intended coastwide core. Human approval now resolves that identification problem by selecting immutable source points as the primary geometry. EDGE_TYPE 100 alongshore geometry is restricted to SoG and WCVI as a sensitivity; incomplete shoreline coverage remains documented and is never inferred away. The original 105-option grid and both retained hashes remain unchanged.
 
-The repair also implemented several checklist recommendations: one composite analysis event per shared group, exclusion of effort-disagreement groups from the primary frame, a standardized 5–300 minute / ≤5 km / 1–10 observer primary filter, and exclusion of wholly SED-only structural-unknown events from primary zero-filling. Those rules remain subject to human scientific acceptance, but they are no longer merely unimplemented recommendations.
+The approved repair uses one composite analysis event per shared group, excludes effort-disagreement groups from the primary frame, applies a standardized 5–300 minute / ≤5 km / 1–10 observer primary filter, and excludes wholly SED-only structural-unknown events from primary zero-filling.
 
-No Stage 3 response model is authorized until the shoreline-coverage failure is resolved and the remaining checklist, estimand, validation and BCCWS-overlap decisions are approved.
+Stage 2 approval does not authorize Stage 3 entry or response models. Checklist construction, accepted-record verification, stationary-distance invariants, metadata-only support auditing and blocked validation must be implemented and reviewed under a separate authorization.
 
 ## Checklist-methods conclusion
 
 The reported workflow is aligned with the central requirements for using eBird checklists: complete checklists define the denominator, EBD observations are joined to SED sampling events, `X` remains detection-only, detection is separated from positive-count magnitude, taxonomy is versioned, and complete-area protocols remain separate.
 
-The following checklist items still require explicit human approval before Stage 3:
-
-1. accept the implemented composite shared-group and disagreement-exclusion rules;
-2. decide whether the ≤2 km travel-distance set is a required spatial-precision sensitivity around the implemented ≤5 km primary;
-3. lock the estimand language as checklist reporting and reported conditional count, not true absence, population abundance, or occupancy; and
-4. approve event-complex or shoreline-time validation blocks and the BCCWS deduplication boundary.
+Human approval is now recorded for the shared-group rule, ≤5 km primary effort set with ≤2 km sensitivity, checklist-reporting estimands, event-complex or shoreline-time validation blocks, and the BCCWS non-pooling boundary. The remaining items are implementation and verification tasks, not opportunities to revisit the rules using response direction.
 
 These recommendations do not add ecological covariates. They clarify the sampling unit, exposure footprint, validation unit, and interpretation.
 
@@ -36,7 +31,7 @@ These recommendations do not add ecological covariates. They clarify the samplin
 
 Shared eBird checklists are duplicate accounts of one birding event. Cornell's `auk_unique()` documentation states that grouped copies are collapsed using `GROUP IDENTIFIER`; the default implementation selects the component record with the lowest checklist identifier and retains the contributing checklist and observer identifiers.
 
-The Stage 2 repair now constructs one composite event per shared group, excludes effort-disagreement groups from the primary frame, and retains disagreement rows as a registered sensitivity. Human review must confirm this rule before response access. The analysis frame must retain one row per independent checklist event × species.
+The Stage 2 repair now constructs one composite event per shared group, excludes effort-disagreement groups from the primary frame, and retains disagreement rows as a registered sensitivity. The human approval record confirms this rule; executable checks must still verify it before response access. The analysis frame must retain one row per independent checklist event × species.
 
 Primary sources:
 
@@ -104,7 +99,7 @@ Source: [Birds Canada: NatureCounts and eBird](https://learn.birdscanada.org/add
 
 ## Machine-readable gate
 
-`metadata/ebird_checklist_handling_gate.csv` defines the aligned, implemented-pending-acceptance, verification and human-decision items. Blocking items and the upstream shoreline gate must pass before a Stage 3 response model is opened.
+`metadata/ebird_checklist_handling_gate.csv` records aligned, approved, verification and approved-pending-implementation items. Stage 3 entry and every response model still require separate authorization after the remaining implementation checks pass.
 
 The complete interactive review is in `reports/ebird_checklist_methods_audit.html`; the expanded evidence map is in `reports/herring_ebird_broad_literature_survey.html` with its source table in `metadata/herring_ebird_literature_matrix.csv`.
 
