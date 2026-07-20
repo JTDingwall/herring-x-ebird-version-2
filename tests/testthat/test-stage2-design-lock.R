@@ -25,6 +25,17 @@ testthat::test_that("Stage 2 candidate grid is frozen before support access", {
   testthat::expect_identical(approval$scientific_decision, "APPROVED_SOURCE_POINT_PRIMARY")
   testthat::expect_false(approval$response_boundary$stage3_response_models_authorized)
   testthat::expect_true(approval$parent_design$preserved_unchanged)
+  authorization_path <- repo_file("metadata", "stage3_phases1_3_authorization_v1.yml")
+  authorization_recorded <- strsplit(readLines(repo_file("metadata", "stage3_phases1_3_authorization_v1.sha256"), warn = FALSE)[1L], "[[:space:]]+")[[1L]][1L]
+  authorization_actual <- digest::digest(authorization_path, algo = "sha256", file = TRUE, serialize = FALSE)
+  testthat::expect_identical(authorization_recorded, authorization_actual)
+  authorization <- yaml::read_yaml(authorization_path)
+  testthat::expect_identical(authorization$scientific_decision,
+                            "AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY")
+  testthat::expect_false(authorization$superseding_geometry_decision$shoreline_class_sensitivities_registered)
+  testthat::expect_false(authorization$response_boundary$registered_response_models_authorized)
+  testthat::expect_true(authorization$authorized_actions$implement_event_complex_or_source_point_spatiotemporal_blocked_validation)
+  testthat::expect_true(authorization$response_boundary$prospective_2026_to_2028_holdout_locked)
   testthat::expect_identical(amendment$parent_candidate_grid$canonical_lf_sha256, recorded)
   testthat::expect_identical(amendment$parent_candidate_grid$original_windows_crlf_sha256,
                             "f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91")
@@ -119,11 +130,16 @@ testthat::test_that("Stage 2 repaired audits implement the scientific amendment"
   testthat::expect_true(all(geometry$actual_alongshore_geometry_verified))
   testthat::expect_true(all(geometry$approved_primary_representation == "source_point"))
   testthat::expect_identical(geometry[geometry_definition == "source_point", candidate_role],
-                            "coastwide_primary_human_approved")
-  testthat::expect_true(all(geometry$geometry_gate == "PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED"))
+                            "primary_source_point_only_human_approved")
+  testthat::expect_true(all(geometry[geometry_definition != "source_point",
+                                    candidate_role == "audit_provenance_only_not_registered_for_analysis"]))
+  testthat::expect_true(all(geometry$shoreline_sensitivity_scope == "none"))
+  testthat::expect_true(all(geometry$geometry_gate == "PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS"))
   eligible <- data.table::fread(repo_file("outputs", "stage2_design_lock", "geometry_representation_eligibility.csv"))
-  common <- eligible[comparison_sample == "common_eligible_events"]
-  testthat::expect_equal(data.table::uniqueN(common$eligible_events), 1L)
+  testthat::expect_identical(eligible[representation == "source_point" & comparison_sample == "all_available",
+                                     approved_role], "primary_source_point_only")
+  testthat::expect_true(all(eligible[representation != "source_point",
+                                    approved_role == "audit_provenance_only"]))
 
   recommendations <- data.table::fread(repo_file("outputs", "stage2_design_lock", "region_period_recommendations.csv"))
   primary <- recommendations[recommendation == "candidate_primary_period"]
@@ -163,20 +179,26 @@ testthat::test_that("Stage 2 prospective freeze is fixed and date-filtered", {
   testthat::expect_true(max(date_filter) < min(response_persist))
 })
 
-testthat::test_that("Stage 2 records human approval without authorizing response models", {
+testthat::test_that("Stage 3 phases 1 to 3 are authorized without response models", {
   gate <- jsonlite::read_json(repo_file("outputs", "stage2_design_lock", "stage_gate.json"), simplifyVector = TRUE)
-  testthat::expect_identical(gate$classification, "PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED")
-  testthat::expect_identical(gate$human_scientific_decision, "APPROVED_SOURCE_POINT_PRIMARY")
+  testthat::expect_identical(gate$classification, "PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED")
+  testthat::expect_identical(gate$human_scientific_decision,
+                            "AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY")
   testthat::expect_identical(gate$registered_models_fitted, 0L)
   testthat::expect_identical(gate$prohibited_statistics_computed, 0L)
   testthat::expect_true(gate$original_candidate_grid_preserved_unchanged)
   testthat::expect_false(gate$comments_read)
   testthat::expect_false(gate$requires_human_scientific_approval)
   testthat::expect_false(gate$response_models_authorized)
-  testthat::expect_false(gate$stage3_entry_implementation_authorized)
-  testthat::expect_identical(gate$primary_design$event_geometry, "IMMUTABLE_SOURCE_POINT")
+  testthat::expect_true(gate$stage3_entry_implementation_authorized)
+  testthat::expect_true(gate$requires_separate_phase4_authorization)
+  testthat::expect_identical(gate$primary_design$event_geometry, "IMMUTABLE_SOURCE_POINT_ONLY")
+  testthat::expect_identical(gate$primary_design$edge_type_100_role,
+                            "AUDIT_PROVENANCE_ONLY_NOT_REGISTERED_FOR_ANALYSIS")
+  testthat::expect_identical(gate$primary_design$edge_type_150_role,
+                            "AUDIT_PROVENANCE_ONLY_NOT_REGISTERED_FOR_ANALYSIS")
   testthat::expect_identical(gate$repair_status$shoreline_geometry,
-                            "PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED")
+                            "PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS")
   testthat::expect_identical(gate$repair_status$shoreline_bundle_coverage,
-                            "INCOMPLETE_NONBLOCKING_FOR_APPROVED_PRIMARY")
+                            "INCOMPLETE_AUDIT_PROVENANCE_ONLY")
 })

@@ -4,12 +4,14 @@ source_stage2_commit: f625bdacad802f9e36c41a7b642646690d8de8cd
 source_stage2_repair_commit: 7af0f920bb71211ec2dbf6b20dfad481f11d7cdf
 stage2_human_approval_record: metadata/stage2_human_scientific_approval_v1.yml
 stage2_human_approval_sha256: c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18
+stage3_authorization_record: metadata/stage3_phases1_3_authorization_v1.yml
+stage3_authorization_sha256: a8c2d625b6168832346bb003a0409a9c1dbd93d800382f984c39e6cee461ea5d
 stage2_candidate_grid_sha256: 8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81
 stage2_grid_changed: false
-stage_gate: PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED
-human_scientific_decision: APPROVED_SOURCE_POINT_PRIMARY
+stage_gate: PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED
+human_scientific_decision: AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY
 response_models_authorized: false
-stage3_entry_implementation_authorized: false
+stage3_entry_implementation_authorized: true
 prospective_holdout_2026_plus_locked: true
 scope_control:
   add_new_primary_ecological_covariates: false
@@ -19,17 +21,16 @@ primary_design:
   geometry_scope: coastwide_where_source_point_is_valid
   event_identity: immutable_source_record
   missing_event_extent_inference: prohibited
-shoreline_sensitivities:
-  edge_type_100:
-    scope: [SoG, WCVI]
-    status: approved_supported_region_sensitivity
-  edge_type_150:
-    status: pending_local_visual_validation_nonblocking_for_primary
+shoreline_geometry:
+  registered_for_analysis: false
+  edge_type_100_role: audit_provenance_only
+  edge_type_150_role: audit_provenance_only
+  derived_alongshore_role: audit_provenance_only
+  existing_diagnostics_preserved: true
 upstream_blockers:
-  shoreline_geometry:
-    status: RESOLVED_BY_SOURCE_POINT_PRIMARY_AND_SENSITIVITY_SCOPE
+  geometry:
+    status: RESOLVED_BY_SOURCE_POINT_ONLY_ANALYSIS
     blocking: false
-    incomplete_bundle_retained_as_limitation: true
 human_decisions:
   independent_checklist_event:
     status: approved
@@ -56,8 +57,8 @@ human_decisions:
     forbidden_unless_separately_justified: [true_absence, absolute_population_abundance, occupancy]
     blocking: false
   validation_unit:
-    status: approved_pending_implementation
-    choice: event_complex_or_shoreline_time_block
+    status: approved_for_implementation
+    choice: event_complex_or_source_point_spatiotemporal_block
     blocking: true
   raw_bccws_integration:
     status: approved
@@ -66,28 +67,33 @@ human_decisions:
     blocking: false
 phases:
   - id: phase_minus_1
-    name: resolve_shoreline_geometry_identification_failure
-    status: completed_by_source_point_primary_scope_decision
+    name: resolve_geometry_identification
+    status: completed_by_source_point_only_decision
     response_access: none
   - id: phase_0
-    name: record_human_approval
+    name: record_human_approval_and_authorization
     status: completed
     response_access: none
   - id: phase_1
     name: construct_independent_checklist_denominator
-    status: pending_separate_authorization
-    response_access: count_state_parsing_only
+    status: authorized_not_yet_executed
+    response_access: registered_count_state_parsing_only
   - id: phase_2
     name: metadata_only_sampling_support_audit
-    status: pending
+    status: authorized_not_yet_executed
     response_access: none
   - id: phase_3
     name: validation_and_estimand_safeguards
-    status: pending
+    status: authorized_not_yet_executed
     response_access: fixture_or_synthetic_only
   - id: phase_4
     name: exploratory_registered_response_analysis
     status: not_authorized
-    response_access: requires_all_prior_gates_and_separate_authorization
+    response_access: prohibited_until_separate_human_authorization
 required_invariants: [E02, E05, E06, E07, E09, E10, E12, E13, E14]
-next_gate: separate_stage3_entry_implementation_authorization
+required_stops:
+  after_phase_1: denominator_and_zero_provenance_review
+  after_phase_2: human_sampling_support_review
+  after_phase_3: human_validation_implementation_review
+  before_phase_4: separate_response_model_authorization
+next_gate: human_data_support_review_and_separate_phase4_authorization

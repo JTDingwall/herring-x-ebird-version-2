@@ -11,8 +11,9 @@ testthat::test_that("eBird checklist methods addendum preserves the Stage 2 free
   ))
   testthat::expect_true(all(c("E05", "E06", "E07", "E10", "E13") %in% gate[severity == "block", item_id]))
 
-  testthat::expect_identical(plan$stage_gate, "PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED")
-  testthat::expect_identical(plan$human_scientific_decision, "APPROVED_SOURCE_POINT_PRIMARY")
+  testthat::expect_identical(plan$stage_gate, "PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED")
+  testthat::expect_identical(plan$human_scientific_decision,
+                            "AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY")
   testthat::expect_false(plan$response_models_authorized)
   testthat::expect_true(plan$prospective_holdout_2026_plus_locked)
   testthat::expect_false(plan$stage2_grid_changed)
@@ -21,17 +22,23 @@ testthat::test_that("eBird checklist methods addendum preserves the Stage 2 free
     "8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81"
   )
   testthat::expect_false(plan$scope_control$add_new_primary_ecological_covariates)
-  testthat::expect_false(plan$upstream_blockers$shoreline_geometry$blocking)
-  testthat::expect_identical(plan$upstream_blockers$shoreline_geometry$status,
-                            "RESOLVED_BY_SOURCE_POINT_PRIMARY_AND_SENSITIVITY_SCOPE")
+  testthat::expect_false(plan$upstream_blockers$geometry$blocking)
+  testthat::expect_identical(plan$upstream_blockers$geometry$status,
+                            "RESOLVED_BY_SOURCE_POINT_ONLY_ANALYSIS")
+  testthat::expect_false(plan$shoreline_geometry$registered_for_analysis)
   testthat::expect_true(all(vapply(plan$human_decisions[c(
     "independent_checklist_event", "primary_effort_set", "shared_count_reconciliation",
     "estimand_language"
   )], function(x) identical(x$status, "approved") && !isTRUE(x$blocking), logical(1))))
   testthat::expect_identical(plan$human_decisions$validation_unit$status,
-                            "approved_pending_implementation")
+                            "approved_for_implementation")
   testthat::expect_true(plan$human_decisions$validation_unit$blocking)
-  testthat::expect_false(plan$stage3_entry_implementation_authorized)
+  testthat::expect_true(plan$stage3_entry_implementation_authorized)
+  testthat::expect_false(plan$response_models_authorized)
+  testthat::expect_identical(plan$phases[[3L]]$status, "authorized_not_yet_executed")
+  testthat::expect_identical(plan$phases[[4L]]$status, "authorized_not_yet_executed")
+  testthat::expect_identical(plan$phases[[5L]]$status, "authorized_not_yet_executed")
+  testthat::expect_identical(plan$phases[[6L]]$status, "not_authorized")
 })
 
 testthat::test_that("checklist gate encodes independent-event and estimand protections", {

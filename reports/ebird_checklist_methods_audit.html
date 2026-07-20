@@ -20,20 +20,20 @@
 <header><div class="wrap">
   <h1>Checklist-level eBird methods audit</h1>
   <p class="lede">A literature-based review of whether the Stage 2 Pacific herring design treats eBird checklists as valid sampling events. It concentrates on data handling and estimands—not adding ecological covariates.</p>
-  <div class="meta"><span class="pill">Review date: 20 July 2026</span><span class="pill">Outcome-blind</span><span class="pill">EBD + SED workflow</span><span class="pill">Reconciled with Stage 2 repair gate</span></div>
+  <div class="meta"><span class="pill">Review date: 20 July 2026</span><span class="pill">Outcome-blind</span><span class="pill">EBD + SED workflow</span><span class="pill">Reconciled with Stage 3 Phases 1–3 authorization</span></div>
 </div></header>
 
 <main>
   <section class="section card danger">
-    <h2>Current repository gate: Stage 2 human approval recorded</h2>
-    <p>Human approval selects <strong>immutable source points as the primary geometry</strong>. EDGE_TYPE 100 alongshore analyses are limited to SoG and WCVI sensitivities, while EDGE_TYPE 150 remains unavailable until local visual validation. Incomplete shoreline coverage remains visible rather than being presented as coastwide.</p>
-    <p>The original 105-option design grid and retained hashes are unchanged. Human approval confirms composite shared-group events, primary exclusion of effort-disagreement groups, a 5–300 minute / ≤5 km / 1–10 observer candidate primary, exclusion of wholly SED-only structural unknowns from primary zero-filling, checklist-reporting estimands, and blocked validation. Stage 3 entry and response models still require separate authorization.</p>
+    <h2>Current repository gate: Stage 3 Phases 1–3 authorized</h2>
+    <p>Human authorization selects <strong>immutable source point as the only registered analysis geometry</strong>. EDGE_TYPE 100, EDGE_TYPE 150, derived alongshore lengths, and shoreline unions are retained solely as audit provenance. No shoreline-class or alongshore sensitivity is registered.</p>
+    <p>The original 105-option design grid and retained hashes are unchanged. Human authorization permits checklist-denominator construction, metadata-only support auditing, and event-complex or source-point spatial–time blocked-validation implementation. Response summaries, exposure-direction diagnostics, Phase 4, and all response models remain prohibited; the 2026–2028 holdout remains locked.</p>
   </section>
 
   <section class="section grid">
     <div class="card"><div class="stat">6 aligned</div><h3>strong design choices</h3><p class="small">Completeness, EBD–SED join, count-state semantics, taxonomy, effort metadata, and separate complete-area protocols.</p></div>
     <div class="card"><div class="stat">6 approved</div><h3>human decisions recorded</h3><p class="small">Shared events, zero provenance, effort bounds, spatial footprint, dependence, and estimand language.</p></div>
-    <div class="card"><div class="stat">1 implement</div><h3>approved validation rule</h3><p class="small">Event-complex or shoreline-time blocking must be implemented before model fitting.</p></div>
+    <div class="card"><div class="stat">3 authorized</div><h3>outcome-blind phases</h3><p class="small">Denominator construction, metadata-only support auditing, and blocked-validation implementation.</p></div>
     <div class="card"><div class="stat">3 verify</div><h3>remaining invariants</h3><p class="small">Accepted records, stationary distance, and response-blind sampling support.</p></div>
   </section>
 
@@ -67,7 +67,7 @@
         <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Effort bounds</td><td>Current Cornell worked guidance uses ≤6 h, ≤10 km and ≤10 observers for 3 km weekly products, and says finer uses need stricter distance limits.</td><td>The repair promotes 5–300 minutes, ≤5 km and 1–10 observers to candidate primary; the wider set is sensitivity only.</td><td>Human approval is recorded; inspect support by effort bins without bird responses.</td></tr>
         <tr data-status="verify"><td><span class="tag verify">Verify</span></td><td>Stationary distance</td><td>Stationary distance should be forced to zero before deriving speed or filtering distance.</td><td>Not stated in the delivery summary.</td><td>Add an invariant: stationary ⇒ distance = 0 and speed handled consistently.</td></tr>
         <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Repeated observer/site dependence</td><td>Checklist rows from the same observer, hotspot or event are not fully exchangeable.</td><td>The repair carries one composite event per shared group and preserves observer/site dependence for modeled or blocked handling.</td><td>Human approval is recorded; implement the dependence structure and report effective rather than raw replication.</td></tr>
-        <tr data-status="approved-pending"><td><span class="tag verify">Implement</span></td><td>Validation leakage</td><td>Random row splits can place near-identical observations in training and test sets.</td><td>Held-out prediction is registered, but the blocking unit is not stated.</td><td>Hold out whole event complexes or shoreline-time blocks; keep all copies from an observer/event on one side when feasible.</td></tr>
+        <tr data-status="approved-pending"><td><span class="tag verify">Implement</span></td><td>Validation leakage</td><td>Random row splits can place near-identical observations in training and test sets.</td><td>Held-out prediction is registered, but the blocking unit is not stated.</td><td>Hold out whole event complexes or source-point spatial–time blocks; keep all copies from an observer/event on one side when feasible.</td></tr>
         <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Spatial footprint</td><td>The public checklist point is not the route. Cornell explicitly recommends stricter distance limits when fine spatial precision is required.</td><td>The repaired candidate primary permits ≤5 km travel while local herring exposure uses a 2 km threshold.</td><td>Approve the ≤5 km primary and retain a stationary + traveling ≤2 km high-precision analysis. Do not add habitat covariates to solve a geometry problem.</td></tr>
         <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Target estimand</td><td>eBird encounter and count models estimate outcomes on submitted, eligible checklists after standardization—not absolute abundance or strict occupancy by default.</td><td>The design separates detection and counts, but public-facing claim language still needs locking.</td><td>Approve exact prose definitions before results are seen; avoid “true absence,” “population abundance,” and “occupancy” unless their assumptions are met.</td></tr>
       </tbody>
@@ -110,11 +110,11 @@
     <h2>Minimal recommendations—no variable bloat</h2>
     <ol>
       <li><strong>Verify one-event-per-group deduplication.</strong> Preserve protected component IDs and disagreement state, but never treat shared copies as independent checklists.</li>
-      <li><strong>Resolve shoreline coverage first.</strong> Repair the coastwide shoreline source, narrow the primary geography, or approve another source geometry and rerun the outcome-blind gate.</li>
+      <li><strong>Keep geometry source-point-only.</strong> Preserve shoreline diagnostics for provenance, but do not use shoreline class, derived alongshore length, or shoreline unions in an analysis or sensitivity.</li>
       <li><strong>Resolve checklist spatial scale at the gate.</strong> Retain a stationary/traveling ≤2 km high-precision analysis around the repaired ≤5 km, ≤10-observer candidate primary.</li>
       <li><strong>Run one metadata-only sampling-support audit.</strong> Use checklist counts, unique observers and existing effort fields across the already-frozen exposure cells. Do not read bird responses.</li>
       <li><strong>Lock plain-language estimands.</strong> “Probability reported on an eligible complete checklist” and “reported count conditional on detection” are defensible; population abundance and true occupancy are not.</li>
-      <li><strong>Use blocked validation.</strong> Hold out complete herring event complexes or shoreline-time blocks, not random checklist rows.</li>
+      <li><strong>Use blocked validation.</strong> Hold out complete herring event complexes or source-point spatial–time blocks, not random checklist rows.</li>
     </ol>
   </section>
 
@@ -162,7 +162,7 @@
 
   <section class="section card">
     <h2>Scope and limitation</h2>
-    <p>This is a design and literature audit reconciled to the approved Stage 2 gate. Protected row-level data were not copied into this report. Human choices are recorded, but executable QA and separate Stage 3 authorization remain necessary before response analysis.</p>
+    <p>This is a design and literature audit reconciled to the authorization for Stage 3 Phases 1–3. Protected row-level data were not copied into this report. The three outcome-blind phases still require executable QA and human review after each phase; separate Phase 4 authorization is required before any response analysis.</p>
     <p class="footer">This companion belongs with the broader Pacific herring × eBird literature survey. It does not alter the frozen candidate grid or fit a registered response model.</p>
   </section>
 </main>

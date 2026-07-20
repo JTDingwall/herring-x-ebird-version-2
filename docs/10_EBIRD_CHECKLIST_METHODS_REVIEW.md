@@ -1,8 +1,8 @@
 # eBird checklist methods review and Stage 2 addendum
 
 **Review date:** 2026-07-20  
-**Stage gate:** `PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED`  
-**Human scientific decision:** `APPROVED_SOURCE_POINT_PRIMARY`  
+**Stage gate:** `PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED`  
+**Human scientific decision:** `AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY`  
 **Response models authorized:** no  
 **Candidate grid changed:** no  
 **Candidate-grid SHA-256 retained:** `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`
@@ -11,17 +11,17 @@
 
 ## Relationship to the repaired Stage 2 gate
 
-The Stage 2 scientific-gate repair found that the protected shoreline bundle does not cover the intended coastwide core. Human approval now resolves that identification problem by selecting immutable source points as the primary geometry. EDGE_TYPE 100 alongshore geometry is restricted to SoG and WCVI as a sensitivity; incomplete shoreline coverage remains documented and is never inferred away. The original 105-option grid and both retained hashes remain unchanged.
+The Stage 2 scientific-gate repair found that the protected shoreline bundle does not cover the intended coastwide core. Human approval resolves that identification problem by selecting immutable source points as the only registered analysis geometry. Shoreline classes and derived alongshore products remain audit provenance only; incomplete shoreline coverage remains documented and is never inferred away. The original 105-option grid and both retained hashes remain unchanged.
 
 The approved repair uses one composite analysis event per shared group, excludes effort-disagreement groups from the primary frame, applies a standardized 5–300 minute / ≤5 km / 1–10 observer primary filter, and excludes wholly SED-only structural-unknown events from primary zero-filling.
 
-Stage 2 approval does not authorize Stage 3 entry or response models. Checklist construction, accepted-record verification, stationary-distance invariants, metadata-only support auditing and blocked validation must be implemented and reviewed under a separate authorization.
+Stage 3 Phases 1–3 are authorized for checklist construction, accepted-record verification, stationary-distance invariants, metadata-only support auditing and blocked-validation implementation. Response summaries, response models and Phase 4 remain unauthorized.
 
 ## Checklist-methods conclusion
 
 The reported workflow is aligned with the central requirements for using eBird checklists: complete checklists define the denominator, EBD observations are joined to SED sampling events, `X` remains detection-only, detection is separated from positive-count magnitude, taxonomy is versioned, and complete-area protocols remain separate.
 
-Human approval is now recorded for the shared-group rule, ≤5 km primary effort set with ≤2 km sensitivity, checklist-reporting estimands, event-complex or shoreline-time validation blocks, and the BCCWS non-pooling boundary. The remaining items are implementation and verification tasks, not opportunities to revisit the rules using response direction.
+Human approval is now recorded for the shared-group rule, ≤5 km primary effort set with ≤2 km sensitivity, checklist-reporting estimands, event-complex or source-point spatial–time validation blocks, and the BCCWS non-pooling boundary. The remaining items are implementation and verification tasks, not opportunities to revisit the rules using response direction.
 
 These recommendations do not add ecological covariates. They clarify the sampling unit, exposure footprint, validation unit, and interpretation.
 
@@ -80,7 +80,7 @@ Primary sources:
 
 Birders may preferentially visit conspicuous spawn events. Complete-checklist filtering and effort adjustment do not make checklist locations random. Before response access, produce a metadata-only support table containing eligible checklist counts and unique observers by region × event-time × distance × protocol, plus duration, distance, observer-number and start-time-availability summaries. Do not add these summaries as automatic biological covariates.
 
-Train/test splits must hold out whole herring event complexes or shoreline-time blocks. Random checklist-row splits can leak closely related events, sites or observers across train and test data.
+Train/test splits must hold out whole herring event complexes or source-point spatial–time blocks. Random checklist-row splits can leak closely related events, sites or observers across train and test data.
 
 Supporting sources:
 
@@ -99,7 +99,7 @@ Source: [Birds Canada: NatureCounts and eBird](https://learn.birdscanada.org/add
 
 ## Machine-readable gate
 
-`metadata/ebird_checklist_handling_gate.csv` records aligned, approved, verification and approved-pending-implementation items. Stage 3 entry and every response model still require separate authorization after the remaining implementation checks pass.
+`metadata/ebird_checklist_handling_gate.csv` records aligned, approved, verification and approved-pending-implementation items. Phases 1–3 are authorized, but every response summary and response model still requires separate Phase 4 authorization after the implementation checks pass.
 
 The complete interactive review is in `reports/ebird_checklist_methods_audit.html`; the expanded evidence map is in `reports/herring_ebird_broad_literature_survey.html` with its source table in `metadata/herring_ebird_literature_matrix.csv`.
 

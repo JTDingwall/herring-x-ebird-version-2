@@ -30,6 +30,8 @@ prior_grid_hash <- sub("^# prior_windows_crlf_sha256: ", "", grid_hash_lines[4L]
 amendment_hash <- hash_value("metadata/stage2_scientific_gate_amendment_v1.sha256")
 approval_hash <- hash_value("metadata/stage2_human_scientific_approval_v1.sha256")
 approval <- read_yaml("metadata/stage2_human_scientific_approval_v1.yml")
+authorization_hash <- hash_value("metadata/stage3_phases1_3_authorization_v1.sha256")
+authorization <- read_yaml("metadata/stage3_phases1_3_authorization_v1.yml")
 prospective_hash <- hash_value("metadata/prospective_confirmation_spec.sha256")
 
 escape_md <- function(x) gsub("\\|", "\\\\|", ifelse(is.na(x), "", as.character(x)))
@@ -74,13 +76,14 @@ md <- c(
   paste0("**Validation:** `", gate$validation_status, "`"), "",
   "> SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE. Current analyses remain exploratory and estimand-refining until prospective confirmation.", "",
   "## Executive conclusion", "",
-  "Human scientific approval is recorded for immutable source points as the primary event geometry. EDGE_TYPE 100 alongshore geometry is restricted to SoG and WCVI as a sensitivity; incomplete shoreline coverage remains documented and is never treated as coastwide. Stage 3 response models remain unauthorized pending a separate entry decision and implementation of the remaining checklist and validation safeguards.", "",
+  "Human scientific authorization permits Stage 3 Phases 1–3 only. Immutable source points are the only registered analysis geometry. Shoreline classes and derived alongshore geometry remain audit provenance only and are not registered sensitivities. Response summaries, response models, Phase 4, and the 2026–2028 holdout remain unauthorized.", "",
   "No herring–bird response model was fitted. No exposure-specific bird summary, contrast, coefficient, p-value, interval, posterior summary, spawn-phase co-occurrence change, or biological response plot was calculated or displayed. Free-text comments were not read.", "",
   "## Design freeze and amendment chain", "",
   paste0("The original candidate grid remains unchanged: canonical-LF SHA-256 `", grid_hash,
          "`, original Windows-CRLF SHA-256 `", prior_grid_hash, "`, frozen `", grid_time,
          "`. The scientific-gate amendment SHA-256 is `", amendment_hash,
          "`; the human-approval record SHA-256 is `", approval_hash,
+         "`; the Stage 3 Phases 1–3 authorization SHA-256 is `", authorization_hash,
          "`; the prospective specification SHA-256 is `", prospective_hash, "`."), "",
   "The candidate grid was frozen and hashed before any species detection or numeric-count values were read. The repair amendment preserves those original timestamps and hashes and records its implementation-only YAML correction history.", "",
   "## Repair resolution 1 — EBD/SED membership and zero filling", "",
@@ -101,7 +104,7 @@ md <- c(
            c("Region", "Valid source points", "Inside-bundle share", "Median snap km", ">2 km", "Core eligible", "Coverage")), "",
   md_table(geometry_eligibility, c("representation", "comparison_sample", "eligible_events", "comparison_interpretation"),
            c("Representation", "Sample", "Eligible events", "Interpretation")), "",
-  "The human-approved primary representation is the immutable source point, available for 13,208 source records. Provider dictionary meaning remains EDGE_TYPE 100 = coastline and EDGE_TYPE 150 = construction-line coastline. EDGE_TYPE 100 and actual alongshore substrings are restricted to SoG/WCVI sensitivity analyses on a common eligible event set. Class 150 remains unavailable until local visual validation. Large snap distances continue to document incomplete bundle coverage; they no longer invalidate the separately identified source-point primary.", "",
+  "The human-approved primary representation is the immutable source point, available for 13,208 source records. EDGE_TYPE 100, EDGE_TYPE 150 and derived alongshore geometry are retained only as audit provenance. No shoreline or alongshore sensitivity is registered. Large snap distances continue to document the incomplete bundle but have no analysis role.", "",
   "## Repair resolution 3 — event complexes and review packet", "",
   md_table(complexes, c("definition", "complexes", "members_max", "temporal_span_days_max", "spatial_diameter_km_max",
                         "complexes_over_21_days", "complexes_over_25_km", "review_packet_rows", "candidate_role"),
@@ -136,10 +139,10 @@ md <- c(
   md_table(disposition, c("common_name", "taxonomy_disposition", "named_species_recommendation", "guild_recommendation",
                           "count_recommendation", "cooccurrence_recommendation"),
            c("Taxon", "Taxonomy", "Named role", "Guild role", "Count role", "Co-occurrence role")), "",
-  "## Human scientific approval and next gate", "",
-  paste0("Approval record `", approval$approval_version, "` selects immutable source points as primary and approves the repaired Stage 2 rules. Its SHA-256 is `", approval_hash, "`."), "",
-  "EDGE_TYPE 100 alongshore analyses are limited to SoG and WCVI sensitivities. EDGE_TYPE 150 remains pending local visual validation and cannot enter an analysis until that validation is recorded.", "",
-  "Stop here. Stage 2 approval does not authorize Stage 3 entry implementation or any herring–bird response model. A separate authorization is required after the remaining checklist construction and blocked-validation safeguards are ready."
+  "## Stage 3 Phases 1–3 authorization and next gate", "",
+  paste0("Authorization record `", authorization$authorization_version, "` permits checklist-denominator construction, metadata-only support auditing and blocked-validation implementation. Its SHA-256 is `", authorization_hash, "`."), "",
+  "Source point is the only registered analysis geometry. Shoreline and alongshore products remain audit provenance only.", "",
+  "Stop after each authorized phase for its required review. Phase 4, response summaries, response models and 2026–2028 data remain prohibited until a separate explicit authorization."
 )
 writeLines(md, "docs/09_STAGE2_OUTCOME_BLIND_DESIGN_LOCK.md", useBytes = TRUE)
 
@@ -147,16 +150,16 @@ css <- "body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;max-width:1
 sections <- c(
   "<h1>Stage 2 outcome-blind design lock — repair report</h1>",
   paste0("<div class='banner'><div class='status'>", html_escape(gate$classification), "</div><div>Human decision: ", html_escape(gate$human_scientific_decision), "</div><div>Validation: ", html_escape(gate$validation_status), "</div><div>Grid SHA-256: <code>", grid_hash, "</code></div><div>Amendment SHA-256: <code>", amendment_hash, "</code></div><div>SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE</div></div>"),
-  "<h2>Executive conclusion</h2><p class='lay'>Human approval selects immutable source points as the primary geometry. EDGE_TYPE 100 alongshore geometry is a SoG/WCVI sensitivity. Incomplete shoreline coverage remains visible but is not a primary-identification failure. No response model is authorized.</p>",
+  "<h2>Executive conclusion</h2><p class='lay'>Stage 3 Phases 1–3 are authorized. Immutable source point is the only registered analysis geometry; shoreline products are audit-only. Response summaries and response models remain unauthorized.</p>",
   "<h2>Ten repaired design decisions</h2>", html_table(decisions, c("decision_id", "decision", "recommendation", "sensitivity"), c("ID", "Decision", "Recommendation", "Sensitivity")),
   "<h2>EBD/SED membership</h2><p>SED-only keys are structural unknowns and are excluded from primary zero filling.</p>", html_table(membership, c("ebd_unique_keys", "sed_unique_keys", "ebd_keys_unmatched_to_sed", "sed_keys_without_ebd", "primary_zero_fill_eligible", "scientific_treatment"), c("EBD keys", "SED keys", "EBD-only", "SED-only", "Zero-fill", "Treatment")),
-  "<h2>Approved primary and shoreline sensitivities</h2><p>Immutable source point is primary. EDGE_TYPE 100 is a SoG/WCVI sensitivity; EDGE_TYPE 150 remains unavailable until local validation. Actual alongshore substrings were constructed locally.</p>", html_table(geometry_region, c("region", "valid_source_points", "inside_bundle_bbox_share", "edge100_snap_q50_km", "core_eligible", "bundle_coverage_status"), c("Region", "Valid points", "In extent", "Median snap km", "Core eligible", "Coverage")),
+  "<h2>Approved source-point-only geometry</h2><p>Immutable source point is the only registered analysis geometry. Shoreline and alongshore products are retained only as audit provenance.</p>", html_table(geometry_region, c("region", "valid_source_points", "inside_bundle_bbox_share", "edge100_snap_q50_km", "core_eligible", "bundle_coverage_status"), c("Region", "Valid points", "In extent", "Median snap km", "Core eligible", "Coverage")),
   "<h2>Event complex repair</h2><p>The source record is safe primary; every flagged complex is in the generalized packet.</p>", html_table(complexes, c("definition", "complexes", "temporal_span_days_max", "spatial_diameter_km_max", "review_packet_rows", "candidate_role"), c("Definition", "Complexes", "Max days", "Max km", "Flagged", "Role")),
   "<h2>Region periods</h2><p>SoG passes from 2005 and WCVI from 2015; all other regions are descriptive/hierarchical-only.</p>", html_table(region_primary, c("region", "candidate_start_year", "passing_years", "years_assessed", "maximum_consecutive_failing_years", "recommendation"), c("Region", "Start", "Pass years", "Years", "Max fail run", "Role")),
   "<h2>Protocol and shared-checklist rules</h2>", html_table(protocol, c("definition", "protocols", "duration_minutes", "traveling_distance_km_max", "observers", "candidate_role"), c("Definition", "Protocols", "Minutes", "Travel km", "Observers", "Role")),
   "<h2>Registry and prospective integrity</h2><p>M21/M35 are mutually exclusive and contribute one evidence object. Confirmation occurs once after complete 2026–2028 releases, without interim looks or early stopping.</p>", html_table(latent, c("model_id", "model_role", "latent_pilot_choice_group", "independent_evidence_object_count"), c("Model", "Role", "Choice group", "Evidence objects")),
   "<h2>Taxonomy and support dispositions</h2>", html_table(disposition, c("common_name", "taxonomy_disposition", "named_species_recommendation", "guild_recommendation", "count_recommendation", "cooccurrence_recommendation"), c("Taxon", "Taxonomy", "Named role", "Guild role", "Count role", "Co-occurrence role")),
-  paste0("<h2>Human approval and next gate</h2><p>Approval record <code>", html_escape(approval$approval_version), "</code> selects the source-point primary and approves the repaired rules.</p><ul><li>EDGE_TYPE 100 stays within SoG/WCVI sensitivities.</li><li>EDGE_TYPE 150 requires local validation before use.</li><li>Stage 3 entry and response models require separate authorization.</li></ul><div class='banner'>Stage 2 approved. Do not fit a Stage 3 herring–bird response model.</div>")
+  paste0("<h2>Stage 3 Phases 1–3 authorization</h2><p>Authorization record <code>", html_escape(authorization$authorization_version), "</code> permits denominator construction, metadata-only support auditing and blocked-validation implementation.</p><ul><li>Source point is the only registered geometry.</li><li>Shoreline products are audit provenance only.</li><li>Response summaries, Phase 4 and response models remain prohibited.</li></ul><div class='banner'>Stop after each authorized phase for human review.</div>")
 )
 writeLines(paste0("<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Stage 2 repair report</title><style>", css, "</style></head><body>", paste(sections, collapse = "\n"), "</body></html>"), "reports/stage2_outcome_blind_design_lock.html", useBytes = TRUE)
 

@@ -1,18 +1,18 @@
 # Stage 3 entry plan
 
-**Status:** `STAGE2_APPROVED_STAGE3_ENTRY_NOT_AUTHORIZED`  
-**Stage 2 gate:** `PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED`  
+**Status:** `STAGE3_PHASES_1_TO_3_AUTHORIZED`  
+**Current gate:** `PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED`  
 **Response models authorized:** no  
 **Prospective 2026+ holdout:** frozen  
 **Stage 2 design grid:** unchanged
 
 ## Purpose
 
-This plan incorporates the post-freeze eBird checklist-methods review into the project workflow. Human approval selects immutable source points as the primary event geometry and restricts EDGE_TYPE 100 alongshore analyses to SoG and WCVI sensitivities. Stage 2 is approved, but Stage 3 entry and all response models remain unauthorized pending a separate decision.
+This plan incorporates the post-freeze eBird checklist-methods review into the project workflow. Human authorization permits Stage 3 Phases 1–3. Immutable source points are the only registered analysis geometry. Shoreline classes and derived alongshore products remain audit provenance only. Phase 4 and all response models remain unauthorized.
 
 ## Phase −1 — completed geometry decision
 
-Human approval selects immutable source points as the primary representation across valid source records. EDGE_TYPE 100 alongshore geometry is limited to SoG and WCVI as a sensitivity. EDGE_TYPE 150 remains unavailable until local visual validation. Missing extents are never inferred, and unsupported regions never enter a shoreline-linked sensitivity.
+Human approval selects immutable source points as the only registered analysis representation across valid source records. EDGE_TYPE 100, EDGE_TYPE 150 and derived alongshore products remain audit provenance only and do not enter any sensitivity. Missing extents are never inferred.
 
 **Exit criterion:** completed by the versioned human-approval record. Incomplete shoreline coverage remains a documented sensitivity limitation rather than a primary-identification failure.
 
@@ -26,7 +26,7 @@ The versioned approval record confirms the following choices:
 | Primary effort set | accept implemented 5–300 minutes, traveling ≤5 km, 1–10 observers | ≤2 km spatial-precision and frozen ≤10 km broad sensitivities | resolves mismatch between local exposure and route footprint |
 | Shared-count reconciliation | accept primary exclusion of effort-disagreement groups | registered disagreement sensitivity | prevents outcome-dependent selection among group copies |
 | Estimand language | checklist reporting probability and reported conditional count | justified repeat-visit occupancy only as separate future work | controls scientific claims |
-| Validation unit | event-complex or shoreline-time blocks | stricter observer/event grouping when feasible | prevents train/test leakage |
+| Validation unit | event-complex or source-point spatial–time blocks | stricter observer/event grouping when feasible | prevents train/test leakage |
 | Raw BCCWS integration | do not pool without deterministic crosswalk | separate external validation with overlap caveat | prevents duplicate data streams |
 
 Approval must be versioned and linked to the exact branch commit. Approval does not authorize access to the 2026+ prospective holdout.
@@ -38,9 +38,9 @@ Approval must be versioned and linked to the exact branch commit. Approval does 
 3. The Stage 2 candidate grid and both retained hashes remain unchanged.
 4. Response models and Stage 3 entry implementation remain unauthorized.
 
-**Exit criterion:** completed. Proceed only after a separate Stage 3 entry authorization.
+**Exit criterion:** completed. Stage 3 Phases 1–3 are authorized under the hashed authorization record.
 
-## Phase 1 — construct the independent checklist denominator
+## Phase 1 — authorized: construct the independent checklist denominator
 
 1. Verify EBD and SED release and taxonomy identity.
 2. Apply the accepted-record predicate.
@@ -53,7 +53,7 @@ Approval must be versioned and linked to the exact branch commit. Approval does 
 
 **Exit criterion:** Q01–Q09 in the checklist audit pass on fixtures and protected local data.
 
-## Phase 2 — outcome-blind sampling-support audit
+## Phase 2 — authorized: outcome-blind sampling-support audit
 
 Using only SED, herring metadata and identifiers needed for independence checks, report:
 
@@ -68,9 +68,9 @@ Do not calculate species detection rates, bird counts by exposure, effects, inte
 
 **Exit criterion:** reviewers confirm adequate overlap and effective replication or narrow the eligible-checklist population using only frozen candidate rules.
 
-## Phase 3 — implement validation and estimand safeguards
+## Phase 3 — authorized: implement validation and estimand safeguards
 
-1. Split train/test data by complete event complex or shoreline-time block.
+1. Split train/test data by complete event complex or source-point spatial–time block.
 2. Keep one grouped checklist and all associated event links on one side of a split.
 3. Model or cluster repeated observer/site dependence using already registered observation structure.
 4. Label detection output as reporting on an eligible complete checklist.
@@ -79,9 +79,9 @@ Do not calculate species detection rates, bird counts by exposure, effects, inte
 
 **Exit criterion:** Q10–Q12 pass and report templates cannot emit absolute-abundance, true-absence or unjustified occupancy claims.
 
-## Phase 4 — exploratory response analysis
+## Phase 4 — not authorized: exploratory response analysis
 
-Only after Phases 0–3 pass:
+Do not run. Only after Phases 1–3 pass and a separate explicit human authorization:
 
 1. run the hash-identical latent-factor pilot under the registered selection rule;
 2. fit the registered exploratory model families in their frozen roles;

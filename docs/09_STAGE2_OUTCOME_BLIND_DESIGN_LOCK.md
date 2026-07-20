@@ -1,20 +1,20 @@
-# Stage 2 outcome-blind design lock — human scientific approval record
+# Stage 3 Phases 1–3 authorization record
 
-**Stage gate:** `PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED`
-**Human scientific decision:** `APPROVED_SOURCE_POINT_PRIMARY`
-**Validation:** `HUMAN_APPROVAL_GATE_AND_GITHUB_ACTIONS_RUN_20_PASS`
+**Stage gate:** `PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED`
+**Human scientific decision:** `AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY`
+**Validation:** `PENDING_STAGE3_AUTHORIZATION_GATE_CI`
 
 > SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE. Current analyses remain exploratory and estimand-refining until prospective confirmation.
 
 ## Executive conclusion
 
-Human scientific approval selects immutable source points as the primary event geometry. EDGE_TYPE 100 alongshore geometry is restricted to SoG and WCVI as a sensitivity; EDGE_TYPE 150 remains unavailable until local visual validation. Incomplete shoreline coverage stays visible and is never treated as coastwide, but it no longer prevents identification of the separately defined source-point primary. Stage 3 entry and response models remain unauthorized.
+Human authorization permits Stage 3 Phases 1–3 only: independent-checklist denominator construction, metadata-only sampling-support auditing, and blocked-validation implementation. Immutable source point is the only registered analysis geometry. Shoreline classes and derived alongshore products remain audit provenance only. Phase 4, response summaries, response models and the 2026–2028 holdout remain unauthorized.
 
 No herring–bird response model was fitted. No exposure-specific bird summary, contrast, coefficient, p-value, interval, posterior summary, spawn-phase co-occurrence change, or biological response plot was calculated or displayed. Free-text comments were not read.
 
 ## Design freeze and amendment chain
 
-The original candidate grid remains unchanged: canonical-LF SHA-256 `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`, original Windows-CRLF SHA-256 `f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91`, frozen `2026-07-20 05:27:38 UTC`. The scientific-gate amendment SHA-256 is `7323b02f2c5ea3e2fccde6de73f123200694242d24cca087561e5939a7aa6835`; the human-approval record SHA-256 is `c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18`; the prospective specification SHA-256 is `3f69cda08e3e1963df068a1ee96e66c4e5da1e4f03fa1b132c2d2e448170609d`.
+The original candidate grid remains unchanged: canonical-LF SHA-256 `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`, original Windows-CRLF SHA-256 `f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91`, frozen `2026-07-20 05:27:38 UTC`. The scientific-gate amendment SHA-256 is `7323b02f2c5ea3e2fccde6de73f123200694242d24cca087561e5939a7aa6835`; the human-approval record SHA-256 is `c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18`; the Stage 3 Phases 1–3 authorization SHA-256 is `a8c2d625b6168832346bb003a0409a9c1dbd93d800382f984c39e6cee461ea5d`; the prospective specification SHA-256 is `3f69cda08e3e1963df068a1ee96e66c4e5da1e4f03fa1b132c2d2e448170609d`.
 
 The candidate grid was frozen and hashed before any species detection or numeric-count values were read. The repair amendment preserves those original timestamps and hashes and records its implementation-only YAML correction history.
 
@@ -30,12 +30,12 @@ SED-only checklists are structural unknowns, never observed absences. They are e
 
 | Geometry | Role | Available | Common set | EDGE100 median m | EDGE100 p90 m | >2 km | Actual line built | Gate |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| source_point | coastwide_primary_human_approved | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
-| edge100_nearest_shoreline_point | supported_region_sensitivity_human_approved | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
-| edge150_nearest_shoreline_point | separate_sensitivity_after_visual_validation | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
-| derived_alongshore_length | supported_region_sensitivity_human_approved |  3899 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
-| derived_alongshore_length_width | registered_sensitivity |  3851 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
-| event_complex_member_union | registered_sensitivity |  1364 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED |
+| source_point | primary_source_point_only_human_approved | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS |
+| edge100_nearest_shoreline_point | audit_provenance_only_not_registered_for_analysis | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS |
+| edge150_nearest_shoreline_point | audit_provenance_only_not_registered_for_analysis | 13208 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS |
+| derived_alongshore_length | audit_provenance_only_not_registered_for_analysis |  3899 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS |
+| derived_alongshore_length_width | registered_sensitivity |  3851 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS |
+| event_complex_member_union | registered_sensitivity |  1364 | 3899 | 51322.28 | 387152.5 | 7798 | TRUE | PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS |
 
 | Region | Valid source points | Inside-bundle share | Median snap km | >2 km | Core eligible | Coverage |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ SED-only checklists are structural unknowns, never observed absences. They are e
 | source_point | common_eligible_events |  3899 | same eligible event set for geometry comparison |
 | derived_alongshore_length | common_eligible_events |  3899 | same eligible event set for geometry comparison |
 
-The human-approved primary is the immutable source point, available for 13,208 source records. EDGE_TYPE 100 and actual alongshore substrings are restricted to SoG/WCVI sensitivities on a common eligible event set. Class 150 remains unavailable until local visual validation. Large snap distances continue to document incomplete bundle coverage and unsupported regions never enter shoreline-linked sensitivities.
+The human-approved primary is the immutable source point, available for 13,208 source records. EDGE_TYPE 100, EDGE_TYPE 150 and derived alongshore products remain audit provenance only. No shoreline or alongshore sensitivity is registered. Large snap distances continue to document incomplete bundle coverage but have no analysis role.
 
 ## Repair resolution 3 — event complexes and review packet
 
@@ -180,10 +180,10 @@ The response-access audit lists these EBD fields: `CATEGORY`, `TAXON CONCEPT ID`
 | Western Gull | approve_exact_v2025_species_concept | named_species_core | eligible_primary_guild_membership | positive_count_component_eligible | pairwise_support_audit_eligible |
 | White-winged Scoter | approve_exact_v2025_species_concept | named_species_core | eligible_primary_guild_membership | positive_count_component_eligible | pairwise_support_audit_eligible |
 
-## Human scientific approval and next gate
+## Stage 3 Phases 1–3 authorization and next gate
 
-Approval record `stage2_human_scientific_approval_v1` selects immutable source points as primary and approves the repaired Stage 2 rules. Its SHA-256 is `c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18`.
+Authorization record `stage3_phases1_3_authorization_v1` permits checklist-denominator construction, metadata-only support auditing and blocked-validation implementation. Its SHA-256 is `a8c2d625b6168832346bb003a0409a9c1dbd93d800382f984c39e6cee461ea5d`.
 
-EDGE_TYPE 100 alongshore analyses are limited to SoG and WCVI sensitivities. EDGE_TYPE 150 remains pending local visual validation and cannot enter an analysis until validation is recorded.
+Source point is the only registered analysis geometry. Shoreline and alongshore products remain audit provenance only.
 
-Stop here. Stage 2 approval does not authorize Stage 3 entry implementation or a herring–bird response model. A separate authorization is required after the remaining checklist-construction and blocked-validation safeguards are ready.
+Stop after each authorized phase for review. Phase 4, response summaries, response models and 2026–2028 data require separate explicit authorization.

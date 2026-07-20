@@ -38,6 +38,25 @@ if (isTRUE(approval$response_boundary$stage3_response_models_authorized)) {
   stop("Stage 2 approval must not authorize response models", call. = FALSE)
 }
 
+authorization_path <- "metadata/stage3_phases1_3_authorization_v1.yml"
+authorization_hash_path <- "metadata/stage3_phases1_3_authorization_v1.sha256"
+authorization <- read_yaml(authorization_path)
+authorization_hash <- digest(authorization_path, algo = "sha256", file = TRUE, serialize = FALSE)
+recorded_authorization_hash <- strsplit(readLines(authorization_hash_path, warn = FALSE)[1L], "[[:space:]]+")[[1L]][1L]
+if (!identical(authorization_hash, recorded_authorization_hash)) stop("Stage 3 authorization hash mismatch", call. = FALSE)
+if (!identical(authorization$scientific_decision, "AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY")) {
+  stop("Stage 3 authorization decision is not recognized", call. = FALSE)
+}
+if (isTRUE(authorization$superseding_geometry_decision$shoreline_class_sensitivities_registered)) {
+  stop("No shoreline class sensitivity is authorized", call. = FALSE)
+}
+if (isTRUE(authorization$response_boundary$registered_response_models_authorized)) {
+  stop("Stage 3 phases 1-3 authorization must not authorize response models", call. = FALSE)
+}
+if (!isTRUE(authorization$authorized_actions$implement_event_complex_or_source_point_spatiotemporal_blocked_validation)) {
+  stop("Stage 3 Phase 3 must use event-complex or source-point spatiotemporal blocking", call. = FALSE)
+}
+
 grid_path <- "metadata/stage2_candidate_design_grid.csv"
 grid_hash_lines <- readLines("metadata/stage2_candidate_design_grid.sha256", warn = FALSE)
 grid_hash <- strsplit(grid_hash_lines[1L], "[[:space:]]+")[[1L]][1L]
@@ -365,14 +384,13 @@ if (!identical(approval$primary_event_geometry$representation, "immutable_source
   stop("Approved primary geometry must be immutable_source_point", call. = FALSE)
 }
 if (!sum(valid_xy)) stop("Approved source-point primary has no valid source points", call. = FALSE)
-geometry_gate <- "PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED"
-approved_shoreline_regions <- paste(approval$shoreline_sensitivities$edge_type_100$supported_regions, collapse = "_")
+geometry_gate <- "PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS"
+approved_shoreline_regions <- "none"
 actual_success <- sum(h$alongshore_geometry_constructed)
 geometry_audit <- data.table(
   geometry_definition = c("source_point", "edge100_nearest_shoreline_point", "edge150_nearest_shoreline_point",
     "derived_alongshore_length", "derived_alongshore_length_width", "event_complex_member_union"),
-  candidate_role = c("coastwide_primary_human_approved", "supported_region_sensitivity_human_approved", "separate_sensitivity_after_visual_validation",
-    "supported_region_sensitivity_human_approved", "registered_supported_region_sensitivity", "registered_supported_region_sensitivity"),
+  candidate_role = c("primary_source_point_only_human_approved", rep("audit_provenance_only_not_registered_for_analysis", 5L)),
   source_records = nrow(h),
   all_available_records = c(sum(valid_xy), sum(is.finite(h$shoreline100_distance_m)), sum(is.finite(h$shoreline150_distance_m)),
     actual_success, sum(h$alongshore_geometry_constructed & is.finite(h$Width) & h$Width > 0),
@@ -395,11 +413,12 @@ geometry_comparison <- data.table(
   representation = c("source_point", "derived_alongshore_length", "source_point", "derived_alongshore_length"),
   comparison_sample = c("all_available", "all_available", "common_eligible_events", "common_eligible_events"),
   eligible_events = c(sum(valid_xy), actual_success, actual_success, actual_success),
-  approved_role = c("coastwide_primary", "supported_region_sensitivity", "sensitivity_comparator", "supported_region_sensitivity"),
+  approved_role = c("primary_source_point_only", "audit_provenance_only", "audit_comparator_only", "audit_provenance_only"),
   comparison_interpretation = c(
     "primary representation; availability defines the valid-source-point scope",
-    "representation-specific availability; never extrapolate to unsupported shoreline regions",
-    "same eligible event set for geometry sensitivity comparison", "same eligible event set for geometry sensitivity comparison"
+    "not registered for analysis or sensitivity",
+    "historical common-set geometry diagnostic; not a registered analysis",
+    "historical common-set geometry diagnostic; not a registered analysis"
   )
 )
 write_support(geometry_comparison, "geometry_representation_eligibility.csv")
@@ -557,8 +576,8 @@ decisions[decision_id == "D03", `:=`(
   recommendation = "Immutable source record is the safe primary; original 2 km / 7 day complex remains provisional; deterministic 21-day/25-km anti-chaining is a registered alternative",
   sensitivity = "1km/3d|original 2km/7d provisional|anti-chained 2km/7d|5km/14d broad")]
 decisions[decision_id == "D04", `:=`(
-  recommendation = "Human-approved immutable source point is the primary representation; EDGE_TYPE 100 alongshore geometry is a SoG/WCVI sensitivity; EDGE_TYPE 150 remains separate and unavailable until local visual validation",
-  sensitivity = "source point primary|EDGE_TYPE 100 SoG/WCVI sensitivity|EDGE_TYPE 150 after validation|actual length geometry")]
+  recommendation = "Human-approved immutable source point is the only registered analysis geometry; shoreline classes and derived alongshore geometry are audit provenance only",
+  sensitivity = "none; no shoreline or alongshore sensitivity is registered")]
 decisions[decision_id == "D05", `:=`(
   recommendation = "Standardized complete Stationary/Traveling checklists are candidate primary; start year requires sustained region-year support; broad effort is sensitivity; complete area remains separate",
   sensitivity = "2005|2010|2015|1988 long window|broad effort")]
@@ -577,11 +596,14 @@ write_support(unique(join_audit), "join_cardinality_audit.csv")
 
 stage_gate <- list(
   stage = "stage2_outcome_blind_design_lock",
-  classification = "PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED",
-  human_scientific_decision = approval$scientific_decision,
+  classification = "PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED",
+  human_scientific_decision = authorization$scientific_decision,
   approval_version = approval$approval_version,
   approval_sha256 = approval_hash,
   approval_recorded_at_utc = approval$approved_at_utc,
+  stage3_authorization_version = authorization$authorization_version,
+  stage3_authorization_sha256 = authorization_hash,
+  stage3_authorized_at_utc = authorization$authorized_at_utc,
   amendment_version = amendment$amendment_version,
   amendment_sha256 = amendment_hash,
   amendment_frozen_at_utc = amendment$amended_at_utc,
@@ -597,22 +619,24 @@ stage_gate <- list(
   comments_read = FALSE,
   requires_human_scientific_approval = FALSE,
   response_models_authorized = FALSE,
-  stage3_entry_implementation_authorized = FALSE,
-  requires_separate_stage3_authorization = TRUE,
-  validation_status = "PENDING_HUMAN_APPROVAL_GATE_TESTS_PRIVACY_RENDER_AND_GITHUB_ACTIONS",
+  stage3_entry_implementation_authorized = TRUE,
+  requires_separate_stage3_authorization = FALSE,
+  requires_separate_phase4_authorization = TRUE,
+  validation_status = "PENDING_STAGE3_AUTHORIZATION_GATE_TESTS_PRIVACY_RENDER_AND_GITHUB_ACTIONS",
   primary_design = list(
-    event_geometry = "IMMUTABLE_SOURCE_POINT",
+    event_geometry = "IMMUTABLE_SOURCE_POINT_ONLY",
     geometry_scope = "COASTWIDE_WHERE_SOURCE_POINT_IS_VALID",
     event_identity = "IMMUTABLE_SOURCE_RECORD",
-    edge_type_100_role = "SUPPORTED_REGION_ALONGSHORE_SENSITIVITY_SOG_WCVI",
-    edge_type_150_role = "SEPARATE_SENSITIVITY_AFTER_LOCAL_VISUAL_VALIDATION",
+    edge_type_100_role = "AUDIT_PROVENANCE_ONLY_NOT_REGISTERED_FOR_ANALYSIS",
+    edge_type_150_role = "AUDIT_PROVENANCE_ONLY_NOT_REGISTERED_FOR_ANALYSIS",
+    derived_alongshore_role = "AUDIT_PROVENANCE_ONLY_NOT_REGISTERED_FOR_ANALYSIS",
     missing_extent_inference = "PROHIBITED"
   ),
   repair_status = list(
     ebd_sed_membership = "PASS_SED_ONLY_EXCLUDED_FROM_PRIMARY_ZERO_FILL",
     shoreline_geometry = geometry_gate,
-    shoreline_bundle_coverage = "INCOMPLETE_NONBLOCKING_FOR_APPROVED_PRIMARY",
-    actual_alongshore_geometry = if (actual_success > 0) "PASS_CONSTRUCTED_LOCAL_ONLY" else "FAIL_NOT_CONSTRUCTED",
+    shoreline_bundle_coverage = "INCOMPLETE_AUDIT_PROVENANCE_ONLY",
+    actual_alongshore_geometry = if (actual_success > 0) "PASS_CONSTRUCTED_LOCAL_AUDIT_ONLY" else "NOT_AVAILABLE_AUDIT_ONLY",
     event_complex_review_packet = "PASS_ALL_FLAGGED_INCLUDED_SOURCE_RECORD_PRIMARY_APPROVED",
     region_period_support = "PASS_SOG_2005_WCVI_2015_APPROVED",
     protocol_effort = "PASS_STANDARDIZED_PRIMARY_APPROVED",
@@ -621,15 +645,21 @@ stage_gate <- list(
     prospective_integrity = "PASS_FIXED_2026_2028_HORIZON_AND_EXTRACTION_RULE_APPROVED"
   ),
   remaining_nonblocking_requirements = list(
-    edge_type_150_local_visual_validation = "PENDING_BEFORE_EDGE150_SENSITIVITY_USE",
-    unsupported_shoreline_regions = "EXCLUDED_FROM_ALONGSHORE_SENSITIVITIES"
+    shoreline_diagnostics = "PRESERVED_FOR_PROVENANCE_NOT_REGISTERED_FOR_ANALYSIS"
+  ),
+  required_stops = list(
+    after_phase_1 = "DENOMINATOR_AND_ZERO_PROVENANCE_REVIEW",
+    after_phase_2 = "HUMAN_SAMPLING_SUPPORT_REVIEW",
+    after_phase_3 = "HUMAN_VALIDATION_IMPLEMENTATION_REVIEW",
+    before_phase_4 = "SEPARATE_EXPLICIT_RESPONSE_MODEL_AUTHORIZATION"
   ),
   validation = list(
     parent_github_actions_successful_run = 10,
     parent_github_actions_run_id = 29726150633,
     substantive_repair_github_actions = "PASS_RUN_15_ID_29761640213",
     repair_evidence_commit = "7af0f920bb71211ec2dbf6b20dfad481f11d7cdf",
-    human_approval_github_actions = "PENDING"
+    human_approval_github_actions = "PASS_RUN_20_ID_29763901281_COMMIT_8c24f8942177166c676a261b4448668f676626ed",
+    stage3_authorization_github_actions = "PENDING"
   )
 )
 write_json(stage_gate, file.path(out_dir, "stage_gate.json"), pretty = TRUE, auto_unbox = TRUE)
