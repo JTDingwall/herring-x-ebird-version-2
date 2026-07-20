@@ -25,6 +25,19 @@ amendment_hash <- digest(amendment_path, algo = "sha256", file = TRUE, serialize
 recorded_amendment_hash <- strsplit(readLines(amendment_hash_path, warn = FALSE)[1L], "[[:space:]]+")[[1L]][1L]
 if (!identical(amendment_hash, recorded_amendment_hash)) stop("Stage 2 amendment hash mismatch", call. = FALSE)
 
+approval_path <- "metadata/stage2_human_scientific_approval_v1.yml"
+approval_hash_path <- "metadata/stage2_human_scientific_approval_v1.sha256"
+approval <- read_yaml(approval_path)
+approval_hash <- digest(approval_path, algo = "sha256", file = TRUE, serialize = FALSE)
+recorded_approval_hash <- strsplit(readLines(approval_hash_path, warn = FALSE)[1L], "[[:space:]]+")[[1L]][1L]
+if (!identical(approval_hash, recorded_approval_hash)) stop("Stage 2 human approval hash mismatch", call. = FALSE)
+if (!identical(approval$scientific_decision, "APPROVED_SOURCE_POINT_PRIMARY")) {
+  stop("Stage 2 human approval does not authorize the source-point primary", call. = FALSE)
+}
+if (isTRUE(approval$response_boundary$stage3_response_models_authorized)) {
+  stop("Stage 2 approval must not authorize response models", call. = FALSE)
+}
+
 grid_path <- "metadata/stage2_candidate_design_grid.csv"
 grid_hash_lines <- readLines("metadata/stage2_candidate_design_grid.sha256", warn = FALSE)
 grid_hash <- strsplit(grid_hash_lines[1L], "[[:space:]]+")[[1L]][1L]
@@ -347,13 +360,19 @@ write_support(geometry_region, "event_geometry_region_diagnostics.csv")
 
 intended_regions <- c("A27", "A2W", "CC", "HG", "PRD", "SoG", "WCVI")
 geometry_failure_regions <- geometry_region[region %chin% intended_regions & bundle_coverage_status != "PASS_CANDIDATE_COVERAGE", region]
-geometry_gate <- if (length(geometry_failure_regions)) "FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT" else "PASS"
+bundle_geometry_gate <- if (length(geometry_failure_regions)) "FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT" else "PASS"
+if (!identical(approval$primary_event_geometry$representation, "immutable_source_point")) {
+  stop("Approved primary geometry must be immutable_source_point", call. = FALSE)
+}
+if (!sum(valid_xy)) stop("Approved source-point primary has no valid source points", call. = FALSE)
+geometry_gate <- "PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED"
+approved_shoreline_regions <- paste(approval$shoreline_sensitivities$edge_type_100$supported_regions, collapse = "_")
 actual_success <- sum(h$alongshore_geometry_constructed)
 geometry_audit <- data.table(
   geometry_definition = c("source_point", "edge100_nearest_shoreline_point", "edge150_nearest_shoreline_point",
     "derived_alongshore_length", "derived_alongshore_length_width", "event_complex_member_union"),
-  candidate_role = c("safe_source_geometry", "candidate_primary_linkage_blocked_by_gate", "separate_sensitivity_after_visual_validation",
-    "candidate_core_blocked_by_gate", "registered_sensitivity", "registered_sensitivity"),
+  candidate_role = c("coastwide_primary_human_approved", "supported_region_sensitivity_human_approved", "separate_sensitivity_after_visual_validation",
+    "supported_region_sensitivity_human_approved", "registered_supported_region_sensitivity", "registered_supported_region_sensitivity"),
   source_records = nrow(h),
   all_available_records = c(sum(valid_xy), sum(is.finite(h$shoreline100_distance_m)), sum(is.finite(h$shoreline150_distance_m)),
     actual_success, sum(h$alongshore_geometry_constructed & is.finite(h$Width) & h$Width > 0),
@@ -367,6 +386,8 @@ geometry_audit <- data.table(
   actual_alongshore_geometry_verified = actual_success > 0,
   primary_edge_type = 100L, sensitivity_edge_type = 150L,
   geometry_gate = geometry_gate,
+  approved_primary_representation = "source_point",
+  shoreline_sensitivity_scope = approved_shoreline_regions,
   exact_ebird_coordinates_in_output = FALSE
 )
 write_support(geometry_audit, "event_geometry_audit.csv")
@@ -374,10 +395,11 @@ geometry_comparison <- data.table(
   representation = c("source_point", "derived_alongshore_length", "source_point", "derived_alongshore_length"),
   comparison_sample = c("all_available", "all_available", "common_eligible_events", "common_eligible_events"),
   eligible_events = c(sum(valid_xy), actual_success, actual_success, actual_success),
+  approved_role = c("coastwide_primary", "supported_region_sensitivity", "sensitivity_comparator", "supported_region_sensitivity"),
   comparison_interpretation = c(
-    "representation-specific availability; do not interpret differences as geometry effects",
-    "representation-specific availability; do not interpret differences as geometry effects",
-    "same eligible event set for geometry comparison", "same eligible event set for geometry comparison"
+    "primary representation; availability defines the valid-source-point scope",
+    "representation-specific availability; never extrapolate to unsupported shoreline regions",
+    "same eligible event set for geometry sensitivity comparison", "same eligible event set for geometry sensitivity comparison"
   )
 )
 write_support(geometry_comparison, "geometry_representation_eligibility.csv")
@@ -535,8 +557,8 @@ decisions[decision_id == "D03", `:=`(
   recommendation = "Immutable source record is the safe primary; original 2 km / 7 day complex remains provisional; deterministic 21-day/25-km anti-chaining is a registered alternative",
   sensitivity = "1km/3d|original 2km/7d provisional|anti-chained 2km/7d|5km/14d broad")]
 decisions[decision_id == "D04", `:=`(
-  recommendation = paste0("EDGE_TYPE 100 is the only candidate-primary shoreline class; EDGE_TYPE 150 is sensitivity-only after local validation; geometry gate ", geometry_gate),
-  sensitivity = "source point|EDGE_TYPE 100 core|EDGE_TYPE 150 validated sensitivity|actual length geometry")]
+  recommendation = "Human-approved immutable source point is the primary representation; EDGE_TYPE 100 alongshore geometry is a SoG/WCVI sensitivity; EDGE_TYPE 150 remains separate and unavailable until local visual validation",
+  sensitivity = "source point primary|EDGE_TYPE 100 SoG/WCVI sensitivity|EDGE_TYPE 150 after validation|actual length geometry")]
 decisions[decision_id == "D05", `:=`(
   recommendation = "Standardized complete Stationary/Traveling checklists are candidate primary; start year requires sustained region-year support; broad effort is sensitivity; complete area remains separate",
   sensitivity = "2005|2010|2015|1988 long window|broad effort")]
@@ -553,11 +575,13 @@ join_audit <- rbindlist(list(join_audit,
   )), fill = TRUE)
 write_support(unique(join_audit), "join_cardinality_audit.csv")
 
-classification <- if (geometry_gate == "PASS") "PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL" else "STOP_DESIGN_IDENTIFICATION_FAILURE"
 stage_gate <- list(
   stage = "stage2_outcome_blind_design_lock",
-  classification = classification,
-  human_scientific_decision = "REVISION_REQUIRED",
+  classification = "PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED",
+  human_scientific_decision = approval$scientific_decision,
+  approval_version = approval$approval_version,
+  approval_sha256 = approval_hash,
+  approval_recorded_at_utc = approval$approved_at_utc,
   amendment_version = amendment$amendment_version,
   amendment_sha256 = amendment_hash,
   amendment_frozen_at_utc = amendment$amended_at_utc,
@@ -571,24 +595,41 @@ stage_gate <- list(
   exact_ebird_coordinates_released = FALSE,
   raw_or_record_level_ebird_rows_released = FALSE,
   comments_read = FALSE,
-  requires_human_scientific_approval = TRUE,
-  validation_status = "PENDING_REPAIR_TESTS_PRIVACY_RENDER_AND_GITHUB_ACTIONS",
+  requires_human_scientific_approval = FALSE,
+  response_models_authorized = FALSE,
+  stage3_entry_implementation_authorized = FALSE,
+  requires_separate_stage3_authorization = TRUE,
+  validation_status = "PENDING_HUMAN_APPROVAL_GATE_TESTS_PRIVACY_RENDER_AND_GITHUB_ACTIONS",
+  primary_design = list(
+    event_geometry = "IMMUTABLE_SOURCE_POINT",
+    geometry_scope = "COASTWIDE_WHERE_SOURCE_POINT_IS_VALID",
+    event_identity = "IMMUTABLE_SOURCE_RECORD",
+    edge_type_100_role = "SUPPORTED_REGION_ALONGSHORE_SENSITIVITY_SOG_WCVI",
+    edge_type_150_role = "SEPARATE_SENSITIVITY_AFTER_LOCAL_VISUAL_VALIDATION",
+    missing_extent_inference = "PROHIBITED"
+  ),
   repair_status = list(
     ebd_sed_membership = "PASS_SED_ONLY_EXCLUDED_FROM_PRIMARY_ZERO_FILL",
     shoreline_geometry = geometry_gate,
+    shoreline_bundle_coverage = "INCOMPLETE_NONBLOCKING_FOR_APPROVED_PRIMARY",
     actual_alongshore_geometry = if (actual_success > 0) "PASS_CONSTRUCTED_LOCAL_ONLY" else "FAIL_NOT_CONSTRUCTED",
-    event_complex_review_packet = "PASS_ALL_FLAGGED_INCLUDED_SOURCE_RECORD_SAFE_PRIMARY",
-    region_period_support = "PASS_SUSTAINED_YEAR_BY_YEAR_RULE_APPLIED",
-    protocol_effort = "PASS_STANDARDIZED_PRIMARY",
-    shared_checklists = "PASS_DISAGREEMENT_EXCLUDED_COMPOSITE_OBSERVER_RULE",
-    registry_clarification = "PASS_M21_M35_MUTUALLY_EXCLUSIVE",
-    prospective_integrity = "PASS_FIXED_2026_2028_HORIZON_AND_EXTRACTION_RULE"
+    event_complex_review_packet = "PASS_ALL_FLAGGED_INCLUDED_SOURCE_RECORD_PRIMARY_APPROVED",
+    region_period_support = "PASS_SOG_2005_WCVI_2015_APPROVED",
+    protocol_effort = "PASS_STANDARDIZED_PRIMARY_APPROVED",
+    shared_checklists = "PASS_DISAGREEMENT_EXCLUDED_COMPOSITE_OBSERVER_RULE_APPROVED",
+    registry_clarification = "PASS_M21_M35_MUTUALLY_EXCLUSIVE_APPROVED",
+    prospective_integrity = "PASS_FIXED_2026_2028_HORIZON_AND_EXTRACTION_RULE_APPROVED"
+  ),
+  remaining_nonblocking_requirements = list(
+    edge_type_150_local_visual_validation = "PENDING_BEFORE_EDGE150_SENSITIVITY_USE",
+    unsupported_shoreline_regions = "EXCLUDED_FROM_ALONGSHORE_SENSITIVITIES"
   ),
   validation = list(
     parent_github_actions_successful_run = 10,
     parent_github_actions_run_id = 29726150633,
-    run_9_reference_status = "SUPERSEDED_INCORRECT",
-    repair_github_actions = "PENDING"
+    substantive_repair_github_actions = "PASS_RUN_15_ID_29761640213",
+    repair_evidence_commit = "7af0f920bb71211ec2dbf6b20dfad481f11d7cdf",
+    human_approval_github_actions = "PENDING"
   )
 )
 write_json(stage_gate, file.path(out_dir, "stage_gate.json"), pretty = TRUE, auto_unbox = TRUE)
