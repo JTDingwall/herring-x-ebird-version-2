@@ -1,0 +1,61 @@
+approval_version: stage3_phase2_human_scientific_approval_v1
+approved_at_utc: 2026-07-20
+approval_source: explicit_human_instruction_in_repository_session
+approved_commit: 2ea92cab8e3c49584f9effa02078f1823cea30ee
+approved_execution_record: metadata/stage3_phase2_execution_v1.yml
+approved_execution_record_sha256: f7edac773c9bca0167715c45de583ec94cd6512949850b0813abaa8026648ea8
+scientific_decision: APPROVE_STAGE3_PHASE2_METADATA_ONLY_SAMPLING_SUPPORT_AUDIT
+effort_decisions:
+  primary:
+    protocols: [Stationary, Traveling]
+    complete: true
+    duration_minutes: [5, 300]
+    traveling_distance_km_max: 5
+    observers: [1, 10]
+    decision: retain_as_primary
+  high_spatial_precision:
+    traveling_distance_km_max: 2
+    decision: retain_as_targeted_spatial_precision_sensitivity
+  registered_broad:
+    decision: limited_robustness_sensitivity_for_selected_principal_analyses
+    default: false
+    required_for_every_registered_model: false
+regional_decisions:
+  SoG:
+    start_year: 2005
+    role: primary
+  WCVI:
+    start_year: 2015
+    role: candidate_primary_conditional_on_phase3_observer_and_event_blocked_validation
+    phase2_maximum_observer_share: 0.356
+    phase2_effective_observer_replication: 7.4
+  CC:
+    role: hierarchical_partial_pooling_and_descriptive_only
+  NA:
+    role: hierarchical_partial_pooling_and_descriptive_only
+  PRD:
+    role: descriptive_or_hierarchical_only
+  HG:
+    role: descriptive_or_hierarchical_only
+  A27:
+    role: descriptive_or_hierarchical_only
+  A2W:
+    role: unsupported
+period_decision:
+  single_coastwide_2015_start: rejected
+  rule: region_specific_supported_periods_and_hierarchical_treatment
+phase_transition:
+  phase_2_status: completed_human_approved
+  phase_3_authorized: true
+  phase_3_scope: blocked_validation_and_estimand_safeguard_implementation_only
+  phase_4_started: false
+  phase_4_authorized: false
+response_boundary:
+  bird_response_tables_authorized: false
+  bird_response_summaries_authorized: false
+  exposure_contrasts_authorized: false
+  response_models_authorized: false
+  comments_authorized: false
+  shoreline_geometry_authorized: false
+  records_2026_plus_authorized: false
+next_gate: HUMAN_STAGE3_PHASE3_VALIDATION_REVIEW

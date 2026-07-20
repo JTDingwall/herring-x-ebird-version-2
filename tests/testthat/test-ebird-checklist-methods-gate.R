@@ -38,8 +38,9 @@ testthat::test_that("eBird checklist methods addendum preserves the Stage 2 free
   testthat::expect_identical(plan$phases[[3L]]$status,
                             "completed_human_approved")
   testthat::expect_identical(plan$phases[[4L]]$status,
-                            "executed_pending_human_sampling_support_review")
-  testthat::expect_identical(plan$phases[[5L]]$status, "authorized_not_yet_executed")
+                            "completed_human_approved")
+  testthat::expect_identical(plan$phases[[5L]]$status,
+                            "executed_pending_human_validation_review")
   testthat::expect_identical(plan$phases[[6L]]$status, "not_authorized")
 })
 

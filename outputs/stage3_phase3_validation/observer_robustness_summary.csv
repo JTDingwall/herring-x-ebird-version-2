@@ -1,0 +1,5 @@
+region,start_year,scientific_role,observer_disjoint_folds_feasible,total_checklists,dominant_observer_share,effective_observer_replication,checklists_remaining_after_dominant_holdout,herring_events_remaining_after_dominant_holdout,active_checklists_remaining,reference_checklists_remaining,effective_herring_event_replication_remaining,dominant_holdout_support_pass,decision
+CC,1988,hierarchical_and_descriptive_only,true,861,0.098,39.875,777,473,209,204,90.571,true,hierarchical_and_descriptive_only
+NA,1988,hierarchical_and_descriptive_only,true,9007,0.035,158.141,8695,112,225,1587,6.298,true,hierarchical_and_descriptive_only
+SoG,2005,primary,true,217200,0.011,432.019,214806,1115,15273,40685,56.942,true,primary_with_observer_diagnostics
+WCVI,2015,candidate_primary_conditional,true,8584,0.356,7.4,5529,345,613,886,111.659,true,candidate_primary_with_observer_robustness_sensitivity_required

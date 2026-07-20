@@ -1,0 +1,9 @@
+candidate_folds,region,all_folds_pass,failing_folds,minimum_checklists,minimum_herring_source_events,minimum_immediate_pre_checklists,minimum_active_period_checklists,minimum_near_ring_checklists,minimum_reference_ring_checklists,minimum_source_events_with_both_primary_periods,role_implication
+5,SoG,true,0,39022,161,9608,10438,10566,33861,157,primary
+5,WCVI,true,0,1501,58,210,334,356,1384,37,candidate_primary_conditional
+5,CC,false,1,155,41,4,24,30,155,3,hierarchical_and_descriptive_only
+5,NA,false,1,1501,1,232,267,192,1242,1,hierarchical_and_descriptive_only
+4,SoG,true,0,46083,197,11273,13172,14160,40309,192,primary
+4,WCVI,true,0,1795,67,234,390,774,1786,41,candidate_primary_conditional
+4,CC,true,0,210,40,16,42,72,210,13,hierarchical_and_descriptive_only
+4,NA,false,1,2079,11,398,352,206,1823,1,hierarchical_and_descriptive_only

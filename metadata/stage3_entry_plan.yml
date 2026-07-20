@@ -84,13 +84,18 @@ phases:
     response_access: registered_count_state_parsing_only
   - id: phase_2
     name: metadata_only_sampling_support_audit
-    status: executed_pending_human_sampling_support_review
+    status: completed_human_approved
     specification: metadata/stage3_phase2_sampling_support_spec_v1.yml
     execution: metadata/stage3_phase2_execution_v1.yml
+    human_approval: metadata/stage3_phase2_human_scientific_approval_v1.yml
+    human_approval_sha256: d05cda2665efe660b6ab617fade43fa93df206b2d20f0dae8193188f6e1038e2
     response_access: none
   - id: phase_3
     name: validation_and_estimand_safeguards
-    status: authorized_not_yet_executed
+    status: executed_pending_human_validation_review
+    specification: metadata/stage3_phase3_blocked_validation_spec_v1.yml
+    estimand_safeguards: metadata/stage3_estimand_safeguards_v1.yml
+    execution: metadata/stage3_phase3_execution_v1.yml
     response_access: fixture_or_synthetic_only
   - id: phase_4
     name: exploratory_registered_response_analysis
@@ -102,4 +107,4 @@ required_stops:
   after_phase_2: human_sampling_support_review
   after_phase_3: human_validation_implementation_review
   before_phase_4: separate_response_model_authorization
-next_gate: human_stage3_phase2_sampling_support_review
+next_gate: human_stage3_phase3_validation_review

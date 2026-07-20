@@ -1,0 +1,116 @@
+execution_version: stage3_phase3_execution_v1
+executed_at_utc: 2026-07-20
+phase: phase_3
+status: PASS_PENDING_HUMAN_VALIDATION_REVIEW
+branch: design/stage2-outcome-blind-lock
+phase2_human_approval_record: metadata/stage3_phase2_human_scientific_approval_v1.yml
+phase2_human_approval_sha256: d05cda2665efe660b6ab617fade43fa93df206b2d20f0dae8193188f6e1038e2
+phase3_specification: metadata/stage3_phase3_blocked_validation_spec_v1.yml
+phase3_specification_sha256: ffb7afdecefed9a929fb1980c9d6811a1de227c507b6721239e32e4827a2cc73
+estimand_safeguards: metadata/stage3_estimand_safeguards_v1.yml
+estimand_safeguards_sha256: 91ade0394fc15316034f606fadcc157c6da467825e89c163b0125a787c9fe213
+prediction_target: new_herring_spawning_events_and_associated_active_reference_sampling
+registered_inputs:
+  phase1_eligible_event_factor_sha256: 473c9b866794187510d8c0911c8fe976507334ac6ad06eb0cfebe37eed51ee17
+  phase1_component_crosswalk_sha256: 1b52cf8fc15f91e89d7b8a64c66d9976e0c2e6e36afef4058909d7aaad3d2f17
+  phase2_metadata_link_cache_sha256: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+validation_population:
+  primary_linked_independent_checklists: 239934
+  concurrent_metadata_links: 1171752
+  herring_source_events: 3717
+  protected_event_blocks: 308
+  maximum_checklists_in_one_event_block: 17565
+event_blocked_validation:
+  preferred_folds: 5
+  preferred_five_fold_all_reporting_scopes_pass: false
+  five_fold_primary_and_candidate_primary_scopes_pass: true
+  fallback_folds_evaluated: 4
+  chosen_folds: 4
+  chosen_folds_primary_and_candidate_primary_scopes_pass: true
+  chosen_folds_all_reporting_scopes_pass: false
+  remaining_failure:
+    region: NA
+    role: hierarchical_and_descriptive_only
+    failing_folds: 1
+    reason: one_source_event_with_both_primary_periods_below_registered_minimum_of_two
+  choice_reason: >-
+    Five folds failed registered minima in CC and NA. Four folds restore complete
+    minimum support in CC and preserve complete support in SoG and WCVI. One NA
+    fold remains below the both-period event minimum; NA remains hierarchical and
+    descriptive only and is not elevated to a standalone primary claim.
+leakage_gates:
+  event_block_overlap: 0
+  herring_source_event_overlap: 0
+  independent_checklist_overlap: 0
+  shared_group_overlap: 0
+  concurrent_link_fold_disagreements: 0
+observer_robustness:
+  observer_cluster_disjoint_folds_feasible:
+    SoG: true
+    WCVI: true
+    CC: true
+    NA: true
+  observer_overlap_in_observer_robustness_view: 0
+  event_and_location_overlap_measured_explicitly: true
+wcvi_decision:
+  event_blocked_all_four_folds_pass: true
+  checklist_support_by_fold: [2164, 1795, 2462, 2163]
+  herring_event_support_by_fold: [99, 77, 102, 67]
+  active_support_by_fold: [212, 252, 225, 154]
+  reference_support_by_fold: [334, 138, 457, 241]
+  maximum_observer_share_by_fold: [0.402, 0.247, 0.431, 0.315]
+  effective_observer_replication_by_fold: [5.878, 13.402, 5.308, 7.911]
+  effective_herring_event_replication_by_fold: [31.942, 35.560, 38.279, 25.953]
+  dominant_observer_share_pooled: 0.356
+  effective_observer_replication_pooled: 7.4
+  checklists_after_dominant_observer_holdout: 5529
+  herring_events_after_dominant_observer_holdout: 345
+  active_after_dominant_observer_holdout: 613
+  reference_after_dominant_observer_holdout: 886
+  effective_herring_event_replication_after_holdout: 111.659
+  dominant_holdout_support_pass: true
+  decision: candidate_primary_with_observer_robustness_sensitivity_required
+fixed_regional_decisions:
+  SoG: primary_with_observer_diagnostics
+  CC: hierarchical_and_descriptive_only
+  NA: hierarchical_and_descriptive_only
+efficiency_audit:
+  sed_metadata_passes: 1
+  final_replay_reused_metadata_cache: true
+  ebd_scans: 0
+  sparse_bird_tables_read: 0
+  denominator_expanded: false
+  protected_fold_assignment_sha256: 8cc6c52033c415d991eb423884d9cacc3da689ec8c98d3448bc0f00e147981b1
+  protected_observer_location_cache_sha256: e30ac62fdeb0418ea91acfcbee15534a18758460efe6671f0e9f1c9a63dfc06f
+privacy_and_scope:
+  comments_read: 0
+  bird_response_fields_read: 0
+  shoreline_fields_read: 0
+  records_2026_plus_read: 0
+  identifiers_released: false
+  exact_coordinates_released: false
+  record_level_rows_released: false
+  local_paths_released: false
+gates:
+  cardinality: PASS
+  fixture: PASS
+  privacy: PASS
+  reproducibility: PASS_BYTE_IDENTICAL_PROTECTED_ASSIGNMENT_REPLAY
+  estimand_safeguards: PASS
+aggregate_artifacts:
+  fold_balance_sha256: 62d15468f65a10da12470d9c5fa50b88057d13676964a3ff700a1cf004e42192
+  fold_count_feasibility_sha256: ba8aab50fd231e0eaeeec6226e47849bd8f13ce45e3e13e0e79d3f3700d1cfdc
+  fold_stratum_balance_sha256: cacf0bdc62330dea328095816988756d80042f6bb20709e5d83a577239f10604
+  leakage_and_overlap_audit_sha256: 81f9e232b350531b68c7350140f600404e994e3a452d624feec81b605216de53
+  observer_robustness_summary_sha256: 06f54f7b444029e9e14e0227696432d4984c81191ce85ee4124c20883eb247a7
+  wcvi_decision_sha256: 3f717536c3d3a7c7e51e33f17aee6b616c47b9ee87e46cbd8170e9d52383b530
+  execution_summary_sha256: 145eb8bef4f85035c44c1ffcce7434b0c1d8596e000359a6db801b5e815d23cd
+  aggregate_hash_manifest_sha256: 65b37faad71718461ab7b5a07078eedd3269fbc144727e5044011f3cc68e7e57
+response_boundary:
+  response_summaries_calculated: false
+  exposure_contrasts_calculated: false
+  effects_estimated: false
+  response_models_fit: false
+  prospective_holdout_modified: false
+phase_4_started: false
+next_gate: HUMAN_STAGE3_PHASE3_VALIDATION_REVIEW

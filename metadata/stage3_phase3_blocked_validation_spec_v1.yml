@@ -1,0 +1,133 @@
+specification_version: stage3_phase3_blocked_validation_spec_v1
+frozen_at_utc: 2026-07-20
+phase: phase_3
+purpose: response_blind_blocked_validation_and_estimand_safeguards
+authorization_record: metadata/stage3_phases1_3_authorization_v1.yml
+phase2_human_approval_record: metadata/stage3_phase2_human_scientific_approval_v1.yml
+hard_stop_after_phase: human_validation_review
+prediction_target: new_herring_spawning_events_and_associated_active_reference_sampling
+not_prediction_target: random_checklist_from_already_observed_herring_event
+registered_inputs:
+  phase1_eligible_event_factor:
+    expected_sha256: 473c9b866794187510d8c0911c8fe976507334ac6ad06eb0cfebe37eed51ee17
+    use: primary_frame_membership_only
+  phase1_component_crosswalk:
+    expected_sha256: 1b52cf8fc15f91e89d7b8a64c66d9976e0c2e6e36afef4058909d7aaad3d2f17
+    use: shared_component_and_observer_cluster_integrity
+  phase2_metadata_link_cache:
+    expected_sha256: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+    use: source_event_region_time_distance_and_concurrent_link_metadata
+  sparse_reported_count_states:
+    use: prohibited
+  sparse_ambiguity_masks:
+    use: prohibited
+metadata_completion_exception:
+  sed_pass_required: true
+  justification: >-
+    The Phase 2 link cache intentionally contains no generalized-location token.
+    A single SED metadata pass selecting source event, observation date and
+    locality identifier is required to measure location overlap. Component and
+    observer membership are taken from the already protected Phase 1 crosswalk.
+  sed_fields_selected:
+    - SAMPLING_EVENT_IDENTIFIER
+    - OBSERVATION_DATE
+    - LOCALITY_ID
+  comments_selected: false
+  exact_coordinates_selected: false
+  ebd_rescan: prohibited
+validation_population:
+  effort_frame: approved_candidate_primary
+  source_point_link_window_days: [-60, 90]
+  fold_assignments_cover: all_primary_frame_checklists_with_phase2_source_point_links
+  reporting_scopes:
+    SoG: {start_year: 2005, role: primary}
+    WCVI: {start_year: 2015, role: candidate_primary_conditional}
+    CC: {start_year: 1988, role: hierarchical_and_descriptive_only}
+    NA: {start_year: 1988, role: hierarchical_and_descriptive_only}
+event_block_definition:
+  atomic_source_unit: immutable_herring_source_event
+  union_rule: >-
+    Source events linked concurrently to the same independent checklist are
+    joined into one protected event block so every concurrent link and its
+    checklist remain together.
+  observer_identity_does_not_define_event_blocks: true
+  shoreline_geometry_used: false
+primary_event_blocked_view:
+  target: generalization_to_new_herring_event_blocks
+  atomic_assignment_unit: protected_concurrent_source_event_block
+  folds_preferred: 5
+  folds_fallback: 4
+  selection_uses_bird_outcomes: false
+  deterministic_assignment:
+    order: descending_independent_checklists_then_source_events_then_stable_block_hash
+    balance_dimensions:
+      - region
+      - checklist_year
+      - event_time_stratum
+      - source_point_distance_stratum
+      - active_reference_class
+  leakage_requirements:
+    event_block_overlap: 0
+    herring_source_event_overlap: 0
+    independent_checklist_overlap: 0
+    shared_group_overlap: 0
+    concurrent_link_fold_disagreement: 0
+observer_robustness_view:
+  target: robustness_to_observer_composition
+  preferred: observer_cluster_disjoint_folds
+  fallback: leave_dominant_observer_cluster_out_stress_test
+  dominant_observer_connected_components_forced_into_event_folds: false
+  observer_overlap_requirement_when_disjoint_folds_feasible: 0
+registered_fold_minimum_support:
+  independent_checklists: 20
+  herring_source_events: 3
+  immediate_pre_checklists: 5
+  active_checklists: 5
+  near_ring_checklists: 5
+  reference_ring_checklists: 5
+  source_events_with_both_primary_periods: 2
+support_definitions:
+  immediate_pre_days: [-28, -1]
+  active_days: [0, 28]
+  near_ring_km: [0, 5]
+  reference_ring_km: [5, 20]
+  active_class: active_day_link_with_any_distance_under_5km
+  contemporaneous_reference_class: active_day_link_with_no_distance_under_5km_and_any_distance_5_to_20km
+effective_replication:
+  metric: inverse_simpson_effective_number
+  dimensions: [observer_cluster, herring_source_event]
+  concurrent_event_weight: inverse_number_of_source_event_links_per_checklist
+privacy:
+  minimum_released_cell_size: 20
+  protected_fold_assignments_tracked: false
+  identifiers_in_tracked_outputs: false
+  exact_coordinates_in_tracked_outputs: false
+  record_level_rows_in_tracked_outputs: false
+  local_paths_in_tracked_outputs: false
+wcvi_decision_rule:
+  event_blocked_folds_must_pass_registered_minima: true
+  dominant_observer_holdout_must_retain_registered_minima: true
+  observer_concentration_warning_threshold: 0.20
+  outcomes:
+    - candidate_primary
+    - candidate_primary_with_observer_robustness_sensitivity_required
+    - hierarchical_only
+fixed_regional_roles:
+  CC: hierarchical_partial_pooling_and_descriptive_only
+  NA: hierarchical_partial_pooling_and_descriptive_only
+prohibited:
+  - ebd_rescan
+  - denominator_expansion
+  - sparse_bird_table_read
+  - bird_response_field_read
+  - bird_response_summary
+  - exposure_contrast
+  - response_direction_diagnostic
+  - effect_estimation
+  - bird_response_power_calculation
+  - response_model_fit
+  - ecological_covariate_addition
+  - comments_access
+  - shoreline_geometry_access
+  - records_2026_plus_access
+  - phase_4_start

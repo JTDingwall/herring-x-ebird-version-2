@@ -1,0 +1,37 @@
+safeguard_version: stage3_estimand_safeguards_v1
+frozen_at_utc: 2026-07-20
+phase: phase_3
+status: implemented_pending_human_validation_review
+prediction_target:
+  primary: new_herring_spawning_event_blocks_and_associated_active_reference_sampling
+  prohibited_substitution: random_checklist_from_already_observed_event
+sampling_unit:
+  independent_unit: composite_event_per_group_identifier_else_sampling_event_identifier
+  shared_component_rows_are_not_independent: true
+  concurrent_herring_links_are_additive_metadata_for_one_checklist: true
+  concurrent_links_may_not_multiply_independent_rows: true
+validation_views:
+  primary: complete_herring_event_block_holdout
+  observer_robustness: observer_cluster_disjoint_or_leave_dominant_cluster_out
+detection_estimand:
+  required_label: probability_reported_on_an_eligible_complete_checklist
+  forbidden_labels_without_separate_identification: [true_absence, occupancy]
+positive_count_estimand:
+  required_label: reported_relative_count_conditional_on_detection_and_numeric_availability
+  forbidden_labels_without_separate_identification: [absolute_population_abundance, biomass]
+count_state_integrity:
+  numeric: distinct
+  X: detection_only_numeric_missing
+  lower_bound: bounded_sensitivity_only
+  ambiguity_affected: not_zero
+  eligible_omission: deterministic_zero_at_extraction_only
+reporting_guards:
+  every_registered_model_reported_regardless_of_sign: true
+  validation_view_named_with_every_predictive_result: true
+  event_blocked_result_required_for_primary_generalization_claim: true
+  observer_robustness_result_required_for_WCVI_primary_claim: true
+  CC_and_NA_standalone_primary_claims: prohibited
+  Phase4_response_output_before_separate_authorization: prohibited
+holdout_guard:
+  records_2026_plus_locked: true
+  modification_by_phase3: prohibited
