@@ -1,0 +1,15 @@
+specification_version: stage2_prospective_v1
+development_outcome_end_year: 2025.0
+holdout_start_year: 2026.0
+current_release_complete: no
+access_state: FROZEN_NOT_USED_FOR_MODEL_DEVELOPMENT
+prerequisites:
+- complete_or_explicitly_frozen_ebird_release
+- finalized_or_versioned_herring_records
+- unchanged_model_code
+- unchanged_species_and_guild_definitions
+- unchanged_geometry_windows_distance_and_decision_thresholds
+refitting_or_selection_before_primary_evaluation: no
+current_analyses: exploratory_estimand_refining
+external_region_rule: identify and freeze an eligible region before accessing its
+  response direction

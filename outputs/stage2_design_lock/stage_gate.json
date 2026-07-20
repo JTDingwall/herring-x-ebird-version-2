@@ -1,0 +1,25 @@
+{
+  "stage": "stage2_outcome_blind_design_lock",
+  "classification": "PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL",
+  "candidate_grid_sha256": "f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91",
+  "candidate_grid_frozen_at_utc": "2026-07-20 05:27:38 UTC",
+  "candidate_grid_verified_before_response_value_access": true,
+  "prospective_spec_sha256": "2640276fad585c9d3b537f407bb3efeb0167cb5acbdc38674fbb8d6e91b1cbb7",
+  "registered_models_fitted": 0,
+  "prohibited_statistics_computed": 0,
+  "exact_ebird_coordinates_released": false,
+  "raw_or_record_level_ebird_rows_released": false,
+  "comments_read": false,
+  "requires_human_scientific_approval": true,
+  "validation_status": "PASS_LOCAL_VALIDATION_REMOTE_CI_PENDING",
+  "validation": {
+    "registry_validation": "PASS",
+    "fixture_and_stage2_tests": "PASS",
+    "metadata_only_targets": "PASS",
+    "privacy_scan": "PASS_134_FILES_0_VIOLATIONS",
+    "setup_audit_render": "PASS",
+    "protected_input_checksums_and_headers": "PASS",
+    "ebd_sed_join_cardinality": "PASS_MANY_TO_ONE",
+    "python_analysis_plan_render": "PENDING_GITHUB_CI_RUNTIME"
+  }
+}

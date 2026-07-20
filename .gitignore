@@ -10,6 +10,9 @@ data/derived/**
 outputs/**
 !outputs/.gitkeep
 _targets/
+renv/cache/
+renv/root/
+renv/library/
 .Rhistory
 .RData
 .Ruserdata
@@ -51,6 +54,9 @@ Thumbs.db
 !docs/*.html
 !outputs/setup/
 !outputs/setup/privacy_scan_summary.json
+!outputs/stage2_design_lock/
+!outputs/stage2_design_lock/*.csv
+!outputs/stage2_design_lock/*.json
 
 # Local raw-input audit products may contain machine paths
 outputs/input_audit_local/**

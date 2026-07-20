@@ -1,0 +1,7 @@
+"geometry_tier","geometry_failure_reason","N","support_label"
+"C","snap_exceeds_2km_candidate_limit",7499,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"excluded","missing_event_date",410,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"C","missing_or_invalid_source_point",123,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"excluded","missing_or_invalid_source_point",1,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"A","none",5163,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"B","missing_length",136,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"

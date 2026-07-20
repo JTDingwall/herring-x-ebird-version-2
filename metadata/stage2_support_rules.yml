@@ -1,0 +1,119 @@
+design_freeze:
+  grid_version: stage2_v1
+  candidate_grid_path: metadata/stage2_candidate_design_grid.csv
+  candidate_grid_sha256: f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91
+  frozen_at_utc: 2026-07-20 05:27:38 UTC
+  frozen_before_response_value_access: yes
+  correction_policy: retain old and new hashes; document schema or implementation
+    correction; never change for support patterns
+support_output_label: SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE
+eligible_support_quantities:
+- eligible_checklists
+- detections
+- positive_numeric_reports
+- X_reports
+- lower_bound_or_ambiguity_affected
+- represented_events
+- represented_event_complexes
+- years
+- regions
+- locations
+- observers
+- maximum_event_share
+- maximum_location_share
+- maximum_observer_share
+- exposure_pooled_count_quantiles
+- pairwise_prevalence_and_cell_counts
+prohibited_statistics:
+- detection_rate_by_exposure
+- bird_count_summary_by_exposure
+- active_reference_contrast
+- ratio_or_odds_ratio
+- effect_size_or_coefficient
+- p_value
+- confidence_or_posterior_interval
+- posterior_summary
+- cooccurrence_change_by_spawn_phase_or_distance
+- biological_response_plot
+- herring_exposure_response_model
+primary_periods:
+  period_one:
+    start_day: -28
+    end_day: -1
+  period_two:
+    start_day: 0
+    end_day: 28
+nearby_threshold_sensitivity:
+  named_core_detections:
+  - 150
+  - 200
+  - 250
+  named_core_events:
+  - 40
+  - 50
+  - 60
+  named_core_numeric_availability:
+  - 0.75
+  - 0.8
+  - 0.85
+  named_exploratory_detections:
+  - 50
+  - 75
+  - 100
+  guild_community_detections:
+  - 20
+  - 25
+  - 30
+event_complex_acceptance:
+  candidate_primary: complex_2km_7d
+  never_merge_across_region: yes
+  flag_statistical_area_crossing: yes
+  manual_review_temporal_span_days: 21
+  manual_review_spatial_diameter_km: 25.0
+  preserve_alternatives: yes
+geometry_quality:
+  tier_A: valid date, coordinate, method, accepted marine shoreline snap, observed
+    Length, no major ambiguity
+  tier_B: valid date and point with accepted marine shoreline snap but missing extent
+  tier_C: usable section/date metadata but uncertain point or method
+  exclude: impossible or unlocatable exposure definition only
+count_family_selection:
+  candidates:
+  - hurdle_lognormal
+  - hurdle_truncated_nb2
+  - hurdle_generalized_poisson
+  - zero_inclusive_nb
+  - tweedie
+  - ordinal_flock_size
+  - upper_tail_exceedance_or_quantile
+  criteria:
+  - simulation_recovery
+  - leave_block_out_log_score
+  - calibration
+  - residual_tail_behaviour
+  - numerical_stability
+  simplicity_rule: one_standard_error
+  herring_term_selection_forbidden: yes
+multispecies_selection:
+  response: detection_first
+  latent_factors:
+  - 2
+  - 3
+  - 4
+  - 5
+  comparators:
+  - no_latent_factor
+  - no_pooling
+  selection:
+  - heldout_predictive_score
+  - convergence_or_posterior_geometry
+  - simulation_residual_association_recovery
+  - one_standard_error
+  hash_identical_pilot_required: yes
+  observed_herring_response_effects_allowed: no
+prospective_holdout:
+  start_year: 2026
+  development_access: frozen
+  current_release_complete: no
+  signed_hash_recorded_specification_required: yes
+  refitting_before_primary_evaluation: no
