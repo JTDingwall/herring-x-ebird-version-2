@@ -7,6 +7,11 @@ Do not run this prompt until every blocking decision in
 record and `metadata/stage3_entry_plan.yml` has been updated from pending to the
 approved choices.
 
+Do not run while `outputs/stage2_design_lock/stage_gate.json` is classified as
+`STOP_DESIGN_IDENTIFICATION_FAILURE`. First resolve the Phase -1 shoreline
+geometry decision in `docs/11_STAGE3_ENTRY_PLAN.md`, rerun the outcome-blind
+design checks, and obtain a new human scientific decision.
+
 Do not modify `metadata/stage2_candidate_design_grid.csv` or either retained
 Stage 2 hash. Do not access any 2026-or-later herring or bird response record.
 
@@ -28,8 +33,9 @@ the Stage 3 entry plan pass.
    approved `GROUP IDENTIFIER` rule before zero-filling.
 3. Preserve contributing checklist/observer IDs only in the protected local
    audit crosswalk; never release them.
-4. Generate zeros only from eligible complete checklists, including complete
-   SED events with no focal EBD row.
+4. Generate zeros only from eligible complete analysis events. Do not zero-fill
+   incomplete lists or wholly SED-only structural-unknown events whose checklist
+   identity cannot be verified from the protected release.
 5. Preserve detection, numeric count, `X`, lower-bound and ambiguity states.
 6. Set stationary distance to zero before distance and speed handling.
 7. Enforce one row per independent checklist event × species.
