@@ -11,7 +11,7 @@ source_checks <- fread("metadata/source_verification_summary.csv",
                        colClasses = list(character = c("n_primary", "n_secondary")))
 rows <- paste(sprintf("<tr><th>%s</th><td>%s</td></tr>", names(counts), unlist(counts)), collapse = "\n")
 html <- paste0(
-  "<!doctype html><html lang='en'><head><meta charset='utf-8'><title>Repository setup audit</title>",
+  "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='generator' content='scripts/05_build_setup_audit.R'><title>Repository setup audit</title>",
   "<style>body{font-family:system-ui;max-width:980px;margin:40px auto;line-height:1.5;color:#183247}",
   "table{border-collapse:collapse}th,td{border:1px solid #ccd6dd;padding:8px;text-align:left}",
   ".pass{color:#176b3a;font-weight:700}.gate{background:#fff4d6;padding:14px;border-left:5px solid #d48b00}</style></head><body>",
@@ -25,5 +25,7 @@ html <- paste0(
   "<h2>Scientific status</h2><p>Exploratory and estimand-refining until prospective confirmation. See <code>docs/08_UNRESOLVED_SCIENTIFIC_DECISIONS.md</code>.</p>",
   "</body></html>"
 )
-writeLines(html, "reports/repository_setup_audit.html", useBytes = TRUE)
+con <- file("reports/repository_setup_audit.html", open = "wb")
+on.exit(close(con), add = TRUE)
+writeBin(charToRaw(paste0(html, "\n")), con)
 cat("reports/repository_setup_audit.html\n")
