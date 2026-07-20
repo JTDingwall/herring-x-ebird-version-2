@@ -1,7 +1,10 @@
 {
   "stage": "stage2_outcome_blind_design_lock",
-  "classification": "STOP_DESIGN_IDENTIFICATION_FAILURE",
-  "human_scientific_decision": "REVISION_REQUIRED",
+  "classification": "PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED",
+  "human_scientific_decision": "APPROVED_SOURCE_POINT_PRIMARY",
+  "approval_version": "stage2_human_scientific_approval_v1",
+  "approval_sha256": "c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18",
+  "approval_recorded_at_utc": "2026-07-20 17:20:23 UTC",
   "amendment_version": "stage2_scientific_gate_amendment_v1",
   "amendment_sha256": "7323b02f2c5ea3e2fccde6de73f123200694242d24cca087561e5939a7aa6835",
   "amendment_frozen_at_utc": "2026-07-20 14:56:07 UTC",
@@ -15,23 +18,40 @@
   "exact_ebird_coordinates_released": false,
   "raw_or_record_level_ebird_rows_released": false,
   "comments_read": false,
-  "requires_human_scientific_approval": true,
-  "validation_status": "LOCAL_VALIDATION_PASS_AND_REPAIR_COMMIT_GITHUB_ACTIONS_RUN_15_PASS",
+  "requires_human_scientific_approval": false,
+  "response_models_authorized": false,
+  "stage3_entry_implementation_authorized": false,
+  "requires_separate_stage3_authorization": true,
+  "validation_status": "PENDING_HUMAN_APPROVAL_GATE_TESTS_PRIVACY_RENDER_AND_GITHUB_ACTIONS",
+  "primary_design": {
+    "event_geometry": "IMMUTABLE_SOURCE_POINT",
+    "geometry_scope": "COASTWIDE_WHERE_SOURCE_POINT_IS_VALID",
+    "event_identity": "IMMUTABLE_SOURCE_RECORD",
+    "edge_type_100_role": "SUPPORTED_REGION_ALONGSHORE_SENSITIVITY_SOG_WCVI",
+    "edge_type_150_role": "SEPARATE_SENSITIVITY_AFTER_LOCAL_VISUAL_VALIDATION",
+    "missing_extent_inference": "PROHIBITED"
+  },
   "repair_status": {
     "ebd_sed_membership": "PASS_SED_ONLY_EXCLUDED_FROM_PRIMARY_ZERO_FILL",
-    "shoreline_geometry": "FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT",
+    "shoreline_geometry": "PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED",
+    "shoreline_bundle_coverage": "INCOMPLETE_NONBLOCKING_FOR_APPROVED_PRIMARY",
     "actual_alongshore_geometry": "PASS_CONSTRUCTED_LOCAL_ONLY",
-    "event_complex_review_packet": "PASS_ALL_FLAGGED_INCLUDED_SOURCE_RECORD_SAFE_PRIMARY",
-    "region_period_support": "PASS_SUSTAINED_YEAR_BY_YEAR_RULE_APPLIED",
-    "protocol_effort": "PASS_STANDARDIZED_PRIMARY",
-    "shared_checklists": "PASS_DISAGREEMENT_EXCLUDED_COMPOSITE_OBSERVER_RULE",
-    "registry_clarification": "PASS_M21_M35_MUTUALLY_EXCLUSIVE",
-    "prospective_integrity": "PASS_FIXED_2026_2028_HORIZON_AND_EXTRACTION_RULE"
+    "event_complex_review_packet": "PASS_ALL_FLAGGED_INCLUDED_SOURCE_RECORD_PRIMARY_APPROVED",
+    "region_period_support": "PASS_SOG_2005_WCVI_2015_APPROVED",
+    "protocol_effort": "PASS_STANDARDIZED_PRIMARY_APPROVED",
+    "shared_checklists": "PASS_DISAGREEMENT_EXCLUDED_COMPOSITE_OBSERVER_RULE_APPROVED",
+    "registry_clarification": "PASS_M21_M35_MUTUALLY_EXCLUSIVE_APPROVED",
+    "prospective_integrity": "PASS_FIXED_2026_2028_HORIZON_AND_EXTRACTION_RULE_APPROVED"
+  },
+  "remaining_nonblocking_requirements": {
+    "edge_type_150_local_visual_validation": "PENDING_BEFORE_EDGE150_SENSITIVITY_USE",
+    "unsupported_shoreline_regions": "EXCLUDED_FROM_ALONGSHORE_SENSITIVITIES"
   },
   "validation": {
     "parent_github_actions_successful_run": 10,
     "parent_github_actions_run_id": 29726150633,
-    "run_9_reference_status": "SUPERSEDED_INCORRECT",
-    "repair_github_actions": "PASS_RUN_15_ID_29761640213_COMMIT_6067221408b0c68c8c563e3c9ebf4a1a5b39c504"
+    "substantive_repair_github_actions": "PASS_RUN_15_ID_29761640213",
+    "repair_evidence_commit": "7af0f920bb71211ec2dbf6b20dfad481f11d7cdf",
+    "human_approval_github_actions": "PENDING"
   }
 }
