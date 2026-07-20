@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  fixture-validation:
+    runs-on: ubuntu-latest
+    env:
+      RENV_CONFIG_AUTOLOADER_ENABLED: "FALSE"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-renv@v2
+      - name: Registry validation
+        run: Rscript scripts/02_validate_registries.R
+      - name: Fixture tests
+        run: Rscript tests/testthat.R
+      - name: Metadata-only targets graph
+        run: Rscript -e 'targets::tar_make(callr_function = NULL)'
+      - name: Privacy scan
+        run: Rscript scripts/04_run_privacy_scan.R
+      - name: Setup audit render
+        run: Rscript scripts/05_build_setup_audit.R
+      - name: Verify generated setup artifact
+        run: git diff --exit-code -- reports/repository_setup_audit.html outputs/setup/privacy_scan_summary.json
+
+  analysis-plan-render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install pandas
+      - run: python scripts/build_comprehensive_analysis_plan.py
+      - name: Validate rendered plan
+        run: |
+          test -s reports/comprehensive_analysis_plan.html
+          test "$(grep -Eio 'illustrative|synthetic' reports/comprehensive_analysis_plan.html | wc -l)" -ge 18
+          python -c "from pathlib import Path; s=Path('reports/comprehensive_analysis_plan.html').read_text(); assert 'src=\\\"http' not in s and \"src='http\" not in s"

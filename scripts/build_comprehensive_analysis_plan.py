@@ -14,7 +14,7 @@ from typing import Iterable
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "reports" / "comprehensive_analysis_plan_v2.html"
+OUT = ROOT / "reports" / "comprehensive_analysis_plan.html"
 
 PALETTE = {
     "navy": "#16324F",
@@ -383,10 +383,14 @@ def model_lay_summary(row: pd.Series) -> str:
 
 def build_html() -> str:
     models = pd.read_csv(ROOT / "metadata" / "model_registry.csv")
-    additions = pd.read_csv(ROOT / "metadata" / "proposed_model_additions.csv")
-    all_models = pd.concat([models, additions], ignore_index=True)
-    species = pd.read_csv(ROOT / "metadata" / "species_registry.csv")
-    guilds = pd.read_csv(ROOT / "metadata" / "guild_registry_v2.csv")
+    estimands = pd.read_csv(ROOT / "metadata" / "estimand_registry.csv")
+    all_models = models.merge(estimands[["estimand_id", "quantity", "outcome_state_policy"]],
+                              on="estimand_id", how="left", validate="many_to_one")
+    all_models["scientific_question"] = all_models["quantity"]
+    all_models["response"] = all_models["response_class"]
+    all_models["main_limitations"] = all_models["outcome_state_policy"]
+    species = pd.read_csv(ROOT / "metadata" / "canonical_species_registry.csv")
+    guilds = pd.read_csv(ROOT / "metadata" / "canonical_guild_registry.csv")
 
     # Synthetic illustrative curves.
     days=list(range(-42,57,7))
