@@ -2,7 +2,7 @@
 
 **Stage gate:** `PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED`
 **Human scientific decision:** `AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY`
-**Validation:** `PENDING_STAGE3_AUTHORIZATION_GATE_CI`
+**Validation:** `STAGE3_AUTHORIZATION_GATE_AND_GITHUB_ACTIONS_RUN_22_PASS`
 
 > SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE. Current analyses remain exploratory and estimand-refining until prospective confirmation.
 
@@ -113,7 +113,7 @@ The confirmation horizon is fixed at complete 2026–2028 releases, with one eva
 
 ## Repair resolution 8 — bookkeeping, QA, and privacy
 
-The parent successful GitHub Actions reference is run #10; run #9 is explicitly superseded as incorrect. The substantive repair commit passed GitHub Actions run #15 (run ID 29761640213). The human-approval gate update passed run #20 (run ID 29763901281) at commit `8c24f8942177166c676a261b4448668f676626ed`. Every join declares and tests cardinality. Concurrent event memberships remain additive exposure links and never duplicate checklists as independent rows. Detection, numeric, X, lower-bound, and ambiguity states remain distinct; missing herring components are not zero and relative spawn index is not absolute biomass.
+The parent successful GitHub Actions reference is run #10; run #9 is explicitly superseded as incorrect. The substantive repair commit passed GitHub Actions run #15 (run ID 29761640213). The human-approval gate update passed run #20 (run ID 29763901281). The Stage 3 Phases 1–3 authorization gate passed run #22 (run ID 29772683906) at evidence commit `97f29023ff196359aae7194bde23751628bc7214`. Every join declares and tests cardinality. Concurrent event memberships remain additive exposure links and never duplicate checklists as independent rows. Detection, numeric, X, lower-bound, and ambiguity states remain distinct; missing herring components are not zero and relative spawn index is not absolute biomass.
 
 The response-access audit lists these EBD fields: `CATEGORY`, `TAXON CONCEPT ID`, `COMMON NAME`, `SCIENTIFIC NAME`, `OBSERVATION COUNT`, `BEHAVIOR CODE`, `SAMPLING EVENT IDENTIFIER`. It asserts noncomputation of: detection_rate_by_exposure, bird_count_summary_by_exposure, active_reference_contrast, ratio_or_odds_ratio, effect_size_or_coefficient, p_value, confidence_or_posterior_interval, posterior_summary, cooccurrence_change_by_spawn_phase_or_distance, biological_response_plot, herring_exposure_response_model.
 
