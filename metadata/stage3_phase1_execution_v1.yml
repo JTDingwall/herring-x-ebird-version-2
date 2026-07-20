@@ -1,0 +1,31 @@
+execution_version: stage3_phase1_execution_v1
+executed_at_utc: 2026-07-20
+authorization_record: metadata/stage3_phases1_3_authorization_v1.yml
+specification: metadata/stage3_phase1_denominator_spec.yml
+specification_sha256: 69465849e45f05dbc59df1a666bbd87b9b8c83f3f6151377818323be54c495f8
+branch: design/stage2-outcome-blind-lock
+phase: phase_1
+status: PASS_EXECUTED_PENDING_HUMAN_REVIEW
+source_window: [1988, 2025]
+accepted_record_predicate: APPROVED == true
+taxonomy_version: eBird Taxonomy v2025
+independent_eligible_checklist_events: 1433786
+registered_analysis_taxa: 45
+denominator_event_taxon_rows: 64520370
+zero_filled_rows: 59257238
+ambiguity_masked_rows: 25004
+source_identity_disagreement_events_quarantined: 3
+source_identity_disagreement_rows_quarantined: 37
+zero_provenance_gate: PASS_ELIGIBLE_COMPLETE_VERIFIED_EVENT_OMISSION_ONLY
+cardinality_gate: PASS
+fixture_gate: PASS
+privacy_scope_gate: PASS
+reproducibility_gate: PASS_BYTE_IDENTICAL_REPLAY
+holdout_records_selected: 0
+free_text_fields_selected: 0
+herring_fields_selected: 0
+shoreline_fields_selected: 0
+geometry_analysis_or_sensitivity_run: false
+bird_response_summary_or_model_run: false
+phase_2_started: false
+next_gate: HUMAN_DENOMINATOR_AND_ZERO_PROVENANCE_REVIEW

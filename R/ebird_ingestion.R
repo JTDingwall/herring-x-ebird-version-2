@@ -121,19 +121,35 @@ resolve_shared_checklists <- function(sed,
          disagreement_primary_rule = "exclude_from_primary_registered_sensitivity")])
 }
 
-parse_ebird_count_state <- function(x, ambiguous = FALSE) {
+accepted_ebird_record <- function(approved, reviewed = NULL) {
+  # APPROVED is the frozen acceptance predicate. REVIEWED is retained only as
+  # audit provenance because an accepted record need not have been reviewed.
+  value <- toupper(trimws(as.character(approved)))
+  !is.na(approved) & value %in% c("1", "TRUE", "T", "YES", "Y")
+}
+
+normalize_stationary_distance <- function(protocol_name, effort_distance_km) {
+  protocol <- tolower(trimws(as.character(protocol_name)))
+  out <- suppressWarnings(as.numeric(effort_distance_km))
+  out[protocol == "stationary"] <- 0
+  out
+}
+
+parse_ebird_count_state <- function(x, ambiguous = FALSE,
+                                    observation_record_present = TRUE) {
   raw <- trimws(as.character(x)); missing <- is.na(x) | !nzchar(raw)
   numeric_syntax <- !missing & grepl("^[0-9]+$", raw)
   lower_syntax <- !missing & grepl("^(>=|>|at least[[:space:]]+)?[0-9]+\\+?$", raw, ignore.case = TRUE) & !numeric_syntax
   lower <- rep(NA_real_, length(raw))
   lower[lower_syntax] <- as.numeric(gsub("[^0-9]", "", raw[lower_syntax]))
   numeric_count <- rep(NA_real_, length(raw)); numeric_count[numeric_syntax] <- as.numeric(raw[numeric_syntax])
-  type <- rep("ambiguous", length(raw))
+  type <- rep("ambiguity_affected", length(raw))
   type[missing] <- "missing"; type[toupper(raw) == "X" & !missing] <- "X"
   type[lower_syntax] <- "lower_bound"; type[numeric_syntax] <- "numeric"
-  type[ambiguous & !missing] <- "ambiguous"
+  type[ambiguous & !missing] <- "ambiguity_affected"
+  present <- rep_len(as.logical(observation_record_present), length(raw))
   data.table::data.table(
-    detection = as.integer(!missing), numeric_count = numeric_count,
+    detection = as.integer(present), numeric_count = numeric_count,
     lower_bound_count = lower, count_type = type,
     ambiguity_flag = as.logical(ambiguous), source_count = raw
   )
@@ -156,12 +172,14 @@ zero_fill_taxa <- function(checklists, detections, taxa,
     stop("ZERO_FILL_ELIGIBILITY: excluded checklist leaked into eligible set", call. = FALSE)
   }
   detections <- data.table::as.data.table(detections)[analysis_checklist_id %in% eligible_ids]
+  detections[, source_record_present := TRUE]
   grid <- data.table::CJ(analysis_checklist_id = eligible_ids,
                          analysis_taxon_id = as.character(taxa), unique = TRUE)
   out <- merge(grid, detections, by = c("analysis_checklist_id", "analysis_taxon_id"),
                all.x = TRUE, sort = FALSE)
-  out[is.na(detection), `:=`(detection = 0L, numeric_count = 0,
+  out[is.na(source_record_present), `:=`(detection = 0L, numeric_count = 0,
     lower_bound_count = 0, count_type = "zero_filled", ambiguity_flag = FALSE)]
+  out[, source_record_present := NULL]
   assert_unique_key(out, c("analysis_checklist_id", "analysis_taxon_id"), "zero-filled output")
   out
 }

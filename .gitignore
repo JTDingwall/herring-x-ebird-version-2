@@ -57,6 +57,9 @@ Thumbs.db
 !outputs/stage2_design_lock/
 !outputs/stage2_design_lock/*.csv
 !outputs/stage2_design_lock/*.json
+!outputs/stage3_phase1/
+!outputs/stage3_phase1/*.csv
+!outputs/stage3_phase1/*.json
 
 # Local raw-input audit products may contain machine paths
 outputs/input_audit_local/**

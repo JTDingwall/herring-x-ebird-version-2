@@ -76,7 +76,7 @@ phases:
     response_access: none
   - id: phase_1
     name: construct_independent_checklist_denominator
-    status: authorized_not_yet_executed
+    status: executed_pending_human_denominator_and_zero_provenance_review
     response_access: registered_count_state_parsing_only
   - id: phase_2
     name: metadata_only_sampling_support_audit
@@ -96,4 +96,4 @@ required_stops:
   after_phase_2: human_sampling_support_review
   after_phase_3: human_validation_implementation_review
   before_phase_4: separate_response_model_authorization
-next_gate: human_data_support_review_and_separate_phase4_authorization
+next_gate: human_denominator_and_zero_provenance_review
