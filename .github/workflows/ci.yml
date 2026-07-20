@@ -20,8 +20,6 @@ jobs:
           use-public-rspm: true
       - name: Install R package system libraries
         run: sudo apt-get update && sudo apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev libglpk-dev
-      - name: Install pinned diffobj source
-        run: Rscript -e "install.packages('https://cran.r-project.org/src/contrib/diffobj_0.3.8.tar.gz', repos = NULL, type = 'source')"
       - uses: r-lib/actions/setup-renv@v2
       - name: Registry validation
         run: Rscript scripts/02_validate_registries.R
