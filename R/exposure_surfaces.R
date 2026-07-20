@@ -1,4 +1,4 @@
-assign_distance_ring <- function(distance_km, breaks = c(0, 1, 2, 3, 4, 5, 10, 25, 50)) {
+assign_distance_ring <- function(distance_km, breaks = c(0, 0.5, 1, 2, 3, 4, 5, 10, 20)) {
   if (any(diff(breaks) <= 0)) stop("Distance breaks must be strictly increasing", call. = FALSE)
   cut(distance_km, breaks = breaks, right = FALSE, include.lowest = TRUE,
       labels = paste0(head(breaks, -1), "-", tail(breaks, -1), "km"))
@@ -56,6 +56,38 @@ additive_spawn_exposure <- function(candidate_links, scale_km, duration_days,
   }
   x[, .(
     additive_exposure = sum(spatial_weight * temporal_weight * event_weight, na.rm = TRUE),
-    contributing_events = sum(spatial_weight * temporal_weight > 0, na.rm = TRUE)
+    contributing_events = data.table::uniqueN(event_id[spatial_weight * temporal_weight > 0])
   ), by = sampling_event_identifier]
+}
+
+event_window_membership <- function(candidate_links, rules) {
+  assert_columns(candidate_links,
+                 c("sampling_event_identifier", "event_id", "event_distance_km", "event_day"),
+                 "candidate links")
+  required_rules <- c("window_id", "max_distance_km", "pre_days", "post_days")
+  assert_columns(rules, required_rules, "event-window rules")
+  if (anyDuplicated(rules$window_id)) stop("window_id must be unique", call. = FALSE)
+
+  out <- lapply(seq_len(nrow(rules)), function(i) {
+    rule <- rules[i, ]
+    hit <- candidate_links$event_distance_km <= rule$max_distance_km &
+      candidate_links$event_day >= -rule$pre_days &
+      candidate_links$event_day <= rule$post_days
+    data.table::data.table(
+      sampling_event_identifier = candidate_links$sampling_event_identifier[hit],
+      event_id = candidate_links$event_id[hit],
+      window_id = rule$window_id
+    )
+  })
+  data.table::rbindlist(out, use.names = TRUE, fill = TRUE)
+}
+
+summarise_event_membership <- function(membership) {
+  assert_columns(membership,
+                 c("sampling_event_identifier", "event_id", "window_id"),
+                 "event membership")
+  membership[, .(
+    event_count = data.table::uniqueN(event_id),
+    event_ids = paste(sort(unique(event_id)), collapse = "|")
+  ), by = c("sampling_event_identifier", "window_id")]
 }

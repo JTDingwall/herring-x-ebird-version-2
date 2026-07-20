@@ -4,8 +4,8 @@ Configure source paths through `.Renviron`. Do not copy restricted eBird data in
 
 Expected inputs:
 
-- eBird Basic Dataset, British Columbia, `EBD_relMay-2026`;
+- the configured British Columbia eBird Basic Dataset release;
 - matching Sampling Event Data;
-- DFO `Pacific_herring_spawn_index_data_2025_EN.csv`;
+- the configured DFO herring spawn-index release;
 - DFO herring section shapefile;
 - BC Freshwater Atlas coastline shapefile.

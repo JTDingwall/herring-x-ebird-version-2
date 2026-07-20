@@ -1,26 +1,26 @@
 periods:
-  - id: core_2015_2025
-    years: [2015, 2025]
-  - id: expanded_2012_2025
-    years: [2012, 2025]
+  - id: full_1988_2025
+    years: [1988, 2025]
+  - id: expanded_2000_2025
+    years: [2000, 2025]
   - id: expanded_2010_2025
     years: [2010, 2025]
-  - id: historical_1988_2025
-    years: [1988, 2025]
+  - id: recent_2015_2025
+    years: [2015, 2025]
 
 spatial:
   rings:
-    - [0, 1]
+    - [0, 0.5]
+    - [0.5, 1]
     - [1, 2]
     - [2, 3]
     - [3, 4]
     - [4, 5]
     - [5, 10]
-    - [10, 25]
-    - [25, 50]
-  cumulative_buffers_km: [1, 2, 3, 4, 5, 10, 25, 50]
+    - [10, 20]
+  cumulative_buffers_km: [0.5, 1, 2, 3, 4, 5, 10, 20]
   kernels_km: [0.5, 1, 2, 3, 5, 10]
-  contamination_radii_km: [5, 10, 25]
+  contamination_radii_km: [5, 10, 20]
 
 calendar:
   event_day_range: [-60, 90]

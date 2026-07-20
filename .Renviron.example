@@ -1,6 +1,8 @@
-# Point these variables to protected local files. Do not commit .Renviron.
-HERRING_EBIRD_V2_EBD=/absolute/path/to/ebd_CA-BC_smp_relMay-2026.txt
-HERRING_EBIRD_V2_SED=/absolute/path/to/ebd_CA-BC_smp_relMay-2026_sampling.txt
-HERRING_EBIRD_V2_HERRING=/absolute/path/to/Pacific_herring_spawn_index_data_2025_EN.csv
-HERRING_EBIRD_V2_SHORELINE=/absolute/path/to/FWCSTLNSSP_line.shp
-HERRING_EBIRD_V2_SECTIONS=/absolute/path/to/SectionsIntegrated.shp
+# Copy this file to .Renviron and replace each placeholder with an authorized
+# local path. Never commit .Renviron or the protected inputs.
+HERRING_EBIRD_V2_EBD=<protected-ebd-path>
+HERRING_EBIRD_V2_SED=<protected-sed-path>
+HERRING_EBIRD_V2_HERRING=<protected-herring-csv-path>
+HERRING_EBIRD_V2_SHORELINE=<protected-shoreline-shp-path>
+HERRING_EBIRD_V2_SECTIONS=<protected-sections-shp-path>
+VERIFY_INPUT_SHA256=false

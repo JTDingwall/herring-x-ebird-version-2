@@ -1,9 +1,13 @@
 Package: herringxebirdv2
-Type: Project
+Type: Package
 Title: Herring x eBird Version 2
 Version: 0.1.0
 Authors@R: person("Jacob", "Dingwall", role = c("aut", "cre"), email = "dingwalljake@gmail.com")
-Description: Reproducible multi-model analysis of Pacific herring spawn and nearshore bird responses using eBird complete checklists and DFO spawn records.
+Author: Jacob Dingwall [aut, cre]
+Maintainer: Jacob Dingwall <dingwalljake@gmail.com>
+Description: Outcome-blind, reproducible infrastructure for a multi-model analysis
+    of Pacific herring spawn and nearshore bird responses using eBird complete
+    checklists and DFO spawn records. Restricted row-level data are never bundled.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -11,34 +15,11 @@ Imports:
     data.table,
     digest,
     jsonlite,
+    sf,
     targets,
+    testthat (>= 3.0.0),
     yaml
 Suggests:
-    auk,
-    arrow,
-    brms,
-    cmdstanr,
-    cobalt,
-    DHARMa,
-    duckdb,
-    future,
-    furrr,
-    gllvm,
-    glmmTMB,
-    loo,
-    lubridate,
-    MatchIt,
-    mgcv,
-    posterior,
-    qgam,
     renv,
-    rsample,
-    scam,
-    sf,
-    suncalc,
-    tarchetypes,
-    testthat,
-    tweedie,
-    vegan,
-    WeightIt,
-    yardstick
+    withr
+Config/testthat/edition: 3
