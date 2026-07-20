@@ -58,6 +58,8 @@ audit_ebd_sed_keys <- function(ebd, sed, ebd_key = "sampling_event_identifier",
     ebd_unique_keys = length(eu), sed_unique_keys = length(su),
     ebd_keys_unmatched_to_sed = sum(!eu %in% su),
     sed_keys_without_ebd = sum(!su %in% eu),
+    sed_only_zero_fill_eligible = FALSE,
+    sed_only_treatment = "structurally_unknown_excluded_from_primary_zero_fill",
     status = if (all(eu %in% su)) "PASS" else "FAIL"
   )
 }
@@ -84,7 +86,8 @@ resolve_shared_checklists <- function(sed,
     conflicts <- comparison_fields[vapply(comparison_fields, function(f) {
       length(unique(ifelse(is.na(sed[[f]][idx]), "<NA>", as.character(sed[[f]][idx])))) > 1L
     }, logical(1L))]
-    data.table::data.table(group_member_count = length(idx),
+    data.table::data.table(analysis_checklist_id = id,
+      group_member_count = length(idx),
       has_effort_disagreement = length(conflicts) > 0L,
       disagreement_fields = paste(conflicts, collapse = ";"))
   }))
@@ -97,10 +100,25 @@ resolve_shared_checklists <- function(sed,
   if (nrow(crosswalk) != nrow(sed) || any(table(crosswalk$analysis_checklist_id, keep)[, "TRUE"] != 1L)) {
     stop("SHARED_CHECKLIST_QA: nondeterministic collapse", call. = FALSE)
   }
-  list(canonical_rows = sed[keep, , drop = FALSE], private_crosswalk = crosswalk,
+  canonical_rows <- sed[keep, , drop = FALSE]
+  canonical_rows$analysis_checklist_id <- analysis_id[keep]
+  canonical_rows <- merge(canonical_rows, audit, by = "analysis_checklist_id", all.x = TRUE, sort = FALSE)
+  canonical_rows$observer_effect_treatment <- ifelse(
+    canonical_rows$group_member_count > 1L,
+    "shared_group_composite_cluster",
+    "single_observer_cluster"
+  )
+  primary_rows <- canonical_rows[!canonical_rows$has_effort_disagreement, , drop = FALSE]
+  list(canonical_rows = canonical_rows,
+       primary_rows = primary_rows,
+       disagreement_rows = canonical_rows[canonical_rows$has_effort_disagreement, , drop = FALSE],
+       private_crosswalk = crosswalk,
        aggregate_audit = audit[, .(analysis_checklists = .N,
          shared_analysis_checklists = sum(group_member_count > 1L),
-         disagreement_groups = sum(has_effort_disagreement))])
+         disagreement_groups = sum(has_effort_disagreement),
+         primary_analysis_checklists = sum(!has_effort_disagreement),
+         observer_effect_rule = "shared_group_composite_cluster_not_first_source_row",
+         disagreement_primary_rule = "exclude_from_primary_registered_sensitivity")])
 }
 
 parse_ebird_count_state <- function(x, ambiguous = FALSE) {
@@ -121,13 +139,24 @@ parse_ebird_count_state <- function(x, ambiguous = FALSE) {
   )
 }
 
-zero_fill_taxa <- function(checklists, detections, taxa) {
+zero_fill_taxa <- function(checklists, detections, taxa,
+                           eligibility_column = "zero_fill_eligible") {
   assert_columns(checklists, "analysis_checklist_id", "eligible checklists")
   assert_columns(detections, c("analysis_checklist_id", "analysis_taxon_id", "detection",
                                "numeric_count", "lower_bound_count", "count_type", "ambiguity_flag"), "detections")
   assert_unique_key(checklists, "analysis_checklist_id", "eligible checklists")
   assert_unique_key(detections, c("analysis_checklist_id", "analysis_taxon_id"), "detections")
-  grid <- data.table::CJ(analysis_checklist_id = as.character(checklists$analysis_checklist_id),
+  if (eligibility_column %in% names(checklists)) {
+    eligible <- !is.na(checklists[[eligibility_column]]) & as.logical(checklists[[eligibility_column]])
+  } else {
+    eligible <- rep(TRUE, nrow(checklists))
+  }
+  eligible_ids <- as.character(checklists$analysis_checklist_id[eligible])
+  if (any(as.character(checklists$analysis_checklist_id[!eligible]) %in% eligible_ids)) {
+    stop("ZERO_FILL_ELIGIBILITY: excluded checklist leaked into eligible set", call. = FALSE)
+  }
+  detections <- data.table::as.data.table(detections)[analysis_checklist_id %in% eligible_ids]
+  grid <- data.table::CJ(analysis_checklist_id = eligible_ids,
                          analysis_taxon_id = as.character(taxa), unique = TRUE)
   out <- merge(grid, detections, by = c("analysis_checklist_id", "analysis_taxon_id"),
                all.x = TRUE, sort = FALSE)

@@ -21,6 +21,11 @@ test_that("shared checklists collapse once and retain disagreement audit", {
                     duration_minutes = c(10, 20, 30))
   got <- resolve_shared_checklists(sed)
   expect_equal(nrow(got$canonical_rows), 2L)
+  expect_equal(nrow(got$primary_rows), 1L)
+  expect_identical(got$canonical_rows[analysis_checklist_id == "group_1", observer_effect_treatment],
+                   "shared_group_composite_cluster")
+  expect_true(got$canonical_rows[analysis_checklist_id == "group_1", has_effort_disagreement])
+  expect_false("group_1" %in% got$primary_rows$analysis_checklist_id)
   expect_equal(sum(got$private_crosswalk$canonical_effort_row), 2L)
   expect_equal(got$aggregate_audit$disagreement_groups, 1L)
 })
@@ -34,13 +39,16 @@ test_that("numeric X lower-bound ambiguity and missing remain distinct", {
 })
 
 test_that("zero filling changes only absent eligible taxa", {
-  checklists <- data.table(analysis_checklist_id = c("fixture_a", "fixture_b"))
-  det <- data.table(analysis_checklist_id = "fixture_a", analysis_taxon_id = "taxon_a",
+  checklists <- data.table(analysis_checklist_id = c("fixture_a", "fixture_b", "fixture_sed_only"),
+                           zero_fill_eligible = c(TRUE, TRUE, FALSE))
+  det <- data.table(analysis_checklist_id = c("fixture_a", "fixture_sed_only"),
+                    analysis_taxon_id = c("taxon_a", "taxon_a"),
                     detection = 1L, numeric_count = NA_real_, lower_bound_count = NA_real_,
                     count_type = "X", ambiguity_flag = FALSE)
   got <- zero_fill_taxa(checklists, det, c("taxon_a", "taxon_b"))
   expect_identical(got[analysis_checklist_id == "fixture_a" & analysis_taxon_id == "taxon_a", count_type], "X")
   expect_equal(got[count_type == "zero_filled", .N], 3L)
+  expect_false("fixture_sed_only" %in% got$analysis_checklist_id)
 })
 
 test_that("guild ambiguity changes only defensible upper bounds", {

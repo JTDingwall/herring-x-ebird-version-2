@@ -1,0 +1,121 @@
+amendment_version: stage2_scientific_gate_amendment_v1
+amended_at_utc: 2026-07-20 14:56:07 UTC
+authority: human_scientific_review
+human_decision_on_parent_lock: REVISION_REQUIRED
+correction_history:
+- corrected_at_utc: 2026-07-20 15:11:44 UTC
+  correction_type: implementation_only_yaml_syntax_and_integer_string
+  design_content_changed: false
+  support_patterns_consulted: false
+  prior_sha256: 2acba6febf5c5c3b62d043eecfcef385a1ecdb17196ae2412e90bd07ef1a7c12
+parent_commit: f625bdacad802f9e36c41a7b642646690d8de8cd
+parent_candidate_grid:
+  version: stage2_v1
+  frozen_at_utc: 2026-07-20 05:27:38 UTC
+  canonical_lf_sha256: 8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81
+  original_windows_crlf_sha256: f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91
+  line_ending_correction_at_utc: 2026-07-20 07:50:13 UTC
+  preserved_unchanged: true
+response_boundary:
+  registered_response_models_may_be_fit: false
+  exposure_specific_bird_summaries_may_be_computed: false
+  response_direction_diagnostics_may_be_computed: false
+ebd_sed_membership:
+  audit_both_directions: true
+  sed_only_keys_primary_zero_fill_eligible: false
+  sed_only_interpretation: structurally_unknown_not_an_observed_zero
+  sensitivity_role: explicit_non_zero_filled_eligibility_sensitivity
+  tested_invariant: no_sed_only_key_enters_primary_zero_filled_analysis
+shoreline_geometry:
+  official_edge_type_meanings:
+    100: coastline
+    150: construction_line_coastline
+  candidate_primary_edge_type: 100
+  edge_type_150_role: separate_sensitivity_after_local_visual_validation
+  candidate_primary_snap_limit_m: 2000
+  core_geometry_eligibility: tier_A_or_B_and_snap_at_most_2km_and_edge_type_100
+  exclude_from_shoreline_linked_core:
+  - tier_C
+  - snap_over_2km
+  - missing_or_invalid_point
+  require_actual_alongshore_geometry: true
+  require_common_eligible_event_comparison: true
+  fail_if_bundle_extent_is_incomplete_for_intended_core_regions: true
+event_complexes:
+  safe_primary: source_record
+  provisional_candidate: complex_2km_7d
+  deterministic_anti_chaining:
+    maximum_temporal_span_days: 21
+    maximum_spatial_bbox_diameter_km: 25
+    deterministic_order: event_date_then_source_record_hash
+    never_cross_region: true
+  review_packet_includes_every_flagged_complex: true
+  review_flags:
+  - temporal_span_over_21_days
+  - spatial_span_over_25km
+  - crosses_statistical_area
+  - crosses_section
+  - mixed_method
+  - reversed_date
+  - uncertain_date
+region_period_support:
+  candidate_start_years: [2005, 2010, 2015]
+  selection_uses_bird_responses: false
+  assess_each_region_year: true
+  sustained_year_thresholds:
+    minimum_standardized_linked_checklists: 20
+    minimum_represented_source_events: 3
+    minimum_primary_period_one_checklists: 5
+    minimum_primary_period_two_checklists: 5
+    minimum_near_ring_checklists: 5
+    minimum_reference_ring_checklists: 5
+    minimum_events_with_both_primary_periods: 2
+    minimum_passing_year_share: 0.8
+    maximum_consecutive_failing_years_after_start: 2
+  a27_a2w_default_role: descriptive_or_hierarchical_only
+protocol_effort:
+  candidate_primary:
+    protocols: [Stationary, Traveling]
+    complete_checklist: true
+    duration_minutes: [5, 300]
+    traveling_distance_km_max: 5
+    observers: [1, 10]
+  broad_sensitivity:
+    protocols: [Stationary, Traveling]
+    complete_checklist: true
+    duration_minutes: [1, 360]
+    traveling_distance_km_max: 10
+    observers: [1, 20]
+  complete_area_role: separate
+shared_checklists:
+  primary_effort_rule: exclude_groups_with_effort_disagreement
+  observer_effect_rule: use_shared_group_composite_cluster_not_first_source_row
+  agreement_groups: use_consensus_effort_values
+  disagreement_sensitivity:
+    role: registered_separate_sensitivity
+    effort_representation: fieldwise_ranges_and_missing_when_no_consensus
+    observer_representation: shared_group_composite_cluster
+  preserve_response_states: [detection, numeric, lower_bound, X, ambiguity]
+registry:
+  latent_primary_alternatives: [M21, M35]
+  latent_pilot_selection_group: community_latent_primary_choice
+  independent_evidence_objects_contributed: 1
+  specificity_falsification_panel: [Gadwall, Northern Shoveler]
+  panel_interpretation: specificity_and_falsification_not_guaranteed_biological_nonresponders
+  detection_first_latent_selection_preserved: true
+prospective_integrity:
+  development_response_end_year: 2025
+  focal_extraction_must_filter_date_before_selecting_or_persisting_response_fields: true
+  prior_mechanical_scan_disclosure_required: true
+  allowed_claim: no_2026_plus_response_was_summarized_viewed_for_direction_or_used_in_model_or_design_selection
+  confirmation_horizon: complete_2026_through_2028_releases
+  primary_evaluation_occurs_once: true
+  stopping_or_interim_response_looks: none
+  evidence_thresholds_frozen_in_confirmation_spec: true
+bookkeeping:
+  github_actions_parent_successful_run: 10
+  github_actions_parent_run_id: "29726150633"
+  run_9_reference_is_superseded_as_incorrect: true
+  repaired_gate_before_validation: REVISION_REQUIRED
+  passing_gate_after_all_repairs: PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL
+  geometry_failure_gate: STOP_DESIGN_IDENTIFICATION_FAILURE

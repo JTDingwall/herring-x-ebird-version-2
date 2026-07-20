@@ -103,3 +103,49 @@ event_complex_components <- function(candidate_pairs) {
   groups <- match(roots, unique(roots))
   data.table::data.table(event_id = ids, event_complex_id = sprintf("complex_%05d", groups))
 }
+
+anti_chain_event_complexes <- function(events, maximum_temporal_span_days = 21,
+                                       maximum_spatial_bbox_diameter_km = 25) {
+  required <- c("original_complex_id", "source_record_id", "event_date", "x_m", "y_m", "region")
+  assert_columns(events, required, "event-complex anti-chaining input")
+  x <- data.table::copy(data.table::as.data.table(events))
+  if (anyDuplicated(x$source_record_id)) {
+    stop("EVENT_COMPLEX_ANTI_CHAIN: source records must be unique", call. = FALSE)
+  }
+  data.table::setorder(x, original_complex_id, event_date, source_record_id, na.last = TRUE)
+  assigned <- integer(nrow(x))
+  for (original in unique(x$original_complex_id)) {
+    rows <- which(x$original_complex_id == original)
+    clusters <- list()
+    for (row in rows) {
+      selected <- NA_integer_
+      for (cluster_index in seq_along(clusters)) {
+        candidate <- c(clusters[[cluster_index]], row)
+        dates <- as.Date(x$event_date[candidate])
+        temporal_span <- if (anyNA(dates)) Inf else as.numeric(max(dates) - min(dates))
+        xx <- x$x_m[candidate]; yy <- x$y_m[candidate]
+        spatial_span <- if (any(!is.finite(xx)) || any(!is.finite(yy))) Inf else
+          sqrt(diff(range(xx))^2 + diff(range(yy))^2) / 1000
+        same_region <- data.table::uniqueN(x$region[candidate], na.rm = FALSE) == 1L
+        if (same_region && temporal_span <= maximum_temporal_span_days &&
+            spatial_span <= maximum_spatial_bbox_diameter_km) {
+          selected <- cluster_index
+          break
+        }
+      }
+      if (is.na(selected)) {
+        clusters[[length(clusters) + 1L]] <- row
+        selected <- length(clusters)
+      } else {
+        clusters[[selected]] <- c(clusters[[selected]], row)
+      }
+      assigned[row] <- selected
+    }
+  }
+  x[, anti_chain_sequence := assigned]
+  x[, anti_chain_complex_id := paste0(
+    "ac2_", substr(vapply(paste(original_complex_id, anti_chain_sequence, sep = "|"),
+      digest::digest, character(1L), algo = "sha256", serialize = FALSE), 1L, 16L)
+  )]
+  x[, .(source_record_id, original_complex_id, anti_chain_complex_id, anti_chain_sequence)]
+}

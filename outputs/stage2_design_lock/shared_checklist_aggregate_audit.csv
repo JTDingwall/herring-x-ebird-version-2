@@ -1,2 +1,2 @@
-"source_rows","analysis_checklists","shared_analysis_checklists","disagreement_groups","support_label"
-2733598,2411589,239808,6655,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"source_rows","analysis_checklists","shared_analysis_checklists","disagreement_groups","disagreement_groups_with_ebd","wholly_sed_only_analysis_groups","wholly_sed_only_disagreement_groups","primary_analysis_checklists","observer_effect_rule","disagreement_primary_rule","disagreement_sensitivity","support_label"
+2961400,2612815,258780,6938,6903,16007,35,2589905,"shared_group_composite_cluster_not_first_source_row","exclude_from_primary_registered_sensitivity","fieldwise_ranges_and_missing_when_no_consensus","SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"

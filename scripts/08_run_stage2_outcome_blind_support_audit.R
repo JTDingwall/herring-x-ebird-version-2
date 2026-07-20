@@ -336,7 +336,7 @@ write_csv(geometry_crosswalk, "event_geometry_crosswalk.csv")
 }
 
 message("Stage 2: reading checklist metadata and constructing source-point support links")
-sed_cache <- file.path(private_dir, "sed_stage2_cache.rds")
+sed_cache <- file.path(private_dir, "sed_stage2_cache_amendment_v1.rds")
 if (file.exists(sed_cache)) {
   sed_cached <- readRDS(sed_cache)
   checklists <- sed_cached$checklists
@@ -356,14 +356,22 @@ sed[, analysis_id := fifelse(!is.na(group_id) & nzchar(trimws(group_id)), group_
 setorder(sed, analysis_id, source_id)
 sed[, canonical_source_id := source_id[1L], by = analysis_id]
 cross_private <- sed[, .(source_id, analysis_id, canonical_source_id)]
+comparison_fields <- c("date", "latitude", "longitude", "protocol", "duration_min", "distance_km", "n_observers", "complete")
+group_status <- sed[, {
+  conflicts <- comparison_fields[vapply(.SD, function(v) uniqueN(ifelse(is.na(v), "<NA>", as.character(v))) > 1L, logical(1L))]
+  .(group_members = .N, effort_disagreement = length(conflicts) > 0L,
+    disagreement_fields = paste(conflicts, collapse = ";"))
+}, by = analysis_id, .SDcols = comparison_fields]
 checklists <- sed[, .SD[1L], by = analysis_id]
+checklists <- group_status[checklists, on = "analysis_id"]
+checklists[, observer_effect_id := fifelse(group_members > 1L, analysis_id, observer_id)]
+checklists[, observer_effect_treatment := fifelse(group_members > 1L, "shared_group_composite_cluster", "single_observer_cluster")]
 if (anyDuplicated(checklists$analysis_id)) stop("Shared-checklist collapse failed", call. = FALSE)
-shared_audit <- sed[, .(
-  group_members = .N,
-  effort_disagreement = uniqueN(paste(date, latitude, longitude, protocol, duration_min, distance_km, n_observers, complete, sep = "|")) > 1L
-), by = analysis_id][, .(
+shared_audit <- group_status[, .(
   source_rows = nrow(sed), analysis_checklists = .N, shared_analysis_checklists = sum(group_members > 1L),
-  disagreement_groups = sum(effort_disagreement)
+  disagreement_groups = sum(effort_disagreement), primary_analysis_checklists = sum(!effort_disagreement),
+  observer_effect_rule = "shared_group_composite_cluster_not_first_source_row",
+  disagreement_primary_rule = "exclude_from_primary_registered_sensitivity"
 )]
 write_csv(shared_audit, "shared_checklist_aggregate_audit.csv")
 
@@ -386,8 +394,9 @@ if (!exists("sed_cols")) sed_cols <- c("SAMPLING EVENT IDENTIFIER", "LOCALITY ID
               "TIME OBSERVATIONS STARTED", "OBSERVER ID", "PROTOCOL NAME", "PROTOCOL CODE", "DURATION MINUTES",
               "EFFORT DISTANCE KM", "EFFORT AREA HA", "NUMBER OBSERVERS", "ALL SPECIES REPORTED", "GROUP IDENTIFIER")
 
-base_idx <- which(checklists$broad_eligible & is.finite(checklists$longitude) & is.finite(checklists$latitude))
-links_cache <- file.path(private_dir, "source_point_links.rds")
+base_idx <- which(checklists$standardized_eligible & !checklists$effort_disagreement &
+                    is.finite(checklists$longitude) & is.finite(checklists$latitude))
+links_cache <- file.path(private_dir, "source_point_links_amendment_v1.rds")
 if (file.exists(links_cache)) {
   links <- readRDS(links_cache)
 } else {
@@ -439,21 +448,29 @@ if (file.exists(ebd_cache)) {
   tax_recon <- focal_cached$tax_recon
 } else {
 pattern_file <- file.path(private_dir, "focal_patterns.txt")
-focal_file <- file.path(private_dir, "focal_ebd_rows.tsv")
+focal_file <- file.path(private_dir, "focal_ebd_rows_pre2026.tsv")
 patterns <- unique(c(na.omit(registry$source_taxon_concept_ids[registry$source_taxon_concept_ids != "pending"]), registry$common_name))
 writeLines(patterns, pattern_file, useBytes = TRUE)
 if (!file.exists(focal_file) || file.info(focal_file)$size == 0) {
-  pattern_arg <- shQuote(normalizePath(pattern_file, winslash = "/"))
-  ebd_arg <- shQuote(normalizePath(paths[["ebd"]], winslash = "/"))
-  status <- system2("rg", c("--fixed-strings", "--no-line-number", "--no-filename", "--file", pattern_arg, ebd_arg),
-                    stdout = focal_file, stderr = file.path(private_dir, "focal_extract_stderr.log"))
+  status <- system2("powershell", c(
+    "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "scripts/run_ebd_streaming_tool.ps1",
+    "-Mode", "focal", "-EbdEnv", env_names[["ebd"]],
+    "-Patterns", shQuote(pattern_file), "-Output", shQuote(focal_file)
+  ), stdout = file.path(private_dir, "focal_extract_stdout.log"),
+     stderr = file.path(private_dir, "focal_extract_stderr.log"))
   if (!identical(status, 0L) || !file.exists(focal_file) || file.info(focal_file)$size == 0) {
     stop("Focal EBD streaming extraction failed", call. = FALSE)
   }
 }
-ebd_select <- c(4L, 5L, 6L, 7L, 11L, 14L, 35L)
-ebd <- fread(focal_file, sep = "\t", header = FALSE, select = ebd_select, quote = "", na.strings = c("", "NA"), showProgress = TRUE)
-setnames(ebd, c("category", "taxon_concept_id", "common_name", "scientific_name", "observation_count", "behavior_code", "source_id"))
+ebd_names <- c("CATEGORY", "TAXON CONCEPT ID", "COMMON NAME", "SCIENTIFIC NAME", "OBSERVATION COUNT",
+               "BEHAVIOR CODE", "SAMPLING EVENT IDENTIFIER", "OBSERVATION DATE")
+ebd <- fread(focal_file, sep = "\t", header = TRUE, select = ebd_names, quote = "", na.strings = c("", "NA"), showProgress = TRUE)
+setnames(ebd, ebd_names, c("category", "taxon_concept_id", "common_name", "scientific_name", "observation_count",
+                           "behavior_code", "source_id", "observation_date"))
+ebd[, observation_date := as.IDate(observation_date)]
+if (any(ebd$observation_date > as.IDate("2025-12-31"), na.rm = TRUE)) {
+  stop("Prospective response row persisted by focal extraction", call. = FALSE)
+}
 ebd <- ebd[category == "species" & (taxon_concept_id %chin% registry$source_taxon_concept_ids | common_name %chin% registry$common_name)]
 ebd <- ebd[cross_private, on = "source_id", nomatch = 0L]
 if (!nrow(ebd)) stop("No registered focal EBD support joined to SED", call. = FALSE)
@@ -518,7 +535,7 @@ support_for <- function(ids, link_subset, dimension = "pooled", candidate_id = "
       X_reports = uniqueN(analysis_id[count_state == "X"]),
       lower_bound_reports = uniqueN(analysis_id[count_state == "lower_bound"]),
       ambiguity_affected_reports = uniqueN(analysis_id[count_state == "ambiguity_affected"]),
-      years = uniqueN(checklist_year), locations = uniqueN(locality_id), observers = uniqueN(observer_id),
+      years = uniqueN(checklist_year), locations = uniqueN(locality_id), observers = uniqueN(observer_effect_id),
       positive_count_q50 = qint(numeric_count[count_state == "numeric" & numeric_count > 0], .5),
       positive_count_q90 = qint(numeric_count[count_state == "numeric" & numeric_count > 0], .9),
       positive_count_q99 = qint(numeric_count[count_state == "numeric" & numeric_count > 0], .99)
@@ -530,7 +547,7 @@ support_for <- function(ids, link_subset, dimension = "pooled", candidate_id = "
       maximum_event_share = max(table(source_record_id)) / uniqueN(analysis_id)
     ), by = analysis_taxon_id]
     out <- merge(out, extra, by = "analysis_taxon_id", all.x = TRUE)
-    obs_share <- d[, .N, by = .(analysis_taxon_id, observer_id)][, .(maximum_observer_share = max(N) / sum(N)), by = analysis_taxon_id]
+    obs_share <- d[, .N, by = .(analysis_taxon_id, observer_effect_id)][, .(maximum_observer_share = max(N) / sum(N)), by = analysis_taxon_id]
     loc_share <- d[, .N, by = .(analysis_taxon_id, locality_id)][, .(maximum_location_share = max(N) / sum(N)), by = analysis_taxon_id]
     out <- Reduce(function(x, y) merge(x, y, by = "analysis_taxon_id", all.x = TRUE), list(out, obs_share, loc_share))
   } else out <- data.table(analysis_taxon_id = character())
@@ -595,7 +612,7 @@ for (ii in seq_len(nrow(grid))) {
     if (pars$region != "ALL_BC_HIERARCHICAL") lsub <- lsub[event_region == pars$region]
     ids <- unique(lsub$analysis_id)
   } else if (dimn == "protocol_effort") {
-    ids <- if (cid == "broad_primary") base_ids else if (cid == "standardized_sensitivity") intersect(base_ids, checklists[standardized_eligible == TRUE, analysis_id]) else intersect(base_ids, checklists[area_eligible == TRUE, analysis_id])
+    ids <- if (cid == "broad_primary") intersect(unique(links$analysis_id), checklists[broad_eligible == TRUE & effort_disagreement == FALSE, analysis_id]) else if (cid == "standardized_sensitivity") base_ids else intersect(unique(links$analysis_id), checklists[area_eligible == TRUE & effort_disagreement == FALSE, analysis_id])
     lsub <- base_links[analysis_id %chin% ids]
   } else if (dimn == "event_date_representation") {
     if (cid == "event_date_start") lsub <- links[event_day_start >= -60L & event_day_start <= 90L]
@@ -611,11 +628,11 @@ message("Stage 2: producing response-free region, period, protocol, and effort s
 link_meta <- unique(base_links[, .(analysis_id, source_record_id, event_complex_2km_7d, event_region, event_year, event_day_midpoint, distance_km)])
 link_meta <- checklists[link_meta, on = "analysis_id", nomatch = 0L]
 region_effort <- link_meta[, .(
-  complete_checklists = uniqueN(analysis_id), unique_observers = uniqueN(observer_id), unique_localities = uniqueN(locality_id),
+  complete_checklists = uniqueN(analysis_id), unique_observers = uniqueN(observer_effect_id), unique_localities = uniqueN(locality_id),
   source_events = uniqueN(source_record_id), event_complexes = uniqueN(event_complex_2km_7d),
   duration_q50 = qint(duration_min, .5), duration_q90 = qint(duration_min, .9),
   travel_distance_q50 = qint(distance_km, .5), travel_distance_q90 = qint(distance_km, .9),
-  maximum_observer_checklist_share = max(table(observer_id)) / uniqueN(analysis_id),
+  maximum_observer_checklist_share = max(table(observer_effect_id)) / uniqueN(analysis_id),
   maximum_locality_checklist_share = max(table(locality_id)) / uniqueN(analysis_id),
   repeat_localities = uniqueN(locality_id[duplicated(locality_id) | duplicated(locality_id, fromLast = TRUE)]),
   shoreline_link_support = TRUE
@@ -649,8 +666,8 @@ region_period_candidates[, recommendation := fifelse(
 write_csv(region_period_candidates, "region_period_recommendations.csv")
 
 period_obs <- unique(link_meta[event_day_midpoint >= -28L & event_day_midpoint <= 28L,
-                               .(observer_id, period = fifelse(event_day_midpoint < 0, "period_one", "period_two"))])
-same_observer <- period_obs[, .(periods = uniqueN(period)), by = observer_id][, .(same_observer_cross_period_support = sum(periods == 2L))]
+                               .(observer_effect_id, period = fifelse(event_day_midpoint < 0, "period_one", "period_two"))])
+same_observer <- period_obs[, .(periods = uniqueN(period)), by = observer_effect_id][, .(same_observer_cross_period_support = sum(periods == 2L))]
 write_csv(same_observer, "same_observer_cross_period_support.csv")
 
 message("Stage 2: computing pooled pairwise co-occurrence support without exposure contrasts")
@@ -807,27 +824,20 @@ prohibited_rows <- data.table(
 access_audit <- rbindlist(list(access_rows, prohibited_rows), fill = TRUE)
 write_csv(access_audit, "response_column_access_audit.csv")
 
-prospective <- list(
-  specification_version = "stage2_prospective_v1",
-  development_outcome_end_year = 2025,
-  holdout_start_year = 2026,
-  current_release_complete = FALSE,
-  access_state = "FROZEN_NOT_USED_FOR_MODEL_DEVELOPMENT",
-  prerequisites = c("complete_or_explicitly_frozen_ebird_release", "finalized_or_versioned_herring_records",
-                    "unchanged_model_code", "unchanged_species_and_guild_definitions", "unchanged_geometry_windows_distance_and_decision_thresholds"),
-  refitting_or_selection_before_primary_evaluation = FALSE,
-  current_analyses = "exploratory_estimand_refining",
-  external_region_rule = "identify and freeze an eligible region before accessing its response direction"
-)
-write_yaml(prospective, "metadata/prospective_confirmation_spec.yml")
+prospective_path <- "metadata/prospective_confirmation_spec.yml"
+prospective_hash_path <- "metadata/prospective_confirmation_spec.sha256"
+if (!file.exists(prospective_path) || !file.exists(prospective_hash_path)) {
+  stop("PROSPECTIVE_FREEZE: signed amended confirmation specification is missing", call. = FALSE)
+}
 prospective_hash <- digest("metadata/prospective_confirmation_spec.yml", algo = "sha256", file = TRUE, serialize = FALSE)
-writeLines(c(paste(prospective_hash, " metadata/prospective_confirmation_spec.yml"),
-             paste0("# frozen_at_utc: ", format(Sys.time(), tz = "UTC", usetz = TRUE))),
-           "metadata/prospective_confirmation_spec.sha256", useBytes = TRUE)
+recorded_prospective_hash <- strsplit(readLines(prospective_hash_path, warn = FALSE)[1L], "[[:space:]]+")[[1L]][1L]
+if (!identical(prospective_hash, recorded_prospective_hash)) {
+  stop("PROSPECTIVE_FREEZE: signed amended confirmation specification hash mismatch", call. = FALSE)
+}
 
 stage_gate <- list(
   stage = "stage2_outcome_blind_design_lock",
-  classification = "PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL",
+  classification = "REVISION_REQUIRED_RUN_SCRIPT_10_REPAIR_GATE",
   candidate_grid_sha256 = actual_hash,
   candidate_grid_prior_windows_crlf_sha256 = rules$design_freeze$correction_history[[1L]]$prior_sha256,
   candidate_grid_correction_type = rules$design_freeze$correction_history[[1L]]$correction_type,
@@ -840,7 +850,7 @@ stage_gate <- list(
   raw_or_record_level_ebird_rows_released = FALSE,
   comments_read = FALSE,
   requires_human_scientific_approval = TRUE,
-  validation_status = "PENDING_TEST_AND_PRIVACY_SCAN"
+  validation_status = "BASE_SUPPORT_AUDIT_COMPLETE_REPAIR_GATE_REQUIRED"
 )
 write_json(stage_gate, file.path(out_dir, "stage_gate.json"), pretty = TRUE, auto_unbox = TRUE)
 

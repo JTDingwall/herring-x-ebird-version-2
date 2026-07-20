@@ -4,3 +4,6 @@
 "collapsed checklist-taxon outcome","unique composite key",TRUE,"PASS",TRUE,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
 "checklist to concurrent herring event","many-to-many exposure crosswalk; checklist remains analysis unit",TRUE,"PASS",TRUE,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
 "species to primary guild","many-to-one",TRUE,"PASS",TRUE,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"SED keys to EBD membership","many SED keys assessed once; unmatched are structural unknowns",TRUE,"PASS",TRUE,
+"SED source rows to shared analysis groups","many-to-one",TRUE,"PASS",TRUE,
+"original 2km/7d complex to anti-chain complex","many-to-one",TRUE,"PASS",TRUE,

@@ -22,3 +22,13 @@ test_that("CRS transformation uses metre units", {
   expect_silent(assert_metric_crs(y))
   expect_error(assert_metric_crs(x), "projected CRS")
 })
+
+test_that("alongshore segments are actual requested-length line substrings", {
+  shoreline <- rbind(c(0, 0), c(100, 0), c(100, 100))
+  got <- construct_alongshore_segment(shoreline, c(90, 5), 80)
+  expect_identical(got$status, "constructed")
+  expect_equal(got$constructed_length_m, 80, tolerance = 1e-8)
+  expect_true(nrow(got$coordinates) >= 2L)
+  too_long <- construct_alongshore_segment(shoreline, c(90, 5), 250)
+  expect_identical(too_long$status, "shoreline_feature_shorter_than_requested_length")
+})

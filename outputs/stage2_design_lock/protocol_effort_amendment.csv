@@ -1,0 +1,4 @@
+"definition","protocols","duration_minutes","traveling_distance_km_max","observers","candidate_role","disagreement_groups_in_primary","support_label"
+"standardized_primary","Stationary|Traveling","5-300","5","1-10","candidate_primary",FALSE,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"broad_sensitivity","Stationary|Traveling","1-360","10","1-20","broad_sensitivity",FALSE,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"complete_area_separate","Complete Area","separate_registered_rule","not_pooled","separate_registered_rule","separate_analysis",FALSE,"SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
