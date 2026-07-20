@@ -13,8 +13,8 @@ and reduced spatial allocation to simultaneous farther shorelines.
 ## First command sequence
 
 1. Run `scripts/00_setup.R`.
-2. Run `scripts/01_audit_inputs.R` in fast mode.
-3. Run it again with `VERIFY_INPUT_SHA256=true` before any derived data are trusted.
+2. Run `scripts/01_validate_input_metadata.R` with checksum mode off for a fast header/size audit.
+3. Run it again with `HERRING_EBIRD_V2_VERIFY_INPUT_SHA256=true` before any derived data are trusted.
 4. Run `scripts/02_validate_registries.R` and the tests.
 5. Stop and report all metadata discrepancies before writing processing/model code.
 

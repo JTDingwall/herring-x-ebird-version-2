@@ -1,0 +1,11 @@
+{
+  "source_repository": "JTDingwall/ebird_herring_analysis",
+  "source_branch_resolved": "main",
+  "source_commit_sha": "f3387d58f6d55a070b86f41ef41e11512dcf7688",
+  "source_commit_date": "2026-07-19T16:29:36-07:00",
+  "source_commit_subject": "Merge pull request #6 from JTDingwall/fix/prompt11-remediation",
+  "pin_method": "git ls-remote plus local pinned-object inspection",
+  "previously_audited_baseline_matches": true,
+  "history_imported": false,
+  "provenance_status": "verified"
+}
