@@ -49,6 +49,20 @@ Run `scripts/01_validate_input_metadata.R` only in an authorized local session w
 - All prespecified models are reported regardless of sign.
 - Hard stops and warnings follow `docs/04_DECISION_RULES.md`.
 
+## Stage 2 scientific approval and Stage 3 entry
+
+Stage 2 is frozen at the human scientific approval gate. The post-freeze eBird methods review does not alter the 105-option candidate grid or its canonical hash.
+
+- `docs/09_STAGE2_OUTCOME_BLIND_DESIGN_LOCK.md`: frozen Stage 2 design-lock report.
+- `docs/10_EBIRD_CHECKLIST_METHODS_REVIEW.md`: checklist-level methods and literature addendum.
+- `docs/11_STAGE3_ENTRY_PLAN.md`: phased approval, QA, validation, and response-access plan.
+- `metadata/ebird_checklist_handling_gate.csv`: machine-readable aligned, verify, decision, and blocking items.
+- `metadata/stage3_entry_plan.yml`: machine-readable pending human choices and phase order.
+- `reports/ebird_checklist_methods_audit.html`: interactive checklist-methods review.
+- `reports/herring_ebird_broad_literature_survey.html` and `metadata/herring_ebird_literature_matrix.csv`: expanded 54-source evidence map.
+
+No Stage 3 response model is authorized until the blocking checklist-independence, spatial-footprint, estimand, and validation decisions are approved and verified. The 2026+ prospective holdout remains frozen.
+
 ## Reports and provenance
 
 - `reports/comprehensive_analysis_plan.html` is the self-contained scientific blueprint with 18 explicitly synthetic example figures and paired lay/technical views.
