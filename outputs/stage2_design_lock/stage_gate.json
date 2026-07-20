@@ -16,7 +16,7 @@
   "raw_or_record_level_ebird_rows_released": false,
   "comments_read": false,
   "requires_human_scientific_approval": true,
-  "validation_status": "LOCAL_REGISTRY_TESTS_TARGETS_PRIVACY_AND_RENDER_PASS_GITHUB_ACTIONS_PENDING",
+  "validation_status": "LOCAL_VALIDATION_PASS_AND_REPAIR_COMMIT_GITHUB_ACTIONS_RUN_15_PASS",
   "repair_status": {
     "ebd_sed_membership": "PASS_SED_ONLY_EXCLUDED_FROM_PRIMARY_ZERO_FILL",
     "shoreline_geometry": "FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT",
@@ -32,6 +32,6 @@
     "parent_github_actions_successful_run": 10,
     "parent_github_actions_run_id": 29726150633,
     "run_9_reference_status": "SUPERSEDED_INCORRECT",
-    "repair_github_actions": "PENDING"
+    "repair_github_actions": "PASS_RUN_15_ID_29761640213_COMMIT_6067221408b0c68c8c563e3c9ebf4a1a5b39c504"
   }
 }

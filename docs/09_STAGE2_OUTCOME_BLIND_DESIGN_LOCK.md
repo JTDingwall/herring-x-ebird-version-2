@@ -2,7 +2,7 @@
 
 **Stage gate:** `STOP_DESIGN_IDENTIFICATION_FAILURE`
 **Human scientific decision:** `REVISION_REQUIRED`
-**Validation:** `LOCAL_REGISTRY_TESTS_TARGETS_PRIVACY_AND_RENDER_PASS_GITHUB_ACTIONS_PENDING`
+**Validation:** `LOCAL_VALIDATION_PASS_AND_REPAIR_COMMIT_GITHUB_ACTIONS_RUN_15_PASS`
 
 > SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE. Current analyses remain exploratory and estimand-refining until prospective confirmation.
 
@@ -113,7 +113,7 @@ The confirmation horizon is fixed at complete 2026–2028 releases, with one eva
 
 ## Repair resolution 8 — bookkeeping, QA, and privacy
 
-The parent successful GitHub Actions reference is run #10; run #9 is explicitly superseded as incorrect. Every join declares and tests cardinality. Concurrent event memberships remain additive exposure links and never duplicate checklists as independent rows. Detection, numeric, X, lower-bound, and ambiguity states remain distinct; missing herring components are not zero and relative spawn index is not absolute biomass.
+The parent successful GitHub Actions reference is run #10; run #9 is explicitly superseded as incorrect. The substantive repair commit passed GitHub Actions run #15 (run ID 29761640213). Every join declares and tests cardinality. Concurrent event memberships remain additive exposure links and never duplicate checklists as independent rows. Detection, numeric, X, lower-bound, and ambiguity states remain distinct; missing herring components are not zero and relative spawn index is not absolute biomass.
 
 The response-access audit lists these EBD fields: `CATEGORY`, `TAXON CONCEPT ID`, `COMMON NAME`, `SCIENTIFIC NAME`, `OBSERVATION COUNT`, `BEHAVIOR CODE`, `SAMPLING EVENT IDENTIFIER`. It asserts noncomputation of: detection_rate_by_exposure, bird_count_summary_by_exposure, active_reference_contrast, ratio_or_odds_ratio, effect_size_or_coefficient, p_value, confidence_or_posterior_interval, posterior_summary, cooccurrence_change_by_spawn_phase_or_distance, biological_response_plot, herring_exposure_response_model.
 
