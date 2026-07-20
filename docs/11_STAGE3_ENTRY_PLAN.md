@@ -1,30 +1,24 @@
 # Stage 3 entry plan
 
-**Status:** `BLOCKED_BY_STAGE2_DESIGN_IDENTIFICATION_FAILURE`  
-**Stage 2 gate:** `STOP_DESIGN_IDENTIFICATION_FAILURE`  
+**Status:** `STAGE2_APPROVED_STAGE3_ENTRY_NOT_AUTHORIZED`  
+**Stage 2 gate:** `PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED`  
 **Response models authorized:** no  
 **Prospective 2026+ holdout:** frozen  
 **Stage 2 design grid:** unchanged
 
 ## Purpose
 
-This plan incorporates the post-freeze eBird checklist-methods review into the project workflow. It adds data-handling and interpretation gates without adding a large adjustment set or examining biological response contrasts. Stage 3 cannot begin until the incomplete shoreline-bundle coverage identified by the repaired Stage 2 gate is resolved.
+This plan incorporates the post-freeze eBird checklist-methods review into the project workflow. Human approval selects immutable source points as the primary event geometry and restricts EDGE_TYPE 100 alongshore analyses to SoG and WCVI sensitivities. Stage 2 is approved, but Stage 3 entry and all response models remain unauthorized pending a separate decision.
 
-## Phase −1 — resolve the upstream geometry failure
+## Phase −1 — completed geometry decision
 
-The protected shoreline bundle provides candidate coverage for Strait of Georgia, West Coast Vancouver Island and North Area, but does not support the intended coastwide core. Human reviewers must choose and document one scientifically defensible path:
+Human approval selects immutable source points as the primary representation across valid source records. EDGE_TYPE 100 alongshore geometry is limited to SoG and WCVI as a sensitivity. EDGE_TYPE 150 remains unavailable until local visual validation. Missing extents are never inferred, and unsupported regions never enter a shoreline-linked sensitivity.
 
-1. obtain and verify a coastwide marine shoreline bundle, then rerun the outcome-blind geometry audit and repair report; or
-2. approve a geographically scoped primary design limited to regions with validated shoreline support, with other regions explicitly descriptive or deferred; or
-3. approve another source-geometry design only after its estimand and limitations are fully specified and the repaired gate is rerun.
+**Exit criterion:** completed by the versioned human-approval record. Incomplete shoreline coverage remains a documented sensitivity limitation rather than a primary-identification failure.
 
-The choice must be made without examining herring–bird response contrasts. The current `STOP_DESIGN_IDENTIFICATION_FAILURE` classification remains until the rerun produces a reviewable gate.
+## Recorded human decisions
 
-**Exit criterion:** shoreline coverage and geometry identification pass for the approved primary geography and representation.
-
-## Required human decisions
-
-The scientific approver must record all of the following before Stage 3 begins:
+The versioned approval record confirms the following choices:
 
 | Decision | Recommended choice | Alternatives retained | Approval effect |
 | --- | --- | --- | --- |
@@ -37,14 +31,14 @@ The scientific approver must record all of the following before Stage 3 begins:
 
 Approval must be versioned and linked to the exact branch commit. Approval does not authorize access to the 2026+ prospective holdout.
 
-## Phase 0 — record approval
+## Phase 0 — approval recorded
 
-1. Confirm that Phase −1 has passed and complete the human decision record for every pending or implemented-pending-acceptance item in `metadata/ebird_checklist_handling_gate.csv`.
-2. Record approver, UTC timestamp, selected options, branch commit and retained alternatives.
-3. Recompute and record the hash of the approved Stage 3 entry specification.
-4. Keep the Stage 2 candidate-grid file and its two retained hashes unchanged.
+1. Human decision recorded in `metadata/stage2_human_scientific_approval_v1.yml` with a matching SHA-256 file.
+2. Selected geometry, event, effort, checklist, estimand, validation, registry and prospective rules are versioned.
+3. The Stage 2 candidate grid and both retained hashes remain unchanged.
+4. Response models and Stage 3 entry implementation remain unauthorized.
 
-**Exit criterion:** every severity `block` item is approved or verified and no response model is yet fitted.
+**Exit criterion:** completed. Proceed only after a separate Stage 3 entry authorization.
 
 ## Phase 1 — construct the independent checklist denominator
 
