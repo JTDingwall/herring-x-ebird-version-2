@@ -17,6 +17,14 @@ testthat::test_that("Stage 2 candidate grid is frozen before support access", {
   testthat::expect_identical(amendment_recorded, amendment_actual)
   amendment <- yaml::read_yaml(amendment_path)
   testthat::expect_true(amendment$parent_candidate_grid$preserved_unchanged)
+  approval_path <- repo_file("metadata", "stage2_human_scientific_approval_v1.yml")
+  approval_recorded <- strsplit(readLines(repo_file("metadata", "stage2_human_scientific_approval_v1.sha256"), warn = FALSE)[1L], "[[:space:]]+")[[1L]][1L]
+  approval_actual <- digest::digest(approval_path, algo = "sha256", file = TRUE, serialize = FALSE)
+  testthat::expect_identical(approval_recorded, approval_actual)
+  approval <- yaml::read_yaml(approval_path)
+  testthat::expect_identical(approval$scientific_decision, "APPROVED_SOURCE_POINT_PRIMARY")
+  testthat::expect_false(approval$response_boundary$stage3_response_models_authorized)
+  testthat::expect_true(approval$parent_design$preserved_unchanged)
   testthat::expect_identical(amendment$parent_candidate_grid$canonical_lf_sha256, recorded)
   testthat::expect_identical(amendment$parent_candidate_grid$original_windows_crlf_sha256,
                             "f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91")
@@ -109,7 +117,10 @@ testthat::test_that("Stage 2 repaired audits implement the scientific amendment"
   testthat::expect_true(all(geometry$primary_edge_type == 100L))
   testthat::expect_true(all(geometry$sensitivity_edge_type == 150L))
   testthat::expect_true(all(geometry$actual_alongshore_geometry_verified))
-  testthat::expect_true(all(geometry$geometry_gate == "FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT"))
+  testthat::expect_true(all(geometry$approved_primary_representation == "source_point"))
+  testthat::expect_identical(geometry[geometry_definition == "source_point", candidate_role],
+                            "coastwide_primary_human_approved")
+  testthat::expect_true(all(geometry$geometry_gate == "PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED"))
   eligible <- data.table::fread(repo_file("outputs", "stage2_design_lock", "geometry_representation_eligibility.csv"))
   common <- eligible[comparison_sample == "common_eligible_events"]
   testthat::expect_equal(data.table::uniqueN(common$eligible_events), 1L)
@@ -152,14 +163,20 @@ testthat::test_that("Stage 2 prospective freeze is fixed and date-filtered", {
   testthat::expect_true(max(date_filter) < min(response_persist))
 })
 
-testthat::test_that("Stage 2 gate stops at the unresolved geometry and human approval gate", {
+testthat::test_that("Stage 2 records human approval without authorizing response models", {
   gate <- jsonlite::read_json(repo_file("outputs", "stage2_design_lock", "stage_gate.json"), simplifyVector = TRUE)
-  testthat::expect_identical(gate$classification, "STOP_DESIGN_IDENTIFICATION_FAILURE")
-  testthat::expect_identical(gate$human_scientific_decision, "REVISION_REQUIRED")
+  testthat::expect_identical(gate$classification, "PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED")
+  testthat::expect_identical(gate$human_scientific_decision, "APPROVED_SOURCE_POINT_PRIMARY")
   testthat::expect_identical(gate$registered_models_fitted, 0L)
   testthat::expect_identical(gate$prohibited_statistics_computed, 0L)
   testthat::expect_true(gate$original_candidate_grid_preserved_unchanged)
   testthat::expect_false(gate$comments_read)
-  testthat::expect_true(gate$requires_human_scientific_approval)
-  testthat::expect_identical(gate$repair_status$shoreline_geometry, "FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT")
+  testthat::expect_false(gate$requires_human_scientific_approval)
+  testthat::expect_false(gate$response_models_authorized)
+  testthat::expect_false(gate$stage3_entry_implementation_authorized)
+  testthat::expect_identical(gate$primary_design$event_geometry, "IMMUTABLE_SOURCE_POINT")
+  testthat::expect_identical(gate$repair_status$shoreline_geometry,
+                            "PASS_SOURCE_POINT_PRIMARY_SHORELINE_SENSITIVITY_SCOPED")
+  testthat::expect_identical(gate$repair_status$shoreline_bundle_coverage,
+                            "INCOMPLETE_NONBLOCKING_FOR_APPROVED_PRIMARY")
 })
