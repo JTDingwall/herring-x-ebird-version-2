@@ -22,7 +22,7 @@
   "response_models_authorized": false,
   "stage3_entry_implementation_authorized": false,
   "requires_separate_stage3_authorization": true,
-  "validation_status": "PENDING_HUMAN_APPROVAL_GATE_TESTS_PRIVACY_RENDER_AND_GITHUB_ACTIONS",
+  "validation_status": "HUMAN_APPROVAL_GATE_AND_GITHUB_ACTIONS_RUN_20_PASS",
   "primary_design": {
     "event_geometry": "IMMUTABLE_SOURCE_POINT",
     "geometry_scope": "COASTWIDE_WHERE_SOURCE_POINT_IS_VALID",
@@ -52,6 +52,6 @@
     "parent_github_actions_run_id": 29726150633,
     "substantive_repair_github_actions": "PASS_RUN_15_ID_29761640213",
     "repair_evidence_commit": "7af0f920bb71211ec2dbf6b20dfad481f11d7cdf",
-    "human_approval_github_actions": "PENDING"
+    "human_approval_github_actions": "PASS_RUN_20_ID_29763901281_COMMIT_8c24f8942177166c676a261b4448668f676626ed"
   }
 }
