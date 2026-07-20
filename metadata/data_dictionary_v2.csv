@@ -1,0 +1,37 @@
+field,source,type,definition
+sampling_event_identifier,eBird EBD/SED,character,Stable checklist join key; restricted in public output
+taxon_concept_id,eBird EBD,character,Pinned taxonomy source identifier
+observation_count,eBird EBD,character,Numeric count or X; never coerce X to zero or an invented count
+all_species_reported,eBird SED,integer,Complete-checklist flag; 1 required for primary analyses
+protocol_name,eBird SED,character,Stationary or Traveling in core analyses
+duration_minutes,eBird SED,numeric,Observation effort covariate
+effort_distance_km,eBird SED,numeric,Traveling effort covariate
+number_observers,eBird SED,numeric,Detection/effort covariate
+observer_id,eBird SED,character,Used locally for dependence and prior experience; not public
+locality_id,eBird SED,character,Used locally for repeated-site and visitation designs; not public
+observation_date,eBird EBD/SED,date,Calendar and event-relative time
+start_time,eBird SED,time,Converted to minutes from sunrise when valid
+latitude,eBird SED,numeric,WGS84 checklist coordinate; exact values restricted
+longitude,eBird SED,numeric,WGS84 checklist coordinate; exact values restricted
+herring_event_id,DFO-derived,character,Year + LocationCode + Section + SpawnNumber
+start_date,DFO,date,Preferred event timing anchor
+end_date,DFO,date,Event interval endpoint and fallback anchor
+length_m,DFO,numeric,Spawn length; use as extent/intensity covariate and uncertainty input
+width_m,DFO,numeric,Spawn width; use as extent/intensity covariate and uncertainty input
+survey_method,DFO,character,Three observed categories; method/measurement covariate
+surface_index_t,DFO,numeric,Relative spawn-index component; missing is not zero
+macrocystis_index_t,DFO,numeric,Relative spawn-index component; missing is not zero
+understory_index_t,DFO,numeric,Relative spawn-index component; missing is not zero
+relative_spawn_index_t,derived,numeric,Sum of observed components; not absolute biomass
+event_distance_km,derived,numeric,Checklist-to-event distance
+shoreline_distance_km,derived,numeric,Checklist-to-shoreline distance
+alongshore_distance_km,derived,numeric,Optional shoreline-network distance
+event_day,derived,integer,Checklist date minus event timing representation
+distance_ring,derived,factor,"Non-overlapping ring; primary cutpoints include 1,2,3,4,5 km"
+binary_kernel_exposure,derived,numeric,Sum of spatial-temporal kernels across concurrent events
+intensity_kernel_exposure,derived,numeric,Relative-index weighted summed exposure
+numeric_count,derived,numeric,Reported numeric count; missing for X/ambiguous
+detection,derived,integer,"1 reported, 0 zero-filled on eligible complete checklist"
+guild_richness,derived,integer,Number of detected guild members
+guild_numeric_total,derived,numeric,Sum of numeric reports; accompanied by lower-bound flag
+aggregation_exceedance,derived,integer,Count exceeds prespecified pre-event percentile

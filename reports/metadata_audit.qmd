@@ -1,0 +1,8 @@
+---
+title: "Herring × eBird Version 2: Source Metadata Audit"
+format: html
+execute:
+  echo: false
+---
+
+This report will be rendered only after local checksum and source-profile targets pass. The design narrative is in `docs/00_METADATA_AUDIT.md`.

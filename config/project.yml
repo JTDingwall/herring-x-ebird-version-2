@@ -1,0 +1,109 @@
+project:
+  name: herring-x-ebird-version-2
+  display_name: "Herring × eBird Version 2"
+  version: "0.1.0"
+  random_seed: 1988
+  legacy_repository: "JTDingwall/ebird_herring_analysis"
+  legacy_snapshot_date: "2026-07-19"
+
+input_paths:
+  ebird_ebd: "${HERRING_EBIRD_V2_EBD}"
+  ebird_sed: "${HERRING_EBIRD_V2_SED}"
+  herring_csv: "${HERRING_EBIRD_V2_HERRING}"
+  shoreline_shp: "${HERRING_EBIRD_V2_SHORELINE}"
+  sections_shp: "${HERRING_EBIRD_V2_SECTIONS}"
+
+source_versions:
+  ebird_release: "EBD_relMay-2026"
+  herring_release: "Pacific_herring_spawn_index_data_2025_EN.csv"
+  taxonomy: "eBird Taxonomy v2025"
+  source_crs: 4326
+  metric_crs: 3005
+
+study_scope:
+  region: "Strait of Georgia"
+  full_years: [1988, 2025]
+  core_period_candidates:
+    - [2010, 2025]
+    - [2012, 2025]
+    - [2015, 2025]
+  season_start: "01-01"
+  season_end: "06-30"
+  prospective_holdout_start_year: 2026
+
+filters:
+  complete_checklists_only: true
+  allowed_protocols: ["Stationary", "Traveling"]
+  duration_minutes: [5, 300]
+  traveling_distance_max_km: 5
+  observers: [1, 10]
+  daylight_only: false
+  shared_checklist_rule: "one unique group checklist; retain source crosswalk locally"
+
+spatial_design:
+  rings_km: [0, 1, 2, 3, 4, 5, 10, 25, 50]
+  cumulative_buffers_km: [1, 2, 3, 4, 5, 10, 25, 50]
+  exposure_kernel_scales_km: [0.5, 1, 2, 3, 5, 10]
+  geometry_representations:
+    - source_point
+    - shoreline_projected_point
+    - length_informed_uncertainty_kernel
+    - location_shoreline_unit
+  distance_metrics:
+    - euclidean_event_distance
+    - shoreline_distance
+    - alongshore_distance_if_estimable
+
+
+temporal_design:
+  daily_support_range: [-60, 90]
+  event_study_bins:
+    early_pre: [-42, -29]
+    pre: [-28, -15]
+    immediate_pre: [-14, -1]
+    spawn_start: [0, 2]
+    early_egg: [3, 7]
+    late_egg: [8, 14]
+    post_1: [15, 28]
+    post_2: [29, 60]
+  biological_kernels_days: [7, 14, 21, 28, 42]
+  event_date_representations:
+    - start_date
+    - midpoint_when_valid
+    - full_start_end_interval
+    - start_date_with_decay
+
+outcomes:
+  detection: true
+  numeric_reported_count: true
+  hurdle_count: true
+  guild_any_detection: true
+  guild_richness: true
+  guild_reported_count: true
+  community_composition: true
+  upper_tail_aggregation: true
+  observer_visitation: true
+  absolute_abundance_claims_allowed: false
+
+analysis_policy:
+  outcome_status: "post-result exploratory/estimand-refining until prospective or external confirmation"
+  report_all_prespecified_models: true
+  select_models_by_significance: false
+  primary_multiplicity_strategy: "guild-level hypotheses plus hierarchical shrinkage"
+  species_multiplicity_strategy: "Benjamini-Hochberg FDR with unadjusted estimates also shown"
+  hard_stops:
+    - corrupted_or_mismatched_input
+    - failed_join_cardinality
+    - nonidentifiable_model
+    - nonconvergence_after_prespecified_reparameterization
+    - unsupported_extrapolation_for_target_estimand
+    - restricted_data_leakage
+  warnings_not_automatic_stops:
+    - isolated_residual_pattern
+    - imperfect_calibration_with_valid_relative_contrast
+    - moderate_covariate_imbalance_reported_and_adjusted
+    - influence_below_prespecified_material_threshold
+    - one_sensitivity_model_disagrees
+  cluster_units: [herring_event, observer, analysis_location, year]
+  primary_uncertainty: "herring-event cluster bootstrap or compatible Bayesian posterior"
+  minimum_cluster_bootstrap_replicates: 999

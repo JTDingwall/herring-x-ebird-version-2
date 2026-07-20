@@ -1,0 +1,39 @@
+policy: never_copy_or_commit
+paths:
+  - .git/**
+  - .Renviron
+  - data/**
+  - outputs/single_species_models*/**
+  - outputs/multispecies_models/**
+  - outputs/prompt09_validation/**
+  - outputs/prompt10_manuscript/**
+  - reports/prompt10_*
+  - reports/analysis_methods_results_report*
+  - '**/*.rds'
+  - '**/*.RDS'
+  - '**/*.qs'
+  - '**/*.fst'
+  - '**/*.parquet'
+  - '**/chain-*.csv'
+restricted_values_or_content:
+  - row-level EBD or SED records
+  - checklist-ID values such as S followed by digits
+  - source observer-ID values
+  - source locality-ID values or source locality names
+  - exact checklist coordinate pairs
+  - raw checklist or species comments
+  - credentials or tokens
+  - machine-specific absolute paths
+allowed_schema_labels:
+  - sampling_event_identifier
+  - observer_id
+  - locality_id
+  - latitude
+  - longitude
+  - checklist_comments
+  - species_comments
+forbidden_history:
+  - Version 1 .git objects
+  - Version 1 pull-request refs
+  - mirror clones
+  - history-preserving subtree merges

@@ -1,0 +1,6 @@
+# Point these variables to protected local files. Do not commit .Renviron.
+HERRING_EBIRD_V2_EBD=/absolute/path/to/ebd_CA-BC_smp_relMay-2026.txt
+HERRING_EBIRD_V2_SED=/absolute/path/to/ebd_CA-BC_smp_relMay-2026_sampling.txt
+HERRING_EBIRD_V2_HERRING=/absolute/path/to/Pacific_herring_spawn_index_data_2025_EN.csv
+HERRING_EBIRD_V2_SHORELINE=/absolute/path/to/FWCSTLNSSP_line.shp
+HERRING_EBIRD_V2_SECTIONS=/absolute/path/to/SectionsIntegrated.shp

@@ -1,0 +1,7 @@
+---
+title: "Herring × eBird Version 2: Multi-model Analysis Specification"
+format: html
+bibliography: ../references/references.bib
+---
+
+See `docs/01_SCIENTIFIC_FRAMEWORK.md`, `docs/02_ANALYSIS_DESIGNS.md`, and `docs/03_MODEL_CATALOGUE.md`.

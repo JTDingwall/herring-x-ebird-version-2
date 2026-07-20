@@ -1,0 +1,52 @@
+periods:
+  - id: core_2015_2025
+    years: [2015, 2025]
+  - id: expanded_2012_2025
+    years: [2012, 2025]
+  - id: expanded_2010_2025
+    years: [2010, 2025]
+  - id: historical_1988_2025
+    years: [1988, 2025]
+
+spatial:
+  rings:
+    - [0, 1]
+    - [1, 2]
+    - [2, 3]
+    - [3, 4]
+    - [4, 5]
+    - [5, 10]
+    - [10, 25]
+    - [25, 50]
+  cumulative_buffers_km: [1, 2, 3, 4, 5, 10, 25, 50]
+  kernels_km: [0.5, 1, 2, 3, 5, 10]
+  contamination_radii_km: [5, 10, 25]
+
+calendar:
+  event_day_range: [-60, 90]
+  bin_widths_days: [1, 3, 7, 14]
+  egg_availability_days: [7, 14, 21, 28, 42]
+  representative_dates: [start, midpoint, interval]
+
+counts:
+  positive_families: [truncated_negative_binomial, lognormal, student_t_log1p]
+  all_count_families: [hurdle_negative_binomial, tweedie, zero_inflated_negative_binomial]
+  upper_tail_thresholds: [0.90, 0.95, 0.99]
+  influence_treatments: [retain_all, event_cluster_robust, winsorized_diagnostic_only, top_count_leave_out]
+  x_treatment: [detection_only, interval_censored_exploratory]
+
+observer_adjustment:
+  - prior_checklist_experience
+  - observer_random_intercept
+  - observer_fixed_effect_case_crossover
+  - same_observer_same_calendar_sensitivity
+
+validation:
+  - leave_event_out
+  - leave_year_out
+  - leave_section_out
+  - leave_observer_group_out
+  - spatial_block
+  - date_placebo
+  - location_placebo
+  - future_prospective_holdout

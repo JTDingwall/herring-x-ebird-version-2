@@ -1,0 +1,43 @@
+source_repository: JTDingwall/ebird_herring_analysis
+resolve_source_sha_from: main
+policy: allowlist_first_clean_history
+assets:
+  infrastructure_reference:
+    - DESCRIPTION
+    - NAMESPACE
+    - .Rprofile
+    - renv.lock
+    - _targets.R
+    - scripts/00_setup.R
+  generic_r_candidates:
+    - R/config.R
+    - R/input_manifest.R
+    - R/join_assertions.R
+    - R/qa_logging.R
+    - R/model_cache.R
+    - R/model_engine_audit.R
+    - R/setup_status.R
+  ebird_candidates:
+    - R/ebird_ingestion.R
+    - R/ebird_processing.R
+  taxonomy_candidates:
+    - R/species_curation.R
+    - R/species_finalization.R
+    - metadata/species_crosswalk.csv
+    - metadata/analysis_taxa.csv
+    - metadata/guild_membership.csv
+    - metadata/ambiguous_taxon_rules.csv
+  herring_spatial_candidates:
+    - R/herring_event_engineering.R
+    - R/spatial_linkage.R
+    - R/spatiotemporal_linkage.R
+  documentation_reference:
+    - docs/03_QAQC.md
+    - docs/06_DATA_SCHEMA.md
+    - docs/07_LITERATURE_ANCHORS.md
+  test_candidates:
+    - tests/testthat/test-config.R
+    - tests/testthat/test-ebird-ingestion.R
+    - tests/testthat/test-herring-event-engineering.R
+    - tests/testthat/test-herring-orchestrator-integration.R
+review_requirement: every_asset_requires_manifest_row_and_restricted_field_scan

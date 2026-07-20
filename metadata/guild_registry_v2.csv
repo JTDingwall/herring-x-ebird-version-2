@@ -1,0 +1,10 @@
+guild_id,guild_label,mechanism,expected_spatial_response,expected_timing,analysis_priority
+roe_diving_seaduck,Roe-diving sea ducks,Attached roe; local aggregation and movement,positive near spawn; possible decline in outer rings,spawn start through egg availability,primary
+gull_roe,Roe-feeding gulls,"Surface/intertidal roe, scavenging, mixed-flock aggregation",positive near spawn; upper-tail flock response expected,spawn start through egg availability,primary
+piscivore_active_spawn,Active-spawn piscivores,Adult herring or prey concentrated by spawning,positive or heterogeneous near active spawn,active spawn and early egg period,primary
+shoreline_scavenger,Shoreline scavengers,"Adults, carcasses, roe, or prey displaced at shoreline",positive but spatially broad/heterogeneous,active spawn and shoreline subsidy,primary
+surface_vegetation_roe,Surface/vegetation roe feeders,"Roe on eelgrass, macroalgae, and intertidal vegetation",positive but migration/habitat confounding expected,spawn start through egg availability,primary
+intertidal_roe_shorebird,Intertidal roe shorebirds,Roe accessible in intertidal zone,positive at exposed shorelines,low tide within egg availability,supporting
+alcid_piscivore,Alcid piscivores,Adult or juvenile herring and associated prey,positive or redistribution response,active spawn and early post-spawn,supporting
+falsification,Falsification taxa,No verified direct herring-spawn mechanism,null expected; habitat mismatch must be reported,same calendar windows,diagnostic
+excluded_audit,Legacy exclusions retained for audit,Insufficient or unreliable support,not tested,not applicable,excluded

@@ -1,0 +1,15 @@
+suppressPackageStartupMessages({
+  library(data.table)
+  library(yaml)
+  library(digest)
+  library(jsonlite)
+})
+source("R/assert.R")
+source("R/config.R")
+source("R/metadata_audit.R")
+
+cfg <- read_project_config()
+paths <- resolve_input_paths(cfg)
+audit <- audit_inputs(paths, checksum = TRUE)
+out <- write_metadata_audit_json(audit)
+cat("Wrote ", out, "\n", sep = "")

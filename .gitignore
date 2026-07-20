@@ -1,0 +1,47 @@
+# Restricted or large data
+data/raw/**
+data/interim/**
+data/derived/**
+!data/raw/README.md
+!data/interim/.gitkeep
+!data/derived/.gitkeep
+
+# Outputs and model objects
+outputs/**
+!outputs/.gitkeep
+_targets/
+.Rhistory
+.RData
+.Ruserdata
+*.rds
+*.RDS
+*.qs
+*.parquet
+*.arrow
+*.duckdb
+*.gpkg
+*.csv.gz
+*.tsv.gz
+*.txt.gz
+*.html
+*.log
+*.stan.csv
+
+# Local secrets and machine-specific configuration
+.Renviron
+.env
+config/local.yml
+
+# IDE and OS
+.Rproj.user/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Explicitly restricted eBird fields or likely extracts
+*sampling_event_identifier*
+*observer_id*
+*locality_id*
+*exact_coordinate*
+*checklist_sample*
