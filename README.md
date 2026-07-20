@@ -51,17 +51,18 @@ Run `scripts/01_validate_input_metadata.R` only in an authorized local session w
 
 ## Stage 2 scientific approval and Stage 3 entry
 
-Stage 2 currently stops at `STOP_DESIGN_IDENTIFICATION_FAILURE`: the protected shoreline bundle does not support the intended coastwide core. The original 105-option candidate grid and its retained hashes remain unchanged. Stage 3 is blocked until reviewers repair the shoreline source, approve a primary geography limited to validated support, or approve another source geometry and rerun the outcome-blind gate.
+Stage 2 human scientific approval is recorded for immutable source points as the primary event geometry. EDGE_TYPE 100 alongshore geometry is limited to SoG and WCVI sensitivities; EDGE_TYPE 150 remains unavailable until local validation. The incomplete shoreline bundle remains documented and is not treated as coastwide. The original 105-option candidate grid and retained hashes remain unchanged.
 
 - `docs/09_STAGE2_OUTCOME_BLIND_DESIGN_LOCK.md`: frozen Stage 2 design-lock report.
 - `docs/10_EBIRD_CHECKLIST_METHODS_REVIEW.md`: checklist-level methods and literature addendum.
 - `docs/11_STAGE3_ENTRY_PLAN.md`: phased approval, QA, validation, and response-access plan.
 - `metadata/ebird_checklist_handling_gate.csv`: machine-readable aligned, verify, decision, and blocking items.
-- `metadata/stage3_entry_plan.yml`: machine-readable pending human choices and phase order.
+- `metadata/stage2_human_scientific_approval_v1.yml`: hashed human scientific approval record.
+- `metadata/stage3_entry_plan.yml`: machine-readable approved choices, remaining implementation gates, and phase order.
 - `reports/ebird_checklist_methods_audit.html`: interactive checklist-methods review.
 - `reports/herring_ebird_broad_literature_survey.html` and `metadata/herring_ebird_literature_matrix.csv`: expanded 54-source evidence map.
 
-No Stage 3 response model is authorized until the upstream shoreline failure is resolved and the checklist-independence, spatial-footprint, estimand, and validation decisions are approved and verified. The 2026+ prospective holdout remains frozen.
+Stage 2 approval does not authorize Stage 3 entry implementation or a response model. A separate authorization is required after the remaining checklist-construction and blocked-validation safeguards are implemented and verified. The 2026+ prospective holdout remains frozen.
 
 ## Reports and provenance
 
