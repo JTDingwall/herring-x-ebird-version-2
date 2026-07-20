@@ -55,9 +55,9 @@ testthat::test_that("Phase 3 event-blocked gate preserves grain and access bound
 
 testthat::test_that("event and observer validation views satisfy their leakage targets", {
   testthat::skip_if_not_installed("data.table")
-  balance <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "fold_balance.csv"))
-  leakage <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "leakage_and_overlap_audit.csv"))
-  feasibility <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "fold_count_feasibility.csv"))
+  balance <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "fold_balance.csv"), na.strings = "")
+  leakage <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "leakage_and_overlap_audit.csv"), na.strings = "")
+  feasibility <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "fold_count_feasibility.csv"), na.strings = "")
 
   testthat::expect_equal(nrow(balance), 32L)
   testthat::expect_setequal(unique(balance$fold), 1:4)
@@ -77,7 +77,7 @@ testthat::test_that("event and observer validation views satisfy their leakage t
 
 testthat::test_that("WCVI decision requires observer-robustness sensitivity", {
   testthat::skip_if_not_installed("data.table")
-  wcvi <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "wcvi_observer_concentration_decision.csv"))
+  wcvi <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "wcvi_observer_concentration_decision.csv"), na.strings = "")
   testthat::expect_equal(nrow(wcvi), 1L)
   testthat::expect_true(wcvi$event_blocked_all_folds_pass)
   testthat::expect_equal(wcvi$event_blocked_folds, 4L)
@@ -91,8 +91,8 @@ testthat::test_that("WCVI decision requires observer-robustness sensitivity", {
 
 testthat::test_that("Phase 3 aggregates suppress small cells and release no protected schema", {
   testthat::skip_if_not_installed("data.table")
-  balance <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "fold_balance.csv"))
-  strata <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "fold_stratum_balance.csv"))
+  balance <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "fold_balance.csv"), na.strings = "")
+  strata <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "fold_stratum_balance.csv"), na.strings = "")
   testthat::expect_true(all(is.na(balance[suppressed_below_20 == TRUE, independent_checklists])))
   testthat::expect_true(all(is.na(strata[suppressed_below_20 == TRUE, independent_checklists])))
   prohibited <- c("analysis_event_token", "observer_cluster_token", "location_cluster_token",
@@ -100,7 +100,7 @@ testthat::test_that("Phase 3 aggregates suppress small cells and release no prot
   for (file in c("fold_balance.csv", "fold_count_feasibility.csv",
                  "fold_stratum_balance.csv", "leakage_and_overlap_audit.csv",
                  "observer_robustness_summary.csv", "wcvi_observer_concentration_decision.csv")) {
-    tab <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", file))
+    tab <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", file), na.strings = "")
     testthat::expect_length(intersect(tolower(names(tab)), prohibited), 0L)
   }
   code <- paste(readLines(repo_file("scripts", "Stage3Phase3BlockedValidation.cs"), warn = FALSE), collapse = "\n")
@@ -110,7 +110,7 @@ testthat::test_that("Phase 3 aggregates suppress small cells and release no prot
 testthat::test_that("Phase 3 aggregate hash manifest matches every listed artifact", {
   testthat::skip_if_not_installed("data.table")
   testthat::skip_if_not_installed("digest")
-  hashes <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "aggregate_artifact_hashes.csv"))
+  hashes <- data.table::fread(repo_file("outputs", "stage3_phase3_validation", "aggregate_artifact_hashes.csv"), na.strings = "")
   testthat::expect_true(all(hashes$status == "PASS" & hashes$reproducible))
   for (i in seq_len(nrow(hashes))) {
     path <- repo_file("outputs", "stage3_phase3_validation", hashes$artifact[i])
