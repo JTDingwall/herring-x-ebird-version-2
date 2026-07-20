@@ -6,7 +6,7 @@ counts <- validate_registry_bundle()
 privacy <- if (file.exists("outputs/setup/privacy_scan_summary.json")) {
   jsonlite::read_json("outputs/setup/privacy_scan_summary.json", simplifyVector = TRUE)
 } else list(status = "NOT RUN")
-source_sha <- jsonlite::read_json("metadata/v1_source_provenance.json", simplifyVector = TRUE)$source_commit_sha
+source_sha <- jsonlite::read_json("metadata/v1_source_commit.json", simplifyVector = TRUE)$source_commit_sha
 source_checks <- fread("metadata/source_verification_summary.csv",
                        colClasses = list(character = c("n_primary", "n_secondary")))
 rows <- paste(sprintf("<tr><th>%s</th><td>%s</td></tr>", names(counts), unlist(counts)), collapse = "\n")

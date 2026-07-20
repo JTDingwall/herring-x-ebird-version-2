@@ -54,7 +54,7 @@ Run `scripts/01_validate_input_metadata.R` only in an authorized local session w
 - `reports/comprehensive_analysis_plan.html` is the self-contained scientific blueprint with 18 explicitly synthetic example figures and paired lay/technical views.
 - `docs/comprehensive_analysis_plan.html` is its reader copy.
 - `reports/repository_setup_audit.html` records construction readiness.
-- `metadata/v1_source_provenance.json` pins the Version 1 source commit.
+- `metadata/v1_source_commit.json` pins the Version 1 source commit.
 - `metadata/v1_asset_port_manifest.csv` records every considered allowlisted asset as copied, generalized, reference-only, or rejected.
 
 Version 2 is not a branch or fork of Version 1. No Version 1 Git history, raw data, record-level derivative, fitted object, coefficient, weight, or outcome-dependent output is imported.

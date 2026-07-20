@@ -5,7 +5,7 @@ Environment: DESCRIPTION, NAMESPACE, .Rprofile, renv.lock, renv/
 Pipeline: _targets.R, R/, scripts/
 Canonical registries: metadata/canonical_species_registry.csv, metadata/canonical_guild_registry.csv, metadata/estimand_registry.csv, metadata/model_registry.csv, metadata/cooccurrence_registry.csv, metadata/analysis_module_registry.csv
 Taxonomy evidence: metadata/source_taxonomy_crosswalk.csv, metadata/ambiguous_taxon_rules.csv
-Input/provenance evidence: metadata/input_manifest.csv, metadata/source_field_registry.csv, metadata/source_verification_summary.csv, metadata/v1_source_provenance.json, metadata/v1_asset_port_manifest.csv
+Input/provenance evidence: metadata/input_manifest.csv, metadata/source_field_registry.csv, metadata/source_verification_summary.csv, metadata/v1_source_commit.json, metadata/v1_asset_port_manifest.csv
 Tests and CI: tests/testthat/, .github/workflows/ci.yml
 Scientific documentation: docs/, reports/repository_inventory_and_reconciliation.md
 Reader artifacts: reports/comprehensive_analysis_plan.html, docs/comprehensive_analysis_plan.html, reports/repository_setup_audit.html
