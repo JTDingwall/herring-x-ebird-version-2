@@ -1,75 +1,93 @@
 plan_version: stage3_entry_v1
 created_at_utc: 2026-07-20
 source_stage2_commit: f625bdacad802f9e36c41a7b642646690d8de8cd
-source_stage2_repair_commit: 6067221408b0c68c8c563e3c9ebf4a1a5b39c504
+source_stage2_repair_commit: 7af0f920bb71211ec2dbf6b20dfad481f11d7cdf
+stage2_human_approval_record: metadata/stage2_human_scientific_approval_v1.yml
+stage2_human_approval_sha256: c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18
 stage2_candidate_grid_sha256: 8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81
 stage2_grid_changed: false
-stage_gate: STOP_DESIGN_IDENTIFICATION_FAILURE
-human_scientific_decision: REVISION_REQUIRED
+stage_gate: PASS_STAGE2_HUMAN_SCIENTIFIC_APPROVAL_RECORDED
+human_scientific_decision: APPROVED_SOURCE_POINT_PRIMARY
 response_models_authorized: false
+stage3_entry_implementation_authorized: false
 prospective_holdout_2026_plus_locked: true
 scope_control:
   add_new_primary_ecological_covariates: false
   purpose: checklist_independence_spatial_support_estimands_and_validation
+primary_design:
+  event_geometry: immutable_source_point
+  geometry_scope: coastwide_where_source_point_is_valid
+  event_identity: immutable_source_record
+  missing_event_extent_inference: prohibited
+shoreline_sensitivities:
+  edge_type_100:
+    scope: [SoG, WCVI]
+    status: approved_supported_region_sensitivity
+  edge_type_150:
+    status: pending_local_visual_validation_nonblocking_for_primary
 upstream_blockers:
   shoreline_geometry:
-    status: FAIL_INCOMPLETE_SHORELINE_BUNDLE_EXTENT
-    blocking: true
-    resolution_options:
-      - obtain_and_verify_coastwide_marine_shoreline_bundle
-      - approve_scoped_primary_geography_with_validated_shoreline_support
-      - approve_alternative_source_geometry_and_rerun_gate
+    status: RESOLVED_BY_SOURCE_POINT_PRIMARY_AND_SENSITIVITY_SCOPE
+    blocking: false
+    incomplete_bundle_retained_as_limitation: true
 human_decisions:
   independent_checklist_event:
-    status: implemented_pending_human_acceptance
-    recommendation: composite_event_per_group_identifier_else_sampling_event_identifier
-    blocking: true
+    status: approved
+    choice: composite_event_per_group_identifier_else_sampling_event_identifier
+    blocking: false
   primary_effort_set:
-    status: implemented_pending_human_acceptance
-    recommendation:
+    status: approved
+    choice:
       duration_minutes: [5, 300]
       traveling_distance_max_km: 5
       observers: [1, 10]
     sensitivities:
       high_spatial_precision_max_km: 2
       broad_max_km: 10
-    blocking: true
+    blocking: false
   shared_count_reconciliation:
-    status: implemented_pending_human_acceptance
-    recommendation: exclude_effort_disagreement_groups_from_primary_retain_registered_sensitivity
-    blocking: true
+    status: approved
+    choice: exclude_effort_disagreement_groups_from_primary_retain_registered_sensitivity
+    blocking: false
   estimand_language:
-    status: pending
+    status: approved
     detection: probability_reported_on_eligible_complete_checklist
     positive_count: reported_numeric_count_conditional_on_detection_and_count_availability
     forbidden_unless_separately_justified: [true_absence, absolute_population_abundance, occupancy]
-    blocking: true
+    blocking: false
   validation_unit:
-    status: pending
-    recommendation: event_complex_or_shoreline_time_block
+    status: approved_pending_implementation
+    choice: event_complex_or_shoreline_time_block
     blocking: true
   raw_bccws_integration:
-    status: pending
-    recommendation: no_pooling_without_deterministic_checklist_crosswalk
+    status: approved
+    choice: no_pooling_without_deterministic_checklist_crosswalk
     fallback: separate_external_validation_with_overlap_caveat
     blocking: false
 phases:
   - id: phase_minus_1
     name: resolve_shoreline_geometry_identification_failure
+    status: completed_by_source_point_primary_scope_decision
     response_access: none
   - id: phase_0
     name: record_human_approval
+    status: completed
     response_access: none
   - id: phase_1
     name: construct_independent_checklist_denominator
+    status: pending_separate_authorization
     response_access: count_state_parsing_only
   - id: phase_2
     name: metadata_only_sampling_support_audit
+    status: pending
     response_access: none
   - id: phase_3
     name: validation_and_estimand_safeguards
+    status: pending
     response_access: fixture_or_synthetic_only
   - id: phase_4
     name: exploratory_registered_response_analysis
-    response_access: requires_all_prior_gates
+    status: not_authorized
+    response_access: requires_all_prior_gates_and_separate_authorization
 required_invariants: [E02, E05, E06, E07, E09, E10, E12, E13, E14]
+next_gate: separate_stage3_entry_implementation_authorization
