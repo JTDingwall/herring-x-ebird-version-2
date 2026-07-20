@@ -1,22 +1,32 @@
 # eBird checklist methods review and Stage 2 addendum
 
 **Review date:** 2026-07-20  
-**Stage gate:** `PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL`  
+**Stage gate:** `STOP_DESIGN_IDENTIFICATION_FAILURE`  
+**Human scientific decision:** `REVISION_REQUIRED`  
 **Response models authorized:** no  
 **Candidate grid changed:** no  
 **Candidate-grid SHA-256 retained:** `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`
 
 > SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE. This review used published methods and the reported Stage 2 design. It did not inspect exposure-specific bird responses or fit a registered model.
 
-## Executive conclusion
+## Relationship to the repaired Stage 2 gate
+
+After this checklist review was added, the Stage 2 scientific-gate repair found that the protected shoreline bundle does not cover the intended coastwide core. The current upstream gate is therefore `STOP_DESIGN_IDENTIFICATION_FAILURE`, not approval-ready. The original 105-option grid and both of its retained hashes remain unchanged.
+
+The repair also implemented several checklist recommendations: one composite analysis event per shared group, exclusion of effort-disagreement groups from the primary frame, a standardized 5–300 minute / ≤5 km / 1–10 observer primary filter, and exclusion of wholly SED-only structural-unknown events from primary zero-filling. Those rules remain subject to human scientific acceptance, but they are no longer merely unimplemented recommendations.
+
+No Stage 3 response model is authorized until the shoreline-coverage failure is resolved and the remaining checklist, estimand, validation and BCCWS-overlap decisions are approved.
+
+## Checklist-methods conclusion
 
 The reported workflow is aligned with the central requirements for using eBird checklists: complete checklists define the denominator, EBD observations are joined to SED sampling events, `X` remains detection-only, detection is separated from positive-count magnitude, taxonomy is versioned, and complete-area protocols remain separate.
 
-Three items now require explicit human approval before Stage 3:
+The following checklist items still require explicit human approval before Stage 3:
 
-1. prove that all submissions sharing a `GROUP IDENTIFIER` contribute exactly one independent checklist event to every analysis table;
-2. choose a travel-distance rule compatible with a local 2 km herring exposure; and
-3. lock the estimand language as checklist reporting and reported conditional count, not true absence, population abundance, or occupancy.
+1. accept the implemented composite shared-group and disagreement-exclusion rules;
+2. decide whether the ≤2 km travel-distance set is a required spatial-precision sensitivity around the implemented ≤5 km primary;
+3. lock the estimand language as checklist reporting and reported conditional count, not true absence, population abundance, or occupancy; and
+4. approve event-complex or shoreline-time validation blocks and the BCCWS deduplication boundary.
 
 These recommendations do not add ecological covariates. They clarify the sampling unit, exposure footprint, validation unit, and interpretation.
 
@@ -26,7 +36,7 @@ These recommendations do not add ecological covariates. They clarify the samplin
 
 Shared eBird checklists are duplicate accounts of one birding event. Cornell's `auk_unique()` documentation states that grouped copies are collapsed using `GROUP IDENTIFIER`; the default implementation selects the component record with the lowest checklist identifier and retains the contributing checklist and observer identifiers.
 
-The Stage 2 shared-report disagreement state is valuable, but disagreement auditing and event deduplication are different operations. The analysis frame must have one row per independent checklist event × species after a frozen reconciliation rule has been applied.
+The Stage 2 repair now constructs one composite event per shared group, excludes effort-disagreement groups from the primary frame, and retains disagreement rows as a registered sensitivity. Human review must confirm this rule before response access. The analysis frame must retain one row per independent checklist event × species.
 
 Primary sources:
 
@@ -36,7 +46,7 @@ Primary sources:
 
 ### Zero-filling and count state
 
-An unreported focal species can be converted to an inferred checklist-level non-detection only when the checklist is complete. The SED is necessary because complete sampling events with no focal EBD row still belong in the denominator. A zero means not reported or detected on that eligible checklist; it does not prove ecological absence.
+An unreported focal species can be converted to an inferred checklist-level non-detection only when the checklist is complete and the analysis event is otherwise eligible. The repaired audit classifies wholly SED-only events as structural unknowns and excludes them from primary zero-filling; within retained eligible events, an unreported focal species can still be zero-filled. A zero means not reported or detected on that eligible checklist; it does not prove ecological absence.
 
 `X` means detected but not numerically counted. It must map to detection = 1 and numeric count = missing. The project's separate detection, numeric, `X`, lower-bound and ambiguity states are therefore retained.
 
@@ -46,14 +56,14 @@ Primary source: [Best Practices for Using eBird Data: zero-filling and count han
 
 Cornell's current worked guidance filters stationary and traveling checklists to at most 6 hours, 10 km and 10 observers for a weekly 3 km product, and explicitly recommends stricter travel-distance filtering when finer spatial precision is required. The public EBD/SED supplies one checklist coordinate, not the public route geometry. A hotspot point may also differ from the observer's exact survey position.
 
-The frozen Stage 2 report names 1–360 minutes, up to 10 km and 1–20 observers as the broad candidate primary, with 5–300 minutes, up to 5 km and 1–10 observers as the standardized sensitivity. The project config already uses the latter standardized limits. Because the herring design contains a 2 km local exposure threshold, the following outcome-blind recommendation is added for human decision:
+The repaired Stage 2 gate now treats 5–300 minutes, up to 5 km and 1–10 observers as the standardized candidate primary and the wider set as broad sensitivity. Because the herring design contains a 2 km local exposure threshold, the following outcome-blind recommendation remains for human decision:
 
-- candidate primary: complete stationary/traveling checklists, 5–300 minutes, traveling distance at most 5 km, 1–10 observers;
+- candidate primary already implemented: complete stationary/traveling checklists, 5–300 minutes, traveling distance at most 5 km, 1–10 observers;
 - spatial-precision sensitivity: stationary and traveling checklists at most 2 km;
 - broad sensitivity: the frozen 1–360 minute, at most 10 km set; cap observers at 10 unless reviewers approve evidence for 11–20;
 - complete-area protocols remain separate.
 
-This is a recommendation, not a post-freeze change to the candidate grid.
+This is a scientific-gate amendment layered on the unchanged candidate grid; it does not rewrite the original freeze.
 
 Primary source: [Best Practices for Using eBird Data: effort and spatial precision](https://ebird.github.io/ebird-best-practices/ebird.html#accounting-for-variation-in-effort).
 
@@ -94,7 +104,7 @@ Source: [Birds Canada: NatureCounts and eBird](https://learn.birdscanada.org/add
 
 ## Machine-readable gate
 
-`metadata/ebird_checklist_handling_gate.csv` defines the aligned, verification and human-decision items. Blocking items must pass before a Stage 3 response model is opened.
+`metadata/ebird_checklist_handling_gate.csv` defines the aligned, implemented-pending-acceptance, verification and human-decision items. Blocking items and the upstream shoreline gate must pass before a Stage 3 response model is opened.
 
 The complete interactive review is in `reports/ebird_checklist_methods_audit.html`; the expanded evidence map is in `reports/herring_ebird_broad_literature_survey.html` with its source table in `metadata/herring_ebird_literature_matrix.csv`.
 
