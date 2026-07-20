@@ -1,7 +1,7 @@
 # Stage 2 outcome-blind design lock
 
 **Stage gate:** `PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL`
-**Validation:** `PASS_LOCAL_VALIDATION_REMOTE_CI_PENDING`
+**Validation:** `PASS_LOCAL_AND_GITHUB_CI`
 **Candidate-grid SHA-256:** `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`
 **Frozen at:** `2026-07-20 05:27:38 UTC`
 **Prior Windows-CRLF SHA-256 retained:** `f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91`
@@ -170,7 +170,7 @@ The confirmation specification SHA-256 is `2640276fad585c9d3b537f407bb3efeb0167c
 
 Every join declares and tests cardinality. Concurrent event links are additive exposure memberships and never independent checklist rows. Detection, numeric, X, lower-bound, ambiguity, and missingness remain distinct. Missing herring components remain missing, and relative spawn index is never called absolute biomass.
 
-Validation status: `PASS_LOCAL_VALIDATION_REMOTE_CI_PENDING`. Detailed checks are recorded in the stage gate and repository test outputs.
+Validation status: `PASS_LOCAL_AND_GITHUB_CI`. Detailed checks are recorded in the stage gate and repository test outputs.
 
 ## Questions requiring human scientific approval
 

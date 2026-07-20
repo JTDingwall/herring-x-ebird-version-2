@@ -13,7 +13,7 @@
   "raw_or_record_level_ebird_rows_released": false,
   "comments_read": false,
   "requires_human_scientific_approval": true,
-  "validation_status": "PASS_LOCAL_VALIDATION_REMOTE_CI_PENDING",
+  "validation_status": "PASS_LOCAL_AND_GITHUB_CI",
   "validation": {
     "registry_validation": "PASS",
     "fixture_and_stage2_tests": "PASS",
@@ -22,6 +22,7 @@
     "setup_audit_render": "PASS",
     "protected_input_checksums_and_headers": "PASS",
     "ebd_sed_join_cardinality": "PASS_MANY_TO_ONE",
-    "python_analysis_plan_render": "PENDING_GITHUB_CI_RUNTIME"
+    "python_analysis_plan_render": "PASS_GITHUB_ACTIONS_RUN_9",
+    "github_actions_ci": "PASS_RUN_9"
   }
 }
