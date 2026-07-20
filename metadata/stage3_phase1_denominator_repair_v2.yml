@@ -1,0 +1,70 @@
+spec_version: stage3_phase1_denominator_repair_v2
+authorization_record: metadata/stage3_phases1_3_authorization_v1.yml
+authorized_phase: phase_1
+hard_stop_after_phase: phase_1
+repair_reason: blocking_registry_consistency_failure_in_45_taxon_artifact
+supersedes_execution: metadata/stage3_phase1_execution_v1.yml
+source_window: [1988, 2025]
+prospective_holdout_start_year: 2026
+accepted_record_predicate:
+  expression: APPROVED == true
+  reviewed_role: audit_provenance_only
+denominator_registry:
+  file: metadata/canonical_species_registry.csv
+  hash_sidecar: metadata/canonical_species_registry.csv.sha256
+  inclusion_field: phase1_denominator_included
+  inclusion_value: true
+  inclusion_basis: frozen_stage2_retained_taxon
+  expected_retained_taxa: 58
+  model_cardinality_is_taxon_cardinality: false
+taxonomy:
+  version: eBird Taxonomy v2025
+  identity_requirement: exact frozen Stage 2 species concept for every retained taxon
+  named_taxon_map: approved source concept to registered analysis taxon
+  ambiguous_taxon_rule: mask named-species zero only when no named detection is reported
+representation:
+  type: factorized_sparse
+  factors: [eligible_events, denominator_taxon_registry, reported_count_states, ambiguity_masks]
+  zero_generation: deterministic_species_specific_extraction
+  raw_rescan_per_species: prohibited
+logical_cardinality:
+  rule: eligible_event_count multiplied by included_taxon_count
+  conditional_fixture:
+    eligible_events: 1433786
+    included_taxa: 58
+    expected_event_taxon_rows: 83159588
+independent_event:
+  rule: GROUP IDENTIFIER when present; SAMPLING EVENT IDENTIFIER otherwise
+  collapse_order: before_zero_fill
+  canonical_component: lowest sampling event identifier
+  effort_disagreement_primary_rule: exclude
+primary_effort:
+  complete_checklist: true
+  protocols: [Stationary, Traveling]
+  duration_minutes: [5, 300]
+  traveling_distance_max_km: 5
+  observers: [1, 10]
+  stationary_distance_normalization_km: 0
+zero_provenance:
+  permitted: eligible complete verified independent event omission
+  prohibited: [incomplete checklist, wholly SED-only event, effort-disagreement group, EBD-SED date-disagreement event]
+count_states: [numeric, X, lower_bound, missing, ambiguity_affected, zero_filled]
+geometry:
+  analysis_geometry: immutable_source_point_only
+  phase1_geometry_access: none
+  shoreline_role: audit_provenance_only
+  shoreline_analysis_or_sensitivity: prohibited
+response_boundary:
+  response_summaries: prohibited
+  exposure_contrasts: prohibited
+  response_direction_diagnostics: prohibited
+  effect_estimates: prohibited
+  response_models: prohibited
+  free_text_comments: prohibited
+  herring_fields: prohibited
+supersession:
+  prior_taxa: 45
+  prior_artifact_status: superseded_blocking_registry_consistency_failure
+  preserve_prior_hashes_and_audit_history: true
+phase_2_started: false
+next_gate: HUMAN_REPAIRED_DENOMINATOR_AND_ZERO_PROVENANCE_REVIEW

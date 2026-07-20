@@ -16,6 +16,7 @@ renv/library/
 .Rhistory
 .RData
 .Ruserdata
+.ci-library/
 *.rds
 *.RDS
 *.qs
@@ -60,6 +61,11 @@ Thumbs.db
 !outputs/stage3_phase1/
 !outputs/stage3_phase1/*.csv
 !outputs/stage3_phase1/*.json
+!outputs/stage3_phase1_repair/
+!outputs/stage3_phase1_repair/*.csv
+!outputs/stage3_phase1_repair/*.json
+!outputs/stage3_phase1_repair/*.sha256
+!outputs/stage2_design_lock/*.sha256
 
 # Local raw-input audit products may contain machine paths
 outputs/input_audit_local/**

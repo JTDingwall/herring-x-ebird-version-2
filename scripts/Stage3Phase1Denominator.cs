@@ -130,6 +130,8 @@ public static class Stage3Phase1Denominator
         public long ZeroRows;
         public long AmbiguityRows;
         public long DirectRows;
+        public long SparseReportedRows;
+        public long SparseAmbiguityMaskRows;
         public readonly Dictionary<string, long> StateRows =
             new Dictionary<string, long>(StringComparer.Ordinal);
     }
@@ -151,8 +153,10 @@ public static class Stage3Phase1Denominator
         Dictionary<string, List<string>> ambiguousRules;
         string taxonomyVersion;
         string taxonomyHash;
+        string registryHash;
+        int namedMappingCount;
         LoadTaxonomy(repoRoot, out taxa, out namedRules, out ambiguousRules,
-            out taxonomyVersion, out taxonomyHash);
+            out taxonomyVersion, out taxonomyHash, out registryHash, out namedMappingCount);
         Console.WriteLine("Registered taxonomy and ambiguity rules loaded: " +
             taxa.Count.ToString(CultureInfo.InvariantCulture) + " analysis taxa, " +
             namedRules.Count.ToString(CultureInfo.InvariantCulture) + " approved source concepts.");
@@ -200,15 +204,31 @@ public static class Stage3Phase1Denominator
             throw new InvalidDataException("STAGE3_PHASE1_PRE_ARTIFACT_GATE: " +
                 String.Join(";", preArtifactFailures.ToArray()));
 
-        string denominatorPath = Path.Combine(protectedDirectory,
-            "independent_event_taxon_denominator.tsv.gz");
-        WriteDenominator(denominatorPath, eligible, taxa, stats);
-        string denominatorHash = Sha256(denominatorPath);
-        string denominatorReplay = denominatorPath + ".repro.tmp";
-        RunStats replayStats = new RunStats();
-        WriteDenominator(denominatorReplay, eligible, taxa, replayStats);
-        string replayHash = Sha256(denominatorReplay);
-        File.Delete(denominatorReplay);
+        AccountFactorizedDenominator(eligible, taxa, stats);
+
+        string eligiblePath = Path.Combine(protectedDirectory, "eligible_events.tsv.gz");
+        WriteEligibleEvents(eligiblePath, eligible);
+        string eligibleHash = Sha256(eligiblePath);
+        string eligibleReplay = eligiblePath + ".repro.tmp";
+        WriteEligibleEvents(eligibleReplay, eligible);
+        string eligibleReplayHash = Sha256(eligibleReplay);
+        File.Delete(eligibleReplay);
+
+        string reportedPath = Path.Combine(protectedDirectory, "reported_count_states.tsv.gz");
+        WriteReportedCountStates(reportedPath, eligible);
+        string reportedHash = Sha256(reportedPath);
+        string reportedReplay = reportedPath + ".repro.tmp";
+        WriteReportedCountStates(reportedReplay, eligible);
+        string reportedReplayHash = Sha256(reportedReplay);
+        File.Delete(reportedReplay);
+
+        string masksPath = Path.Combine(protectedDirectory, "ambiguity_masks.tsv.gz");
+        WriteAmbiguityMasks(masksPath, eligible);
+        string masksHash = Sha256(masksPath);
+        string masksReplay = masksPath + ".repro.tmp";
+        WriteAmbiguityMasks(masksReplay, eligible);
+        string masksReplayHash = Sha256(masksReplay);
+        File.Delete(masksReplay);
 
         string crosswalkPath = Path.Combine(protectedDirectory,
             "private_component_crosswalk.tsv.gz");
@@ -221,7 +241,11 @@ public static class Stage3Phase1Denominator
         List<string> artifactFailures = new List<string>();
         if (stats.DenominatorRows != (long)eligible.Count * taxa.Count)
             artifactFailures.Add("DENOMINATOR_ROW_ACCOUNTING");
-        if (denominatorHash != replayHash) artifactFailures.Add("DENOMINATOR_REPLAY_HASH");
+        if (stats.DirectRows + stats.AmbiguityRows + stats.ZeroRows != stats.DenominatorRows)
+            artifactFailures.Add("FACTORIZED_STATE_ACCOUNTING");
+        if (eligibleHash != eligibleReplayHash) artifactFailures.Add("ELIGIBLE_EVENT_REPLAY_HASH");
+        if (reportedHash != reportedReplayHash) artifactFailures.Add("REPORTED_STATE_REPLAY_HASH");
+        if (masksHash != masksReplayHash) artifactFailures.Add("AMBIGUITY_MASK_REPLAY_HASH");
         if (crosswalkHash != crosswalkReplayHash) artifactFailures.Add("CROSSWALK_REPLAY_HASH");
         if (artifactFailures.Count != 0)
             throw new InvalidDataException("STAGE3_PHASE1_ARTIFACT_GATE: " +
@@ -231,15 +255,16 @@ public static class Stage3Phase1Denominator
             eligible.Count, taxa.Count, sharedGroups, disagreementGroups,
             structuralUnknownCandidates, sourceIdentityDisagreementEvents,
             stationaryEligible, unmatchedEbdKeys.Count,
-            missingTaxonomyConcepts, taxonomyVersion, taxonomyHash,
-            denominatorHash, crosswalkHash);
+            missingTaxonomyConcepts, namedMappingCount, taxonomyVersion, taxonomyHash,
+            registryHash, eligibleHash, reportedHash, masksHash, crosswalkHash);
 
         Console.WriteLine("Stage 3 Phase 1 complete: all denominator, zero-provenance, " +
             "cardinality, privacy-scope, fixture, and reproducibility gates passed.");
         Console.WriteLine("Independent eligible checklist events: " +
             eligible.Count.ToString(CultureInfo.InvariantCulture) +
             "; registered taxa: " + taxa.Count.ToString(CultureInfo.InvariantCulture) +
-            "; denominator rows: " + stats.DenominatorRows.ToString(CultureInfo.InvariantCulture) + ".");
+            "; logical denominator rows: " + stats.DenominatorRows.ToString(CultureInfo.InvariantCulture) +
+            "; representation: factorized sparse.");
     }
 
     public static void RunFixture()
@@ -273,7 +298,95 @@ public static class Stage3Phase1Denominator
         disagreement.Merge(ParseCount("5"));
         Assert(disagreement.Type == "ambiguity_affected" && disagreement.SourceDisagreement,
             "count-reconciliation fixture");
+        Assert(ResolveExtractedType(true, true) == "reported" &&
+            ResolveExtractedType(false, true) == "ambiguity_affected" &&
+            ResolveExtractedType(false, false) == "zero_filled",
+            "factorized extraction precedence fixture");
         Console.WriteLine("Stage 3 Phase 1 synthetic fixtures passed.");
+    }
+
+    public static void ExtractSpeciesFromFactorized(string repoRoot,
+        string protectedDirectory, string analysisTaxonId, string outputPath)
+    {
+        List<string> taxa;
+        Dictionary<string, TaxonRule> namedRules;
+        Dictionary<string, List<string>> ambiguousRules;
+        string taxonomyVersion, taxonomyHash, registryHash;
+        int namedMappingCount;
+        LoadTaxonomy(repoRoot, out taxa, out namedRules, out ambiguousRules,
+            out taxonomyVersion, out taxonomyHash, out registryHash, out namedMappingCount);
+        if (!taxa.Contains(analysisTaxonId, StringComparer.Ordinal))
+            throw new InvalidDataException("Requested taxon is outside the hashed denominator registry");
+
+        string eligiblePath = Path.Combine(protectedDirectory, "eligible_events.tsv.gz");
+        string reportedPath = Path.Combine(protectedDirectory, "reported_count_states.tsv.gz");
+        string masksPath = Path.Combine(protectedDirectory, "ambiguity_masks.tsv.gz");
+        RequireFile(eligiblePath, "factorized eligible-event artifact");
+        RequireFile(reportedPath, "factorized reported-state artifact");
+        RequireFile(masksPath, "factorized ambiguity-mask artifact");
+
+        Dictionary<string, string> reported = new Dictionary<string, string>(StringComparer.Ordinal);
+        using (StreamReader reader = GzipReader(reportedPath))
+        {
+            reader.ReadLine();
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] fields = line.Split('\t');
+                if (fields.Length != 8) throw new InvalidDataException("Sparse reported-state width mismatch");
+                if (fields[1] != analysisTaxonId) continue;
+                if (reported.ContainsKey(fields[0])) throw new InvalidDataException("Duplicate sparse reported-state key");
+                reported.Add(fields[0], String.Join("\t", fields.Skip(2).ToArray()));
+            }
+        }
+
+        HashSet<string> masks = new HashSet<string>(StringComparer.Ordinal);
+        using (StreamReader reader = GzipReader(masksPath))
+        {
+            reader.ReadLine();
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] fields = line.Split('\t');
+                if (fields.Length != 3) throw new InvalidDataException("Sparse ambiguity-mask width mismatch");
+                if (fields[1] == analysisTaxonId && !masks.Add(fields[0]))
+                    throw new InvalidDataException("Duplicate sparse ambiguity-mask key");
+            }
+        }
+
+        HashSet<string> eligibleIds = new HashSet<string>(StringComparer.Ordinal);
+        using (StreamReader reader = GzipReader(eligiblePath))
+        using (StreamWriter writer = GzipWriter(outputPath))
+        {
+            reader.ReadLine();
+            writer.WriteLine("analysis_checklist_id\tanalysis_taxon_id\tdetection\tnumeric_count\tlower_bound_count\tcount_type\tambiguity_flag\tzero_provenance");
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] fields = line.Split('\t');
+                if (fields.Length != 2 || !eligibleIds.Add(fields[0]))
+                    throw new InvalidDataException("Eligible-event factor is malformed or duplicated");
+                string payload;
+                if (reported.TryGetValue(fields[0], out payload)) { }
+                else if (masks.Contains(fields[0]))
+                    payload = "\t\t\tambiguity_affected\tTRUE\taccepted_ambiguous_record_masks_zero";
+                else payload = "0\t0\t0\tzero_filled\tFALSE\teligible_complete_verified_event_omission";
+                writer.Write(fields[0]); writer.Write('\t'); writer.Write(analysisTaxonId);
+                writer.Write('\t'); writer.WriteLine(payload);
+            }
+        }
+        if (reported.Keys.Any(x => !eligibleIds.Contains(x)) || masks.Any(x => !eligibleIds.Contains(x)))
+            throw new InvalidDataException("Sparse state points outside eligible-event factor");
+    }
+
+    private static string ResolveExtractedType(bool reported, bool masked)
+    { return reported ? "reported" : masked ? "ambiguity_affected" : "zero_filled"; }
+
+    private static StreamReader GzipReader(string path)
+    {
+        FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+        GZipStream gzip = new GZipStream(file, CompressionMode.Decompress);
+        return new StreamReader(gzip, Encoding.UTF8, true, 1 << 20);
     }
 
     private static void ReadSed(string path, RunStats stats,
@@ -408,52 +521,95 @@ public static class Stage3Phase1Denominator
         }
     }
 
-    private static void WriteDenominator(string path, List<EventGroup> eligible,
+    private static void AccountFactorizedDenominator(List<EventGroup> eligible,
         List<string> taxa, RunStats stats)
     {
-        using (FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
-        using (GZipStream gzip = new GZipStream(file, CompressionLevel.Optimal))
-        using (StreamWriter writer = new StreamWriter(gzip, new UTF8Encoding(false), 1 << 20))
+        HashSet<string> included = new HashSet<string>(taxa, StringComparer.Ordinal);
+        stats.DenominatorRows = (long)eligible.Count * taxa.Count;
+        foreach (EventGroup group in eligible)
         {
-            writer.WriteLine("analysis_checklist_id\tanalysis_taxon_id\tdetection\tnumeric_count\tlower_bound_count\tcount_type\tambiguity_flag\tzero_provenance");
+            foreach (KeyValuePair<string, CountState> item in group.Named)
+            {
+                if (!included.Contains(item.Key))
+                    throw new InvalidDataException("Reported state points outside denominator registry");
+                stats.DirectRows++;
+                stats.SparseReportedRows++;
+                IncrementState(stats, item.Value.Type);
+            }
+            foreach (string taxon in group.AmbiguityMasks)
+            {
+                if (!included.Contains(taxon))
+                    throw new InvalidDataException("Ambiguity mask points outside denominator registry");
+                stats.SparseAmbiguityMaskRows++;
+                if (!group.Named.ContainsKey(taxon))
+                {
+                    stats.AmbiguityRows++;
+                    IncrementState(stats, "ambiguity_affected");
+                }
+            }
+        }
+        stats.ZeroRows = stats.DenominatorRows - stats.DirectRows - stats.AmbiguityRows;
+        if (stats.ZeroRows < 0) throw new InvalidDataException("Factorized denominator state accounting is negative");
+        stats.StateRows["zero_filled"] = stats.ZeroRows;
+    }
+
+    private static void IncrementState(RunStats stats, string type)
+    {
+        long n; stats.StateRows.TryGetValue(type, out n); stats.StateRows[type] = n + 1;
+    }
+
+    private static StreamWriter GzipWriter(string path)
+    {
+        FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
+        GZipStream gzip = new GZipStream(file, CompressionLevel.Optimal);
+        return new StreamWriter(gzip, new UTF8Encoding(false), 1 << 20);
+    }
+
+    private static void WriteEligibleEvents(string path, List<EventGroup> eligible)
+    {
+        using (StreamWriter writer = GzipWriter(path))
+        {
+            writer.WriteLine("analysis_checklist_id\teligibility_provenance");
             foreach (EventGroup group in eligible)
             {
-                foreach (string taxon in taxa)
-                {
-                    CountState state;
-                    string detection, numeric, lower, type, ambiguity, provenance;
-                    if (group.Named.TryGetValue(taxon, out state))
-                    {
-                        detection = "1";
-                        numeric = state.Numeric.HasValue ? state.Numeric.Value.ToString(CultureInfo.InvariantCulture) : "";
-                        lower = state.Lower.HasValue ? state.Lower.Value.ToString(CultureInfo.InvariantCulture) : "";
-                        type = state.Type;
-                        ambiguity = state.Type == "ambiguity_affected" ? "TRUE" : "FALSE";
-                        provenance = state.SourceDisagreement ? "accepted_record_shared_source_disagreement" : "accepted_record";
-                        stats.DirectRows++;
-                    }
-                    else if (group.AmbiguityMasks.Contains(taxon))
-                    {
-                        detection = numeric = lower = "";
-                        type = "ambiguity_affected";
-                        ambiguity = "TRUE";
-                        provenance = "accepted_ambiguous_record_masks_zero";
-                        stats.AmbiguityRows++;
-                    }
-                    else
-                    {
-                        detection = "0"; numeric = "0"; lower = "0";
-                        type = "zero_filled"; ambiguity = "FALSE";
-                        provenance = "eligible_complete_verified_event_omission";
-                        stats.ZeroRows++;
-                    }
-                    writer.Write(group.AnalysisId); writer.Write('\t'); writer.Write(taxon);
-                    writer.Write('\t'); writer.Write(detection); writer.Write('\t'); writer.Write(numeric);
-                    writer.Write('\t'); writer.Write(lower); writer.Write('\t'); writer.Write(type);
-                    writer.Write('\t'); writer.Write(ambiguity); writer.Write('\t'); writer.WriteLine(provenance);
-                    stats.DenominatorRows++;
-                    long n; stats.StateRows.TryGetValue(type, out n); stats.StateRows[type] = n + 1;
-                }
+                writer.Write(group.AnalysisId); writer.Write('\t');
+                writer.WriteLine("complete_verified_independent_primary_effort_event");
+            }
+        }
+    }
+
+    private static void WriteReportedCountStates(string path, List<EventGroup> eligible)
+    {
+        using (StreamWriter writer = GzipWriter(path))
+        {
+            writer.WriteLine("analysis_checklist_id\tanalysis_taxon_id\tdetection\tnumeric_count\tlower_bound_count\tcount_type\tambiguity_flag\tprovenance");
+            foreach (EventGroup group in eligible)
+            foreach (KeyValuePair<string, CountState> item in group.Named.OrderBy(x => x.Key, StringComparer.Ordinal))
+            {
+                CountState state = item.Value;
+                writer.Write(group.AnalysisId); writer.Write('\t'); writer.Write(item.Key);
+                writer.Write("\t1\t");
+                if (state.Numeric.HasValue) writer.Write(state.Numeric.Value.ToString(CultureInfo.InvariantCulture));
+                writer.Write('\t');
+                if (state.Lower.HasValue) writer.Write(state.Lower.Value.ToString(CultureInfo.InvariantCulture));
+                writer.Write('\t'); writer.Write(state.Type); writer.Write('\t');
+                writer.Write(state.Type == "ambiguity_affected" ? "TRUE" : "FALSE"); writer.Write('\t');
+                writer.WriteLine(state.SourceDisagreement ?
+                    "accepted_record_shared_source_disagreement" : "accepted_record");
+            }
+        }
+    }
+
+    private static void WriteAmbiguityMasks(string path, List<EventGroup> eligible)
+    {
+        using (StreamWriter writer = GzipWriter(path))
+        {
+            writer.WriteLine("analysis_checklist_id\tanalysis_taxon_id\tprovenance");
+            foreach (EventGroup group in eligible)
+            foreach (string taxon in group.AmbiguityMasks.OrderBy(x => x, StringComparer.Ordinal))
+            {
+                writer.Write(group.AnalysisId); writer.Write('\t'); writer.Write(taxon); writer.Write('\t');
+                writer.WriteLine("accepted_ambiguous_record_masks_zero_unless_named_report_exists");
             }
         }
     }
@@ -488,19 +644,59 @@ public static class Stage3Phase1Denominator
     private static void LoadTaxonomy(string repoRoot, out List<string> taxa,
         out Dictionary<string, TaxonRule> namedRules,
         out Dictionary<string, List<string>> ambiguousRules,
-        out string taxonomyVersion, out string taxonomyHash)
+        out string taxonomyVersion, out string taxonomyHash,
+        out string registryHash, out int namedMappingCount)
     {
-        List<Dictionary<string, string>> registry = ReadCsv(Path.Combine(repoRoot,
-            "metadata", "canonical_species_registry.csv"));
-        taxa = registry.Where(r => Get(r, "approval_status") == "provisional_design")
+        VerifyHashSidecar(repoRoot, "metadata/canonical_species_registry.csv",
+            "metadata/canonical_species_registry.csv.sha256");
+        VerifyHashSidecar(repoRoot, "metadata/source_taxonomy_crosswalk.csv",
+            "metadata/source_taxonomy_crosswalk.csv.sha256");
+        VerifyHashSidecar(repoRoot, "metadata/ambiguous_taxon_rules.csv",
+            "metadata/ambiguous_taxon_rules.csv.sha256");
+        VerifyHashSidecar(repoRoot, "outputs/stage2_design_lock/species_support_summary.csv",
+            "outputs/stage2_design_lock/species_support_summary.csv.sha256");
+        VerifyHashSidecar(repoRoot, "outputs/stage2_design_lock/species_taxonomy_reconciliation.csv",
+            "outputs/stage2_design_lock/species_taxonomy_reconciliation.csv.sha256");
+
+        string registryPath = Path.Combine(repoRoot, "metadata", "canonical_species_registry.csv");
+        registryHash = Sha256(registryPath);
+        List<Dictionary<string, string>> registry = ReadCsv(registryPath);
+        taxa = registry.Where(r => IsTrue(Get(r, "phase1_denominator_included")))
             .Select(r => Get(r, "analysis_taxon_id")).Where(x => x.Length > 0)
             .Distinct(StringComparer.Ordinal).OrderBy(x => x, StringComparer.Ordinal).ToList();
-        if (taxa.Count != 45) throw new InvalidDataException("Registered taxon cardinality is not 45");
+        if (taxa.Count == 0 || taxa.Count != registry.Count(r =>
+            IsTrue(Get(r, "phase1_denominator_included"))))
+            throw new InvalidDataException("Hashed denominator registry inclusion field is empty or duplicated");
+        if (registry.Where(r => IsTrue(Get(r, "phase1_denominator_included"))).Any(r =>
+            Get(r, "phase1_denominator_registry_version") != "stage3_phase1_repair_v2" ||
+            Get(r, "phase1_denominator_inclusion_basis") != "frozen_stage2_retained_taxon"))
+            throw new InvalidDataException("Denominator registry inclusion basis is not the frozen repair state");
         HashSet<string> taxonSet = new HashSet<string>(taxa, StringComparer.Ordinal);
+
+        List<Dictionary<string, string>> support = ReadCsv(Path.Combine(repoRoot,
+            "outputs", "stage2_design_lock", "species_support_summary.csv"));
+        if (support.Count != taxa.Count || support.Select(r => Get(r, "analysis_taxon_id"))
+            .Distinct(StringComparer.Ordinal).Count() != taxa.Count ||
+            !taxonSet.SetEquals(support.Select(r => Get(r, "analysis_taxon_id"))) ||
+            support.Any(r => Get(r, "named_species_recommendation").Length == 0 ||
+                Get(r, "guild_recommendation").Length == 0 ||
+                Get(r, "community_recommendation").Length == 0 ||
+                Get(r, "count_recommendation").Length == 0))
+            throw new InvalidDataException("Frozen Stage 2 dispositions do not reconcile to denominator taxa");
+
+        List<Dictionary<string, string>> taxonomy = ReadCsv(Path.Combine(repoRoot,
+            "outputs", "stage2_design_lock", "species_taxonomy_reconciliation.csv"));
+        if (taxonomy.Count != taxa.Count || !taxonSet.SetEquals(taxonomy.Select(r =>
+                Get(r, "analysis_taxon_id"))) || taxonomy.Any(r =>
+                !IsTrue(Get(r, "exact_species_concept_reconciled")) ||
+                Get(r, "recommended_taxonomy_disposition") != "approve_exact_v2025_species_concept" ||
+                Get(r, "observed_categories") != "species"))
+            throw new InvalidDataException("Frozen exact taxonomy reconciliation does not cover denominator taxa");
 
         List<Dictionary<string, string>> crosswalk = ReadCsv(Path.Combine(repoRoot,
             "metadata", "source_taxonomy_crosswalk.csv"));
         namedRules = new Dictionary<string, TaxonRule>(StringComparer.Ordinal);
+        HashSet<string> identityTaxa = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> versions = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> hashes = new HashSet<string>(StringComparer.Ordinal);
         foreach (Dictionary<string, string> row in crosswalk.Where(r => Get(r, "approval_status") == "approved"))
@@ -516,10 +712,20 @@ public static class Stage3Phase1Denominator
             if (namedRules.TryGetValue(concept, out existing) && existing.AnalysisTaxon != taxon)
                 throw new InvalidDataException("Taxonomy source concept is not many-to-one safe");
             namedRules[concept] = rule;
+            if (Get(row, "mapping_treatment") == "candidate_identity")
+            {
+                if (!identityTaxa.Add(taxon))
+                    throw new InvalidDataException("Analysis taxon has multiple approved identity concepts");
+                Dictionary<string, string> registryRow = registry.Single(r =>
+                    Get(r, "analysis_taxon_id") == taxon);
+                if (Get(registryRow, "source_taxon_concept_ids") != concept)
+                    throw new InvalidDataException("Approved identity mapping disagrees with hashed registry");
+            }
             versions.Add(Get(row, "taxonomy_snapshot_version"));
             hashes.Add(Get(row, "taxonomy_snapshot_sha256"));
         }
-        if (namedRules.Count != 58 || versions.Count != 1 || hashes.Count != 1)
+        namedMappingCount = namedRules.Count;
+        if (!identityTaxa.SetEquals(taxonSet) || versions.Count != 1 || hashes.Count != 1)
             throw new InvalidDataException("Approved taxonomy identity is not singular and complete");
         taxonomyVersion = versions.Single(); taxonomyHash = hashes.Single();
 
@@ -544,9 +750,9 @@ public static class Stage3Phase1Denominator
         int sourceRows, int analysisGroups, int eligibleEvents, int taxa,
         long sharedGroups, long disagreementGroups, long structuralUnknownCandidates,
         long sourceIdentityDisagreementEvents, long stationaryEligible,
-        int unmatchedEbdKeys, int missingTaxonomyConcepts,
-        string taxonomyVersion, string taxonomyHash, string denominatorHash,
-        string crosswalkHash)
+        int unmatchedEbdKeys, int missingTaxonomyConcepts, int namedMappingCount,
+        string taxonomyVersion, string taxonomyHash, string registryHash,
+        string eligibleHash, string reportedHash, string masksHash, string crosswalkHash)
     {
         string q = "check_id,status,detail\n" +
             "Q01,PASS,release bytes and SHA-256 match the registered EBD and SED pair\n" +
@@ -557,7 +763,7 @@ public static class Stage3Phase1Denominator
             "Q06,PASS,numeric X lower-bound missing ambiguity and zero-filled states remain distinct\n" +
             "Q07,PASS,stationary distance is zero before effort handling\n" +
             "Q08,PASS,independent event by registered taxon is unique\n" +
-            "Q09,PASS,no prohibited fields or geometries entered and protected artifacts reproduced byte-for-byte\n";
+            "Q09,PASS,no prohibited fields or geometries entered and factorized protected artifacts reproduced byte-for-byte\n";
         File.WriteAllText(Path.Combine(directory, "phase1_gate_summary.csv"), q, new UTF8Encoding(false));
 
         StringBuilder states = new StringBuilder("count_type,rows,interpretation\n");
@@ -579,9 +785,11 @@ public static class Stage3Phase1Denominator
         string joins = "join_name,declared_cardinality,left_rows,right_rows,unmatched_or_duplicate,status\n" +
             "EBD observation to SED sampling event,many-to-one," + stats.EbdRowsInWindow + "," + sourceRows + "," + unmatchedEbdKeys + ",PASS\n" +
             "SED component to independent analysis event,many-to-one," + sourceRows + "," + analysisGroups + ",0,PASS\n" +
-            "approved source taxon concept to analysis taxon,many-to-one,58," + taxa + ",0,PASS\n" +
+            "approved source taxon concept to analysis taxon,many-to-one," + namedMappingCount + "," + taxa + ",0,PASS\n" +
             "ambiguous source taxon concept to possible analysis taxa,one-to-many," + stats.AmbiguousSourceRows + "," + taxa + ",0,PASS\n" +
-            "denominator independent event by analysis taxon,one-to-one," + stats.DenominatorRows + "," + stats.DenominatorRows + ",0,PASS\n";
+            "eligible event to sparse reported count state,one-to-many," + eligibleEvents + "," + stats.SparseReportedRows + ",0,PASS\n" +
+            "eligible event to sparse ambiguity mask,one-to-many," + eligibleEvents + "," + stats.SparseAmbiguityMaskRows + ",0,PASS\n" +
+            "logical denominator independent event by analysis taxon,one-to-one," + stats.DenominatorRows + "," + stats.DenominatorRows + ",0,PASS\n";
         File.WriteAllText(Path.Combine(directory, "join_cardinality_audit.csv"), joins,
             new UTF8Encoding(false));
 
@@ -590,6 +798,11 @@ public static class Stage3Phase1Denominator
             "  \"independent_eligible_checklist_events\": " + eligibleEvents + ",\n" +
             "  \"registered_analysis_taxa\": " + taxa + ",\n" +
             "  \"denominator_event_taxon_rows\": " + stats.DenominatorRows + ",\n" +
+            "  \"denominator_representation\": \"factorized_sparse\",\n" +
+            "  \"eligible_event_factor_rows\": " + eligibleEvents + ",\n" +
+            "  \"sparse_reported_count_state_rows\": " + stats.SparseReportedRows + ",\n" +
+            "  \"sparse_ambiguity_mask_rows\": " + stats.SparseAmbiguityMaskRows + ",\n" +
+            "  \"species_specific_zeros_generated_at_extraction\": true,\n" +
             "  \"zero_filled_rows\": " + stats.ZeroRows + ",\n" +
             "  \"ambiguity_masked_rows\": " + stats.AmbiguityRows + ",\n" +
             "  \"direct_accepted_record_rows\": " + stats.DirectRows + ",\n" +
@@ -601,6 +814,8 @@ public static class Stage3Phase1Denominator
             "  \"stationary_eligible_events_normalized_to_zero_km\": " + stationaryEligible + ",\n" +
             "  \"taxonomy_version\": \"" + Json(taxonomyVersion) + "\",\n" +
             "  \"taxonomy_snapshot_sha256\": \"" + taxonomyHash + "\",\n" +
+            "  \"denominator_registry_sha256\": \"" + registryHash + "\",\n" +
+            "  \"denominator_registry_inclusion_field\": \"phase1_denominator_included\",\n" +
             "  \"missing_approved_taxonomy_concepts\": " + missingTaxonomyConcepts + ",\n" +
             "  \"accepted_record_predicate\": \"APPROVED == true\",\n" +
             "  \"zero_provenance_gate\": \"PASS_ELIGIBLE_COMPLETE_VERIFIED_EVENT_OMISSION_ONLY\",\n" +
@@ -611,7 +826,9 @@ public static class Stage3Phase1Denominator
             "  \"shoreline_fields_selected\": 0,\n" +
             "  \"geometry_analysis_or_sensitivity_run\": false,\n" +
             "  \"bird_response_summary_or_model_run\": false,\n" +
-            "  \"protected_denominator_sha256\": \"" + denominatorHash + "\",\n" +
+            "  \"protected_eligible_events_sha256\": \"" + eligibleHash + "\",\n" +
+            "  \"protected_reported_count_states_sha256\": \"" + reportedHash + "\",\n" +
+            "  \"protected_ambiguity_masks_sha256\": \"" + masksHash + "\",\n" +
             "  \"protected_crosswalk_sha256\": \"" + crosswalkHash + "\",\n" +
             "  \"reproducibility_check\": \"PASS_BYTE_IDENTICAL_REPLAY\",\n" +
             "  \"next_gate\": \"HUMAN_DENOMINATOR_AND_ZERO_PROVENANCE_REVIEW\"\n" +
