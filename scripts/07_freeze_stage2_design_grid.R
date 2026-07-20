@@ -194,7 +194,7 @@ for (id in names(coocc)) {
 grid <- rbindlist(rows, use.names = TRUE)
 setorder(grid, dimension, candidate_id)
 if (anyDuplicated(grid[, .(dimension, candidate_id)])) stop("Duplicate candidate grid keys", call. = FALSE)
-fwrite(grid, grid_path, quote = TRUE, na = "")
+fwrite(grid, grid_path, quote = TRUE, na = "", eol = "\n")
 
 grid_sha <- digest(grid_path, algo = "sha256", file = TRUE, serialize = FALSE)
 frozen_at <- format(Sys.time(), tz = "UTC", usetz = TRUE)

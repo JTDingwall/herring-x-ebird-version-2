@@ -1,7 +1,9 @@
 {
   "stage": "stage2_outcome_blind_design_lock",
   "classification": "PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL",
-  "candidate_grid_sha256": "f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91",
+  "candidate_grid_sha256": "8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81",
+  "candidate_grid_prior_windows_crlf_sha256": "f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91",
+  "candidate_grid_correction_type": "implementation_only_line_ending_canonicalization",
   "candidate_grid_frozen_at_utc": "2026-07-20 05:27:38 UTC",
   "candidate_grid_verified_before_response_value_access": true,
   "prospective_spec_sha256": "2640276fad585c9d3b537f407bb3efeb0167cb5acbdc38674fbb8d6e91b1cbb7",

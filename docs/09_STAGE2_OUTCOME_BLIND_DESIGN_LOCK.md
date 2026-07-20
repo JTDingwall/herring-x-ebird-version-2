@@ -2,8 +2,9 @@
 
 **Stage gate:** `PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL`
 **Validation:** `PASS_LOCAL_VALIDATION_REMOTE_CI_PENDING`
-**Candidate-grid SHA-256:** `f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91`
+**Candidate-grid SHA-256:** `8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81`
 **Frozen at:** `2026-07-20 05:27:38 UTC`
+**Prior Windows-CRLF SHA-256 retained:** `f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91`
 
 > SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE. Current analyses remain exploratory and estimand-refining until prospective confirmation.
 
@@ -97,7 +98,7 @@ Lay summary: Sparse taxa were retained rather than deleted. Gadwall and Northern
 | Western Gull | approve_exact_v2025_species_concept | named_species_core | eligible_primary_guild_membership | positive_count_component_eligible | pairwise_support_audit_eligible |
 | White-winged Scoter | approve_exact_v2025_species_concept | named_species_core | eligible_primary_guild_membership | positive_count_component_eligible | pairwise_support_audit_eligible |
 
-Technical note: The complete pooled support metrics and explicit threshold reasons are in `outputs/stage2_design_lock/species_support_summary.csv`; all 6,090 taxon-by-candidate support rows are in `species_support_by_design_cell.csv`. These are support counts only, never effect estimates.
+Technical note: The complete pooled support metrics and explicit threshold reasons are in `outputs/stage2_design_lock/species_support_summary.csv`; all 6,090 taxon-by-candidate support rows are in `species_support_by_design_cell.csv`. These are support counts only, never effect estimates. The original Windows-CRLF hash is retained; canonical LF normalization changed bytes only, not design content, and did not consult support patterns.
 
 ## Event-complex recommendation
 

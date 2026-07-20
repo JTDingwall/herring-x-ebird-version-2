@@ -17,6 +17,7 @@ mult <- fread("metadata/hypothesis_model_multiplicity_registry.csv", na.strings 
 grid_hash_lines <- readLines("metadata/stage2_candidate_design_grid.sha256", warn = FALSE)
 grid_hash <- strsplit(grid_hash_lines[1L], "[[:space:]]+")[[1L]][1L]
 grid_time <- sub("^# frozen_at_utc: ", "", grid_hash_lines[2L])
+prior_grid_hash <- sub("^# prior_windows_crlf_sha256: ", "", grid_hash_lines[4L])
 prospective_hash <- strsplit(readLines("metadata/prospective_confirmation_spec.sha256", warn = FALSE)[1L], "[[:space:]]+")[[1L]][1L]
 gate <- fromJSON(file.path(out_dir, "stage_gate.json"))
 
@@ -71,6 +72,7 @@ md <- c(
   paste0("**Validation:** `", validation, "`"),
   paste0("**Candidate-grid SHA-256:** `", grid_hash, "`"),
   paste0("**Frozen at:** `", grid_time, "`"),
+  paste0("**Prior Windows-CRLF SHA-256 retained:** `", prior_grid_hash, "`"),
   "",
   "> SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE. Current analyses remain exploratory and estimand-refining until prospective confirmation.",
   "",
@@ -95,7 +97,7 @@ md <- c(
   md_table(disposition, c("common_name", "taxonomy_disposition", "named_species_recommendation", "guild_recommendation", "count_recommendation", "cooccurrence_recommendation"),
            c("Taxon", "Taxonomy", "Named-species role", "Guild role", "Count role", "Co-occurrence role")),
   "",
-  "Technical note: The complete pooled support metrics and explicit threshold reasons are in `outputs/stage2_design_lock/species_support_summary.csv`; all 6,090 taxon-by-candidate support rows are in `species_support_by_design_cell.csv`. These are support counts only, never effect estimates.",
+  "Technical note: The complete pooled support metrics and explicit threshold reasons are in `outputs/stage2_design_lock/species_support_summary.csv`; all 6,090 taxon-by-candidate support rows are in `species_support_by_design_cell.csv`. These are support counts only, never effect estimates. The original Windows-CRLF hash is retained; canonical LF normalization changed bytes only, not design content, and did not consult support patterns.",
   "",
   "## Event-complex recommendation",
   "",
@@ -167,7 +169,7 @@ writeLines(md, "docs/09_STAGE2_OUTCOME_BLIND_DESIGN_LOCK.md", useBytes = TRUE)
 css <- "body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;max-width:1180px;margin:0 auto;padding:28px;color:#17221d;line-height:1.48}h1,h2{color:#123d32}h2{border-top:1px solid #ccd8d3;padding-top:22px}.banner{background:#eef7f1;border-left:5px solid #2f7d5b;padding:14px;margin:18px 0}.lay{background:#f7f2df;padding:12px;border-radius:6px}.table-wrap{overflow:auto;margin:12px 0 24px}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border:1px solid #ccd8d3;padding:7px;vertical-align:top}th{background:#e7f0ec;position:sticky;top:0}code{background:#eef1ef;padding:2px 4px}small{color:#53645d}.status{font-weight:700;color:#145a3f}"
 sections_html <- c(
   "<h1>Stage 2 outcome-blind design lock</h1>",
-  paste0("<div class='banner'><div class='status'>", html_escape(classification), "</div><div>Validation: ", html_escape(validation), "</div><div>Candidate-grid SHA-256: <code>", grid_hash, "</code></div><div>Frozen: ", html_escape(grid_time), "</div><div>SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE</div></div>"),
+  paste0("<div class='banner'><div class='status'>", html_escape(classification), "</div><div>Validation: ", html_escape(validation), "</div><div>Candidate-grid canonical LF SHA-256: <code>", grid_hash, "</code></div><div>Prior Windows-CRLF SHA-256 retained: <code>", prior_grid_hash, "</code></div><div>Frozen: ", html_escape(grid_time), "</div><div>SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE</div></div>"),
   "<h2>Outcome boundary and executive conclusion</h2><p class='lay'>The design was frozen before any bird detection or numeric-count value was accessed. This stage checks analytical support; it does not estimate a biological response.</p>",
   paste0("<p>Exact EBD fields read: <code>", paste(html_escape(raw_ebd_columns), collapse = "</code>, <code>"), "</code>. Comments were not read, 2026+ outcomes remained frozen, and none of the 45 response models was fitted.</p>"),
   "<h2>Ten design decisions</h2><p class='lay'>All recommendations remain subject to human scientific approval.</p>",

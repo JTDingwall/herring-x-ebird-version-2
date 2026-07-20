@@ -829,6 +829,8 @@ stage_gate <- list(
   stage = "stage2_outcome_blind_design_lock",
   classification = "PASS_READY_FOR_HUMAN_SCIENTIFIC_APPROVAL",
   candidate_grid_sha256 = actual_hash,
+  candidate_grid_prior_windows_crlf_sha256 = rules$design_freeze$correction_history[[1L]]$prior_sha256,
+  candidate_grid_correction_type = rules$design_freeze$correction_history[[1L]]$correction_type,
   candidate_grid_frozen_at_utc = rules$design_freeze$frozen_at_utc,
   candidate_grid_verified_before_response_value_access = TRUE,
   prospective_spec_sha256 = prospective_hash,

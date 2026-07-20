@@ -1,11 +1,20 @@
 design_freeze:
   grid_version: stage2_v1
   candidate_grid_path: metadata/stage2_candidate_design_grid.csv
-  candidate_grid_sha256: f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91
+  candidate_grid_sha256: 8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81
   frozen_at_utc: 2026-07-20 05:27:38 UTC
   frozen_before_response_value_access: yes
   correction_policy: retain old and new hashes; document schema or implementation
     correction; never change for support patterns
+  correction_history:
+  - corrected_at_utc: 2026-07-20 07:50:13 UTC
+    correction_type: implementation_only_line_ending_canonicalization
+    design_content_changed: no
+    support_patterns_consulted: no
+    prior_sha256: f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91
+    prior_byte_representation: windows_crlf
+    replacement_sha256: 8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81
+    replacement_byte_representation: canonical_lf
 support_output_label: SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE
 eligible_support_quantities:
 - eligible_checklists
