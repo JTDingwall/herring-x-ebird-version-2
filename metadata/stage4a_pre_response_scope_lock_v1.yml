@@ -1,0 +1,43 @@
+lock_version: stage4a_pre_response_scope_lock_v1
+locked_at_utc: 2026-07-20
+branch: analysis/stage4-core-response
+verified_base: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+scientific_authorization: AUTHORIZE_STAGE4A_CORE_RESPONSE_ANALYSIS
+authorization_record_sha256: fbebdf1893066231d4b63b45772973683822b5586071afa2561382966a8b48c0
+historical_model_registry_sha256: e9f28b1772ca8e5816abfe8e59c0286b495305725f2cfc9e08beb97cd211d311
+model_disposition:
+  rows: 45
+  sha256: 33ae177eb311122015d70bafc65e4285959b2d6aa5821e855a7e170670b44004
+  activated_core: [M01, M02, M05, M08]
+  activated_component: [M11, M12]
+  activated_diagnostic: [M26, M27, M28, M29, M32, M40]
+  prospective_locked: [M31]
+model_specification_matrix:
+  rows: 12
+  sha256: f7d0ab362ad8ef49a240d071b6beda4e3af62a442d8d36029535d7f2b85b4444
+core_specification_sha256: 0c11db96e099802235212c3beeb7c27b4cfdea5702aaa383e6a4544da602a13a
+implementation:
+  R_stage4a_core_sha256: eeb9a74d514b19eb3808487be6d9de50d54423f8a8a3e88aeff000c5ee778205
+  R_stage4a_production_sha256: 2f477047419b63baac377ae736291788fbfc86a8407dc7639cf5573f19a7f25d
+  protected_builder_sha256: 5a3dc7b16eeb8d97de0ea9c35ab7cc6464c4967e2865c85e02ed21a6b9b32c3c
+  analysis_runner_sha256: 401d724da9ac3cf2eb1b45ced450f47d0f80429475849814b49937ba9cc02192
+  protected_builder_runner_sha256: a27d7c1b2d0be985ee8d2a7e7d107f5b39907c3fdb45b0c00976ab5e6532a540
+templates:
+  methods_sha256: 48f5820cb6a5f4d8e2f68ebc426c2c822e5e826652c311fab469a82c7dcd73d5
+  empty_results_template_sha256: b38ed3aa818ce6e8fc0b05914e132ca7d34dedb702d6a016e68f236e24d259f0
+local_fixture_gates:
+  protected_builder: PASS
+  factorized_state_pipeline: PASS
+  registry_validation: PASS
+  complete_test_suite: PASS_EXCEPT_KNOWN_WINDOWS_LINE_ENDING_HASH_DIFFERENCE
+  protected_response_accessed: false
+  sparse_response_artifacts_opened: false
+  comments_accessed: false
+  shoreline_accessed: false
+  records_2026_plus_accessed: false
+remote_ci:
+  required_before_protected_response_access: true
+  status_at_lock_creation: pending
+automatic_transition_after_success: authorized_without_additional_human_gate
+failure_rule: fixture_only_repair_and_new_lock_commit
+post_execution_stop_gate: PASS_PENDING_HUMAN_STAGE4A_RESULTS_REVIEW

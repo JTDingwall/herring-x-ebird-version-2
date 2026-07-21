@@ -1,0 +1,60 @@
+authorization_version: stage4a_human_scientific_authorization_v1
+authorized_at_utc: 2026-07-20
+authorization_source: explicit_human_instruction_in_repository_session
+scientific_decision: AUTHORIZE_STAGE4A_CORE_RESPONSE_ANALYSIS
+authorized_branch: analysis/stage4-core-response
+verified_base: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+stage3_approval_record: metadata/stage3_phase3_human_scientific_approval_v1.yml
+stage3_approval_sha256: de7ce36a2cff8c1550033a71358276383c00daede241fbbc9ac79c0b2ef49c52
+response_access:
+  registered_fields_through_2025: authorized_after_successful_pre_response_lock_ci
+  records_2026_plus: prohibited
+  free_text_comments: prohibited
+  shoreline_analysis: prohibited
+  unregistered_response_fields: prohibited
+  scope_expansion: prohibited
+pre_response_lock:
+  fixture_only_implementation_required: true
+  commit_push_and_ci_required_before_protected_response_access: true
+  additional_human_gate_after_success: false
+activated_models:
+  core: [M01, M02, M05, M08]
+  components_not_independent_evidence: [M11, M12]
+  diagnostics: [M26, M27, M28, M29, M32, M40]
+  wcvi_observer_robustness: mandatory
+prospective_locked_model: M31
+population:
+  complete_protocols: [Stationary, Traveling]
+  duration_minutes: [5, 300]
+  maximum_travel_distance_km: 5
+  observer_count: [1, 10]
+  immutable_source_points_only: true
+  maximum_year: 2025
+  factorized_taxa: 58
+  high_precision_sensitivity_maximum_km: 2
+  broad_10km_frame: prohibited
+regional_roles:
+  SoG: {start_year: 2005, role: primary}
+  WCVI: {start_year: 2015, role: candidate_primary_with_mandatory_observer_robustness}
+  CC: {role: hierarchical_and_descriptive_only}
+  NA: {role: hierarchical_and_descriptive_only}
+validation:
+  deterministic_event_blocked_folds: 4
+  new_event_generalization_view: event_blocked_only
+  observer_disjoint_role: observer_composition_robustness_only
+  heldout_random_effect_prediction: population_level_expectation
+  conditional_blups_for_heldout_prediction: prohibited
+count_semantics:
+  states_kept_distinct: [detection, positive_numeric_count, X, lower_bound_count, ambiguity, deterministic_zero]
+  X_numeric_magnitude: excluded
+  ambiguity_as_zero: prohibited
+  primary_positive_count_family: hurdle_lognormal
+  parallel_count_sensitivity: zero_truncated_NB2
+  primary_winsorization: prohibited
+multiplicity:
+  primary_species_synthesis: hierarchical_partial_pooling
+  individual_species_visible: true
+  correction: BH_within_coherent_species_outcome_families_only
+  omnibus_registry_correction: prohibited
+stopping_gate: PASS_PENDING_HUMAN_STAGE4A_RESULTS_REVIEW
+deferred_or_future_work_automatically_authorized: false
