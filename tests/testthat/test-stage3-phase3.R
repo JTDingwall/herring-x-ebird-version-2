@@ -113,8 +113,8 @@ testthat::test_that("WCVI decision requires observer-robustness sensitivity", {
   testthat::expect_identical(approval$regional_decisions$SoG$role, "primary")
   testthat::expect_identical(approval$regional_decisions$CC$role,
     "hierarchical_and_descriptive_only")
-  testthat::expect_false(approval$regional_decisions$NA$unsupported_cell_blocks_SoG_or_WCVI)
-  testthat::expect_false(approval$regional_decisions$NA$unsupported_cell_may_upgrade_NA)
+  testthat::expect_false(approval$regional_decisions[["NA"]]$unsupported_cell_blocks_SoG_or_WCVI)
+  testthat::expect_false(approval$regional_decisions[["NA"]]$unsupported_cell_may_upgrade_NA)
 })
 
 testthat::test_that("Phase 3 aggregates suppress small cells and release no protected schema", {
