@@ -74,8 +74,9 @@ precision variance. At the zero boundary, all components receive the common
 inverse-variance family mean and its variance `1 / sum(1/v_i)`. This boundary rule avoids
 the historical artificial `1e-12` precision behavior.
 
-At least two eligible components are required. Missing inputs, non-finite inputs, or a
-nonpositive standard error exclude that row with a reason code and trigger a recount;
+At least two eligible components are required. Missing inputs, non-finite inputs, a
+nonpositive standard error, or a model row whose registered status is not `completed`
+exclude that row with a reason code and trigger a recount;
 fewer than two remaining components yields an explicit NA singleton result. An
 incompatible scale or compatibility violation fails the entire family. Duplicate
 resolution occurs before estimation. Ninety-five-percent intervals use the standard

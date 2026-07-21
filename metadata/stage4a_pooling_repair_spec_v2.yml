@@ -97,6 +97,7 @@ estimator_contract:
   missing: exclude_row_with_reason_then_reassess_minimum_count
   nonfinite: exclude_row_with_reason_then_reassess_minimum_count
   nonpositive_standard_error: exclude_row_with_reason_then_reassess_minimum_count
+  noncompleted_model_status: exclude_row_with_NON_ESTIMABLE_MODEL_STATUS_then_reassess_minimum_count
   incompatible_scale: fail_family
   duplicate: exclude_by_frozen_M01_M02_precedence_before_estimation
   pooled_p_value: not_produced

@@ -5,6 +5,7 @@ NON_ESTIMABLE_SINGLETON,family,true,Fewer than two eligible components remain
 NON_ESTIMABLE_MISSING_INPUT,row,false,A required future numeric input is missing
 NON_ESTIMABLE_NONFINITE_INPUT,row,false,A required future numeric input is non-finite
 NON_ESTIMABLE_NONPOSITIVE_STANDARD_ERROR,row,false,A future standard error is not positive
+NON_ESTIMABLE_MODEL_STATUS,row,false,The registered model row did not complete successfully
 INCOMPATIBLE_SCALE,family,true,Component scale is incompatible with the frozen family
 IDENTITY_MISSING,build,true,A required registered identity field is missing or ambiguous
 IDENTITY_COLLISION,build,true,Distinct canonical identities produced the same identifier

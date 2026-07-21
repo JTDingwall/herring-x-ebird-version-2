@@ -8,6 +8,7 @@ stage4a_pooling_v2_reason_codes <- function() {
     NON_ESTIMABLE_MISSING_INPUT = "A required future numeric input is missing",
     NON_ESTIMABLE_NONFINITE_INPUT = "A required future numeric input is non-finite",
     NON_ESTIMABLE_NONPOSITIVE_STANDARD_ERROR = "A future standard error is not positive",
+    NON_ESTIMABLE_MODEL_STATUS = "The registered model row did not complete successfully",
     INCOMPATIBLE_SCALE = "Component scale is incompatible with the frozen family",
     IDENTITY_MISSING = "A required registered identity field is missing or ambiguous",
     IDENTITY_COLLISION = "Distinct canonical identities produced the same identifier",
