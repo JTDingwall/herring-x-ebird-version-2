@@ -146,7 +146,7 @@ test_that("canonical IDs are deterministic under row reordering and fail closed"
                "POOLING_V2_IDENTITY_MISSING")
 })
 
-test_that("v2 schemas freeze future outputs without producing numeric repair", {
+test_that("v2 schemas and authorized numeric repair output coexist", {
   schema <- fread(repo_file("metadata", "stage4a_pooling_artifact_schema_v2.csv"))
   required_artifacts <- c(
     "repaired_aggregate_output_v2", "pooling_family_estimates_v2",
@@ -157,8 +157,8 @@ test_that("v2 schemas freeze future outputs without producing numeric repair", {
     "deterministic_execution_record", "output_hash_manifest"
   )
   expect_setequal(unique(schema$artifact), required_artifacts)
-  expect_false(file.exists(repo_file("outputs", "stage4a_pooling_repair_v2",
-                                     "effect_estimates_v2.csv")))
+  expect_true(file.exists(repo_file("outputs", "stage4a_pooling_repair_v2",
+                                    "effect_estimates_v2.csv")))
   spec <- yaml::read_yaml(repo_file("metadata", "stage4a_pooling_repair_spec_v2.yml"))
   expect_identical(spec$status, "frozen_pre_execution_scope_accepted")
   expect_identical(spec$scope$execution_gate, "accepted")

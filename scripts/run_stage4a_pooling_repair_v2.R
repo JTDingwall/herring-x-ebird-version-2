@@ -2,7 +2,7 @@
 
 args <- commandArgs(trailingOnly = TRUE)
 output_dir <- if (length(args)) args[[1L]] else file.path("outputs", "stage4a_pooling_repair_v2")
-pre_execution_spec_commit <- "cbb48f8709a35e00afbc7d36ecce18766532439d"
+pre_execution_spec_commit <- "bee142b6878bb66d57910c5aee57e4097fb2adf9"
 execution_code_files <- c(
   "R/stage4a_pooling_repair_spec_v2.R",
   "R/stage4a_pooling_repair_execute_v2.R",

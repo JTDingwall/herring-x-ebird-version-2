@@ -17,13 +17,16 @@ stage4a_pooling_v2_format_number <- function(x) {
 }
 
 .stage4a_pooling_v2_family_estimator <- function(x) {
-  eligible <- is.finite(x$estimate) & is.finite(x$standard_error) & x$standard_error > 0
+  if (!"status" %in% names(x)) stop("POOLING_V2_ESTIMATOR: status is required", call. = FALSE)
+  eligible <- x$status == "completed" & is.finite(x$estimate) &
+    is.finite(x$standard_error) & x$standard_error > 0
   x[, numeric_input_reason_code := ifelse(
-    is.na(estimate) | is.na(standard_error), "NON_ESTIMABLE_MISSING_INPUT",
+    status != "completed", "NON_ESTIMABLE_MODEL_STATUS",
+    ifelse(is.na(estimate) | is.na(standard_error), "NON_ESTIMABLE_MISSING_INPUT",
     ifelse(!is.finite(estimate) | !is.finite(standard_error),
            "NON_ESTIMABLE_NONFINITE_INPUT",
            ifelse(standard_error <= 0, "NON_ESTIMABLE_NONPOSITIVE_STANDARD_ERROR",
-                  "INCLUDED_PRIMARY_REPRESENTATION")))]
+                  "INCLUDED_PRIMARY_REPRESENTATION"))))]
   good <- x[eligible]
   if (nrow(good) < 2L) {
     x[, `:=`(partial_pool_estimate_v2 = NA_real_,
@@ -148,7 +151,8 @@ stage4a_pooling_v2_execute <- function(repo_root = ".", output_dir,
   source_rows <- which(affected)
   mapped[, `:=`(source_row = source_rows,
                 estimate = typed$estimate[source_rows],
-                standard_error = typed$standard_error[source_rows])]
+                standard_error = typed$standard_error[source_rows],
+                status = typed$status[source_rows])]
 
   selected <- mapped[included_in_future_estimator == TRUE]
   splits <- split(seq_len(nrow(selected)), selected$pooling_family_id_v2)
