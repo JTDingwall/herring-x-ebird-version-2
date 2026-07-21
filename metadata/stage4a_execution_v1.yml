@@ -1,0 +1,126 @@
+execution_version: stage4a_execution_v1
+executed_at_utc: 2026-07-20
+stage: stage_4a_core_response
+status: PASS_PENDING_HUMAN_STAGE4A_RESULTS_REVIEW
+branch: analysis/stage4-core-response
+authorized_base_commit: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+pre_response_lock:
+  record: metadata/stage4a_pre_response_scope_lock_v4.yml
+  sha256: 9adc01ea95e2a0aeeee247680f88ca7e0253789630a9b86379f0395593d79593
+  commit: ffb2415a7ed15a41cb602286ea3a13dc40c3c1ee
+  ci_run: 29798320623
+  ci_status: success
+protected_factorized_cache:
+  independent_linked_events: 239934
+  sparse_reported_states: 1169612
+  ambiguity_masks: 5834
+  full_event_taxon_grid_expanded: false
+  model_checkpoints: 460
+  validation_checkpoints_at_fixed_factor_overlap_v2: 460
+  guild_aggregate_cached_once: true
+analysis_frames:
+  SoG:
+    start_year: 2005
+    eligible_events: 217200
+    role: primary
+  WCVI:
+    start_year: 2015
+    eligible_events: 8584
+    role: candidate_primary_with_mandatory_observer_robustness
+  CC:
+    start_year: 1988
+    eligible_events: 861
+    role: hierarchical_and_descriptive_only
+  NA:
+    start_year: 1988
+    eligible_events: 9007
+    role: hierarchical_and_descriptive_only
+  high_precision_2km_role: targeted_sensitivity
+  broad_10km_frame_used: false
+model_registry:
+  registered_models: 45
+  completed: 8
+  completed_with_visible_component_failures: 4
+  deferred_not_fitted: 32
+  prospective_locked_not_fitted: 1
+  registry_modified: false
+model_geometry:
+  underlying_checkpoint_rows: 460
+  underlying_completed: 441
+  underlying_failed_geometry: 3
+  underlying_insufficient_support_failures: 13
+  underlying_failed_numerical_fit: 3
+  underlying_rank_deficiency_warnings: 28
+  reported_rows_including_components: 916
+  reported_completed_rows: 878
+  truncated_nb2_completed_and_converged: 210
+  truncated_nb2_failed_geometry: 4
+validation:
+  deterministic_event_blocked_folds: 4
+  validation_view: event_blocked_new_event_generalization
+  conditional_observer_or_location_blups_used: false
+  fixed_factor_prediction_rule: training_overlap_for_fixed_factor_levels
+  finite_released_metric_rows: 4735
+  privacy_suppressed_metric_rows: 561
+wcvi_robustness:
+  dominant_observer_share: 0.356
+  effective_observer_replication: 7.4
+  observer_disjoint_role: observer_composition_robustness_only
+  observer_disjoint_metric_rows_finite: 32
+  dominant_observer_holdouts_completed: 8
+  dominant_holdout_sign_agreement_with_primary: 6_of_8
+  high_precision_2km_sign_agreement_with_primary: 6_of_8
+sensitivity_and_diagnostics:
+  truncated_nb2_sign_agreement_with_lognormal:
+    SoG: 47_of_57
+    WCVI: 43_of_56
+    CC_descriptive: 23_of_41
+    NA_descriptive: 36_of_55
+  specificity_panel_bh_q_lt_0p05:
+    SoG: 2_of_2
+    WCVI: 0_of_2
+  placebo_nominal_p_lt_0p05: 1_of_32
+implementation_repairs_after_response_access:
+  scientific_scope_changed: false
+  response_direction_used_to_choose_repair: false
+  repairs:
+    - exact_zt_nb2_analytic_score_same_likelihood
+    - fixed_factor_overlap_validation_without_invented_unseen_level_coefficients
+    - identical_formula_matrix_fit_engine
+    - observer_robustness_excludes_unassigned_observer_fold_rows
+    - complete_case_regional_selectors_prevent_phantom_missing_rows
+    - literal_NA_region_code_preserved_by_protected_cache_reader
+  fixtures_added:
+    - analytic_score_matches_finite_difference
+    - matrix_engine_matches_registered_formula_fit
+    - fixed_factor_overlap_and_privacy_behavior
+    - missing_metadata_scope_selector
+privacy_and_access:
+  privacy_threshold: 20
+  released_cells_between_1_and_19: 0
+  identifiers_released: false
+  exact_coordinates_released: false
+  record_level_rows_released: false
+  protected_local_paths_released: false
+  comments_read: 0
+  shoreline_fields_read: 0
+  records_2026_plus_read: 0
+  unregistered_response_fields_read: 0
+  prospective_holdout_modified: false
+reproducibility:
+  production_code_sha256: 3da023d351cda7107463f51980aff4f95c9695cd98c75e37a8d14549b3617d97
+  aggregate_artifact_manifest: outputs/stage4a_results/aggregate_artifact_hashes.csv
+  aggregate_artifact_manifest_sha256: 441c8813e19ad429393d6fc00548259b9331d986e523669007142dad70444d56
+  all_outputs_hashed: true
+gates:
+  registry: PASS
+  cardinality: PASS
+  factorization: PASS
+  model_geometry: PASS_WITH_VISIBLE_WARNINGS
+  four_fold_validation: PASS_WITH_TRANSPARENT_FIXED_FACTOR_OVERLAP
+  wcvi_robustness: PASS_WITH_VISIBLE_SIGN_DISCORDANCE
+  specificity: WARNING_SOG_PANEL_NON_NULL
+  privacy: PASS
+  reproducibility: PASS_CHECKPOINTED_AND_HASHED
+stage4b_started: false
+next_gate: HUMAN_STAGE4A_RESULTS_REVIEW

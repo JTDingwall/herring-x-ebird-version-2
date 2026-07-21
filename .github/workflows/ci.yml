@@ -25,6 +25,11 @@ jobs:
         run: Rscript scripts/02_validate_registries.R
       - name: Fixture tests
         run: Rscript tests/testthat.R
+      - name: Stage 4A protected-builder fixture
+        shell: pwsh
+        run: ./scripts/run_stage4a_build_protected.ps1 -Mode fixture
+      - name: Stage 4A model-pipeline fixture
+        run: Rscript scripts/run_stage4a_core_analysis.R fixture
       - name: Metadata-only targets graph
         run: Rscript -e 'targets::tar_make(callr_function = NULL)'
       - name: Privacy scan

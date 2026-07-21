@@ -1,0 +1,97 @@
+specification_version: stage4a_core_spec_v1
+authorization_record: metadata/stage4a_human_scientific_authorization_v1.yml
+historical_model_registry:
+  path: metadata/model_registry.csv
+  expected_rows: 45
+  expected_sha256: e9f28b1772ca8e5816abfe8e59c0286b495305725f2cfc9e08beb97cd211d311
+model_disposition:
+  path: metadata/stage4a_model_disposition_v1.csv
+  allowed_values: [activated_core, activated_component, activated_diagnostic, deferred_pre_response, prospective_locked]
+specification_matrix: metadata/stage4a_model_specification_matrix_v1.csv
+taxon_registry:
+  path: metadata/canonical_species_registry.csv
+  expected_rows: 58
+  expected_sha256: 5765bfc634ec3e505df59862e7aadd6d32c6a3f6b57f0693c7372ac93fd7e4d0
+  inclusion_field: stage3_denominator_included
+species_selector:
+  source: outputs/stage2_design_lock/species_support_summary.csv
+  primary_value: named_species_core
+  expected_primary_taxa: 49
+  exploratory_taxa_status: deferred_pre_response
+guild_selector:
+  source: metadata/species_primary_guild.csv
+  expected_sha256: 0dceaa6660a4e37e43b7dd4229b091c03618a3907261c2b36db7b12bdd8bd4a4
+  roles: frozen_membership_only
+specificity_panel:
+  common_names: [Gadwall, Northern Shoveler]
+  analysis_taxon_ids: [atx_eeefc021901e, atx_8f0345249398]
+  interpretation: specificity_and_falsification_panel_not_assumed_biological_nonresponders
+population:
+  factorized_denominator: true
+  full_logical_grid_materialization: prohibited
+  complete_checklists_only: true
+  protocols: [stationary, traveling]
+  duration_minutes: [5, 300]
+  traveling_distance_km_maximum: 5
+  observer_count: [1, 10]
+  source_geometry: immutable_points_only
+  latest_year: 2025
+  primary_regions: {SoG: 2005, WCVI: 2015}
+  hierarchical_descriptive_regions: [CC, NA]
+  high_precision_sensitivity_km_maximum: 2
+  broad_10km_frame: prohibited
+response_allowlist:
+  protected_factor: eligible_events
+  sparse_states: [detection, numeric_count, lower_bound_count, count_type, ambiguity_flag, provenance]
+  ambiguity_mask: permitted_for_zero_masking_only
+  unregistered_fields: prohibited
+  comments: prohibited
+  records_2026_plus: prohibited
+count_state_rules:
+  detection: report_on_eligible_complete_checklist
+  X: detection_only_not_numeric
+  numeric_count: positive_reported_relative_count_conditional_on_detection
+  lower_bound_count: separate_sensitivity_state
+  ambiguity: structural_unknown_never_zero
+  omission_zero: deterministic_only_when_eligible_and_unreported_and_unmasked
+  abundance_biomass_absence_occupancy_claims: prohibited
+models:
+  detection: {family: binomial, link: logit}
+  positive_primary: {family: lognormal, link: log, primary_winsorization: false}
+  positive_parallel: {family: zero_truncated_NB2, link: log}
+  fixed_predictors: [event_time_stratum, source_point_distance_stratum, region_period, checklist_year, protocol, log_duration_minutes, log_effort_distance_plus_one, observer_count]
+  random_intercepts: [herring_event_block, observer_cluster, generalized_location_cluster]
+  data_driven_predictors_or_interactions: prohibited
+  concurrent_link_encoding:
+    independent_row: checklist
+    event_time_predictors: additive_counts_in_six_frozen_strata
+    source_point_distance_predictors: additive_counts_in_eight_frozen_rings
+    checklist_duplication: prohibited
+  placebos:
+    false_date: deterministic_cyclic_shift_10007_of_exposure_vector_within_region_year_order
+    false_location: deterministic_cyclic_shift_20011_of_distance_exposure_vector_within_region_year_order
+    construction_uses_response: false
+validation:
+  folds: 4
+  assignment_source: frozen_stage3_phase3_event_blocked
+  per_fold_reporting: required
+  new_event_generalization_claim_source: event_blocked_only
+  observer_disjoint_role: robustness_only
+  heldout_prediction_random_effects: population_expectation
+  conditional_blups: prohibited
+  wcvi_requirements: [fold_specific_results, observer_disjoint_robustness, dominant_observer_holdout, observer_concentration]
+multiplicity:
+  primary_species_synthesis: hierarchical_partial_pooling
+  individual_results_visible: true
+  adjustment: BH_within_coherent_species_outcome_family
+  omnibus_across_registry: prohibited
+privacy:
+  minimum_released_cell_size: 20
+  tracked_identifiers: prohibited
+  tracked_coordinates: prohibited
+  tracked_record_rows: prohibited
+  tracked_protected_paths: prohibited
+checkpointing:
+  units: [model, region, taxon]
+  hash_identical_cache_reuse: required
+final_gate: PASS_PENDING_HUMAN_STAGE4A_RESULTS_REVIEW

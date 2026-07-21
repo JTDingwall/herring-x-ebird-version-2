@@ -1,0 +1,233 @@
+"model_id","region","unit_label","unit_class","outcome","n","detections","positive_numeric","structural_unknown"
+"M02","SoG","Hooded Merganser","species","factorized_states",217200,20644,20340,0
+"M02","WCVI","Hooded Merganser","species","factorized_states",8584,441,440,0
+"M02","CC","Hooded Merganser","species","factorized_states",861,31,31,0
+"M02","NA","Hooded Merganser","species","factorized_states",9007,1061,999,0
+"M02","SoG","Red-throated Loon","species","factorized_states",217200,1494,1488,0
+"M02","WCVI","Red-throated Loon","species","factorized_states",8584,549,548,0
+"M02","CC","Red-throated Loon","species","factorized_states",861,133,132,0
+"M02","NA","Red-throated Loon","species","factorized_states",9007,251,250,0
+"M02","SoG","Ring-billed Gull","species","factorized_states",217200,4754,4549,0
+"M02","WCVI","Ring-billed Gull","species","factorized_states",8584,36,35,0
+"M02","CC","Ring-billed Gull","species","factorized_states",861,,,0
+"M02","NA","Ring-billed Gull","species","factorized_states",9007,527,490,0
+"M02","SoG","Black Scoter","species","factorized_states",217200,1781,1684,22
+"M02","WCVI","Black Scoter","species","factorized_states",8584,82,82,
+"M02","CC","Black Scoter","species","factorized_states",861,,,0
+"M02","NA","Black Scoter","species","factorized_states",9007,170,168,
+"M02","SoG","Common Murre","species","factorized_states",217200,2062,2023,0
+"M02","WCVI","Common Murre","species","factorized_states",8584,443,440,0
+"M02","CC","Common Murre","species","factorized_states",861,31,31,0
+"M02","NA","Common Murre","species","factorized_states",9007,223,222,0
+"M02","SoG","Black Turnstone","species","factorized_states",217200,4492,4421,0
+"M02","WCVI","Black Turnstone","species","factorized_states",8584,390,386,0
+"M02","CC","Black Turnstone","species","factorized_states",861,55,54,0
+"M02","NA","Black Turnstone","species","factorized_states",9007,490,481,0
+"M02","SoG","Surfbird","species","factorized_states",217200,1079,1063,0
+"M02","WCVI","Surfbird","species","factorized_states",8584,118,118,0
+"M02","CC","Surfbird","species","factorized_states",861,39,39,0
+"M02","NA","Surfbird","species","factorized_states",9007,79,78,0
+"M02","SoG","Surf Scoter","species","factorized_states",217200,17168,16632,
+"M02","WCVI","Surf Scoter","species","factorized_states",8584,1882,1857,
+"M02","CC","Surf Scoter","species","factorized_states",861,265,265,0
+"M02","NA","Surf Scoter","species","factorized_states",9007,1456,1415,
+"M02","SoG","White-winged Scoter","species","factorized_states",217200,4935,4706,
+"M02","WCVI","White-winged Scoter","species","factorized_states",8584,707,701,0
+"M02","CC","White-winged Scoter","species","factorized_states",861,77,77,0
+"M02","NA","White-winged Scoter","species","factorized_states",9007,811,788,0
+"M02","SoG","Common Merganser","species","factorized_states",217200,28183,27776,107
+"M02","WCVI","Common Merganser","species","factorized_states",8584,1375,1356,
+"M02","CC","Common Merganser","species","factorized_states",861,171,171,
+"M02","NA","Common Merganser","species","factorized_states",9007,1098,1063,
+"M02","SoG","Pelagic Cormorant","species","factorized_states",217200,19153,18881,0
+"M02","WCVI","Pelagic Cormorant","species","factorized_states",8584,1729,1710,0
+"M02","CC","Pelagic Cormorant","species","factorized_states",861,246,245,0
+"M02","NA","Pelagic Cormorant","species","factorized_states",9007,918,901,0
+"M02","SoG","Long-tailed Duck","species","factorized_states",217200,3070,2946,0
+"M02","WCVI","Long-tailed Duck","species","factorized_states",8584,112,112,0
+"M02","CC","Long-tailed Duck","species","factorized_states",861,34,34,0
+"M02","NA","Long-tailed Duck","species","factorized_states",9007,314,312,0
+"M02","SoG","Greater Scaup","species","factorized_states",217200,4708,4514,973
+"M02","WCVI","Greater Scaup","species","factorized_states",8584,429,427,43
+"M02","CC","Greater Scaup","species","factorized_states",861,42,42,
+"M02","NA","Greater Scaup","species","factorized_states",9007,480,451,119
+"M02","SoG","Brant","species","factorized_states",217200,3917,3796,0
+"M02","WCVI","Brant","species","factorized_states",8584,237,235,0
+"M02","CC","Brant","species","factorized_states",861,,,0
+"M02","NA","Brant","species","factorized_states",9007,541,524,0
+"M02","SoG","Western Gull","species","factorized_states",217200,727,712,376
+"M02","WCVI","Western Gull","species","factorized_states",8584,196,190,23
+"M02","CC","Western Gull","species","factorized_states",861,0,0,0
+"M02","NA","Western Gull","species","factorized_states",9007,69,68,23
+"M02","SoG","Horned Grebe","species","factorized_states",217200,13259,13054,58
+"M02","WCVI","Horned Grebe","species","factorized_states",8584,770,765,
+"M02","CC","Horned Grebe","species","factorized_states",861,67,67,0
+"M02","NA","Horned Grebe","species","factorized_states",9007,1200,1173,
+"M02","SoG","Rhinoceros Auklet","species","factorized_states",217200,1833,1816,0
+"M02","WCVI","Rhinoceros Auklet","species","factorized_states",8584,415,413,0
+"M02","CC","Rhinoceros Auklet","species","factorized_states",861,87,87,0
+"M02","NA","Rhinoceros Auklet","species","factorized_states",9007,216,215,0
+"M02","SoG","Glaucous-winged Gull","species","factorized_states",217200,89556,85053,163
+"M02","WCVI","Glaucous-winged Gull","species","factorized_states",8584,4240,4075,
+"M02","CC","Glaucous-winged Gull","species","factorized_states",861,444,441,0
+"M02","NA","Glaucous-winged Gull","species","factorized_states",9007,4047,3687,
+"M02","SoG","American Herring Gull","species","factorized_states",217200,1957,1851,21
+"M02","WCVI","American Herring Gull","species","factorized_states",8584,512,501,
+"M02","CC","American Herring Gull","species","factorized_states",861,67,67,0
+"M02","NA","American Herring Gull","species","factorized_states",9007,187,178,
+"M02","SoG","Great Blue Heron","species","factorized_states",217200,51018,50285,0
+"M02","WCVI","Great Blue Heron","species","factorized_states",8584,720,714,0
+"M02","CC","Great Blue Heron","species","factorized_states",861,82,82,0
+"M02","NA","Great Blue Heron","species","factorized_states",9007,3158,3015,0
+"M02","SoG","Northern Pintail","species","factorized_states",217200,15322,14278,0
+"M02","WCVI","Northern Pintail","species","factorized_states",8584,261,261,0
+"M02","CC","Northern Pintail","species","factorized_states",861,36,36,0
+"M02","NA","Northern Pintail","species","factorized_states",9007,1486,1279,0
+"M02","SoG","Mallard","species","factorized_states",217200,85899,81526,0
+"M02","WCVI","Mallard","species","factorized_states",8584,1140,1120,0
+"M02","CC","Mallard","species","factorized_states",861,164,164,0
+"M02","NA","Mallard","species","factorized_states",9007,3928,3462,0
+"M02","SoG","Common Goldeneye","species","factorized_states",217200,21750,21195,308
+"M02","WCVI","Common Goldeneye","species","factorized_states",8584,490,485,
+"M02","CC","Common Goldeneye","species","factorized_states",861,107,107,
+"M02","NA","Common Goldeneye","species","factorized_states",9007,1247,1202,
+"M02","SoG","Pigeon Guillemot","species","factorized_states",217200,6406,6342,0
+"M02","WCVI","Pigeon Guillemot","species","factorized_states",8584,567,565,0
+"M02","CC","Pigeon Guillemot","species","factorized_states",861,71,71,0
+"M02","NA","Pigeon Guillemot","species","factorized_states",9007,615,613,0
+"M02","SoG","Red-necked Grebe","species","factorized_states",217200,8232,8109,0
+"M02","WCVI","Red-necked Grebe","species","factorized_states",8584,945,938,0
+"M02","CC","Red-necked Grebe","species","factorized_states",861,134,134,0
+"M02","NA","Red-necked Grebe","species","factorized_states",9007,849,840,0
+"M02","SoG","Harlequin Duck","species","factorized_states",217200,12221,12030,0
+"M02","WCVI","Harlequin Duck","species","factorized_states",8584,399,397,0
+"M02","CC","Harlequin Duck","species","factorized_states",861,134,134,0
+"M02","NA","Harlequin Duck","species","factorized_states",9007,645,644,0
+"M02","SoG","Brandt's Cormorant","species","factorized_states",217200,2610,2573,0
+"M02","WCVI","Brandt's Cormorant","species","factorized_states",8584,1071,1062,0
+"M02","CC","Brandt's Cormorant","species","factorized_states",861,73,73,0
+"M02","NA","Brandt's Cormorant","species","factorized_states",9007,292,292,0
+"M02","SoG","Bufflehead","species","factorized_states",217200,51310,50039,0
+"M02","WCVI","Bufflehead","species","factorized_states",8584,1483,1421,0
+"M02","CC","Bufflehead","species","factorized_states",861,113,113,0
+"M02","NA","Bufflehead","species","factorized_states",9007,2586,2463,0
+"M02","SoG","Common Loon","species","factorized_states",217200,15581,15359,
+"M02","WCVI","Common Loon","species","factorized_states",8584,1521,1506,0
+"M02","CC","Common Loon","species","factorized_states",861,147,147,0
+"M02","NA","Common Loon","species","factorized_states",9007,1560,1532,0
+"M02","SoG","American Wigeon","species","factorized_states",217200,36606,34665,
+"M02","WCVI","American Wigeon","species","factorized_states",8584,455,445,0
+"M02","CC","American Wigeon","species","factorized_states",861,32,32,0
+"M02","NA","American Wigeon","species","factorized_states",9007,2354,2014,0
+"M02","SoG","Double-crested Cormorant","species","factorized_states",217200,29460,29011,0
+"M02","WCVI","Double-crested Cormorant","species","factorized_states",8584,643,627,0
+"M02","CC","Double-crested Cormorant","species","factorized_states",861,65,64,0
+"M02","NA","Double-crested Cormorant","species","factorized_states",9007,1771,1704,0
+"M02","SoG","Iceland Gull","species","factorized_states",217200,4763,4317,
+"M02","WCVI","Iceland Gull","species","factorized_states",8584,429,419,
+"M02","CC","Iceland Gull","species","factorized_states",861,97,95,0
+"M02","NA","Iceland Gull","species","factorized_states",9007,167,162,0
+"M02","SoG","Marbled Murrelet","species","factorized_states",217200,3120,3103,0
+"M02","WCVI","Marbled Murrelet","species","factorized_states",8584,837,831,0
+"M02","CC","Marbled Murrelet","species","factorized_states",861,144,144,0
+"M02","NA","Marbled Murrelet","species","factorized_states",9007,331,331,0
+"M02","SoG","Canada Goose","species","factorized_states",217200,71195,68271,117
+"M02","WCVI","Canada Goose","species","factorized_states",8584,317,292,
+"M02","CC","Canada Goose","species","factorized_states",861,121,121,0
+"M02","NA","Canada Goose","species","factorized_states",9007,2868,2590,
+"M02","SoG","California Gull","species","factorized_states",217200,7038,6644,0
+"M02","WCVI","California Gull","species","factorized_states",8584,990,980,0
+"M02","CC","California Gull","species","factorized_states",861,139,139,0
+"M02","NA","California Gull","species","factorized_states",9007,488,479,0
+"M02","SoG","Red-breasted Merganser","species","factorized_states",217200,13631,13364,108
+"M02","WCVI","Red-breasted Merganser","species","factorized_states",8584,1013,1006,
+"M02","CC","Red-breasted Merganser","species","factorized_states",861,118,118,
+"M02","NA","Red-breasted Merganser","species","factorized_states",9007,1292,1271,
+"M02","SoG","Pacific Loon","species","factorized_states",217200,6182,6049,0
+"M02","WCVI","Pacific Loon","species","factorized_states",8584,1261,1251,0
+"M02","CC","Pacific Loon","species","factorized_states",861,100,99,0
+"M02","NA","Pacific Loon","species","factorized_states",9007,419,417,0
+"M02","SoG","American Crow","species","factorized_states",217200,116210,112180,0
+"M02","WCVI","American Crow","species","factorized_states",8584,5306,5214,0
+"M02","CC","American Crow","species","factorized_states",861,357,357,0
+"M02","NA","American Crow","species","factorized_states",9007,4738,4313,0
+"M02","SoG","Lesser Scaup","species","factorized_states",217200,9786,9378,910
+"M02","WCVI","Lesser Scaup","species","factorized_states",8584,23,23,65
+"M02","CC","Lesser Scaup","species","factorized_states",861,,,
+"M02","NA","Lesser Scaup","species","factorized_states",9007,511,461,123
+"M02","SoG","Barrow's Goldeneye","species","factorized_states",217200,11234,10960,386
+"M02","WCVI","Barrow's Goldeneye","species","factorized_states",8584,63,61,
+"M02","CC","Barrow's Goldeneye","species","factorized_states",861,128,128,
+"M02","NA","Barrow's Goldeneye","species","factorized_states",9007,250,247,
+"M02","SoG","Short-billed Gull","species","factorized_states",217200,23236,22003,0
+"M02","WCVI","Short-billed Gull","species","factorized_states",8584,1489,1421,0
+"M02","CC","Short-billed Gull","species","factorized_states",861,426,423,0
+"M02","NA","Short-billed Gull","species","factorized_states",9007,1411,1357,0
+"M02","SoG","Western Grebe","species","factorized_states",217200,1365,1346,
+"M02","WCVI","Western Grebe","species","factorized_states",8584,127,123,0
+"M02","CC","Western Grebe","species","factorized_states",861,,,0
+"M02","NA","Western Grebe","species","factorized_states",9007,210,204,0
+"M02","SoG","Bonaparte's Gull","species","factorized_states",217200,4132,4025,0
+"M02","WCVI","Bonaparte's Gull","species","factorized_states",8584,68,68,0
+"M02","CC","Bonaparte's Gull","species","factorized_states",861,132,132,0
+"M02","NA","Bonaparte's Gull","species","factorized_states",9007,197,196,0
+"M02","SoG","Bald Eagle","species","factorized_states",217200,84220,83359,
+"M02","WCVI","Bald Eagle","species","factorized_states",8584,4373,4332,0
+"M02","CC","Bald Eagle","species","factorized_states",861,536,534,0
+"M02","NA","Bald Eagle","species","factorized_states",9007,4868,4724,0
+"M02","SoG","Black Oystercatcher","species","factorized_states",217200,13761,13626,0
+"M02","WCVI","Black Oystercatcher","species","factorized_states",8584,2110,2095,0
+"M02","CC","Black Oystercatcher","species","factorized_states",861,37,36,0
+"M02","NA","Black Oystercatcher","species","factorized_states",9007,952,947,0
+"M02","SoG","Dunlin","species","factorized_states",217200,6089,5908,0
+"M02","WCVI","Dunlin","species","factorized_states",8584,1043,1000,0
+"M02","CC","Dunlin","species","factorized_states",861,41,40,0
+"M02","NA","Dunlin","species","factorized_states",9007,957,893,0
+"M02","SoG","Black-bellied Plover","species","factorized_states",217200,4054,3973,0
+"M02","WCVI","Black-bellied Plover","species","factorized_states",8584,583,576,0
+"M02","CC","Black-bellied Plover","species","factorized_states",861,,,0
+"M02","NA","Black-bellied Plover","species","factorized_states",9007,480,446,0
+"M02","SoG","Common Raven","species","factorized_states",217200,61628,60940,0
+"M02","WCVI","Common Raven","species","factorized_states",8584,1985,1962,0
+"M02","CC","Common Raven","species","factorized_states",861,465,462,0
+"M02","NA","Common Raven","species","factorized_states",9007,1430,1405,0
+"M02","SoG","Glaucous Gull","species","factorized_states",217200,189,185,0
+"M02","WCVI","Glaucous Gull","species","factorized_states",8584,,,0
+"M02","CC","Glaucous Gull","species","factorized_states",861,0,0,0
+"M02","NA","Glaucous Gull","species","factorized_states",9007,,,0
+"M29","SoG","Gadwall","specificity_panel","factorized_states",217200,13885,13337,0
+"M29","WCVI","Gadwall","specificity_panel","factorized_states",8584,51,51,0
+"M29","SoG","Northern Shoveler","specificity_panel","factorized_states",217200,11367,10662,0
+"M29","WCVI","Northern Shoveler","specificity_panel","factorized_states",8584,202,201,0
+"M01","SoG","alcid_piscivore","guild","factorized_states",217200,9797,9690,0
+"M01","WCVI","alcid_piscivore","guild","factorized_states",8584,1161,1151,0
+"M01","CC","alcid_piscivore","guild","factorized_states",861,221,221,0
+"M01","NA","alcid_piscivore","guild","factorized_states",9007,783,779,0
+"M01","SoG","falsification","guild","factorized_states",217200,19825,18897,0
+"M01","WCVI","falsification","guild","factorized_states",8584,247,246,0
+"M01","CC","falsification","guild","factorized_states",861,,,0
+"M01","NA","falsification","guild","factorized_states",9007,1540,1366,0
+"M01","SoG","gull_roe","guild","factorized_states",217200,94033,89188,145
+"M01","WCVI","gull_roe","guild","factorized_states",8584,4620,4420,
+"M01","CC","gull_roe","guild","factorized_states",861,576,569,0
+"M01","NA","gull_roe","guild","factorized_states",9007,4371,3990,
+"M01","SoG","intertidal_roe_shorebird","guild","factorized_states",217200,19804,19450,0
+"M01","WCVI","intertidal_roe_shorebird","guild","factorized_states",8584,3108,3041,0
+"M01","CC","intertidal_roe_shorebird","guild","factorized_states",861,136,132,0
+"M01","NA","intertidal_roe_shorebird","guild","factorized_states",9007,2006,1914,0
+"M01","SoG","piscivore_active_spawn","guild","factorized_states",217200,75507,74198,40
+"M01","WCVI","piscivore_active_spawn","guild","factorized_states",8584,4151,4089,
+"M01","CC","piscivore_active_spawn","guild","factorized_states",861,556,553,0
+"M01","NA","piscivore_active_spawn","guild","factorized_states",9007,4008,3855,
+"M01","SoG","roe_diving_seaduck","guild","factorized_states",217200,67164,65201,288
+"M01","WCVI","roe_diving_seaduck","guild","factorized_states",8584,3102,3015,
+"M01","CC","roe_diving_seaduck","guild","factorized_states",861,406,406,
+"M01","NA","roe_diving_seaduck","guild","factorized_states",9007,3459,3280,
+"M01","SoG","shoreline_scavenger","guild","factorized_states",217200,172934,168234,0
+"M01","WCVI","shoreline_scavenger","guild","factorized_states",8584,6965,6855,0
+"M01","CC","shoreline_scavenger","guild","factorized_states",861,703,699,0
+"M01","NA","shoreline_scavenger","guild","factorized_states",9007,7078,6580,0
+"M01","SoG","surface_vegetation_roe","guild","factorized_states",217200,112129,106367,38
+"M01","WCVI","surface_vegetation_roe","guild","factorized_states",8584,1552,1509,
+"M01","CC","surface_vegetation_roe","guild","factorized_states",861,255,255,0
+"M01","NA","surface_vegetation_roe","guild","factorized_states",9007,5091,4511,
