@@ -1,0 +1,49 @@
+validation_version: post_stage4a_reconciliation_validation_v1
+validated_at_utc_date: 2026-07-21
+protected_row_level_data_opened: false
+records_2026_plus_accessed: false
+checks:
+  - command: git diff --check
+    status: PASS
+    outcome: no whitespace errors
+  - command: Rscript scripts/02_validate_registries.R
+    status: PASS
+    outcome: species_58_guilds_8_estimands_15_models_45_cooccurrence_9_modules_50
+  - command: Rscript scripts/04_run_privacy_scan.R
+    status: PASS
+    outcome: 292_text_files_scanned_zero_violations
+  - command: Rscript scripts/run_stage4a_core_analysis.R fixture
+    status: PASS
+    outcome: STAGE4A_FIXTURE_GATE_PASS
+  - command: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_stage4a_build_protected.ps1 -Mode fixture
+    status: PASS
+    outcome: STAGE4A_PROTECTED_BUILDER_FIXTURE_PASS_synthetic_only
+  - command: Rscript -e full_testthat_test_dir_with_stop_on_failure
+    status: PASS
+    outcome: all_test_contexts_passed_including_stage4a_hash_manifest_report_privacy_and_new_reconciliation_tests
+  - command: Rscript -e aggregate_only_stage4a_html_render_to_temporary_directory
+    status: PASS
+    outcome: regenerated_sha256_4e818dfada1684d689a008338e8409ec13f86728d6806c8c1f9830601e8c5fd4_matches_manifest
+  - command: git_diff_name_filter_for_stage4a_v1_specs_locks_execution_outputs_and_reports
+    status: PASS
+    outcome: no_historical_stage4a_v1_artifact_modified
+warnings:
+  - renv_reports_project_out_of_sync
+  - local_R_packages_testthat_and_data_table_were_built_under_R_4_5_3
+blocked_not_run:
+  - command: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_stage4a_build_protected.ps1 -Mode production
+    status: BLOCKED_POLICY
+    exact_reason: no_new_human_authorization_and_untracked_protected_records_must_not_be_opened
+    implication: no_new_protected_frames_were_built
+  - command: Rscript scripts/run_stage4a_core_analysis.R production
+    status: BLOCKED_POLICY
+    exact_reason: no_new_human_authorization_for_a_protected_response_model_rerun
+    implication: numerical_impact_of_nonconforming_placebo_2km_and_observer_holdout_paths_remains_unknown
+publication_checks:
+  cited_ci_run_29798320623:
+    status: PASS_VERIFIED_PUBLIC_GITHUB_API
+    head_sha: ffb2415a7ed15a41cb602286ea3a13dc40c3c1ee
+    conclusion: success
+  gh_cli_auth:
+    status: BLOCKED_INVALID_TOKEN
+    implication: draft_PR_creation_requires_refreshed_GitHub_authentication

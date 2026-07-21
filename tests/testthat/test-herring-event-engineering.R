@@ -6,24 +6,37 @@ herring_fixture <- function() data.table(
   Macrocystis = NA_real_, Understory = 2
 )
 
+herring_fixture_sha <- paste(rep("a", 64), collapse = "")
+
 test_that("all seventeen source fields and missing components are preserved", {
-  x <- herring_fixture(); got <- derive_herring_event_fields(x)
+  x <- herring_fixture(); got <- derive_herring_event_fields(x, herring_fixture_sha)
   expect_identical(got[, required_herring_source_fields(), with = FALSE], x)
   expect_true(got$component_macrocystis_missing)
   expect_equal(got$relative_spawn_index, 3)
   x[, c("Surface", "Macrocystis", "Understory") := NA_real_]
-  expect_true(is.na(derive_herring_event_fields(x)$relative_spawn_index))
+  expect_true(is.na(derive_herring_event_fields(x, herring_fixture_sha)$relative_spawn_index))
 })
 
 test_that("source IDs quality tiers and event complexes are deterministic", {
   x <- herring_fixture()
-  expect_identical(stable_source_record_id(x, paste(rep("a", 64), collapse = "")),
-                   stable_source_record_id(x, paste(rep("a", 64), collapse = "")))
-  expect_identical(as.character(derive_herring_event_fields(x)$event_quality_tier), "high")
+  expect_identical(stable_source_record_id(x, herring_fixture_sha),
+                   stable_source_record_id(x, herring_fixture_sha))
+  got_fields <- derive_herring_event_fields(x, herring_fixture_sha)
+  expect_identical(as.character(got_fields$event_quality_tier), "high")
+  expect_identical(anyDuplicated(got_fields$source_record_id), 0L)
   pairs <- data.table(event_id_a = c("event_a", "event_b", "event_d"),
                       event_id_b = c("event_b", "event_c", "event_e"), linked = c(TRUE, TRUE, FALSE))
   got <- event_complex_components(pairs)
   expect_equal(uniqueN(got[event_id %in% c("event_a", "event_b", "event_c"), event_complex_id]), 1L)
+})
+
+test_that("source records remain distinct when natural event keys repeat", {
+  x <- rbind(herring_fixture(), herring_fixture())
+  got <- derive_herring_event_fields(x, herring_fixture_sha)
+  expect_equal(uniqueN(got$source_record_id), 2L)
+  expect_equal(uniqueN(got$event_id), 1L)
+  expect_identical(got$event_id_multiplicity, c(2L, 2L))
+  expect_error(derive_herring_event_fields(x, "not-a-sha"), "SOURCE_RECORD_ID")
 })
 
 test_that("deterministic anti-chaining enforces temporal spatial and region caps", {
