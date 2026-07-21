@@ -1,0 +1,11 @@
+reason_code,applies_to,terminal,description
+INCLUDED_PRIMARY_REPRESENTATION,row,false,Eligible primary representation
+EXCLUDED_DUPLICATE_COMPONENT_REPRESENTATION,row,false,M11 or M12 duplicates an M01 or M02 hurdle component
+NON_ESTIMABLE_SINGLETON,family,true,Fewer than two eligible components remain
+NON_ESTIMABLE_MISSING_INPUT,row,false,A required future numeric input is missing
+NON_ESTIMABLE_NONFINITE_INPUT,row,false,A required future numeric input is non-finite
+NON_ESTIMABLE_NONPOSITIVE_STANDARD_ERROR,row,false,A future standard error is not positive
+INCOMPATIBLE_SCALE,family,true,Component scale is incompatible with the frozen family
+IDENTITY_MISSING,build,true,A required registered identity field is missing or ambiguous
+IDENTITY_COLLISION,build,true,Distinct canonical identities produced the same identifier
+FAMILY_COMPATIBILITY_FAILURE,family,true,A required compatibility field varies within a family

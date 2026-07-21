@@ -1,0 +1,105 @@
+version: stage4a_aggregate_pooling_repair_spec_v2
+status: specification_only_execution_blocked_pending_scope_acceptance
+input_artifact: outputs/stage4a_results/effect_estimates.csv
+invalid_v1_columns:
+  - partial_pool_estimate
+  - partial_pool_standard_error
+unaffected_v1_columns:
+  - model_id
+  - region
+  - unit_label
+  - unit_class
+  - outcome
+  - contrast
+  - estimate
+  - standard_error
+  - conf_low
+  - conf_high
+  - p_value
+  - n
+  - status
+  - multiplicity_family
+  - q_value
+scope:
+  legacy_authorized_audit:
+    rows: 4890
+    families: 84
+    regions: [SoG, WCVI, CC]
+  exact_tracked_finite_values:
+    rows: 6562
+    families: 112
+    regions: [SoG, WCVI, CC, NA]
+  discrepancy: literal_NA_region_was_parsed_as_missing_by_legacy_read_csv_audit
+  rule: all_released_finite_v1_partial_pool_values_are_invalid
+  execution_gate: human_acceptance_of_expanded_6562_row_112_family_scope_required
+family_identity:
+  allowed_varying_field: stable_unit_id
+  required_invariant_fields:
+    - canonical_model_id
+    - model_architecture
+    - component_estimand_id
+    - response_state
+    - unit_class
+    - effect_scale
+    - exposure_definition
+    - temporal_window
+    - spatial_buffer
+    - analysis_population
+    - adjustment_set
+    - component_role
+    - coefficient_meaning
+    - variance_meaning
+  forbidden_inputs:
+    - estimate
+    - standard_error
+    - conf_low
+    - conf_high
+    - p_value
+    - q_value
+    - status
+    - effect_sign
+    - model_fit_result
+component_evidence_identity:
+  stable_fields: family_invariant_fields_plus_stable_unit_id_region_contrast
+  display_labels_excluded: true
+  row_order_independent: true
+  missing_or_ambiguous_identity: fail_closed
+  serialization: utf8_trimmed_byte_length_prefixed_lowercase_hex_fixed_field_order
+  digest: sha256_first_24_hex
+duplicate_rule:
+  selected_representations: [M01, M02]
+  excluded_representations: [M11, M12]
+  reason_code: EXCLUDED_DUPLICATE_COMPONENT_REPRESENTATION
+  basis:
+    - R/stage4a_production.R
+    - docs/14_STAGE4A_CORE_METHODS.md
+estimator_contract:
+  type: normal_normal_empirical_bayes_method_of_moments
+  future_inputs: individual_estimate_and_standard_error_only
+  minimum_eligible_components: 2
+  sampling_variance: standard_error_squared
+  between_component_variance: max_0_sample_variance_y_minus_mean_sampling_variance
+  family_weights: inverse_of_sampling_variance_plus_between_component_variance
+  family_mean: weighted_mean
+  component_posterior_mean: normal_normal_conjugate_mean
+  component_posterior_variance: reciprocal_sum_of_sampling_and_between_precision
+  zero_between_variance_boundary: common_family_mean_with_variance_inverse_sum_sampling_precision
+  confidence_interval: normal_95_percent_using_1.959963984540054
+  singleton: NA_with_NON_ESTIMABLE_SINGLETON
+  missing: exclude_row_with_reason_then_reassess_minimum_count
+  nonfinite: exclude_row_with_reason_then_reassess_minimum_count
+  nonpositive_standard_error: exclude_row_with_reason_then_reassess_minimum_count
+  incompatible_scale: fail_family
+  duplicate: exclude_by_frozen_M01_M02_precedence_before_estimation
+  pooled_p_value: not_produced
+  pooled_q_value: not_produced
+  rounding: no_rounding_before_serialization
+  numeric_serialization: R_17_significant_digit_decimal_dot_no_thousands_separator
+  ordering: pooling_family_id_v2_then_component_evidence_id
+  seed: none_required_closed_form
+immutability:
+  v1_files_modified: false
+  supersedes_only: [partial_pool_estimate, partial_pool_standard_error]
+  later_execution_requires_exact_unaffected_column_match: true
+  later_execution_requires_input_code_and_output_hashes: true
+  protected_data_required: false
