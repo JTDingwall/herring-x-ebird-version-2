@@ -1,9 +1,13 @@
 # Post-Stage 4A adversarial audit
 
-Status: **post-result audit; human scientific decision required**  
-Audit date: 2026-07-21  
-Development outcomes known: **yes**  
-Protected row-level response data reopened for this audit: **no**  
+Status: **post-result audit; human scientific decision required**
+
+Audit date: 2026-07-21
+
+Development outcomes known: **yes**
+
+Protected row-level response data reopened for this audit: **no**
+
 2026-2028 response data accessed: **no**
 
 This audit was performed after the Stage 4A aggregate results were available. It does
