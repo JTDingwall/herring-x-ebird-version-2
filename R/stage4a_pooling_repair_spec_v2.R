@@ -39,6 +39,17 @@ stage4a_pooling_v2_id <- function(prefix, values, field_order = names(values)) {
   paste0(prefix, substr(digest::digest(canonical, algo = "sha256", serialize = FALSE), 1L, 24L))
 }
 
+.stage4a_pooling_v2_assign_ids <- function(x, prefix, fields) {
+  keys <- unique(x[, fields, with = FALSE])
+  matrix <- as.matrix(keys[, fields, with = FALSE])
+  keys[, generated_id := vapply(seq_len(.N), function(i) {
+    values <- as.list(matrix[i, ])
+    names(values) <- fields
+    stage4a_pooling_v2_id(prefix, values, fields)
+  }, character(1L))]
+  keys[x, on = fields, generated_id]
+}
+
 stage4a_pooling_v2_family_fields <- function() {
   c("canonical_model_id", "model_architecture", "component_estimand_id",
     "response_state", "unit_class", "effect_scale", "exposure_definition",
@@ -48,6 +59,55 @@ stage4a_pooling_v2_family_fields <- function() {
 
 stage4a_pooling_v2_evidence_fields <- function() {
   c(stage4a_pooling_v2_family_fields(), "stable_unit_id", "region", "contrast")
+}
+
+stage4a_pooling_v2_read_effects <- function(effect_file, character_columns,
+                                             numeric_columns, region_file,
+                                             required_identity_columns = character_columns) {
+  requested <- unique(c(character_columns, numeric_columns))
+  if (!length(requested) || anyDuplicated(requested)) {
+    stop("POOLING_V2_READER_CONTRACT: requested columns must be unique and nonempty",
+         call. = FALSE)
+  }
+  # Read every selected field losslessly as character. Missing-value semantics
+  # are applied below by declared column type, never globally by fread/read.csv.
+  x <- data.table::fread(effect_file, select = requested, colClasses = "character",
+                         na.strings = NULL, strip.white = FALSE)
+  assert_columns(x, requested, "Stage 4A aggregate repair input")
+  data.table::setcolorder(x, requested)
+  for (field in character_columns) x[, (field) := trimws(enc2utf8(get(field)))]
+  missing_identity <- vapply(required_identity_columns, function(field) {
+    any(is.na(x[[field]]) | !nzchar(x[[field]]))
+  }, logical(1L))
+  if (any(missing_identity)) {
+    stop("POOLING_V2_IDENTITY_MISSING: required character identity is truly missing: ",
+         paste(names(missing_identity)[missing_identity], collapse = ", "), call. = FALSE)
+  }
+  regions <- data.table::fread(region_file, colClasses = "character", na.strings = NULL)
+  assert_columns(regions, c("region", "analysis_population"), "Stage 4A region registry v2")
+  registered <- trimws(regions$region)
+  if (anyNA(registered) || any(!nzchar(registered)) || anyDuplicated(registered)) {
+    stop("POOLING_V2_REGION_REGISTRY: region codes must be complete and unique", call. = FALSE)
+  }
+  if ("region" %in% character_columns && any(!x$region %in% registered)) {
+    stop("POOLING_V2_UNREGISTERED_REGION: ",
+         paste(sort(unique(x$region[!x$region %in% registered])), collapse = ", "),
+         call. = FALSE)
+  }
+  numeric_pattern <- "^[+-]?(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))([eE][+-]?[0-9]+)?$|^[+-]?Inf$|^NaN$"
+  for (field in numeric_columns) {
+    raw <- trimws(x[[field]])
+    missing <- is.na(raw) | raw %in% c("", "NA")
+    invalid <- !missing & !grepl(numeric_pattern, raw)
+    if (any(invalid)) {
+      stop("POOLING_V2_NUMERIC_PARSE: invalid token in ", field, ": ",
+           paste(head(sort(unique(raw[invalid])), 5L), collapse = ", "), call. = FALSE)
+    }
+    value <- rep(NA_real_, length(raw))
+    value[!missing] <- as.numeric(raw[!missing])
+    x[, (field) := value]
+  }
+  x
 }
 
 .stage4a_pooling_v2_contract <- function(model_id, unit_class, outcome, contrast, region) {
@@ -150,15 +210,13 @@ stage4a_pooling_v2_evidence_fields <- function() {
   invisible(TRUE)
 }
 
-stage4a_pooling_v2_build_registries <- function(effect_file, species_file, guild_file) {
+stage4a_pooling_v2_build_registries <- function(effect_file, species_file, guild_file,
+                                                 region_file) {
   identity_columns <- c("model_id", "region", "unit_label", "unit_class", "outcome", "contrast")
   invalid_columns <- c("partial_pool_estimate", "partial_pool_standard_error")
-  # Preserve the registered literal region code "NA". Treating it as a missing
-  # token is the source of the legacy 4,890/84 undercount.
-  effects <- data.table::fread(effect_file, select = c(identity_columns, invalid_columns), na.strings = "")
-  assert_columns(effects, c(identity_columns, invalid_columns), "Stage 4A v1 aggregate effect identity")
-  # This reproduces the immutable audit's definition of a released computed
-  # value; non-finite placeholders were never part of the 4,890-row scope.
+  effects <- stage4a_pooling_v2_read_effects(
+    effect_file, identity_columns, invalid_columns, region_file, identity_columns
+  )
   affected <- effects[is.finite(partial_pool_estimate) | is.finite(partial_pool_standard_error),
                       ..identity_columns]
   if (nrow(affected) != 6562L) {
@@ -174,31 +232,23 @@ stage4a_pooling_v2_build_registries <- function(effect_file, species_file, guild
                                 affected$outcome[i], affected$contrast[i], affected$region[i])
   }))
   candidate <- cbind(affected, contract)
-  candidate[, legacy_authorized_audit_scope := region != "NA"]
-  if (candidate[legacy_authorized_audit_scope == TRUE, .N] != 4890L) {
-    stop("POOLING_V2_SCOPE: legacy authorized audit subset must contain 4,890 rows",
+  candidate[, legacy_undercount_scope := region != "NA"]
+  if (candidate[legacy_undercount_scope == TRUE, .N] != 4890L) {
+    stop("POOLING_V2_SCOPE: documented legacy undercount subset must contain 4,890 rows",
          call. = FALSE)
   }
   family_fields <- stage4a_pooling_v2_family_fields()
   evidence_fields <- stage4a_pooling_v2_evidence_fields()
-  candidate[, pooling_family_id_v2 := vapply(seq_len(.N), function(i) {
-    values <- as.list(candidate[i, family_fields, with = FALSE])
-    stage4a_pooling_v2_id("pf2_", values, family_fields)
-  }, character(1L))]
-  candidate[, component_evidence_id := vapply(seq_len(.N), function(i) {
-    values <- as.list(candidate[i, evidence_fields, with = FALSE])
-    stage4a_pooling_v2_id("ce2_", values, evidence_fields)
-  }, character(1L))]
+  candidate[, pooling_family_id_v2 := .stage4a_pooling_v2_assign_ids(
+    candidate, "pf2_", family_fields)]
+  candidate[, component_evidence_id := .stage4a_pooling_v2_assign_ids(
+    candidate, "ce2_", evidence_fields)]
   row_fields <- c("model_id", evidence_fields)
-  candidate[, v1_effect_row_id := vapply(seq_len(.N), function(i) {
-    values <- as.list(candidate[i, row_fields, with = FALSE])
-    stage4a_pooling_v2_id("v1r_", values, row_fields)
-  }, character(1L))]
+  candidate[, v1_effect_row_id := .stage4a_pooling_v2_assign_ids(
+    candidate, "v1r_", row_fields)]
   v1_family_fields <- c("region", "outcome", "contrast")
-  candidate[, v1_pooling_family_id := vapply(seq_len(.N), function(i) {
-    values <- as.list(candidate[i, v1_family_fields, with = FALSE])
-    stage4a_pooling_v2_id("pf1_invalid_", values, v1_family_fields)
-  }, character(1L))]
+  candidate[, v1_pooling_family_id := .stage4a_pooling_v2_assign_ids(
+    candidate, "pf1_invalid_", v1_family_fields)]
   candidate[, disposition_reason_code := ifelse(
     model_id %in% c("M11", "M12"),
     "EXCLUDED_DUPLICATE_COMPONENT_REPRESENTATION",
@@ -246,18 +296,19 @@ stage4a_pooling_v2_build_registries <- function(effect_file, species_file, guild
                                     "disposition_reason_code"), with = FALSE]
   row_disposition <- candidate[, .(v1_effect_row_id, model_id, canonical_model_id,
     pooling_family_id_v2, component_evidence_id, included_in_future_estimator,
-    disposition_reason_code, legacy_authorized_audit_scope)]
+    disposition_reason_code, legacy_undercount_scope)]
   crosswalk <- candidate[, .(v1_effect_row_id, v1_pooling_family_id,
     pooling_family_id_v2, component_evidence_id, model_id, canonical_model_id,
     included_in_future_estimator, disposition_reason_code,
-    legacy_authorized_audit_scope)]
+    legacy_undercount_scope)]
 
   selected_lookup <- selected[, .(pooling_family_id_v2, component_evidence_id,
                                   selected_model_id = model_id, selected_v1_effect_row_id = v1_effect_row_id)]
   excluded_lookup <- candidate[included_in_future_estimator == FALSE, .(
     pooling_family_id_v2, component_evidence_id,
     excluded_v1_effect_row_id = v1_effect_row_id,
-    excluded_representation = model_id
+    excluded_representation = model_id,
+    unit_class, response_state
   )]
   duplicate_audit <- selected_lookup[excluded_lookup,
     on = c("pooling_family_id_v2", "component_evidence_id")]
@@ -273,6 +324,8 @@ stage4a_pooling_v2_build_registries <- function(effect_file, species_file, guild
     selected_representation = selected_model_id,
     excluded_v1_effect_row_id,
     excluded_representation,
+    unit_class,
+    response_state,
     reason_code = "EXCLUDED_DUPLICATE_COMPONENT_REPRESENTATION",
     source_metadata = "R/stage4a_production.R;docs/14_STAGE4A_CORE_METHODS.md"
   )]
@@ -288,13 +341,13 @@ stage4a_pooling_v2_build_registries <- function(effect_file, species_file, guild
     stop("POOLING_V2_SCOPE: exact tracked scope must contain 112 affected v1 families",
          call. = FALSE)
   }
-  legacy_audit <- candidate[legacy_authorized_audit_scope == TRUE, .(
+  legacy_audit <- candidate[legacy_undercount_scope == TRUE, .(
     affected_row_count = .N,
     model_id_count = data.table::uniqueN(model_id),
     unit_class_count = data.table::uniqueN(unit_class),
     duplicate_evidence_count = .N - data.table::uniqueN(component_evidence_id),
-    invalidation_status = "INVALID_COMPUTED_PARTIAL_POOL_VALUES",
-    scope_note = "Legacy 4,890/84 audit subset; literal NA region was omitted by parsing"
+    invalidation_status = "SUPERSEDED_UNDERCOUNT_SUBSET_ALL_VALUES_REMAIN_INVALID",
+    scope_note = "Legacy 4,890/84 undercount; literal NA region was omitted by parsing"
   ), by = .(v1_pooling_family_id, region, outcome, contrast)]
   if (nrow(legacy_audit) != 84L || sum(legacy_audit$affected_row_count) != 4890L) {
     stop("POOLING_V2_SCOPE: legacy authorized 4,890-row/84-family accounting failed",

@@ -1,0 +1,5 @@
+region,analysis_population,inference_role,registered_start_year,source_metadata
+SoG,SoG_2005_primary,primary,2005,metadata/stage4a_core_spec_v1.yml
+WCVI,WCVI_2015_candidate_primary,candidate_primary,2015,metadata/stage4a_core_spec_v1.yml
+CC,CC_1988_hierarchical_descriptive,hierarchical_descriptive,1988,metadata/stage4a_core_spec_v1.yml
+NA,NA_1988_hierarchical_descriptive,hierarchical_descriptive,1988,metadata/stage4a_core_spec_v1.yml

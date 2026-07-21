@@ -1,7 +1,8 @@
 # Additive, privacy-safe audit helpers. These functions do not alter or rerun the
 # historical Stage 4A v1 analysis.
 
-audit_stage4a_partial_pooling_families <- function(effect_table) {
+audit_stage4a_partial_pooling_families <- function(
+    effect_table, registered_regions = c("SoG", "WCVI", "CC", "NA")) {
   required <- c(
     "model_id", "region", "unit_class", "outcome", "contrast",
     "estimate", "standard_error", "partial_pool_estimate",
@@ -10,6 +11,12 @@ audit_stage4a_partial_pooling_families <- function(effect_table) {
   missing <- setdiff(required, names(effect_table))
   if (length(missing)) {
     stop("Missing Stage 4A effect columns: ", paste(missing, collapse = ", "))
+  }
+  if (anyNA(effect_table$region) || any(!nzchar(trimws(effect_table$region)))) {
+    stop("Stage 4A pooling audit contains a truly missing region identity")
+  }
+  if (any(!effect_table$region %in% registered_regions)) {
+    stop("Stage 4A pooling audit contains an unregistered region code")
   }
 
   computed <- is.finite(effect_table$partial_pool_estimate) |
@@ -24,7 +31,7 @@ audit_stage4a_partial_pooling_families <- function(effect_table) {
     ))
   }
 
-  historical_family <- interaction(x$region, x$outcome, x$contrast, drop = TRUE)
+  historical_family <- paste(x$region, x$outcome, x$contrast, sep = "\036")
   groups <- split(seq_len(nrow(x)), historical_family)
   rows <- lapply(groups, function(i) {
     model_ids <- sort(unique(x$model_id[i]))

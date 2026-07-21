@@ -119,9 +119,12 @@ preferential checklist submission. Fold predictions are fixed-effect predictions
 factor levels observed in training. Observer-disjoint folds assess observer-composition
 robustness; they do not establish transfer to a new region or observation system.
 
-Partial pooling is the principal aggregate-level failure. An audit found 4,890 released
-rows with computed pooling values in 84 historical region-outcome-contrast groups, and
-84/84 were cross-model or cross-unit. The error also counts duplicated M02/M11 and
+Partial pooling is the principal aggregate-level failure. The corrected audit finds
+6,562 released rows with finite pooling values in 112 historical
+region-outcome-contrast groups, and 112/112 are cross-model or cross-unit. The earlier
+4,890-row/84-family figure omitted 1,672 North-region rows because base `read.csv()`
+parsed the valid literal region code `NA` as missing. The correction uses only the
+tracked privacy-safe aggregate and exposes no new protected rows. The error also counts duplicated M02/M11 and
 M02/M12 estimates as separate evidence. Correct pooling families and the intended
 relationship between primary and component rows require a human-approved repair rule.
 No corrected pooled estimate is selected post hoc here.

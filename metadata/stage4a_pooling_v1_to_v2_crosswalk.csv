@@ -1,4 +1,4 @@
-"v1_effect_row_id","v1_pooling_family_id","pooling_family_id_v2","component_evidence_id","model_id","canonical_model_id","included_in_future_estimator","disposition_reason_code","legacy_authorized_audit_scope"
+"v1_effect_row_id","v1_pooling_family_id","pooling_family_id_v2","component_evidence_id","model_id","canonical_model_id","included_in_future_estimator","disposition_reason_code","legacy_undercount_scope"
 "v1r_001806505e2f9fdfd0e4ab81","pf1_invalid_11fea910324219d3c61cc8aa","pf2_b44984f7fd9719c3da33c58d","ce2_f830de7218ba891921e39d27","M05","M05",TRUE,"INCLUDED_PRIMARY_REPRESENTATION",TRUE
 "v1r_0018d3728ff0657ef68b5bf2","pf1_invalid_018c6176dea8541e238f406b","pf2_78405cc1c62824e523c93fbf","ce2_0a61b1b8196f5c5c27ccddfc","M05","M05",TRUE,"INCLUDED_PRIMARY_REPRESENTATION",TRUE
 "v1r_002d1a2b86b4899b464e4c6b","pf1_invalid_c26884d8b16edece22c3f622","pf2_c415098f6f092326d86b4aa9","ce2_f8e9b8d12d1d8ae46fcdc4c7","M02","M02",TRUE,"INCLUDED_PRIMARY_REPRESENTATION",TRUE

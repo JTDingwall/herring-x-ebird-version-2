@@ -2,10 +2,11 @@ test_that("v2 invalidation accounts for legacy and exact tracked scopes", {
   manifest <- fread(repo_file("metadata", "stage4a_pooling_v1_invalidation_manifest.csv"))
   expect_setequal(manifest$invalid_column,
                   c("partial_pool_estimate", "partial_pool_standard_error"))
-  expect_true(all(manifest$exact_finite_row_count == 6562L))
-  expect_true(all(manifest$exact_family_count == 112L))
-  expect_true(all(manifest$legacy_audit_row_count == 4890L))
-  expect_true(all(manifest$legacy_audit_family_count == 84L))
+  expect_true(all(manifest$authoritative_finite_row_count == 6562L))
+  expect_true(all(manifest$authoritative_family_count == 112L))
+  expect_true(all(manifest$superseded_undercount_row_count == 4890L))
+  expect_true(all(manifest$superseded_undercount_family_count == 84L))
+  expect_true(all(manifest$scope_authority == "HUMAN_ACCEPTED_6562_ROWS_112_FAMILIES"))
   source_path <- repo_file("outputs", "stage4a_results", "effect_estimates.csv")
   expect_true(all(manifest$source_sha256 == digest::digest(
     source_path, algo = "sha256", file = TRUE, serialize = FALSE)))
@@ -14,10 +15,11 @@ test_that("v2 invalidation accounts for legacy and exact tracked scopes", {
                   setdiff(source_names,
                           c("partial_pool_estimate", "partial_pool_standard_error")))
 
-  effects <- fread(
+  effects <- stage4a_pooling_v2_read_effects(
     repo_file("outputs", "stage4a_results", "effect_estimates.csv"),
-    select = c("region", "outcome", "contrast", "partial_pool_estimate",
-               "partial_pool_standard_error"), na.strings = ""
+    character_columns = c("region", "outcome", "contrast"),
+    numeric_columns = c("partial_pool_estimate", "partial_pool_standard_error"),
+    region_file = repo_file("metadata", "stage4a_region_registry_v2.csv")
   )
   computed <- effects[is.finite(partial_pool_estimate) |
                         is.finite(partial_pool_standard_error)]
@@ -45,7 +47,7 @@ test_that("component identities are unique and duplicate representations are res
   rows <- fread(repo_file("metadata", "stage4a_pooling_row_disposition_v2.csv"))
   duplicates <- fread(repo_file("metadata", "stage4a_m11_m12_duplicate_resolution_v2.csv"))
   expect_equal(nrow(rows), 6562L)
-  expect_equal(rows[legacy_authorized_audit_scope == TRUE, .N], 4890L)
+  expect_equal(rows[legacy_undercount_scope == TRUE, .N], 4890L)
   expect_equal(rows[included_in_future_estimator == TRUE, .N], nrow(evidence))
   expect_equal(rows[included_in_future_estimator == FALSE, .N], nrow(duplicates))
   expect_equal(anyDuplicated(evidence[, .(pooling_family_id_v2, component_evidence_id)]), 0L)
@@ -56,6 +58,58 @@ test_that("component identities are unique and duplicate representations are res
   expect_setequal(unique(rows$disposition_reason_code),
                   c("INCLUDED_PRIMARY_REPRESENTATION",
                     "EXCLUDED_DUPLICATE_COMPONENT_REPRESENTATION"))
+})
+
+test_that("typed reader preserves registered NA and fails closed on identity defects", {
+  fixture <- tempfile(fileext = ".csv")
+  writeLines(c(
+    "model_id,region,unit_label,unit_class,outcome,contrast,partial_pool_estimate,partial_pool_standard_error",
+    "M01,NA,guild_a,guild,detection,active_near,0.2,0.1",
+    "M01,SoG,guild_b,guild,detection,active_near,NA,"
+  ), fixture, useBytes = TRUE)
+  on.exit(unlink(fixture), add = TRUE)
+  read_fixture <- function(path = fixture) stage4a_pooling_v2_read_effects(
+    path,
+    character_columns = c("model_id", "region", "unit_label", "unit_class",
+                          "outcome", "contrast"),
+    numeric_columns = c("partial_pool_estimate", "partial_pool_standard_error"),
+    region_file = repo_file("metadata", "stage4a_region_registry_v2.csv")
+  )
+  got <- read_fixture()
+  expect_identical(got$region, c("NA", "SoG"))
+  expect_false(is.na(got$region[1L]))
+  expect_true(is.na(got$partial_pool_estimate[2L]))
+  expect_true(is.na(got$partial_pool_standard_error[2L]))
+  reordered <- tempfile(fileext = ".csv")
+  writeLines(c(readLines(fixture, n = 1L), rev(readLines(fixture)[-1L])), reordered)
+  on.exit(unlink(reordered), add = TRUE)
+  expect_equal(read_fixture(reordered)[order(model_id, region)],
+               got[order(model_id, region)])
+
+  missing <- tempfile(fileext = ".csv")
+  writeLines(sub("M01,NA", "M01,", readLines(fixture), fixed = TRUE), missing)
+  on.exit(unlink(missing), add = TRUE)
+  expect_error(read_fixture(missing), "POOLING_V2_IDENTITY_MISSING")
+  bad_region <- tempfile(fileext = ".csv")
+  writeLines(sub("M01,NA", "M01,XX", readLines(fixture), fixed = TRUE), bad_region)
+  on.exit(unlink(bad_region), add = TRUE)
+  expect_error(read_fixture(bad_region), "POOLING_V2_UNREGISTERED_REGION")
+})
+
+test_that("M11/M12 precedence follows frozen component lineage only", {
+  lineage <- fread(repo_file("metadata", "stage4a_component_lineage_v2.csv"))
+  duplicate <- fread(repo_file("metadata", "stage4a_m11_m12_duplicate_resolution_v2.csv"))
+  expect_true(all(lineage$lineage_relationship == "exact_copied_hurdle_component"))
+  expect_equal(nrow(duplicate), uniqueN(duplicate$duplicate_group_id))
+  expected <- lineage[, .(selected_representation, excluded_representation,
+                          unit_class, response_state)]
+  observed <- unique(duplicate[, .(selected_representation, excluded_representation,
+                                   unit_class, response_state)])
+  expect_setequal(do.call(paste, expected), do.call(paste, observed))
+  production <- paste(readLines(repo_file("R", "stage4a_production.R"), warn = FALSE),
+                      collapse = "\n")
+  expect_true(grepl("components\\$source_model_id <- components\\$model_id", production))
+  expect_true(grepl("components\\$model_id <- ifelse", production))
 })
 
 test_that("canonical IDs are deterministic under row reordering and fail closed", {
@@ -105,8 +159,8 @@ test_that("v2 schemas freeze future outputs without producing numeric repair", {
   expect_false(file.exists(repo_file("outputs", "stage4a_pooling_repair_v2",
                                      "effect_estimates_v2.csv")))
   spec <- yaml::read_yaml(repo_file("metadata", "stage4a_pooling_repair_spec_v2.yml"))
-  expect_identical(spec$status,
-                   "specification_only_execution_blocked_pending_scope_acceptance")
+  expect_identical(spec$status, "frozen_pre_execution_scope_accepted")
+  expect_identical(spec$scope$execution_gate, "accepted")
   expect_false(spec$immutability$v1_files_modified)
   expect_false(spec$immutability$protected_data_required)
   expect_identical(spec$estimator_contract$pooled_p_value, "not_produced")

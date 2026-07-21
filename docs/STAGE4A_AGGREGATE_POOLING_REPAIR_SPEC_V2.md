@@ -1,6 +1,6 @@
 # Stage 4A aggregate pooling repair specification v2
 
-Status: **specification only; numeric execution is prohibited in this change**.
+Status: **frozen pre-execution specification; authoritative scope accepted**.
 
 ## Controlling scope and discovered count discrepancy
 
@@ -10,14 +10,21 @@ contrast, so they mix models or unit classes and can count the M11/M12 component
 representations twice. Individual estimates, standard errors, confidence intervals,
 p-values, and model-specific BH q-values remain intact and are not superseded.
 
-The merged audit reports 4,890 finite rows in 84 families. Re-reading the tracked CSV
+The earlier merged audit reported 4,890 finite rows in 84 families. Re-reading the tracked CSV
 while preserving the registered literal region code `NA` finds 6,562 finite rows in
 112 families. The difference is exactly 1,672 rows and 28 families from the North
 region: base `read.csv()` treated the text `NA` as a missing value, and `interaction()`
 dropped those rows. The machine-readable files preserve both the authorized legacy
 4,890/84 subset and the exact 6,562/112 tracked scope. All released finite v1 pooling
-values are invalid. A later execution must fail closed until a human explicitly accepts
-the expanded exact scope.
+values are invalid. The human reviewer has accepted 6,562 rows and 112 families as the
+authoritative complete scope. No protected rows were newly exposed or recovered: the
+correction comes entirely from the already tracked privacy-safe aggregate CSV, and all
+finite v1 pooling values were already conceptually invalidated.
+
+The repair reader imports registered identity and categorical fields losslessly as
+character values, applies missing-value semantics separately to declared numeric fields,
+and validates region codes against `stage4a_region_registry_v2.csv`. A literal registered
+`NA` remains North; a truly missing identity or unregistered code fails closed.
 
 ## Outcome-independent family identity
 
@@ -110,5 +117,5 @@ standard error, interval, p-value, or q-value.
   future artifacts.
 - `metadata/stage4a_pooling_reason_codes_v2.csv`: closed reason-code vocabulary.
 
-The only unresolved gate is explicit acceptance of the corrected 6,562-row/112-family
-scope. No estimator or identity decision remains unresolved.
+The corrected 6,562-row/112-family scope is accepted. No estimator, identity, or scope
+decision remains unresolved before aggregate-only execution.

@@ -1,5 +1,5 @@
 version: stage4a_aggregate_pooling_repair_spec_v2
-status: specification_only_execution_blocked_pending_scope_acceptance
+status: frozen_pre_execution_scope_accepted
 input_artifact: outputs/stage4a_results/effect_estimates.csv
 invalid_v1_columns:
   - partial_pool_estimate
@@ -21,7 +21,7 @@ unaffected_v1_columns:
   - multiplicity_family
   - q_value
 scope:
-  legacy_authorized_audit:
+  superseded_legacy_undercount:
     rows: 4890
     families: 84
     regions: [SoG, WCVI, CC]
@@ -31,7 +31,14 @@ scope:
     regions: [SoG, WCVI, CC, NA]
   discrepancy: literal_NA_region_was_parsed_as_missing_by_legacy_read_csv_audit
   rule: all_released_finite_v1_partial_pool_values_are_invalid
-  execution_gate: human_acceptance_of_expanded_6562_row_112_family_scope_required
+  authority: human_accepted_6562_rows_112_families
+  execution_gate: accepted
+typed_reader:
+  registered_region_file: metadata/stage4a_region_registry_v2.csv
+  identity_columns: character_no_global_na_coercion
+  numeric_missing_tokens: [empty_string, NA]
+  unregistered_region: fail
+  true_missing_identity: fail
 family_identity:
   allowed_varying_field: stable_unit_id
   required_invariant_fields:
@@ -73,6 +80,7 @@ duplicate_rule:
   basis:
     - R/stage4a_production.R
     - docs/14_STAGE4A_CORE_METHODS.md
+    - metadata/stage4a_component_lineage_v2.csv
 estimator_contract:
   type: normal_normal_empirical_bayes_method_of_moments
   future_inputs: individual_estimate_and_standard_error_only
