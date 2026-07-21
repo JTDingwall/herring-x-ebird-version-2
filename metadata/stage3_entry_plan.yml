@@ -8,10 +8,12 @@ stage3_authorization_record: metadata/stage3_phases1_3_authorization_v1.yml
 stage3_authorization_sha256: a8c2d625b6168832346bb003a0409a9c1dbd93d800382f984c39e6cee461ea5d
 stage2_candidate_grid_sha256: 8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81
 stage2_grid_changed: false
-stage_gate: PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED
-human_scientific_decision: AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY
+stage_gate: PASS_STAGE3_COMPLETE_HUMAN_APPROVED_PHASE4_NOT_AUTHORIZED
+human_scientific_decision: APPROVE_STAGE3_PHASE3_VALIDATION
 response_models_authorized: false
 stage3_entry_implementation_authorized: true
+stage3_finalized: true
+phase4_authorized: false
 prospective_holdout_2026_plus_locked: true
 scope_control:
   add_new_primary_ecological_covariates: false
@@ -57,9 +59,12 @@ human_decisions:
     forbidden_unless_separately_justified: [true_absence, absolute_population_abundance, occupancy]
     blocking: false
   validation_unit:
-    status: approved_for_implementation
-    choice: event_complex_or_source_point_spatiotemporal_block
-    blocking: true
+    status: approved
+    choice: four_deterministic_event_blocked_folds
+    primary_target: prediction_to_previously_unseen_herring_event_blocks
+    observer_disjoint_role: observer_composition_robustness_only
+    observer_disjoint_new_event_generalization_claim: prohibited
+    blocking: false
   raw_bccws_integration:
     status: approved
     choice: no_pooling_without_deterministic_checklist_crosswalk
@@ -92,10 +97,12 @@ phases:
     response_access: none
   - id: phase_3
     name: validation_and_estimand_safeguards
-    status: executed_pending_human_validation_review
+    status: completed_human_approved
     specification: metadata/stage3_phase3_blocked_validation_spec_v1.yml
     estimand_safeguards: metadata/stage3_estimand_safeguards_v1.yml
     execution: metadata/stage3_phase3_execution_v1.yml
+    human_approval: metadata/stage3_phase3_human_scientific_approval_v1.yml
+    human_approval_sha256: de7ce36a2cff8c1550033a71358276383c00daede241fbbc9ac79c0b2ef49c52
     response_access: fixture_or_synthetic_only
   - id: phase_4
     name: exploratory_registered_response_analysis
@@ -105,6 +112,6 @@ required_invariants: [E02, E05, E06, E07, E09, E10, E12, E13, E14]
 required_stops:
   after_phase_1: denominator_and_zero_provenance_review
   after_phase_2: human_sampling_support_review
-  after_phase_3: human_validation_implementation_review
+  after_phase_3: completed_human_validation_implementation_review
   before_phase_4: separate_response_model_authorization
-next_gate: human_stage3_phase3_validation_review
+next_gate: separate_human_stage4_response_access_authorization

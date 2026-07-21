@@ -5,6 +5,7 @@ testthat::test_that("Phase 2 approval and Phase 3 specifications are hash-identi
     c("metadata/stage3_phase3_blocked_validation_spec_v1.yml", "metadata/stage3_phase3_blocked_validation_spec_v1.sha256"),
     c("metadata/stage3_estimand_safeguards_v1.yml", "metadata/stage3_estimand_safeguards_v1.sha256"),
     c("metadata/stage3_phase3_execution_v1.yml", "metadata/stage3_phase3_execution_v1.sha256"),
+    c("metadata/stage3_phase3_human_scientific_approval_v1.yml", "metadata/stage3_phase3_human_scientific_approval_v1.sha256"),
     c("docs/13_STAGE3_PHASE3_BLOCKED_VALIDATION_METHODS.md", "docs/13_STAGE3_PHASE3_BLOCKED_VALIDATION_METHODS.sha256"),
     c("outputs/stage3_phase3_validation/aggregate_artifact_hashes.csv", "outputs/stage3_phase3_validation/aggregate_artifact_hashes.csv.sha256")
   )
@@ -24,6 +25,7 @@ testthat::test_that("Phase 3 event-blocked gate preserves grain and access bound
   execution <- yaml::read_yaml(repo_file("metadata", "stage3_phase3_execution_v1.yml"))
   plan <- yaml::read_yaml(repo_file("metadata", "stage3_entry_plan.yml"))
   safeguards <- yaml::read_yaml(repo_file("metadata", "stage3_estimand_safeguards_v1.yml"))
+  approval <- yaml::read_yaml(repo_file("metadata", "stage3_phase3_human_scientific_approval_v1.yml"))
 
   testthat::expect_equal(summary$primary_linked_independent_checklists, 239934L)
   testthat::expect_true(summary$concurrent_metadata_links > summary$primary_linked_independent_checklists)
@@ -48,9 +50,25 @@ testthat::test_that("Phase 3 event-blocked gate preserves grain and access bound
   testthat::expect_false(execution$phase_4_started)
   testthat::expect_true(safeguards$sampling_unit$concurrent_links_may_not_multiply_independent_rows)
   testthat::expect_identical(plan$phases[[4L]]$status, "completed_human_approved")
-  testthat::expect_identical(plan$phases[[5L]]$status,
-    "executed_pending_human_validation_review")
+  testthat::expect_identical(plan$phases[[5L]]$status, "completed_human_approved")
   testthat::expect_identical(plan$phases[[6L]]$status, "not_authorized")
+  testthat::expect_identical(approval$approved_commit,
+    "daae8a2958d7e0f20e5bc91d05dc368efdafa515")
+  testthat::expect_identical(approval$scientific_decision,
+    "APPROVE_STAGE3_PHASE3_VALIDATION")
+  testthat::expect_equal(approval$validation_design$deterministic_event_blocked_folds, 4L)
+  testthat::expect_false(approval$validation_design$five_folds_forced)
+  testthat::expect_identical(approval$validation_design$primary_view, "event_blocked")
+  testthat::expect_false(approval$validation_design$observer_disjoint_view$new_herring_event_generalization_claim_authorized)
+  testthat::expect_identical(approval$heldout_prediction_rule$observer_random_effect,
+    "marginalize_or_set_to_population_level_expectation")
+  testthat::expect_identical(approval$heldout_prediction_rule$generalized_location_random_effect,
+    "marginalize_or_set_to_population_level_expectation")
+  testthat::expect_false(approval$heldout_prediction_rule$learned_conditional_random_effects_allowed)
+  testthat::expect_false(approval$heldout_prediction_rule$blups_allowed)
+  testthat::expect_identical(unlist(approval$prospective_confirmation$locked_years), 2026:2028)
+  testthat::expect_false(approval$phase_transition$phase_4_authorized)
+  testthat::expect_false(approval$response_boundary$bird_response_summaries_authorized)
 })
 
 testthat::test_that("event and observer validation views satisfy their leakage targets", {
@@ -87,6 +105,16 @@ testthat::test_that("WCVI decision requires observer-robustness sensitivity", {
   testthat::expect_true(wcvi$dominant_holdout_support_pass)
   testthat::expect_identical(wcvi$decision,
     "candidate_primary_with_observer_robustness_sensitivity_required")
+  testthat::skip_if_not_installed("yaml")
+  approval <- yaml::read_yaml(repo_file("metadata", "stage3_phase3_human_scientific_approval_v1.yml"))
+  requirements <- approval$regional_decisions$WCVI$required_reporting
+  testthat::expect_true(all(unlist(requirements)))
+  testthat::expect_false(approval$regional_decisions$WCVI$observer_warning_automatic_demotion)
+  testthat::expect_identical(approval$regional_decisions$SoG$role, "primary")
+  testthat::expect_identical(approval$regional_decisions$CC$role,
+    "hierarchical_and_descriptive_only")
+  testthat::expect_false(approval$regional_decisions$NA$unsupported_cell_blocks_SoG_or_WCVI)
+  testthat::expect_false(approval$regional_decisions$NA$unsupported_cell_may_upgrade_NA)
 })
 
 testthat::test_that("Phase 3 aggregates suppress small cells and release no protected schema", {

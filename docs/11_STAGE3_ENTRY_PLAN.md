@@ -1,14 +1,14 @@
 # Stage 3 entry plan
 
-**Status:** `STAGE3_PHASES_1_TO_3_AUTHORIZED`  
-**Current gate:** `PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED`  
+**Status:** `STAGE3_COMPLETE_HUMAN_APPROVED`
+**Current gate:** `PASS_STAGE3_COMPLETE_HUMAN_APPROVED_PHASE4_NOT_AUTHORIZED`
 **Response models authorized:** no  
 **Prospective 2026+ holdout:** frozen  
 **Stage 2 design grid:** unchanged
 
 ## Purpose
 
-This plan incorporates the post-freeze eBird checklist-methods review into the project workflow. Human authorization permits Stage 3 Phases 1–3. Immutable source points are the only registered analysis geometry. Shoreline classes and derived alongshore products remain audit provenance only. Phase 4 and all response models remain unauthorized.
+This plan incorporates the post-freeze eBird checklist-methods review into the project workflow. Stage 3 Phases 1–3 are complete and human-approved. Immutable source points are the only registered analysis geometry. Shoreline classes and derived alongshore products remain audit provenance only. Phase 4, response access and all response models remain unauthorized.
 
 ## Phase −1 — completed geometry decision
 
@@ -26,7 +26,7 @@ The versioned approval record confirms the following choices:
 | Primary effort set | accept implemented 5–300 minutes, traveling ≤5 km, 1–10 observers | ≤2 km spatial-precision and frozen ≤10 km broad sensitivities | resolves mismatch between local exposure and route footprint |
 | Shared-count reconciliation | accept primary exclusion of effort-disagreement groups | registered disagreement sensitivity | prevents outcome-dependent selection among group copies |
 | Estimand language | checklist reporting probability and reported conditional count | justified repeat-visit occupancy only as separate future work | controls scientific claims |
-| Validation unit | event-complex or source-point spatial–time blocks | stricter observer/event grouping when feasible | prevents train/test leakage |
+| Validation unit | four deterministic event-blocked folds | observer-disjoint and dominant-observer robustness views | validates new-event-block prediction without conflating observer robustness |
 | Raw BCCWS integration | do not pool without deterministic crosswalk | separate external validation with overlap caveat | prevents duplicate data streams |
 
 Approval must be versioned and linked to the exact branch commit. Approval does not authorize access to the 2026+ prospective holdout.
@@ -36,11 +36,11 @@ Approval must be versioned and linked to the exact branch commit. Approval does 
 1. Human decision recorded in `metadata/stage2_human_scientific_approval_v1.yml` with a matching SHA-256 file.
 2. Selected geometry, event, effort, checklist, estimand, validation, registry and prospective rules are versioned.
 3. The Stage 2 candidate grid and both retained hashes remain unchanged.
-4. Response models and Stage 3 entry implementation remain unauthorized.
+4. Response models remain unauthorized.
 
-**Exit criterion:** completed. Stage 3 Phases 1–3 are authorized under the hashed authorization record.
+**Exit criterion:** completed. Stage 3 Phases 1–3 are finalized under hashed human-approval records.
 
-## Phase 1 — authorized: construct the independent checklist denominator
+## Phase 1 — completed and human-approved: independent checklist denominator
 
 1. Verify EBD and SED release and taxonomy identity.
 2. Apply the accepted-record predicate.
@@ -53,7 +53,7 @@ Approval must be versioned and linked to the exact branch commit. Approval does 
 
 **Exit criterion:** Q01–Q09 in the checklist audit pass on fixtures and protected local data.
 
-## Phase 2 — authorized: outcome-blind sampling-support audit
+## Phase 2 — completed and human-approved: outcome-blind sampling-support audit
 
 Using only SED, herring metadata and identifiers needed for independence checks, report:
 
@@ -68,16 +68,18 @@ Do not calculate species detection rates, bird counts by exposure, effects, inte
 
 **Exit criterion:** reviewers confirm adequate overlap and effective replication or narrow the eligible-checklist population using only frozen candidate rules.
 
-## Phase 3 — authorized: implement validation and estimand safeguards
+## Phase 3 — completed and human-approved: validation and estimand safeguards
 
-1. Split train/test data by complete event complex or source-point spatial–time block.
-2. Keep one grouped checklist and all associated event links on one side of a split.
-3. Model or cluster repeated observer/site dependence using already registered observation structure.
-4. Label detection output as reporting on an eligible complete checklist.
-5. Label count output as a reported relative index conditional on detection and numeric availability.
-6. Evaluate hurdle lognormal against truncated NB2 using blocked predictive checks and posterior/predictive tail diagnostics.
+1. Use four deterministic event-blocked folds; do not force five when frozen support minima fail.
+2. Keep one grouped checklist, its event block and all associated event links on one side of the primary split.
+3. Treat the event-blocked view as validation for prediction to previously unseen herring event blocks.
+4. Treat observer-disjoint folds and the dominant-observer holdout as observer-composition robustness only.
+5. Require fold-specific, observer-robustness, dominant-observer-holdout and observer-concentration reporting for WCVI.
+6. During held-out prediction, marginalize observer and generalized-location random effects or set them to their population-level expectation; never use learned conditional effects or BLUPs merely because a group appeared in training.
+7. Preserve SoG from 2005 as primary, WCVI from 2015 as candidate-primary, and CC/NA as hierarchical/descriptive.
+8. Keep the 2026–2028 prospective confirmation period completely locked.
 
-**Exit criterion:** Q10–Q12 pass and report templates cannot emit absolute-abundance, true-absence or unjustified occupancy claims.
+**Exit criterion:** completed. Leakage, support, reproducibility and privacy gates passed and the design received explicit human approval.
 
 ## Phase 4 — not authorized: exploratory response analysis
 

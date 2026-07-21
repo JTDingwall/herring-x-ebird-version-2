@@ -6,14 +6,13 @@ testthat::test_that("eBird checklist methods addendum preserves the Stage 2 free
 
   testthat::expect_equal(nrow(gate), 16L)
   testthat::expect_false(anyDuplicated(gate$item_id) > 0L)
-  testthat::expect_setequal(gate$status, c(
-    "aligned", "verify", "approved", "approved_pending_implementation"
-  ))
+  testthat::expect_setequal(gate$status, c("aligned", "verify", "approved"))
   testthat::expect_true(all(c("E05", "E06", "E07", "E10", "E13") %in% gate[severity == "block", item_id]))
 
-  testthat::expect_identical(plan$stage_gate, "PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED")
+  testthat::expect_identical(plan$stage_gate,
+                            "PASS_STAGE3_COMPLETE_HUMAN_APPROVED_PHASE4_NOT_AUTHORIZED")
   testthat::expect_identical(plan$human_scientific_decision,
-                            "AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY")
+                            "APPROVE_STAGE3_PHASE3_VALIDATION")
   testthat::expect_false(plan$response_models_authorized)
   testthat::expect_true(plan$prospective_holdout_2026_plus_locked)
   testthat::expect_false(plan$stage2_grid_changed)
@@ -31,8 +30,8 @@ testthat::test_that("eBird checklist methods addendum preserves the Stage 2 free
     "estimand_language"
   )], function(x) identical(x$status, "approved") && !isTRUE(x$blocking), logical(1))))
   testthat::expect_identical(plan$human_decisions$validation_unit$status,
-                            "approved_for_implementation")
-  testthat::expect_true(plan$human_decisions$validation_unit$blocking)
+                            "approved")
+  testthat::expect_false(plan$human_decisions$validation_unit$blocking)
   testthat::expect_true(plan$stage3_entry_implementation_authorized)
   testthat::expect_false(plan$response_models_authorized)
   testthat::expect_identical(plan$phases[[3L]]$status,
@@ -40,7 +39,7 @@ testthat::test_that("eBird checklist methods addendum preserves the Stage 2 free
   testthat::expect_identical(plan$phases[[4L]]$status,
                             "completed_human_approved")
   testthat::expect_identical(plan$phases[[5L]]$status,
-                            "executed_pending_human_validation_review")
+                            "completed_human_approved")
   testthat::expect_identical(plan$phases[[6L]]$status, "not_authorized")
 })
 
@@ -51,6 +50,7 @@ testthat::test_that("checklist gate encodes independent-event and estimand prote
   shared <- gate[item_id == "E05"]
   spatial <- gate[item_id == "E10"]
   estimand <- gate[item_id == "E13"]
+  validation <- gate[item_id == "E12"]
 
   testthat::expect_identical(shared$status, "approved")
   testthat::expect_identical(shared$severity, "block")
@@ -59,4 +59,7 @@ testthat::test_that("checklist gate encodes independent-event and estimand prote
   testthat::expect_match(spatial$required_action, "2 km", fixed = TRUE)
   testthat::expect_identical(estimand$status, "approved")
   testthat::expect_match(estimand$required_action, "prose", ignore.case = TRUE)
+  testthat::expect_identical(validation$status, "approved")
+  testthat::expect_identical(validation$severity, "block")
+  testthat::expect_match(validation$reported_stage2_state, "Four deterministic event-blocked folds")
 })

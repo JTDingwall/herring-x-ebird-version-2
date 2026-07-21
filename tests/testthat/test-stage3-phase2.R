@@ -41,9 +41,9 @@ testthat::test_that("Phase 2 reuses the approved factor and preserves the respon
   testthat::expect_false(execution$phase_3_started)
   testthat::expect_identical(plan$phases[[3L]]$status, "completed_human_approved")
   testthat::expect_identical(plan$phases[[4L]]$status, "completed_human_approved")
-  testthat::expect_identical(plan$phases[[5L]]$status,
-    "executed_pending_human_validation_review")
-  testthat::expect_identical(plan$next_gate, "human_stage3_phase3_validation_review")
+  testthat::expect_identical(plan$phases[[5L]]$status, "completed_human_approved")
+  testthat::expect_identical(plan$next_gate,
+    "separate_human_stage4_response_access_authorization")
 })
 
 testthat::test_that("Phase 2 aggregate cardinalities and recommendations reconcile", {

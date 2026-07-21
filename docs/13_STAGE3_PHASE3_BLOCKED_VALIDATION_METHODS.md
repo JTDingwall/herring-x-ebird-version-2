@@ -1,6 +1,6 @@
 # Stage 3 Phase 3 blocked-validation methods
 
-Status: implementation gates passed; pending human validation review. No response model was fitted and Phase 4 has not started.
+Status: human-approved and Stage 3 finalized. No response model was fitted, no response access was authorized, and Phase 4 has not started.
 
 ## Scientific target
 
@@ -12,13 +12,13 @@ The validation population contains 239,934 independent primary-frame checklists 
 
 Each herring source event is an atomic source unit. Source events linked concurrently to the same independent checklist are unioned into one protected block. This produces 308 event blocks. Whole blocks, all source events in them, every shared checklist and all concurrent links receive one fold.
 
-Five folds were preferred. They retained all registered minima in SoG and WCVI but failed at least one minimum in CC and NA. Four folds were therefore evaluated. Four folds retain every minimum in SoG, WCVI and CC. One NA fold has only one source event represented in both primary periods, below the frozen minimum of two. NA remains hierarchical/descriptive only, so this limitation is retained visibly and does not support a standalone regional claim.
+Five folds were preferred. They retained all registered minima in SoG and WCVI but failed at least one minimum in CC and NA. Four folds were therefore evaluated and are the approved deterministic design; five folds must not be forced when doing so violates the frozen support requirements. Four folds retain every minimum in SoG, WCVI and CC. One NA fold has only one source event represented in both primary periods, below the frozen minimum of two. NA remains hierarchical/descriptive only, so this limitation is retained visibly, does not block SoG or WCVI, and cannot be used to upgrade NA.
 
 The four-fold event-blocked split has zero event-block, herring-source-event, independent-checklist, shared-group or concurrent-link leakage. Observer and generalized-location overlap are measured rather than forced into the event blocks because the target is new-event generalization.
 
 ## View B: observer robustness
 
-Observer-cluster-disjoint folds assign each protected observer cluster to one fold. This view tests sensitivity to observer composition; it is not a substitute for event-blocked validation. Herring event blocks may cross observer folds in this view, while checklist and shared-group units remain intact. Observer overlap is zero by construction, and event/location overlap is reported.
+Observer-cluster-disjoint folds assign each protected observer cluster to one fold. This view tests sensitivity to observer composition; it is not a substitute for event-blocked validation and must not be described as validating generalization to new herring events. Herring event blocks may cross observer folds in this view, while checklist and shared-group units remain intact. Observer overlap is zero by construction, and event/location overlap is reported.
 
 A protected leave-dominant-observer-cluster-out stress test is also reported for each review region. CC and NA remain hierarchical/descriptive regardless of observer-fold feasibility.
 
@@ -33,7 +33,7 @@ A protected leave-dominant-observer-cluster-out stress test is also reported for
 
 All four WCVI event-blocked folds pass the registered checklist, event, period and active/reference minima. Pooled WCVI observer concentration remains high: the dominant cluster contributes 35.6% and effective observer replication is 7.4. Holding out that cluster leaves 5,529 checklists, 345 herring events, 613 active checklists and 886 contemporaneous references; the holdout retains all registered minima.
 
-WCVI therefore remains candidate primary, conditional on an observer-robustness sensitivity. The concentration warning must accompany any future WCVI primary result. This is a validation-design decision only, not evidence of a bird response.
+WCVI therefore remains candidate primary. Every future WCVI primary presentation requires fold-specific validation results, observer-robustness results, the dominant-observer holdout and transparent observer-concentration reporting. The concentration warning does not automatically demote WCVI while all required checks remain adequate. This is a validation-design decision only, not evidence of a bird response.
 
 ## SoG, CC and NA
 
@@ -44,5 +44,9 @@ WCVI therefore remains candidate primary, conditional on an observer-robustness 
 ## Estimand safeguards
 
 Future detection output, if separately authorized, must be labelled as probability reported on an eligible complete checklist. Positive-count output must be labelled as a reported relative count conditional on detection and numeric availability. True absence, occupancy, absolute abundance and biomass language remain prohibited without separate identification.
+
+For every held-out prediction, observer and generalized-location random effects must be marginalized or set to their population-level expectation. Learned conditional random effects or BLUPs must not be used merely because an observer or generalized location appeared in training data.
+
+The 2026–2028 prospective confirmation period remains completely locked.
 
 No EBD rescan, sparse bird-state access, denominator expansion, response summary, exposure contrast, effect estimate, model fit, comment access, shoreline access or 2026-and-later access occurred in Phase 3.
