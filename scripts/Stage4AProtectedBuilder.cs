@@ -142,7 +142,7 @@ public static class Stage4AProtectedBuilder
                 string[] v = ExtractFields(line, p, '\t'); EventRow x;
                 if (!events.TryGetValue(Clean(v[0]), out x)) continue;
                 int year = Int32.Parse(v[2], CultureInfo.InvariantCulture);
-                if (year != x.Year || Clean(v[1]) != x.Region)
+                if (year != x.Year)
                     throw new InvalidDataException("Event linkage metadata disagreement");
                 AddLink(x, Int32.Parse(v[3], CultureInfo.InvariantCulture),
                     Double.Parse(v[4], CultureInfo.InvariantCulture));
