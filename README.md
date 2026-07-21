@@ -47,7 +47,10 @@ Run `scripts/01_validate_input_metadata.R` only in an authorized local session w
 - All concurrent event links contribute to additive exposure; duplicated event-checklist links are not independent rows.
 - Every join declares and tests its cardinality.
 - All prespecified models are reported regardless of sign.
+- No response direction is assumed for any taxon; `expected_direction` is a hypothesis label, not a prior or an inclusion criterion.
+- Bird sampling and spawn exposure share a human-effort process; claims are capped at recorded-event versus no-recorded-active-event, conditional on observed sampling.
 - Hard stops and warnings follow `docs/04_DECISION_RULES.md`.
+- The reviewer-mandated remediation register is `docs/14_SCIENTIFIC_REVIEW_AND_REMEDIATION.md`; S2 items block Phase 4 model fitting and S1 items block any confirmatory claim.
 
 ## Stage 3 Phases 1–3 authorization
 
