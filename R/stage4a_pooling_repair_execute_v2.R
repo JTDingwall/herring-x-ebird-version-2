@@ -176,14 +176,14 @@ stage4a_pooling_v2_execute <- function(repo_root = ".", output_dir,
     partial_pool_conf_high_v2 = "",
     pooling_reason_code_v2 = mapped$disposition_reason_code
   )]
-  selected_values <- estimated[, .(component_evidence_id,
+  selected_values <- estimated[, .(model_id, component_evidence_id,
     partial_pool_estimate_v2, partial_pool_standard_error_v2,
     partial_pool_conf_low_v2, partial_pool_conf_high_v2,
     pooling_reason_code_v2 = numeric_input_reason_code)]
-  if (anyDuplicated(selected_values$component_evidence_id)) {
-    stop("POOLING_V2_OUTPUT_JOIN: estimated evidence IDs are not unique", call. = FALSE)
+  if (anyDuplicated(selected_values[, .(model_id, component_evidence_id)])) {
+    stop("POOLING_V2_OUTPUT_JOIN: estimated model/evidence keys are not unique", call. = FALSE)
   }
-  output[selected_values, on = "component_evidence_id", `:=`(
+  output[selected_values, on = c("model_id", "component_evidence_id"), `:=`(
     partial_pool_estimate_v2 = stage4a_pooling_v2_format_number(i.partial_pool_estimate_v2),
     partial_pool_standard_error_v2 = stage4a_pooling_v2_format_number(i.partial_pool_standard_error_v2),
     partial_pool_conf_low_v2 = stage4a_pooling_v2_format_number(i.partial_pool_conf_low_v2),
