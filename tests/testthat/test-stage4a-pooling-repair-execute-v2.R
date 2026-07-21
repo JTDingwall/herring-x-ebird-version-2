@@ -100,8 +100,14 @@ test_that("production v2 output preserves every unaffected serialized field", {
   expect_false(any(c("partial_pool_estimate", "partial_pool_standard_error") %in% names(v2)))
   expect_identical(as.data.frame(v2[, ..unaffected]),
                    as.data.frame(source_raw[affected, ..unaffected]))
-  expect_equal(sum(nzchar(v2$partial_pool_estimate_v2)), 6123L)
-  expect_equal(sum(!nzchar(v2$partial_pool_estimate_v2)), 439L)
+  expect_equal(sum(nzchar(v2$partial_pool_estimate_v2)), 6085L)
+  expect_equal(sum(!nzchar(v2$partial_pool_estimate_v2)), 477L)
+  expect_equal(sum(v2$pooling_reason_code_v2 ==
+                   "INCLUDED_PRIMARY_REPRESENTATION"), 6085L)
+  expect_equal(sum(v2$pooling_reason_code_v2 ==
+                   "NON_ESTIMABLE_MODEL_STATUS"), 38L)
+  expect_equal(sum(v2$pooling_reason_code_v2 ==
+                   "EXCLUDED_DUPLICATE_COMPONENT_REPRESENTATION"), 439L)
 })
 
 test_that("production execution artifacts are complete and hash-valid", {
