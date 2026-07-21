@@ -85,6 +85,32 @@ test_that("ambiguity masks are never zero filled", {
   expect_identical(got[analysis_taxon_id == "taxon_b", count_type], "zero_filled")
 })
 
+test_that("zero filling rejects missing malformed and duplicate identity states", {
+  det <- data.table(
+    analysis_checklist_id = "fixture_a", analysis_taxon_id = "taxon_a",
+    detection = 1L, numeric_count = NA_real_, lower_bound_count = NA_real_,
+    count_type = "X", ambiguity_flag = FALSE
+  )
+  expect_error(
+    zero_fill_taxa(data.table(analysis_checklist_id = "fixture_a"), det, "taxon_a"),
+    "zero_fill_eligible"
+  )
+  for (bad in list(NA, "", "yes", 2, -1)) {
+    checklists <- data.table(analysis_checklist_id = "fixture_a",
+                             zero_fill_eligible = bad)
+    expect_error(zero_fill_taxa(checklists, det, "taxon_a"),
+                 "ZERO_FILL_ELIGIBILITY")
+  }
+  duplicate <- data.table(analysis_checklist_id = c("fixture_a", "fixture_a"),
+                          zero_fill_eligible = TRUE)
+  expect_error(zero_fill_taxa(duplicate, det, "taxon_a"), "duplicated key rows")
+  blank <- data.table(analysis_checklist_id = " ", zero_fill_eligible = TRUE)
+  expect_error(zero_fill_taxa(blank, det, "taxon_a"), "ZERO_FILL_CHECKLIST_ID")
+  expect_error(zero_fill_taxa(
+    data.table(analysis_checklist_id = "fixture_a", zero_fill_eligible = TRUE),
+    det, c("taxon_a", "taxon_a")), "ZERO_FILL_TAXON_ID")
+})
+
 test_that("guild ambiguity changes only defensible upper bounds", {
   named <- data.table(analysis_checklist_id = "fixture_a", guild_id = "g1", detection = 1L,
                       numeric_count = NA_real_, lower_bound_count = 4)

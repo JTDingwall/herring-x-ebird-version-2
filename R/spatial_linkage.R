@@ -16,7 +16,26 @@ transform_for_linkage <- function(x, epsg = 3005L) {
   sf::st_transform(x, epsg)
 }
 
-candidate_event_links <- function(checklists, events, max_distance_km = 20) {
+candidate_event_links <- function(checklists, events, max_distance_km = 20,
+                                  distance_tolerance_km = 1e-7) {
+  if (length(max_distance_km) != 1L || !is.finite(max_distance_km) || max_distance_km <= 0) {
+    stop("SPATIAL_LINKAGE_RADIUS: max_distance_km must be one finite positive value", call. = FALSE)
+  }
+  if (length(distance_tolerance_km) != 1L || !is.finite(distance_tolerance_km) ||
+      distance_tolerance_km < 0) {
+    stop("SPATIAL_LINKAGE_TOLERANCE: distance tolerance must be finite and nonnegative", call. = FALSE)
+  }
+  assert_columns(checklists, "analysis_checklist_id", "spatial-linkage checklists")
+  assert_columns(events, "source_record_id", "spatial-linkage source records")
+  checklist_id <- trimws(as.character(checklists$analysis_checklist_id))
+  source_record_id <- trimws(as.character(events$source_record_id))
+  if (anyNA(checklist_id) || any(!nzchar(checklist_id)) || anyDuplicated(checklist_id)) {
+    stop("SPATIAL_LINKAGE_CHECKLIST_ID: analysis-checklist IDs must be complete and unique", call. = FALSE)
+  }
+  if (anyNA(source_record_id) || any(!nzchar(source_record_id)) ||
+      anyDuplicated(source_record_id)) {
+    stop("SPATIAL_LINKAGE_SOURCE_ID: source-record IDs must be complete and unique", call. = FALSE)
+  }
   checklists <- transform_for_linkage(checklists)
   events <- transform_for_linkage(events)
   assert_metric_crs(checklists)
@@ -24,9 +43,27 @@ candidate_event_links <- function(checklists, events, max_distance_km = 20) {
   rows <- lapply(seq_along(idx), function(i) {
     if (!length(idx[[i]])) return(NULL)
     distances <- as.numeric(sf::st_distance(checklists[i, ], events[idx[[i]], ], by_element = FALSE)[1, ]) / 1000
-    data.table::data.table(checklist_row = i, event_row = idx[[i]], event_distance_km = distances)
+    data.table::data.table(
+      analysis_checklist_id = checklist_id[[i]],
+      source_record_id = source_record_id[idx[[i]]],
+      event_distance_km = distances
+    )
   })
-  data.table::rbindlist(rows, use.names = TRUE, fill = TRUE)
+  out <- data.table::rbindlist(rows, use.names = TRUE, fill = TRUE)
+  if (!nrow(out)) {
+    return(data.table::data.table(
+      analysis_checklist_id = character(), source_record_id = character(),
+      event_distance_km = double()
+    ))
+  }
+  if (any(!is.finite(out$event_distance_km)) || any(out$event_distance_km < 0) ||
+      any(out$event_distance_km > max_distance_km + distance_tolerance_km)) {
+    stop("SPATIAL_LINKAGE_DISTANCE: distances must be finite and within the candidate radius", call. = FALSE)
+  }
+  if (anyDuplicated(out[, .(analysis_checklist_id, source_record_id)])) {
+    stop("SPATIAL_LINKAGE_CARDINALITY: duplicate checklist by source-record pairs", call. = FALSE)
+  }
+  out[]
 }
 
 construct_alongshore_segment <- function(line_coordinates, point_xy, length_m) {

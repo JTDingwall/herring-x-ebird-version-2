@@ -157,24 +157,65 @@ parse_ebird_count_state <- function(x, ambiguous = FALSE,
 
 zero_fill_taxa <- function(checklists, detections, taxa,
                            eligibility_column = "zero_fill_eligible") {
-  assert_columns(checklists, "analysis_checklist_id", "eligible checklists")
+  assert_columns(checklists, c("analysis_checklist_id", eligibility_column),
+                 "eligible checklists")
   assert_columns(detections, c("analysis_checklist_id", "analysis_taxon_id", "detection",
                                "numeric_count", "lower_bound_count", "count_type", "ambiguity_flag"), "detections")
+  checklists <- data.table::copy(data.table::as.data.table(checklists))
+  detections <- data.table::copy(data.table::as.data.table(detections))
+  checklist_id <- trimws(as.character(checklists$analysis_checklist_id))
+  detection_checklist_id <- trimws(as.character(detections$analysis_checklist_id))
+  detection_taxon_id <- trimws(as.character(detections$analysis_taxon_id))
+  taxa <- trimws(as.character(taxa))
+  if (anyNA(checklist_id) || any(!nzchar(checklist_id))) {
+    stop("ZERO_FILL_CHECKLIST_ID: checklist IDs must be complete and nonblank", call. = FALSE)
+  }
+  if (anyNA(detection_checklist_id) || any(!nzchar(detection_checklist_id))) {
+    stop("ZERO_FILL_CHECKLIST_ID: detection checklist IDs must be complete and nonblank", call. = FALSE)
+  }
+  if (anyNA(detection_taxon_id) || any(!nzchar(detection_taxon_id))) {
+    stop("ZERO_FILL_TAXON_ID: detection taxon IDs must be complete and nonblank", call. = FALSE)
+  }
+  if (!length(taxa) || anyNA(taxa) || any(!nzchar(taxa)) || anyDuplicated(taxa)) {
+    stop("ZERO_FILL_TAXON_ID: requested taxon IDs must be complete and unique", call. = FALSE)
+  }
+  if (any(!detection_taxon_id %in% taxa)) {
+    stop("ZERO_FILL_TAXON_ID: detections contain taxa outside the requested registry", call. = FALSE)
+  }
+  checklists$analysis_checklist_id <- checklist_id
+  detections$analysis_checklist_id <- detection_checklist_id
+  detections$analysis_taxon_id <- detection_taxon_id
   assert_unique_key(checklists, "analysis_checklist_id", "eligible checklists")
   assert_unique_key(detections, c("analysis_checklist_id", "analysis_taxon_id"), "detections")
-  if (eligibility_column %in% names(checklists)) {
-    eligible <- !is.na(checklists[[eligibility_column]]) & as.logical(checklists[[eligibility_column]])
+
+  raw_eligibility <- checklists[[eligibility_column]]
+  if (is.logical(raw_eligibility)) {
+    if (anyNA(raw_eligibility)) stop("ZERO_FILL_ELIGIBILITY: logical values cannot be NA", call. = FALSE)
+    eligible <- raw_eligibility
+  } else if (is.integer(raw_eligibility) || is.numeric(raw_eligibility)) {
+    if (anyNA(raw_eligibility) || any(!is.finite(raw_eligibility)) ||
+        any(!raw_eligibility %in% c(0, 1))) {
+      stop("ZERO_FILL_ELIGIBILITY: numeric values must be exactly 0 or 1", call. = FALSE)
+    }
+    eligible <- raw_eligibility == 1
+  } else if (is.character(raw_eligibility) || is.factor(raw_eligibility)) {
+    value <- toupper(trimws(as.character(raw_eligibility)))
+    if (anyNA(value) || any(!nzchar(value)) ||
+        any(!value %in% c("0", "1", "FALSE", "TRUE"))) {
+      stop("ZERO_FILL_ELIGIBILITY: character values must be exactly 0, 1, FALSE, or TRUE", call. = FALSE)
+    }
+    eligible <- value %in% c("1", "TRUE")
   } else {
-    eligible <- rep(TRUE, nrow(checklists))
+    stop("ZERO_FILL_ELIGIBILITY: unsupported eligibility type", call. = FALSE)
   }
-  eligible_ids <- as.character(checklists$analysis_checklist_id[eligible])
+  eligible_ids <- checklists$analysis_checklist_id[eligible]
   if (any(as.character(checklists$analysis_checklist_id[!eligible]) %in% eligible_ids)) {
     stop("ZERO_FILL_ELIGIBILITY: excluded checklist leaked into eligible set", call. = FALSE)
   }
-  detections <- data.table::as.data.table(detections)[analysis_checklist_id %in% eligible_ids]
+  detections <- detections[analysis_checklist_id %in% eligible_ids]
   detections[, source_record_present := TRUE]
   grid <- data.table::CJ(analysis_checklist_id = eligible_ids,
-                         analysis_taxon_id = as.character(taxa), unique = TRUE)
+                         analysis_taxon_id = taxa, unique = TRUE)
   out <- merge(grid, detections, by = c("analysis_checklist_id", "analysis_taxon_id"),
                all.x = TRUE, sort = FALSE)
   out[is.na(source_record_present), `:=`(detection = 0L, numeric_count = 0,

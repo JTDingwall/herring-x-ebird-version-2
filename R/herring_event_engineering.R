@@ -27,9 +27,15 @@ stable_event_id <- function(year, location_code, section, spawn_number) {
                               algo = "sha256", serialize = FALSE), 1, 16))
 }
 
-stable_source_record_id <- function(x, source_sha256) {
-  validate_herring_schema(x)
-  canonical <- apply(as.data.frame(x)[required_herring_source_fields()], 1L, function(z) {
+stable_source_record_id <- function(x, source_sha256, field_map = NULL) {
+  validate_herring_schema(x, field_map)
+  if (length(source_sha256) != 1L || is.na(source_sha256) ||
+      !grepl("^[0-9a-fA-F]{64}$", source_sha256)) {
+    stop("SOURCE_RECORD_ID: source_sha256 must be one complete SHA-256 value", call. = FALSE)
+  }
+  source_fields <- if (is.null(field_map)) required_herring_source_fields() else
+    unname(unlist(field_map[required_herring_source_fields()]))
+  canonical <- apply(as.data.frame(x)[source_fields], 1L, function(z) {
     paste(ifelse(is.na(z), "<NA>", z), collapse = "\u001f")
   })
   paste0("hsr_", substr(vapply(seq_len(nrow(x)), function(i) {
@@ -49,22 +55,28 @@ representative_event_date <- function(start_date, end_date) {
 }
 
 classify_herring_quality <- function(start_date, end_date, length_m, width_m,
-                                     egg_thickness, assessment_method,
+                                     intensity_index, assessment_method,
                                      geometry_present = TRUE) {
   has_date <- !is.na(start_date) | !is.na(end_date)
-  has_intensity_component <- !is.na(length_m) | !is.na(width_m) | !is.na(egg_thickness)
+  has_intensity_component <- !is.na(length_m) | !is.na(width_m) | !is.na(intensity_index)
   method_known <- !is.na(assessment_method) & nzchar(trimws(assessment_method))
   tier <- ifelse(has_date & geometry_present & has_intensity_component & method_known, "high",
           ifelse(has_date & geometry_present, "moderate", "limited"))
   factor(tier, levels = c("high", "moderate", "limited"))
 }
 
-derive_herring_event_fields <- function(x, field_map = NULL) {
+derive_herring_event_fields <- function(x, source_sha256, field_map = NULL) {
   validate_herring_schema(x, field_map)
   col <- function(nm) if (is.null(field_map)) nm else unname(field_map[[nm]])
   out <- data.table::copy(data.table::as.data.table(x))
+  out[, source_record_id := stable_source_record_id(x, source_sha256, field_map)]
+  if (anyNA(out$source_record_id) || any(!nzchar(out$source_record_id)) ||
+      anyDuplicated(out$source_record_id)) {
+    stop("SOURCE_RECORD_ID: immutable source-record IDs must be complete and unique", call. = FALSE)
+  }
   out[, event_id := stable_event_id(get(col("Year")), get(col("LocationCode")),
                                     get(col("Section")), get(col("SpawnNumber")))]
+  out[, event_id_multiplicity := .N, by = event_id]
   out[, event_date := representative_event_date(get(col("StartDate")), get(col("EndDate")))]
   out[, component_surface_missing := is.na(get(col("Surface")))]
   out[, component_macrocystis_missing := is.na(get(col("Macrocystis")))]

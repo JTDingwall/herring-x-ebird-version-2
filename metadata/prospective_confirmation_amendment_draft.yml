@@ -1,0 +1,113 @@
+amendment_version: prospective_confirmation_amendment_draft_v1
+status: DRAFT_PENDING_HUMAN_APPROVAL
+created_at_utc: 2026-07-21
+chronology:
+  created_after_stage4a_development_results_existed: true
+  stage4a_results_were_known_when_drafted: true
+  retroactively_modifies_stage4a: false
+  claim_of_stage4a_prespecification: prohibited
+authority:
+  signed: false
+  approved: false
+  frozen: false
+  authoritative: false
+prospective_holdout:
+  years: [2026, 2027, 2028]
+  remains_inaccessible: true
+  interim_response_looks: prohibited
+  release_before_complete_horizon: prohibited
+proposed_primary_claim_hierarchy:
+  status: HUMAN_DECISION_REQUIRED
+  tier_1:
+    estimand: E04_checklist_conditional_guild_reporting
+    model: M01_detection_component
+    region: SoG
+    units: eight_frozen_primary_guilds
+    synthesis: one_prespecified_hierarchical_guild_level_claim_with_all_guild_estimates_visible
+  tier_2:
+    estimand: E02_positive_numeric_reported_count
+    model: M01_positive_count_component
+    region: SoG
+    conditions:
+      - numeric_count_available
+      - hurdle_lognormal_primary_and_truncated_NB2_disagreement_rule_frozen_before_access
+  tier_3:
+    estimand: E06_event_time_by_distance_pattern
+    model: M05
+    role: mechanistic_support_not_independent_confirmation_unless_human_approved
+  excluded_from_primary_claim_set_until_separately_approved:
+    - all_species_level_claims
+    - WCVI_primary_claims
+    - CC_and_NA_claims
+    - deferred_M03_to_M45_models_except_locked_M31_mapping
+proposed_negative_controls:
+  retain_historical_panel_for_continuity: [Gadwall, Northern Shoveler]
+  historical_panel_assumed_biologically_inert: false
+  additional_controls:
+    status: HUMAN_DECISION_REQUIRED
+    eligibility_rules:
+      - occurs_on_comparable_nearshore_complete_checklists
+      - shares_relevant_observation_and_reporting_structure
+      - lacks_a_predeclared_direct_herring_resource_mechanism
+      - selected_without_2026_2028_response_access
+      - not_selected_for_null_2005_2025_results
+  non_null_rule:
+    role: diagnostic_warning_and_claim_downgrade_rule
+    exact_numeric_threshold: HUMAN_DECISION_REQUIRED
+proposed_placebo_rules:
+  construction_uses_response: false
+  false_date:
+    - shift_within_region_year_and_registered_event_or_exposure_order
+    - preserve_exposure_prevalence_and_fixed_support
+    - avoid_overlap_with_registered_biological_availability_for_the_specific_kernel
+  false_location:
+    - preserve_region_year_coastal_access_and_exposure_distribution
+    - shift_the_registered_distance_exposure_vector_not_only_active_near
+  fit_rule: use_the_matched_primary_family_and_uncertainty_structure
+  sensitivity_role: diagnostic_not_biological_evidence
+proposed_observation_process_diagnostics:
+  diagnostics:
+    - explicit_checklist_location_or_submission_choice_set_when_observed
+    - checklist_effort_covariates
+    - observer_composition_and_dominant_observer_holdout
+    - count_numeric_availability
+    - observer_richness_and_reporting
+    - same_location_or_same_observer_views_only_where_support_and_estimand_are_declared
+  weighting_rule: no_automatic_inverse_probability_weighting_without_observed_alternatives
+dfo_surveyed_negative_requirements:
+  required_for_true_no_spawn_comparisons: true
+  states: [surveyed_positive, surveyed_negative, unmonitored_unknown]
+  schema: metadata/dfo_survey_effort_schema.csv
+  unmonitored_treated_as_negative: false
+proposed_holdout_access_mechanisms:
+  status: HUMAN_DECISION_REQUIRED
+  options:
+    - independent_custodian
+    - third_party_held_decryption_key
+    - public_timestamped_one_shot_execution_package
+    - auditable_access_logs_with_release_controls
+  any_single_option_claimed_as_only_valid_mechanism: false
+outcome_derived_nuisance_guard:
+  observer_expertise: pre_period_or_cross_fitted_only
+  outcome_balanced_sampling: prohibited_without_frozen_inclusion_probabilities_and_recalibration
+  prevalence_calibration_from_holdout: prohibited
+  model_or_taxon_selection_from_holdout: prohibited
+unresolved_human_decisions:
+  - approve_or_replace_primary_claim_hierarchy
+  - numeric_effect_and_agreement_thresholds
+  - negative_control_composition_and_non_null_rule
+  - WCVI_prospective_role
+  - matched_placebo_construction_parameters
+  - holdout_access_mechanism
+  - confirmable_cells_after_power_analysis
+exact_supersession_targets_if_approved:
+  - metadata/prospective_confirmation_spec.yml
+  - prospective_only_sections_of_docs/04_DECISION_RULES.md
+explicit_non_supersession_targets:
+  - metadata/stage4a_core_spec_v1.yml
+  - metadata/stage4a_pre_response_scope_lock_v1.yml
+  - metadata/stage4a_pre_response_scope_lock_v2.yml
+  - metadata/stage4a_pre_response_scope_lock_v3.yml
+  - metadata/stage4a_pre_response_scope_lock_v4.yml
+  - metadata/stage4a_execution_v1.yml
+  - outputs/stage4a_results
