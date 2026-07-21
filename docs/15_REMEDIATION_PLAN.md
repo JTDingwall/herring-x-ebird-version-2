@@ -62,7 +62,12 @@ owner**, not drafted with values here. Each becomes a hashed decision record onc
 
 ## Wave 3 — Post-decision engineering (before Phase 4)
 
-Executed once the relevant Wave 1 decision is recorded:
+Executed once the relevant Wave 1 decision is recorded. This wave also implements the
+external-methods additions R20–R24 (`docs/16_EBIRD_EVENT_METHODS_SYNTHESIS.md`): spatiotemporal
+subsampling, an observer-expertise covariate, a formal preferential-sampling diagnostic,
+target-group background for the presence-only exposure, and a continuous-exposure-primary
+(fusion) reframing of the redistribution designs. Their numeric parameters are Wave 1 open
+decisions.
 
 - Implement the chosen event-complex rule and port the Stage-2 anti-chaining cap into the
   Phase-3 event-block union-find; audit the block-size distribution (R8).

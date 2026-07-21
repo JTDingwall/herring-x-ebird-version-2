@@ -56,6 +56,21 @@ strengthened control panel, not a design assumption.
 | R18 | S3 | Single-guild membership is enforced in code but H6 concerns within-guild functional heterogeneity, and several taxa are genuinely multi-modal. | Implement the registered multi-guild membership rule, or explicitly scope H6 to single-guild taxa. | Engineering pass |
 | R19 | S3 | Guild richness and guild-count-lower can disagree for the same checklist (an `X` adds to richness but 0 to the lower bound). | Document this divergence in modeler guidance so it is not misread. | Engineering pass |
 
+## External-methods additions (R20–R24)
+
+Derived from `docs/16_EBIRD_EVENT_METHODS_SYNTHESIS.md`, which reviews how comparable eBird
+analyses link checklists to discrete point/pulse events (wildfire smoke, polar-vortex weather,
+periodical-cicada pulses) and to the eBird bias-correction literature. These are S2 methods
+that operationalize the Tier-1 confounding items with field-standard techniques.
+
+| ID | Sev | Method | Satisfies |
+|----|-----|--------|-----------|
+| R20 | S2 | Register spatiotemporal subsampling (equal-area grid × event-relative-time bin; subsample detections and non-detections separately) to reduce spatial/observer bias. | R2 |
+| R21 | S2 | Add an observer-expertise / checklist-calibration covariate (the search-efficiency channel). | R2, R11 |
+| R22 | S2 | Elevate the visitation model to a formal preferential-sampling diagnostic and report it beside every biological estimand. | R2 |
+| R23 | S2 | Use target-group background (surveyed footprint) plus spatial thinning for the presence-only exposure. | R3 |
+| R24 | S2 | Make the continuous exposure-response primary and control-site DiD a sensitivity (fusion-design logic). | R2, R3 |
+
 ## What does not need to change
 
 Distinct outcome states, `X`/missing never coerced to zero, event-level clustering, full
