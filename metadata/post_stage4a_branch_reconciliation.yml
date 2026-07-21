@@ -1,0 +1,94 @@
+manifest_version: post_stage4a_branch_reconciliation_v1
+created_at_utc: 2026-07-21
+created_after_stage4a_results_available: true
+repository: JTDingwall/herring-x-ebird-version-2
+working_branch:
+  name: codex/post-stage4a-reconciliation-audit
+  based_on: analysis/stage4-core-response
+  based_on_sha: dae0be997a940c7e95c900f64d81500769c5f836
+  rule: reconcile_from_current_PR2_head_without_merging_PR3
+remote_refresh:
+  git_fetch_all_prune: PASS
+  refreshed_at_date_utc: 2026-07-21
+  gh_cli_auth: BLOCKED_INVALID_TOKEN
+  pr_metadata_fallback: public_GitHub_API_read_only
+branches:
+  main:
+    sha: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+  pr1:
+    number: 1
+    state: merged
+    base_ref: main
+    base_sha_at_merge: fd1473bbd473c76692e1cd676d68a208dfe45b6b
+    head_ref: design/stage2-outcome-blind-lock
+    head_sha: c80d8ee499344e3e9d8c68420c8f78a9834ca512
+    merge_sha: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+  pr2:
+    number: 2
+    state: open_draft
+    base_ref: main
+    base_sha: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+    head_ref: analysis/stage4-core-response
+    head_sha: dae0be997a940c7e95c900f64d81500769c5f836
+  pr3:
+    number: 3
+    state: open_draft
+    base_ref: main
+    base_sha: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+    head_ref: claude/sonnet-subagents-repo-review-uedyi7
+    head_sha: f887b6895ff4caaf495295443258b784e81d2224
+merge_bases:
+  main_pr2: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+  main_pr3: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+  pr2_pr3: 3b78aa061a3548bb8f1c3586e506f154ad319f25
+ci_checks_at_refresh:
+  main:
+    fixture_validation: success
+    analysis_plan_render: success
+  pr2:
+    fixture_validation: success
+    analysis_plan_render: success
+  pr3:
+    fixture_validation: success
+    analysis_plan_render: success
+active_authority_records:
+  - metadata/stage2_human_scientific_approval_v1.yml
+  - metadata/stage3_phases1_3_authorization_v1.yml
+  - metadata/stage3_phase1_human_scientific_approval_v2.yml
+  - metadata/stage3_phase2_human_scientific_approval_v1.yml
+  - metadata/stage3_phase3_human_scientific_approval_v1.yml
+  - metadata/stage4a_human_scientific_authorization_v1.yml
+  - metadata/stage4a_core_spec_v1.yml
+  - metadata/stage4a_model_disposition_v1.csv
+  - metadata/stage4a_model_specification_matrix_v1.csv
+  - metadata/stage4a_pre_response_scope_lock_v4.yml
+  - metadata/stage4a_execution_v1.yml
+superseded_records_preserved:
+  - metadata/stage4a_pre_response_scope_lock_v1.yml
+  - metadata/stage4a_pre_response_scope_lock_v2.yml
+  - metadata/stage4a_pre_response_scope_lock_v3.yml
+advisory_non_authoritative_records:
+  source_branch: claude/sonnet-subagents-repo-review-uedyi7
+  files:
+    - docs/14_SCIENTIFIC_REVIEW_AND_REMEDIATION.md
+    - docs/15_REMEDIATION_PLAN.md
+    - docs/16_EBIRD_EVENT_METHODS_SYNTHESIS.md
+  wholesale_merge_permitted: false
+stage4a_result_artifacts:
+  immutable_v1_directory: outputs/stage4a_results
+  aggregate_manifest: outputs/stage4a_results/aggregate_artifact_hashes.csv
+  execution_record: metadata/stage4a_execution_v1.yml
+  technical_report: docs/15_STAGE4A_CORE_RESULTS.md
+  original_outputs_modified_by_reconciliation: false
+unresolved_branch_conflicts:
+  - PR3_reuses_docs_14_and_docs_15_names_already_used_by_PR2_for_Stage4A_history
+  - PR3_declares_itself_authoritative_despite_lower_chronological_authority
+  - PR3_blanket_S2_gate_conflicts_with_already_authorized_and_executed_Stage4A
+  - PR3_placebo_critique_targets_a_method_not_used_by_Stage4A
+  - PR3_generic_R_function_fixes_are_not_on_the_Stage4A_execution_path
+access_statement:
+  tracked_privacy_safe_stage4a_aggregates_inspected: true
+  untracked_protected_2005_2025_response_records_opened: false
+  protected_stage4a_builder_or_models_rerun: false
+  records_2026_plus_accessed: false
+  comments_or_unregistered_response_fields_accessed: false
