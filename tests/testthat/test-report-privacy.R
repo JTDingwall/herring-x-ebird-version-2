@@ -11,3 +11,10 @@ test_that("working tree passes the privacy value scan", {
   if (got$status != "PASS") fail(paste(unique(paste(got$violations$file, got$violations$kind)), collapse = "; "))
   succeed()
 })
+
+test_that("privacy coordinate scan distinguishes BC coordinates from estimates", {
+  expect_true(privacy_contains_bc_coordinate_pair(paste0("49.282", "700, -123.120", "700")))
+  expect_true(privacy_contains_bc_coordinate_pair(paste0("-123.120", "700 49.282", "700")))
+  expect_false(privacy_contains_bc_coordinate_pair("0.23445222, 0.1320002 0.3369043"))
+  expect_false(privacy_contains_bc_coordinate_pair("1.74766322 2.22726575"))
+})

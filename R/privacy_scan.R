@@ -6,6 +6,20 @@ privacy_text_files <- function(root = ".") {
   files[!tolower(tools::file_ext(files)) %in% binary_ext]
 }
 
+privacy_contains_bc_coordinate_pair <- function(text) {
+  pattern <- "[-+]?[0-9]{1,3}\\.[0-9]{6,}[,[:space:]]+[-+]?[0-9]{1,3}\\.[0-9]{6,}"
+  matches <- regmatches(text, gregexpr(pattern, text, perl = TRUE))[[1]]
+  if (!length(matches) || identical(matches, character(0)) || matches[1] == "") return(FALSE)
+  any(vapply(matches, function(pair) {
+    numbers <- regmatches(pair, gregexpr("[-+]?[0-9]{1,3}\\.[0-9]{6,}", pair, perl=TRUE))[[1]]
+    if (length(numbers) != 2L) return(FALSE)
+    values <- as.numeric(numbers)
+    lat_lon <- values[1] >= 40 && values[1] <= 70 && values[2] >= -160 && values[2] <= -100
+    lon_lat <- values[2] >= 40 && values[2] <= 70 && values[1] >= -160 && values[1] <= -100
+    lat_lon || lon_lat
+  }, logical(1)))
+}
+
 scan_privacy <- function(root = ".") {
   root <- normalizePath(root, winslash = "/", mustWork = TRUE)
   files <- privacy_text_files(root)
@@ -13,7 +27,6 @@ scan_privacy <- function(root = ".") {
     checklist_value = paste0("(?<![A-Za-z0-9_])", "S", "[0-9]{6,}(?![A-Za-z0-9_])"),
     observer_value = paste0("(?i)(?<![A-Za-z0-9_])", "obsr", "[0-9]{3,}(?![A-Za-z0-9_])"),
     locality_value = paste0("(?<![A-Za-z0-9_])", "L", "[0-9]{6,}(?![A-Za-z0-9_])"),
-    coordinate_pair = "[-+]?[0-9]{1,3}\\.[0-9]{6,}[,[:space:]]+[-+]?[0-9]{1,3}\\.[0-9]{6,}",
     windows_user_path = paste0("(?i)[A-Z]:[\\\\/]", "Users", "[\\\\/][^<>{}[:space:]]+"),
     unix_home_path = "(?<![A-Za-z0-9_])/(home|Users)/[^/<>{}[:space:]]+",
     credential = paste0("(?i)(token|password|secret)[[:space:]]*[:=][[:space:]]*['\"]?", "[A-Za-z0-9_./+-]{16,}")
@@ -27,6 +40,10 @@ scan_privacy <- function(root = ".") {
       if (grepl(patterns[[kind]], text, perl = TRUE)) {
         violations[[length(violations) + 1L]] <- data.table::data.table(file = file, kind = kind)
       }
+    }
+    if (privacy_contains_bc_coordinate_pair(text)) {
+      violations[[length(violations) + 1L]] <- data.table::data.table(file=file,
+        kind="coordinate_pair")
     }
     raw_name <- paste0("(?i)(", "ebd_CA-BC", "|sampling_event_data|Pacific_herring_spawn_index_data_2025_EN)")
     if (!file %in% allowed_raw_name_files && grepl(raw_name, text, perl = TRUE)) {
