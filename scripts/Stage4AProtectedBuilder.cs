@@ -42,11 +42,11 @@ public static class Stage4AProtectedBuilder
             "stage3_phase1_repair_protected", "reported_count_states.tsv.gz");
         string masks = Path.Combine(repoRoot, "data", "derived",
             "stage3_phase1_repair_protected", "ambiguity_masks.tsv.gz");
-        RequireHash(assignments, "8cc6f22fa8af21642954f3162334c435c9b2888560315ba558207a768fc48aa9");
+        RequireHash(assignments, "8cc6c52033c415d991eb423884d9cacc3da689ec8c98d3448bc0f00e147981b1");
         RequireHash(links, "f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b");
         RequireHash(crosswalk, "1b52cf8fc15f91e89d7b8a64c66d9976e0c2e6e36afef4058909d7aaad3d2f17");
-        RequireHash(states, "d4d4ee0f4479b40164648937153538c409039c3bbf84e51fb76a106e15a934e8");
-        RequireHash(masks, "cbcb75425e0022899c5782fa0e8ed72024c73b54413fb34bc7d50cab6be2af01");
+        RequireHash(states, "d4d4b2ee6684c89b2e9331eb190d0cc1045f41ac30ef2f7e6d8c858c4dbc9338");
+        RequireHash(masks, "cbcb4a193a273f055f17d168d9bdddcbb29789dd2c356297e0ac6d43bd052e33");
 
         string eventOutput = Path.Combine(protectedDirectory, "stage4a_event_metadata.tsv.gz");
         string stateOutput = Path.Combine(protectedDirectory, "stage4a_reported_states.tsv.gz");

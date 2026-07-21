@@ -27,6 +27,7 @@ testthat::test_that("Stage 4A lock artifacts are hash-identical", {
     c("metadata/stage4a_model_specification_matrix_v1.csv","metadata/stage4a_model_specification_matrix_v1.csv.sha256"),
     c("metadata/stage4a_core_spec_v1.yml","metadata/stage4a_core_spec_v1.sha256"),
     c("metadata/stage4a_pre_response_scope_lock_v1.yml","metadata/stage4a_pre_response_scope_lock_v1.sha256"),
+    c("metadata/stage4a_pre_response_scope_lock_v2.yml","metadata/stage4a_pre_response_scope_lock_v2.sha256"),
     c("docs/14_STAGE4A_CORE_METHODS.md","docs/14_STAGE4A_CORE_METHODS.sha256"),
     c("docs/15_STAGE4A_RESULTS_TEMPLATE.md","docs/15_STAGE4A_RESULTS_TEMPLATE.sha256"))
   for(pair in pairs) {
