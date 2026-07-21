@@ -149,7 +149,8 @@ test_that("canonical IDs are deterministic under row reordering and fail closed"
 test_that("v2 schemas freeze future outputs without producing numeric repair", {
   schema <- fread(repo_file("metadata", "stage4a_pooling_artifact_schema_v2.csv"))
   required_artifacts <- c(
-    "repaired_aggregate_output_v2", "pooling_family_registry_v2",
+    "repaired_aggregate_output_v2", "pooling_family_estimates_v2",
+    "pooling_family_registry_v2",
     "component_evidence_registry_v2", "v1_to_v2_family_crosswalk",
     "row_level_inclusion_exclusion_audit", "m11_m12_duplicate_resolution_audit",
     "family_compatibility_audit_v2", "invalidation_supersession_manifest",
