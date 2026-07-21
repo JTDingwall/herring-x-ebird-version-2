@@ -10,8 +10,8 @@ working_branch:
 remote_refresh:
   git_fetch_all_prune: PASS
   refreshed_at_date_utc: 2026-07-21
-  gh_cli_auth: BLOCKED_INVALID_TOKEN
-  pr_metadata_fallback: public_GitHub_API_read_only
+  gh_cli_auth: PASS_AT_PUBLICATION
+  pr_metadata_fallback_used_during_initial_refresh: public_GitHub_API_read_only
 branches:
   main:
     sha: 3b78aa061a3548bb8f1c3586e506f154ad319f25
@@ -92,3 +92,11 @@ access_statement:
   protected_stage4a_builder_or_models_rerun: false
   records_2026_plus_accessed: false
   comments_or_unregistered_response_fields_accessed: false
+publication:
+  draft_pr_number: 4
+  draft_pr_url: https://github.com/JTDingwall/herring-x-ebird-version-2/pull/4
+  base_ref: analysis/stage4-core-response
+  head_ref: codex/post-stage4a-reconciliation-audit
+  created_from_head_sha: 4ee8166d5a2e9f5e39558dc323afb28bdbd9d3b3
+  draft_state_verified: true
+  initial_checks: in_progress

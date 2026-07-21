@@ -45,5 +45,10 @@ publication_checks:
     head_sha: ffb2415a7ed15a41cb602286ea3a13dc40c3c1ee
     conclusion: success
   gh_cli_auth:
-    status: BLOCKED_INVALID_TOKEN
-    implication: draft_PR_creation_requires_refreshed_GitHub_authentication
+    status: PASS_AT_PUBLICATION
+    implication: draft_PR_4_created_and_verified
+  draft_pr_4:
+    status: PASS_CREATED_AS_DRAFT
+    base_ref: analysis/stage4-core-response
+    head_ref: codex/post-stage4a-reconciliation-audit
+    initial_ci_status: in_progress
