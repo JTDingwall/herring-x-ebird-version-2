@@ -3,6 +3,20 @@
 Work inside this repository. Read `AGENTS.md`, all files in `docs/`, and every metadata
 registry before changing code.
 
+## Current authority gate
+
+Stage 3 Phases 1-3 are complete and human-approved. Stage 4A has already been executed
+under `metadata/stage4a_human_scientific_authorization_v1.yml`; its v1 locks, execution
+record, outputs, and hashes are immutable historical evidence. Stage 4A results are
+known and pending human review. Do not call new development decisions outcome-blind.
+
+Do not automatically start Stage 4B or activate deferred models. Follow
+`metadata/estimand_progression_gate.csv`, `metadata/model_progression_gate.csv`, and
+`docs/PROJECT_CONTINUATION_AUDIT_AND_PLAN.md`. PR #3 is advisory and cannot supersede
+approved records. Any protected Stage 4A repair requires new explicit authorization and
+new versioned artifacts. M31 and all 2026-2028 responses remain locked until the
+complete prospective release and an approved one-shot package.
+
 ## Objective
 
 Implement the Version 2 analysis from authoritative raw eBird EBD/SED and DFO herring
@@ -10,15 +24,16 @@ inputs. The scientific target is a triangulated assessment of whether herring sp
 associated with more birds close to spawn, changes in flock size and community structure,
 and reduced spatial allocation to simultaneous farther shorelines.
 
-## First command sequence
+## First command sequence for newly authorized work
 
 1. Run `scripts/00_setup.R`.
 2. Run `scripts/01_validate_input_metadata.R` with checksum mode off for a fast header/size audit.
 3. Run it again with `HERRING_EBIRD_V2_VERIFY_INPUT_SHA256=true` before any derived data are trusted.
 4. Run `scripts/02_validate_registries.R` and the tests.
 5. Stop and report all metadata discrepancies before writing processing/model code.
+6. Confirm the exact human authorization and model-specific gate for the proposed work.
 
-## Required implementation order
+## Historical implementation order
 
 1. taxonomy and support audit;
 2. herring quality tiers and event complexes;
@@ -29,6 +44,9 @@ and reduced spatial allocation to simultaneous farther shorelines.
 7. M01–M10 core models;
 8. registered supporting/diagnostic models;
 9. cross-model evidence report.
+
+This sequence describes the design architecture; it is not current authorization to
+rerun completed stages or open protected response data.
 
 ## Statistical requirements
 

@@ -2,7 +2,13 @@
 
 This is a clean-history, metadata-first R project for designing tests of how Pacific herring spawning relates to coastal bird occurrence, reported counts, spatial allocation, community composition, and co-occurrence in British Columbia.
 
-The current gate is **Stage 3 Phases 1–3 authorized, outcome-blind**. Checklist-denominator construction, metadata-only support auditing, and blocked-validation implementation may proceed. No bird-response summary or response model is authorized. Current analyses remain exploratory and estimand-refining until prospective confirmation.
+Stage 3 Phases 1-3 are complete and human-approved. Stage 4A was executed under its
+recorded authorization on PR #2 and its aggregate results are pending human scientific
+review. A post-result audit found defective hierarchical pooling columns and
+nonconforming diagnostic/sensitivity paths; it did not alter or rerun Stage 4A v1.
+Stage 4B is not automatically authorized. M31 and all 2026-2028 responses remain locked.
+Current development analyses are exploratory and estimand-refining until prospective
+confirmation.
 
 ## Canonical design assets
 
@@ -49,7 +55,7 @@ Run `scripts/01_validate_input_metadata.R` only in an authorized local session w
 - All prespecified models are reported regardless of sign.
 - Hard stops and warnings follow `docs/04_DECISION_RULES.md`.
 
-## Stage 3 Phases 1–3 authorization
+## Current authority and review gate
 
 Human scientific authorization records immutable source point as the only registered analysis geometry. EDGE_TYPE 100, EDGE_TYPE 150, derived alongshore lengths, and shoreline unions are retained as audit provenance only; no shoreline-class or alongshore sensitivity is registered. The incomplete shoreline bundle remains documented but has no analysis role. The original 105-option candidate grid and retained hashes remain unchanged.
 
@@ -63,7 +69,24 @@ Human scientific authorization records immutable source point as the only regist
 - `reports/ebird_checklist_methods_audit.html`: interactive checklist-methods review.
 - `reports/herring_ebird_broad_literature_survey.html` and `metadata/herring_ebird_literature_matrix.csv`: expanded 54-source evidence map.
 
-Stage 3 Phases 1–3 are authorized: checklist-denominator construction, metadata-only support auditing, and blocked-validation implementation. Stop for human review after each phase. Phase 4, response summaries, exposure-direction diagnostics, and all response models remain unauthorized. The 2026–2028 prospective holdout remains frozen.
+Stage 3 Phases 1-3 are complete. Stage 4A authorization, final scope lock, execution
+record, technical methods, and privacy-safe aggregate results are preserved on the Stage
+4A branch. The reconciliation audit is explicitly post-result and does not backdate any
+new rule.
+
+- `docs/POST_STAGE4A_ADVERSARIAL_AUDIT.md`: code-path, conformance, numerical,
+  interpretation, and defect-impact audit.
+- `docs/STAGE4A_HUMAN_REVIEW_PACKET.md`: non-promotional decisions now required.
+- `docs/PROJECT_CONTINUATION_AUDIT_AND_PLAN.md`: estimand/model-specific critical path.
+- `metadata/post_stage4a_review_issue_crosswalk.csv`: disposition of PR #3 R1-R31.
+- `metadata/prospective_confirmation_amendment_draft.yml`: unsigned post-result draft;
+  it is not authoritative.
+
+PR #3 is a sibling-branch advisory review. It does not supersede human approvals or
+hashed Stage 4A records and is not merged wholesale. Future work follows the
+model-specific and estimand-specific gate tables rather than a blanket “all S2 blocks
+all response models” rule. Any protected 2005-2025 rerun requires new human
+authorization and versioned outputs. The complete 2026-2028 holdout remains inaccessible.
 
 ## Reports and provenance
 
