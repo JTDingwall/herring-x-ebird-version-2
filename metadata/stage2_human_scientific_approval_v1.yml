@@ -1,0 +1,57 @@
+approval_version: stage2_human_scientific_approval_v1
+approved_at_utc: 2026-07-20 17:20:23 UTC
+authority: explicit_human_scientific_approval
+approver_role: project_scientific_owner
+approval_source: project_conversation_instruction
+approved_branch: design/stage2-outcome-blind-lock
+approved_branch_head: e0ceac2fdc72cebffb4e246aecc4b213bda7c4d5
+stage2_repair_evidence_commit: 7af0f920bb71211ec2dbf6b20dfad481f11d7cdf
+scientific_decision: APPROVED_SOURCE_POINT_PRIMARY
+parent_design:
+  candidate_grid_canonical_lf_sha256: 8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81
+  candidate_grid_original_windows_crlf_sha256: f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91
+  scientific_amendment_v1_sha256: 7323b02f2c5ea3e2fccde6de73f123200694242d24cca087561e5939a7aa6835
+  preserved_unchanged: true
+primary_event_geometry:
+  representation: immutable_source_point
+  scope: coastwide_where_source_point_is_valid
+  status: approved
+  missing_event_extent_inference: prohibited
+shoreline_sensitivities:
+  edge_type_100:
+    role: alongshore_supported_region_sensitivity
+    supported_regions: [SoG, WCVI]
+    common_eligible_event_comparison_required: true
+    status: approved
+  edge_type_150:
+    role: separate_sensitivity_after_local_visual_validation
+    status: validation_pending_nonblocking_for_primary
+  incomplete_bundle_coverage:
+    interpretation: sensitivity_scope_limitation_not_primary_identification_failure
+    unsupported_regions_are_never_treated_as_shoreline_eligible: true
+approved_repaired_rules:
+  ebd_sed_membership: sed_only_structural_unknowns_excluded_from_primary_zero_fill
+  independent_checklist_event: composite_event_per_group_identifier_else_sampling_event_identifier
+  shared_count_reconciliation: exclude_effort_disagreement_groups_from_primary_retain_registered_sensitivity
+  event_identity: immutable_source_record_primary
+  event_complex_sensitivities: original_2km_7d_provisional_and_deterministic_antichain_registered
+  region_periods: SoG_2005_and_WCVI_2015_primary_other_regions_descriptive_or_hierarchical_only
+  protocol_effort: complete_stationary_traveling_5_to_300_minutes_max_5km_1_to_10_observers
+  count_family: hurdle_lognormal_primary_truncated_NB2_parallel_no_primary_winsorization
+  latent_factor_pilot: detection_first_2_to_5_plus_no_factor_and_no_pooling_one_SE_rule
+  registry_exclusivity: M21_and_M35_mutually_exclusive_one_evidence_object
+  multiplicity: hierarchical_synthesis_and_BH_within_coherent_species_families
+  prospective_confirmation: fixed_complete_2026_to_2028_once_no_interim_looks
+  estimand_language:
+    detection: probability_reported_on_eligible_complete_checklist
+    positive_count: reported_numeric_count_conditional_on_detection_and_count_availability
+    forbidden_unless_separately_justified: [true_absence, absolute_population_abundance, occupancy]
+  validation_unit: event_complex_or_shoreline_time_block
+  raw_bccws_integration: no_pooling_without_deterministic_checklist_crosswalk
+response_boundary:
+  stage3_response_models_authorized: false
+  registered_response_models_may_be_fit: false
+  exposure_specific_bird_summaries_may_be_computed: false
+  response_direction_diagnostics_may_be_computed: false
+  prospective_2026_plus_holdout_locked: true
+next_gate: stage3_entry_implementation_requires_separate_authorization

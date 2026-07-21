@@ -1,0 +1,28 @@
+approval_version: stage3_phase1_human_scientific_approval_v2
+approved_at_utc: 2026-07-20
+approval_source: explicit_human_instruction_in_repository_session
+approved_execution_record: metadata/stage3_phase1_execution_v2.yml
+approved_execution_record_sha256: fea1434723c3f2e5e436ab56a86da4662ce2f0376f3988619eab66788befda31
+approved_commit: 1741b02cb539f7721ac8d3e85415b302c15e2a3d
+scientific_decision: APPROVE_REPAIRED_STAGE3_PHASE1_DENOMINATOR_AND_ZERO_PROVENANCE_GATE
+approved_denominator:
+  representation: factorized_sparse
+  independent_eligible_checklist_events: 1433786
+  registered_analysis_taxa: 58
+  logical_event_taxon_cardinality: 83159588
+  zero_provenance_gate: PASS_ELIGIBLE_COMPLETE_VERIFIED_EVENT_OMISSION_ONLY
+  superseded_45_taxon_history_preserved: true
+phase_transition:
+  phase_1_status: completed_human_approved
+  phase_2_authorized: true
+  phase_2_scope: metadata_only_sampling_support_audit
+  phase_3_started: false
+  phase_3_authorized_to_start_by_this_record: false
+response_boundary:
+  bird_response_tables_authorized: false
+  bird_response_summaries_authorized: false
+  exposure_contrasts_authorized: false
+  response_models_authorized: false
+  comments_authorized: false
+  records_2026_plus_authorized: false
+next_gate: HUMAN_STAGE3_PHASE2_SAMPLING_SUPPORT_REVIEW

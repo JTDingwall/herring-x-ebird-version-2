@@ -58,6 +58,8 @@ audit_ebd_sed_keys <- function(ebd, sed, ebd_key = "sampling_event_identifier",
     ebd_unique_keys = length(eu), sed_unique_keys = length(su),
     ebd_keys_unmatched_to_sed = sum(!eu %in% su),
     sed_keys_without_ebd = sum(!su %in% eu),
+    sed_only_zero_fill_eligible = FALSE,
+    sed_only_treatment = "structurally_unknown_excluded_from_primary_zero_fill",
     status = if (all(eu %in% su)) "PASS" else "FAIL"
   )
 }
@@ -84,7 +86,8 @@ resolve_shared_checklists <- function(sed,
     conflicts <- comparison_fields[vapply(comparison_fields, function(f) {
       length(unique(ifelse(is.na(sed[[f]][idx]), "<NA>", as.character(sed[[f]][idx])))) > 1L
     }, logical(1L))]
-    data.table::data.table(group_member_count = length(idx),
+    data.table::data.table(analysis_checklist_id = id,
+      group_member_count = length(idx),
       has_effort_disagreement = length(conflicts) > 0L,
       disagreement_fields = paste(conflicts, collapse = ";"))
   }))
@@ -97,42 +100,86 @@ resolve_shared_checklists <- function(sed,
   if (nrow(crosswalk) != nrow(sed) || any(table(crosswalk$analysis_checklist_id, keep)[, "TRUE"] != 1L)) {
     stop("SHARED_CHECKLIST_QA: nondeterministic collapse", call. = FALSE)
   }
-  list(canonical_rows = sed[keep, , drop = FALSE], private_crosswalk = crosswalk,
+  canonical_rows <- sed[keep, , drop = FALSE]
+  canonical_rows$analysis_checklist_id <- analysis_id[keep]
+  canonical_rows <- merge(canonical_rows, audit, by = "analysis_checklist_id", all.x = TRUE, sort = FALSE)
+  canonical_rows$observer_effect_treatment <- ifelse(
+    canonical_rows$group_member_count > 1L,
+    "shared_group_composite_cluster",
+    "single_observer_cluster"
+  )
+  primary_rows <- canonical_rows[!canonical_rows$has_effort_disagreement, , drop = FALSE]
+  list(canonical_rows = canonical_rows,
+       primary_rows = primary_rows,
+       disagreement_rows = canonical_rows[canonical_rows$has_effort_disagreement, , drop = FALSE],
+       private_crosswalk = crosswalk,
        aggregate_audit = audit[, .(analysis_checklists = .N,
          shared_analysis_checklists = sum(group_member_count > 1L),
-         disagreement_groups = sum(has_effort_disagreement))])
+         disagreement_groups = sum(has_effort_disagreement),
+         primary_analysis_checklists = sum(!has_effort_disagreement),
+         observer_effect_rule = "shared_group_composite_cluster_not_first_source_row",
+         disagreement_primary_rule = "exclude_from_primary_registered_sensitivity")])
 }
 
-parse_ebird_count_state <- function(x, ambiguous = FALSE) {
+accepted_ebird_record <- function(approved, reviewed = NULL) {
+  # APPROVED is the frozen acceptance predicate. REVIEWED is retained only as
+  # audit provenance because an accepted record need not have been reviewed.
+  value <- toupper(trimws(as.character(approved)))
+  !is.na(approved) & value %in% c("1", "TRUE", "T", "YES", "Y")
+}
+
+normalize_stationary_distance <- function(protocol_name, effort_distance_km) {
+  protocol <- tolower(trimws(as.character(protocol_name)))
+  out <- suppressWarnings(as.numeric(effort_distance_km))
+  out[protocol == "stationary"] <- 0
+  out
+}
+
+parse_ebird_count_state <- function(x, ambiguous = FALSE,
+                                    observation_record_present = TRUE) {
   raw <- trimws(as.character(x)); missing <- is.na(x) | !nzchar(raw)
   numeric_syntax <- !missing & grepl("^[0-9]+$", raw)
   lower_syntax <- !missing & grepl("^(>=|>|at least[[:space:]]+)?[0-9]+\\+?$", raw, ignore.case = TRUE) & !numeric_syntax
   lower <- rep(NA_real_, length(raw))
   lower[lower_syntax] <- as.numeric(gsub("[^0-9]", "", raw[lower_syntax]))
   numeric_count <- rep(NA_real_, length(raw)); numeric_count[numeric_syntax] <- as.numeric(raw[numeric_syntax])
-  type <- rep("ambiguous", length(raw))
+  type <- rep("ambiguity_affected", length(raw))
   type[missing] <- "missing"; type[toupper(raw) == "X" & !missing] <- "X"
   type[lower_syntax] <- "lower_bound"; type[numeric_syntax] <- "numeric"
-  type[ambiguous & !missing] <- "ambiguous"
+  type[ambiguous & !missing] <- "ambiguity_affected"
+  present <- rep_len(as.logical(observation_record_present), length(raw))
   data.table::data.table(
-    detection = as.integer(!missing), numeric_count = numeric_count,
+    detection = as.integer(present), numeric_count = numeric_count,
     lower_bound_count = lower, count_type = type,
     ambiguity_flag = as.logical(ambiguous), source_count = raw
   )
 }
 
-zero_fill_taxa <- function(checklists, detections, taxa) {
+zero_fill_taxa <- function(checklists, detections, taxa,
+                           eligibility_column = "zero_fill_eligible") {
   assert_columns(checklists, "analysis_checklist_id", "eligible checklists")
   assert_columns(detections, c("analysis_checklist_id", "analysis_taxon_id", "detection",
                                "numeric_count", "lower_bound_count", "count_type", "ambiguity_flag"), "detections")
   assert_unique_key(checklists, "analysis_checklist_id", "eligible checklists")
   assert_unique_key(detections, c("analysis_checklist_id", "analysis_taxon_id"), "detections")
-  grid <- data.table::CJ(analysis_checklist_id = as.character(checklists$analysis_checklist_id),
+  if (eligibility_column %in% names(checklists)) {
+    eligible <- !is.na(checklists[[eligibility_column]]) & as.logical(checklists[[eligibility_column]])
+  } else {
+    eligible <- rep(TRUE, nrow(checklists))
+  }
+  eligible_ids <- as.character(checklists$analysis_checklist_id[eligible])
+  if (any(as.character(checklists$analysis_checklist_id[!eligible]) %in% eligible_ids)) {
+    stop("ZERO_FILL_ELIGIBILITY: excluded checklist leaked into eligible set", call. = FALSE)
+  }
+  detections <- data.table::as.data.table(detections)[analysis_checklist_id %in% eligible_ids]
+  detections[, source_record_present := TRUE]
+  grid <- data.table::CJ(analysis_checklist_id = eligible_ids,
                          analysis_taxon_id = as.character(taxa), unique = TRUE)
   out <- merge(grid, detections, by = c("analysis_checklist_id", "analysis_taxon_id"),
                all.x = TRUE, sort = FALSE)
-  out[is.na(detection), `:=`(detection = 0L, numeric_count = 0,
+  out[is.na(source_record_present), `:=`(detection = 0L, numeric_count = 0,
     lower_bound_count = 0, count_type = "zero_filled", ambiguity_flag = FALSE)]
+  out[, source_record_present := NULL]
   assert_unique_key(out, c("analysis_checklist_id", "analysis_taxon_id"), "zero-filled output")
   out
 }

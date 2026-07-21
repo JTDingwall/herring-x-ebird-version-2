@@ -28,3 +28,53 @@ candidate_event_links <- function(checklists, events, max_distance_km = 20) {
   })
   data.table::rbindlist(rows, use.names = TRUE, fill = TRUE)
 }
+
+construct_alongshore_segment <- function(line_coordinates, point_xy, length_m) {
+  xy <- as.matrix(line_coordinates)[, 1:2, drop = FALSE]
+  point_xy <- as.numeric(point_xy)[1:2]
+  if (nrow(xy) < 2L || any(!is.finite(xy)) || any(!is.finite(point_xy)) ||
+      length(length_m) != 1L || !is.finite(length_m) || length_m <= 0) {
+    return(list(status = "invalid_geometry_or_length", coordinates = NULL,
+                requested_length_m = length_m, constructed_length_m = NA_real_))
+  }
+  delta <- xy[-1L, , drop = FALSE] - xy[-nrow(xy), , drop = FALSE]
+  segment_length <- sqrt(rowSums(delta^2))
+  usable <- which(segment_length > 0)
+  if (!length(usable)) {
+    return(list(status = "zero_length_shoreline_feature", coordinates = NULL,
+                requested_length_m = length_m, constructed_length_m = NA_real_))
+  }
+  starts <- xy[usable, , drop = FALSE]
+  vectors <- delta[usable, , drop = FALSE]
+  lengths <- segment_length[usable]
+  cumulative_start <- cumsum(c(0, head(lengths, -1L)))
+  rel <- sweep(starts, 2L, point_xy, "-")
+  projection_fraction <- -rowSums(rel * vectors) / (lengths^2)
+  projection_fraction <- pmin(1, pmax(0, projection_fraction))
+  projected <- starts + vectors * projection_fraction
+  nearest <- which.min(rowSums(sweep(projected, 2L, point_xy, "-")^2))
+  centre_distance <- cumulative_start[nearest] + projection_fraction[nearest] * lengths[nearest]
+  total_length <- sum(lengths)
+  if (total_length + 1e-8 < length_m) {
+    return(list(status = "shoreline_feature_shorter_than_requested_length", coordinates = NULL,
+                requested_length_m = length_m, constructed_length_m = NA_real_))
+  }
+  start_distance <- min(max(centre_distance - length_m / 2, 0), total_length - length_m)
+  end_distance <- start_distance + length_m
+  point_at_distance <- function(distance) {
+    i <- max(which(cumulative_start <= distance + 1e-8))
+    i <- min(i, length(lengths))
+    fraction <- min(1, max(0, (distance - cumulative_start[i]) / lengths[i]))
+    starts[i, ] + fraction * vectors[i, ]
+  }
+  start_xy <- point_at_distance(start_distance)
+  end_xy <- point_at_distance(end_distance)
+  vertex_distance <- cumulative_start + lengths
+  internal <- which(vertex_distance > start_distance + 1e-8 & vertex_distance < end_distance - 1e-8)
+  internal_xy <- if (length(internal)) starts[internal, , drop = FALSE] + vectors[internal, , drop = FALSE] else matrix(numeric(), ncol = 2L)
+  segment_xy <- rbind(start_xy, internal_xy, end_xy)
+  segment_xy <- segment_xy[c(TRUE, rowSums(abs(segment_xy[-1L, , drop = FALSE] - segment_xy[-nrow(segment_xy), , drop = FALSE])) > 1e-8), , drop = FALSE]
+  constructed <- sum(sqrt(rowSums((segment_xy[-1L, , drop = FALSE] - segment_xy[-nrow(segment_xy), , drop = FALSE])^2)))
+  list(status = "constructed", coordinates = segment_xy,
+       requested_length_m = length_m, constructed_length_m = constructed)
+}

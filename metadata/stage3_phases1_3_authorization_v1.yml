@@ -1,0 +1,43 @@
+authorization_version: stage3_phases1_3_authorization_v1
+authorized_at_utc: 2026-07-20 19:24:43 UTC
+authority: explicit_human_scientific_authorization
+approver_role: project_scientific_owner
+authorization_source: project_conversation_instruction
+authorized_branch: design/stage2-outcome-blind-lock
+authorized_parent_head: 0a5b68b33798a05882166085fa33db5c854537b8
+parent_stage2_approval_sha256: c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18
+scientific_decision: AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY
+authorized_phases: [phase_1, phase_2, phase_3]
+superseding_geometry_decision:
+  registered_analysis_geometry: immutable_source_point_only
+  shoreline_class_sensitivities_registered: false
+  edge_type_100_analysis_role: removed
+  edge_type_150_analysis_role: removed
+  derived_alongshore_analysis_role: removed
+  shoreline_artifact_role: audit_provenance_only
+  existing_shoreline_diagnostics_preserved: true
+  missing_event_extent_inference: prohibited
+authorized_actions:
+  construct_independent_checklist_denominator: true
+  verify_ebd_sed_release_taxonomy_and_accepted_record_predicate: true
+  collapse_shared_submissions_before_zero_fill: true
+  zero_fill_only_eligible_complete_analysis_events: true
+  preserve_detection_numeric_x_lower_bound_and_ambiguity_states: true
+  run_metadata_only_sampling_support_audit: true
+  implement_event_complex_or_source_point_spatiotemporal_blocked_validation: true
+  run_fixture_privacy_cardinality_and_reproducibility_checks: true
+response_boundary:
+  response_summaries_authorized: false
+  exposure_specific_bird_summaries_authorized: false
+  response_direction_diagnostics_authorized: false
+  registered_response_models_authorized: false
+  stage4_authorized: false
+  prospective_2026_to_2028_holdout_locked: true
+  free_text_comments_authorized: false
+  raw_or_record_level_release_authorized: false
+required_stops:
+  after_phase_1: verify_denominator_and_zero_provenance
+  after_phase_2: human_review_of_sampling_support
+  after_phase_3: human_review_of_validation_implementation
+  before_phase_4: separate_explicit_response_model_authorization
+next_gate: human_data_support_review_and_separate_phase4_authorization

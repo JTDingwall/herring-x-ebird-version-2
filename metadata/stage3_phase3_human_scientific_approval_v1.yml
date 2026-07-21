@@ -1,0 +1,62 @@
+approval_version: stage3_phase3_human_scientific_approval_v1
+approved_at_utc: 2026-07-20
+approval_source: explicit_human_instruction_in_repository_session
+approved_commit: daae8a2958d7e0f20e5bc91d05dc368efdafa515
+approved_execution_record: metadata/stage3_phase3_execution_v1.yml
+approved_execution_record_sha256: 28f0a7c3530a9c81fadcdb85e8c042a636ed5b8787417bd94404e084199cb781
+scientific_decision: APPROVE_STAGE3_PHASE3_VALIDATION
+stage_gate: PASS_STAGE3_COMPLETE_HUMAN_APPROVED_PHASE4_NOT_AUTHORIZED
+validation_design:
+  deterministic_event_blocked_folds: 4
+  five_folds_forced: false
+  fold_choice_rule: do_not_force_five_when_frozen_sampling_support_requirements_fail
+  primary_view: event_blocked
+  primary_prediction_target: previously_unseen_herring_event_blocks
+  observer_disjoint_view:
+    role: observer_composition_robustness_only
+    new_herring_event_generalization_claim_authorized: false
+    reason: herring_events_may_appear_across_observer_disjoint_folds
+regional_decisions:
+  SoG:
+    start_year: 2005
+    role: primary
+  WCVI:
+    start_year: 2015
+    role: candidate_primary
+    required_reporting:
+      fold_specific_validation_results: true
+      observer_robustness_results: true
+      dominant_observer_holdout: true
+      observer_concentration: true
+    observer_warning_automatic_demotion: false
+    adequacy_condition: all_required_robustness_checks_remain_adequate
+  CC:
+    role: hierarchical_and_descriptive_only
+  NA:
+    role: hierarchical_and_descriptive_only
+    unsupported_cell_blocks_SoG_or_WCVI: false
+    unsupported_cell_may_upgrade_NA: false
+heldout_prediction_rule:
+  observer_random_effect: marginalize_or_set_to_population_level_expectation
+  generalized_location_random_effect: marginalize_or_set_to_population_level_expectation
+  learned_conditional_random_effects_allowed: false
+  blups_allowed: false
+  applies_even_if_group_appeared_in_training: true
+prospective_confirmation:
+  locked_years: [2026, 2027, 2028]
+  records_2026_plus_authorized: false
+  modification_authorized: false
+phase_transition:
+  phase_3_status: completed_human_approved
+  stage_3_finalized: true
+  phase_4_started: false
+  phase_4_authorized: false
+response_boundary:
+  bird_response_tables_authorized: false
+  bird_response_summaries_authorized: false
+  exposure_contrasts_authorized: false
+  response_models_authorized: false
+  comments_authorized: false
+  shoreline_geometry_authorized: false
+  records_2026_plus_authorized: false
+next_gate: SEPARATE_HUMAN_STAGE4_RESPONSE_ACCESS_AUTHORIZATION

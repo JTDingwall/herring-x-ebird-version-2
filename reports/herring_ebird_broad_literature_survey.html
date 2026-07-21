@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pacific Herring x eBird - Broad Literature Survey</title>
+  <style>
+    :root{--ink:#17324d;--muted:#60758a;--paper:#f7fafc;--card:#fff;--line:#d7e2ea;--blue:#136f8a;--teal:#168878;--gold:#b87813;--red:#a94141;--shadow:0 8px 28px rgba(25,55,77,.08)}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.58 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+    a{color:#086b8a} header{background:linear-gradient(135deg,#123f59,#156b73 70%,#228d79);color:#fff;padding:52px 24px 44px}
+    header .wrap,.wrap{max-width:1180px;margin:auto} h1{font-size:clamp(2rem,4vw,3.5rem);line-height:1.08;margin:0 0 15px;max-width:900px} h2{margin:0 0 18px;font-size:1.75rem} h3{margin:0 0 10px;font-size:1.12rem} p{margin:0 0 14px}.lede{font-size:1.17rem;max-width:900px;color:#e8f7f4}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.pill{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:5px 10px;font-size:.84rem;background:rgba(255,255,255,.08)}
+    main{padding:30px 20px 70px}.section{margin:0 auto 28px;max-width:1180px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+    .callout{border-left:5px solid var(--teal);background:#edf9f6}.warn{border-left-color:var(--gold);background:#fff9ed}.danger{border-left-color:var(--red);background:#fff3f3}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{font-size:2rem;font-weight:800;color:var(--blue);line-height:1}.small{font-size:.88rem;color:var(--muted)}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:stretch}.node{position:relative;padding:18px;border:1px solid var(--line);border-top:5px solid var(--blue);border-radius:12px;background:#fff}.node:not(:last-child):after{content:'>';position:absolute;right:-11px;top:44%;z-index:2;color:#7790a2;font-weight:900;background:var(--paper);padding:0 3px}
+    .evidence{width:100%;border-collapse:collapse}.evidence th,.evidence td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}.evidence th{font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+    .tag{display:inline-block;border-radius:999px;padding:2px 8px;font-size:.76rem;font-weight:700;background:#e7f3f6;color:#14536a}.tag.add{background:#e9f7ef;color:#17663d}.tag.context{background:#fff3d9;color:#75500d}.tag.guard{background:#fde8e8;color:#8e3030}
+    .controls{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin:14px 0}.controls input,.controls select{width:100%;padding:10px 12px;border:1px solid #bfcfd9;border-radius:9px;background:#fff;font:inherit}
+    .refs{display:grid;gap:10px}.ref{border:1px solid var(--line);border-radius:11px;padding:14px;background:#fff}.ref-head{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}.ref-title{font-weight:750}.ref p{margin:6px 0 0}.hidden{display:none!important}
+    ul{margin:8px 0 0;padding-left:22px} li{margin:6px 0}.footer{color:var(--muted);font-size:.88rem;margin-top:28px}
+    @media(max-width:850px){.grid,.grid.two,.flow{grid-template-columns:1fr}.node:not(:last-child):after{content:'v';right:50%;top:auto;bottom:-16px}.controls{grid-template-columns:1fr}}
+    @media print{header{padding:28px}.controls{display:none}.card{box-shadow:none;break-inside:avoid}.ref{break-inside:avoid}body{background:#fff}}
+  </style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Broad literature survey for the Pacific herring x eBird project</h1>
+  <p class="lede">A disciplined expansion of the literature base, organized around the claims the locked analyses can actually address. The review broadens interpretation and method support without turning every plausible driver into a new model variable.</p>
+  <div class="meta"><span class="pill">Scoping review</span><span class="pill">Search current to 20 July 2026</span><span class="pill">Primary and official sources prioritized</span><span class="pill">Outcome-blind design preserved</span></div>
+</div></header>
+
+<main>
+  <section class="section card callout">
+    <h2>Bottom line</h2>
+    <p>The literature base is now strong enough to support the existing question and model families. The expansion adds important modern work on herring phenology and spatial redistribution, eBird bias correction, structured-survey integration, and BC coastal-waterbird trends. It does <strong>not</strong> reveal a missing covariate that must be added to the primary analysis.</p>
+    <p>The most useful change is bibliographic and interpretive: cite each evidence stream for the claim it can support, and keep causal language proportional to the design. One operational guardrail should be added: do not combine raw British Columbia Coastal Waterbird Survey (BCCWS) records with eBird until checklist-level overlap can be identified.</p>
+  </section>
+
+  <section class="section grid">
+    <div class="card"><div class="stat" id="nRefs">54</div><h3>sources in the evidence map</h3><p class="small">Direct ecology, herring measurement, eBird methods, regional baselines, theory, and data provenance.</p></div>
+    <div class="card"><div class="stat">5</div><h3>distinct evidence jobs</h3><p class="small">Exposure definition, response detection, mechanism, baseline context, and inferential protection.</p></div>
+    <div class="card"><div class="stat">0</div><h3>required new primary covariates</h3><p class="small">The literature supports the locked design; it does not require expanding the primary adjustment set.</p></div>
+  </section>
+
+  <section class="section card">
+    <h2>How the literature maps to the scientific argument</h2>
+    <div class="flow">
+      <div class="node"><h3>1. Herring measurement</h3><p>Defines where, when, and how much spawn was observed - including survey-era uncertainty.</p></div>
+      <div class="node"><h3>2. Bird response</h3><p>Counts and telemetry establish aggregation, movement, and timing near active spawn.</p></div>
+      <div class="node"><h3>3. Mechanism</h3><p>Diet and foraging studies show that roe use can plausibly generate the observed response.</p></div>
+      <div class="node"><h3>4. eBird inference</h3><p>Checklist, effort, observer, and sampling-bias methods protect the response estimate.</p></div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>What each method tries to establish</h2>
+    <table class="evidence">
+      <thead><tr><th>Method</th><th>Claim it can test</th><th>What a positive result would mean</th><th>What it cannot prove alone</th><th>Project role</th></tr></thead>
+      <tbody>
+        <tr><td>Shoreline or bay counts</td><td>Local numerical aggregation</td><td>More birds occur at or near active spawn than at relevant baselines.</td><td>That spawn caused the difference if access, effort, weather, season, or site choice remain confounded.</td><td><span class="tag">M01/M02</span></td></tr>
+        <tr><td>Telemetry / marked individuals</td><td>Redistribution and movement</td><td>Individuals move farther or redirect space use toward active spawn.</td><td>Population-wide abundance change or demographic benefit.</td><td><span class="tag">M07-M10</span></td></tr>
+        <tr><td>Event-time / distance gradients</td><td>Spatiotemporal specificity</td><td>Response peaks near spawn in the expected short window and weakens with time or distance.</td><td>Mechanism unless diet or behavior data agree.</td><td><span class="tag">M05/M06/M17/M38</span></td></tr>
+        <tr><td>Diet, fecal, isotope, or foraging behavior</td><td>Mechanistic plausibility</td><td>Birds actually consume roe or change foraging as roe becomes abundant.</td><td>A coastwide effect in community-science counts.</td><td><span class="tag context">support only</span></td></tr>
+        <tr><td>Community / latent-factor model</td><td>Multispecies response structure</td><td>Species show coherent or contrasting responses beyond independent noise.</td><td>A single common biological effect or causal interaction among species.</td><td><span class="tag">M21/M35 family</span></td></tr>
+        <tr><td>Dose and phenology models</td><td>Gradient and timing hypotheses</td><td>Response changes with exposure magnitude or seasonally appropriate timing.</td><td>That the spawn index is error-free or directly comparable across survey eras.</td><td><span class="tag">M18/M23</span></td></tr>
+        <tr><td>Falsification / negative controls</td><td>Residual confounding</td><td>Expected null taxa or implausible windows remain null while focal effects persist.</td><td>Complete absence of unmeasured confounding.</td><td><span class="tag guard">M26-M29/M32/M40/M42</span></td></tr>
+        <tr><td>eBird observation-process models</td><td>Robustness to who, how, and where people bird</td><td>The ecological contrast survives control for checklist protocol, effort, observer, and uneven sampling.</td><td>Random assignment of spawn exposure.</td><td><span class="tag guard">inferential protection</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>Strongly supported</h2>
+      <ul>
+        <li>Pacific herring spawn is a brief, concentrated resource pulse used by many coastal birds.</li>
+        <li>Scoters and Harlequin Ducks can aggregate and move substantial distances to exploit spawn.</li>
+        <li>Event timing and shoreline location are more biologically aligned than region-wide annual biomass alone.</li>
+        <li>eBird inference improves materially when restricted to complete checklists and adjusted for effort and observer heterogeneity.</li>
+        <li>Herring spawn observations have important method-era and spatial-measurement caveats.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Still unresolved</h2>
+      <ul>
+        <li>Whether eBird can recover a coastwide event-scale response with the same clarity as dedicated surveys.</li>
+        <li>Whether response magnitude tracks spawn biomass monotonically across species and regions.</li>
+        <li>How much bird redistribution is movement among nearby sites versus long-distance recruitment.</li>
+        <li>Whether short aggregative responses translate into demographic benefits.</li>
+        <li>What proportion of BCCWS checklists has also been exported to eBird.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card warn">
+    <h2>BCCWS and eBird: the duplication issue</h2>
+    <p>Birds Canada documents that NatureCounts users can enable automatic export of app-entered checklists to their eBird account. BCCWS is one of the checklist protocols supported by NatureCounts. Therefore, some BCCWS observations may exist in both systems. Public documentation does not state what fraction was exported and does not expose a universal public crosswalk.</p>
+    <p><strong>Recommendation:</strong> published BCCWS trend studies are safe and valuable as background literature. Raw BCCWS data should not be pooled with eBird as an independent response stream unless Birds Canada can provide eBird checklist identifiers or another deterministic deduplication key. Without that, use BCCWS only in a separate validation analysis and explicitly acknowledge possible record overlap.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Literature additions that matter most</h2>
+    <table class="evidence">
+      <thead><tr><th>Priority</th><th>Addition</th><th>Why it matters</th><th>Analysis consequence</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag add">Essential</span></td><td>Grinnell et al. (2023); Rooper et al. (2024); McGowan et al. (2021); Qi et al. (2021)</td><td>Modern exposure definition, phenology, redistribution, and remote validation.</td><td>Justifies locked event windows, geometry, survey-era caveats, and sensitivity analyses.</td></tr>
+        <tr><td><span class="tag add">Essential</span></td><td>Johnston et al. (2021); Kelling et al. (2019); Johnston et al. (2018); Tang et al. (2021)</td><td>Core eBird observation-process and bias framework.</td><td>Supports existing filtering and effort/observer structure; no new biological covariates.</td></tr>
+        <tr><td><span class="tag add">Essential</span></td><td>Ethier et al. (2020, 2026); de Zwaan et al. (2024); Hart et al. (2026)</td><td>Current BC/Salish Sea redistribution and an eBird-based marine-bird analysis.</td><td>Frames baseline change and validates the feasibility of coastal eBird modeling; interpretive context only.</td></tr>
+        <tr><td><span class="tag context">Supporting</span></td><td>Yang et al. (2008, 2010); Armstrong et al. (2016); Abrahms et al. (2021)</td><td>Resource-pulse and resource-tracking theory.</td><td>Clarifies hypotheses and language; does not belong in the adjustment set.</td></tr>
+        <tr><td><span class="tag guard">Guardrail</span></td><td>NatureCounts/eBird export documentation</td><td>Establishes a plausible duplicate-data pathway.</td><td>Require crosswalk-based deduplication before any raw BCCWS integration.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>Searchable evidence map</h2>
+    <p class="small">Filter by theme, priority, or words in the citation and relevance notes. The companion CSV contains the same evidence map in analysis-ready form.</p>
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search title, author, finding, or relevance...">
+      <select id="theme"><option value="">All themes</option></select>
+      <select id="tier"><option value="">All priorities</option><option>Essential</option><option>Core</option><option>Supporting</option><option>Guardrail</option></select>
+    </div>
+    <div id="refs" class="refs"></div>
+  </section>
+
+  <section class="section card">
+    <h2>Review method and limitations</h2>
+    <p>This is a broad scoping review, not a PRISMA systematic review or meta-analysis. Searches emphasized peer-reviewed primary studies and official Canadian/eBird documentation through 20 July 2026, then used backwards and forwards citation chasing around the major direct herring-bird papers, herring survey methods, eBird inference, BC coastal-waterbird trends, and resource-pulse theory. The attached review was inventoried first so the supplement could emphasize genuinely additive sources.</p>
+    <p>No response-bearing project data were accessed and no registered model was fitted. Literature was classified by the claim it can support, not by whether it would make the model more elaborate. Some older reports lack DOI metadata; their stable repository or journal landing page is supplied instead. Absence of a paper from this map should not be interpreted as evidence that it does not exist.</p>
+    <p class="footer">Prepared as a literature supplement to the Stage 2 outcome-blind design lock. Scientific interpretation remains subject to human review.</p>
+  </section>
+</main>
+
+<script>
+const R=[
+{tier:'Core',theme:'Direct bird response',year:1981,c:'Vermeer, K. Food and populations of Surf Scoters in British Columbia. Wildfowl 32:107-116.',e:'Diet and population observations; herring eggs became the main food for about three spring weeks.',r:'Early direct evidence for a short, species-relevant resource window.',u:'https://tidsskrift.dk/Wildfowl/article/view/154183'},
+{tier:'Core',theme:'Direct bird response',year:1993,c:'Haegele, C.W. Seabird predation of Pacific Herring spawn in British Columbia. Canadian Field-Naturalist.',e:'Quantified avian consumption of spawn and identified gulls, scoters, and other ducks as major predators.',r:'Mechanistic and quantitative foundation; best treated as direct local evidence.',u:'https://www.canadianfieldnaturalist.ca/'},
+{tier:'Core',theme:'Direct bird response',year:2002,c:'Sullivan, T.M., Butler, R.W., and Boyd, W.S. Seasonal distribution of waterbirds in relation to spawning Pacific Herring in the Strait of Georgia. Canadian Field-Naturalist 116:366-370.',e:'Dedicated shoreline counts showed a large numerical aggregation during spawn.',r:'Closest precedent for local aggregation and exposed-versus-baseline counts.',u:'https://doi.org/10.5962/p.363475'},
+{tier:'Core',theme:'Direct bird response',year:2002,c:'Rodway, M.S. and Cooke, F. Use of fecal analysis to determine seasonal changes in the diet of wintering Harlequin Ducks at a herring spawning site. Journal of Field Ornithology 73:363-371.',e:'Diet evidence links Harlequin Duck use directly to herring spawn.',r:'Supports biological mechanism without serving as population-level proof.',u:'https://doi.org/10.1648/0273-8570-73.4.363'},
+{tier:'Core',theme:'Direct bird response',year:2003,c:'Rodway, M.S. et al. Aggregative response of Harlequin Ducks to herring spawning in the Strait of Georgia, British Columbia. Canadian Journal of Zoology 81:504-514.',e:'Marked birds and counts showed strong aggregation and redistribution to a small subset of spawn shoreline.',r:'Supports local aggregation, redistribution, distance, and heterogeneity among spawn sites.',u:'https://doi.org/10.1139/z03-032'},
+{tier:'Core',theme:'Direct bird response',year:2007,c:'Lewis, T.L., Esler, D., and Boyd, W.S. Foraging behaviors of Surf Scoters and White-winged Scoters during spawning of Pacific Herring. Condor 109:216-222.',e:'Scoters changed dive and foraging behavior while using superabundant roe.',r:'Supports behavioral mechanism and the short event window.',u:'https://www.sfu.ca/biology2/wildberg/papers/lewisetalCondor07.pdf'},
+{tier:'Core',theme:'Direct bird response',year:2008,c:'Lok, E.K., Kirk, M., Esler, D., and Boyd, W.S. Movements of pre-migratory Surf and White-winged Scoters in response to Pacific Herring spawning. Waterbirds 31:385-393.',e:'Telemetry documented movement beyond ordinary winter ranges toward active spawn.',r:'Direct precedent for redistribution and distance-response models.',u:'https://seaduckjv.org/pdf/studies/Lok%20et%20al%202008%20Movements%20pre-migratory%20surf%20and%20white-winged%20scoters%20herring%20spawn_Waterbirds.pdf'},
+{tier:'Core',theme:'Direct bird response',year:2012,c:'Lok, E.K. et al. Spatiotemporal associations between Pacific Herring spawn and Surf Scoter spring migration: evaluating a silver wave hypothesis. Marine Ecology Progress Series 457:139-150.',e:'Aerial survey and telemetry evidence showed migratory tracking of a northward progression in spawn.',r:'Strong support for phenology, event timing, and resource-wave interpretation.',u:'https://doi.org/10.3354/meps09692'},
+{tier:'Core',theme:'Direct bird response',year:2018,c:'Kelly, J.P., Rothenbach, K., and Weathers, W.W. Responses of wintering waterbirds to Pacific Herring spawns. Marine Ecology Progress Series 597.',e:'Lagged herring spawning biomass improved forecasts of waterbird abundance in Tomales Bay.',r:'Supports interannual and lagged sensitivities, but geography differs from BC.',u:'https://doi.org/10.3354/meps12594'},
+{tier:'Supporting',theme:'Direct bird response',year:2022,c:'Stewart, H. Avian and shallow water community response to Pacific Herring spawn events. Western Washington University thesis.',e:'Community counts and exclusion work at Cherry Point broaden species and egg-survival context.',r:'Useful regional grey literature; supporting rather than primary authority.',u:'https://cedar.wwu.edu/wwuet/1146/'},
+{tier:'Supporting',theme:'Food-web context',year:2011,c:'Thomas, A.C. et al. Harbor seal foraging response to a seasonal resource pulse, spawning Pacific Herring. Marine Ecology Progress Series 441:225-239.',e:'A plausible predator response was not uniformly positive, emphasizing profitability and alternative prey.',r:'Important counterexample against assuming every predator aggregates.',u:'https://doi.org/10.3354/meps09370'},
+{tier:'Supporting',theme:'Food-web context',year:2015,c:'Fox, C.H. et al. Novel species interactions: American black bears respond to Pacific Herring spawn. BMC Ecology.',e:'Beach activity and diet increased with herring egg availability.',r:'Shows cross-ecosystem reach of the resource pulse; interpretation only.',u:'https://doi.org/10.1186/s12898-015-0045-9'},
+{tier:'Supporting',theme:'Food-web context',year:2018,c:'Fox, C.H. et al. Pacific Herring spawn events influence nearshore subtidal and intertidal species. Marine Ecology Progress Series.',e:'Stable-isotope evidence traced herring-derived nutrients through nearshore taxa.',r:'Supports ecosystem-pulse framing, not a bird-response estimator.',u:'https://doi.org/10.3354/meps12539'},
+{tier:'Core',theme:'Herring measurement',year:1985,c:'Haegele, C.W. and Schweigert, J.F. Distribution and characteristics of herring spawning grounds and description of spawning behaviour. Canadian Journal of Fisheries and Aquatic Sciences.',e:'Foundational synthesis of spawn habitat, timing, depth, and substrate.',r:'Defines the physical and temporal process being linked to bird checklists.',u:'https://doi.org/10.1139/f85-261'},
+{tier:'Core',theme:'Herring measurement',year:1987,c:'Hay, D.E. and Kronlund, A.R. Factors affecting the distribution, abundance, and measurement of Pacific Herring spawn. Canadian Journal of Fisheries and Aquatic Sciences.',e:'Compiled historical records and analyzed determinants and measurement of spawn.',r:'Foundational warning that observed spawn reflects both ecology and survey process.',u:'https://doi.org/10.1139/f87-141'},
+{tier:'Supporting',theme:'Herring measurement',year:1990,c:'Hay, D.E. Tidal influence on spawning time of Pacific Herring. Canadian Journal of Fisheries and Aquatic Sciences.',e:'Examined fine-scale timing of spawning relative to tides.',r:'Supports timing interpretation; does not require tide as a primary covariate.',u:'https://doi.org/10.1139/f90-266'},
+{tier:'Core',theme:'Herring measurement',year:1999,c:'Hay, D.E. and McCarter, P.B. Distribution and timing of herring spawning in British Columbia. DFO Research Document 99/14.',e:'Described long-run spatial and temporal variation across BC regions.',r:'Supports regional heterogeneity and long-window sensitivity.',u:'https://publications.gc.ca/collections/collection_2015/mpo-dfo/Fs70-1-1999-14-eng.pdf'},
+{tier:'Essential',theme:'Herring measurement',year:2009,c:'Hay, D.E. et al. Spatial diversity of Pacific Herring spawning areas. ICES Journal of Marine Science 66:1662-1666.',e:'Quantified change in the spatial footprint and diversity of spawn across BC.',r:'Direct support for shoreline-scale geometry and regional partial pooling.',u:'https://doi.org/10.1093/icesjms/fsp139'},
+{tier:'Supporting',theme:'Herring measurement',year:2014,c:'Shelton, A.O. et al. Habitat limitation and spatial variation in Pacific Herring egg survival. Marine Ecology Progress Series.',e:'Egg survival varied spatially and with habitat conditions.',r:'Explains why equal recorded extent need not imply equal food availability; interpretation only.',u:'https://doi.org/10.3354/meps10941'},
+{tier:'Essential',theme:'Herring measurement',year:2021,c:'Qi, L. et al. Satellite remote sensing of Herring spawning events: a case study in the Strait of Georgia. Geophysical Research Letters 48:e2020GL092126.',e:'Demonstrated that some milt plumes and spawn extents can be detected from satellite imagery.',r:'Supports independent event validation and documents detection limits.',u:'https://doi.org/10.1029/2020GL092126'},
+{tier:'Essential',theme:'Herring measurement',year:2021,c:'McGowan, D.W. et al. Multi-decadal shifts in the distribution and timing of Pacific Herring spawning in Prince William Sound, Alaska. Canadian Journal of Fisheries and Aquatic Sciences.',e:'Documented long-run changes in where and when spawning occurred.',r:'Strong analogue for nonstationary exposure geography and phenology.',u:'https://doi.org/10.1139/cjfas-2021-0047'},
+{tier:'Core',theme:'Herring measurement',year:2022,c:'Schweigert, J.F. Synopsis of the development of dive surveys for Pacific Herring spawn in British Columbia. Canadian Science Advisory Secretariat.',e:'Documents development and evaluation of the modern dive-survey observation process.',r:'Supports the locked survey-era boundary and measurement caveats.',u:'https://publications.gc.ca/collections/collection_2022/mpo-dfo/Fs97-4-3234-eng.pdf'},
+{tier:'Essential',theme:'Herring measurement',year:2023,c:'Grinnell, M.H. et al. Calculating the spawn index for Pacific Herring in British Columbia, Canada. Canadian Technical Report 3489.',e:'Current official equations, observation types, aggregation, uncertainties, and caveats for the relative spawn index.',r:'Primary exposure-method citation for the project.',u:'https://publications.gc.ca/site/eng/9.912189/publication.html'},
+{tier:'Essential',theme:'Herring measurement',year:2024,c:'Rooper, C.N. et al. Evaluating factors affecting the distribution and timing of Pacific Herring spawn in British Columbia. Marine Ecology Progress Series 741:251-269.',e:'Modeled spatial and temporal spawn patterns from 1988-2018 dive-era surveys.',r:'Modern, directly relevant support for regional and phenological heterogeneity.',u:'https://doi.org/10.3354/meps14274'},
+{tier:'Core',theme:'Herring measurement',year:2024,c:'Schweigert, J.F. et al. Biological synopsis of Pacific Herring in support of marine risk assessment. DFO Canadian Science Advisory Secretariat.',e:'Current official synthesis of life history, stock structure, timing, and ecological role.',r:'Authoritative background and terminology.',u:'https://publications.gc.ca/collections/collection_2024/mpo-dfo/fs97-4/Fs97-4-3274-eng.pdf'},
+{tier:'Guardrail',theme:'Herring measurement',year:2026,c:'Government of Canada. Pacific Herring Spawn Index Data.',e:'Official dataset describes the index as relative spawning biomass and documents availability fields.',r:'Dataset citation and exposure-definition guardrail.',u:'https://open.canada.ca/data/en/dataset/d892511c-d851-4f85-a0ec-708bc05d2810'},
+{tier:'Core',theme:'eBird inference',year:2009,c:'Sullivan, B.L. et al. eBird: a citizen-based bird observation network in the biological sciences. Biological Conservation 142:2282-2292.',e:'Describes the data system, checklist process, validation, and scientific applications.',r:'Foundational eBird data-source citation.',u:'https://doi.org/10.1016/j.biocon.2009.05.006'},
+{tier:'Supporting',theme:'eBird inference',year:2010,c:'Fink, D. et al. Spatiotemporal exploratory models for broad-scale survey data. Ecological Applications 20:2131-2147.',e:'Introduced flexible spatiotemporal models for broad-scale survey data.',r:'Methodological precedent for dynamic distributions; not the event-scale model itself.',u:'https://doi.org/10.1890/09-1340.1'},
+{tier:'Essential',theme:'eBird inference',year:2018,c:'Johnston, A. et al. Estimates of observer expertise improve species distributions from citizen science data. Methods in Ecology and Evolution 9:88-97.',e:'Observer expertise materially affected detectability and improved prediction.',r:'Direct justification for retaining observer heterogeneity in the observation model.',u:'https://doi.org/10.1111/2041-210X.12838'},
+{tier:'Essential',theme:'eBird inference',year:2019,c:'Kelling, S. et al. Using semistructured surveys to improve citizen science data for monitoring biodiversity. BioScience 69:170-179.',e:'Explains why observation-process metadata make semi-structured checklists analytically valuable.',r:'Core rationale for using complete eBird checklists rather than presence-only records.',u:'https://doi.org/10.1093/biosci/biz010'},
+{tier:'Supporting',theme:'eBird inference',year:2020,c:'Fink, D. et al. Modeling avian full annual cycle distribution and population trends with citizen science data. Ecological Applications 30:e02056.',e:'Shows large-scale dynamic distribution and trend estimation from filtered eBird data.',r:'Demonstrates capability, while its scale differs from the short event design.',u:'https://doi.org/10.1002/eap.2056'},
+{tier:'Supporting',theme:'eBird inference',year:2020,c:'Robinson, O.J. et al. Integrating citizen science data with expert surveys increases accuracy and spatial extent of species distribution models. Diversity and Distributions.',e:'Joint models improved inference when observation processes were retained.',r:'Supports separate-stream validation; does not justify naïve pooling.',u:'https://doi.org/10.1111/ddi.13068'},
+{tier:'Essential',theme:'eBird inference',year:2021,c:'Johnston, A. et al. Analytical guidelines to increase the value of community science data: an example using eBird data to estimate species distributions. Diversity and Distributions 27:1265-1277.',e:'Complete checklists, effort covariates, spatial balancing, and validation improved estimates.',r:'Primary analytical guidance citation for the filtered EBD/SED workflow.',u:'https://doi.org/10.1111/ddi.13271'},
+{tier:'Essential',theme:'eBird inference',year:2021,c:'Tang, B., Clark, J.S., and Gelfand, A.E. Modeling spatially biased citizen science effort through the eBird database. Environmental and Ecological Statistics 28:609-630.',e:'Modeled both where observers visit and how much effort they expend.',r:'Important caution about preferential site visitation around conspicuous spawn events.',u:'https://doi.org/10.1007/s10651-021-00508-1'},
+{tier:'Supporting',theme:'eBird inference',year:2022,c:'Schindler, A.R. et al. Joint analysis of structured and semi-structured community science data improves precision of relative abundance but not trends in birds. Scientific Reports 12:20289.',e:'Joint BBS-eBird models improved abundance precision but not trend precision uniformly.',r:'Shows integration benefits are estimand-specific and should not be assumed.',u:'https://doi.org/10.1038/s41598-022-23603-0'},
+{tier:'Supporting',theme:'eBird inference',year:2023,c:'Fink, D. et al. A double machine learning trend model for citizen science data. Methods in Ecology and Evolution 14:2435-2448.',e:'Addresses interannual confounding and residual bias in flexible community-science sampling.',r:'Useful for trend context and diagnostics; unnecessary for the locked event model.',u:'https://doi.org/10.1111/2041-210X.14186'},
+{tier:'Essential',theme:'eBird inference',year:2023,c:'Hochachka, W.M., Ruiz-Gutierrez, V., and Johnston, A. Considerations for fitting occupancy models to data from eBird and similar volunteer-collected data. Ornithology 140:ukad035.',e:'Shows that eBird pseudo-repeats can bias occupancy and that added single-visit data can worsen bias when detection is low.',r:'Keep the project estimand as checklist encounter unless repeat visits and closure support occupancy.',u:'https://doi.org/10.1093/ornithology/ukad035'},
+{tier:'Core',theme:'eBird inference',year:2022,c:'Stuber, E.F. et al. The potential of semi-structured citizen science data as a supplement for conservation decision-making: validating eBird against targeted avian monitoring. Biological Conservation 270:109556.',e:'Directly compares eBird-derived estimates with targeted monitoring and finds performance depends on the species and decision context.',r:'Supports external validation without assuming semistructured and structured surveys are interchangeable.',u:'https://doi.org/10.1016/j.biocon.2022.109556'},
+{tier:'Guardrail',theme:'eBird inference',year:2022,c:'Grade, A.M. et al. Sampling bias in community science: a case study with eBird. PLOS ONE 17:e0277223.',e:'Demonstrates that uneven participation and site access can induce sample-selection bias.',r:'Supports a response-blind checklist and unique-observer support audit.',u:'https://doi.org/10.1371/journal.pone.0277223'},
+{tier:'Supporting',theme:'eBird inference',year:2021,c:'Feng, M.L.E. et al. Comparing the reliability of relative bird abundance indices from standardized surveys and community science. PLOS ONE 16:e0257226.',e:'Reliability of eBird relative abundance indices varies across species and comparison settings.',r:'Reinforces relative-index language and species-specific validation.',u:'https://doi.org/10.1371/journal.pone.0257226'},
+{tier:'Supporting',theme:'eBird inference',year:2026,c:'Robinson, O.J. et al. Same view through a different lens: comparing population trends for North American birds using eBird and the Breeding Bird Survey. Ornithological Applications 128:duaf077.',e:'Large cross-survey comparison shows agreement is not automatic across species and regions.',r:'Use structured surveys as an external benchmark rather than as duplicate confirmation.',u:'https://doi.org/10.1093/ornithapp/duaf077'},
+{tier:'Essential',theme:'Regional bird baseline',year:2009,c:'Bower, J.L. Changes in marine bird abundance in the Salish Sea: 1975 to 2007. Marine Ornithology 37:9-17.',e:'Long-run regional marine-bird changes predate and contextualize the eBird analysis window.',r:'Baseline trend context; not an adjustment variable.',u:'https://marineornithology.org/'},
+{tier:'Core',theme:'Regional bird baseline',year:2012,c:'Crewe, T. et al. Coastal waterbird population trends in the Strait of Georgia 1999-2011. British Columbia Birds 22:8-39.',e:'Structured BCCWS route counts estimated trends and evaluated survey power.',r:'Regional benchmark and structured-survey precedent.',u:'https://bcbirds.bcfo.ca/volume-22-3/'},
+{tier:'Essential',theme:'Regional bird baseline',year:2020,c:'Ethier, D. et al. Twenty years of coastal waterbird trends suggest regional patterns of environmental pressure in British Columbia, Canada. Avian Conservation and Ecology 15(2):20.',e:'BCCWS data showed species- and region-specific trend patterns across coastal BC.',r:'Strong modern baseline for separating event response from long-run redistribution.',u:'https://doi.org/10.5751/ACE-01711-150220'},
+{tier:'Essential',theme:'Regional bird baseline',year:2024,c:'de Zwaan, D.R. et al. Occupancy trends of overwintering coastal waterbird communities reveal guild-specific patterns of redistribution and shifting reliance on existing protected areas. Global Change Biology 30:e17178.',e:'Guild-specific occupancy changes indicated redistribution, including northward shifts for some groups.',r:'Direct support for region-specific baselines and avoiding a forced coastwide common effect.',u:'https://doi.org/10.1111/gcb.17178'},
+{tier:'Essential',theme:'Regional bird baseline',year:2026,c:'Ethier, D. et al. Modeling coastal waterbird trends in the transboundary waters of the Salish Sea: a multi-scale approach to meet management planning needs. Marine Ecology Progress Series.',e:'Integrates BC and Washington structured coastal-waterbird surveys at multiple scales.',r:'Most current structured regional benchmark; use for context and external comparison.',u:'https://doi.org/10.3354/meps15161'},
+{tier:'Essential',theme:'Coastal eBird application',year:2026,c:'Hart, K.A. et al. Seabird responses to altered marine vessel activity during the COVID-19 anthropause: insights from citizen science. Science of the Total Environment 1015:181456.',e:'Combined AIS and eBird data for 35 coastal seabird species across 44 BC sites.',r:'Closest recent BC demonstration that eBird can resolve coastal anthropogenic contrasts; also warns about vessel-linked heterogeneity.',u:'https://doi.org/10.1016/j.scitotenv.2026.181456'},
+{tier:'Supporting',theme:'Resource-pulse theory',year:2008,c:'Yang, L.H. et al. What can we learn from resource pulses? Ecology 89:621-634.',e:'Synthesizes behavioral, numerical, and community consequences of short resource pulses.',r:'Provides vocabulary for aggregation versus demographic response.',u:'https://pubmed.ncbi.nlm.nih.gov/18459327/'},
+{tier:'Supporting',theme:'Resource-pulse theory',year:2010,c:'Yang, L.H. et al. A meta-analysis of resource pulse-consumer interactions. Ecological Monographs 80:125-151.',e:'Response magnitude, lag, and duration vary with pulse and consumer attributes.',r:'Supports species heterogeneity and short aquatic lags without adding covariates.',u:'https://doi.org/10.1890/08-1996.1'},
+{tier:'Supporting',theme:'Resource-pulse theory',year:2011,c:'Cury, P.M. et al. Global seabird response to forage fish depletion - one-third for the birds. Science 334:1703-1706.',e:'Across systems, seabird breeding success became less reliable below a prey-abundance threshold.',r:'Broad forage-fish importance; not a direct herring-spawn event analogue.',u:'https://doi.org/10.1126/science.1212928'},
+{tier:'Supporting',theme:'Resource-pulse theory',year:2016,c:'Armstrong, J.B. et al. Resource waves: phenological diversity enhances foraging opportunities for mobile consumers. Ecology 97:1099-1112.',e:'Formalizes how mobile consumers gain from tracking shifting resource phenology.',r:'Strong conceptual bridge to the Surf Scoter silver-wave evidence.',u:'https://doi.org/10.1890/15-0554.1'},
+{tier:'Supporting',theme:'Resource-pulse theory',year:2021,c:'Abrahms, B. et al. Emerging perspectives on resource tracking and animal movement ecology. Trends in Ecology and Evolution.',e:'Synthesizes when and how mobile animals track dynamic resources.',r:'Modern framing for redistribution; interpretation only.',u:'https://pubs.usgs.gov/publication/70229129'},
+{tier:'Guardrail',theme:'Data provenance',year:2025,c:'Birds Canada. NatureCounts and eBird.',e:'NatureCounts users can enable automatic export of app-entered checklists to their eBird account.',r:'Establishes a concrete duplicate-record pathway for any BCCWS-eBird integration.',u:'https://learn.birdscanada.org/additional-resources/naturecounts/naturecountsapp/naturecounts-and-ebird/'},
+{tier:'Guardrail',theme:'Data provenance',year:2026,c:'Birds Canada. NatureCounts dataset catalogue: British Columbia Coastal Waterbird Survey.',e:'Confirms BCCWS as a large, separately maintained structured checklist dataset.',r:'Use as a separate source unless checklist-level deduplication is possible.',u:'https://www.birdscanada.org/birdmon/default/datasets.jsp?switchlang=EN'}
+];
+const q=document.querySelector('#q'),theme=document.querySelector('#theme'),tier=document.querySelector('#tier'),box=document.querySelector('#refs');
+[...new Set(R.map(x=>x.theme))].sort().forEach(x=>theme.insertAdjacentHTML('beforeend',`<option>${x}</option>`));
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function render(){const t=q.value.toLowerCase(),th=theme.value,ti=tier.value;const rows=R.filter(x=>(!th||x.theme===th)&&(!ti||x.tier===ti)&&(!t||`${x.c} ${x.e} ${x.r} ${x.theme}`.toLowerCase().includes(t)));box.innerHTML=rows.map(x=>`<article class="ref"><div class="ref-head"><div><span class="tag ${x.tier==='Essential'?'add':x.tier==='Guardrail'?'guard':x.tier==='Supporting'?'context':''}">${x.tier}</span> <span class="tag">${x.theme}</span></div><span class="small">${x.year}</span></div><p class="ref-title"><a href="${esc(x.u)}">${esc(x.c)}</a></p><p><strong>Evidence:</strong> ${esc(x.e)}</p><p class="small"><strong>Project relevance:</strong> ${esc(x.r)}</p></article>`).join('')||'<p>No references match these filters.</p>';}
+[q,theme,tier].forEach(el=>el.addEventListener('input',render));document.querySelector('#nRefs').textContent=R.length;render();
+</script>
+</body>
+</html>

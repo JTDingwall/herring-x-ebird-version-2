@@ -1,0 +1,94 @@
+execution_version: stage3_phase2_execution_v1
+executed_at_utc: 2026-07-20
+phase: phase_2
+status: PASS_PENDING_HUMAN_SAMPLING_SUPPORT_REVIEW
+branch: design/stage2-outcome-blind-lock
+phase1_human_approval_record: metadata/stage3_phase1_human_scientific_approval_v2.yml
+phase1_human_approval_sha256: 1ea4c8cabf18af8a67d56d09d8c40fffb2886ee5452025f7f38125ee6fc32667
+phase2_specification: metadata/stage3_phase2_sampling_support_spec_v1.yml
+phase2_specification_sha256: f618a8799e84823c4b07db427303ab8db259aae07f3372570cf92e5a12879bed
+source_window: [1988, 2025]
+privacy_threshold: 20
+phase1_factor:
+  reused: true
+  expected_sha256: 473c9b866794187510d8c0911c8fe976507334ac6ad06eb0cfebe37eed51ee17
+  independent_events: 1433786
+  taxa: 58
+  logical_event_taxon_cardinality_not_expanded: 83159588
+event_crosswalk:
+  reused: true
+  expected_sha256: 1b52cf8fc15f91e89d7b8a64c66d9976e0c2e6e36afef4058909d7aaad3d2f17
+effort_frames:
+  high_spatial_precision_events: 1158032
+  candidate_primary_events: 1433786
+  registered_broad_events: 1579856
+  candidate_primary_retained_percentage_of_broad: 90.8
+  high_precision_retained_percentage_of_primary: 80.8
+  broad_only_events: 146070
+  broad_only_events_with_travel_distance_over_5km: 72214
+source_point_linkage:
+  herring_source_events_with_valid_metadata: 12798
+  metadata_links: 1559673
+  high_precision_linked_events: 193720
+  primary_linked_events: 239934
+  broad_linked_events: 261494
+  protected_link_cache_sha256: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  protected_ebd_membership_cache_sha256: cd62ebb509223f377d50762df13e2c9f59854626daa57548510bd72f72aec144
+  concurrent_event_links_retained: true
+  checklist_independence_preserved: true
+support_results:
+  broad_frame_restored_region_period_cells: 0
+  primary_region_period_cells_with_redistribution_support: 16
+  earliest_primary_supported_start_by_region:
+    SoG: 2005
+    WCVI: 2015
+  descriptive_or_hierarchical_regions: [A27, CC, HG, NA, PRD]
+  unsupported_regions: [A2W]
+efficiency_audit:
+  logical_denominator_expanded: false
+  sparse_bird_tables_read: false
+  completed_audit_runs: 1
+  metadata_linkage_constructions: 1
+  successful_execution_reused_ebd_membership_cache: true
+  complete_ebd_metadata_passes_during_implementation_repair: 2
+  ebd_pass_justification: >-
+    The broad frame required EBD membership and date-agreement flags unavailable
+    from the Phase 1 primary factor and crosswalk. The first pre-link pass exposed
+    a nonnegative-distance predicate mismatch; the second added the protected
+    membership cache and exposed exact string disagreement semantics. Both runs
+    stopped before herring linkage or audit output. The successful execution
+    reused the cache and did not rescan EBD.
+  final_ebd_fields_selected: [SAMPLING_EVENT_IDENTIFIER, OBSERVATION_DATE]
+  bird_response_fields_selected: 0
+  comments_selected: 0
+  shoreline_fields_selected: 0
+  records_2026_plus_selected: 0
+preserved_gates:
+  shared_checklist_gate: PASS
+  effort_disagreement_gate: PASS
+  structural_unknown_gate: PASS
+  date_quarantine_gate: PASS
+  source_point_only_geometry_gate: PASS
+  cardinality_gate: PASS
+  fixture_gate: PASS
+  privacy_gate: PASS
+  reproducibility_gate: PASS_DETERMINISTIC_AGGREGATE_SERIALIZATION
+aggregate_artifacts:
+  frame_period_retention_sha256: 34c82558c93c6fb1452949a7ba9e47d805a46474e130694075e664c64a292c02
+  region_period_support_sha256: 829e8ad8eed762a3fc3505e62b878075946fc0a0a850201e6eafefcabb043800
+  event_time_distance_support_sha256: cf4385af480652361b96f899afac03bd0e4254ba5f5d84d5e2b60a137f4a172d
+  sampling_support_recommendations_sha256: aafef7fec898881d73188f05d9004d3ad5eaf04b96b5e892f44610c24a349b03
+  execution_summary_sha256: d1f4b0933073f8714defdd6e756db7811810b2faf54c6c4d604bad8b97f706a1
+  aggregate_hash_manifest_sha256: 9ecdf61eb4086df8590855a850d1fa5abfc8a02ea3897b5aa266da5966a54f80
+privacy_release:
+  identifiers_released: false
+  exact_coordinates_released: false
+  record_level_rows_released: false
+  local_paths_released: false
+response_boundary:
+  bird_response_summary_or_model_run: false
+  exposure_contrast_run: false
+  ecological_covariates_added: false
+  prospective_holdout_modified: false
+phase_3_started: false
+next_gate: HUMAN_STAGE3_PHASE2_SAMPLING_SUPPORT_REVIEW

@@ -1,0 +1,36 @@
+specification_version: stage2_prospective_v2_amendment_1
+amended_at_utc: 2026-07-20 14:56:07 UTC
+amendment_sha256: 7323b02f2c5ea3e2fccde6de73f123200694242d24cca087561e5939a7aa6835
+supersedes_specification:
+  version: stage2_prospective_v1
+  sha256: 2640276fad585c9d3b537f407bb3efeb0167cb5acbdc38674fbb8d6e91b1cbb7
+development_outcome_end_year: 2025
+prospective_horizon:
+  start_year: 2026
+  end_year: 2028
+  release_rule: use_complete_or_explicitly_frozen_annual_ebird_and_versioned_herring_releases
+  current_release_complete: false
+development_access_statement:
+  current_claim: no_2026_plus_response_was_summarized_viewed_for_direction_or_used_in_model_or_design_selection
+  prior_mechanical_scan: a_prior_pattern_scan_could_not_exclude_2026_rows_before_local_extraction
+  interpretation: mechanical_scan_alone_does_not_invalidate_2026_because_response_information_did_not_influence_decisions
+  repaired_extraction_rule: filter_observation_date_before_selecting_or_persisting_response_fields
+confirmation_decision_rule:
+  evaluation_frequency: once_after_complete_2026_through_2028_horizon
+  interim_response_looks: none
+  early_stopping: none
+  refitting_or_model_selection_before_primary_evaluation: false
+  evidence_thresholds:
+    use_registered_estimands_and_multiplicity_families: true
+    classify_evidence_with_docs_04_decision_rules: true
+    all_prespecified_models_reported_regardless_of_sign: true
+    no_unregistered_response_direction_selection: true
+prerequisites:
+- complete_or_explicitly_frozen_ebird_releases_2026_through_2028
+- finalized_or_versioned_herring_records_for_same_horizon
+- unchanged_model_code
+- unchanged_species_and_guild_definitions
+- unchanged_geometry_event_complex_windows_distance_and_decision_thresholds
+- signed_hash_recorded_confirmation_package
+current_analyses: exploratory_estimand_refining
+external_region_rule: identify_and_freeze_an_eligible_region_before_accessing_its_response_direction

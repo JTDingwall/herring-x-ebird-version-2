@@ -2,7 +2,7 @@
 
 This is a clean-history, metadata-first R project for designing tests of how Pacific herring spawning relates to coastal bird occurrence, reported counts, spatial allocation, community composition, and co-occurrence in British Columbia.
 
-The current gate is **repository construction and outcome-blind design readiness**. No Version 2 bird-response outcome may be opened or modeled at this stage. Current analyses are exploratory and estimand-refining until prospective confirmation.
+The current gate is **Stage 3 Phases 1–3 authorized, outcome-blind**. Checklist-denominator construction, metadata-only support auditing, and blocked-validation implementation may proceed. No bird-response summary or response model is authorized. Current analyses remain exploratory and estimand-refining until prospective confirmation.
 
 ## Canonical design assets
 
@@ -48,6 +48,22 @@ Run `scripts/01_validate_input_metadata.R` only in an authorized local session w
 - Every join declares and tests its cardinality.
 - All prespecified models are reported regardless of sign.
 - Hard stops and warnings follow `docs/04_DECISION_RULES.md`.
+
+## Stage 3 Phases 1–3 authorization
+
+Human scientific authorization records immutable source point as the only registered analysis geometry. EDGE_TYPE 100, EDGE_TYPE 150, derived alongshore lengths, and shoreline unions are retained as audit provenance only; no shoreline-class or alongshore sensitivity is registered. The incomplete shoreline bundle remains documented but has no analysis role. The original 105-option candidate grid and retained hashes remain unchanged.
+
+- `docs/09_STAGE2_OUTCOME_BLIND_DESIGN_LOCK.md`: frozen Stage 2 design-lock report.
+- `docs/10_EBIRD_CHECKLIST_METHODS_REVIEW.md`: checklist-level methods and literature addendum.
+- `docs/11_STAGE3_ENTRY_PLAN.md`: phased approval, QA, validation, and response-access plan.
+- `metadata/ebird_checklist_handling_gate.csv`: machine-readable aligned, verify, decision, and blocking items.
+- `metadata/stage2_human_scientific_approval_v1.yml`: hashed Stage 2 human scientific approval record.
+- `metadata/stage3_phases1_3_authorization_v1.yml`: hashed authorization for Stage 3 Phases 1–3 only.
+- `metadata/stage3_entry_plan.yml`: machine-readable authorized actions, hard stops, and phase order.
+- `reports/ebird_checklist_methods_audit.html`: interactive checklist-methods review.
+- `reports/herring_ebird_broad_literature_survey.html` and `metadata/herring_ebird_literature_matrix.csv`: expanded 54-source evidence map.
+
+Stage 3 Phases 1–3 are authorized: checklist-denominator construction, metadata-only support auditing, and blocked-validation implementation. Stop for human review after each phase. Phase 4, response summaries, exposure-direction diagnostics, and all response models remain unauthorized. The 2026–2028 prospective holdout remains frozen.
 
 ## Reports and provenance
 

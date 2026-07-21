@@ -1,0 +1,158 @@
+specification_version: stage3_phase2_sampling_support_spec_v1
+frozen_at_utc: 2026-07-20
+authorization_record: metadata/stage3_phases1_3_authorization_v1.yml
+phase1_human_approval_record: metadata/stage3_phase1_human_scientific_approval_v2.yml
+phase: phase_2
+purpose: response_blind_sampling_support_and_representativeness_audit
+source_window: [1988, 2025]
+hard_stop_after_phase: human_sampling_support_review
+inputs:
+  protected_phase1_eligible_event_factor:
+    use: required
+    expected_sha256: 473c9b866794187510d8c0911c8fe976507334ac6ad06eb0cfebe37eed51ee17
+  protected_phase1_event_crosswalk:
+    use: required
+    expected_sha256: 1b52cf8fc15f91e89d7b8a64c66d9976e0c2e6e36afef4058909d7aaad3d2f17
+  protected_sparse_reported_count_states:
+    use: prohibited
+  protected_sparse_ambiguity_masks:
+    use: prohibited
+  sed_fields_allowed:
+    - SAMPLING_EVENT_IDENTIFIER
+    - LOCALITY_ID
+    - LATITUDE
+    - LONGITUDE
+    - OBSERVATION_DATE
+    - TIME_OBSERVATIONS_STARTED
+    - OBSERVER_ID
+    - PROTOCOL_NAME
+    - DURATION_MINUTES
+    - EFFORT_DISTANCE_KM
+    - NUMBER_OBSERVERS
+    - ALL_SPECIES_REPORTED
+    - GROUP_IDENTIFIER
+  sed_fields_prohibited: [CHECKLIST_COMMENTS]
+  herring_fields_allowed:
+    - Region
+    - Year
+    - StatisticalArea
+    - Section
+    - LocationCode
+    - SpawnNumber
+    - StartDate
+    - EndDate
+    - Longitude
+    - Latitude
+  herring_fields_prohibited:
+    - LocationName
+    - Length
+    - Width
+    - Method
+    - Surface
+    - Macrocystis
+    - Understory
+  shoreline_inputs_allowed: false
+ebd_metadata_rescan_exception:
+  required: true
+  justification: >-
+    The Phase 1 eligible-event factor contains the registered primary frame only.
+    The protected crosswalk lacks an EBD-membership and date-agreement flag for
+    broad-frame events outside that factor. Those flags are essential to preserve
+    the structural-unknown and date-quarantine gates while evaluating the frozen
+    broad frame.
+  fields_read: [SAMPLING_EVENT_IDENTIFIER, OBSERVATION_DATE]
+  taxonomy_fields_read: false
+  count_or_detection_fields_read: false
+  comments_read: false
+  output: protected_metadata_membership_cache_only
+effort_frames:
+  high_spatial_precision:
+    complete: true
+    protocols: [Stationary, Traveling]
+    duration_minutes: [5, 300]
+    traveling_distance_km_max: 2
+    observers: [1, 10]
+    candidate_role: targeted_sensitivity
+  candidate_primary:
+    complete: true
+    protocols: [Stationary, Traveling]
+    duration_minutes: [5, 300]
+    traveling_distance_km_max: 5
+    observers: [1, 10]
+    candidate_role: primary_candidate
+  registered_broad:
+    complete: true
+    protocols: [Stationary, Traveling]
+    duration_minutes: [1, 360]
+    traveling_distance_km_max: 10
+    observers: [1, 20]
+    candidate_role: broaden_candidate
+candidate_periods:
+  - {period_id: complete_1988_2025, start_year: 1988, end_year: 2025}
+  - {period_id: start_2005, start_year: 2005, end_year: 2025}
+  - {period_id: start_2010, start_year: 2010, end_year: 2025}
+  - {period_id: start_2015, start_year: 2015, end_year: 2025}
+source_point_linkage:
+  geometry: immutable_source_point_only
+  distance_method: haversine_wgs84
+  maximum_distance_km: 20
+  event_time_window_days: [-90, 120]
+  event_date: midpoint_of_start_and_end_else_available_endpoint
+  event_time_strata:
+    - {id: early_pre, start_day: -42, end_day: -29}
+    - {id: immediate_pre, start_day: -28, end_day: -1}
+    - {id: spawn_start, start_day: 0, end_day: 3}
+    - {id: early_egg, start_day: 4, end_day: 14}
+    - {id: late_egg, start_day: 15, end_day: 28}
+    - {id: post, start_day: 29, end_day: 56}
+  distance_strata_km:
+    - {id: ring_0_0p5, lower: 0, upper: 0.5}
+    - {id: ring_0p5_1, lower: 0.5, upper: 1}
+    - {id: ring_1_2, lower: 1, upper: 2}
+    - {id: ring_2_3, lower: 2, upper: 3}
+    - {id: ring_3_4, lower: 3, upper: 4}
+    - {id: ring_4_5, lower: 4, upper: 5}
+    - {id: ring_5_10, lower: 5, upper: 10}
+    - {id: ring_10_20, lower: 10, upper: 20}
+  concurrent_event_links: retain_all_without_duplicating_checklists_as_independent_rows
+privacy:
+  minimum_released_cell_size: 20
+  identifiers_in_tracked_outputs: false
+  exact_coordinates_in_tracked_outputs: false
+  local_paths_in_tracked_outputs: false
+  generalized_location_definition: source_locality_identifier_hashed_in_protected_memory_only
+  suppress_below_threshold: true
+adequate_year_rule:
+  minimum_standardized_linked_checklists: 20
+  minimum_represented_source_events: 3
+  minimum_immediate_pre_checklists: 5
+  minimum_spawn_to_late_egg_checklists: 5
+  minimum_near_ring_checklists: 5
+  minimum_reference_ring_checklists: 5
+  minimum_events_with_both_primary_periods: 2
+period_support_rule:
+  minimum_passing_year_share: 0.8
+  maximum_consecutive_failing_years: 2
+effective_replication:
+  metric: inverse_simpson_effective_number
+  dimensions: [observer_cluster, generalized_location, herring_source_event]
+  checklist_weight_across_concurrent_events: inverse_number_of_links
+redistribution_support:
+  active_definition: event_day_0_to_28_and_source_point_distance_under_5km
+  contemporaneous_reference_definition: event_day_0_to_28_and_nearest_source_point_distance_5_to_20km
+  source_event_minimum_each: 3
+  checklist_minimum_each: 20
+  no_near_active_link_required_for_reference: true
+prohibited:
+  - bird_response_table_read
+  - species_detection_or_count_summary
+  - sparse_count_state_or_ambiguity_table_read
+  - ecological_covariate_addition
+  - shoreline_geometry_read_or_analysis
+  - response_direction_or_exposure_contrast
+  - response_power_calculation
+  - effect_estimation
+  - response_model_fit
+  - comment_access
+  - record_access_2026_plus
+  - phase_3_start

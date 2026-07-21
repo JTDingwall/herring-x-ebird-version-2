@@ -1,0 +1,5 @@
+"representation","comparison_sample","eligible_events","approved_role","comparison_interpretation","support_label"
+"source_point","all_available",13208,"primary_source_point_only","primary representation; availability defines the valid-source-point scope","SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"derived_alongshore_length","all_available",3899,"audit_provenance_only","not registered for analysis or sensitivity","SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"source_point","common_eligible_events",3899,"audit_comparator_only","historical common-set geometry diagnostic; not a registered analysis","SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"
+"derived_alongshore_length","common_eligible_events",3899,"audit_provenance_only","historical common-set geometry diagnostic; not a registered analysis","SUPPORT_ONLY_NOT_AN_EFFECT_ESTIMATE"

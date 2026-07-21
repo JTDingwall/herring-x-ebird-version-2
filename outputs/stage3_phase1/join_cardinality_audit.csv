@@ -1,0 +1,6 @@
+join_name,declared_cardinality,left_rows,right_rows,unmatched_or_duplicate,status
+EBD observation to SED sampling event,many-to-one,34679272,2733598,0,PASS
+SED component to independent analysis event,many-to-one,2733598,2411589,0,PASS
+approved source taxon concept to analysis taxon,many-to-one,58,45,0,PASS
+ambiguous source taxon concept to possible analysis taxa,one-to-many,20901,45,0,PASS
+denominator independent event by analysis taxon,one-to-one,64520370,64520370,0,PASS

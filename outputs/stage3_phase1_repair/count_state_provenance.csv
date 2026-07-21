@@ -1,0 +1,7 @@
+count_type,rows,interpretation
+numeric,5801115,reported detection with numeric count
+X,206792,reported detection without numeric count
+lower_bound,0,reported detection with lower-bound count
+missing,0,reported detection with count unavailable
+ambiguity_affected,28782,zero masked or source reports disagree; no named-species allocation
+zero_filled,77122899,not reported on eligible complete verified event

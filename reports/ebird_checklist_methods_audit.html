@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>eBird Checklist Methods Audit — Pacific Herring Project</title>
+  <style>
+    :root{--ink:#18324a;--muted:#607387;--paper:#f5f8fa;--card:#fff;--line:#d6e1e8;--blue:#176b88;--teal:#178577;--green:#267148;--amber:#a5680d;--red:#a33b3b;--shadow:0 8px 26px rgba(24,50,74,.08)}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.58 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}a{color:#086b8a}header{padding:50px 22px 42px;color:#fff;background:linear-gradient(135deg,#123e59,#146c77 68%,#258b75)}
+    .wrap{max-width:1180px;margin:auto}h1{font-size:clamp(2rem,4vw,3.35rem);line-height:1.08;margin:0 0 14px;max-width:920px}h2{font-size:1.65rem;line-height:1.2;margin:0 0 16px}h3{font-size:1.08rem;margin:0 0 8px}p{margin:0 0 13px}.lede{font-size:1.16rem;color:#e8f6f4;max-width:900px}.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.pill{font-size:.82rem;padding:5px 10px;border:1px solid rgba(255,255,255,.35);border-radius:99px;background:rgba(255,255,255,.08)}
+    main{padding:30px 20px 68px}.section{max-width:1180px;margin:0 auto 26px}.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:23px;box-shadow:var(--shadow)}.callout{border-left:5px solid var(--teal);background:#eef9f6}.warn{border-left:5px solid var(--amber);background:#fff8eb}.danger{border-left:5px solid var(--red);background:#fff2f2}
+    .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{font-size:1.95rem;font-weight:800;color:var(--blue);line-height:1.05;margin-bottom:8px}.small{font-size:.87rem;color:var(--muted)}
+    table{width:100%;border-collapse:collapse}th,td{padding:11px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:.76rem;text-transform:uppercase;letter-spacing:.045em;color:var(--muted)}.tag{display:inline-block;border-radius:99px;padding:2px 8px;font-size:.75rem;font-weight:800;white-space:nowrap}.ok{color:var(--green);background:#e7f5eb}.verify{color:#75500d;background:#fff0cd}.decision{color:#8d3030;background:#fde5e5}.scope{color:#175771;background:#e6f2f6}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.node{position:relative;padding:17px;border:1px solid var(--line);border-top:5px solid var(--blue);border-radius:12px;background:#fff}.node:not(:last-child):after{content:'›';position:absolute;right:-11px;top:38%;z-index:2;font-size:1.6rem;font-weight:800;color:#7d94a5;background:var(--paper);line-height:1}.controls{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 15px}.controls button{font:inherit;color:var(--ink);background:#fff;border:1px solid #b9cbd6;border-radius:99px;padding:6px 11px;cursor:pointer}.controls button.active{color:#fff;background:var(--blue);border-color:var(--blue)}
+    ul,ol{padding-left:22px;margin:8px 0 0}li{margin:6px 0}.formula{padding:13px 15px;background:#edf3f6;border-radius:10px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9rem}.footer{font-size:.86rem;color:var(--muted)}
+    @media(max-width:880px){.grid,.grid.two,.flow{grid-template-columns:1fr}.node:not(:last-child):after{content:'⌄';right:49%;top:auto;bottom:-16px}.scroll{overflow-x:auto}}@media print{body{background:#fff}.card{box-shadow:none;break-inside:avoid}header{padding:28px}.controls{display:none}}
+  </style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Checklist-level eBird methods audit</h1>
+  <p class="lede">A literature-based review of whether the Stage 2 Pacific herring design treats eBird checklists as valid sampling events. It concentrates on data handling and estimands—not adding ecological covariates.</p>
+  <div class="meta"><span class="pill">Review date: 20 July 2026</span><span class="pill">Outcome-blind</span><span class="pill">EBD + SED workflow</span><span class="pill">Reconciled with Stage 3 Phases 1–3 authorization</span></div>
+</div></header>
+
+<main>
+  <section class="section card danger">
+    <h2>Current repository gate: Stage 3 Phases 1–3 authorized</h2>
+    <p>Human authorization selects <strong>immutable source point as the only registered analysis geometry</strong>. EDGE_TYPE 100, EDGE_TYPE 150, derived alongshore lengths, and shoreline unions are retained solely as audit provenance. No shoreline-class or alongshore sensitivity is registered.</p>
+    <p>The original 105-option design grid and retained hashes are unchanged. Human authorization permits checklist-denominator construction, metadata-only support auditing, and event-complex or source-point spatial–time blocked-validation implementation. Response summaries, exposure-direction diagnostics, Phase 4, and all response models remain prohibited; the 2026–2028 holdout remains locked.</p>
+  </section>
+
+  <section class="section grid">
+    <div class="card"><div class="stat">6 aligned</div><h3>strong design choices</h3><p class="small">Completeness, EBD–SED join, count-state semantics, taxonomy, effort metadata, and separate complete-area protocols.</p></div>
+    <div class="card"><div class="stat">6 approved</div><h3>human decisions recorded</h3><p class="small">Shared events, zero provenance, effort bounds, spatial footprint, dependence, and estimand language.</p></div>
+    <div class="card"><div class="stat">3 authorized</div><h3>outcome-blind phases</h3><p class="small">Denominator construction, metadata-only support auditing, and blocked-validation implementation.</p></div>
+    <div class="card"><div class="stat">3 verify</div><h3>remaining invariants</h3><p class="small">Accepted records, stationary distance, and response-blind sampling support.</p></div>
+  </section>
+
+  <section class="section card">
+    <h2>The correct data flow</h2>
+    <div class="flow">
+      <div class="node"><h3>1. Define independent events</h3><p>Collapse shared submissions by group identifier; keep the component checklist and observer IDs for audit.</p></div>
+      <div class="node"><h3>2. Build the denominator</h3><p>Filter the SED to eligible, complete sampling events using the same release and rules as the EBD.</p></div>
+      <div class="node"><h3>3. Reconstruct responses</h3><p>Join reported taxa, infer non-detection only on complete checklists, and keep “X” out of numeric count models.</p></div>
+      <div class="node"><h3>4. Attach exposure and model</h3><p>Assign herring exposure at a scale compatible with checklist footprint; account for effort, repeated observers/sites, and grouped validation.</p></div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Approval-gate matrix</h2>
+    <div class="controls" aria-label="Filter table">
+      <button class="active" data-filter="all">All</button><button data-filter="aligned">Aligned</button><button data-filter="approved">Approved</button><button data-filter="approved-pending">Implement</button><button data-filter="verify">Verify</button>
+    </div>
+    <div class="scroll"><table id="gate">
+      <thead><tr><th>Status</th><th>Checklist issue</th><th>Literature standard</th><th>Assessment of reported Stage 2 design</th><th>Required evidence or action</th></tr></thead>
+      <tbody>
+        <tr data-status="aligned"><td><span class="tag ok">Aligned</span></td><td>Complete checklists</td><td>Only complete lists support an inferred non-detection for an unreported species.</td><td>Primary restricts to complete stationary/traveling checklists.</td><td>Preserve this restriction for detection and zero-inclusive models.</td></tr>
+        <tr data-status="aligned"><td><span class="tag ok">Aligned</span></td><td>EBD + SED denominator</td><td>The SED is needed because a complete checklist can have no taxon record in a species-filtered EBD.</td><td>Global EBD→SED many-to-one audit passed.</td><td>Also prove release identity and test an SED-only checklist.</td></tr>
+        <tr data-status="aligned"><td><span class="tag ok">Aligned</span></td><td>“X” and bounded counts</td><td>“X” means detected but not counted; it is missing for numeric count magnitude.</td><td>Detection, numeric, X, lower bounds and ambiguity are separate.</td><td>Retain “X” as detection = 1 and numeric count = missing.</td></tr>
+        <tr data-status="aligned"><td><span class="tag ok">Aligned</span></td><td>Detection versus count</td><td>eBird guidance uses a hurdle: encounter/reporting probability, then count conditional on detection.</td><td>Locked hurdle design and truncated-NB2 comparison follow this logic.</td><td>Describe outputs as checklist encounter and relative count, not population abundance.</td></tr>
+        <tr data-status="aligned"><td><span class="tag ok">Aligned</span></td><td>Taxonomic roll-up</td><td>Completeness applies at species level; higher/lower taxonomic records need explicit reconciliation.</td><td>All focal taxa reconciled to eBird Taxonomy v2025.</td><td>Keep the EBD release taxonomy and roll-up rules version-matched.</td></tr>
+        <tr data-status="aligned"><td><span class="tag ok">Aligned</span></td><td>Protocol separation</td><td>Stationary/traveling are comparable only after effort handling; area protocols have different support.</td><td>Stationary/traveling form the main stream; complete-area is separate.</td><td>No change.</td></tr>
+        <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Shared checklist collapse</td><td>Checklists with one group identifier are duplicate accounts of the same birding event and must not be independent rows.</td><td>The repair constructs one composite analysis event per shared group and excludes effort-disagreement groups from primary.</td><td>Human approval is recorded; tests must prove one group contributes one event.</td></tr>
+        <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Zero provenance</td><td>A zero means “not reported on an eligible complete analysis event,” never ecological absence.</td><td>The repair zero-fills only after eligible event construction and excludes wholly SED-only structural unknowns from primary.</td><td>Test that eligible complete omissions become zero while incomplete and structural-unknown events never do.</td></tr>
+        <tr data-status="verify"><td><span class="tag verify">Verify</span></td><td>Record acceptance</td><td>Analyses normally use accepted/approved records; rejected or unreviewed records require explicit policy.</td><td>Protected headers/checksums passed, but acceptance filtering was not stated.</td><td>Document the accepted-record predicate and counts excluded by it using metadata only.</td></tr>
+        <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Effort bounds</td><td>Current Cornell worked guidance uses ≤6 h, ≤10 km and ≤10 observers for 3 km weekly products, and says finer uses need stricter distance limits.</td><td>The repair promotes 5–300 minutes, ≤5 km and 1–10 observers to candidate primary; the wider set is sensitivity only.</td><td>Human approval is recorded; inspect support by effort bins without bird responses.</td></tr>
+        <tr data-status="verify"><td><span class="tag verify">Verify</span></td><td>Stationary distance</td><td>Stationary distance should be forced to zero before deriving speed or filtering distance.</td><td>Not stated in the delivery summary.</td><td>Add an invariant: stationary ⇒ distance = 0 and speed handled consistently.</td></tr>
+        <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Repeated observer/site dependence</td><td>Checklist rows from the same observer, hotspot or event are not fully exchangeable.</td><td>The repair carries one composite event per shared group and preserves observer/site dependence for modeled or blocked handling.</td><td>Human approval is recorded; implement the dependence structure and report effective rather than raw replication.</td></tr>
+        <tr data-status="approved-pending"><td><span class="tag verify">Implement</span></td><td>Validation leakage</td><td>Random row splits can place near-identical observations in training and test sets.</td><td>Held-out prediction is registered, but the blocking unit is not stated.</td><td>Hold out whole event complexes or source-point spatial–time blocks; keep all copies from an observer/event on one side when feasible.</td></tr>
+        <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Spatial footprint</td><td>The public checklist point is not the route. Cornell explicitly recommends stricter distance limits when fine spatial precision is required.</td><td>The repaired candidate primary permits ≤5 km travel while local herring exposure uses a 2 km threshold.</td><td>Approve the ≤5 km primary and retain a stationary + traveling ≤2 km high-precision analysis. Do not add habitat covariates to solve a geometry problem.</td></tr>
+        <tr data-status="approved"><td><span class="tag scope">Approved</span></td><td>Target estimand</td><td>eBird encounter and count models estimate outcomes on submitted, eligible checklists after standardization—not absolute abundance or strict occupancy by default.</td><td>The design separates detection and counts, but public-facing claim language still needs locking.</td><td>Approve exact prose definitions before results are seen; avoid “true absence,” “population abundance,” and “occupancy” unless their assumptions are met.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section grid two">
+    <article class="card danger">
+      <h2>1. Shared checklists are the clearest pseudoreplication risk</h2>
+      <p>eBird permits each participant in a group to own a copy of the same field event. The <code>group_identifier</code> connects those copies. Cornell’s <code>auk_unique()</code> selects a single component record (the lowest checklist ID) and retains all contributing IDs; it does not adjudicate a scientific disagreement among edited copies.</p>
+      <p>The Stage 2 repair now constructs one composite event per group, excludes effort-disagreement groups from the primary frame, and retains them for a registered sensitivity. The remaining gate is human acceptance plus executable proof that one group produces exactly one checklist-species event.</p>
+    </article>
+    <article class="card warn">
+      <h2>2. Checklist coordinates do not describe a 10 km route</h2>
+      <p>Public EBD/SED data provide one coordinate. A hotspot coordinate may differ from the observer’s exact position, and a traveling list covers a route whose public geometry is unavailable. Cornell’s own fine-scale guidance says that stricter travel-distance filtering is needed as spatial precision increases.</p>
+      <p>For this project the concern is directional: a long checklist whose point lies within 2 km of spawn may include many observations farther away, while a point outside 2 km may have traversed exposed shoreline. This tends to blur a true local effect and can also distort distance gradients.</p>
+    </article>
+    <article class="card">
+      <h2>3. Non-detection is not absence</h2>
+      <p>For an eligible complete checklist, failure to report a focal species supports an inferred checklist-level non-detection. It does not show that the species was absent from the shoreline, because detectability varies with species, observer, time, effort, weather, distance, and group behavior.</p>
+      <div class="formula">detection estimand = P(species reported | eligible complete checklist, exposure, modeled observation process)</div>
+    </article>
+    <article class="card">
+      <h2>4. Counts are relative indices</h2>
+      <p>The positive-count component estimates the number reported when detected and numerically counted. It is not a census of all birds present. A hurdle lognormal can be reasonable for extreme congregatory counts, but should earn its role through blocked predictive checks against truncated NB2, especially in the upper tail.</p>
+      <div class="formula">positive-count estimand = E(reported numeric count | detected, count available, eligible checklist)</div>
+    </article>
+    <article class="card">
+      <h2>5. Preferential sampling needs a denominator diagnostic</h2>
+      <p>Birders may preferentially visit conspicuous herring events. Complete checklists and effort adjustment do not remove this site-selection process. The most parsimonious check is response-blind: compare numbers of checklists and unique observers, protocol, duration, distance, party size, and start-time availability across frozen exposure time/distance cells.</p>
+      <p>This is a sampling-support diagnostic, not a new adjustment set. If spawn-proximate support comes mainly from a few observers or unusual protocols, narrow the estimand or the eligible-checklist set.</p>
+    </article>
+    <article class="card">
+      <h2>6. Avoid accidental occupancy claims</h2>
+      <p>Standard occupancy models require repeat visits to sites and closure assumptions. Most eBird data are single visits, and treating different points in an area as repeat visits can bias occupancy when sampled locations are not representative. The locked detection model should therefore be described as checklist encounter/reporting unless a separate, justified repeat-visit occupancy design is used.</p>
+    </article>
+  </section>
+
+  <section class="section card callout">
+    <h2>Minimal recommendations—no variable bloat</h2>
+    <ol>
+      <li><strong>Verify one-event-per-group deduplication.</strong> Preserve protected component IDs and disagreement state, but never treat shared copies as independent checklists.</li>
+      <li><strong>Keep geometry source-point-only.</strong> Preserve shoreline diagnostics for provenance, but do not use shoreline class, derived alongshore length, or shoreline unions in an analysis or sensitivity.</li>
+      <li><strong>Resolve checklist spatial scale at the gate.</strong> Retain a stationary/traveling ≤2 km high-precision analysis around the repaired ≤5 km, ≤10-observer candidate primary.</li>
+      <li><strong>Run one metadata-only sampling-support audit.</strong> Use checklist counts, unique observers and existing effort fields across the already-frozen exposure cells. Do not read bird responses.</li>
+      <li><strong>Lock plain-language estimands.</strong> “Probability reported on an eligible complete checklist” and “reported count conditional on detection” are defensible; population abundance and true occupancy are not.</li>
+      <li><strong>Use blocked validation.</strong> Hold out complete herring event complexes or source-point spatial–time blocks, not random checklist rows.</li>
+    </ol>
+  </section>
+
+  <section class="section card">
+    <h2>Executable QA specification</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>ID</th><th>Invariant/test</th><th>Failure means</th><th>Gate severity</th></tr></thead>
+      <tbody>
+        <tr><td>Q01</td><td>EBD and SED release/taxonomy identifiers and frozen file hashes agree.</td><td>The denominator and observations may describe different database states.</td><td><span class="tag decision">Block</span></td></tr>
+        <tr><td>Q02</td><td>Every retained record satisfies the documented acceptance and protocol predicates.</td><td>Unreviewed or incompatible observations entered the analysis.</td><td><span class="tag decision">Block</span></td></tr>
+        <tr><td>Q03</td><td>A verified eligible complete event with no focal species record becomes detection = 0; a wholly SED-only structural-unknown event is excluded.</td><td>Zero-filling misses valid non-detections or invents unsupported ones.</td><td><span class="tag decision">Block</span></td></tr>
+        <tr><td>Q04</td><td>No incomplete checklist generates a zero.</td><td>Unknown reporting was misclassified as non-detection.</td><td><span class="tag decision">Block</span></td></tr>
+        <tr><td>Q05</td><td>Each group identifier yields exactly one analysis event; non-group lists use sampling-event ID.</td><td>Shared field events are pseudoreplicated.</td><td><span class="tag decision">Block</span></td></tr>
+        <tr><td>Q06</td><td>Unique key: analysis checklist/event × species has no duplicates.</td><td>Rows can be counted more than once.</td><td><span class="tag decision">Block</span></td></tr>
+        <tr><td>Q07</td><td>“X” maps to detection = 1 and numeric count = missing; bounded values retain their registered state.</td><td>Presence or count magnitude is corrupted.</td><td><span class="tag decision">Block</span></td></tr>
+        <tr><td>Q08</td><td>Stationary checklists have distance = 0 before speed and distance rules are applied.</td><td>Effort handling is inconsistent.</td><td><span class="tag verify">Fix</span></td></tr>
+        <tr><td>Q09</td><td>Each analysis event has one unambiguous frozen exposure classification per representation.</td><td>Exposure assignment is duplicated or unstable.</td><td><span class="tag decision">Block</span></td></tr>
+        <tr><td>Q10</td><td>Train/test grouping prevents one event complex from appearing on both sides.</td><td>Predictive scores are optimistic through leakage.</td><td><span class="tag verify">Fix</span></td></tr>
+        <tr><td>Q11</td><td>Metadata-only support table reports checklists and unique observers by region × event-time × distance × protocol.</td><td>The analysis may depend on a small, preferentially sampled subset.</td><td><span class="tag verify">Review</span></td></tr>
+        <tr><td>Q12</td><td>Results labels use “reported/detected,” “eligible checklist,” and “relative/reported count.”</td><td>The estimand is overstated.</td><td><span class="tag verify">Review</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section card">
+    <h2>Most relevant checklist-method literature</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Source</th><th>Why it matters here</th><th>Project implication</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://ebird.github.io/ebird-best-practices/ebird.html">Cornell Lab, Best Practices: eBird Data</a></td><td>Official worked guidance for completeness, shared lists, zero-filling, effort, “X,” coordinates and spatial precision.</td><td>Primary implementation reference for Q03–Q08.</td></tr>
+        <tr><td><a href="https://cornelllabofornithology.github.io/auk/reference/auk_unique.html">Strimas-Mackey et al., <code>auk_unique()</code></a></td><td>Documents the exact default group-checklist collapse rule.</td><td>Confirms why disagreement audit and independent-event collapse are separate jobs.</td></tr>
+        <tr><td><a href="https://cornelllabofornithology.github.io/auk/reference/auk_zerofill.html">Strimas-Mackey et al., <code>auk_zerofill()</code></a></td><td>Requires checklist data and unique grouped events to reconstruct zeros.</td><td>Implementation precedent for the EBD–SED denominator.</td></tr>
+        <tr><td><a href="https://doi.org/10.1093/biosci/biz010">Kelling et al. (2019), BioScience</a></td><td>Explains why observation-process metadata make semistructured checklists analytically useful.</td><td>Supports effort/protocol handling, not unqualified raw-count comparison.</td></tr>
+        <tr><td><a href="https://doi.org/10.1111/ddi.13271">Johnston et al. (2021), Diversity and Distributions</a></td><td>Core analytical guidelines on complete lists, effort, observer heterogeneity, sampling bias and validation.</td><td>Supports the locked filtering philosophy and blocked/balanced checks.</td></tr>
+        <tr><td><a href="https://doi.org/10.1111/2041-210X.12838">Johnston et al. (2018), Methods in Ecology and Evolution</a></td><td>Shows observer expertise materially changes occurrence inference.</td><td>Motivates observer structure while avoiding checklist richness as a focal-period covariate.</td></tr>
+        <tr><td><a href="https://doi.org/10.1007/s10651-021-00508-1">Tang et al. (2021), Environmental and Ecological Statistics</a></td><td>Models spatially biased eBird visitation effort.</td><td>Basis for the response-blind sampling-support diagnostic.</td></tr>
+        <tr><td><a href="https://doi.org/10.1093/ornithology/ukad035">Hochachka et al. (2023), Ornithology</a></td><td>Tests conditions under which eBird can support occupancy models; warns about pseudo-repeats and low detection.</td><td>Keep the main estimand as checklist encounter, not occupancy.</td></tr>
+        <tr><td><a href="https://doi.org/10.1016/j.biocon.2022.109556">Stuber et al. (2022), Biological Conservation</a></td><td>Validates semistructured eBird results against targeted monitoring and shows performance is use-case dependent.</td><td>Supports external validation rather than assuming equivalence.</td></tr>
+        <tr><td><a href="https://doi.org/10.1371/journal.pone.0277223">Grade et al. (2022), PLOS ONE</a></td><td>Demonstrates that who and where contributes can induce sample-selection bias.</td><td>Supports reporting sampling coverage and observer concentration.</td></tr>
+        <tr><td><a href="https://doi.org/10.1371/journal.pone.0257226">Feng et al. (2021), PLOS ONE</a></td><td>Compares relative abundance indices from eBird and structured surveys.</td><td>Reinforces “relative index” language and species-specific reliability.</td></tr>
+        <tr><td><a href="https://doi.org/10.1093/ornithapp/duaf077">Robinson et al. (2026), Ornithological Applications</a></td><td>Large comparison of eBird and Breeding Bird Survey trends shows agreement is not automatic across species and regions.</td><td>Use structured surveys as external context, not duplicate-confirmation proof.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section card">
+    <h2>Scope and limitation</h2>
+    <p>This is a design and literature audit reconciled to the authorization for Stage 3 Phases 1–3. Protected row-level data were not copied into this report. The three outcome-blind phases still require executable QA and human review after each phase; separate Phase 4 authorization is required before any response analysis.</p>
+    <p class="footer">This companion belongs with the broader Pacific herring × eBird literature survey. It does not alter the frozen candidate grid or fit a registered response model.</p>
+  </section>
+</main>
+<script>
+  const buttons=[...document.querySelectorAll('[data-filter]')],rows=[...document.querySelectorAll('#gate tbody tr')];
+  buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;rows.forEach(r=>r.hidden=f!=='all'&&r.dataset.status!==f)}));
+</script>
+</body>
+</html>

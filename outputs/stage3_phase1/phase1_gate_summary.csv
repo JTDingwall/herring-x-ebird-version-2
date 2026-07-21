@@ -1,0 +1,10 @@
+check_id,status,detail
+Q01,PASS,release bytes and SHA-256 match the registered EBD and SED pair
+Q02,PASS,release-matched taxonomy identity is complete and date-disagreement events are quarantined
+Q03,PASS,retained observation records satisfy APPROVED equals true
+Q04,PASS,shared components collapse before zero filling and the private crosswalk is unique
+Q05,PASS,zeros arise only from eligible complete verified independent events
+Q06,PASS,numeric X lower-bound missing ambiguity and zero-filled states remain distinct
+Q07,PASS,stationary distance is zero before effort handling
+Q08,PASS,independent event by registered taxon is unique
+Q09,PASS,no prohibited fields or geometries entered and protected artifacts reproduced byte-for-byte

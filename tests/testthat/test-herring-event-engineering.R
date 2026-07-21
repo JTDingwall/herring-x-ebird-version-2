@@ -25,3 +25,27 @@ test_that("source IDs quality tiers and event complexes are deterministic", {
   got <- event_complex_components(pairs)
   expect_equal(uniqueN(got[event_id %in% c("event_a", "event_b", "event_c"), event_complex_id]), 1L)
 })
+
+test_that("deterministic anti-chaining enforces temporal spatial and region caps", {
+  events <- data.table(
+    original_complex_id = "linked_chain",
+    source_record_id = sprintf("event_%02d", 1:5),
+    event_date = as.Date("2020-01-01") + c(0, 7, 14, 21, 28),
+    x_m = c(0, 1000, 2000, 3000, 4000),
+    y_m = 0,
+    region = c("A", "A", "A", "A", "B")
+  )
+  first <- anti_chain_event_complexes(events)
+  second <- anti_chain_event_complexes(events[sample(.N)])
+  setorder(first, source_record_id); setorder(second, source_record_id)
+  expect_identical(first$anti_chain_complex_id, second$anti_chain_complex_id)
+  checked <- merge(events, first, by = c("source_record_id", "original_complex_id"))
+  spans <- checked[, .(
+    days = as.numeric(max(event_date) - min(event_date)),
+    diameter_km = sqrt(diff(range(x_m))^2 + diff(range(y_m))^2) / 1000,
+    regions = uniqueN(region)
+  ), by = anti_chain_complex_id]
+  expect_true(all(spans$days <= 21))
+  expect_true(all(spans$diameter_km <= 25))
+  expect_true(all(spans$regions == 1L))
+})

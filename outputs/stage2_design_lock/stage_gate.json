@@ -1,0 +1,68 @@
+{
+  "stage": "stage2_outcome_blind_design_lock",
+  "classification": "PASS_STAGE3_PHASES_1_TO_3_AUTHORIZED",
+  "human_scientific_decision": "AUTHORIZE_STAGE3_PHASES_1_TO_3_ONLY",
+  "approval_version": "stage2_human_scientific_approval_v1",
+  "approval_sha256": "c2d075a8aa644c12d552d87d17ea5082d977f0e6e6fd9a80b337f613b915de18",
+  "approval_recorded_at_utc": "2026-07-20 17:20:23 UTC",
+  "amendment_version": "stage2_scientific_gate_amendment_v1",
+  "amendment_sha256": "7323b02f2c5ea3e2fccde6de73f123200694242d24cca087561e5939a7aa6835",
+  "amendment_frozen_at_utc": "2026-07-20 14:56:07 UTC",
+  "original_candidate_grid_sha256": "8b9ba99dbded84273cb7860d530e09b6b3d50b09603d082e6013742245127a81",
+  "original_candidate_grid_prior_windows_crlf_sha256": "f7e5e9df7a96e1fff82a66734371fc427d70d8d6bbb2b4725409aa94475e7f91",
+  "original_candidate_grid_frozen_at_utc": "2026-07-20 05:27:38 UTC",
+  "original_candidate_grid_preserved_unchanged": true,
+  "prospective_spec_sha256": "3f69cda08e3e1963df068a1ee96e66c4e5da1e4f03fa1b132c2d2e448170609d",
+  "registered_models_fitted": 0,
+  "prohibited_statistics_computed": 0,
+  "exact_ebird_coordinates_released": false,
+  "raw_or_record_level_ebird_rows_released": false,
+  "comments_read": false,
+  "requires_human_scientific_approval": false,
+  "response_models_authorized": false,
+  "stage3_entry_implementation_authorized": true,
+  "requires_separate_stage3_authorization": false,
+  "validation_status": "STAGE3_AUTHORIZATION_GATE_AND_GITHUB_ACTIONS_RUN_22_PASS",
+  "primary_design": {
+    "event_geometry": "IMMUTABLE_SOURCE_POINT_ONLY",
+    "geometry_scope": "COASTWIDE_WHERE_SOURCE_POINT_IS_VALID",
+    "event_identity": "IMMUTABLE_SOURCE_RECORD",
+    "edge_type_100_role": "AUDIT_PROVENANCE_ONLY_NOT_REGISTERED_FOR_ANALYSIS",
+    "edge_type_150_role": "AUDIT_PROVENANCE_ONLY_NOT_REGISTERED_FOR_ANALYSIS",
+    "derived_alongshore_role": "AUDIT_PROVENANCE_ONLY_NOT_REGISTERED_FOR_ANALYSIS",
+    "missing_extent_inference": "PROHIBITED"
+  },
+  "repair_status": {
+    "ebd_sed_membership": "PASS_SED_ONLY_EXCLUDED_FROM_PRIMARY_ZERO_FILL",
+    "shoreline_geometry": "PASS_SOURCE_POINT_ONLY_NO_SHORELINE_ANALYSIS",
+    "shoreline_bundle_coverage": "INCOMPLETE_AUDIT_PROVENANCE_ONLY",
+    "actual_alongshore_geometry": "PASS_CONSTRUCTED_LOCAL_ONLY",
+    "event_complex_review_packet": "PASS_ALL_FLAGGED_INCLUDED_SOURCE_RECORD_PRIMARY_APPROVED",
+    "region_period_support": "PASS_SOG_2005_WCVI_2015_APPROVED",
+    "protocol_effort": "PASS_STANDARDIZED_PRIMARY_APPROVED",
+    "shared_checklists": "PASS_DISAGREEMENT_EXCLUDED_COMPOSITE_OBSERVER_RULE_APPROVED",
+    "registry_clarification": "PASS_M21_M35_MUTUALLY_EXCLUSIVE_APPROVED",
+    "prospective_integrity": "PASS_FIXED_2026_2028_HORIZON_AND_EXTRACTION_RULE_APPROVED"
+  },
+  "remaining_nonblocking_requirements": {
+    "shoreline_diagnostics": "PRESERVED_FOR_PROVENANCE_NOT_REGISTERED_FOR_ANALYSIS"
+  },
+  "validation": {
+    "parent_github_actions_successful_run": 10,
+    "parent_github_actions_run_id": 29726150633,
+    "substantive_repair_github_actions": "PASS_RUN_15_ID_29761640213",
+    "repair_evidence_commit": "7af0f920bb71211ec2dbf6b20dfad481f11d7cdf",
+    "stage3_authorization_github_actions": "PASS_RUN_22_ID_29772683906",
+    "stage3_authorization_evidence_commit": "97f29023ff196359aae7194bde23751628bc7214"
+  },
+  "stage3_authorization_version": "stage3_phases1_3_authorization_v1",
+  "stage3_authorization_sha256": "a8c2d625b6168832346bb003a0409a9c1dbd93d800382f984c39e6cee461ea5d",
+  "stage3_authorized_at_utc": "2026-07-20 19:24:43 UTC",
+  "requires_separate_phase4_authorization": true,
+  "required_stops": {
+    "after_phase_1": "DENOMINATOR_AND_ZERO_PROVENANCE_REVIEW",
+    "after_phase_2": "HUMAN_SAMPLING_SUPPORT_REVIEW",
+    "after_phase_3": "HUMAN_VALIDATION_IMPLEMENTATION_REVIEW",
+    "before_phase_4": "SEPARATE_EXPLICIT_RESPONSE_MODEL_AUTHORIZATION"
+  }
+}

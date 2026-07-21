@@ -1,0 +1,52 @@
+spec_version: stage3_phase1_denominator_v1
+authorization_record: metadata/stage3_phases1_3_authorization_v1.yml
+authorized_phase: phase_1
+hard_stop_after_phase: phase_1
+source_window: [1988, 2025]
+prospective_holdout_start_year: 2026
+accepted_record_predicate:
+  expression: APPROVED == true
+  reviewed_role: audit_provenance_only
+taxonomy:
+  version: eBird Taxonomy v2025
+  named_taxon_map: approved source concept to registered analysis taxon
+  ambiguous_taxon_rule: mask named-species zero only when no named detection is reported
+independent_event:
+  rule: GROUP IDENTIFIER when present; SAMPLING EVENT IDENTIFIER otherwise
+  collapse_order: before_zero_fill
+  canonical_component: lowest sampling event identifier
+  effort_disagreement_primary_rule: exclude
+primary_effort:
+  complete_checklist: true
+  protocols: [Stationary, Traveling]
+  duration_minutes: [5, 300]
+  traveling_distance_max_km: 5
+  observers: [1, 10]
+  stationary_distance_normalization_km: 0
+zero_provenance:
+  permitted: eligible complete verified independent event omission
+  prohibited: [incomplete checklist, wholly SED-only event, effort-disagreement group, EBD-SED date-disagreement event]
+count_states: [numeric, X, lower_bound, missing, ambiguity_affected, zero_filled]
+geometry:
+  analysis_geometry: immutable_source_point_only
+  phase1_geometry_access: none
+  shoreline_role: audit_provenance_only
+  shoreline_analysis_or_sensitivity: prohibited
+response_boundary:
+  response_summaries: prohibited
+  exposure_contrasts: prohibited
+  response_direction_diagnostics: prohibited
+  effect_estimates: prohibited
+  response_models: prohibited
+  free_text_comments: prohibited
+declared_joins:
+  - name: EBD observation to SED sampling event
+    cardinality: many-to-one
+  - name: SED component to independent analysis event
+    cardinality: many-to-one
+  - name: approved source taxon concept to analysis taxon
+    cardinality: many-to-one
+  - name: ambiguous source taxon concept to possible analysis taxa
+    cardinality: one-to-many
+  - name: denominator event by analysis taxon
+    cardinality: one-to-one
