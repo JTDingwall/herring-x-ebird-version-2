@@ -1,0 +1,29 @@
+lock_version: stage4a_pre_response_scope_lock_v3
+supersedes: metadata/stage4a_pre_response_scope_lock_v2.yml
+superseded_lock_sha256: 1a81968fa395caf077e1fe18a4b7c07431209ebd402945db8d169095ddda006c
+repair_at_utc: 2026-07-20
+repair_class: frozen_metadata_window_to_modeled_strata_alignment
+repair_uses_response_direction_or_contrast: false
+failure_observed: protected_builder_stopped_during_metadata_link_validation
+protected_response_rows_opened_before_repair: false
+frozen_link_window_days: [-90, 120]
+frozen_modeled_time_strata:
+  early_pre: [-42, -29]
+  immediate_pre: [-28, -1]
+  spawn_start: [0, 3]
+  early_egg: [4, 14]
+  late_egg: [15, 28]
+  post: [29, 56]
+out_of_modeled_strata_rule: retain_link_for_cardinality_and_concurrency_but_set_all_time_stratum_indicators_to_zero
+all_concurrent_links_preserved: true
+checklist_rows_duplicated: false
+unchanged_scientific_scope:
+  authorization_record_sha256: fbebdf1893066231d4b63b45772973683822b5586071afa2561382966a8b48c0
+  model_disposition_sha256: 33ae177eb311122015d70bafc65e4285959b2d6aa5821e855a7e170670b44004
+  model_specification_matrix_sha256: f7d0ab362ad8ef49a240d071b6beda4e3af62a442d8d36029535d7f2b85b4444
+  core_specification_sha256: 0c11db96e099802235212c3beeb7c27b4cfdea5702aaa383e6a4544da602a13a
+repaired_implementation:
+  protected_builder_sha256: 96754663a7276a23a64545dde0bb45bba9998bb23985658a0c6f517a5ddfe4cb
+fixture_gate: PASS
+remote_ci_required_before_protected_response_access: true
+post_execution_stop_gate: PASS_PENDING_HUMAN_STAGE4A_RESULTS_REVIEW

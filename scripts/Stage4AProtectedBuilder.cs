@@ -153,14 +153,16 @@ public static class Stage4AProtectedBuilder
 
     private static void AddLink(EventRow x, int day, double distance)
     {
-        int ti = day >= -60 && day <= -29 ? 0 : day >= -28 && day <= -1 ? 1 :
+        int ti = day >= -42 && day <= -29 ? 0 : day >= -28 && day <= -1 ? 1 :
             day >= 0 && day <= 3 ? 2 : day >= 4 && day <= 14 ? 3 :
-            day >= 15 && day <= 28 ? 4 : day >= 29 && day <= 90 ? 5 : -1;
+            day >= 15 && day <= 28 ? 4 : day >= 29 && day <= 56 ? 5 : -1;
         int di = distance >= 0 && distance < .5 ? 0 : distance < 1 ? 1 :
             distance < 2 ? 2 : distance < 3 ? 3 : distance < 4 ? 4 :
             distance < 5 ? 5 : distance < 10 ? 6 : distance <= 20.0001 ? 7 : -1;
-        if (ti < 0 || di < 0) throw new InvalidDataException("Source-point stratum range failure");
-        x.Time[ti]++; x.Distance[di]++;
+        if (day < -90 || day > 120 || di < 0)
+            throw new InvalidDataException("Source-point link range failure");
+        if (ti >= 0) x.Time[ti]++;
+        x.Distance[di]++;
     }
 
     private static Dictionary<string, SourceRef> ReadCrosswalk(string path,
@@ -228,7 +230,7 @@ public static class Stage4AProtectedBuilder
         {
             if (!Eligible(x, 5) || x.ConcurrentLinks < 1 || x.EventFold < 1 || x.EventFold > 4 ||
                 x.ObserverFold < 1 || x.ObserverFold > 4 || x.Year > EndYear ||
-                x.Time.Sum() != x.ConcurrentLinks || x.Distance.Sum() != x.ConcurrentLinks)
+                x.Time.Sum() > x.ConcurrentLinks || x.Distance.Sum() != x.ConcurrentLinks)
                 throw new InvalidDataException("Stage 4A registered population gate failed");
         }
     }
