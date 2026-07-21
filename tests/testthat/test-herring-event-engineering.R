@@ -49,3 +49,9 @@ test_that("deterministic anti-chaining enforces temporal spatial and region caps
   expect_true(all(spans$diameter_km <= 25))
   expect_true(all(spans$regions == 1L))
 })
+
+test_that("event id uniqueness is enforced only on request", {
+  x <- rbind(herring_fixture(), herring_fixture())
+  expect_error(derive_herring_event_fields(x, require_unique_event_id = TRUE), "EVENT_ID_UNIQUENESS")
+  expect_equal(nrow(derive_herring_event_fields(x)), 2L)
+})

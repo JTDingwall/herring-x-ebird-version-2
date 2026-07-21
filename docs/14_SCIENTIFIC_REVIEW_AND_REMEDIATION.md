@@ -6,7 +6,10 @@ made. Severities: **S1** blocks confirmatory claims; **S2** must be fixed before
 model fitting; **S3** engineering-integrity fixes (several are silent-corruption risks).
 
 This register is the authoritative "go back and fix" list. It is advisory design guidance,
-not a response result, and computes nothing from bird outcomes.
+not a response result, and computes nothing from bird outcomes. The sequenced, gated
+execution plan (waves, dependencies, and open scientific decisions) is
+`docs/15_REMEDIATION_PLAN.md`; the Wave 0 coherence and code-integrity items (R7, R14–R17,
+R19, and the falsification decision rule) are addressed in that plan's first pass.
 
 ## Framing correction: no assumed response direction
 

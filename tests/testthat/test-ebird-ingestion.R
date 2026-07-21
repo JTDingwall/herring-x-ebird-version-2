@@ -94,3 +94,11 @@ test_that("guild ambiguity changes only defensible upper bounds", {
   expect_equal(got$guild_count_lower, 4)
   expect_equal(got$guild_count_upper, 7)
 })
+
+test_that("missing zero-fill eligibility column fails loud", {
+  checklists <- data.table(analysis_checklist_id = c("fixture_a", "fixture_b"))
+  det <- data.table(analysis_checklist_id = "fixture_a", analysis_taxon_id = "taxon_a",
+                    detection = 1L, numeric_count = NA_real_, lower_bound_count = NA_real_,
+                    count_type = "X", ambiguity_flag = FALSE)
+  expect_error(zero_fill_taxa(checklists, det, c("taxon_a", "taxon_b")), "ZERO_FILL_ELIGIBILITY")
+})

@@ -49,22 +49,34 @@ representative_event_date <- function(start_date, end_date) {
 }
 
 classify_herring_quality <- function(start_date, end_date, length_m, width_m,
-                                     egg_thickness, assessment_method,
+                                     intensity_index, assessment_method,
                                      geometry_present = TRUE) {
+  # `intensity_index` carries the relative spawn index (an extent/component-based
+  # intensity), not a physical egg-thickness measurement; it was previously
+  # mis-named `egg_thickness`.
   has_date <- !is.na(start_date) | !is.na(end_date)
-  has_intensity_component <- !is.na(length_m) | !is.na(width_m) | !is.na(egg_thickness)
+  has_intensity_component <- !is.na(length_m) | !is.na(width_m) | !is.na(intensity_index)
   method_known <- !is.na(assessment_method) & nzchar(trimws(assessment_method))
   tier <- ifelse(has_date & geometry_present & has_intensity_component & method_known, "high",
           ifelse(has_date & geometry_present, "moderate", "limited"))
   factor(tier, levels = c("high", "moderate", "limited"))
 }
 
-derive_herring_event_fields <- function(x, field_map = NULL) {
+derive_herring_event_fields <- function(x, field_map = NULL,
+                                        require_unique_event_id = FALSE) {
   validate_herring_schema(x, field_map)
   col <- function(nm) if (is.null(field_map)) nm else unname(field_map[[nm]])
   out <- data.table::copy(data.table::as.data.table(x))
   out[, event_id := stable_event_id(get(col("Year")), get(col("LocationCode")),
                                     get(col("Section")), get(col("SpawnNumber")))]
+  # Opt-in guard: the event_id natural key (Year::LocationCode::Section::SpawnNumber)
+  # silently collides duplicate/re-surveyed rows into one event. Enable this once the
+  # source table is confirmed to be one row per event so the collision fails loud.
+  if (require_unique_event_id && anyDuplicated(out$event_id) > 0L) {
+    stop("EVENT_ID_UNIQUENESS: duplicate event_id natural keys; ",
+         "one row per event is required when require_unique_event_id = TRUE",
+         call. = FALSE)
+  }
   out[, event_date := representative_event_date(get(col("StartDate")), get(col("EndDate")))]
   out[, component_surface_missing := is.na(get(col("Surface")))]
   out[, component_macrocystis_missing := is.na(get(col("Macrocystis")))]

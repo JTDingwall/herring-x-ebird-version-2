@@ -60,3 +60,21 @@ The default uncertainty unit is the herring event, with observer/location/year s
 ## 8. Post-result status
 
 The old outcomes have been inspected. Version 2 analyses on the same 2015–2025 data are exploratory or estimand-refining. The first confirmatory test must use frozen models on new 2026+ data or an independently frozen region.
+
+## 9. Falsification panel
+
+The negative-control (falsification) taxa are prespecified before outcome inspection and are
+not assumed to respond. The decision rule for the panel is fixed in advance:
+
+- If the falsification panel shows a spawn-aligned effect of comparable form to the
+  biological guilds, this is treated as evidence of a residual observation-process or
+  detectability confound — not as biological support — and it triggers a mandatory
+  re-examination of the visitation/allocation and detectability models before any biological
+  conclusion is graded. Affected biological conclusions are downgraded accordingly.
+- A panel effect is never explained away post hoc without that re-examination, and a panel
+  null is reported as weak corroboration only, because the panel is small and its members are
+  not guaranteed biological non-responders.
+- No taxon is assumed to respond to spawn. `expected_direction` is a prespecified hypothesis
+  label used for placebo and consistency checks; it is never a prior belief or an inclusion
+  criterion, and a null or negative result carries the same reporting weight as a positive
+  one.

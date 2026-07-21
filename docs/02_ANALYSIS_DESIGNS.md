@@ -143,7 +143,7 @@ Occupancy and N-mixture models require repeat sampling and closure assumptions t
 
 Every core analysis includes:
 
-- event dates shifted ±14, ±28, and ±56 days where valid;
+- event dates shifted by more than the maximum registered egg-availability kernel (42 days) so that the null placebos sit outside the biological response window — the clean-null set is ±56, ±84, and ±112 days where valid. Shorter shifts (±14, ±28 days) fall inside the availability window and are retained only as labeled spillover/contamination probes, never as negative controls;
 - spatially shifted or permuted event locations preserving coastal structure;
 - falsification taxa analyzed separately;
 - leave-event, leave-year, leave-section, and spatial-block validation;

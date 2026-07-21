@@ -16,7 +16,25 @@ transform_for_linkage <- function(x, epsg = 3005L) {
   sf::st_transform(x, epsg)
 }
 
-candidate_event_links <- function(checklists, events, max_distance_km = 20) {
+candidate_event_links <- function(checklists, events, max_distance_km = 20,
+                                  checklist_id_col = NULL, event_id_col = NULL,
+                                  expected_max_scale_km = NULL,
+                                  truncation_weight_tolerance = 0.01) {
+  # This link is many-to-many by design: a checklist links to every event within the
+  # radius. Downstream aggregation must join on the stable ids carried here, never on
+  # row position. Pass checklist_id_col/event_id_col to attach them.
+  if (!is.null(expected_max_scale_km)) {
+    residual_weight <- exp(-max_distance_km / expected_max_scale_km)
+    if (residual_weight > truncation_weight_tolerance) {
+      warning(sprintf(
+        "CANDIDATE_RADIUS_TRUNCATION: radius %.3g km leaves kernel weight %.3g at the cutoff for scale %.3g km (> tolerance %.3g); widen max_distance_km",
+        max_distance_km, residual_weight, expected_max_scale_km, truncation_weight_tolerance),
+        call. = FALSE)
+    }
+  }
+  id_of <- function(obj, id_col) if (is.null(id_col)) NULL else as.character(obj[[id_col]])
+  checklist_ids <- id_of(checklists, checklist_id_col)
+  event_ids <- id_of(events, event_id_col)
   checklists <- transform_for_linkage(checklists)
   events <- transform_for_linkage(events)
   assert_metric_crs(checklists)
@@ -26,7 +44,12 @@ candidate_event_links <- function(checklists, events, max_distance_km = 20) {
     distances <- as.numeric(sf::st_distance(checklists[i, ], events[idx[[i]], ], by_element = FALSE)[1, ]) / 1000
     data.table::data.table(checklist_row = i, event_row = idx[[i]], event_distance_km = distances)
   })
-  data.table::rbindlist(rows, use.names = TRUE, fill = TRUE)
+  res <- data.table::rbindlist(rows, use.names = TRUE, fill = TRUE)
+  if (nrow(res)) {
+    if (!is.null(checklist_ids)) res[, sampling_event_identifier := checklist_ids[checklist_row]]
+    if (!is.null(event_ids)) res[, event_id := event_ids[event_row]]
+  }
+  res
 }
 
 construct_alongshore_segment <- function(line_coordinates, point_xy, length_m) {

@@ -162,11 +162,14 @@ zero_fill_taxa <- function(checklists, detections, taxa,
                                "numeric_count", "lower_bound_count", "count_type", "ambiguity_flag"), "detections")
   assert_unique_key(checklists, "analysis_checklist_id", "eligible checklists")
   assert_unique_key(detections, c("analysis_checklist_id", "analysis_taxon_id"), "detections")
-  if (eligibility_column %in% names(checklists)) {
-    eligible <- !is.na(checklists[[eligibility_column]]) & as.logical(checklists[[eligibility_column]])
-  } else {
-    eligible <- rep(TRUE, nrow(checklists))
+  # Fail loud rather than fail open: a missing or renamed eligibility column must
+  # not silently zero-fill checklists (e.g. incomplete lists) that should be excluded.
+  if (!eligibility_column %in% names(checklists)) {
+    stop("ZERO_FILL_ELIGIBILITY: column '", eligibility_column,
+         "' is required; refusing to fail open by treating every checklist as eligible",
+         call. = FALSE)
   }
+  eligible <- !is.na(checklists[[eligibility_column]]) & as.logical(checklists[[eligibility_column]])
   eligible_ids <- as.character(checklists$analysis_checklist_id[eligible])
   if (any(as.character(checklists$analysis_checklist_id[!eligible]) %in% eligible_ids)) {
     stop("ZERO_FILL_ELIGIBILITY: excluded checklist leaked into eligible set", call. = FALSE)
@@ -185,6 +188,10 @@ zero_fill_taxa <- function(checklists, detections, taxa,
 }
 
 guild_count_bounds <- function(named_rows, ambiguous_rows = NULL) {
+  # Note for modelers: guild_richness and guild_any_detection count an `X`
+  # (present, no number) as a detection, but guild_count_lower adds 0 for it.
+  # A checklist can therefore show positive richness with a zero lower-bound
+  # count; these are distinct quantities and must not be conflated downstream.
   assert_columns(named_rows, c("analysis_checklist_id", "guild_id", "numeric_count",
                                "lower_bound_count", "detection"), "named guild rows")
   named <- data.table::as.data.table(named_rows)[, .(
