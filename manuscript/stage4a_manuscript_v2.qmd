@@ -1,0 +1,232 @@
+---
+title: "Checklist-conditional bird associations with Pacific herring spawn across coastal British Columbia"
+subtitle: "Journal-neutral manuscript - Stage 4A v2 analysis freeze"
+author:
+  - name: "[AUTHOR LIST REQUIRED]"
+date: last-modified
+bibliography: ../references/stage4a_manuscript_references_v2.bib
+link-citations: true
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    embed-resources: true
+    theme: cosmo
+    fig-responsive: true
+  docx:
+    toc: true
+    number-sections: true
+    fig-width: 6.5
+    fig-height: 4.5
+execute:
+  enabled: false
+lang: en
+---
+
+**Provisional title.** [TARGET JOURNAL REQUIRED]
+
+[AFFILIATIONS REQUIRED]\
+[CORRESPONDING AUTHOR REQUIRED]
+
+# Abstract
+
+**Background:** Pacific herring (*Clupea pallasii*) spawning is a short-lived coastal resource pulse that can attract or redistribute marine birds. Broad community-science data could characterize these local associations across years and taxa, but open participation, site selection, observer differences, incomplete spawn monitoring, and exposure classification complicate inference.
+
+**Methods:** We linked eligible submitted complete eBird checklists to recorded Pacific herring-spawn exposure in registered spatial and temporal windows. Separate mixed models described checklist detection and positive numeric count conditional on detection, with registered effort, observer, temporal, and spatial adjustment. We reported all prespecified families, applied within-family Benjamini-Hochberg adjustment, repaired incompatible historical partial pooling without changing individual estimates, and evaluated whole-bundle placebos plus matched spatial and observer sensitivities.
+
+**Results:**
+
+{{< include generated/abstract_results_v2.md >}}
+
+**Conclusions:** Among eligible submitted complete checklists, modeled bird-response outcomes were associated with recorded local Pacific herring-spawn exposure, but the direction and strength differed by guild, species, region, and response component. Matched sensitivities and placebos support some aspects of stability, whereas boundary fits and the non-null specificity panel require explicit caution. The results are checklist-conditional associations, not causal effects or estimates of regional bird abundance, biomass, occupancy, migration, or movement.
+
+**Keywords:** Pacific herring; eBird; community science; coastal birds; resource pulse; mixed models; falsification analysis
+
+# Introduction
+
+Pacific herring spawning deposits eggs and associated organic material in shallow coastal habitats over a brief seasonal interval. Spawn distribution, timing, and recorded magnitude vary substantially among years and coastal areas, while survey coverage and measurement also shape the observed record [@haegele1985; @hay1987; @hay2009; @rooper2024; @grinnell2023]. The government spawn index is a relative index rather than an estimate of absolute biomass, and unavailable components require explicit treatment rather than conversion to zero [@dfo_spawn_data]. These features make spawning a biologically consequential but statistically challenging resource pulse.
+
+Localized studies have documented waterbird aggregation, predation on spawn, altered foraging, and movements around herring spawning [@haegele1993; @sullivan2002; @rodway2003; @lewis2007; @lok2008; @lok2012]. Responses are not expected to be uniform: birds may use roe, adult herring, carrion, displaced prey, or shoreline resources; timing and accessibility differ among guilds; and some taxa may avoid exposed areas or redistribute outside the observation footprint. Studies at particular sites therefore motivate species- and mechanism-specific expectations but do not, by themselves, establish a coast-wide population response [@kelly2018].
+
+eBird supplies semistructured complete checklists with observation-process metadata, enabling analyses that distinguish a reported detection from a complete-checklist nondetection and adjust for recorded effort [@sullivan2009; @kelling2019]. The same open participation that provides broad coverage also creates selection challenges. Observers choose when and where to submit, effort varies, experience differs, and birders may preferentially visit known biological events. Analytical guidance accordingly emphasizes complete-checklist filtering, effort controls, observer structure, spatial and temporal adjustment, validation, and restrained interpretation [@johnston2018; @johnston2021]. Such adjustment can reduce measured differences but cannot guarantee exchangeability or eliminate unmeasured site-selection and submission behavior.
+
+We used a frozen Stage 4A design to estimate associations between recorded local herring-spawn exposure and two checklist outcomes: detection and positive numeric count conditional on detection. Our primary estimand is explicitly checklist-conditional. We asked whether registered guild and focal-species outcomes differed with active-near exposure; whether associations varied among discrete event windows and regions; whether compatible evidence could be partially pooled without mixing estimands or duplicating component evidence; and whether conclusions were stable under matched placebo, spatial-precision, and observer-composition analyses. Because the current-data outcomes have been inspected, this analysis is exploratory or estimand-refining until prospective confirmation. We foreground the prespecified non-null Strait of Georgia specificity panel because it materially constrains ecological interpretation.
+
+# Methods
+
+## Study design and estimand
+
+The analysis used a registered observational design linking complete eBird checklists to recorded Pacific herring-spawn events (Figure 1). The estimand was the adjusted association between recorded active-near exposure and modeled checklist outcomes among eligible submitted complete checklists. It was not a causal effect of spawning. It did not target regional population abundance, biomass, occupancy, migration, individual movement, or total population change.
+
+![](figures/figure1_workflow_v2.png){width=100% fig-alt="Stage 4A checklist-conditional workflow linking eligible complete checklists to recorded exposure, models, sensitivities, and audited claims."}
+
+**Figure 1. Stage 4A checklist-conditional analysis workflow.** The figure summarizes the registered data boundary, complete-checklist eligibility, additive concurrent exposure linkage, model families, and evidence audit. Unmonitored herring coverage remained unknown, and no protected identifiers or locations appear.
+
+## eBird source, eligibility, and response states
+
+The eBird Basic Dataset release was EBD_relMay-2026, but the protected execution was restricted to checklist years through 2025 [@ebird_ebd]. Eligible checklists were complete stationary or traveling submissions with duration from 5 to 300 minutes, travel distance no greater than 5 km, one to ten observers, and the registered regional start year. The Strait of Georgia (SoG) frame began in 2005 and was primary; the West Coast Vancouver Island (WCVI) frame began in 2015 and was candidate-primary. Central Coast and North-region frames were hierarchical descriptive contexts.
+
+Complete-checklist omission was converted to a deterministic zero only when the checklist was eligible, the taxon was unreported, and no ambiguity mask made the response structurally unknown. Detection, a positive numeric count, an unquantified `X`, a lower-bound count, ambiguity, and deterministic omission zero remained distinct. `X` contributed to detection but never to the numeric-count component. The positive-count response described reported relative count conditional on a finite numeric report greater than zero; it did not estimate absolute abundance or biomass.
+
+Observer count, duration, distance traveled, and protocol were retained as recorded effort covariates. Random intercepts represented observer cluster and generalized location cluster. These terms address measured observation-process heterogeneity; they do not eliminate unmeasured selection. Privacy controls prohibited checklist identifiers, observer identities, exact localities, exact coordinates, event tokens, or transformation mappings from publication artifacts.
+
+## Herring exposure and monitoring states
+
+The exposure source was the official Pacific Herring Spawn Index Data and its associated technical documentation [@grinnell2023; @dfo_spawn_data]. Immutable source points and frozen event metadata were linked to checklists through registered temporal windows and source-point distance strata. The spawn index remained a relative index of spawning biomass; it was never interpreted as absolute biomass.
+
+Monitoring state was explicit. Surveyed-positive, surveyed-negative, and unmonitored-unknown states remained distinct. A missing herring component was not set to zero, and an absent DFO record was not treated as a surveyed negative. Incomplete monitoring can therefore misclassify recorded exposure and is a substantive limitation.
+
+The checklist was the independent analytical row. When a checklist linked concurrently to more than one event, all eligible links contributed additively to six frozen event-time strata and eight frozen distance rings. The analysis did not duplicate the checklist into apparently independent event rows. The primary active-near contrast summarized recorded local exposure; M05 separately represented five discrete windows (immediate pre, spawn start, early egg, late egg, and post). Those windows are registered categories rather than a continuous causal event-study trajectory.
+
+## Registered outcomes and model families
+
+M01 modeled eight frozen guilds, including a prespecified falsification guild; M02 modeled 49 frozen core taxa. Priority-A species were identified before response inspection. Detection used a binomial-logit model. Positive numeric count used a Gaussian model for log count among positive finite numeric reports. The registered parallel positive-count sensitivity was zero-truncated negative binomial, and all activated model families were reported regardless of sign or apparent interest.
+
+Fixed predictors were event-time stratum, source-point distance stratum, region-period, checklist year, protocol, log duration, log distance traveled plus one, and observer count. Random intercepts represented herring-event block, observer cluster, and generalized location cluster. Publication sensitivity fits used sparse `lme4` mixed models [@bates2015]: `glmer` with a binomial-logit likelihood for detection and restricted-maximum-likelihood `lmer` for log positive count. No simplified row-level generalized linear model replaced the registered mixed architecture.
+
+M05 reported discrete event-time coefficients. M29 was a detection-only specificity panel containing Gadwall and Northern Shoveler. The taxa were prespecified as having no verified direct spawn mechanism, but the panel was never defined as a guaranteed biological nonresponder. It tests whether the design also captures shared seasonal, spatial, access, submission, site-selection, or classification structure.
+
+## Multiplicity and compatible-family partial pooling
+
+Individual coefficients, standard errors, 95% confidence intervals, p-values, and Benjamini-Hochberg (BH) q-values were reported [@benjamini1995]. BH adjustment was confined to coherent model-version, region, and outcome families rather than applied across every exploratory model in the registry. Partial pooling complemented but did not replace individual inference.
+
+Historical v1 `partial_pool_*` fields were invalid because some families mixed incompatible model or unit identities and could duplicate component evidence. An initial parser also undercounted the affected scope by treating the registered North-region literal code `NA` as a missing value. The repair used typed, column-specific parsing, preserved categorical `NA`, and grouped only compatible model, estimand, response state, unit class, scale, exposure, window, buffer, population, adjustment set, and coefficient meaning. A frozen normal-normal empirical-Bayes method-of-moments estimator produced v2 compatible-family posterior summaries. Duplicate M11/M12 representations and noncompleted fits remained explicit NA rather than zero. No v1 artifact was modified, and individual estimates and model-specific BH q-values were exactly preserved.
+
+## Matched placebos, sensitivities, and validation
+
+M27/M28 v2 moved the complete linked exposure bundle within region-year strata. The bundle included active/reference state, concurrent-link count, all event-time counts, and all distance-ring counts. Deterministic nonzero cyclic shifts had zero fixed points. Transformation construction did not read responses, cross a region or year, duplicate a checklist, or use row-level outcome information. Both placebos used the matched M01 mixed architecture.
+
+The WCVI 2-km analysis changed only cohort eligibility to the registered high-precision frame. The dominant-observer analysis defined the largest eligible WCVI observer cluster before any guild response was joined and excluded that cluster consistently; no observer token was released. Both retained the matched architecture, so each sensitivity altered one intended dimension. M26 v1 was retired without replacement because its historical summary lacked a registered exposure or visitation contrast.
+
+Four deterministic event-blocked folds were the basis for new-event validation. Held-out predictions used fixed effects and set observer and location random effects to their population expectation; conditional observer or location BLUPs were prohibited. Rows with unsupported fixed factor levels were excluded with aggregate counts, and cells below the release minimum of 20 were suppressed. Observer-disjoint results were interpreted only as observer-composition robustness.
+
+## Singular-fit handling
+
+Singularity was retained as a visible diagnostic rather than an automatic exclusion. For every affected component, the released coefficient, standard error, and interval were finite, but one or more random-effect variance terms were estimated on the boundary. The aggregate diagnostic does not identify which variance term collapsed, so each such fit is interpreted as effectively simpler than the intended three-intercept structure. No headline claim depends exclusively on a singular component. Qualified sensitivity comparisons remain in the main figures, while the full 43-row audit appears in Supplementary Table S6.
+
+## Protected execution and reproducibility
+
+Production response models and protected sensitivities were not rerun for manuscript assembly. The analysis-freeze commit is `c54b8e7f95a2fe3573e2e38633079cd223c5a783`, tagged `stage4a-publication-v2-analysis-freeze`. The sensitivity specification and execution code were frozen before protected inputs were read. The execution record reports a maximum response year of 2025 and zero 2026-or-later rows read. Protected inputs are represented by hashes without local paths or row-level content. Manuscript tables and figures were generated only from tracked privacy-safe aggregates.
+
+# Results
+
+## Analytical sample and execution scope
+
+{{< include generated/results_sample_v2.md >}}
+
+**Table 1. Frozen analytical populations and inferential roles.** The same checklist frame supports multiple taxon outcomes, so these counts must not be summed across taxa.
+
+{{< include generated/table1_study_scope_v2.md >}}
+
+## Guild and focal-species associations were heterogeneous
+
+{{< include generated/results_primary_v2.md >}}
+
+![](figures/figure2_primary_guild_v2.png){width=100% fig-alt="Registered guild coefficients by region and hurdle component, with individual intervals and compatible-family posterior summaries."}
+
+**Figure 2. Primary registered guild associations.** Coefficients are log odds for checklist detection and log positive count conditional on a numeric detection. Estimates above zero indicate higher modeled outcomes on recorded active-near checklists; they are not causal effects.
+
+**Table 2. Priority-A species coefficients.** Estimates are log odds for detection or log positive numeric count conditional on detection. BH q-values are model-family adjusted; `n` is the component checklist count.
+
+{{< include generated/table2_priority_species_v2.md >}}
+
+## Discrete event-time patterns differed among regions and outcomes
+
+{{< include generated/results_event_time_v2.md >}}
+
+![](figures/figure3_event_time_v2.png){width=100% fig-alt="All 160 registered event-time coefficients summarized by region, outcome, and discrete window."}
+
+**Figure 3. Registered discrete event-time coefficients.** Five frozen windows were modeled for each guild, region, and hurdle component. The plot displays uncertainty and includes the falsification guild; the median is descriptive and not a new pooled estimand.
+
+## Matched sensitivities generally preserved direction but included boundary fits
+
+{{< include generated/results_sensitivity_v2.md >}}
+
+![](figures/figure4_wcvi_robustness_v2.png){width=100% fig-alt="Matched WCVI reference, 2-kilometre cohort, and dominant-observer coefficients with 95 percent intervals."}
+
+**Figure 4. WCVI matched spatial and observer sensitivities.** Each sensitivity changed one registered dimension while retaining the sparse mixed-model architecture. Singular fits are retained and disclosed, so visual agreement is qualified robustness rather than proof of a fully supported covariance structure.
+
+{{< pagebreak >}}
+
+![](figures/figure5_placebo_v2.png){width=100% fig-alt="Matched primary references and whole-bundle shifted-exposure placebo coefficients with 95 percent intervals."}
+
+**Figure 5. Matched whole-bundle placebo diagnostics.** M27 and M28 shifted complete exposure bundles within region-year strata without reading responses. No placebo component had BH q below 0.05; null diagnostics do not establish causal identification.
+
+## The Strait of Georgia specificity panel was non-null
+
+{{< include generated/results_falsification_v2.md >}}
+
+**Table 3. Sensitivity, placebo, singular-fit, and specificity-panel summary.** Component-level estimates and explicit warning states are supplied in the companion CSV tables.
+
+{{< include generated/table3_sensitivity_falsification_v2.md >}}
+
+## Pooling repair preserved individual inference and made exclusions explicit
+
+{{< include generated/results_pooling_v2.md >}}
+
+The complete 162-family table, 6,562-row disposition, duplicate-resolution crosswalk, reason codes, and artifact hashes are supplied as supplementary machine-readable tables. The repair changes only the compatible-family synthesis and its publication representation.
+
+# Discussion
+
+## Associations were consistent with a short local resource pulse, but not uniformly
+
+The registered models identified substantial heterogeneity. Several roe-feeding, surface-feeding, and active-spawn guilds had positive checklist-detection or conditional-count coefficients, and Surf Scoter and Short-billed Gull showed positive coefficients across both primary regions and both hurdle components. These patterns are ecologically consistent with localized aggregation or increased checklist reporting around spawning, in line with site-based studies of waterbird distribution, roe use, and scoter behavior [@sullivan2002; @rodway2003; @lewis2007; @lok2008]. The study does not show that every bird group responds positively. Negative, imprecise, component-dependent, and region-dependent coefficients are part of the registered result.
+
+Detection and conditional count address different processes. A detection coefficient can change when the chance of reporting at least one bird changes, whereas the positive-count component describes the reported relative count after a positive finite numeric observation. The latter excludes `X` and cannot be translated into biomass or total bird abundance. Divergence between components is therefore scientifically meaningful rather than an inconsistency to be removed.
+
+Timing also resisted a single narrative. SoG and WCVI differed in which discrete windows had the most frequent adjusted associations, and post-window medians could be negative even when some guild coefficients were positive. These patterns could reflect taxon-specific access to roe, adult herring, or displaced prey; migration phenology; delayed bird or birder visitation; and error in assigning recorded event dates. They do not identify a continuous temporal response or causal lead-lag process.
+
+## Regional and sensitivity evidence requires qualification
+
+WCVI coefficients were often wider than SoG coefficients because the frame was smaller and observer/location geometry was sparse. The 2-km and dominant-observer analyses each preserved the matched-reference sign in 15 of 16 components, which argues against wholesale dependence on the broader spatial frame or one dominant observer cluster. However, many WCVI detection fits were singular. A boundary estimate means that the fitted covariance structure effectively collapsed toward a simpler model, even though fixed-effect coefficients and intervals remained finite. These results support directional stability with qualification, not a claim that observer composition or spatial precision is irrelevant.
+
+Event-blocked validation retained all four registered folds and excluded unsupported factor levels transparently. Validation describes performance on held-out event blocks under the frozen predictor structure. It does not repair unmeasured site selection, transform community-science submissions into a probability sample, or establish causal transportability.
+
+## The non-null specificity panel localizes an important threat to interpretation
+
+The SoG M29 panel is not interchangeable with the matched shifted-exposure placebos. M27/M28 ask whether response-blind, within-region-year reassignments of the complete exposure bundle reproduce the matched primary pattern; none of their 64 components had BH q below 0.05. M29 instead uses the true active-near exposure for two prespecified taxa without a verified direct herring-spawn mechanism. Both M29 coefficients were positive and adjusted-significant.
+
+Because the M29 magnitudes overlap the ecological guild-detection range, the panel materially weakens a simple interpretation in which positive SoG detection coefficients arise only from direct spawn-resource use. Plausible explanations include residual seasonality, shoreline habitat and access, birder site choice, post-exposure visitation, submission behavior, and exposure classification. The panel does not prove that every primary association is spurious: it is detection-only, does not target the conditional positive-count component, and does not reproduce every species, guild, region, or window. The defensible conclusion is narrower: SoG detection associations are real features of the eligible submitted-checklist data, but their ecological specificity and causal interpretation are limited.
+
+## Pooling and complete-family reporting reduce selective interpretation
+
+The pooling repair matters because partial pooling can appear precise while silently mixing incompatible targets or counting the same implementation component twice. Typed identities and explicit duplicate dispositions restored one coherent evidence unit per compatible family. Keeping all individual estimates visible prevents the posterior summaries from masking heterogeneity. Reporting the complete registered families, including negative, null, failed, singular, and falsification results, further reduces the temptation to organize conclusions around significance alone.
+
+# Limitations
+
+First, checklist submission and site selection are not random. Observers may visit accessible shorelines or known spawn sites, and visitation may change after public knowledge of an event. Recorded effort variables and observer/location structure reduce measured differences but cannot eliminate unmeasured selection. The non-null SoG specificity panel demonstrates that observation-process or shared environmental structure remains plausible.
+
+Second, recorded spawn exposure is imperfect. DFO monitoring varies in space and time; unmonitored areas remain unknown rather than negative. Recorded dates, source points, and index components may not coincide perfectly with biological availability to birds. Concurrent events can interfere, although all registered concurrent links were retained additively rather than duplicating checklists.
+
+Third, WCVI has sparse geometry and concentrated observer participation. Matched 2-km and dominant-observer results are useful, but singular-fit warnings show that some intended random-effect variance components were weakly identified. The released diagnostic cannot identify the exact collapsed variance term, preventing a more granular interpretation of those boundary fits.
+
+Fourth, the two-part response is conditional on eBird reporting. A complete-checklist nondetection is not proof of biological absence; a positive numeric count is not a census; `X` is detection-only; and ambiguity can create structural unknowns. The models do not estimate occupancy or detection probability in a formal repeated-survey occupancy design.
+
+Fifth, the current data have been inspected. The registered analyses can support transparent exploratory or estimand-refining claims, but confirmatory evaluation requires genuinely prospective or independently frozen data. We did not access 2026-or-later responses, initiate Stage 4B, or add outcome-driven variants for manuscript preparation.
+
+# Conclusions
+
+Among eligible submitted complete eBird checklists, modeled detection and conditional positive-count outcomes were associated with recorded local Pacific herring-spawn exposure after adjustment for registered effort, observer, temporal, and spatial covariates. Associations varied among guilds, focal species, regions, time windows, and response components. Matched WCVI sensitivities generally preserved direction and matched whole-bundle placebos were not BH-significant, but boundary fits and a non-null SoG specificity panel require prominent qualification. The study supports a checklist-conditional description consistent with localized resource-pulse aggregation for some taxa; it does not identify a causal effect or a change in regional bird abundance, biomass, occupancy, migration, movement, or total populations.
+
+# Data availability
+
+DFO-derived source data are available through the Government of Canada Open Government Portal [@dfo_spawn_data], subject to the source record and its monitoring caveats. eBird checklist data require authorized access under eBird terms and are not redistributed [@ebird_ebd]. Raw EBD/SED, protected row-level derivatives, observer identities, exact localities, exact coordinates, event tokens, and transformation mappings are not included. Privacy-safe aggregate tables, claim audits, provenance records, and publication figures are distributed with the repository. An authorized researcher can reconstruct the analysis from permitted source data, frozen registries, and the tagged code.
+
+# Code availability
+
+Code, frozen specifications, privacy-safe aggregate outputs, and reproducibility instructions are available in the project repository. The exact analysis freeze is commit `c54b8e7f95a2fe3573e2e38633079cd223c5a783`, tag `stage4a-publication-v2-analysis-freeze`. Manuscript assembly did not refit response models or alter any frozen v1 or v2 analysis artifact.
+
+# Declarations
+
+**Author contributions:** [AUTHOR CONTRIBUTIONS REQUIRED]
+
+**Funding:** [FUNDING STATEMENT REQUIRED]
+
+**Conflict of interest:** [CONFLICT-OF-INTEREST STATEMENT REQUIRED]
+
+**Acknowledgments:** [ACKNOWLEDGMENTS REQUIRED]
+
+**Ethics and permits:** [PERMIT OR ETHICS STATEMENT REQUIRED IF REQUIRED BY TARGET JOURNAL]
+
+# References

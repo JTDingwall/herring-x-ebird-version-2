@@ -1,0 +1,17 @@
+record_id: stage4a_publication_v2_analysis_freeze
+repository: https://github.com/JTDingwall/herring-x-ebird-version-2
+analysis_freeze_commit: c54b8e7f95a2fe3573e2e38633079cd223c5a783
+analysis_freeze_tag: stage4a-publication-v2-analysis-freeze
+tag_type: annotated
+pr5_merge_commit: aea6cd7fb1a8b29059e4af2a6709cbf3a3756906
+pr6_head_commit: 87d77e894cf9a4cdd27536f9bba6b1b289b1f41e
+pr6_merge_commit: c54b8e7f95a2fe3573e2e38633079cd223c5a783
+manuscript_branch: codex/stage4a-manuscript-submission-v2
+analysis_frozen: true
+production_models_rerun_for_manuscript: false
+protected_sensitivities_rerun_for_manuscript: false
+maximum_response_year_read: 2025
+rows_2026_plus_read: 0
+v1_artifacts_mutated: false
+v2_analysis_artifacts_mutated: false
+privacy_boundary: aggregate_only
