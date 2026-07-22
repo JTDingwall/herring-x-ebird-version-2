@@ -15,6 +15,7 @@ Imports:
     data.table,
     digest,
     jsonlite,
+    lme4,
     sf,
     targets,
     testthat (>= 3.0.0),

@@ -1,0 +1,6 @@
+"historical_model_id","publication_version_id","publication_disposition","replacement_model_id","rationale"
+"M26","M26_v1","retired_from_inferential_publication_set",,"released summary lacks a registered exposure or visitation contrast and is retained only as historical provenance"
+"M27","M27_v2","superseded_by_matched_placebo_v2","M27_v2","v1 shifted active_near alone and used an unmatched simplified GLM"
+"M28","M28_v2","superseded_by_matched_placebo_v2","M28_v2","v1 shifted active_near alone and used an unmatched simplified GLM"
+"S4A12","S4A12_WCVI_2KM_v2","superseded_by_matched_sensitivity_v2","S4A12_WCVI_2KM_v2","v1 used an unmatched simplified detection GLM"
+"S4A11","S4A11_WCVI_DOMINANT_OBSERVER_v2","superseded_by_matched_sensitivity_v2","S4A11_WCVI_DOMINANT_OBSERVER_v2","v1 used an unmatched simplified detection GLM"

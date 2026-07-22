@@ -1,0 +1,4 @@
+"artifact_path","sha256","role"
+"outputs/stage4a_pooling_repair_v2/output_hash_manifest_v2.csv","3d0af5ad8f835015afdaa2bd20d8c07e1768af1d08a111b0616d7271e6ed3b95","aggregate_repair_source_manifest"
+"outputs/stage4a_pooling_report_v2/report_artifact_hashes_v2.csv","15a1b9ddfd3f562f8ccf2ad68f9a0343f85156188692c5e0d696714650f8637d","pooling_report_source_manifest"
+"outputs/stage4a_publication_sensitivity_v2/output_hash_manifest_v2.csv","df2e4cfd533d277b75f0de70ecd02625e2832037e8a0beada3e4825a032c217e","protected_sensitivity_aggregate_manifest"

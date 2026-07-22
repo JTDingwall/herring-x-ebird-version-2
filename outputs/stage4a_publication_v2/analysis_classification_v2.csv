@@ -1,0 +1,8 @@
+"analysis_component","classification","registered_before_outcome_inspection","publication_use","caveat"
+"Registered M01/M02 Stage 4A coefficients","confirmatory core",TRUE,"primary individual inference","checklist-conditional association"
+"Aggregate pooling repair v2","confirmatory synthesis repair",TRUE,"compatible-family synthesis","does not replace individual inference"
+"M27/M28 matched placebos","diagnostic sensitivity",TRUE,"falsification diagnostic","null result does not establish causal identification"
+"WCVI 2-km cohort sensitivity","secondary sensitivity",TRUE,"robustness","cohort restriction only"
+"WCVI dominant-observer holdout","secondary sensitivity",TRUE,"robustness","observer exclusion only"
+"M05 event-time contrasts","registered secondary",TRUE,"discrete exposure-window description","not a continuous trajectory or causal event study"
+"M26 v1 visitation summary","historical only",TRUE,"retired without replacement","no registered exposure or visitation contrast"

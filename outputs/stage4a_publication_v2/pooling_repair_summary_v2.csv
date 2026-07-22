@@ -1,0 +1,9 @@
+"metric","value"
+"invalid_v1_finite_rows",6562
+"invalid_v1_families",112
+"compatible_v2_families",162
+"estimable_v2_families",162
+"nonestimable_v2_families",0
+"v2_posterior_rows",6085
+"noncompleted_rows_explicit_na",38
+"duplicate_representations_explicit_na",439

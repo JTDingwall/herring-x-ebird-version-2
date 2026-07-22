@@ -1,0 +1,17 @@
+"model_version_id","region","outcome","publication_role","expected_components","completed_components","failed_components","singular_warning_components","bh_q_below_0p05","positive_estimates"
+"M01_PRIMARY_v2","SoG","detection","confirmatory_reference_for_v2_sensitivities",8,8,0,0,6,6
+"M01_PRIMARY_v2","SoG","positive_numeric_count_given_detection","confirmatory_reference_for_v2_sensitivities",8,8,0,0,7,7
+"M01_PRIMARY_v2","WCVI","detection","confirmatory_reference_for_v2_sensitivities",8,8,0,5,3,8
+"M01_PRIMARY_v2","WCVI","positive_numeric_count_given_detection","confirmatory_reference_for_v2_sensitivities",8,8,0,1,5,7
+"M27_v2","SoG","detection","placebo_diagnostic_not_biological_evidence",8,8,0,0,0,4
+"M27_v2","SoG","positive_numeric_count_given_detection","placebo_diagnostic_not_biological_evidence",8,8,0,0,0,5
+"M27_v2","WCVI","detection","placebo_diagnostic_not_biological_evidence",8,8,0,7,0,6
+"M27_v2","WCVI","positive_numeric_count_given_detection","placebo_diagnostic_not_biological_evidence",8,8,0,3,0,4
+"M28_v2","SoG","detection","placebo_diagnostic_not_biological_evidence",8,8,0,0,0,3
+"M28_v2","SoG","positive_numeric_count_given_detection","placebo_diagnostic_not_biological_evidence",8,8,0,0,0,5
+"M28_v2","WCVI","detection","placebo_diagnostic_not_biological_evidence",8,8,0,7,0,2
+"M28_v2","WCVI","positive_numeric_count_given_detection","placebo_diagnostic_not_biological_evidence",8,8,0,3,0,6
+"S4A11_WCVI_DOMINANT_OBSERVER_v2","WCVI","detection","observer_composition_sensitivity",8,8,0,7,2,7
+"S4A11_WCVI_DOMINANT_OBSERVER_v2","WCVI","positive_numeric_count_given_detection","observer_composition_sensitivity",8,8,0,2,5,7
+"S4A12_WCVI_2KM_v2","WCVI","detection","spatial_precision_sensitivity",8,8,0,7,3,7
+"S4A12_WCVI_2KM_v2","WCVI","positive_numeric_count_given_detection","spatial_precision_sensitivity",8,8,0,1,5,7

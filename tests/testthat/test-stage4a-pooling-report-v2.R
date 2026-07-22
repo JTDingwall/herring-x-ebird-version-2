@@ -2,8 +2,14 @@ test_that("publication repair report artifacts are complete and hash-valid", {
   output_dir <- repo_file("outputs", "stage4a_pooling_report_v2")
   manifest <- fread(file.path(output_dir, "report_artifact_hashes_v2.csv"))
   chart_map <- fread(file.path(output_dir, "chart_map_v2.csv"))
+  event <- fread(file.path(output_dir, "event_time_family_results_v2.csv"))
   expect_equal(nrow(manifest), 11L)
   expect_equal(nrow(chart_map), 5L)
+  expect_equal(nrow(event), 160L)
+  expect_setequal(unique(event$contrast), c(
+    "time_immediate_pre", "time_spawn_start", "time_early_egg",
+    "time_late_egg", "time_post"
+  ))
   expect_setequal(chart_map$chart_family,
                   c("bar", "faceted dot and interval",
                     "categorical point and interval", "histogram"))

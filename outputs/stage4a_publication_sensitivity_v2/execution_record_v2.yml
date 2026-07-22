@@ -1,0 +1,27 @@
+execution_version: stage4a_publication_sensitivity_execution_v2
+status: COMPLETE_WITH_EXPLICIT_COMPONENT_STATUS
+pre_execution_spec_commit: c3344f5565feca67f60d56a37ff3a4f6fcf8c513
+execution_code_commit: e6617df638891bc58f36a19b92427eec6c0db645
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+protected_input_paths_released: no
+maximum_checklist_year_read: 2025
+records_2026_plus_read: 0
+analysis_population_minimum_year: 2005
+sparse_engine_package_versions:
+  lme4: 2.0.6
+  Matrix: 1.7.3
+code_hashes:
+  R/stage4a_publication_sensitivity_v2.R: 8b4292ac06183ef767f8ba4f4aa75dec0f5d2f14d3be2e9fadd57612b2760179
+  scripts/run_stage4a_publication_sensitivity_v2.R: 36861f5be05af079235a7e4189b61f31ccb76c8181f3d167aa510aba5f8dccce
+results:
+  expected_model_components: 128
+  completed_model_components: 128
+  failed_model_components: 0
+  placebo_transformations: 4
+  whole_bundle_invariants_pass: yes
+  response_fields_read_for_transformations: 0
+  m26_publication_disposition: RETIRED_WITHOUT_REPLACEMENT
+
