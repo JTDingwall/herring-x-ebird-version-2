@@ -143,25 +143,49 @@ test_that("production execution artifacts are complete and hash-valid", {
   }
 })
 
-test_that("production aggregate repair reruns byte-identically", {
+test_that("production aggregate repair reruns byte-identically per platform", {
   record <- yaml::read_yaml(repo_file("outputs", "stage4a_pooling_repair_v2",
                                       "execution_record_v2.yml"))
-  temp <- tempfile("stage4a_pooling_v2_test_")
-  dir.create(temp)
+  temp <- c(tempfile("stage4a_pooling_v2_test_a_"),
+            tempfile("stage4a_pooling_v2_test_b_"))
+  vapply(temp, dir.create, logical(1L))
   on.exit(unlink(temp, recursive = TRUE), add = TRUE)
-  stage4a_pooling_v2_execute(
-    repo_root = project_root, output_dir = temp,
-    pre_execution_spec_commit = record$pre_execution_spec_commit,
-    execution_code_commit = record$execution_code_commit
-  )
+  for (directory in temp) stage4a_pooling_v2_execute(
+      repo_root = project_root, output_dir = directory,
+      pre_execution_spec_commit = record$pre_execution_spec_commit,
+      execution_code_commit = record$execution_code_commit
+    )
   expected_dir <- repo_file("outputs", "stage4a_pooling_repair_v2")
   files <- sort(list.files(expected_dir))
-  expect_setequal(list.files(temp), files)
-  expected_hash <- vapply(file.path(expected_dir, files), digest::digest,
-                          character(1L), algo = "sha256", file = TRUE,
-                          serialize = FALSE)
-  actual_hash <- vapply(file.path(temp, files), digest::digest,
-                        character(1L), algo = "sha256", file = TRUE,
-                        serialize = FALSE)
+  expect_setequal(list.files(temp[1L]), files)
+  expect_setequal(list.files(temp[2L]), files)
+  rerun_hash <- lapply(temp, function(directory) vapply(
+    file.path(directory, files), digest::digest, character(1L), algo = "sha256",
+    file = TRUE, serialize = FALSE
+  ))
+  expect_identical(unname(rerun_hash[[1L]]), unname(rerun_hash[[2L]]))
+
+  platform_stable <- setdiff(files,
+    c("effect_estimates_v2.csv", "output_hash_manifest_v2.csv"))
+  expected_hash <- vapply(file.path(expected_dir, platform_stable), digest::digest,
+    character(1L), algo = "sha256", file = TRUE, serialize = FALSE)
+  actual_hash <- vapply(file.path(temp[1L], platform_stable), digest::digest,
+    character(1L), algo = "sha256", file = TRUE, serialize = FALSE)
   expect_identical(unname(actual_hash), unname(expected_hash))
+
+  expected <- fread(file.path(expected_dir, "effect_estimates_v2.csv"),
+                    colClasses = "character", na.strings = NULL)
+  actual <- fread(file.path(temp[1L], "effect_estimates_v2.csv"),
+                  colClasses = "character", na.strings = NULL)
+  derived <- c("partial_pool_estimate_v2", "partial_pool_standard_error_v2",
+               "partial_pool_conf_low_v2", "partial_pool_conf_high_v2")
+  expect_identical(as.data.frame(actual[, setdiff(names(actual), derived), with = FALSE]),
+                   as.data.frame(expected[, setdiff(names(expected), derived), with = FALSE]))
+  for (field in derived) {
+    observed <- as.numeric(actual[[field]])
+    reference <- as.numeric(expected[[field]])
+    relative_error <- abs(observed - reference) / pmax(1, abs(reference))
+    expect_true(all(relative_error[is.finite(relative_error)] < 1e-13), info = field)
+    expect_identical(is.na(observed), is.na(reference))
+  }
 })

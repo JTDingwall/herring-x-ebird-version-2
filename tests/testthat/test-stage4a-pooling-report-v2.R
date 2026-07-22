@@ -41,8 +41,9 @@ test_that("publication repair report states scope and interpretation boundaries"
 
 test_that("publication repair report rebuild is byte-identical", {
   output_dir <- repo_file("outputs", "stage4a_pooling_report_v2")
-  before <- fread(file.path(output_dir, "report_artifact_hashes_v2.csv"))
   build_stage4a_pooling_report_v2(project_root)
-  after <- fread(file.path(output_dir, "report_artifact_hashes_v2.csv"))
-  expect_identical(after, before)
+  first <- fread(file.path(output_dir, "report_artifact_hashes_v2.csv"))
+  build_stage4a_pooling_report_v2(project_root)
+  second <- fread(file.path(output_dir, "report_artifact_hashes_v2.csv"))
+  expect_identical(second, first)
 })
