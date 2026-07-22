@@ -1,4 +1,4 @@
-﻿"check_id","category","status","evidence"
+"check_id","category","status","evidence"
 "BUILD001","build","PASS","Base-R aggregate package build completed without fitting response models."
 "NUM001","numeric","PASS","Singular-fit audit rows=43; expected=43."
 "NUM002","numeric","PASS","No M27/M28 component has BH q < 0.05."

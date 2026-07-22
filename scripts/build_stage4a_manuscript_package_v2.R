@@ -23,10 +23,16 @@ assert_true <- function(x, msg) if (!isTRUE(x)) stopf("%s", msg)
 read_csv <- function(...) read.csv(repo_file(...), stringsAsFactors = FALSE,
                                     check.names = FALSE, na.strings = c(""))
 write_csv <- function(x, path) {
-  write.table(x, file = path, sep = ",", row.names = FALSE, col.names = TRUE,
+  con <- file(path, open = "wb")
+  on.exit(close(con), add = TRUE)
+  write.table(x, file = con, sep = ",", row.names = FALSE, col.names = TRUE,
               quote = TRUE, na = "", eol = "\n", fileEncoding = "UTF-8")
 }
-write_text <- function(x, path) writeLines(enc2utf8(x), con = path, useBytes = TRUE, sep = "\n")
+write_text <- function(x, path) {
+  con <- file(path, open = "wb")
+  on.exit(close(con), add = TRUE)
+  writeLines(enc2utf8(x), con = con, useBytes = TRUE, sep = "\n")
+}
 key <- function(x, cols) do.call(paste, c(x[cols], sep = "|"))
 assert_unique <- function(x, cols, label) {
   assert_true(!anyDuplicated(key(x, cols)), sprintf("%s key is not unique: %s", label, paste(cols, collapse = ", ")))

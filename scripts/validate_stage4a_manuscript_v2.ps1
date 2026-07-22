@@ -6,6 +6,16 @@ param(
 $ErrorActionPreference = 'Stop'
 $freeze = 'c54b8e7f95a2fe3573e2e38633079cd223c5a783'
 $audit = [System.Collections.Generic.List[object]]::new()
+$utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+
+function Write-Utf8Lf([string]$Path, [string[]]$Lines) {
+    $value = ($Lines -join "`n") + "`n"
+    [System.IO.File]::WriteAllText($Path, $value, $script:utf8NoBom)
+}
+
+function Export-CsvUtf8Lf([object[]]$Data, [string]$Path) {
+    Write-Utf8Lf -Path $Path -Lines @($Data | ConvertTo-Csv -NoTypeInformation)
+}
 
 function Add-Check([string]$Id, [string]$Category, [bool]$Passed, [string]$Evidence) {
     $audit.Add([pscustomobject]@{
@@ -171,7 +181,7 @@ try {
     git diff --check
     Add-Check 'GIT001' 'repository' ($LASTEXITCODE -eq 0) 'git diff --check reported no whitespace errors.'
 
-    $audit | Export-Csv -NoTypeInformation -Encoding UTF8 -LiteralPath $auditPath
+    Export-CsvUtf8Lf -Data @($audit) -Path $auditPath
 
     $metrics = @(
         [pscustomobject]@{ metric = 'abstract_word_count'; value = $abstractWords },
@@ -186,7 +196,7 @@ try {
     foreach ($g in ($claim | Group-Object robustness_classification)) {
         $metrics += [pscustomobject]@{ metric = "claims_$($g.Name -replace ' ','_')"; value = $g.Count }
     }
-    $metrics | Export-Csv -NoTypeInformation -Encoding UTF8 -LiteralPath metadata/stage4a_manuscript_metrics_v2.csv
+    Export-CsvUtf8Lf -Data @($metrics) -Path (Join-Path $ProjectRoot 'metadata\stage4a_manuscript_metrics_v2.csv')
 
     $failures = @($audit | Where-Object status -eq 'FAIL')
     $robustnessText = ($claim | Group-Object robustness_classification |
@@ -225,7 +235,7 @@ try {
         '',
         'No production response analysis or protected sensitivity was run for manuscript assembly. No protected identifier or row-level record is included. Frozen v1 and v2 analysis artifacts remain unchanged.'
     )
-    Set-Content -LiteralPath manuscript/stage4a_submission_readiness_v2.md -Value $readiness -Encoding UTF8
+    Write-Utf8Lf -Path (Join-Path $ProjectRoot 'manuscript\stage4a_submission_readiness_v2.md') -Lines $readiness
 
     $manifestFiles = @(Get-ChildItem manuscript -Recurse -File | Where-Object { $_.FullName -notmatch '\\tmp\\' })
     $manifestFiles += @(Get-Item @(
@@ -254,7 +264,7 @@ try {
             analysis_freeze_commit = $freeze
         }
     }
-    $manifest | Export-Csv -NoTypeInformation -Encoding UTF8 -LiteralPath metadata/stage4a_manuscript_artifact_manifest_v2.csv
+    Export-CsvUtf8Lf -Data @($manifest) -Path (Join-Path $ProjectRoot 'metadata\stage4a_manuscript_artifact_manifest_v2.csv')
 
     if ($failures.Count -gt 0) {
         $failures | Format-Table -AutoSize | Out-String | Write-Error

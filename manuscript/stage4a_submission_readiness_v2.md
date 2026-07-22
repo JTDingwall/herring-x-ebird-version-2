@@ -1,4 +1,4 @@
-﻿# Stage 4A v2 submission readiness
+# Stage 4A v2 submission readiness
 
 Overall automated status: **PASS - technically ready for human scientific and journal-specific review**
 
