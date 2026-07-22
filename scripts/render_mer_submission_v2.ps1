@@ -31,16 +31,30 @@ $browserCandidates = @(
 $browser = $browserCandidates | Where-Object { $_ -and (Test-Path -LiteralPath $_) } | Select-Object -First 1
 if (-not $browser) { throw 'A Chromium browser was not found for high-resolution artwork export.' }
 
+function Copy-WithRetry([string]$Source, [string]$Destination) {
+    for ($attempt = 1; $attempt -le 20; $attempt++) {
+        try {
+            Copy-Item -LiteralPath $Source -Destination $Destination -Force -ErrorAction Stop
+            return
+        }
+        catch {
+            if ($attempt -eq 20) { throw }
+            Start-Sleep -Milliseconds 500
+        }
+    }
+}
+
 $figureMap = [ordered]@{
     'figure1_workflow_v2.svg' = 'Figure_1.png'
     'figure2_primary_guild_v2.svg' = 'Figure_2.png'
     'figure3_event_time_v2.svg' = 'Figure_3.png'
-    'figure4_wcvi_robustness_v2.svg' = 'Figure_4.png'
-    'figure5_placebo_v2.svg' = 'Figure_5.png'
+    'figure4_focal_specificity_v2.svg' = 'Figure_4.png'
+    'figure4_wcvi_robustness_v2.svg' = 'Figure_5.png'
     'figureS1_priority_species_v2.svg' = 'Figure_S1.png'
     'figureS2_pooling_row_disposition_v2.svg' = 'Figure_S2.png'
     'figureS3_pooling_tau_v2.svg' = 'Figure_S3.png'
     'figureS4_model_diagnostics_v2.svg' = 'Figure_S4.png'
+    'figure5_placebo_v2.svg' = 'Figure_S5.png'
 }
 
 foreach ($existing in Get-ChildItem -LiteralPath $figureDir -File) {
@@ -49,6 +63,8 @@ foreach ($existing in Get-ChildItem -LiteralPath $figureDir -File) {
 foreach ($entry in $figureMap.GetEnumerator()) {
     $svg = if ($entry.Key -eq 'figure1_workflow_v2.svg') {
         Join-Path $journalRoot 'source_artwork\Figure_1.svg'
+    } elseif ($entry.Key -eq 'figure4_focal_specificity_v2.svg') {
+        Join-Path $journalRoot 'source_artwork\Figure_4.svg'
     } else {
         Join-Path $ProjectRoot ('manuscript\figures\' + $entry.Key)
     }
@@ -114,8 +130,8 @@ try {
         & $quarto render $sourceRel --output-dir ("../rendered/" + $stageName)
         if ($LASTEXITCODE -ne 0) { throw "Quarto render failed: $qmd" }
         $stem = [System.IO.Path]::GetFileNameWithoutExtension($qmd)
-        Copy-Item -LiteralPath (Join-Path $stage ($stem + '.docx')) -Destination $renderedDir -Force
-        Copy-Item -LiteralPath (Join-Path $stage ($stem + '.html')) -Destination $renderedDir -Force
+        Copy-WithRetry (Join-Path $stage ($stem + '.docx')) $renderedDir
+        Copy-WithRetry (Join-Path $stage ($stem + '.html')) $renderedDir
         Remove-Item -LiteralPath $stage -Recurse -Force
     }
 
@@ -128,6 +144,7 @@ try {
         'mer_reviewer_expertise_v2.md' = 'mer_reviewer_expertise_v2.docx'
         'mer_response_to_reviewers_template_v2.md' = 'mer_response_to_reviewers_template_v2.docx'
         'mer_reporting_checklist_v2.md' = 'mer_reporting_checklist_v2.docx'
+        'mer_title_options_v2.md' = 'mer_title_options_v2.docx'
     }
     foreach ($entry in $markdownDocs.GetEnumerator()) {
         & $pandoc (Join-Path $sourceDir $entry.Key) --from gfm --standalone --output (Join-Path $renderedDir $entry.Value)

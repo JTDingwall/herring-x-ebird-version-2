@@ -1,15 +1,37 @@
-<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='520' viewBox='0 0 1200 520' role='img' aria-labelledby='title desc'>
-<title id='title'>Stage 4A checklist-conditional analysis workflow</title>
-<desc id='desc'>A five-step workflow from permitted aggregate inputs through eligible complete checklists, exposure linkage, registered mixed models, and audited publication claims.</desc>
-<rect width='1200' height='520' fill='#ffffff'/>
-<style>text{font-family:Arial,sans-serif;fill:#17212b}.box{fill:#f5f8fa;stroke:#1f5a7a;stroke-width:2}.head{font-size:18px;font-weight:bold}.body{font-size:14px}.arrow{stroke:#7a5a00;stroke-width:3;fill:none;marker-end:url(#a)}.note{font-size:13px;fill:#596674}</style>
-<defs><marker id='a' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><path d='M0,0 L0,6 L9,3 z' fill='#7a5a00'/></marker></defs>
-<text x='600' y='38' text-anchor='middle' font-size='24' font-weight='bold'>Checklist-conditional Stage 4A analysis and evidence audit</text>
-<rect class='box' x='35' y='105' rx='12' width='190' height='190'/><text class='head' x='130' y='140' text-anchor='middle'>Permitted inputs</text><text class='body' x='55' y='180'>Complete eBird checklists</text><text class='body' x='55' y='208'>DFO recorded spawn data</text><text class='body' x='55' y='236'>Frozen registries and hashes</text><text class='note' x='55' y='270'>No protected identifiers released</text>
-<rect class='box' x='275' y='105' rx='12' width='190' height='190'/><text class='head' x='370' y='140' text-anchor='middle'>Eligibility</text><text class='body' x='295' y='180'>Stationary or traveling</text><text class='body' x='295' y='208'>5-300 min; at most 5 km</text><text class='body' x='295' y='236'>1-10 observers; through 2025</text><text class='note' x='295' y='270'>Checklist is the independent row</text>
-<rect class='box' x='515' y='105' rx='12' width='190' height='190'/><text class='head' x='610' y='140' text-anchor='middle'>Exposure linkage</text><text class='body' x='535' y='180'>Spatial and temporal windows</text><text class='body' x='535' y='208'>All concurrent links additive</text><text class='body' x='535' y='236'>Monitoring states distinct</text><text class='note' x='535' y='270'>Unmonitored is unknown</text>
-<rect class='box' x='755' y='105' rx='12' width='190' height='190'/><text class='head' x='850' y='140' text-anchor='middle'>Registered models</text><text class='body' x='775' y='180'>Detection and positive count</text><text class='body' x='775' y='208'>Effort, observer, time, space</text><text class='body' x='775' y='236'>Pooling and BH families</text><text class='note' x='775' y='270'>Placebos and matched sensitivities</text>
-<rect class='box' x='995' y='105' rx='12' width='170' height='190'/><text class='head' x='1080' y='140' text-anchor='middle'>Claim audit</text><text class='body' x='1015' y='180'>Estimate + interval</text><text class='body' x='1015' y='208'>Multiplicity + fit status</text><text class='body' x='1015' y='236'>Sensitivity + falsification</text><text class='note' x='1015' y='270'>Qualified wording only</text>
-<line class='arrow' x1='225' y1='200' x2='267' y2='200'/><line class='arrow' x1='465' y1='200' x2='507' y2='200'/><line class='arrow' x1='705' y1='200' x2='747' y2='200'/><line class='arrow' x1='945' y1='200' x2='987' y2='200'/>
-<rect x='170' y='360' width='860' height='105' rx='10' fill='#fff8e8' stroke='#7a5a00'/><text x='600' y='395' text-anchor='middle' font-size='17' font-weight='bold'>Estimand boundary</text><text x='600' y='425' text-anchor='middle' font-size='15'>Associations among eligible submitted complete checklists; not causal effects or regional bird abundance, biomass, occupancy, migration, or movement.</text><text x='600' y='449' text-anchor='middle' class='note'>Registered analyses are confirmatory observational; causal identification remains limited.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">Pacific herring resource-pulse hypotheses and event-linked checklist design</title>
+<desc id="desc">A conceptual coastal scene connects recorded herring spawn to near and reference checklists, five biological windows, focal bird responses, and a specificity comparison.</desc>
+<rect width="1200" height="700" fill="#ffffff"/>
+<style>.t{font-family:Arial,sans-serif;fill:#16323f}.h{font-size:26px;font-weight:700}.sh{font-size:19px;font-weight:700}.b{font-size:15px}.sm{font-size:13px}.box{fill:#f7faf8;stroke:#2b6172;stroke-width:2}.pulse{fill:#fff4cf;stroke:#b97a00;stroke-width:2}.focus{fill:#e9f4f5;stroke:#27798a;stroke-width:2}.spec{fill:#f7edf3;stroke:#8f4a70;stroke-width:2}.arrow{stroke:#55747f;stroke-width:3;fill:none;marker-end:url(#a)}</style>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L0 6 L9 3 z" fill="#55747f"/></marker></defs>
+<text class="t h" x="600" y="42" text-anchor="middle">Does a brief herring-spawn pulse leave a local bird-checklist signature?</text>
+<rect x="35" y="85" width="355" height="265" rx="14" class="pulse"/>
+<text class="t sh" x="212" y="118" text-anchor="middle">Recorded coastal resource pulse</text>
+<path d="M55 270 Q130 225 205 270 T370 270 L370 330 L55 330 Z" fill="#88c6d2"/>
+<path d="M55 260 Q130 215 205 260 T370 260" fill="none" stroke="#27798a" stroke-width="4"/>
+<path d="M90 232 Q150 185 215 215 T345 205" fill="none" stroke="#725f3a" stroke-width="10"/>
+<circle cx="155" cy="210" r="7" fill="#f2d36b"/><circle cx="178" cy="205" r="7" fill="#f2d36b"/><circle cx="202" cy="211" r="7" fill="#f2d36b"/><circle cx="230" cy="207" r="7" fill="#f2d36b"/>
+<text class="t b" x="212" y="150" text-anchor="middle">adult fish + deposited eggs + shoreline subsidies</text>
+<text class="t sm" x="212" y="317" text-anchor="middle">spatially patchy, short-lived, incompletely monitored</text>
+<rect x="425" y="85" width="330" height="265" rx="14" class="box"/>
+<text class="t sh" x="590" y="118" text-anchor="middle">Event-linked complete checklists</text>
+<rect x="458" y="150" width="118" height="70" rx="8" class="focus"/><text class="t b" x="517" y="177" text-anchor="middle">NEAR</text><text class="t sm" x="517" y="201" text-anchor="middle">recorded spawn</text>
+<rect x="604" y="150" width="118" height="70" rx="8" class="box"/><text class="t b" x="663" y="177" text-anchor="middle">REFERENCE</text><text class="t sm" x="663" y="201" text-anchor="middle">shoreline context</text>
+<text class="t b" x="590" y="254" text-anchor="middle">Detection: taxon reported?</text>
+<text class="t b" x="590" y="280" text-anchor="middle">Conditional count: how many after detection?</text>
+<text class="t sm" x="590" y="319" text-anchor="middle">estimand: eligible submitted complete checklists</text>
+<path class="arrow" d="M390 215 L417 215"/>
+<rect x="790" y="85" width="375" height="265" rx="14" class="focus"/>
+<text class="t sh" x="977" y="118" text-anchor="middle">Biological predictions</text>
+<text class="t b" x="820" y="155">H1  focal taxa and guilds respond near spawn</text>
+<text class="t b" x="820" y="194">H2  responses cluster in biological windows</text>
+<text class="t b" x="820" y="233">H3  focal patterns exceed a specificity panel</text>
+<text class="t b" x="820" y="272">H4  strongest directions recur across regions</text>
+<text class="t sm" x="977" y="319" text-anchor="middle">predictions evaluated with registered analyses</text>
+<path class="arrow" d="M755 215 L782 215"/>
+<text class="t sh" x="600" y="402" text-anchor="middle">Five registered biological windows</text>
+<line x1="110" y1="462" x2="1090" y2="462" stroke="#55747f" stroke-width="4"/>
+<g class="t b" text-anchor="middle"><circle cx="140" cy="462" r="10" fill="#8798a0"/><text x="140" y="500">immediate pre</text><circle cx="365" cy="462" r="10" fill="#d18b00"/><text x="365" y="500">spawn start</text><circle cx="590" cy="462" r="10" fill="#e6b83f"/><text x="590" y="500">early egg</text><circle cx="815" cy="462" r="10" fill="#b8a453"/><text x="815" y="500">late egg</text><circle cx="1040" cy="462" r="10" fill="#8798a0"/><text x="1040" y="500">post</text></g>
+<rect x="90" y="550" width="470" height="105" rx="12" class="focus"/><text class="t sh" x="325" y="581" text-anchor="middle">Focal response</text><text class="t b" x="325" y="611" text-anchor="middle">herring-associated taxa and guilds</text><text class="t sm" x="325" y="636" text-anchor="middle">taxon, outcome, window, and region may differ</text>
+<rect x="640" y="550" width="470" height="105" rx="12" class="spec"/><text class="t sh" x="875" y="581" text-anchor="middle">Specificity comparison</text><text class="t b" x="875" y="611" text-anchor="middle">Gadwall + Northern Shoveler (SoG detection)</text><text class="t sm" x="875" y="636" text-anchor="middle">tests whether the recorded signal is uniquely focal</text>
 </svg>

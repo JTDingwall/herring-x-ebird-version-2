@@ -1,8 +1,7 @@
 # Highlights
 
-- Complete eBird checklists were linked to recorded herring-spawn events.
-- Registered bird associations differed by taxon, region, and response.
+- Herring spawning left a local but heterogeneous bird-checklist signature.
+- Surf Scoter and Short-billed Gull responses recurred across both regions.
+- Event timing did not follow one community-wide resource-pulse trajectory.
 - Matched WCVI sensitivities preserved 15 of 16 coefficient directions.
-- No matched whole-bundle placebo component had BH q below 0.05.
-- A non-null specificity panel constrains simple ecological interpretation.
-
+- A non-null specificity panel limits simple taxon-specific interpretation.

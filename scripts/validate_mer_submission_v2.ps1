@@ -39,6 +39,7 @@ function Count-Words([string]$Text) {
     $clean = [regex]::Replace($Text,'(?s)^---.*?---','')
     $clean = [regex]::Replace($clean,'!\[[^\]]*\]\([^\)]*\)',' ')
     $clean = [regex]::Replace($clean,'\[@[^\]]+\]',' ')
+    $clean = [regex]::Replace($clean,'\{\{<\s*pagebreak\s*>\}\}',' ')
     $clean = [regex]::Replace($clean,'[#*_`|{}\[\]()]',' ')
     ([regex]::Matches($clean,"[A-Za-z0-9]+(?:[-'][A-Za-z0-9]+)*")).Count
 }
@@ -97,10 +98,10 @@ try {
     Add-Check 'CLAIM002' 'claim_language' ($main.Contains($replication)) 'Approved replication sentence appears verbatim.'
     Add-Check 'CLAIM003' 'claim_language' ($main -match 'confirmatory observational evidence') 'Registered core is presented as confirmatory observational evidence.'
     Add-Check 'CLAIM004' 'claim_language' (-not ($main -match 'remain exploratory or estimand-refining pending prospective confirmation')) 'Over-conservative global exploratory wording is absent.'
-    Add-Check 'CLAIM005' 'claim_language' ($main -match 'M26 v1 was retired without replacement') 'M26 is not interpreted.'
+    Add-Check 'CLAIM005' 'claim_language' ($all -match 'M26 v1 is historical only and retired without replacement') 'M26 is not interpreted.'
     Add-Check 'CLAIM006' 'claim_language' ($main -match 'does not identify a causal effect|not a causal effect' -and $main -match 'population abundance, biomass, occupancy, migration') 'Causal and population-level overclaims are excluded.'
-    Add-Check 'CLAIM007' 'claim_language' ($main -match 'not treated as a surveyed negative' -and $main -match 'unmonitored-unknown') 'Missing DFO monitoring is not a zero or surveyed negative.'
-    Add-Check 'CLAIM008' 'claim_language' ($main -match 'zero 2026-or-later rows read') 'No 2026+ response result appears.'
+    Add-Check 'CLAIM007' 'claim_language' ($main -match 'not coded as zero or surveyed negatives' -and $main -match 'unmonitored-unknown') 'Missing DFO monitoring is not a zero or surveyed negative.'
+    Add-Check 'CLAIM008' 'claim_language' ($main -match 'restricted to response years through 2025' -and -not ($all -match 'response years? (2026|2027|2028|2029)')) 'No 2026+ response result appears.'
     Add-Check 'CLAIM009' 'claim_language' ($main -match 'Three headline claims include some singular-warning support' -and $main -match 'no headline claim depends exclusively') 'Singularity is localized to three headline claims and none depends exclusively on it.'
 
     $bib = [IO.File]::ReadAllText((Join-Path $sourceDir 'mer_references_v2.bib'))
@@ -113,7 +114,7 @@ try {
     Add-Check 'CITE003' 'citation' ($citationAudit.Count -eq $bibKeys.Count -and ($citationAudit|Where-Object missing_information_status -ne 'none').Count -eq 0) "Citation audit rows=$($citationAudit.Count); bibliography entries=$($bibKeys.Count); missing information=0."
     Add-Check 'CITE004' 'citation' ($bib -match 'Mar\. Ecol\. Prog\. Ser\.' -and $bib -match 'Can\. J\. Fish\. Aquat\. Sci\.') 'Journal names use abbreviated forms in the journal-specific bibliography.'
 
-    $expectedRendered = @('mer_manuscript_unblinded_v2.docx','mer_manuscript_unblinded_v2.pdf','mer_manuscript_unblinded_v2.html','mer_manuscript_blinded_companion_v2.docx','mer_manuscript_blinded_companion_v2.pdf','mer_supplement_v2.docx','mer_supplement_v2.pdf','mer_supplement_blinded_companion_v2.docx','mer_supplement_blinded_companion_v2.pdf','mer_title_page_v2.docx','mer_cover_letter_v2.docx','mer_highlights_v2.docx','mer_highlights_v2.txt','mer_author_declarations_v2.docx','mer_abstract_v2.docx','mer_reporting_checklist_v2.docx','mer_response_to_reviewers_template_v2.docx','mer_reviewer_expertise_v2.docx')
+    $expectedRendered = @('mer_manuscript_unblinded_v2.docx','mer_manuscript_unblinded_v2.pdf','mer_manuscript_unblinded_v2.html','mer_manuscript_blinded_companion_v2.docx','mer_manuscript_blinded_companion_v2.pdf','mer_supplement_v2.docx','mer_supplement_v2.pdf','mer_supplement_blinded_companion_v2.docx','mer_supplement_blinded_companion_v2.pdf','mer_title_page_v2.docx','mer_cover_letter_v2.docx','mer_highlights_v2.docx','mer_highlights_v2.txt','mer_author_declarations_v2.docx','mer_abstract_v2.docx','mer_reporting_checklist_v2.docx','mer_response_to_reviewers_template_v2.docx','mer_reviewer_expertise_v2.docx','mer_title_options_v2.docx')
     $missingRendered = @($expectedRendered|Where-Object{-not(Test-Path (Join-Path $renderedDir $_)) -or (Get-Item (Join-Path $renderedDir $_)).Length -eq 0})
     Add-Check 'RENDER001' 'render' ($missingRendered.Count -eq 0) ('Missing or empty rendered files: '+($missingRendered -join '; '))
     $visualPath = Join-Path $auditDir 'render_visual_audit_v2.csv'
@@ -122,7 +123,7 @@ try {
 
     Add-Type -AssemblyName System.Drawing
     $figRows = foreach($file in Get-ChildItem $figureDir -Filter '*.png'|Sort-Object Name){$img=[Drawing.Image]::FromFile($file.FullName);try{[pscustomobject]@{file=$file.Name;width_px=$img.Width;height_px=$img.Height;minimum_class=$(if($img.Width-ge 3543){'line/full-width capable'}elseif($img.Width-ge 1772){'combination/single-column capable'}else{'below target'});status=$(if($img.Width-ge 1772){'PASS'}else{'FAIL'})}}finally{$img.Dispose()}}
-    Add-Check 'FIG001' 'figure' (($figRows|Where-Object status -eq 'FAIL').Count -eq 0) "All nine PNG figures meet at least the 500-dpi single-column pixel target."
+    Add-Check 'FIG001' 'figure' (($figRows|Where-Object status -eq 'FAIL').Count -eq 0 -and $figRows.Count -eq 10) "All ten PNG figures meet at least the 500-dpi single-column pixel target."
     Export-CsvUtf8Lf $figRows (Join-Path $auditDir 'figure_dimensions_v2.csv')
 
     $protectedPattern = '(?i)(sampling_event_identifier|locality_id|observer_id|event_token)'
@@ -139,7 +140,7 @@ try {
     $metrics = @(
         [pscustomobject]@{metric='abstract_word_count';value=$abstractWords},[pscustomobject]@{metric='abstract_limit';value=250},
         [pscustomobject]@{metric='main_text_word_count';value=$bodyWords},[pscustomobject]@{metric='main_text_typical_minimum';value=5000},[pscustomobject]@{metric='main_text_typical_maximum';value=10000},
-        [pscustomobject]@{metric='main_figures';value=5},[pscustomobject]@{metric='main_tables';value=3},[pscustomobject]@{metric='supplement_figures';value=4},[pscustomobject]@{metric='supplement_tables';value=10},
+        [pscustomobject]@{metric='main_figures';value=5},[pscustomobject]@{metric='main_tables';value=3},[pscustomobject]@{metric='supplement_figures';value=5},[pscustomobject]@{metric='supplement_tables';value=11},
         [pscustomobject]@{metric='confirmatory_claims';value=$classCounts['confirmatory']},[pscustomobject]@{metric='secondary_claims';value=$classCounts['secondary']},[pscustomobject]@{metric='exploratory_claims';value=0},
         [pscustomobject]@{metric='methodological_claims';value=$classCounts['methodological']},[pscustomobject]@{metric='limitation_claims';value=$classCounts['limitation']},
         [pscustomobject]@{metric='wording_changes';value=(Import-Csv (Join-Path $journalRoot 'claim_language_change_log_v2.csv')).Count},
@@ -152,7 +153,27 @@ try {
     Copy-Item outputs/stage4a_publication_v2/sog_falsification_claim_audit_v2.csv (Join-Path $auditDir 'sog_m29_audit_v2.csv') -Force
 
     $baseProv = Import-Csv metadata/stage4a_publication_table_figure_provenance_v2.csv
-    $prov = foreach($row in $baseProv){$out = if($row.artifact_id -like 'Figure*'){Join-Path $figureDir (($row.artifact_id -replace ' ','_')+'.png')}elseif($row.manuscript_location -eq 'main'){Join-Path $tableDir (($row.artifact_id -replace ' ','_')+'.csv')}else{Join-Path $tableDir (($row.artifact_id -replace ' ','_')+'.csv')};[pscustomobject]@{artifact_id=$row.artifact_id;manuscript_location=$row.manuscript_location;journal_output_path=$(if(Test-Path $out){$out.Substring($ProjectRoot.Length+1).Replace('\','/')}else{'embedded_or_not_applicable'});journal_output_hash=$(if(Test-Path $out){(Get-FileHash $out -Algorithm SHA256).Hash.ToLowerInvariant()}else{''});source_file=$row.source_file;source_hash=$row.source_hash;generation_script=$row.generation_script;journal_render_script='scripts/render_mer_submission_v2.ps1';generation_commit=$GenerationCommit;filters=$row.filters;model_or_family_ids=$row.model_or_family_ids;caption=$row.caption;privacy_classification=$row.privacy_classification}}
+    $journalProv = [Collections.Generic.List[object]]::new()
+    foreach($row in $baseProv){
+        if($row.artifact_id -eq 'Figure 4'){
+            $copy=$row.PSObject.Copy();$copy.artifact_id='Figure 5';$journalProv.Add($copy);continue
+        }
+        if($row.artifact_id -eq 'Figure 5'){
+            $copy=$row.PSObject.Copy();$copy.artifact_id='Figure S5';$copy.manuscript_location='supplement';$journalProv.Add($copy);continue
+        }
+        if($row.artifact_id -eq 'Table 1'){
+            $copy=$row.PSObject.Copy();$copy.artifact_id='Table S11';$copy.manuscript_location='supplement';$journalProv.Add($copy);continue
+        }
+        if($row.artifact_id -eq 'Figure 1'){
+            $copy=$row.PSObject.Copy();$copy.caption='Scientific hypotheses and event-linked checklist design.';$copy.filters='registered ecological predictions and event-linked design';$copy.model_or_family_ids='M01,M02,M05,M29';$journalProv.Add($copy);continue
+        }
+        $journalProv.Add($row)
+    }
+    $focalArtwork='manuscript/journal_submission/marine_environmental_research/source_artwork/Figure_4.svg'
+    $hypothesisTable='manuscript/journal_submission/marine_environmental_research/generated/table1_hypotheses_v2.md'
+    $journalProv.Add([pscustomobject]@{artifact_id='Figure 4';manuscript_location='main';source_file=$focalArtwork;source_hash=(Get-FileHash $focalArtwork -Algorithm SHA256).Hash.ToLowerInvariant();generation_script=$focalArtwork;generation_commit=$GenerationCommit;filters='Surf Scoter and Short-billed Gull in SoG/WCVI plus SoG M29 taxa';model_or_family_ids='M02,M29';caption='Cross-region focal responses and the SoG specificity panel.';privacy_classification='public aggregate'})
+    $journalProv.Add([pscustomobject]@{artifact_id='Table 1';manuscript_location='main';source_file=$hypothesisTable;source_hash=(Get-FileHash $hypothesisTable -Algorithm SHA256).Hash.ToLowerInvariant();generation_script=$hypothesisTable;generation_commit=$GenerationCommit;filters='H1-H4 synthesis of registered evidence';model_or_family_ids='M01,M02,M05,M29';caption='Biological predictions and observed evidence.';privacy_classification='public aggregate'})
+    $prov = foreach($row in $journalProv){$out = if($row.artifact_id -like 'Figure*'){Join-Path $figureDir (($row.artifact_id -replace ' ','_')+'.png')}else{Join-Path $tableDir (($row.artifact_id -replace ' ','_')+'.csv')};[pscustomobject]@{artifact_id=$row.artifact_id;manuscript_location=$row.manuscript_location;journal_output_path=$(if(Test-Path $out){$out.Substring($ProjectRoot.Length+1).Replace('\','/')}else{'embedded_or_not_applicable'});journal_output_hash=$(if(Test-Path $out){(Get-FileHash $out -Algorithm SHA256).Hash.ToLowerInvariant()}else{''});source_file=$row.source_file;source_hash=$row.source_hash;generation_script=$row.generation_script;journal_render_script='scripts/render_mer_submission_v2.ps1';generation_commit=$GenerationCommit;filters=$row.filters;model_or_family_ids=$row.model_or_family_ids;caption=$row.caption;privacy_classification=$row.privacy_classification}}
     Export-CsvUtf8Lf $prov (Join-Path $auditDir 'figure_table_provenance_v2.csv')
 
     Export-CsvUtf8Lf @($audit) (Join-Path $auditDir 'journal_consistency_audit_v2.csv')
@@ -164,7 +185,7 @@ try {
     Export-CsvUtf8Lf $inventory (Join-Path $auditDir 'submission_file_inventory_v2.csv')
 
     $failures=@($audit|Where-Object status -eq 'FAIL')
-    $readiness=@('# Marine Environmental Research submission-readiness report','',"Automated status: **$(if($failures.Count-eq 0){'PASS'}else{'FAIL'})**","","- Official requirements accessed: 2026-07-22","- Article type: Full-length Article","- Abstract: $abstractWords / 250 words","- Main text: $bodyWords / typical 5,000-10,000 words","- Main figures/tables: 5 / 3","- Supplement figures/tables: 4 / 10","- Claim classifications: confirmatory=$($classCounts['confirmatory']); secondary=$($classCounts['secondary']); exploratory=0; methodological=$($classCounts['methodological']); limitation=$($classCounts['limitation'])","- Checks passed: $(($audit|Where-Object status -eq 'PASS').Count)","- Checks failed: $($failures.Count)",'','## Human fields still required','','- Full postal address for the University of Victoria affiliation and corresponding author.','- Corresponding-author telephone number requested by the submission checklist.','- Human confirmation of the drafted generative-AI disclosure after final review.','- Human confirmation of originality/exclusive submission and current preprint status in the cover letter.','','No production response model or protected sensitivity was rerun. No analysis estimate changed. No protected record-level identifier was exposed. Frozen v1 and v2 analysis artifacts remain unchanged.')
+    $readiness=@('# Marine Environmental Research submission-readiness report','',"Automated status: **$(if($failures.Count-eq 0){'PASS'}else{'FAIL'})**","","- Official requirements accessed: 2026-07-22","- Article type: Full-length Article","- Abstract: $abstractWords / 250 words","- Main text: $bodyWords / typical 5,000-10,000 words","- Main figures/tables: 5 / 3","- Supplement figures/tables: 5 / 11","- Claim classifications: confirmatory=$($classCounts['confirmatory']); secondary=$($classCounts['secondary']); exploratory=0; methodological=$($classCounts['methodological']); limitation=$($classCounts['limitation'])","- Checks passed: $(($audit|Where-Object status -eq 'PASS').Count)","- Checks failed: $($failures.Count)",'','## Human fields still required','','- Full postal address for the University of Victoria affiliation and corresponding author.','- Corresponding-author telephone number requested by the submission checklist.','- Human confirmation of the drafted generative-AI disclosure after final review.','- Human confirmation of originality/exclusive submission and current preprint status in the cover letter.','','No production response model or protected sensitivity was rerun. No analysis estimate changed. No protected record-level identifier was exposed. Frozen v1 and v2 analysis artifacts remain unchanged.')
     Write-Utf8Lf (Join-Path $journalRoot 'submission_readiness_v2.md') $readiness
     if($failures.Count -gt 0){throw "Journal validation failed: $($failures.Count) check(s)."}
     Write-Host "MER validation PASS: $($audit.Count) checks; abstract=$abstractWords; main=$bodyWords."

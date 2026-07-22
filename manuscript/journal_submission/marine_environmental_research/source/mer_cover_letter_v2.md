@@ -7,11 +7,11 @@ Re: Full-length Article submission, “Spatiotemporal associations between coast
 
 Dear Editor,
 
-Please consider this manuscript as a Full-length Article in *Marine Environmental Research*. Pacific herring spawning creates a brief coastal resource pulse, and the study links effort-aware complete eBird checklists to event-level Fisheries and Oceans Canada spawn information to estimate checklist detection and positive numeric-count associations with recorded local exposure.
+Please consider this manuscript as a Full-length Article in *Marine Environmental Research*. We ask whether the short-lived Pacific herring spawn pulse produces a spatially local, temporally structured, and taxon-specific signature in coastal bird checklists. The study links effort-aware complete eBird checklists to event-level Fisheries and Oceans Canada spawn information and tests biologically motivated predictions using registered analyses.
 
-The registered Stage 4A core provides confirmatory observational evidence. The analysis preserves concurrent event links without duplicating checklists and keeps detection, numeric counts, and unquantified `X` records distinct. Historical partial pooling was repaired using compatible family identities while preserving every individual estimate, confidence interval, p-value, and model-specific Benjamini-Hochberg q-value. The complete submission reports matched whole-bundle placebos, WCVI spatial and observer sensitivities, blocked validation, and all singular-fit warnings.
+The results provide a partial and qualified resource-pulse answer. Surf Scoter and Short-billed Gull showed the clearest cross-region consistency, with positive detection and conditional-count coefficients in both primary regions. Guild responses were heterogeneous, and event-window coefficients did not form one community-wide trajectory. Matched WCVI spatial and observer sensitivities preserved most directions, and response-blind shifted-exposure placebos were null after Benjamini-Hochberg adjustment.
 
-The manuscript prominently reports a non-null prespecified Strait of Georgia specificity panel. That result constrains causal and simple ecological-specificity interpretations without erasing the checklist-conditional associations or directly testing conditional positive-count responses. The paper therefore presents both the substantive ecological pattern and the observation-process alternatives needed for a balanced interpretation.
+The manuscript prominently reports a non-null prespecified Strait of Georgia specificity panel. That result constrains causal and simple ecological-specificity interpretations without erasing the checklist-conditional associations or directly testing conditional positive-count responses. The paper therefore presents the ecological signal, its taxonomic and regional heterogeneity, and the observation-process alternatives needed for a balanced interpretation.
 
 The manuscript fits the journal's interest in biological interactions and quantitative monitoring of coastal systems. Relevant reviewer expertise includes coastal-bird and forage-fish ecology, community-science inference, mixed-effects models, spatial exposure linkage, falsification methods, and reproducible ecological analysis.
 
@@ -29,4 +29,3 @@ Jacob T. Dingwall
 University of Victoria  
 dingwalljake@gmail.com  
 [AUTHOR TO SUPPLY: full postal address and telephone number]
-

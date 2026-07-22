@@ -28,6 +28,8 @@ This supplement documents the complete registered Stage 4A v2 publication eviden
 
 The analysis-freeze commit is `c54b8e7f95a2fe3573e2e38633079cd223c5a783`, tagged `stage4a-publication-v2-analysis-freeze`. The manuscript branch changes only publication text, audit tables, rendered documents, and formatting artifacts.
 
+Supplementary Table S11 (`Table_S11.csv`) records the four frozen regional checklist populations and their inferential roles. The same checklist frame supports multiple taxon outcomes, so the counts are not summed across taxa.
+
 # Registered analysis and model disposition
 
 Supplementary Table S1 (`Table_S1.csv`) lists every historical model relevant to the publication package and its disposition. M26 v1 is historical only and retired without replacement. M27/M28 v1 and the earlier unmatched WCVI sensitivities are superseded by their matched v2 implementations. This disposition does not change the historical registry.
@@ -82,6 +84,10 @@ The intended structure contained random intercepts for event block, observer clu
 # Placebo and matched sensitivity details
 
 Supplementary Table S7 (`Table_S7.csv`) contains all 64 whole-bundle placebo components. M27 ordered protected analysis-event tokens within region-year and applied a nonzero cyclic shift; M28 ordered protected location then event tokens within region-year and applied its registered nonzero shift. Neither construction read a response. The complete linked bundle moved together, preserving within-stratum bundle distributions and concurrent-link invariants with zero fixed positions. No component had BH q below 0.05.
+
+![](../figures/Figure_S5.png){width=100% fig-alt="Matched primary references and whole-bundle shifted-exposure placebo coefficients with 95 percent intervals."}
+
+**Supplementary Figure S5. Matched whole-bundle placebo diagnostics.** M27 and M28 shifted complete exposure bundles within region-year strata without reading responses. No placebo component had BH q below 0.05; null diagnostics do not establish causal identification.
 
 Supplementary Table S8 (the same matched sensitivity table, restricted to the WCVI 2-km and dominant-observer versions plus the matched reference) contains the complete spatial and observer sensitivity estimates. Each sensitivity changed one registered dimension. The 2-km analysis restricted eligibility to the high-precision cohort; the observer analysis removed one pre-defined dominant observer cluster from every guild and outcome. Both used the matched sparse M01 architecture.
 
