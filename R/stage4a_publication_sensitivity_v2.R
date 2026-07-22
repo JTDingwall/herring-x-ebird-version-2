@@ -127,6 +127,22 @@ stage4a_sensitivity_transform_bundle_v2 <- function(events, model_version_id) {
   ))
 }
 
+.stage4a_sensitivity_classify_messages_v2 <- function(
+    optimizer_code, engine_messages, singular_fit) {
+  messages <- if (is.null(engine_messages)) character() else as.character(engine_messages)
+  singular_notice <- grepl("boundary (singular) fit", messages, fixed = TRUE)
+  blocking_messages <- messages[!(singular_fit & singular_notice)]
+  optimizer_pass <- is.null(optimizer_code) || all(optimizer_code == 0L)
+  convergence_message <- if (!length(messages)) "" else {
+    substr(gsub("[\r\n]+", " ", paste(messages, collapse = "; ")), 1L, 240L)
+  }
+  if (!optimizer_pass && !nzchar(convergence_message)) {
+    convergence_message <- paste0("optimizer_code_", paste(optimizer_code, collapse = "_"))
+  }
+  list(converged = optimizer_pass && !length(blocking_messages),
+       convergence_message = convergence_message)
+}
+
 stage4a_sensitivity_fit_one_v2 <- function(dat, model_version_id, sensitivity_id,
                                             region, unit_label, outcome,
                                             checkpoint_path, cache_signature) {
@@ -185,16 +201,11 @@ stage4a_sensitivity_fit_one_v2 <- function(dat, model_version_id, sensitivity_id
   index <- match("active_near", rownames(coefficients))
   optimizer_code <- fit@optinfo$conv$opt
   convergence_messages <- fit@optinfo$conv$lme4$messages
-  convergence_message <- if (is.null(convergence_messages)) "" else {
-    substr(gsub("[\r\n]+", " ", paste(convergence_messages, collapse = "; ")), 1L, 240L)
-  }
-  if (!is.null(optimizer_code) && any(optimizer_code != 0L) &&
-      !nzchar(convergence_message)) {
-    convergence_message <- paste0("optimizer_code_", paste(optimizer_code, collapse = "_"))
-  }
-  converged <- (is.null(optimizer_code) || all(optimizer_code == 0L)) &&
-    !nzchar(convergence_message)
   singular_fit <- lme4::isSingular(fit, tol = 1e-4)
+  message_classification <- .stage4a_sensitivity_classify_messages_v2(
+    optimizer_code, convergence_messages, singular_fit)
+  converged <- message_classification$converged
+  convergence_message <- message_classification$convergence_message
   if (is.na(index)) {
     estimate <- standard_error <- p_value <- NA_real_
     status <- "failed_geometry"

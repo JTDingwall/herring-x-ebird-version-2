@@ -57,3 +57,24 @@ test_that("matched sensitivity code has no simplified model fallback", {
     expect_match(code, paste0("(1 | ", term, ")"), fixed = TRUE)
   }
 })
+
+test_that("singularity notices remain warnings rather than convergence failures", {
+  singular <- .stage4a_sensitivity_classify_messages_v2(
+    optimizer_code = 0L,
+    engine_messages = "boundary (singular) fit: see help('isSingular')",
+    singular_fit = TRUE
+  )
+  expect_true(singular$converged)
+  expect_match(singular$convergence_message, "boundary (singular) fit", fixed = TRUE)
+  nonconverged <- .stage4a_sensitivity_classify_messages_v2(
+    optimizer_code = 1L, engine_messages = NULL, singular_fit = FALSE)
+  expect_false(nonconverged$converged)
+  expect_identical(nonconverged$convergence_message, "optimizer_code_1")
+  mixed <- .stage4a_sensitivity_classify_messages_v2(
+    optimizer_code = 0L,
+    engine_messages = c("boundary (singular) fit: see help('isSingular')",
+                        "unable to evaluate scaled gradient"),
+    singular_fit = TRUE
+  )
+  expect_false(mixed$converged)
+})
