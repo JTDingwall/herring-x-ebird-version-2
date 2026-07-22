@@ -1,0 +1,6 @@
+| Analysis | Components | Result | Singular warnings | Interpretation |
+| --- | ---: | --- | ---: | --- |
+| M27/M28 whole-bundle placebos | 64 | 0/64 BH q < 0.05 | 20 | diagnostic; not proof of causal identification |
+| WCVI 2-km matched sensitivity | 16 | 15/16 same sign as matched reference | 8 | qualified spatial-precision robustness |
+| WCVI dominant-observer holdout | 16 | 15/16 same sign as matched reference | 9 | qualified observer-composition robustness |
+| SoG M29 specificity panel | 2 | 2/2 detection coefficients BH q < 0.05 | 0 | material warning against simple ecological specificity |

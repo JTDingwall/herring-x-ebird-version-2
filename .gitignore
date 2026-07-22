@@ -53,6 +53,8 @@ Thumbs.db
 # Audited, synthetic-only reader reports and aggregate setup evidence
 !reports/*.html
 !docs/*.html
+!manuscript/rendered/
+!manuscript/rendered/*.html
 !outputs/setup/
 !outputs/setup/privacy_scan_summary.json
 !outputs/stage2_design_lock/

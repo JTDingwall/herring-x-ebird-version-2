@@ -1,0 +1,5 @@
+Among the seven ecological guilds in SoG, 5 detection coefficients were positive and 2 were negative; all 7 had BH q < 0.05. For positive numeric count conditional on detection, 6 coefficients were positive and 1 negative, with 6 of 7 BH q-values below 0.05. The complete pattern therefore includes both positive and negative associations rather than a universal increase (Figure 2).
+
+WCVI estimates were less uniform. Detection coefficients were positive for 4 of 7 ecological guilds and BH q < 0.05 for 3; conditional positive-count coefficients were positive for 6 of 7 guilds and BH q < 0.05 for 6. Wider intervals and sparse geometry were most evident in the WCVI component and sensitivity fits.
+
+At the priority-species level, Surf Scoter and Short-billed Gull had positive detection and positive-count coefficients in both primary regions. Glaucous-winged Gull had a positive SoG detection coefficient but an imprecise WCVI detection coefficient, while its conditional count coefficients were positive in both regions. Harlequin Duck and White-winged Scoter were component- or region-dependent (Table 2 and Supplementary Figure S1).

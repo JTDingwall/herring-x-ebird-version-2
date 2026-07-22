@@ -1,0 +1,14 @@
+artifact,pages,status,inspection
+mer_abstract_v2.pdf,1,PASS,No clipping; symbols and keywords readable
+mer_author_declarations_v2.pdf,2,PASS,No clipping; unresolved human tokens conspicuous; page break acceptable
+mer_cover_letter_v2.pdf,2,PASS,No clipping; unresolved human confirmations conspicuous; signature block intact
+mer_highlights_v2.pdf,1,PASS,Five bullets legible and within character limit
+mer_manuscript_blinded_companion_v2.pdf,20,PASS,All pages inspected; identity substitutions intact; revised ggplot2 figures tables captions citations lines and page numbers readable
+mer_manuscript_unblinded_v2.pdf,20,PASS,All pages inspected; hypothesis table caption retained with table; revised ggplot2 figures captions citations lines and page numbers readable
+mer_reporting_checklist_v2.pdf,1,PASS,Table readable with no clipping
+mer_response_to_reviewers_template_v2.pdf,2,PASS,Template fields and integrity checklist readable
+mer_reviewer_expertise_v2.pdf,1,PASS,All expertise bullets readable
+mer_supplement_blinded_companion_v2.pdf,8,PASS,All pages inspected; identity substitution intact; five revised ggplot2 figures citations lines and page numbers readable
+mer_supplement_v2.pdf,8,PASS,All pages inspected; five revised ggplot2 figures citations lines and page numbers readable
+mer_title_options_v2.pdf,1,PASS,Author-approved title and three alternatives readable; no substitution implied
+mer_title_page_v2.pdf,1,PASS,Author metadata and unresolved postal and telephone tokens visible; counts correct

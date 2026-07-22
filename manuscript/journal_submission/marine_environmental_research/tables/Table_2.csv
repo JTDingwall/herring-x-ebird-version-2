@@ -1,0 +1,5 @@
+region,response_component,support_qualified_species,completed,positive_coefficients,bh_q_lt_0_05
+SoG,detection,49,49,36,34
+SoG,conditional_positive_count,49,49,34,24
+WCVI,detection,49,49,42,32
+WCVI,conditional_positive_count,49,48,38,17

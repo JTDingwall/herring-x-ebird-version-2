@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software or its privacy-safe aggregate publication artifacts, please cite the repository and the associated manuscript once published."
+title: "Herring x eBird Version 2"
+type: software
+version: 0.1.0
+authors:
+  - family-names: Dingwall
+    given-names: Jacob
+    email: dingwalljake@gmail.com
+repository-code: "https://github.com/JTDingwall/herring-x-ebird-version-2"
+license: MIT
+keywords:
+  - Pacific herring
+  - eBird
+  - community science
+  - coastal birds
+  - reproducible ecology
+identifiers:
+  - type: other
+    value: "stage4a-publication-v2-analysis-freeze"
+    description: "Annotated Git analysis-freeze tag at c54b8e7f95a2fe3573e2e38633079cd223c5a783"

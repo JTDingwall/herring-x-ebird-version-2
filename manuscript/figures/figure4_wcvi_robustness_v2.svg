@@ -1,0 +1,133 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='392' viewBox='0 0 1200 392' role='img'>
+<rect width='100%' height='100%' fill='white'/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.axis{stroke:#6b7280;stroke-width:1}.zero{stroke:#6b7280;stroke-width:1;stroke-dasharray:5 4}.individual{stroke:#1f5a7a;fill:white;stroke-width:2}.posterior{stroke:#b7791f;fill:#b7791f;stroke-width:2}.muted{fill:#596674}</style>
+<text x='600' y='26' font-size='18' text-anchor='middle' font-weight='bold' class=''>WCVI matched spatial and observer sensitivities</text>
+<circle cx='170' cy='50' r='4' fill='#174a6e' stroke='#174a6e'/>
+<text x='180' y='54' font-size='10' text-anchor='start' font-weight='normal' class=''>Matched primary</text>
+<path d='M 600 45 L 595 50 L 600 55 L 605 50 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<text x='610' y='54' font-size='10' text-anchor='start' font-weight='normal' class=''>WCVI 2-km cohort</text>
+<path d='M 1026 46 L 1034 54 M 1026 54 L 1034 46' stroke='#b23a48' stroke-width='2'/>
+<text x='1040' y='54' font-size='10' text-anchor='start' font-weight='normal' class=''>Dominant-observer holdout</text>
+<text x='300' y='90' font-size='15' text-anchor='middle' font-weight='bold' class=''>WCVI detection</text>
+<line x1='180' y1='327' x2='560' y2='327' class='axis'/>
+<line x1='298' y1='107' x2='298' y2='319' class='zero'/>
+<text x='180' y='347' font-size='10' text-anchor='middle' font-weight='normal' class='muted'>-0.962</text>
+<text x='560' y='347' font-size='10' text-anchor='middle' font-weight='normal' class='muted'>2.14</text>
+<text x='170' y='124' font-size='10' text-anchor='end' font-weight='normal' class=''>alcid_piscivore</text>
+<line x1='236' y1='113' x2='360' y2='113' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='298' cy='113' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='206' y1='120' x2='351' y2='120' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 279 115 L 274 120 L 279 125 L 284 120 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='280' y1='127' x2='418' y2='127' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 345 123 L 353 131 M 345 131 L 353 123' stroke='#b23a48' stroke-width='2'/>
+<text x='170' y='151' font-size='10' text-anchor='end' font-weight='normal' class=''>falsification</text>
+<line x1='219' y1='140' x2='419' y2='140' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='319' cy='140' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='211' y1='147' x2='424' y2='147' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 318 142 L 313 147 L 318 152 L 323 147 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='284' y1='154' x2='534' y2='154' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 405 150 L 413 158 M 405 158 L 413 150' stroke='#b23a48' stroke-width='2'/>
+<text x='170' y='178' font-size='10' text-anchor='end' font-weight='normal' class=''>gull_roe</text>
+<line x1='304' y1='167' x2='394' y2='167' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='349' cy='167' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='276' y1='174' x2='371' y2='174' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 324 169 L 319 174 L 324 179 L 329 174 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='287' y1='181' x2='390' y2='181' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 335 177 L 343 185 M 335 185 L 343 177' stroke='#b23a48' stroke-width='2'/>
+<text x='170' y='205' font-size='10' text-anchor='end' font-weight='normal' class=''>intertidal_roe_shorebird</text>
+<line x1='273' y1='194' x2='363' y2='194' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='318' cy='194' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='271' y1='201' x2='369' y2='201' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 320 196 L 315 201 L 320 206 L 325 201 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='246' y1='208' x2='348' y2='208' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 293 204 L 301 212 M 293 212 L 301 204' stroke='#b23a48' stroke-width='2'/>
+<text x='170' y='232' font-size='10' text-anchor='end' font-weight='normal' class=''>piscivore_active_spawn</text>
+<line x1='317' y1='221' x2='407' y2='221' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='362' cy='221' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='317' y1='228' x2='417' y2='228' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 367 223 L 362 228 L 367 233 L 372 228 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='306' y1='235' x2='407' y2='235' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 353 231 L 361 239 M 353 239 L 361 231' stroke='#b23a48' stroke-width='2'/>
+<text x='170' y='259' font-size='10' text-anchor='end' font-weight='normal' class=''>roe_diving_seaduck</text>
+<line x1='337' y1='248' x2='426' y2='248' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='381' cy='248' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='325' y1='255' x2='424' y2='255' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 375 250 L 370 255 L 375 260 L 380 255 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='353' y1='262' x2='453' y2='262' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 399 258 L 407 266 M 399 266 L 407 258' stroke='#b23a48' stroke-width='2'/>
+<text x='170' y='286' font-size='10' text-anchor='end' font-weight='normal' class=''>shoreline_scavenger</text>
+<line x1='283' y1='275' x2='390' y2='275' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='337' cy='275' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='265' y1='282' x2='382' y2='282' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 324 277 L 319 282 L 324 287 L 329 282 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='251' y1='289' x2='361' y2='289' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 302 285 L 310 293 M 302 293 L 310 285' stroke='#b23a48' stroke-width='2'/>
+<text x='170' y='313' font-size='10' text-anchor='end' font-weight='normal' class=''>surface_vegetation_roe</text>
+<line x1='324' y1='302' x2='420' y2='302' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='372' cy='302' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='321' y1='309' x2='425' y2='309' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 373 304 L 368 309 L 373 314 L 378 309 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='338' y1='316' x2='449' y2='316' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 389 312 L 397 320 M 389 320 L 397 312' stroke='#b23a48' stroke-width='2'/>
+<text x='900' y='90' font-size='15' text-anchor='middle' font-weight='bold' class=''>WCVI positive count</text>
+<line x1='780' y1='327' x2='1160' y2='327' class='axis'/>
+<line x1='931' y1='107' x2='931' y2='319' class='zero'/>
+<text x='780' y='347' font-size='10' text-anchor='middle' font-weight='normal' class='muted'>-1.19</text>
+<text x='1160' y='347' font-size='10' text-anchor='middle' font-weight='normal' class='muted'>1.8</text>
+<text x='770' y='124' font-size='10' text-anchor='end' font-weight='normal' class=''>alcid_piscivore</text>
+<line x1='884' y1='113' x2='976' y2='113' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='930' cy='113' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='863' y1='120' x2='968' y2='120' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 916 115 L 911 120 L 916 125 L 921 120 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='877' y1='127' x2='983' y2='127' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 926 123 L 934 131 M 926 131 L 934 123' stroke='#b23a48' stroke-width='2'/>
+<text x='770' y='151' font-size='10' text-anchor='end' font-weight='normal' class=''>falsification</text>
+<line x1='878' y1='140' x2='1099' y2='140' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='988' cy='140' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='895' y1='147' x2='1123' y2='147' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 1009 142 L 1004 147 L 1009 152 L 1014 147 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='806' y1='154' x2='1125' y2='154' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 962 150 L 970 158 M 962 158 L 970 150' stroke='#b23a48' stroke-width='2'/>
+<text x='770' y='178' font-size='10' text-anchor='end' font-weight='normal' class=''>gull_roe</text>
+<line x1='986' y1='167' x2='1047' y2='167' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='1016' cy='167' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='970' y1='174' x2='1036' y2='174' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 1003 169 L 998 174 L 1003 179 L 1008 174 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='991' y1='181' x2='1066' y2='181' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 1024 177 L 1032 185 M 1024 185 L 1032 177' stroke='#b23a48' stroke-width='2'/>
+<text x='770' y='205' font-size='10' text-anchor='end' font-weight='normal' class=''>intertidal_roe_shorebird</text>
+<line x1='903' y1='194' x2='977' y2='194' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='940' cy='194' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='909' y1='201' x2='990' y2='201' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 950 196 L 945 201 L 950 206 L 955 201 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='911' y1='208' x2='996' y2='208' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 949 204 L 957 212 M 949 212 L 957 204' stroke='#b23a48' stroke-width='2'/>
+<text x='770' y='232' font-size='10' text-anchor='end' font-weight='normal' class=''>piscivore_active_spawn</text>
+<line x1='960' y1='221' x2='1017' y2='221' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='989' cy='221' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='953' y1='228' x2='1016' y2='228' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 984 223 L 979 228 L 984 233 L 989 228 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='965' y1='235' x2='1030' y2='235' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 993 231 L 1001 239 M 993 239 L 1001 231' stroke='#b23a48' stroke-width='2'/>
+<text x='770' y='259' font-size='10' text-anchor='end' font-weight='normal' class=''>roe_diving_seaduck</text>
+<line x1='1037' y1='248' x2='1107' y2='248' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='1072' cy='248' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='1040' y1='255' x2='1116' y2='255' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 1078 250 L 1073 255 L 1078 260 L 1083 255 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='1055' y1='262' x2='1134' y2='262' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 1090 258 L 1098 266 M 1090 266 L 1098 258' stroke='#b23a48' stroke-width='2'/>
+<text x='770' y='286' font-size='10' text-anchor='end' font-weight='normal' class=''>shoreline_scavenger</text>
+<line x1='951' y1='275' x2='983' y2='275' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='967' cy='275' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='948' y1='282' x2='982' y2='282' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 965 277 L 960 282 L 965 287 L 970 282 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='951' y1='289' x2='989' y2='289' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 966 285 L 974 293 M 966 293 L 974 285' stroke='#b23a48' stroke-width='2'/>
+<text x='770' y='313' font-size='10' text-anchor='end' font-weight='normal' class=''>surface_vegetation_roe</text>
+<line x1='978' y1='302' x2='1066' y2='302' stroke='#174a6e' stroke-width='1.5'/>
+<circle cx='1022' cy='302' r='4' fill='#174a6e' stroke='#174a6e'/>
+<line x1='985' y1='309' x2='1077' y2='309' stroke='#7b4fa3' stroke-width='1.5'/>
+<path d='M 1031 304 L 1026 309 L 1031 314 L 1036 309 Z' fill='#7b4fa3' stroke='#7b4fa3'/>
+<line x1='986' y1='316' x2='1089' y2='316' stroke='#b23a48' stroke-width='1.5'/>
+<path d='M 1033 312 L 1041 320 M 1033 320 L 1041 312' stroke='#b23a48' stroke-width='2'/>
+</svg>
