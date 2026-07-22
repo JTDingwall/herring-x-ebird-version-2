@@ -1,11 +1,25 @@
 stage4a_pooling_v2_format_number <- function(x) {
   out <- rep("", length(x))
   finite <- is.finite(x)
-  out[finite] <- vapply(x[finite], function(value) sprintf("%.17g", value), character(1L))
+  # R's internal decimal formatter is stable across C runtimes; sprintf("%g")
+  # can differ at the final digit between Windows UCRT and Linux glibc.
+  out[finite] <- vapply(x[finite], function(value) {
+    format(value, digits = 17L, trim = TRUE, scientific = NA, nsmall = 0L)
+  }, character(1L))
   out[is.infinite(x) & x > 0] <- "Inf"
   out[is.infinite(x) & x < 0] <- "-Inf"
   out[is.nan(x)] <- "NaN"
   out
+}
+
+.stage4a_pooling_v2_write_text_lf <- function(x, path) {
+  value <- enc2utf8(paste(x, collapse = "\n"))
+  value <- gsub("\r\n?", "\n", value)
+  if (!endsWith(value, "\n")) value <- paste0(value, "\n")
+  con <- file(path, open = "wb")
+  on.exit(close(con), add = TRUE)
+  writeBin(charToRaw(value), con)
+  invisible(path)
 }
 
 .stage4a_pooling_v2_file_hash <- function(path) {
@@ -268,8 +282,10 @@ stage4a_pooling_v2_execute <- function(repo_root = ".", output_dir,
       unaffected_fields_exact = TRUE
     )
   )
-  yaml::write_yaml(execution_record, file.path(out, "execution_record_v2.yml"),
-                   line.sep = "\n")
+  .stage4a_pooling_v2_write_text_lf(
+    yaml::as.yaml(execution_record, line.sep = "\n"),
+    file.path(out, "execution_record_v2.yml")
+  )
   comparison <- c(
     "# Stage 4A aggregate pooling repair v2 comparison",
     "",
@@ -288,7 +304,9 @@ stage4a_pooling_v2_execute <- function(repo_root = ".", output_dir,
     "- Protected inputs used: no. The repair consumed tracked aggregate inputs and frozen metadata only.",
     "- Interpretation: pooled and individual results remain checklist-conditional associations, not causal effects, population abundance, biomass, occupancy, or movement."
   )
-  writeLines(comparison, file.path(out, "pooling_repair_comparison_v2.md"), useBytes = TRUE)
+  .stage4a_pooling_v2_write_text_lf(
+    comparison, file.path(out, "pooling_repair_comparison_v2.md")
+  )
 
   manifest_exclusions <- "output_hash_manifest_v2.csv"
   output_files <- sort(list.files(out, recursive = FALSE, full.names = TRUE))

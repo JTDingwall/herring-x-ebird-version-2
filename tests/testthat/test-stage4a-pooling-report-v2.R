@@ -14,6 +14,12 @@ test_that("publication repair report artifacts are complete and hash-valid", {
                                     serialize = FALSE), manifest$sha256[i])
     expect_equal(unname(file.info(file)$size), manifest$bytes[i])
   }
+  text_artifacts <- file.path(project_root, manifest$artifact_path)
+  text_artifacts <- text_artifacts[grepl("\\.(html|svg)$", text_artifacts)]
+  for (file in text_artifacts) {
+    bytes <- readBin(file, what = "raw", n = file.info(file)$size)
+    expect_false(any(bytes == as.raw(13L)), info = file)
+  }
 })
 
 test_that("publication repair report states scope and interpretation boundaries", {

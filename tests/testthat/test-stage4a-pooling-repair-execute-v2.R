@@ -74,6 +74,15 @@ test_that("17-digit numeric serialization is deterministic", {
                    c("", "Inf", "-Inf", "NaN"))
 })
 
+test_that("versioned text serialization uses canonical LF bytes", {
+  path <- tempfile("stage4a_pooling_lf_", fileext = ".txt")
+  on.exit(unlink(path), add = TRUE)
+  .stage4a_pooling_v2_write_text_lf(c("first", "second"), path)
+  bytes <- readBin(path, what = "raw", n = file.info(path)$size)
+  expect_identical(rawToChar(bytes), "first\nsecond\n")
+  expect_false(any(bytes == as.raw(13L)))
+})
+
 test_that("production v2 output preserves every unaffected serialized field", {
   source_path <- repo_file("outputs", "stage4a_results", "effect_estimates.csv")
   v2_path <- repo_file("outputs", "stage4a_pooling_repair_v2", "effect_estimates_v2.csv")

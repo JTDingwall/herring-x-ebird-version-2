@@ -18,79 +18,132 @@
          "</tr></thead><tbody>", body, "</tbody></table></div>")
 }
 
-.stage4a_report_svg <- function(path, width, height, draw) {
-  grDevices::svg(path, width = width, height = height, bg = "white", onefile = TRUE,
-                 family = "sans")
-  tryCatch(draw(), finally = grDevices::dev.off())
-  svg <- readLines(path, warn = FALSE, encoding = "UTF-8")
-  start <- grep("<svg", svg, fixed = TRUE)[1L]
-  paste(svg[start:length(svg)], collapse = "\n")
+.stage4a_report_svg_document <- function(path, width, height, body) {
+  svg <- c(
+    sprintf("<svg xmlns='http://www.w3.org/2000/svg' width='%d' height='%d' viewBox='0 0 %d %d' role='img'>",
+            width, height, width, height),
+    "<rect width='100%' height='100%' fill='white'/>",
+    "<style>text{font-family:Arial,sans-serif;fill:#17212b}.axis{stroke:#6b7280;stroke-width:1}.zero{stroke:#6b7280;stroke-width:1;stroke-dasharray:5 4}.individual{stroke:#1f5a7a;fill:white;stroke-width:2}.posterior{stroke:#b7791f;fill:#b7791f;stroke-width:2}.muted{fill:#596674}</style>",
+    body, "</svg>"
+  )
+  .stage4a_pooling_v2_write_text_lf(svg, path)
+  paste(svg, collapse = "\n")
+}
+
+.stage4a_report_scale_x <- function(value, minimum, maximum, left, right) {
+  if (!is.finite(minimum) || !is.finite(maximum) || maximum <= minimum) {
+    return(rep(as.integer(round((left + right) / 2)), length(value)))
+  }
+  as.integer(round(left + (value - minimum) / (maximum - minimum) * (right - left)))
+}
+
+.stage4a_report_text <- function(x, y, label, size = 13L, anchor = "start",
+                                 weight = "normal", class = "") {
+  sprintf("<text x='%d' y='%d' font-size='%d' text-anchor='%s' font-weight='%s' class='%s'>%s</text>",
+          as.integer(x), as.integer(y), as.integer(size), anchor, weight, class,
+          .stage4a_report_escape(label))
 }
 
 .stage4a_report_forest <- function(x, path, title, width = 11, height = 10) {
-  .stage4a_report_svg(path, width, height, function() {
-    panels <- split(x, interaction(x$region, x$outcome, drop = TRUE))
-    old <- graphics::par(mfrow = c(2, 2), mar = c(4, 11, 3.2, 1), las = 1,
-                         family = "sans")
-    on.exit(graphics::par(old), add = TRUE)
-    for (name in names(panels)) {
-      d <- panels[[name]][order(panels[[name]]$unit_label), ]
-      y <- rev(seq_len(nrow(d)))
-      xr <- range(c(0, d$conf_low, d$conf_high, d$partial_pool_conf_low_v2,
-                    d$partial_pool_conf_high_v2), finite = TRUE)
-      pad <- max(diff(xr) * 0.05, 0.05)
-      graphics::plot(NA, xlim = xr + c(-pad, pad), ylim = c(0.5, nrow(d) + 0.5),
-                     axes = FALSE, xlab = "Registered model-scale coefficient",
-                     ylab = "", main = paste(unique(d$region), unique(d$outcome)))
-      graphics::axis(1)
-      graphics::axis(2, at = y, labels = d$unit_label, cex.axis = 0.68)
-      graphics::abline(v = 0, col = "#6B7280", lty = 2)
-      graphics::segments(d$conf_low, y + 0.13, d$conf_high, y + 0.13,
-                         col = "#1F5A7A", lwd = 1.3)
-      graphics::points(d$estimate, y + 0.13, pch = 1, col = "#1F5A7A")
-      graphics::segments(d$partial_pool_conf_low_v2, y - 0.13,
-                         d$partial_pool_conf_high_v2, y - 0.13,
-                         col = "#B7791F", lwd = 1.5)
-      graphics::points(d$partial_pool_estimate_v2, y - 0.13, pch = 19,
-                       col = "#B7791F", cex = 0.75)
+  panels <- split(x, interaction(x$region, x$outcome, drop = TRUE))
+  panel_rows <- max(vapply(panels, nrow, integer(1L)))
+  svg_width <- 1100L
+  panel_height <- max(260L, 105L + panel_rows * 27L)
+  svg_height <- 55L + 2L * panel_height
+  body <- .stage4a_report_text(svg_width / 2, 28, title, 18, "middle", "bold")
+  for (index in seq_along(panels)) {
+    d <- panels[[index]][order(panels[[index]]$unit_label), ]
+    column <- (index - 1L) %% 2L
+    row <- (index - 1L) %/% 2L
+    x0 <- column * 550L
+    y0 <- 48L + row * panel_height
+    left <- x0 + 185L
+    right <- x0 + 530L
+    top <- y0 + 48L
+    bottom <- top + max(1L, nrow(d) - 1L) * 27L
+    xr <- range(c(0, d$conf_low, d$conf_high, d$partial_pool_conf_low_v2,
+                  d$partial_pool_conf_high_v2), finite = TRUE)
+    pad <- max(diff(xr) * 0.06, 0.05)
+    xr <- xr + c(-pad, pad)
+    body <- c(body,
+      .stage4a_report_text(x0 + 275L, y0 + 20L,
+        paste(unique(d$region), ifelse(unique(d$outcome) == "detection",
+          "detection", "positive count")), 15, "middle", "bold"),
+      sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='axis'/>",
+              left, bottom + 18L, right, bottom + 18L),
+      .stage4a_report_text(left, bottom + 38L, format(xr[1L], digits = 3), 11, "middle", class = "muted"),
+      .stage4a_report_text(right, bottom + 38L, format(xr[2L], digits = 3), 11, "middle", class = "muted"))
+    zero <- .stage4a_report_scale_x(0, xr[1L], xr[2L], left, right)
+    if (0 >= xr[1L] && 0 <= xr[2L]) body <- c(body,
+      sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='zero'/>", zero, top - 12L, zero, bottom + 10L))
+    for (i in seq_len(nrow(d))) {
+      y <- top + (i - 1L) * 27L
+      xi <- .stage4a_report_scale_x(c(d$conf_low[i], d$estimate[i], d$conf_high[i]),
+                                    xr[1L], xr[2L], left, right)
+      xp <- .stage4a_report_scale_x(c(d$partial_pool_conf_low_v2[i],
+        d$partial_pool_estimate_v2[i], d$partial_pool_conf_high_v2[i]),
+        xr[1L], xr[2L], left, right)
+      body <- c(body,
+        .stage4a_report_text(left - 10L, y + 4L, d$unit_label[i], 11, "end"),
+        sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='individual'/>", xi[1L], y - 4L, xi[3L], y - 4L),
+        sprintf("<circle cx='%d' cy='%d' r='4' class='individual'/>", xi[2L], y - 4L),
+        sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='posterior'/>", xp[1L], y + 5L, xp[3L], y + 5L),
+        sprintf("<circle cx='%d' cy='%d' r='4' class='posterior'/>", xp[2L], y + 5L))
     }
-    graphics::mtext(title, outer = TRUE, line = -1.2, cex = 1.15, font = 2)
-  })
+  }
+  .stage4a_report_svg_document(path, svg_width, svg_height, body)
 }
 
 .stage4a_report_event_time <- function(x, path) {
   window_order <- c("time_immediate_pre", "time_spawn_start", "time_early_egg",
                     "time_late_egg", "time_post")
   labels <- c("Immediate pre", "Spawn start", "Early egg", "Late egg", "Post")
-  .stage4a_report_svg(path, 11, 6.5, function() {
-    old <- graphics::par(mfrow = c(1, 2), mar = c(7, 4.5, 3, 1), family = "sans")
-    on.exit(graphics::par(old), add = TRUE)
-    for (outcome in c("detection", "positive_numeric_count_given_detection")) {
-      d <- x[x$response_state == outcome, ]
-      xr <- seq_along(window_order)
-      yr <- range(c(0, d$family_conf_low, d$family_conf_high), finite = TRUE)
-      graphics::plot(NA, xlim = c(0.5, 5.5), ylim = yr, axes = FALSE,
-                     xlab = "", ylab = "Pooled registered model-scale coefficient",
-                     main = if (outcome == "detection") "Detection" else "Positive count")
-      graphics::axis(2)
-      graphics::axis(1, at = xr, labels = FALSE)
-      graphics::text(xr, par("usr")[3] - 0.06 * diff(par("usr")[3:4]), labels,
-                     srt = 35, adj = 1, xpd = TRUE, cex = 0.78)
-      graphics::abline(h = 0, col = "#6B7280", lty = 2)
-      for (region_name in c("SoG", "WCVI")) {
-        z <- as.data.frame(d[d$region == region_name, , drop = FALSE])
-        z <- z[match(window_order, z$temporal_window), , drop = FALSE]
-        offset <- if (region_name == "SoG") -0.09 else 0.09
-        color <- if (region_name == "SoG") "#1F5A7A" else "#B7791F"
-        pch <- if (region_name == "SoG") 19 else 17
-        graphics::segments(xr + offset, z$family_conf_low, xr + offset,
-                           z$family_conf_high, col = color, lwd = 1.4)
-        graphics::points(xr + offset, z$family_mean, col = color, pch = pch)
-      }
-      graphics::legend("topright", legend = c("SoG", "WCVI"),
-                       col = c("#1F5A7A", "#B7791F"), pch = c(19, 17), bty = "n")
+  width <- 1000L
+  height <- 430L
+  body <- character()
+  outcomes <- c("detection", "positive_numeric_count_given_detection")
+  for (panel in seq_along(outcomes)) {
+    outcome <- outcomes[panel]
+    d <- x[x$response_state == outcome, ]
+    x0 <- (panel - 1L) * 500L
+    left <- x0 + 70L
+    right <- x0 + 470L
+    top <- 60L
+    bottom <- 315L
+    yr <- range(c(0, d$family_conf_low, d$family_conf_high), finite = TRUE)
+    pad <- max(diff(yr) * 0.08, 0.05)
+    yr <- yr + c(-pad, pad)
+    scale_y <- function(value) as.integer(round(bottom - (value - yr[1L]) /
+      (yr[2L] - yr[1L]) * (bottom - top)))
+    xpos <- as.integer(round(seq(left + 25L, right - 25L, length.out = 5L)))
+    body <- c(body,
+      .stage4a_report_text(x0 + 250L, 28L,
+        if (outcome == "detection") "Detection" else "Positive count", 16, "middle", "bold"),
+      sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='axis'/>", left, bottom, right, bottom),
+      sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='zero'/>", left, scale_y(0), right, scale_y(0)),
+      .stage4a_report_text(left, top - 8L, format(yr[2L], digits = 3), 11, "start", class = "muted"),
+      .stage4a_report_text(left, bottom + 16L, format(yr[1L], digits = 3), 11, "start", class = "muted"))
+    for (i in seq_along(labels)) body <- c(body,
+      .stage4a_report_text(xpos[i], bottom + 34L + (i %% 2L) * 15L, labels[i], 10, "middle"))
+    for (region_name in c("SoG", "WCVI")) {
+      z <- as.data.frame(d[d$region == region_name, , drop = FALSE])
+      z <- z[match(window_order, z$temporal_window), , drop = FALSE]
+      offset <- if (region_name == "SoG") -7L else 7L
+      class <- if (region_name == "SoG") "individual" else "posterior"
+      for (i in seq_len(nrow(z))) body <- c(body,
+        sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='%s'/>",
+          xpos[i] + offset, scale_y(z$family_conf_low[i]), xpos[i] + offset,
+          scale_y(z$family_conf_high[i]), class),
+        sprintf("<circle cx='%d' cy='%d' r='5' class='%s'/>",
+          xpos[i] + offset, scale_y(z$family_mean[i]), class))
     }
-  })
+    body <- c(body,
+      sprintf("<circle cx='%d' cy='55' r='5' class='individual'/>", right - 115L),
+      .stage4a_report_text(right - 103L, 59L, "SoG", 11),
+      sprintf("<circle cx='%d' cy='55' r='5' class='posterior'/>", right - 55L),
+      .stage4a_report_text(right - 43L, 59L, "WCVI", 11))
+  }
+  .stage4a_report_svg_document(path, width, height, body)
 }
 
 build_stage4a_pooling_report_v2 <- function(repo_root = ".") {
@@ -139,18 +192,29 @@ build_stage4a_pooling_report_v2 <- function(repo_root = ".") {
 
   reason <- effects[, .N, by = pooling_reason_code_v2][order(-N)]
   fig_reason <- file.path(figure_dir, "stage4a_pooling_v2_row_disposition.svg")
-  inline_reason <- .stage4a_report_svg(fig_reason, 8, 4.8, function() {
-    labels <- c(INCLUDED_PRIMARY_REPRESENTATION = "Estimated primary",
-      NON_ESTIMABLE_MODEL_STATUS = "Failed-fit NA",
-      EXCLUDED_DUPLICATE_COMPONENT_REPRESENTATION = "Duplicate NA")
-    d <- reason[match(names(labels), pooling_reason_code_v2)]
-    old <- graphics::par(mar = c(7, 4.5, 2.5, 1), family = "sans")
-    on.exit(graphics::par(old), add = TRUE)
-    bp <- graphics::barplot(d$N, names.arg = labels[d$pooling_reason_code_v2],
-      col = c("#1F5A7A", "#D1D5DB", "#D6A54B"), border = "#374151",
-      las = 2, ylab = "Affected rows", main = "V2 row disposition")
-    graphics::text(bp, d$N, labels = format(d$N, big.mark = ","), pos = 3, cex = 0.85)
-  })
+  reason_labels <- c(INCLUDED_PRIMARY_REPRESENTATION = "Estimated primary",
+    NON_ESTIMABLE_MODEL_STATUS = "Failed-fit NA",
+    EXCLUDED_DUPLICATE_COMPONENT_REPRESENTATION = "Duplicate NA")
+  reason_data <- reason[match(names(reason_labels), pooling_reason_code_v2)]
+  reason_x <- c(180L, 400L, 620L)
+  reason_base <- 340L
+  reason_top <- 65L
+  reason_height <- as.integer(round(reason_data$N / max(reason_data$N) *
+                                      (reason_base - reason_top)))
+  reason_colors <- c("#1f5a7a", "#d1d5db", "#d6a54b")
+  reason_body <- c(.stage4a_report_text(400L, 28L, "V2 row disposition", 18L,
+                                        "middle", "bold"))
+  for (i in seq_along(reason_x)) reason_body <- c(reason_body,
+    sprintf("<rect x='%d' y='%d' width='120' height='%d' fill='%s' stroke='#374151'/>",
+      reason_x[i] - 60L, reason_base - reason_height[i], reason_height[i], reason_colors[i]),
+    .stage4a_report_text(reason_x[i], reason_base - reason_height[i] - 10L,
+      format(reason_data$N[i], big.mark = ","), 13L, "middle", "bold"),
+    .stage4a_report_text(reason_x[i], reason_base + 25L,
+      reason_labels[reason_data$pooling_reason_code_v2[i]], 12L, "middle"))
+  reason_body <- c(reason_body,
+    sprintf("<line x1='80' y1='%d' x2='720' y2='%d' class='axis'/>", reason_base, reason_base),
+    .stage4a_report_text(28L, 205L, "Affected rows", 13L, "middle"))
+  inline_reason <- .stage4a_report_svg_document(fig_reason, 800L, 400L, reason_body)
   fig_guild <- file.path(figure_dir, "stage4a_pooling_v2_primary_guild.svg")
   inline_guild <- .stage4a_report_forest(
     guild, fig_guild, "Primary guild results: individual (open blue) and v2 posterior (gold)"
@@ -163,14 +227,25 @@ build_stage4a_pooling_report_v2 <- function(repo_root = ".") {
   fig_event <- file.path(figure_dir, "stage4a_pooling_v2_event_time.svg")
   inline_event <- .stage4a_report_event_time(event, fig_event)
   fig_tau <- file.path(figure_dir, "stage4a_pooling_v2_tau_distribution.svg")
-  inline_tau <- .stage4a_report_svg(fig_tau, 8, 4.8, function() {
-    transformed <- log10(family$tau2 + 1e-12)
-    old <- graphics::par(mar = c(4.5, 4.5, 2.5, 1), family = "sans")
-    on.exit(graphics::par(old), add = TRUE)
-    graphics::hist(transformed, breaks = 24, col = "#B9D6E5", border = "#1F5A7A",
-                   xlab = "log10(tau² + 1e-12)", ylab = "V2 families",
-                   main = "Between-component variance distribution")
-  })
+  tau_hist <- graphics::hist(log10(family$tau2 + 1e-12), breaks = 24L, plot = FALSE)
+  tau_left <- 75L
+  tau_right <- 765L
+  tau_top <- 55L
+  tau_base <- 335L
+  tau_x <- as.integer(round(seq(tau_left, tau_right, length.out = length(tau_hist$counts) + 1L)))
+  tau_h <- as.integer(round(tau_hist$counts / max(tau_hist$counts) * (tau_base - tau_top)))
+  tau_body <- c(.stage4a_report_text(420L, 28L,
+    "Between-component variance distribution", 18L, "middle", "bold"))
+  for (i in seq_along(tau_h)) tau_body <- c(tau_body,
+    sprintf("<rect x='%d' y='%d' width='%d' height='%d' fill='#b9d6e5' stroke='#1f5a7a'/>",
+      tau_x[i], tau_base - tau_h[i], max(1L, tau_x[i + 1L] - tau_x[i]), tau_h[i]))
+  tau_body <- c(tau_body,
+    sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='axis'/>", tau_left, tau_base, tau_right, tau_base),
+    .stage4a_report_text(tau_left, tau_base + 24L, format(min(tau_hist$breaks), digits = 3), 11L, "middle", class = "muted"),
+    .stage4a_report_text(tau_right, tau_base + 24L, format(max(tau_hist$breaks), digits = 3), 11L, "middle", class = "muted"),
+    .stage4a_report_text(420L, 382L, "log10(tau^2 + 1e-12)", 13L, "middle"),
+    .stage4a_report_text(25L, 195L, "V2 families", 13L, "middle"))
+  inline_tau <- .stage4a_report_svg_document(fig_tau, 840L, 410L, tau_body)
 
   chart_map <- data.table::data.table(
     segment = c("Repair accounting", "Guild evidence", "Priority species",
@@ -253,7 +328,7 @@ build_stage4a_pooling_report_v2 <- function(repo_root = ".") {
     "</body></html>"
   )
   report_file <- file.path(report_dir, "stage4a_pooling_repair_v2.html")
-  writeLines(html, report_file, useBytes = TRUE)
+  .stage4a_pooling_v2_write_text_lf(html, report_file)
 
   artifact_files <- c(
     report_file, fig_reason, fig_guild, fig_species, fig_event, fig_tau,
