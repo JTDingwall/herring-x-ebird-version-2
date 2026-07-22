@@ -14,6 +14,6 @@
 
 **Running title:** Coastal bird associations with herring spawn
 
-**Word counts:** Abstract: 248 words. Main text (Introduction through Conclusions): 5,058 words.
+**Word counts:** Abstract: 250 words. Main text (Introduction through Conclusions): 5,046 words.
 
 **Figures and tables:** 5 main figures; 3 main tables; 5 supplementary figures; 11 supplementary tables.

@@ -4,12 +4,12 @@ Automated status: **PASS**
 
 - Official requirements accessed: 2026-07-22
 - Article type: Full-length Article
-- Abstract: 248 / 250 words
-- Main text: 5058 / typical 5,000-10,000 words
+- Abstract: 250 / 250 words
+- Main text: 5046 / typical 5,000-10,000 words
 - Main figures/tables: 5 / 3
 - Supplement figures/tables: 5 / 11
 - Claim classifications: confirmatory=3; secondary=2; exploratory=0; methodological=9; limitation=6
-- Checks passed: 39
+- Checks passed: 42
 - Checks failed: 0
 
 ## Human fields still required

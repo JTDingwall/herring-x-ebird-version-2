@@ -102,6 +102,17 @@ save_figure <- function(plot, stem, width, height, dpi = 400) {
 
 primary <- read_checked("outputs/stage4a_publication_v2/primary_guild_table_v2.csv", 32L)
 species <- read_checked("outputs/stage4a_publication_v2/priority_a_species_table_v2.csv", 20L)
+all_species <- read_checked("outputs/stage4a_results/effect_estimates.csv")
+all_species <- all_species[
+  model_id == "M02" & region %in% c("SoG", "WCVI") &
+    contrast == "active_near" & unit_class == "species"
+]
+if (nrow(all_species) != 196L || uniqueN(all_species$unit_label) != 49L) {
+  stop("M02 species accounting failed: expected 196 rows for 49 taxa")
+}
+if (all_species[, anyDuplicated(.SD), .SDcols = c("region", "unit_label", "outcome")]) {
+  stop("M02 species keys are not unique")
+}
 event <- read_checked("outputs/stage4a_publication_v2/event_time_table_v2.csv", 160L)
 sensitivity <- read_checked("outputs/stage4a_publication_v2/matched_sensitivity_table_v2.csv", 128L)
 exclusion <- read_checked("outputs/stage4a_publication_v2/supplementary_exclusion_summary_v2.csv", 3L)
@@ -167,7 +178,7 @@ p1 <- ggplot() +
   annotate("text", x = 9.80, y = 7.60, label = "Four biological predictions",
            family = "sans", fontface = "bold", size = 4.6, colour = ink, hjust = 0) +
   annotate("text", x = 9.58, y = 6.75,
-           label = "H1  focal taxa and guilds respond near spawn\nH2  responses concentrate in biological windows\nH3  focal patterns exceed the specificity panel\nH4  strongest directions recur across regions",
+           label = "H1  support-qualified species respond near spawn\nH2  responses concentrate in biological windows\nH3  focal patterns exceed the specificity panel\nH4  strongest directions recur across regions",
            family = "sans", size = 3.35, lineheight = 1.55, colour = ink, hjust = 0, vjust = 1) +
   annotate("text", x = 9.58, y = 5.18,
            label = "Predictions evaluated with registered analyses",
@@ -186,7 +197,7 @@ p1 <- ggplot() +
   annotate("segment", x = 6.30, xend = 8.55, y = 3.48, yend = 3.48,
            colour = marine, linewidth = 1.1,
            arrow = grid::arrow(length = grid::unit(0.12, "in"), type = "closed")) +
-  annotate("text", x = 6.30, y = 3.76, label = "Focal taxa and guilds",
+  annotate("text", x = 6.30, y = 3.76, label = "49 species + guild synthesis",
            family = "sans", size = 3.35, colour = marine, hjust = 0) +
   annotate("text", x = 9.00, y = 3.48, label = "versus",
            family = "sans", size = 3.0, colour = muted) +
@@ -243,12 +254,52 @@ make_synthesis_forest <- function(x, title, subtitle, species_plot = FALSE) {
           axis.text.y = element_text(size = rel(if (species_plot) 0.88 else 0.95)))
 }
 
-p2 <- make_synthesis_forest(
-  primary,
-  "Primary guild associations near recorded active spawn",
-  "Separate panels show detection log odds and conditional positive-count coefficients; intervals are 95% confidence intervals."
-)
-save_figure(p2, "Figure_2", 11, 6.97)
+# Figure 2: complete, outcome-blind display of every support-qualified M02 taxon.
+# Alphabetical ordering prevents the figure hierarchy from being selected by effect size,
+# significance, or prior literature prominence.
+all_species[, `:=`(
+  taxon = factor(unit_label, levels = rev(sort(unique(unit_label)))),
+  column = factor(
+    paste(region, outcome, sep = "__"),
+    levels = c("SoG__detection", "SoG__positive_count",
+               "WCVI__detection", "WCVI__positive_count"),
+    labels = c("SoG\nDetection", "SoG\nConditional count",
+               "WCVI\nDetection", "WCVI\nConditional count")
+  ),
+  completed = status %chin% c("completed", "completed_with_singular_warning"),
+  significant = !is.na(q_value) & q_value < 0.05
+)]
+all_species[, tile_label := fifelse(
+  completed,
+  sprintf("%+.2f%s", estimate, fifelse(significant, "*", "")),
+  "NA"
+)]
+p2 <- ggplot(all_species, aes(x = column, y = taxon, fill = estimate)) +
+  geom_tile(aes(colour = significant), linewidth = 0.62, na.rm = FALSE) +
+  geom_text(aes(label = tile_label), family = "sans", size = 2.15,
+            colour = ink, fontface = ifelse(all_species$significant, "bold", "plain")) +
+  scale_fill_gradient2(low = gold_light, mid = "white", high = marine_light,
+                       midpoint = 0, limits = c(-1.5, 1.5), oob = scales::squish,
+                       na.value = light_grey, name = "Coefficient") +
+  scale_colour_manual(values = c(`TRUE` = ink, `FALSE` = "white"), guide = "none") +
+  labs(
+    title = "Individual-species associations near recorded active spawn",
+    subtitle = paste0(
+      "All 49 support-qualified species are shown in alphabetical order; values are adjusted coefficients.\n",
+      "An asterisk and dark tile border denote BH q < 0.05; NA is retained for a non-estimable component."
+    ),
+    x = NULL, y = NULL
+  ) +
+  theme_mer(9.6) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(face = "bold", size = 8.5, lineheight = 0.95),
+    axis.text.y = element_text(size = 7.5),
+    legend.position = "top",
+    legend.key.width = grid::unit(1.5, "cm"),
+    plot.margin = margin(12, 16, 12, 12)
+  )
+save_figure(p2, "Figure_2", 11, 13.2)
 
 # Figure 3: all event-window components plus a descriptive window median.
 window_order <- c("time_immediate_pre", "time_spawn_start", "time_early_egg",
@@ -287,52 +338,57 @@ p3 <- ggplot(event, aes(x = x_position, y = partial_pool_estimate_v2)) +
         axis.text.x = element_text(size = rel(0.86)))
 save_figure(p3, "Figure_3", 11, 7.8)
 
-# Figure 4: focal species and the prespecified SoG specificity panel.
-focal <- species[unit_label %in% c("Surf Scoter", "Short-billed Gull"), .(
+# Figure 4: the prespecified SoG specificity panel in the context of the complete
+# individual-species detection distribution.
+species_context <- all_species[region == "SoG" & outcome == "detection" & completed, .(
   species = unit_label,
-  region,
-  outcome_label = outcome_labels[outcome],
   estimate,
   low = conf_low,
   high = conf_high,
-  evidence = "Focal taxon"
+  evidence = "M02 species"
 )]
 specificity <- m29[, .(
   species,
-  region = "SoG",
-  outcome_label = "Detection",
   estimate = estimate_log_odds,
   low = conf_low,
   high = conf_high,
   evidence = "Specificity panel"
 )]
-focal_specificity <- rbindlist(list(focal, specificity), use.names = TRUE)
-focal_specificity[, outcome_label := factor(outcome_label,
-  levels = c("Detection", "Conditional positive count"))]
-focal_specificity[, row_label := paste(species, region, sep = " - ")]
-row_order <- c("Surf Scoter - SoG", "Surf Scoter - WCVI",
-               "Short-billed Gull - SoG", "Short-billed Gull - WCVI",
-               "Gadwall - SoG", "Northern Shoveler - SoG")
-focal_specificity[, row_label := factor(row_label, levels = rev(row_order))]
-focal_specificity[, group := ifelse(evidence == "Specificity panel", "SoG specificity",
-                                    paste(region, "focal"))]
-p4 <- ggplot(focal_specificity,
-             aes(x = estimate, y = row_label, colour = group, shape = group)) +
+species_context[, y := 1]
+specificity[, y := c(2.05, 2.55)]
+p4 <- ggplot() +
   geom_vline(xintercept = 0, colour = muted, linewidth = 0.5, linetype = "dashed") +
-  geom_errorbar(aes(xmin = low, xmax = high), orientation = "y", width = 0,
-                linewidth = 0.78) +
-  geom_point(size = 3.15, stroke = 0.8) +
-  facet_wrap(vars(outcome_label), ncol = 1, scales = "free_y") +
-  scale_colour_manual(values = c("SoG focal" = marine, "WCVI focal" = gold,
-                                 "SoG specificity" = warm_grey)) +
-  scale_shape_manual(values = c("SoG focal" = 16, "WCVI focal" = 17,
-                                "SoG specificity" = 15)) +
-  labs(title = "Focal cross-region associations and the broader SoG signal",
-       subtitle = "Surf Scoter and Short-billed Gull are shown for both hurdle components; Gadwall and Northern Shoveler are detection-only specificity taxa.",
-       x = "Adjusted coefficient (95% interval)", y = NULL) +
-  theme_mer(10.4) +
-  theme(panel.spacing = grid::unit(0.9, "lines"))
-save_figure(p4, "Figure_4", 12, 7.6)
+  geom_rug(data = species_context, aes(x = estimate), sides = "b",
+           colour = marine, alpha = 0.55, linewidth = 0.65) +
+  geom_point(data = species_context, aes(x = estimate, y = y), shape = 21,
+             size = 2.5, stroke = 0.55, fill = "white", colour = marine,
+             position = position_jitter(height = 0.13, width = 0, seed = 842)) +
+  geom_errorbar(data = specificity, aes(x = estimate, y = y, xmin = low, xmax = high),
+                orientation = "y", width = 0, linewidth = 0.9, colour = gold) +
+  geom_point(data = specificity, aes(x = estimate, y = y), shape = 18,
+             size = 4.1, colour = gold) +
+  geom_text(data = specificity, aes(x = high, y = y, label = species),
+            hjust = -0.08, family = "sans", fontface = "bold", size = 3.55,
+            colour = ink) +
+  annotate("text", x = min(species_context$estimate), y = 1.38,
+           label = "49 support-qualified M02 species", hjust = 0,
+           family = "sans", size = 3.5, colour = marine) +
+  coord_cartesian(ylim = c(0.65, 2.85), clip = "off") +
+  scale_y_continuous(breaks = c(1, 2.30),
+                     labels = c("M02 species", "M29 specificity"),
+                     limits = c(0.65, 2.85)) +
+  labs(
+    title = "The SoG specificity panel was non-null in a broader species-level signal",
+    subtitle = paste0(
+      "Open circles show all registered M02 detection coefficients; gold diamonds and 95% confidence intervals\n",
+      "show the prespecified Gadwall and Northern Shoveler panel."
+    ),
+    x = "Adjusted detection log-odds coefficient", y = NULL
+  ) +
+  theme_mer(10.5) +
+  theme(panel.grid.major.y = element_blank(), legend.position = "none",
+        plot.margin = margin(14, 95, 14, 14))
+save_figure(p4, "Figure_4", 11, 5.6)
 
 make_sensitivity_forest <- function(models, regions, title, subtitle) {
   d <- sensitivity[model_version_id %in% models & region %in% regions]
@@ -372,13 +428,35 @@ p5 <- make_sensitivity_forest(
 )
 save_figure(p5, "Figure_5", 12, 5.2)
 
-pS1 <- make_synthesis_forest(
-  species,
-  "Registered Priority-A species associations",
-  "Individual estimates and compatible-family syntheses are shown without outcome-based species selection.",
-  species_plot = TRUE
-)
-save_figure(pS1, "Figure_S1", 11, 7.4)
+species_forest <- copy(all_species[completed == TRUE])
+species_forest[, `:=`(
+  taxon = factor(unit_label, levels = rev(sort(unique(unit_label)))),
+  outcome_label = factor(outcome_labels[outcome],
+                         levels = c("Detection", "Conditional positive count")),
+  region = factor(region, levels = c("SoG", "WCVI"))
+)]
+pS1 <- ggplot(species_forest, aes(x = estimate, y = taxon)) +
+  geom_vline(xintercept = 0, colour = muted, linewidth = 0.42, linetype = "dashed") +
+  geom_errorbar(aes(xmin = conf_low, xmax = conf_high, colour = q_value < 0.05),
+                orientation = "y", width = 0, linewidth = 0.58) +
+  geom_point(aes(fill = q_value < 0.05), shape = 21, size = 1.75,
+             stroke = 0.55, colour = ink) +
+  facet_grid(rows = vars(outcome_label), cols = vars(region), scales = "free_x") +
+  scale_x_continuous(trans = scales::pseudo_log_trans(sigma = 0.35)) +
+  scale_colour_manual(values = c(`TRUE` = marine, `FALSE` = warm_grey), guide = "none") +
+  scale_fill_manual(values = c(`TRUE` = marine, `FALSE` = "white"), guide = "none") +
+  labs(
+    title = "Confidence intervals for all 49 support-qualified species",
+    subtitle = paste0(
+      "Filled points denote BH q < 0.05. The symmetric pseudo-log axis preserves sign while accommodating the full interval range.\n",
+      "One non-estimable WCVI count component is retained as NA in Figure 2 and Table S2."
+    ),
+    x = "Adjusted coefficient (95% confidence interval; symmetric pseudo-log scale)", y = NULL
+  ) +
+  theme_mer(9.2) +
+  theme(axis.text.y = element_text(size = 7.1), panel.spacing = grid::unit(1.0, "lines"),
+        legend.position = "none")
+save_figure(pS1, "Figure_S1", 11, 13.2)
 
 disposition_labels <- c(
   INCLUDED_PRIMARY_REPRESENTATION = "Estimated primary representation",
@@ -462,27 +540,27 @@ figure_audit <- data.table(
              "Figure S1", "Figure S2", "Figure S3", "Figure S4", "Figure S5"),
   source_artifact = c(
     "metadata/stage4a_core_spec_v1.yml",
-    "outputs/stage4a_publication_v2/primary_guild_table_v2.csv",
+    "outputs/stage4a_results/effect_estimates.csv (M02; all 49 support-qualified taxa)",
     "outputs/stage4a_publication_v2/event_time_table_v2.csv",
-    "priority_a_species_table_v2.csv + sog_m29_audit_v2.csv",
+    "effect_estimates.csv (M02 SoG detection) + sog_m29_audit_v2.csv",
     "outputs/stage4a_publication_v2/matched_sensitivity_table_v2.csv",
-    "outputs/stage4a_publication_v2/priority_a_species_table_v2.csv",
+    "outputs/stage4a_results/effect_estimates.csv (M02; all 49 support-qualified taxa)",
     "outputs/stage4a_publication_v2/supplementary_exclusion_summary_v2.csv",
     "outputs/stage4a_publication_v2/supplementary_family_table_v2.csv",
     "outputs/stage4a_publication_v2/model_diagnostic_summary_v2.csv",
     "outputs/stage4a_publication_v2/matched_sensitivity_table_v2.csv"
   ),
-  plotted_rows_or_components = c(4L, nrow(primary), nrow(event),
-                                 nrow(focal_specificity),
+  plotted_rows_or_components = c(4L, nrow(all_species), nrow(event),
+                                 nrow(species_context) + nrow(specificity),
                                  sensitivity[model_version_id %in% c(
                                    "M01_PRIMARY_v2", "S4A12_WCVI_2KM_v2",
                                    "S4A11_WCVI_DOMINANT_OBSERVER_v2") &
                                    region == "WCVI", .N],
-                                 nrow(species), nrow(exclusion), nrow(families),
+                                 nrow(all_species), nrow(exclusion), nrow(families),
                                  sum(diag$components),
                                  sensitivity[model_version_id %in% c(
                                    "M01_PRIMARY_v2", "M27_v2", "M28_v2"), .N]),
-  expected_rows_or_components = c(4L, 32L, 160L, 10L, 48L, 20L, 3L, 162L, 128L, 96L)
+  expected_rows_or_components = c(4L, 196L, 160L, 51L, 48L, 196L, 3L, 162L, 128L, 96L)
 )
 figure_audit[, status := ifelse(plotted_rows_or_components == expected_rows_or_components,
                                 "PASS", "FAIL")]

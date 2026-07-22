@@ -9,11 +9,11 @@ supplement color so the evidence remains legible in greyscale.
 | Figure | Analytical question | Chart form | Primary comparison | Palette and non-colour distinction |
 |---|---|---|---|---|
 | 1 | How are spawn events linked to checklists and predictions? | Conceptual timeline and comparison diagram | Near versus reference; five biological windows; focal versus specificity evidence | Blue/gold with spatial position and annotation |
-| 2 | How do primary guild coefficients vary by region and response component? | Faceted forest plot | Individual estimate versus compatible-family synthesis | Blue/gold; open circle versus filled diamond |
+| 2 | How do all support-qualified species vary by region and response component? | Complete coefficient matrix | All 49 species, alphabetically ordered, across four region-outcome combinations | Signed cell labels, significance asterisks/borders, and blue/gold fill |
 | 3 | Do event-window estimates form one temporal trajectory? | Faceted interval distribution | Eight guild estimates and descriptive median across five windows | Blue intervals; gold median; window ordering |
-| 4 | How do focal cross-region results compare with the specificity taxa? | Faceted forest plot | Surf Scoter and Short-billed Gull versus Gadwall and Northern Shoveler | Blue/gold; circles versus squares; direct grouping labels |
+| 4 | How does the non-null specificity panel sit within the complete SoG species-level detection signal? | Contextual coefficient distribution and interval plot | All 49 M02 species versus Gadwall and Northern Shoveler | Open blue circles versus gold diamonds with direct labels |
 | 5 | Are WCVI directions retained under spatial and observer sensitivities? | Faceted forest plot | Matched primary, 2-km cohort, and observer holdout | Blue/gold/grey; circle, triangle, and cross |
-| S1 | How do all registered Priority-A species estimates compare? | Faceted forest plot | Individual estimate versus compatible-family synthesis | Blue/gold; open circle versus filled diamond |
+| S1 | What are the intervals for every support-qualified individual species? | Complete faceted forest plot | All 49 species across both regions and outcomes | Filled versus open points for BH q status; symmetric pseudo-log axis retains all intervals |
 | S2 | How were repaired pooling rows disposed? | Direct-labelled bar chart | Estimated, duplicate representation, and non-estimable rows | Blue/gold/grey; ordering and exact labels |
 | S3 | How variable are compatible-family heterogeneity estimates? | Histogram | Distribution of log10(tau-squared + 1e-12) | Single marine-blue root; median reference line |
 | S4 | Which sensitivity components were ordinary fits or singular warnings? | Horizontal stacked bar chart | Completion status by model | Blue/gold/grey; direct segment counts |

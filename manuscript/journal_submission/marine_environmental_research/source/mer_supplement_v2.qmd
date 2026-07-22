@@ -34,7 +34,7 @@ Supplementary Table S11 (`Table_S11.csv`) records the four frozen regional check
 
 Supplementary Table S1 (`Table_S1.csv`) lists every historical model relevant to the publication package and its disposition. M26 v1 is historical only and retired without replacement. M27/M28 v1 and the earlier unmatched WCVI sensitivities are superseded by their matched v2 implementations. This disposition does not change the historical registry.
 
-Supplementary Table S2 (`Table_S2.csv`) is the full privacy-safe individual-estimate release. It includes all activated species, guild, region, outcome, contrast, coefficient, standard error, interval, p-value, model-specific BH q-value, fit status, and historical pooling fields. Historical v1 `partial_pool_*` values are not used for inference; their authoritative invalidation and v2 replacement are described below.
+Supplementary Table S2 (`Table_S2.csv`) is the full privacy-safe individual-estimate release. It includes all activated species, guild, region, outcome, contrast, coefficient, standard error, interval, p-value, model-specific BH q-value, fit status, and historical pooling fields. The M02 active-near subset contains all 196 region-outcome representations for 49 support-qualified species, including one explicit noncompleted row. Historical v1 `partial_pool_*` values are not used for inference; their authoritative invalidation and v2 replacement are described below.
 
 # Response construction and observation states
 
@@ -46,9 +46,9 @@ Complete-checklist eligibility was restricted to stationary or traveling protoco
 
 Supplementary Table S3 (`Table_S3.csv`) contains all 160 registered M05 rows: eight guilds, two regions, two hurdle components, and five discrete windows. Individual and compatible-family v2 posterior estimates are shown together with their uncertainty, model-specific BH q-values, component-evidence IDs, and pooling reason codes.
 
-![](../figures/Figure_S1.png){width=100% fig-alt="All registered priority species estimates and compatible-family posterior summaries."}
+![](../figures/Figure_S1.png){width=100% fig-alt="Confidence intervals for all 49 support-qualified species across SoG and WCVI detection and conditional positive-count models."}
 
-**Supplementary Figure S1. Priority-A species associations.** Open marks show individual estimates and filled marks show compatible-family v2 posterior summaries. Detection and conditional positive-count coefficients remain on distinct scales.
+**Supplementary Figure S1. Confidence intervals for all 49 support-qualified species.** Every completed M02 active-near estimate and 95% confidence interval is shown across both regions and response components. Filled points denote BH q < 0.05. A symmetric pseudo-log axis preserves sign while accommodating the full interval range; the noncompleted component remains explicit NA in Figure 2 and Supplementary Table S2.
 
 # Partial-pooling repair
 

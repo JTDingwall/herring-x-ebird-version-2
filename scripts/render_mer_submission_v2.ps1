@@ -41,8 +41,10 @@ foreach ($existing in Get-ChildItem -LiteralPath $figureDir -File) {
 }
 $rscript = (Get-Command Rscript -ErrorAction SilentlyContinue).Source
 if (-not $rscript) { throw 'Rscript was not found.' }
-$env:RENV_CONFIG_AUTOLOADER_ENABLED = 'TRUE'
-& $rscript (Join-Path $ProjectRoot 'scripts\build_mer_figures_ggplot2_v2.R') $ProjectRoot
+$env:RENV_CONFIG_AUTOLOADER_ENABLED = 'FALSE'
+$projectLibrary = Join-Path $ProjectRoot 'renv\library\windows\R-4.5\x86_64-w64-mingw32'
+if (Test-Path -LiteralPath $projectLibrary) { $env:R_LIBS_USER = $projectLibrary }
+& $rscript --no-init-file (Join-Path $ProjectRoot 'scripts\build_mer_figures_ggplot2_v2.R') $ProjectRoot
 if ($LASTEXITCODE -ne 0) { throw 'ggplot2 figure generation failed.' }
 if ((Get-ChildItem -LiteralPath $figureDir -Filter *.png).Count -ne 10) {
     throw 'ggplot2 figure generation did not produce all ten PNG files.'

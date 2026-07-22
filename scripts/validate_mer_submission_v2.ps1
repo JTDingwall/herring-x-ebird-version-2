@@ -54,7 +54,7 @@ try {
     $blind = Expand-Qmd $blindPath
     $supp = Expand-Qmd $suppPath
     $all = $main + "`n" + $supp
-    $abstract = [regex]::Match($main,'(?s)# Abstract\s+(.*?)\s+# Introduction').Groups[1].Value
+    $abstract = [regex]::Match($main,'(?s)# Abstract\s+(.*?)\s+\*\*Keywords:').Groups[1].Value
     $body = [regex]::Match($main,'(?s)# Introduction\s+(.*?)\s+# Data availability').Groups[1].Value
     $abstractWords = Count-Words $abstract
     $bodyWords = Count-Words $body
@@ -99,7 +99,7 @@ try {
     Add-Check 'CLAIM003' 'claim_language' ($main -match 'confirmatory observational evidence') 'Registered core is presented as confirmatory observational evidence.'
     Add-Check 'CLAIM004' 'claim_language' (-not ($main -match 'remain exploratory or estimand-refining pending prospective confirmation')) 'Over-conservative global exploratory wording is absent.'
     Add-Check 'CLAIM005' 'claim_language' ($all -match 'M26 v1 is historical only and retired without replacement') 'M26 is not interpreted.'
-    Add-Check 'CLAIM006' 'claim_language' ($main -match 'does not identify a causal effect|not a causal effect' -and $main -match 'population abundance, biomass, occupancy, migration') 'Causal and population-level overclaims are excluded.'
+    Add-Check 'CLAIM006' 'claim_language' ($main -match 'does not identify a causal effect|not (?:a )?causal effects?' -and $main -match 'population abundance, biomass, occupancy, migration') 'Causal and population-level overclaims are excluded.'
     Add-Check 'CLAIM007' 'claim_language' ($main -match 'not coded as zero or surveyed negatives' -and $main -match 'unmonitored-unknown') 'Missing DFO monitoring is not a zero or surveyed negative.'
     Add-Check 'CLAIM008' 'claim_language' ($main -match 'restricted to response years through 2025' -and -not ($all -match 'response years? (2026|2027|2028|2029)')) 'No 2026+ response result appears.'
     Add-Check 'CLAIM009' 'claim_language' ($main -match 'Three headline claims include some singular-warning support' -and $main -match 'no headline claim depends exclusively') 'Singularity is localized to three headline claims and none depends exclusively on it.'
@@ -132,6 +132,14 @@ try {
     $figureDataAuditPath = Join-Path $auditDir 'figure_data_rebuild_audit_v2.csv'
     $figureDataAudit = if(Test-Path $figureDataAuditPath){@(Import-Csv $figureDataAuditPath)}else{@()}
     Add-Check 'FIG003' 'figure' ($figureDataAudit.Count -eq 10 -and ($figureDataAudit|Where-Object status -ne 'PASS').Count -eq 0) 'All ten figures passed frozen aggregate row/component accounting.'
+    $m02Species = @(Import-Csv (Join-Path $ProjectRoot 'outputs\stage4a_results\effect_estimates.csv') | Where-Object { $_.model_id -eq 'M02' -and $_.region -in @('SoG','WCVI') -and $_.contrast -eq 'active_near' })
+    $m02Taxa = @($m02Species.unit_label | Sort-Object -Unique)
+    Add-Check 'FIG004' 'figure' ($m02Species.Count -eq 196 -and $m02Taxa.Count -eq 49) "Complete species display source has $($m02Species.Count) rows and $($m02Taxa.Count) taxa."
+    Add-Check 'FIG005' 'figure' ($builderText -match 'nrow\(all_species\) != 196L' -and $builderText -match 'uniqueN\(all_species\$unit_label\) != 49L') 'Figure builder hard-stops unless all 196 M02 representations and 49 taxa are present.'
+    $allFourPositive = @($m02Species | Where-Object { $_.status -like 'completed*' } | Group-Object unit_label | Where-Object { $_.Count -eq 4 -and @($_.Group | Where-Object { [double]$_.estimate -gt 0 }).Count -eq 4 })
+    $allFourBh = @($m02Species | Where-Object { $_.status -like 'completed*' } | Group-Object unit_label | Where-Object { $_.Count -eq 4 -and @($_.Group | Where-Object { [double]$_.q_value -lt 0.05 }).Count -eq 4 })
+    $allFourPositiveBh = @($m02Species | Where-Object { $_.status -like 'completed*' } | Group-Object unit_label | Where-Object { $_.Count -eq 4 -and @($_.Group | Where-Object { [double]$_.estimate -gt 0 -and [double]$_.q_value -lt 0.05 }).Count -eq 4 })
+    Add-Check 'NUM010' 'numeric' ($allFourPositive.Count -eq 25 -and $allFourBh.Count -eq 9 -and $allFourPositiveBh.Count -eq 8) "Species positive in all four=$($allFourPositive.Count); BH q < 0.05 in all four=$($allFourBh.Count); both positive and BH-supported in all four=$($allFourPositiveBh.Count)."
 
     $protectedPattern = '(?i)(sampling_event_identifier|locality_id|observer_id|event_token)'
     $privacyHits = @()
@@ -174,15 +182,24 @@ try {
         if($row.artifact_id -eq 'Figure 1'){
             $copy=$row.PSObject.Copy();$copy.caption='Scientific hypotheses and event-linked checklist design.';$copy.filters='registered ecological predictions and event-linked design';$copy.model_or_family_ids='M01,M02,M05,M29';$copy.generation_script='scripts/build_mer_figures_ggplot2_v2.R';$journalProv.Add($copy);continue
         }
+        if($row.artifact_id -eq 'Figure 2'){
+            $copy=$row.PSObject.Copy();$copy.source_file='outputs/stage4a_results/effect_estimates.csv';$copy.source_hash=(Get-FileHash (Join-Path $ProjectRoot $copy.source_file) -Algorithm SHA256).Hash.ToLowerInvariant();$copy.filters='M02; SoG/WCVI; active_near; all 49 support-qualified species; 196 representations';$copy.model_or_family_ids='M02';$copy.caption='Complete individual-species coefficient matrix.';$copy.generation_script='scripts/build_mer_figures_ggplot2_v2.R';$journalProv.Add($copy);continue
+        }
+        if($row.artifact_id -eq 'Figure S1'){
+            $copy=$row.PSObject.Copy();$copy.source_file='outputs/stage4a_results/effect_estimates.csv';$copy.source_hash=(Get-FileHash (Join-Path $ProjectRoot $copy.source_file) -Algorithm SHA256).Hash.ToLowerInvariant();$copy.filters='M02; SoG/WCVI; active_near; completed rows among all 49 support-qualified species';$copy.model_or_family_ids='M02';$copy.caption='Confidence intervals for all 49 support-qualified species.';$copy.generation_script='scripts/build_mer_figures_ggplot2_v2.R';$journalProv.Add($copy);continue
+        }
+        if($row.artifact_id -eq 'Table 2'){
+            $copy=$row.PSObject.Copy();$copy.source_file='outputs/stage4a_results/effect_estimates.csv';$copy.source_hash=(Get-FileHash (Join-Path $ProjectRoot $copy.source_file) -Algorithm SHA256).Hash.ToLowerInvariant();$copy.filters='M02; SoG/WCVI; active_near; completion, sign, and BH q summary over 49 support-qualified species';$copy.model_or_family_ids='M02';$copy.caption='Completeness and direction of individual-species results.';$journalProv.Add($copy);continue
+        }
         if($row.artifact_id -like 'Figure*'){$copy=$row.PSObject.Copy();$copy.generation_script='scripts/build_mer_figures_ggplot2_v2.R';$journalProv.Add($copy);continue}
         $journalProv.Add($row)
     }
-    $focalSpecies='outputs/stage4a_publication_v2/priority_a_species_table_v2.csv'
+    $focalSpecies='outputs/stage4a_results/effect_estimates.csv'
     $focalM29='manuscript/journal_submission/marine_environmental_research/audits/sog_m29_audit_v2.csv'
     $focalSources="$focalSpecies;$focalM29"
     $focalHashes="$((Get-FileHash (Join-Path $ProjectRoot $focalSpecies) -Algorithm SHA256).Hash.ToLowerInvariant());$((Get-FileHash (Join-Path $ProjectRoot $focalM29) -Algorithm SHA256).Hash.ToLowerInvariant())"
     $hypothesisTable='manuscript/journal_submission/marine_environmental_research/generated/table1_hypotheses_v2.md'
-    $journalProv.Add([pscustomobject]@{artifact_id='Figure 4';manuscript_location='main';source_file=$focalSources;source_hash=$focalHashes;generation_script='scripts/build_mer_figures_ggplot2_v2.R';generation_commit=$GenerationCommit;filters='Surf Scoter and Short-billed Gull in SoG/WCVI plus SoG M29 taxa';model_or_family_ids='M02,M29';caption='Cross-region focal responses and the SoG specificity panel.';privacy_classification='public aggregate'})
+    $journalProv.Add([pscustomobject]@{artifact_id='Figure 4';manuscript_location='main';source_file=$focalSources;source_hash=$focalHashes;generation_script='scripts/build_mer_figures_ggplot2_v2.R';generation_commit=$GenerationCommit;filters='All 49 M02 SoG detection coefficients plus SoG M29 taxa';model_or_family_ids='M02,M29';caption='The SoG specificity panel in the complete species-level context.';privacy_classification='public aggregate'})
     $journalProv.Add([pscustomobject]@{artifact_id='Table 1';manuscript_location='main';source_file=$hypothesisTable;source_hash=(Get-FileHash $hypothesisTable -Algorithm SHA256).Hash.ToLowerInvariant();generation_script=$hypothesisTable;generation_commit=$GenerationCommit;filters='H1-H4 synthesis of registered evidence';model_or_family_ids='M01,M02,M05,M29';caption='Biological predictions and observed evidence.';privacy_classification='public aggregate'})
     $prov = foreach($row in $journalProv){$out = if($row.artifact_id -like 'Figure*'){Join-Path $figureDir (($row.artifact_id -replace ' ','_')+'.png')}else{Join-Path $tableDir (($row.artifact_id -replace ' ','_')+'.csv')};[pscustomobject]@{artifact_id=$row.artifact_id;manuscript_location=$row.manuscript_location;journal_output_path=$(if(Test-Path $out){$out.Substring($ProjectRoot.Length+1).Replace('\','/')}else{'embedded_or_not_applicable'});journal_output_hash=$(if(Test-Path $out){(Get-FileHash $out -Algorithm SHA256).Hash.ToLowerInvariant()}else{''});source_file=$row.source_file;source_hash=$row.source_hash;generation_script=$row.generation_script;journal_render_script='scripts/render_mer_submission_v2.ps1';generation_commit=$GenerationCommit;filters=$row.filters;model_or_family_ids=$row.model_or_family_ids;caption=$row.caption;privacy_classification=$row.privacy_classification}}
     Export-CsvUtf8Lf $prov (Join-Path $auditDir 'figure_table_provenance_v2.csv')
