@@ -42,10 +42,18 @@ test_that("whole-bundle placebos preserve registered invariants and ignore respo
 test_that("matched sensitivity code has no simplified model fallback", {
   code <- paste(readLines(repo_file("R", "stage4a_publication_sensitivity_v2.R"),
                           warn = FALSE), collapse = "\n")
-  expect_match(code, "mgcv::bam", fixed = TRUE)
-  expect_match(code, "method = \"fREML\"", fixed = TRUE)
-  expect_match(code, "discrete = TRUE", fixed = TRUE)
+  expect_match(code, "lme4::glmer", fixed = TRUE)
+  expect_match(code, "lme4::lmer", fixed = TRUE)
+  expect_match(code, "nAGQ = 0L", fixed = TRUE)
+  expect_match(code, "REML = TRUE", fixed = TRUE)
+  expect_match(code, "calc.derivs = FALSE", fixed = TRUE)
   expect_false(grepl("stats::glm\\(", code))
   expect_false(grepl("stats::lm\\(", code))
   expect_match(code, "failed_numerical_fit_no_fallback", fixed = TRUE)
+  expect_match(code, "region_filter", fixed = TRUE)
+  expect_match(code, "outcome_filter", fixed = TRUE)
+  for (term in c("event_block_token", "observer_cluster_token",
+                 "location_cluster_token")) {
+    expect_match(code, paste0("(1 | ", term, ")"), fixed = TRUE)
+  }
 })

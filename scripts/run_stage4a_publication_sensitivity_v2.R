@@ -3,7 +3,7 @@
 args <- commandArgs(trailingOnly = TRUE)
 mode <- if (length(args)) args[[1L]] else "fixture"
 if (!mode %in% c("fixture", "production")) stop("mode must be fixture or production")
-pre_execution_spec_commit <- "d44a4a334b3461152557db54c147078e80901de7"
+pre_execution_spec_commit <- "c3344f5565feca67f60d56a37ff3a4f6fcf8c513"
 code_files <- c("R/stage4a_publication_sensitivity_v2.R",
                 "scripts/run_stage4a_publication_sensitivity_v2.R")
 execution_code_commit <- if (mode == "fixture") "UNCOMMITTED_FIXTURE" else {
@@ -48,8 +48,21 @@ if (mode == "fixture") {
   quit(status = 0L)
 }
 
+parse_filter <- function(position) {
+  if (length(args) < position || args[[position]] == "all") return(NULL)
+  strsplit(args[[position]], ",", fixed = TRUE)[[1L]]
+}
+model_filter <- parse_filter(2L)
+region_filter <- parse_filter(3L)
+outcome_filter <- parse_filter(4L)
+finalize <- is.null(model_filter) && is.null(region_filter) && is.null(outcome_filter)
 run_stage4a_publication_sensitivity_v2(
   pre_execution_spec_commit = pre_execution_spec_commit,
-  execution_code_commit = execution_code_commit
+  execution_code_commit = execution_code_commit,
+  model_filter = model_filter,
+  region_filter = region_filter,
+  outcome_filter = outcome_filter,
+  finalize = finalize
 )
-message("STAGE4A_PUBLICATION_SENSITIVITY_V2=PASS")
+message(if (finalize) "STAGE4A_PUBLICATION_SENSITIVITY_V2=PASS" else
+  "STAGE4A_PUBLICATION_SENSITIVITY_CHECKPOINT_ONLY=PASS")

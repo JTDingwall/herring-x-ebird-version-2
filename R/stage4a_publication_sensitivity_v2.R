@@ -113,9 +113,18 @@ stage4a_sensitivity_transform_bundle_v2 <- function(events, model_version_id) {
   )
   diagnostic <- data.frame(
     model_version_id, region, unit_label, outcome, converged = FALSE,
-    rank_deficient = NA, status, stringsAsFactors = FALSE
+    singular_fit = NA, convergence_message = status, status,
+    stringsAsFactors = FALSE
   )
   list(effect = effect, diagnostic = diagnostic, validation = data.frame())
+}
+
+.stage4a_sensitivity_sparse_formula_v2 <- function(response) {
+  fixed <- deparse(.stage4a_fixed_formula(response), width.cutoff = 500L)
+  stats::as.formula(paste(
+    fixed, "+ (1 | event_block_token) + (1 | observer_cluster_token) +",
+    "(1 | location_cluster_token)"
+  ))
 }
 
 stage4a_sensitivity_fit_one_v2 <- function(dat, model_version_id, sensitivity_id,
@@ -146,10 +155,24 @@ stage4a_sensitivity_fit_one_v2 <- function(dat, model_version_id, sensitivity_id
     saveRDS(list(cache_signature = cache_signature, result = result), checkpoint_path)
     return(result)
   }
-  fit <- try(mgcv::bam(
-    .stage4a_random_formula(response), data = d, family = family,
-    method = "fREML", discrete = TRUE, nthreads = 1L
-  ), silent = TRUE)
+  sparse_formula <- .stage4a_sensitivity_sparse_formula_v2(response)
+  fit <- try(if (outcome == "detection") {
+    lme4::glmer(
+      sparse_formula, data = d, family = family, nAGQ = 0L,
+      control = lme4::glmerControl(
+        optimizer = "nloptwrap", calc.derivs = FALSE,
+        optCtrl = list(maxeval = 10000L)
+      )
+    )
+  } else {
+    lme4::lmer(
+      sparse_formula, data = d, REML = TRUE,
+      control = lme4::lmerControl(
+        optimizer = "nloptwrap", calc.derivs = FALSE,
+        optCtrl = list(maxeval = 10000L)
+      )
+    )
+  }, silent = TRUE)
   if (inherits(fit, "try-error")) {
     result <- .stage4a_sensitivity_empty_result_v2(
       model_version_id, sensitivity_id, region, unit_label, outcome, nrow(d),
@@ -158,22 +181,31 @@ stage4a_sensitivity_fit_one_v2 <- function(dat, model_version_id, sensitivity_id
     saveRDS(list(cache_signature = cache_signature, result = result), checkpoint_path)
     return(result)
   }
-  summary_fit <- summary(fit)
-  coefficients <- summary_fit$p.table
+  coefficients <- stats::coef(summary(fit))
   index <- match("active_near", rownames(coefficients))
-  converged <- if (!is.null(fit$converged)) isTRUE(fit$converged) else TRUE
-  rank_deficient <- !is.null(fit$rank) && fit$rank < length(stats::coef(fit))
+  optimizer_code <- fit@optinfo$conv$opt
+  convergence_messages <- fit@optinfo$conv$lme4$messages
+  convergence_message <- if (is.null(convergence_messages)) "" else {
+    substr(gsub("[\r\n]+", " ", paste(convergence_messages, collapse = "; ")), 1L, 240L)
+  }
+  if (!is.null(optimizer_code) && any(optimizer_code != 0L) &&
+      !nzchar(convergence_message)) {
+    convergence_message <- paste0("optimizer_code_", paste(optimizer_code, collapse = "_"))
+  }
+  converged <- (is.null(optimizer_code) || all(optimizer_code == 0L)) &&
+    !nzchar(convergence_message)
+  singular_fit <- lme4::isSingular(fit, tol = 1e-4)
   if (is.na(index)) {
     estimate <- standard_error <- p_value <- NA_real_
     status <- "failed_geometry"
   } else {
     estimate <- coefficients[index, 1L]
     standard_error <- coefficients[index, 2L]
-    p_value <- coefficients[index, ncol(coefficients)]
+    p_value <- 2 * stats::pnorm(-abs(estimate / standard_error))
     status <- if (!converged) "failed_convergence" else if
       (!is.finite(estimate) || !is.finite(standard_error) || standard_error <= 0) {
         "failed_geometry"
-      } else if (rank_deficient) "completed_with_rank_warning" else "completed"
+      } else if (singular_fit) "completed_with_singular_warning" else "completed"
   }
   effect <- data.frame(
     model_version_id, matched_primary_model_id = "M01", sensitivity_id,
@@ -186,7 +218,7 @@ stage4a_sensitivity_fit_one_v2 <- function(dat, model_version_id, sensitivity_id
   )
   diagnostic <- data.frame(
     model_version_id, region, unit_label, outcome, converged,
-    rank_deficient, status, stringsAsFactors = FALSE
+    singular_fit, convergence_message, status, stringsAsFactors = FALSE
   )
   validation_outcome <- if (outcome == "detection") "detection" else "positive_count"
   validation <- .stage4a_cv(d, validation_outcome, family, model_version_id,
@@ -254,14 +286,17 @@ stage4a_sensitivity_fit_one_v2 <- function(dat, model_version_id, sensitivity_id
 }
 
 run_stage4a_publication_sensitivity_v2 <- function(
-    pre_execution_spec_commit = "d44a4a334b3461152557db54c147078e80901de7",
-    execution_code_commit, output_dir = "outputs/stage4a_publication_sensitivity_v2") {
+    pre_execution_spec_commit = "c3344f5565feca67f60d56a37ff3a4f6fcf8c513",
+    execution_code_commit, output_dir = "outputs/stage4a_publication_sensitivity_v2",
+    model_filter = NULL, region_filter = NULL, outcome_filter = NULL,
+    finalize = is.null(model_filter) && is.null(region_filter) &&
+      is.null(outcome_filter)) {
   if (!identical(Sys.getenv("STAGE4A_AUTHORIZED_RESPONSE_ACCESS"),
                  "through_2025_after_lock_ci")) {
     stop("Production requires the authorized through-2025 response-access acknowledgement",
          call. = FALSE)
   }
-  required_packages <- c("data.table", "digest", "mgcv", "yaml")
+  required_packages <- c("data.table", "digest", "lme4", "yaml")
   missing_packages <- required_packages[!vapply(required_packages, requireNamespace,
                                                 logical(1L), quietly = TRUE)]
   if (length(missing_packages)) stop("Missing packages: ", paste(missing_packages, collapse = ", "))
@@ -332,12 +367,27 @@ run_stage4a_publication_sensitivity_v2 <- function(
   dir.create(checkpoint_dir, recursive = TRUE, showWarnings = FALSE)
   results <- list()
   model_definitions <- list(
+    M01_PRIMARY_v2 = list(regions = c("SoG", "WCVI")),
     M27_v2 = list(regions = c("SoG", "WCVI")),
     M28_v2 = list(regions = c("SoG", "WCVI")),
     S4A12_WCVI_2KM_v2 = list(regions = "WCVI"),
     S4A11_WCVI_DOMINANT_OBSERVER_v2 = list(regions = "WCVI")
   )
+  if (!is.null(model_filter)) {
+    unknown <- setdiff(model_filter, names(model_definitions))
+    if (length(unknown)) stop("Unknown model filter: ", paste(unknown, collapse = ", "))
+    model_definitions <- model_definitions[model_filter]
+  }
   outcomes <- c("detection", "positive_numeric_count_given_detection")
+  if (!is.null(region_filter)) {
+    unknown <- setdiff(region_filter, c("SoG", "WCVI"))
+    if (length(unknown)) stop("Unknown region filter: ", paste(unknown, collapse = ", "))
+  }
+  if (!is.null(outcome_filter)) {
+    unknown <- setdiff(outcome_filter, outcomes)
+    if (length(unknown)) stop("Unknown outcome filter: ", paste(unknown, collapse = ", "))
+    outcomes <- outcome_filter
+  }
   for (model_version_id in names(model_definitions)) {
     sensitivity_id <- model_map$sensitivity_id[
       match(model_version_id, model_map$model_version_id)
@@ -345,8 +395,12 @@ run_stage4a_publication_sensitivity_v2 <- function(
     if (length(sensitivity_id) != 1L || is.na(sensitivity_id)) {
       stop("STAGE4A_SENSITIVITY_MODEL_MAP: missing sensitivity identifier")
     }
-    for (region_name in model_definitions[[model_version_id]]$regions) {
-      model_events <- if (model_version_id %in% c("M27_v2", "M28_v2")) {
+    selected_regions <- model_definitions[[model_version_id]]$regions
+    if (!is.null(region_filter)) selected_regions <- intersect(selected_regions, region_filter)
+    for (region_name in selected_regions) {
+      model_events <- if (model_version_id == "M01_PRIMARY_v2") {
+        region_events[[region_name]]
+      } else if (model_version_id %in% c("M27_v2", "M28_v2")) {
         transformed[[model_version_id]][[region_name]]
       } else if (model_version_id == "S4A12_WCVI_2KM_v2") {
         wcvi[high_precision, , drop = FALSE]
@@ -371,12 +425,20 @@ run_stage4a_publication_sensitivity_v2 <- function(
       }
     }
   }
+  if (!finalize) {
+    message("STAGE4A_PUBLICATION_SENSITIVITY_CHECKPOINT_GROUP=PASS: models=",
+            paste(names(model_definitions), collapse = ","), "; regions=",
+            if (is.null(region_filter)) "all" else paste(region_filter, collapse = ","),
+            "; outcomes=", paste(outcomes, collapse = ","))
+    return(invisible(list(checkpoint_models = names(model_definitions),
+                          checkpoint_components = length(results))))
+  }
   effects <- do.call(rbind, lapply(results, `[[`, "effect"))
   diagnostics <- do.call(rbind, lapply(results, `[[`, "diagnostic"))
   validation_rows <- Filter(function(x) nrow(x), lapply(results, `[[`, "validation"))
   validation <- if (length(validation_rows)) do.call(rbind, validation_rows) else data.frame()
-  if (nrow(effects) != 96L || nrow(diagnostics) != 96L) {
-    stop("STAGE4A_SENSITIVITY_MODEL_ACCOUNTING: expected 96 model components", call. = FALSE)
+  if (nrow(effects) != 128L || nrow(diagnostics) != 128L) {
+    stop("STAGE4A_SENSITIVITY_MODEL_ACCOUNTING: expected 128 model components", call. = FALSE)
   }
   family <- interaction(effects$model_version_id, effects$region, effects$outcome,
                         drop = TRUE, lex.order = TRUE)
@@ -413,10 +475,14 @@ run_stage4a_publication_sensitivity_v2 <- function(
     maximum_checklist_year_read = maximum_year,
     records_2026_plus_read = records_2026_plus,
     analysis_population_minimum_year = min(events$checklist_year),
+    sparse_engine_package_versions = list(
+      lme4 = as.character(utils::packageVersion("lme4")),
+      Matrix = as.character(utils::packageVersion("Matrix"))
+    ),
     code_hashes = stats::setNames(lapply(code_files, .stage4a_sensitivity_sha256_v2),
                                  code_files),
     results = list(
-      expected_model_components = 96L,
+      expected_model_components = 128L,
       completed_model_components = sum(grepl("^completed", effects$status)),
       failed_model_components = sum(!grepl("^completed", effects$status)),
       placebo_transformations = 4L,
