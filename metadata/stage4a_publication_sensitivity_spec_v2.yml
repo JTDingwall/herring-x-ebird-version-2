@@ -143,8 +143,8 @@ failure_rules:
   minimum_fit_rows: 20
   minimum_response_variation: 2
   missing_or_nonfinite_required_predictor: fail_model_component
-  rank_deficiency: visible_warning
-  bam_error: failed_numerical_fit_no_fallback
+  singular_fit: completed_with_singular_warning
+  lme4_error: failed_numerical_fit_no_fallback
   nonconvergence: failed_convergence
   missing_active_near_coefficient: failed_geometry
   unsupported_factor_level_in_validation: exclude_with_explicit_count
