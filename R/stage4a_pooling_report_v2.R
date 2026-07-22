@@ -95,53 +95,68 @@
 }
 
 .stage4a_report_event_time <- function(x, path) {
+  x <- as.data.frame(x, stringsAsFactors = FALSE)
   window_order <- c("time_immediate_pre", "time_spawn_start", "time_early_egg",
                     "time_late_egg", "time_post")
   labels <- c("Immediate pre", "Spawn start", "Early egg", "Late egg", "Post")
-  width <- 1000L
-  height <- 430L
+  outcomes <- c("detection", "positive_count")
+  regions <- c("SoG", "WCVI")
+  width <- 1100L
+  height <- 780L
   body <- character()
-  outcomes <- c("detection", "positive_numeric_count_given_detection")
-  for (panel in seq_along(outcomes)) {
-    outcome <- outcomes[panel]
-    d <- x[x$response_state == outcome, ]
-    x0 <- (panel - 1L) * 500L
-    left <- x0 + 70L
-    right <- x0 + 470L
-    top <- 60L
-    bottom <- 315L
-    yr <- range(c(0, d$family_conf_low, d$family_conf_high), finite = TRUE)
-    pad <- max(diff(yr) * 0.08, 0.05)
-    yr <- yr + c(-pad, pad)
-    scale_y <- function(value) as.integer(round(bottom - (value - yr[1L]) /
-      (yr[2L] - yr[1L]) * (bottom - top)))
-    xpos <- as.integer(round(seq(left + 25L, right - 25L, length.out = 5L)))
-    body <- c(body,
-      .stage4a_report_text(x0 + 250L, 28L,
-        if (outcome == "detection") "Detection" else "Positive count", 16, "middle", "bold"),
-      sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='axis'/>", left, bottom, right, bottom),
-      sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='zero'/>", left, scale_y(0), right, scale_y(0)),
-      .stage4a_report_text(left, top - 8L, format(yr[2L], digits = 3), 11, "start", class = "muted"),
-      .stage4a_report_text(left, bottom + 16L, format(yr[1L], digits = 3), 11, "start", class = "muted"))
-    for (i in seq_along(labels)) body <- c(body,
-      .stage4a_report_text(xpos[i], bottom + 34L + (i %% 2L) * 15L, labels[i], 10, "middle"))
-    for (region_name in c("SoG", "WCVI")) {
-      z <- as.data.frame(d[d$region == region_name, , drop = FALSE])
-      z <- z[match(window_order, z$temporal_window), , drop = FALSE]
-      offset <- if (region_name == "SoG") -7L else 7L
-      class <- if (region_name == "SoG") "individual" else "posterior"
-      for (i in seq_len(nrow(z))) body <- c(body,
-        sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='%s'/>",
-          xpos[i] + offset, scale_y(z$family_conf_low[i]), xpos[i] + offset,
-          scale_y(z$family_conf_high[i]), class),
-        sprintf("<circle cx='%d' cy='%d' r='5' class='%s'/>",
-          xpos[i] + offset, scale_y(z$family_mean[i]), class))
+  for (region_index in seq_along(regions)) {
+    for (outcome_index in seq_along(outcomes)) {
+      region_name <- regions[region_index]
+      outcome <- outcomes[outcome_index]
+      d <- x[x$region == region_name & x$outcome == outcome, ]
+      x0 <- (outcome_index - 1L) * 550L
+      y0 <- (region_index - 1L) * 370L
+      left <- x0 + 75L
+      right <- x0 + 525L
+      top <- y0 + 55L
+      bottom <- y0 + 295L
+      yr <- range(c(0, d$partial_pool_conf_low_v2, d$partial_pool_conf_high_v2),
+                  finite = TRUE)
+      pad <- max(diff(yr) * 0.08, 0.05)
+      yr <- yr + c(-pad, pad)
+      scale_y <- function(value) as.integer(round(bottom - (value - yr[1L]) /
+        (yr[2L] - yr[1L]) * (bottom - top)))
+      xpos <- as.integer(round(seq(left + 25L, right - 25L, length.out = 5L)))
+      body <- c(body,
+        .stage4a_report_text(x0 + 275L, y0 + 26L,
+          paste(region_name, if (outcome == "detection") "detection" else "positive count"),
+          16, "middle", "bold"),
+        sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='axis'/>", left, bottom, right, bottom),
+        sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' class='zero'/>", left, scale_y(0), right, scale_y(0)),
+        .stage4a_report_text(left, top - 8L, format(yr[2L], digits = 3), 11, "start", class = "muted"),
+        .stage4a_report_text(left, bottom + 16L, format(yr[1L], digits = 3), 11, "start", class = "muted"))
+      for (i in seq_along(labels)) body <- c(body,
+        .stage4a_report_text(xpos[i], bottom + 34L + (i %% 2L) * 14L,
+                             labels[i], 10, "middle"))
+      for (window_index in seq_along(window_order)) {
+        z <- d[d$contrast == window_order[window_index], ]
+        z <- z[order(z$unit_label), ]
+        offsets <- seq(-14L, 14L, length.out = nrow(z))
+        for (i in seq_len(nrow(z))) if (is.finite(z$partial_pool_estimate_v2[i])) {
+          px <- as.integer(round(xpos[window_index] + offsets[i]))
+          body <- c(body,
+            sprintf("<line x1='%d' y1='%d' x2='%d' y2='%d' stroke='#1f5a7a' stroke-width='1' opacity='.38'/>",
+              px, scale_y(z$partial_pool_conf_low_v2[i]), px,
+              scale_y(z$partial_pool_conf_high_v2[i])),
+            sprintf("<circle cx='%d' cy='%d' r='2.5' fill='#1f5a7a' opacity='.70'/>",
+              px, scale_y(z$partial_pool_estimate_v2[i])))
+        }
+        median_value <- stats::median(z$partial_pool_estimate_v2, na.rm = TRUE)
+        if (is.finite(median_value)) body <- c(body, sprintf(
+          "<rect x='%d' y='%d' width='8' height='8' fill='#b7791f' stroke='#6b4b12' transform='rotate(45 %d %d)'/>",
+          xpos[window_index] - 4L, scale_y(median_value) - 4L,
+          xpos[window_index], scale_y(median_value)))
+      }
+      body <- c(body, .stage4a_report_text(
+        x0 + 275L, bottom + 67L,
+        "Eight guild intervals; gold diamond is descriptive median", 10,
+        "middle", class = "muted"))
     }
-    body <- c(body,
-      sprintf("<circle cx='%d' cy='55' r='5' class='individual'/>", right - 115L),
-      .stage4a_report_text(right - 103L, 59L, "SoG", 11),
-      sprintf("<circle cx='%d' cy='55' r='5' class='posterior'/>", right - 55L),
-      .stage4a_report_text(right - 43L, 59L, "WCVI", 11))
   }
   .stage4a_report_svg_document(path, width, height, body)
 }
@@ -177,11 +192,13 @@ build_stage4a_pooling_report_v2 <- function(repo_root = ".") {
   focal <- effects[model_id == "M02" & region %in% c("SoG", "WCVI") &
     unit_label %in% priority_a & contrast == "active_near" & status == "completed" &
     pooling_reason_code_v2 == "INCLUDED_PRIMARY_REPRESENTATION"]
-  event <- family[canonical_model_id == "M05" & unit_class == "guild" &
-    region %in% c("SoG", "WCVI") & grepl("^time_", temporal_window)]
+  event <- effects[model_id == "M05" & unit_class == "guild" &
+    region %in% c("SoG", "WCVI") & grepl("^time_", contrast) &
+    status == "completed" &
+    pooling_reason_code_v2 == "INCLUDED_PRIMARY_REPRESENTATION"]
   data.table::setorder(guild, region, outcome, unit_label)
   data.table::setorder(focal, region, outcome, unit_label)
-  data.table::setorder(event, response_state, region, temporal_window)
+  data.table::setorder(event, outcome, region, contrast, unit_label)
   data.table::setorder(family, canonical_model_id, region, unit_class, response_state,
                        temporal_window, spatial_buffer)
 
@@ -254,18 +271,19 @@ build_stage4a_pooling_report_v2 <- function(repo_root = ".") {
       "How were all invalid v1 rows disposed?",
       "How do individual and v2 posterior guild coefficients compare?",
       "How do registered Priority-A species coefficients compare?",
-      "How do pooled event-time coefficients vary across registered windows?",
+      "How do registered guild event-time coefficients vary across windows?",
       "How heterogeneous are the compatible v2 families?"
     ),
     chart_family = c("bar", "faceted dot and interval", "faceted dot and interval",
                      "categorical point and interval", "histogram"),
     fields = c("reason,count", "estimate,CI,posterior,posterior_CI",
-               "estimate,CI,posterior,posterior_CI", "family_mean,family_CI,window,region",
+               "estimate,CI,posterior,posterior_CI",
+               "partial_pool_estimate_v2,partial_pool_CI,contrast,region,guild",
                "tau2"),
     supported_claim = c("Complete 6,562-row accounting",
       "Posterior estimates are distinct from individual-model inference",
       "Priority species are shown without outcome-based selection",
-      "Event-time comparisons are discrete registered contrasts",
+      "Event-time comparisons show all registered guild contrasts and intervals",
       "Family heterogeneity is explicit rather than hidden"),
     palette = "blue_gold_neutral_noncolor_markers",
     artifact = c(basename(fig_reason), basename(fig_guild), basename(fig_species),
@@ -273,7 +291,7 @@ build_stage4a_pooling_report_v2 <- function(repo_root = ".") {
     source = c("outputs/stage4a_pooling_repair_v2/effect_estimates_v2.csv",
                "outputs/stage4a_pooling_repair_v2/effect_estimates_v2.csv",
                "outputs/stage4a_pooling_repair_v2/effect_estimates_v2.csv",
-               "outputs/stage4a_pooling_repair_v2/pooling_family_estimates_v2.csv",
+               "outputs/stage4a_pooling_repair_v2/effect_estimates_v2.csv",
                "outputs/stage4a_pooling_repair_v2/pooling_family_estimates_v2.csv")
   )
   .stage4a_pooling_v2_write_csv(chart_map, file.path(report_output, "chart_map_v2.csv"))
@@ -316,8 +334,8 @@ build_stage4a_pooling_report_v2 <- function(repo_root = ".") {
     "<div class='figure'>", inline_guild, "<p class='caption'>M01 active-near contrasts. Detection is on the log-odds scale; positive counts are on the registered positive-lognormal coefficient scale.</p></div>",
     "<h2>Priority-A species are shown without outcome-based selection</h2><p>The five registry-defined Priority-A taxa are displayed for both response components and both primary regions. Shrinkage changes synthesis, not the unchanged individual-model inference.</p>",
     "<div class='figure'>", inline_species, "<p class='caption'>M02 active-near contrasts for the frozen Priority-A metadata subset.</p></div>",
-    "<h2>Event-time summaries use discrete registered contrasts</h2><p>Each point is a compatible M05 guild-family mean for a registered event-time contrast. These are categorical event-window comparisons, not a continuous trajectory and not a causal event-study estimate.</p>",
-    "<div class='figure'>", inline_event, "<p class='caption'>SoG and WCVI pooled guild families; normal 95% intervals. Response scales remain separate.</p></div>",
+    "<h2>Event-time summaries use discrete registered contrasts</h2><p>Each blue point and interval is a v2 posterior guild coefficient for one registered M05 event-time contrast. Gold diamonds are descriptive within-panel medians, not new pooled estimates. These are categorical event-window comparisons, not a continuous trajectory and not a causal event-study estimate.</p>",
+    "<div class='figure'>", inline_event, "<p class='caption'>All eight guilds in each SoG/WCVI response panel; normal 95% intervals. Response scales remain separate.</p></div>",
     "<h2>Scope, data, and metric definitions</h2><p>The source population is eligible submitted complete eBird checklists from the registered Stage 4A frames. The repair reads only <code>outputs/stage4a_results/effect_estimates.csv</code> and frozen metadata. The literal North code <code>NA</code> is a registered categorical value. Individual coefficients retain their original model scale; families never mix response states, unit classes, models, estimands, scales, exposures, time windows, buffers, populations, adjustment sets, or coefficient/variance meanings.</p>",
     "<h2>The estimator is closed form and versioned</h2><p>Within each compatible family, v2 uses the frozen normal-normal empirical-Bayes method-of-moments contract. Sampling variance is squared individual standard error; between-component variance is <code>max(0, var(y) - mean(v))</code>; family weights are <code>1/(v + tau²)</code>. Zero between-family variance uses the exact common-effect boundary rather than the historical artificial precision floor. No pooled p-values or q-values are created.</p>",
     "<div class='figure'>", inline_tau, "<p class='caption'>All 162 v2 families. The logarithmic diagnostic axis exposes both near-zero and highly heterogeneous families without implying comparable biological scales.</p></div>",

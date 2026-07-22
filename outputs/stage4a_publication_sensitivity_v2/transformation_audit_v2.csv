@@ -1,0 +1,7 @@
+"model_version_id","region","strata","rows","fixed_points","bundle_integrity_pass","regional_temporal_support_pass","response_fields_read"
+"M27_v2","SoG",21,217200,0,TRUE,TRUE,0
+"M27_v2","WCVI",11,8584,0,TRUE,TRUE,0
+"M28_v2","SoG",21,217200,0,TRUE,TRUE,0
+"M28_v2","WCVI",11,8584,0,TRUE,TRUE,0
+"S4A12_WCVI_2KM_v2","WCVI",11,7198,,TRUE,TRUE,0
+"S4A11_WCVI_DOMINANT_OBSERVER_v2","WCVI",11,5529,,TRUE,TRUE,0
