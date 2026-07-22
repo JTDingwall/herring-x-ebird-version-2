@@ -8,15 +8,21 @@ test_that("publication sensitivity v2 freezes matched model mappings before exec
   expect_false(spec$scope$protected_rows_may_be_committed)
   expect_identical(spec$scope$records_2026_plus, "prohibited")
   expect_setequal(map$model_version_id, c(
-    "M27_v2", "M28_v2", "S4A12_WCVI_2KM_v2",
+    "M01_PRIMARY_v2", "M27_v2", "M28_v2", "S4A12_WCVI_2KM_v2",
     "S4A11_WCVI_DOMINANT_OBSERVER_v2"
   ))
   expect_true(all(map$matched_primary_model_id == "M01"))
   expect_true(all(map$unit_selector == "all_8_frozen_primary_guilds"))
   expect_true(all(map$response_states ==
     "detection|positive_numeric_count_given_detection"))
-  expect_true(all(map$fit_architecture == "matched_M01_mgcv_bam_random_intercepts"))
+  expect_true(all(map$fit_architecture ==
+                  "sparse_M01_glmer_lmer_three_random_intercepts"))
   expect_identical(spec$matched_primary_contract$simplified_glm_fallback, "prohibited")
+  expect_identical(spec$matched_primary_contract$engine$detection, "lme4_glmer_sparse")
+  expect_identical(spec$matched_primary_contract$engine$positive_count,
+                   "lme4_lmer_sparse")
+  expect_false(spec$engine_amendment$formula_estimand_cohort_and_random_intercepts_changed)
+  expect_false(spec$engine_amendment$response_direction_or_sign_used)
 })
 
 test_that("publication placebo contract moves the complete bundle without responses", {

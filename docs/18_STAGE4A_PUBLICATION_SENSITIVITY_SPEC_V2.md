@@ -8,9 +8,13 @@ M26 v1 is retired from the inferential publication set without replacement. Its 
 
 ## Matched model family
 
-Every v2 sensitivity is matched to the registered M01 guild hurdle family. Detection uses a binomial-logit model. Positive numeric count uses the registered Gaussian model on log count among finite counts greater than zero. Both use the complete registered fixed-effect set, event-block, observer-cluster, and location-cluster random intercepts, and `mgcv::bam(method = "fREML", discrete = TRUE, nthreads = 1)`. A failed `bam` fit remains a visible failure; a simplified GLM cannot replace it.
+Every v2 sensitivity is matched to the registered M01 guild hurdle family. Detection uses a binomial-logit model. Positive numeric count uses the registered Gaussian model on log count among finite counts greater than zero. Both use the complete registered fixed-effect set and event-block, observer-cluster, and location-cluster random intercepts. A simplified GLM cannot replace the mixed model.
 
-All eight frozen guilds, both primary regions where applicable, and both hurdle response states are reported regardless of sign or significance. The 2-km and dominant-observer analyses are WCVI sensitivities. BH adjustment is within each registered sensitivity × region × response family of eight guilds.
+The initial protected execution attempted the registered `mgcv::bam` random-effect representation. All 96 attempted components failed before model estimation because the protected cluster columns were character values; factorizing them then exposed a dense random-effect basis that exceeded ten minutes for one 8,584-row WCVI fit. This was an engine/representation defect, not an outcome-based decision. The protected metadata contain 29,248 observer and 22,980 location clusters in SoG, making dense random-effect smooths unsuitable.
+
+Before any component fit successfully, the engine was amended to sparse `lme4` mixed models and the M01 primary reference was added as `M01_PRIMARY_v2`. Detection uses `glmer` with binomial-logit likelihood, `nAGQ = 0`, `nloptwrap`, `calc.derivs = FALSE`, and `maxeval = 10000`. Positive log count uses REML `lmer` with `nloptwrap` and `calc.derivs = FALSE`. All sensitivity and reference fits use this same sparse engine, formula, and covariance-based normal interval. Singularity remains a visible warning. A benchmark full-frame SoG detection fit completed in 307.9 seconds with a finite coefficient.
+
+All eight frozen guilds, both primary regions where applicable, and both hurdle response states are reported regardless of sign or significance. The 2-km and dominant-observer analyses are WCVI sensitivities. BH adjustment is within each registered model version × region × response family of eight guilds. The complete matched set contains 128 model components, including 32 sparse M01 reference components.
 
 ## Placebo transformation
 

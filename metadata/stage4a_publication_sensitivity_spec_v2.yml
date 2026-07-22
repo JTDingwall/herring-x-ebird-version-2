@@ -23,6 +23,7 @@ tracked_contracts:
     sha256: 1808914ec9dde02a4b0af4f5f21353b103e733b82267fb42f3be2ce4e749c35f
 matched_primary_contract:
   model_id: M01
+  publication_reference_model_version_id: M01_PRIMARY_v2
   unit_class: guild
   checklist_population: registered_primary_region_frame
   independent_row: checklist
@@ -56,14 +57,35 @@ matched_primary_contract:
     - log_effort_distance
     - observer_count
   random_intercepts: [event_block_token, observer_cluster_token, location_cluster_token]
-  engine: mgcv_bam
-  method: fREML
-  discrete: true
-  nthreads: 1
+  engine:
+    detection: lme4_glmer_sparse
+    positive_count: lme4_lmer_sparse
+    package_version: 2.0.6
+  detection_optimizer:
+    optimizer: nloptwrap
+    nAGQ: 0
+    calc_derivs: false
+    maxeval: 10000
+  positive_count_optimizer:
+    optimizer: nloptwrap
+    REML: true
+    calc_derivs: false
   simplified_glm_fallback: prohibited
   coefficient: active_near
   interval: normal_95_percent_from_model_standard_error
   validation: frozen_4_fold_event_blocked_fixed_factor_overlap_v2
+engine_amendment:
+  status: FROZEN_BEFORE_ANY_SUCCESSFUL_PRODUCTION_MODEL_COMPONENT
+  failed_execution_code_commit: b0390a656dad98603e48c59ab8cf3381fbc7ab4b
+  failed_components: 96
+  completed_components: 0
+  failure: mgcv_random_effect_smoothers_received_character_clusters_then_dense_factorized_basis_was_computationally_intractable
+  protected_cardinality_summary:
+    SoG: {rows: 217200, event_blocks: 58, observer_clusters: 29248, location_clusters: 22980}
+    WCVI: {rows: 8584, event_blocks: 24, observer_clusters: 1880, location_clusters: 1144}
+  decision: refit_M01_reference_and_all_sensitivities_with_one_sparse_mixed_model_engine
+  formula_estimand_cohort_and_random_intercepts_changed: false
+  response_direction_or_sign_used: false
 placebo_contract:
   strata: [region, checklist_year]
   response_access_during_transformation: prohibited
@@ -152,4 +174,5 @@ execution_record_requirements:
   - model_and_transformation_counts
   - convergence_and_failure_counts
   - output_hashes
+  - sparse_engine_package_versions
 final_gate: PASS_PUBLICATION_SENSITIVITY_V2_OR_EXPLICIT_COMPONENT_FAILURES
