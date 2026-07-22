@@ -22,10 +22,10 @@ test_that("publication sensitivity v2 freezes matched model mappings before exec
 test_that("publication placebo contract moves the complete bundle without responses", {
   spec <- yaml::read_yaml(repo_file("metadata", "stage4a_publication_sensitivity_spec_v2.yml"))
   expected <- c("active_reference_class", "active_near", "contemporaneous_reference",
-    "concurrent_links", "time_immediate_pre", "time_spawn_start", "time_early_egg",
+    "concurrent_links", "time_early_pre", "time_immediate_pre", "time_spawn_start", "time_early_egg",
     "time_late_egg", "time_post", "distance_ring_0_0p5", "distance_ring_0p5_1",
     "distance_ring_1_2", "distance_ring_2_3", "distance_ring_3_4",
-    "distance_ring_4_5", "distance_ring_5_10")
+    "distance_ring_4_5", "distance_ring_5_10", "distance_ring_10_20")
   expect_setequal(unlist(spec$placebo_contract$bundle_fields), expected)
   expect_setequal(unlist(spec$placebo_contract$strata), c("region", "checklist_year"))
   expect_identical(spec$placebo_contract$M27_v2$seed, 10007L)

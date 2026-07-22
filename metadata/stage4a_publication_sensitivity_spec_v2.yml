@@ -72,6 +72,7 @@ placebo_contract:
     - active_near
     - contemporaneous_reference
     - concurrent_links
+    - time_early_pre
     - time_immediate_pre
     - time_spawn_start
     - time_early_egg
@@ -84,6 +85,7 @@ placebo_contract:
     - distance_ring_3_4
     - distance_ring_4_5
     - distance_ring_5_10
+    - distance_ring_10_20
   M27_v2:
     transformation: nonzero_cyclic_bundle_shift_within_region_year
     order: analysis_event_token
