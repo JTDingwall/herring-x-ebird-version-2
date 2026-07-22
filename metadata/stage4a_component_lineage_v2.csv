@@ -1,0 +1,5 @@
+canonical_model_id,component_representation_id,unit_class,response_state,lineage_relationship,selected_representation,excluded_representation,source_metadata
+M01,M11,guild,detection,exact_copied_hurdle_component,M01,M11,R/stage4a_production.R|docs/14_STAGE4A_CORE_METHODS.md
+M01,M12,guild,positive_numeric_count_given_detection,exact_copied_hurdle_component,M01,M12,R/stage4a_production.R|docs/14_STAGE4A_CORE_METHODS.md
+M02,M11,species,detection,exact_copied_hurdle_component,M02,M11,R/stage4a_production.R|docs/14_STAGE4A_CORE_METHODS.md
+M02,M12,species,positive_numeric_count_given_detection,exact_copied_hurdle_component,M02,M12,R/stage4a_production.R|docs/14_STAGE4A_CORE_METHODS.md

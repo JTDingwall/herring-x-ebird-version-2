@@ -1,0 +1,425 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><meta name='color-scheme' content='light dark'><title>Stage 4A Aggregate Pooling Repair v2</title><style>:root{color-scheme:light dark;--ink:#17212b;--muted:#596674;--paper:#fff;--panel:#f5f7f8;--line:#ccd4db;--blue:#1f5a7a;--gold:#b7791f}@media(prefers-color-scheme:dark){:root{--ink:#edf2f5;--muted:#bdc8d0;--paper:#12181e;--panel:#1c252d;--line:#46545f;--blue:#79b8d8;--gold:#e0b45f}}body{font-family:system-ui,-apple-system,sans-serif;max-width:1120px;margin:0 auto;padding:28px 22px;color:var(--ink);background:var(--paper);line-height:1.55}h1,h2{line-height:1.2}h1{color:var(--blue)}h2{margin-top:2.2rem;border-bottom:1px solid var(--line);padding-bottom:.35rem}.summary{background:var(--panel);border-left:5px solid var(--blue);padding:14px 18px}.caution{background:var(--panel);border-left:5px solid var(--gold);padding:12px 16px}.figure{margin:22px 0;padding:12px;background:white;border:1px solid #d5dde3;overflow:auto}.figure svg{width:100%;height:auto;min-width:680px}.caption{font-size:.9rem;color:var(--muted);margin-top:8px}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.86rem}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left}th{background:var(--panel)}code{font-size:.9em}</style></head><body><h1>Stage 4A Aggregate Pooling Repair v2</h1><h2>Technical summary</h2><div class='summary'><p><strong>The aggregate-only repair is complete and deterministic.</strong> The accepted scope is 6,562 finite v1 pooling rows in 112 invalid historical families. Metadata-compatible reconstruction creates 162 v2 families; all remain estimable after 38 noncompleted rows and 439 duplicate M11/M12 representations are retained as explicit NA exclusions. The remaining 6,085 primary rows receive versioned posterior estimates.</p><p>Every unaffected individual estimate, standard error, confidence interval, p-value, model-specific BH q-value, sample size, status, and identity is exactly preserved at source serialization. No protected record was used.</p></div><h2>Every invalid v1 row has an explicit v2 disposition</h2><p>The bar chart accounts for the complete authoritative scope. Duplicate component representations and noncompleted fits remain visible; neither can contribute to a family estimate.</p><div class='figure'><svg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400' role='img'>
+<rect width='100%' height='100%' fill='white'/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.axis{stroke:#6b7280;stroke-width:1}.zero{stroke:#6b7280;stroke-width:1;stroke-dasharray:5 4}.individual{stroke:#1f5a7a;fill:white;stroke-width:2}.posterior{stroke:#b7791f;fill:#b7791f;stroke-width:2}.muted{fill:#596674}</style>
+<text x='400' y='28' font-size='18' text-anchor='middle' font-weight='bold' class=''>V2 row disposition</text>
+<rect x='120' y='65' width='120' height='275' fill='#1f5a7a' stroke='#374151'/>
+<text x='180' y='55' font-size='13' text-anchor='middle' font-weight='bold' class=''>6,085</text>
+<text x='180' y='365' font-size='12' text-anchor='middle' font-weight='normal' class=''>Estimated primary</text>
+<rect x='340' y='338' width='120' height='2' fill='#d1d5db' stroke='#374151'/>
+<text x='400' y='328' font-size='13' text-anchor='middle' font-weight='bold' class=''>38</text>
+<text x='400' y='365' font-size='12' text-anchor='middle' font-weight='normal' class=''>Failed-fit NA</text>
+<rect x='560' y='320' width='120' height='20' fill='#d6a54b' stroke='#374151'/>
+<text x='620' y='310' font-size='13' text-anchor='middle' font-weight='bold' class=''>439</text>
+<text x='620' y='365' font-size='12' text-anchor='middle' font-weight='normal' class=''>Duplicate NA</text>
+<line x1='80' y1='340' x2='720' y2='340' class='axis'/>
+<text x='28' y='205' font-size='13' text-anchor='middle' font-weight='normal' class=''>Affected rows</text>
+</svg><p class='caption'>Counts from the versioned v2 aggregate. The earlier 4,890/84 audit was a parser undercount of the registered North code <code>NA</code>, not a protected-data recovery.</p></div><div class='table-wrap'><table><thead><tr><th>metric</th><th>value</th></tr></thead><tbody><tr><td>Invalid v1 finite rows</td><td>6562</td></tr><tr><td>Invalid v1 families</td><td>112</td></tr><tr><td>Compatible v2 families</td><td>162</td></tr><tr><td>Estimable v2 families</td><td>162</td></tr><tr><td>Rows with v2 posterior</td><td>6085</td></tr><tr><td>Noncompleted rows as NA</td><td>38</td></tr><tr><td>Duplicate representations as NA</td><td>439</td></tr></tbody></table></div><h2>Registered guild coefficients remain checklist-conditional associations</h2><p>Open blue intervals are the unchanged individual-model estimates; filled gold intervals are the new compatible-family posterior estimates. Panels include all registered guild rows for the SoG and WCVI primary frames, without selection by sign or significance.</p><div class='figure'><svg xmlns='http://www.w3.org/2000/svg' width='1100' height='697' viewBox='0 0 1100 697' role='img'>
+<rect width='100%' height='100%' fill='white'/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.axis{stroke:#6b7280;stroke-width:1}.zero{stroke:#6b7280;stroke-width:1;stroke-dasharray:5 4}.individual{stroke:#1f5a7a;fill:white;stroke-width:2}.posterior{stroke:#b7791f;fill:#b7791f;stroke-width:2}.muted{fill:#596674}</style>
+<text x='550' y='28' font-size='18' text-anchor='middle' font-weight='bold' class=''>Primary guild results: individual (open blue) and v2 posterior (gold)</text>
+<text x='275' y='68' font-size='15' text-anchor='middle' font-weight='bold' class=''>SoG detection</text>
+<line x1='185' y1='303' x2='530' y2='303' class='axis'/>
+<text x='185' y='323' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>-0.39</text>
+<text x='530' y='323' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>0.699</text>
+<line x1='309' y1='84' x2='309' y2='295' class='zero'/>
+<text x='175' y='100' font-size='11' text-anchor='end' font-weight='normal' class=''>alcid_piscivore</text>
+<line x1='203' y1='92' x2='275' y2='92' class='individual'/>
+<circle cx='239' cy='92' r='4' class='individual'/>
+<line x1='210' y1='101' x2='281' y2='101' class='posterior'/>
+<circle cx='245' cy='101' r='4' class='posterior'/>
+<text x='175' y='127' font-size='11' text-anchor='end' font-weight='normal' class=''>falsification</text>
+<line x1='416' y1='119' x2='467' y2='119' class='individual'/>
+<circle cx='442' cy='119' r='4' class='individual'/>
+<line x1='416' y1='128' x2='465' y2='128' class='posterior'/>
+<circle cx='441' cy='128' r='4' class='posterior'/>
+<text x='175' y='154' font-size='11' text-anchor='end' font-weight='normal' class=''>gull_roe</text>
+<line x1='481' y1='146' x2='512' y2='146' class='individual'/>
+<circle cx='496' cy='146' r='4' class='individual'/>
+<line x1='480' y1='155' x2='511' y2='155' class='posterior'/>
+<circle cx='496' cy='155' r='4' class='posterior'/>
+<text x='175' y='181' font-size='11' text-anchor='end' font-weight='normal' class=''>intertidal_roe_shorebird</text>
+<line x1='254' y1='173' x2='305' y2='173' class='individual'/>
+<circle cx='280' cy='173' r='4' class='individual'/>
+<line x1='257' y1='182' x2='307' y2='182' class='posterior'/>
+<circle cx='282' cy='182' r='4' class='posterior'/>
+<text x='175' y='208' font-size='11' text-anchor='end' font-weight='normal' class=''>piscivore_active_spawn</text>
+<line x1='350' y1='200' x2='381' y2='200' class='individual'/>
+<circle cx='366' cy='200' r='4' class='individual'/>
+<line x1='350' y1='209' x2='381' y2='209' class='posterior'/>
+<circle cx='366' cy='209' r='4' class='posterior'/>
+<text x='175' y='235' font-size='11' text-anchor='end' font-weight='normal' class=''>roe_diving_seaduck</text>
+<line x1='446' y1='227' x2='477' y2='227' class='individual'/>
+<circle cx='462' cy='227' r='4' class='individual'/>
+<line x1='445' y1='236' x2='477' y2='236' class='posterior'/>
+<circle cx='461' cy='236' r='4' class='posterior'/>
+<text x='175' y='262' font-size='11' text-anchor='end' font-weight='normal' class=''>shoreline_scavenger</text>
+<line x1='396' y1='254' x2='436' y2='254' class='individual'/>
+<circle cx='416' cy='254' r='4' class='individual'/>
+<line x1='396' y1='263' x2='436' y2='263' class='posterior'/>
+<circle cx='416' cy='263' r='4' class='posterior'/>
+<text x='175' y='289' font-size='11' text-anchor='end' font-weight='normal' class=''>surface_vegetation_roe</text>
+<line x1='420' y1='281' x2='452' y2='281' class='individual'/>
+<circle cx='436' cy='281' r='4' class='individual'/>
+<line x1='420' y1='290' x2='451' y2='290' class='posterior'/>
+<circle cx='436' cy='290' r='4' class='posterior'/>
+<text x='825' y='68' font-size='15' text-anchor='middle' font-weight='bold' class=''>WCVI detection</text>
+<line x1='735' y1='303' x2='1080' y2='303' class='axis'/>
+<text x='735' y='323' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>-0.716</text>
+<text x='1080' y='323' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>1.24</text>
+<line x1='862' y1='84' x2='862' y2='295' class='zero'/>
+<text x='725' y='100' font-size='11' text-anchor='end' font-weight='normal' class=''>alcid_piscivore</text>
+<line x1='794' y1='92' x2='920' y2='92' class='individual'/>
+<circle cx='857' cy='92' r='4' class='individual'/>
+<line x1='815' y1='101' x2='925' y2='101' class='posterior'/>
+<circle cx='870' cy='101' r='4' class='posterior'/>
+<text x='725' y='127' font-size='11' text-anchor='end' font-weight='normal' class=''>falsification</text>
+<line x1='753' y1='119' x2='1001' y2='119' class='individual'/>
+<circle cx='877' cy='119' r='4' class='individual'/>
+<line x1='813' y1='128' x2='980' y2='128' class='posterior'/>
+<circle cx='896' cy='128' r='4' class='posterior'/>
+<text x='725' y='154' font-size='11' text-anchor='end' font-weight='normal' class=''>gull_roe</text>
+<line x1='846' y1='146' x2='937' y2='146' class='individual'/>
+<circle cx='892' cy='146' r='4' class='individual'/>
+<line x1='852' y1='155' x2='937' y2='155' class='posterior'/>
+<circle cx='895' cy='155' r='4' class='posterior'/>
+<text x='725' y='181' font-size='11' text-anchor='end' font-weight='normal' class=''>intertidal_roe_shorebird</text>
+<line x1='793' y1='173' x2='890' y2='173' class='individual'/>
+<circle cx='841' cy='173' r='4' class='individual'/>
+<line x1='808' y1='182' x2='897' y2='182' class='posterior'/>
+<circle cx='852' cy='182' r='4' class='posterior'/>
+<text x='725' y='208' font-size='11' text-anchor='end' font-weight='normal' class=''>piscivore_active_spawn</text>
+<line x1='905' y1='200' x2='1000' y2='200' class='individual'/>
+<circle cx='952' cy='200' r='4' class='individual'/>
+<line x1='902' y1='209' x2='990' y2='209' class='posterior'/>
+<circle cx='946' cy='209' r='4' class='posterior'/>
+<text x='725' y='235' font-size='11' text-anchor='end' font-weight='normal' class=''>roe_diving_seaduck</text>
+<line x1='968' y1='227' x2='1062' y2='227' class='individual'/>
+<circle cx='1015' cy='227' r='4' class='individual'/>
+<line x1='956' y1='236' x2='1043' y2='236' class='posterior'/>
+<circle cx='1000' cy='236' r='4' class='posterior'/>
+<text x='725' y='262' font-size='11' text-anchor='end' font-weight='normal' class=''>shoreline_scavenger</text>
+<line x1='789' y1='254' x2='913' y2='254' class='individual'/>
+<circle cx='851' cy='254' r='4' class='individual'/>
+<line x1='811' y1='263' x2='920' y2='263' class='posterior'/>
+<circle cx='865' cy='263' r='4' class='posterior'/>
+<text x='725' y='289' font-size='11' text-anchor='end' font-weight='normal' class=''>surface_vegetation_roe</text>
+<line x1='936' y1='281' x2='1037' y2='281' class='individual'/>
+<circle cx='987' cy='281' r='4' class='individual'/>
+<line x1='928' y1='290' x2='1021' y2='290' class='posterior'/>
+<circle cx='974' cy='290' r='4' class='posterior'/>
+<text x='275' y='389' font-size='15' text-anchor='middle' font-weight='bold' class=''>SoG positive count</text>
+<line x1='185' y1='624' x2='530' y2='624' class='axis'/>
+<text x='185' y='644' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>-0.582</text>
+<text x='530' y='644' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>0.624</text>
+<line x1='352' y1='405' x2='352' y2='616' class='zero'/>
+<text x='175' y='421' font-size='11' text-anchor='end' font-weight='normal' class=''>alcid_piscivore</text>
+<line x1='203' y1='413' x2='283' y2='413' class='individual'/>
+<circle cx='243' cy='413' r='4' class='individual'/>
+<line x1='215' y1='422' x2='292' y2='422' class='posterior'/>
+<circle cx='254' cy='422' r='4' class='posterior'/>
+<text x='175' y='448' font-size='11' text-anchor='end' font-weight='normal' class=''>falsification</text>
+<line x1='456' y1='440' x2='512' y2='440' class='individual'/>
+<circle cx='484' cy='440' r='4' class='individual'/>
+<line x1='453' y1='449' x2='508' y2='449' class='posterior'/>
+<circle cx='481' cy='449' r='4' class='posterior'/>
+<text x='175' y='475' font-size='11' text-anchor='end' font-weight='normal' class=''>gull_roe</text>
+<line x1='391' y1='467' x2='418' y2='467' class='individual'/>
+<circle cx='404' cy='467' r='4' class='individual'/>
+<line x1='391' y1='476' x2='418' y2='476' class='posterior'/>
+<circle cx='404' cy='476' r='4' class='posterior'/>
+<text x='175' y='502' font-size='11' text-anchor='end' font-weight='normal' class=''>intertidal_roe_shorebird</text>
+<line x1='358' y1='494' x2='430' y2='494' class='individual'/>
+<circle cx='394' cy='494' r='4' class='individual'/>
+<line x1='360' y1='503' x2='429' y2='503' class='posterior'/>
+<circle cx='395' cy='503' r='4' class='posterior'/>
+<text x='175' y='529' font-size='11' text-anchor='end' font-weight='normal' class=''>piscivore_active_spawn</text>
+<line x1='348' y1='521' x2='373' y2='521' class='individual'/>
+<circle cx='360' cy='521' r='4' class='individual'/>
+<line x1='348' y1='530' x2='373' y2='530' class='posterior'/>
+<circle cx='361' cy='530' r='4' class='posterior'/>
+<text x='175' y='556' font-size='11' text-anchor='end' font-weight='normal' class=''>roe_diving_seaduck</text>
+<line x1='400' y1='548' x2='431' y2='548' class='individual'/>
+<circle cx='415' cy='548' r='4' class='individual'/>
+<line x1='399' y1='557' x2='430' y2='557' class='posterior'/>
+<circle cx='415' cy='557' r='4' class='posterior'/>
+<text x='175' y='583' font-size='11' text-anchor='end' font-weight='normal' class=''>shoreline_scavenger</text>
+<line x1='424' y1='575' x2='439' y2='575' class='individual'/>
+<circle cx='432' cy='575' r='4' class='individual'/>
+<line x1='424' y1='584' x2='439' y2='584' class='posterior'/>
+<circle cx='432' cy='584' r='4' class='posterior'/>
+<text x='175' y='610' font-size='11' text-anchor='end' font-weight='normal' class=''>surface_vegetation_roe</text>
+<line x1='470' y1='602' x2='496' y2='602' class='individual'/>
+<circle cx='483' cy='602' r='4' class='individual'/>
+<line x1='469' y1='611' x2='496' y2='611' class='posterior'/>
+<circle cx='482' cy='611' r='4' class='posterior'/>
+<text x='825' y='389' font-size='15' text-anchor='middle' font-weight='bold' class=''>WCVI positive count</text>
+<line x1='735' y1='624' x2='1080' y2='624' class='axis'/>
+<text x='735' y='644' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>-0.885</text>
+<text x='1080' y='644' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>1.71</text>
+<line x1='853' y1='405' x2='853' y2='616' class='zero'/>
+<text x='725' y='421' font-size='11' text-anchor='end' font-weight='normal' class=''>alcid_piscivore</text>
+<line x1='753' y1='413' x2='856' y2='413' class='individual'/>
+<circle cx='805' cy='413' r='4' class='individual'/>
+<line x1='776' y1='422' x2='871' y2='422' class='posterior'/>
+<circle cx='824' cy='422' r='4' class='posterior'/>
+<text x='725' y='448' font-size='11' text-anchor='end' font-weight='normal' class=''>falsification</text>
+<line x1='817' y1='440' x2='1040' y2='440' class='individual'/>
+<circle cx='928' cy='440' r='4' class='individual'/>
+<line x1='848' y1='449' x2='1015' y2='449' class='posterior'/>
+<circle cx='932' cy='449' r='4' class='posterior'/>
+<text x='725' y='475' font-size='11' text-anchor='end' font-weight='normal' class=''>gull_roe</text>
+<line x1='972' y1='467' x2='1041' y2='467' class='individual'/>
+<circle cx='1006' cy='467' r='4' class='individual'/>
+<line x1='968' y1='476' x2='1035' y2='476' class='posterior'/>
+<circle cx='1002' cy='476' r='4' class='posterior'/>
+<text x='725' y='502' font-size='11' text-anchor='end' font-weight='normal' class=''>intertidal_roe_shorebird</text>
+<line x1='889' y1='494' x2='969' y2='494' class='individual'/>
+<circle cx='929' cy='494' r='4' class='individual'/>
+<line x1='892' y1='503' x2='968' y2='503' class='posterior'/>
+<circle cx='930' cy='503' r='4' class='posterior'/>
+<text x='725' y='529' font-size='11' text-anchor='end' font-weight='normal' class=''>piscivore_active_spawn</text>
+<line x1='886' y1='521' x2='951' y2='521' class='individual'/>
+<circle cx='918' cy='521' r='4' class='individual'/>
+<line x1='888' y1='530' x2='951' y2='530' class='posterior'/>
+<circle cx='920' cy='530' r='4' class='posterior'/>
+<text x='725' y='556' font-size='11' text-anchor='end' font-weight='normal' class=''>roe_diving_seaduck</text>
+<line x1='984' y1='548' x2='1062' y2='548' class='individual'/>
+<circle cx='1023' cy='548' r='4' class='individual'/>
+<line x1='979' y1='557' x2='1052' y2='557' class='posterior'/>
+<circle cx='1016' cy='557' r='4' class='posterior'/>
+<text x='725' y='583' font-size='11' text-anchor='end' font-weight='normal' class=''>shoreline_scavenger</text>
+<line x1='873' y1='575' x2='907' y2='575' class='individual'/>
+<circle cx='890' cy='575' r='4' class='individual'/>
+<line x1='874' y1='584' x2='908' y2='584' class='posterior'/>
+<circle cx='891' cy='584' r='4' class='posterior'/>
+<text x='725' y='610' font-size='11' text-anchor='end' font-weight='normal' class=''>surface_vegetation_roe</text>
+<line x1='936' y1='602' x2='1028' y2='602' class='individual'/>
+<circle cx='982' cy='602' r='4' class='individual'/>
+<line x1='933' y1='611' x2='1020' y2='611' class='posterior'/>
+<circle cx='976' cy='611' r='4' class='posterior'/>
+</svg><p class='caption'>M01 active-near contrasts. Detection is on the log-odds scale; positive counts are on the registered positive-lognormal coefficient scale.</p></div><h2>Priority-A species are shown without outcome-based selection</h2><p>The five registry-defined Priority-A taxa are displayed for both response components and both primary regions. Shrinkage changes synthesis, not the unchanged individual-model inference.</p><div class='figure'><svg xmlns='http://www.w3.org/2000/svg' width='1100' height='575' viewBox='0 0 1100 575' role='img'>
+<rect width='100%' height='100%' fill='white'/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.axis{stroke:#6b7280;stroke-width:1}.zero{stroke:#6b7280;stroke-width:1;stroke-dasharray:5 4}.individual{stroke:#1f5a7a;fill:white;stroke-width:2}.posterior{stroke:#b7791f;fill:#b7791f;stroke-width:2}.muted{fill:#596674}</style>
+<text x='550' y='28' font-size='18' text-anchor='middle' font-weight='bold' class=''>Priority-A species: individual (open blue) and v2 posterior (gold)</text>
+<text x='275' y='68' font-size='15' text-anchor='middle' font-weight='bold' class=''>SoG detection</text>
+<line x1='185' y1='222' x2='530' y2='222' class='axis'/>
+<text x='185' y='242' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>-0.192</text>
+<text x='530' y='242' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>0.674</text>
+<line x1='262' y1='84' x2='262' y2='214' class='zero'/>
+<text x='175' y='100' font-size='11' text-anchor='end' font-weight='normal' class=''>Glaucous-winged Gull</text>
+<line x1='472' y1='92' x2='510' y2='92' class='individual'/>
+<circle cx='491' cy='92' r='4' class='individual'/>
+<line x1='472' y1='101' x2='510' y2='101' class='posterior'/>
+<circle cx='491' cy='101' r='4' class='posterior'/>
+<text x='175' y='127' font-size='11' text-anchor='end' font-weight='normal' class=''>Harlequin Duck</text>
+<line x1='205' y1='119' x2='281' y2='119' class='individual'/>
+<circle cx='243' cy='119' r='4' class='individual'/>
+<line x1='206' y1='128' x2='282' y2='128' class='posterior'/>
+<circle cx='244' cy='128' r='4' class='posterior'/>
+<text x='175' y='154' font-size='11' text-anchor='end' font-weight='normal' class=''>Short-billed Gull</text>
+<line x1='409' y1='146' x2='460' y2='146' class='individual'/>
+<circle cx='434' cy='146' r='4' class='individual'/>
+<line x1='408' y1='155' x2='460' y2='155' class='posterior'/>
+<circle cx='434' cy='155' r='4' class='posterior'/>
+<text x='175' y='181' font-size='11' text-anchor='end' font-weight='normal' class=''>Surf Scoter</text>
+<line x1='305' y1='173' x2='365' y2='173' class='individual'/>
+<circle cx='335' cy='173' r='4' class='individual'/>
+<line x1='305' y1='182' x2='365' y2='182' class='posterior'/>
+<circle cx='335' cy='182' r='4' class='posterior'/>
+<text x='175' y='208' font-size='11' text-anchor='end' font-weight='normal' class=''>White-winged Scoter</text>
+<line x1='215' y1='200' x2='321' y2='200' class='individual'/>
+<circle cx='268' cy='200' r='4' class='individual'/>
+<line x1='218' y1='209' x2='322' y2='209' class='posterior'/>
+<circle cx='270' cy='209' r='4' class='posterior'/>
+<text x='825' y='68' font-size='15' text-anchor='middle' font-weight='bold' class=''>WCVI detection</text>
+<line x1='735' y1='222' x2='1080' y2='222' class='axis'/>
+<text x='735' y='242' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>-0.343</text>
+<text x='1080' y='242' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>1.42</text>
+<line x1='802' y1='84' x2='802' y2='214' class='zero'/>
+<text x='725' y='100' font-size='11' text-anchor='end' font-weight='normal' class=''>Glaucous-winged Gull</text>
+<line x1='753' y1='92' x2='853' y2='92' class='individual'/>
+<circle cx='803' cy='92' r='4' class='individual'/>
+<line x1='757' y1='101' x2='855' y2='101' class='posterior'/>
+<circle cx='806' cy='101' r='4' class='posterior'/>
+<text x='725' y='127' font-size='11' text-anchor='end' font-weight='normal' class=''>Harlequin Duck</text>
+<line x1='802' y1='119' x2='998' y2='119' class='individual'/>
+<circle cx='900' cy='119' r='4' class='individual'/>
+<line x1='810' y1='128' x2='997' y2='128' class='posterior'/>
+<circle cx='904' cy='128' r='4' class='posterior'/>
+<text x='725' y='154' font-size='11' text-anchor='end' font-weight='normal' class=''>Short-billed Gull</text>
+<line x1='947' y1='146' x2='1062' y2='146' class='individual'/>
+<circle cx='1004' cy='146' r='4' class='individual'/>
+<line x1='946' y1='155' x2='1058' y2='155' class='posterior'/>
+<circle cx='1002' cy='155' r='4' class='posterior'/>
+<text x='725' y='181' font-size='11' text-anchor='end' font-weight='normal' class=''>Surf Scoter</text>
+<line x1='936' y1='173' x2='1049' y2='173' class='individual'/>
+<circle cx='992' cy='173' r='4' class='individual'/>
+<line x1='935' y1='182' x2='1046' y2='182' class='posterior'/>
+<circle cx='991' cy='182' r='4' class='posterior'/>
+<text x='725' y='208' font-size='11' text-anchor='end' font-weight='normal' class=''>White-winged Scoter</text>
+<line x1='860' y1='200' x2='1019' y2='200' class='individual'/>
+<circle cx='939' cy='200' r='4' class='individual'/>
+<line x1='862' y1='209' x2='1016' y2='209' class='posterior'/>
+<circle cx='939' cy='209' r='4' class='posterior'/>
+<text x='275' y='328' font-size='15' text-anchor='middle' font-weight='bold' class=''>SoG positive count</text>
+<line x1='185' y1='482' x2='530' y2='482' class='axis'/>
+<text x='185' y='502' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>-0.0769</text>
+<text x='530' y='502' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>0.705</text>
+<line x1='219' y1='344' x2='219' y2='474' class='zero'/>
+<text x='175' y='360' font-size='11' text-anchor='end' font-weight='normal' class=''>Glaucous-winged Gull</text>
+<line x1='297' y1='352' x2='334' y2='352' class='individual'/>
+<circle cx='316' cy='352' r='4' class='individual'/>
+<line x1='297' y1='361' x2='334' y2='361' class='posterior'/>
+<circle cx='315' cy='361' r='4' class='posterior'/>
+<text x='175' y='387' font-size='11' text-anchor='end' font-weight='normal' class=''>Harlequin Duck</text>
+<line x1='298' y1='379' x2='382' y2='379' class='individual'/>
+<circle cx='340' cy='379' r='4' class='individual'/>
+<line x1='297' y1='388' x2='380' y2='388' class='posterior'/>
+<circle cx='338' cy='388' r='4' class='posterior'/>
+<text x='175' y='414' font-size='11' text-anchor='end' font-weight='normal' class=''>Short-billed Gull</text>
+<line x1='352' y1='406' x2='433' y2='406' class='individual'/>
+<circle cx='392' cy='406' r='4' class='individual'/>
+<line x1='349' y1='415' x2='429' y2='415' class='posterior'/>
+<circle cx='389' cy='415' r='4' class='posterior'/>
+<text x='175' y='441' font-size='11' text-anchor='end' font-weight='normal' class=''>Surf Scoter</text>
+<line x1='404' y1='433' x2='508' y2='433' class='individual'/>
+<circle cx='456' cy='433' r='4' class='individual'/>
+<line x1='397' y1='442' x2='499' y2='442' class='posterior'/>
+<circle cx='448' cy='442' r='4' class='posterior'/>
+<text x='175' y='468' font-size='11' text-anchor='end' font-weight='normal' class=''>White-winged Scoter</text>
+<line x1='207' y1='460' x2='396' y2='460' class='individual'/>
+<circle cx='301' cy='460' r='4' class='individual'/>
+<line x1='210' y1='469' x2='387' y2='469' class='posterior'/>
+<circle cx='299' cy='469' r='4' class='posterior'/>
+<text x='825' y='328' font-size='15' text-anchor='middle' font-weight='bold' class=''>WCVI positive count</text>
+<line x1='735' y1='482' x2='1080' y2='482' class='axis'/>
+<text x='735' y='502' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>-0.297</text>
+<text x='1080' y='502' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>1.77</text>
+<line x1='785' y1='344' x2='785' y2='474' class='zero'/>
+<text x='725' y='360' font-size='11' text-anchor='end' font-weight='normal' class=''>Glaucous-winged Gull</text>
+<line x1='899' y1='352' x2='984' y2='352' class='individual'/>
+<circle cx='942' cy='352' r='4' class='individual'/>
+<line x1='899' y1='361' x2='984' y2='361' class='posterior'/>
+<circle cx='942' cy='361' r='4' class='posterior'/>
+<text x='725' y='387' font-size='11' text-anchor='end' font-weight='normal' class=''>Harlequin Duck</text>
+<line x1='753' y1='379' x2='881' y2='379' class='individual'/>
+<circle cx='817' cy='379' r='4' class='individual'/>
+<line x1='754' y1='388' x2='881' y2='388' class='posterior'/>
+<circle cx='818' cy='388' r='4' class='posterior'/>
+<text x='725' y='414' font-size='11' text-anchor='end' font-weight='normal' class=''>Short-billed Gull</text>
+<line x1='950' y1='406' x2='1062' y2='406' class='individual'/>
+<circle cx='1006' cy='406' r='4' class='individual'/>
+<line x1='949' y1='415' x2='1060' y2='415' class='posterior'/>
+<circle cx='1004' cy='415' r='4' class='posterior'/>
+<text x='725' y='441' font-size='11' text-anchor='end' font-weight='normal' class=''>Surf Scoter</text>
+<line x1='916' y1='433' x2='1044' y2='433' class='individual'/>
+<circle cx='980' cy='433' r='4' class='individual'/>
+<line x1='915' y1='442' x2='1042' y2='442' class='posterior'/>
+<circle cx='979' cy='442' r='4' class='posterior'/>
+<text x='725' y='468' font-size='11' text-anchor='end' font-weight='normal' class=''>White-winged Scoter</text>
+<line x1='778' y1='460' x2='932' y2='460' class='individual'/>
+<circle cx='855' cy='460' r='4' class='individual'/>
+<line x1='778' y1='469' x2='931' y2='469' class='posterior'/>
+<circle cx='855' cy='469' r='4' class='posterior'/>
+</svg><p class='caption'>M02 active-near contrasts for the frozen Priority-A metadata subset.</p></div><h2>Event-time summaries use discrete registered contrasts</h2><p>Each point is a compatible M05 guild-family mean for a registered event-time contrast. These are categorical event-window comparisons, not a continuous trajectory and not a causal event-study estimate.</p><div class='figure'><svg xmlns='http://www.w3.org/2000/svg' width='1000' height='430' viewBox='0 0 1000 430' role='img'>
+<rect width='100%' height='100%' fill='white'/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.axis{stroke:#6b7280;stroke-width:1}.zero{stroke:#6b7280;stroke-width:1;stroke-dasharray:5 4}.individual{stroke:#1f5a7a;fill:white;stroke-width:2}.posterior{stroke:#b7791f;fill:#b7791f;stroke-width:2}.muted{fill:#596674}</style>
+<text x='250' y='28' font-size='16' text-anchor='middle' font-weight='bold' class=''>Detection</text>
+<line x1='70' y1='315' x2='470' y2='315' class='axis'/>
+<line x1='70' y1='188' x2='470' y2='188' class='zero'/>
+<text x='70' y='52' font-size='11' text-anchor='start' font-weight='normal' class='muted'>0.05</text>
+<text x='70' y='331' font-size='11' text-anchor='start' font-weight='normal' class='muted'>-0.05</text>
+<text x='95' y='364' font-size='10' text-anchor='middle' font-weight='normal' class=''>Immediate pre</text>
+<text x='182' y='349' font-size='10' text-anchor='middle' font-weight='normal' class=''>Spawn start</text>
+<text x='270' y='364' font-size='10' text-anchor='middle' font-weight='normal' class=''>Early egg</text>
+<text x='358' y='349' font-size='10' text-anchor='middle' font-weight='normal' class=''>Late egg</text>
+<text x='445' y='364' font-size='10' text-anchor='middle' font-weight='normal' class=''>Post</text>
+<line x1='88' y1='NA' x2='88' y2='NA' class='individual'/>
+<circle cx='88' cy='NA' r='5' class='individual'/>
+<line x1='175' y1='NA' x2='175' y2='NA' class='individual'/>
+<circle cx='175' cy='NA' r='5' class='individual'/>
+<line x1='263' y1='NA' x2='263' y2='NA' class='individual'/>
+<circle cx='263' cy='NA' r='5' class='individual'/>
+<line x1='351' y1='NA' x2='351' y2='NA' class='individual'/>
+<circle cx='351' cy='NA' r='5' class='individual'/>
+<line x1='438' y1='NA' x2='438' y2='NA' class='individual'/>
+<circle cx='438' cy='NA' r='5' class='individual'/>
+<line x1='102' y1='NA' x2='102' y2='NA' class='posterior'/>
+<circle cx='102' cy='NA' r='5' class='posterior'/>
+<line x1='189' y1='NA' x2='189' y2='NA' class='posterior'/>
+<circle cx='189' cy='NA' r='5' class='posterior'/>
+<line x1='277' y1='NA' x2='277' y2='NA' class='posterior'/>
+<circle cx='277' cy='NA' r='5' class='posterior'/>
+<line x1='365' y1='NA' x2='365' y2='NA' class='posterior'/>
+<circle cx='365' cy='NA' r='5' class='posterior'/>
+<line x1='452' y1='NA' x2='452' y2='NA' class='posterior'/>
+<circle cx='452' cy='NA' r='5' class='posterior'/>
+<circle cx='355' cy='55' r='5' class='individual'/>
+<text x='367' y='59' font-size='11' text-anchor='start' font-weight='normal' class=''>SoG</text>
+<circle cx='415' cy='55' r='5' class='posterior'/>
+<text x='427' y='59' font-size='11' text-anchor='start' font-weight='normal' class=''>WCVI</text>
+<text x='750' y='28' font-size='16' text-anchor='middle' font-weight='bold' class=''>Positive count</text>
+<line x1='570' y1='315' x2='970' y2='315' class='axis'/>
+<line x1='570' y1='188' x2='970' y2='188' class='zero'/>
+<text x='570' y='52' font-size='11' text-anchor='start' font-weight='normal' class='muted'>0.05</text>
+<text x='570' y='331' font-size='11' text-anchor='start' font-weight='normal' class='muted'>-0.05</text>
+<text x='595' y='364' font-size='10' text-anchor='middle' font-weight='normal' class=''>Immediate pre</text>
+<text x='682' y='349' font-size='10' text-anchor='middle' font-weight='normal' class=''>Spawn start</text>
+<text x='770' y='364' font-size='10' text-anchor='middle' font-weight='normal' class=''>Early egg</text>
+<text x='858' y='349' font-size='10' text-anchor='middle' font-weight='normal' class=''>Late egg</text>
+<text x='945' y='364' font-size='10' text-anchor='middle' font-weight='normal' class=''>Post</text>
+<line x1='588' y1='NA' x2='588' y2='NA' class='individual'/>
+<circle cx='588' cy='NA' r='5' class='individual'/>
+<line x1='675' y1='NA' x2='675' y2='NA' class='individual'/>
+<circle cx='675' cy='NA' r='5' class='individual'/>
+<line x1='763' y1='NA' x2='763' y2='NA' class='individual'/>
+<circle cx='763' cy='NA' r='5' class='individual'/>
+<line x1='851' y1='NA' x2='851' y2='NA' class='individual'/>
+<circle cx='851' cy='NA' r='5' class='individual'/>
+<line x1='938' y1='NA' x2='938' y2='NA' class='individual'/>
+<circle cx='938' cy='NA' r='5' class='individual'/>
+<line x1='602' y1='NA' x2='602' y2='NA' class='posterior'/>
+<circle cx='602' cy='NA' r='5' class='posterior'/>
+<line x1='689' y1='NA' x2='689' y2='NA' class='posterior'/>
+<circle cx='689' cy='NA' r='5' class='posterior'/>
+<line x1='777' y1='NA' x2='777' y2='NA' class='posterior'/>
+<circle cx='777' cy='NA' r='5' class='posterior'/>
+<line x1='865' y1='NA' x2='865' y2='NA' class='posterior'/>
+<circle cx='865' cy='NA' r='5' class='posterior'/>
+<line x1='952' y1='NA' x2='952' y2='NA' class='posterior'/>
+<circle cx='952' cy='NA' r='5' class='posterior'/>
+<circle cx='855' cy='55' r='5' class='individual'/>
+<text x='867' y='59' font-size='11' text-anchor='start' font-weight='normal' class=''>SoG</text>
+<circle cx='915' cy='55' r='5' class='posterior'/>
+<text x='927' y='59' font-size='11' text-anchor='start' font-weight='normal' class=''>WCVI</text>
+</svg><p class='caption'>SoG and WCVI pooled guild families; normal 95% intervals. Response scales remain separate.</p></div><h2>Scope, data, and metric definitions</h2><p>The source population is eligible submitted complete eBird checklists from the registered Stage 4A frames. The repair reads only <code>outputs/stage4a_results/effect_estimates.csv</code> and frozen metadata. The literal North code <code>NA</code> is a registered categorical value. Individual coefficients retain their original model scale; families never mix response states, unit classes, models, estimands, scales, exposures, time windows, buffers, populations, adjustment sets, or coefficient/variance meanings.</p><h2>The estimator is closed form and versioned</h2><p>Within each compatible family, v2 uses the frozen normal-normal empirical-Bayes method-of-moments contract. Sampling variance is squared individual standard error; between-component variance is <code>max(0, var(y) - mean(v))</code>; family weights are <code>1/(v + tau²)</code>. Zero between-family variance uses the exact common-effect boundary rather than the historical artificial precision floor. No pooled p-values or q-values are created.</p><div class='figure'><svg xmlns='http://www.w3.org/2000/svg' width='840' height='410' viewBox='0 0 840 410' role='img'>
+<rect width='100%' height='100%' fill='white'/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.axis{stroke:#6b7280;stroke-width:1}.zero{stroke:#6b7280;stroke-width:1;stroke-dasharray:5 4}.individual{stroke:#1f5a7a;fill:white;stroke-width:2}.posterior{stroke:#b7791f;fill:#b7791f;stroke-width:2}.muted{fill:#596674}</style>
+<text x='420' y='28' font-size='18' text-anchor='middle' font-weight='bold' class=''>Between-component variance distribution</text>
+<rect x='75' y='241' width='33' height='94' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='108' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='141' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='174' y='335' width='32' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='206' y='244' width='33' height='91' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='239' y='55' width='33' height='280' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='272' y='312' width='33' height='23' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='305' y='328' width='33' height='7' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='338' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='371' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='404' y='335' width='32' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='436' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='469' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='502' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='535' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='568' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='601' y='335' width='33' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='634' y='335' width='32' height='0' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='666' y='332' width='33' height='3' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='699' y='319' width='33' height='16' fill='#b9d6e5' stroke='#1f5a7a'/>
+<rect x='732' y='322' width='33' height='13' fill='#b9d6e5' stroke='#1f5a7a'/>
+<line x1='75' y1='335' x2='765' y2='335' class='axis'/>
+<text x='75' y='359' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>-12</text>
+<text x='765' y='359' font-size='11' text-anchor='middle' font-weight='normal' class='muted'>30</text>
+<text x='420' y='382' font-size='13' text-anchor='middle' font-weight='normal' class=''>log10(tau^2 + 1e-12)</text>
+<text x='25' y='195' font-size='13' text-anchor='middle' font-weight='normal' class=''>V2 families</text>
+</svg><p class='caption'>All 162 v2 families. The logarithmic diagnostic axis exposes both near-zero and highly heterogeneous families without implying comparable biological scales.</p></div><div class='table-wrap'><table><thead><tr><th>model</th><th>population</th><th>unit_class</th><th>response</th><th>registered</th><th>eligible</th><th>tau2</th><th>status</th></tr></thead><tbody><tr><td>M01</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>60615964559309898964222888024.000000</td><td>ESTIMABLE</td></tr><tr><td>M01</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>7</td><td>7</td><td>1.395542</td><td>ESTIMABLE</td></tr><tr><td>M01</td><td>NA_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>0.320562</td><td>ESTIMABLE</td></tr><tr><td>M01</td><td>NA_1988_hierarchical_descriptive</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>8</td><td>8</td><td>0.064073</td><td>ESTIMABLE</td></tr><tr><td>M01</td><td>SoG_2005_primary</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>0.080270</td><td>ESTIMABLE</td></tr><tr><td>M01</td><td>SoG_2005_primary</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>8</td><td>8</td><td>0.070304</td><td>ESTIMABLE</td></tr><tr><td>M01</td><td>WCVI_2015_candidate_primary</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>0.106218</td><td>ESTIMABLE</td></tr><tr><td>M01</td><td>WCVI_2015_candidate_primary</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>8</td><td>8</td><td>0.235795</td><td>ESTIMABLE</td></tr><tr><td>M02</td><td>CC_1988_hierarchical_descriptive</td><td>species</td><td>detection</td><td>47</td><td>45</td><td>0.000000</td><td>ESTIMABLE</td></tr><tr><td>M02</td><td>CC_1988_hierarchical_descriptive</td><td>species</td><td>positive_numeric_count_given_detection</td><td>38</td><td>38</td><td>3.904252</td><td>ESTIMABLE</td></tr><tr><td>M02</td><td>NA_1988_hierarchical_descriptive</td><td>species</td><td>detection</td><td>49</td><td>49</td><td>0.000000</td><td>ESTIMABLE</td></tr><tr><td>M02</td><td>NA_1988_hierarchical_descriptive</td><td>species</td><td>positive_numeric_count_given_detection</td><td>47</td><td>47</td><td>0.441387</td><td>ESTIMABLE</td></tr><tr><td>M02</td><td>SoG_2005_primary</td><td>species</td><td>detection</td><td>49</td><td>49</td><td>0.214077</td><td>ESTIMABLE</td></tr><tr><td>M02</td><td>SoG_2005_primary</td><td>species</td><td>positive_numeric_count_given_detection</td><td>49</td><td>49</td><td>0.082627</td><td>ESTIMABLE</td></tr><tr><td>M02</td><td>WCVI_2015_candidate_primary</td><td>species</td><td>detection</td><td>49</td><td>49</td><td>0.657795</td><td>ESTIMABLE</td></tr><tr><td>M02</td><td>WCVI_2015_candidate_primary</td><td>species</td><td>positive_numeric_count_given_detection</td><td>48</td><td>48</td><td>3.383200</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>30359156491551300054482422428.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>64111543765434201740844624046.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>853351229133548973902686002.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>7869170447100090309888608242.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>1132420665512840041768222462.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>51227416129422897420866606.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>8</td><td>8</td><td>230835634160423005642060844.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>detection</td><td>40</td><td>40</td><td>146751399265509999992282484.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>7</td><td>7</td><td>0.069389</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>7</td><td>7</td><td>0.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>7</td><td>7</td><td>0.371794</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>7</td><td>7</td><td>0.000000</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>7</td><td>7</td><td>0.055247</td><td>ESTIMABLE</td></tr><tr><td>M05</td><td>CC_1988_hierarchical_descriptive</td><td>guild</td><td>positive_numeric_count_given_detection</td><td>7</td><td>7</td><td>0.020439</td><td>ESTIMABLE</td></tr></tbody></table></div><h2>Limitations, uncertainty, and robustness</h2><div class='caution'><p><strong>Interpretation boundary.</strong> These are associations among eligible submitted checklists after registered adjustment. They do not identify population abundance, biomass, occupancy, movement, or causal effects. Checklist submission and observer behavior, residual spatial-temporal confounding, interference among nearby spawn events, and incomplete DFO negative-survey coverage remain limitations. Missing DFO records are not surveyed negatives; unmonitored coverage remains unknown.</p></div><p>CC and North remain hierarchical/descriptive. Extreme but finite completed-fit coefficients are retained visibly and should be read with their uncertainty and model diagnostics; no result was removed for magnitude, direction, or significance.</p><h2>Recommended next steps</h2><p>The next authorized step is the matched-model publication sensitivity PR: corrected region-year exposure-bundle placebos, WCVI 2-km sensitivity, dominant-observer sensitivity, and retirement of M26 v1 from the inferential publication set. Publication claims should be finalized only after those matched sensitivity diagnostics are available.</p><h2>Further questions</h2><p>How stable are the registered associations under matched placebos and observer/spatial sensitivity? Which region-specific estimates remain interpretable after failed-geometry and extreme-coefficient diagnostics? Complete DFO negative-survey coverage would improve exposure interpretation, but its absence does not convert unknown cells to negatives or invalidate the aggregate repair.</p></body></html>
