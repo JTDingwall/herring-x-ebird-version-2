@@ -1,7 +1,7 @@
 execution_version: stage4a_aggregate_pooling_repair_execution_v2
 status: COMPLETE_AGGREGATE_ONLY
 pre_execution_spec_commit: bee142b6878bb66d57910c5aee57e4097fb2adf9
-execution_code_commit: 253bf2da8ce01e3fb2b399845ec9f412dce0693e
+execution_code_commit: 74f9ec05ba4de02cbdf5f258980bc1a7c07f080a
 record_time_basis: execution_code_commit_time
 input_artifacts:
   effect_estimates_v1:
@@ -13,7 +13,7 @@ input_artifacts:
   protected_inputs_used: no
 code_hashes:
   R/stage4a_pooling_repair_spec_v2.R: a3c1c6ed71ed16a7cc297751030da99149326ab896f56266f79b36b0e3173f45
-  R/stage4a_pooling_repair_execute_v2.R: b75cc1652fc9838708f4619b828b2c3f4c1d63f2f97c6b47d1ea9377f1b11d77
+  R/stage4a_pooling_repair_execute_v2.R: 1305698ca70f74fb06d0503f9446f6990f2ad52b8e922aa7fcfb5f6e77eefb7c
   scripts/run_stage4a_pooling_repair_v2.R: 5e9eb5cded68466e1938c55b3ffd218188a7c3774f653b9fbda6ea8f05fe1302
 results:
   v2_families: 162
