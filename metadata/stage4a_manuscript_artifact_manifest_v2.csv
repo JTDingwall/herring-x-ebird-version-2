@@ -56,7 +56,7 @@
 "metadata/stage4a_manuscript_metrics_v2.csv","93f6fbffdc379e664901e144d777ec9025b12b8d44d502887e5381e613a5e91e","451","public aggregate or manuscript metadata","c54b8e7f95a2fe3573e2e38633079cd223c5a783"
 "metadata/stage4a_publication_citation_audit_v2.csv","cf3fe502102aec411f0e348e73a9325c788a7ee698b374826ddd2f7e3fd10634","6296","public aggregate or manuscript metadata","c54b8e7f95a2fe3573e2e38633079cd223c5a783"
 "metadata/stage4a_publication_claim_evidence_matrix_v2.csv","c8788de4d576c0788defd3fede762a94e6bc8df738b74d8e3180a1dad722fb73","16753","public aggregate or manuscript metadata","c54b8e7f95a2fe3573e2e38633079cd223c5a783"
-"metadata/stage4a_publication_table_figure_provenance_v2.csv","325970249c45cb9adac6a8562c1a8a1edfc5583c61a7abf736b981bf2d547c78","7194","public aggregate or manuscript metadata","c54b8e7f95a2fe3573e2e38633079cd223c5a783"
+"metadata/stage4a_publication_table_figure_provenance_v2.csv","1473ff8b931901b87778ca7f655743f8f864bb68667d7344c117dfce350c3563","7866","public aggregate or manuscript metadata","c54b8e7f95a2fe3573e2e38633079cd223c5a783"
 "outputs/stage4a_publication_v2/singular_fit_claim_audit_v2.csv","159f429087b8d599539fb007acf33f4798fe28bd97362a249182daba237bd21c","39341","public aggregate or manuscript metadata","c54b8e7f95a2fe3573e2e38633079cd223c5a783"
 "outputs/stage4a_publication_v2/sog_falsification_claim_audit_v2.csv","d23c403df740e30ff0901e0ecaddff5b08daffaec41aa92fdda453f042606810","2532","public aggregate or manuscript metadata","c54b8e7f95a2fe3573e2e38633079cd223c5a783"
 "references/stage4a_manuscript_references_v2.bib","2f7ff59d502c94a8e45b2bfe9d82e519d47a4094395f95a27b69631aacac5893","7798","public aggregate or manuscript metadata","c54b8e7f95a2fe3573e2e38633079cd223c5a783"
