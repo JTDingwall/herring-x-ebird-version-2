@@ -23,14 +23,6 @@ if (-not $quarto) { throw 'Quarto was not found.' }
 $pandoc = Join-Path (Split-Path $quarto -Parent) 'tools\pandoc.exe'
 if (-not (Test-Path -LiteralPath $pandoc)) { throw 'Pandoc was not found.' }
 
-$browserCandidates = @(
-    (Join-Path ${env:ProgramFiles(x86)} 'Microsoft\Edge\Application\msedge.exe'),
-    (Join-Path $env:ProgramFiles 'Microsoft\Edge\Application\msedge.exe'),
-    (Join-Path $env:ProgramFiles 'Google\Chrome\Application\chrome.exe')
-)
-$browser = $browserCandidates | Where-Object { $_ -and (Test-Path -LiteralPath $_) } | Select-Object -First 1
-if (-not $browser) { throw 'A Chromium browser was not found for high-resolution artwork export.' }
-
 function Copy-WithRetry([string]$Source, [string]$Destination) {
     for ($attempt = 1; $attempt -le 20; $attempt++) {
         try {
@@ -44,42 +36,16 @@ function Copy-WithRetry([string]$Source, [string]$Destination) {
     }
 }
 
-$figureMap = [ordered]@{
-    'figure1_workflow_v2.svg' = 'Figure_1.png'
-    'figure2_primary_guild_v2.svg' = 'Figure_2.png'
-    'figure3_event_time_v2.svg' = 'Figure_3.png'
-    'figure4_focal_specificity_v2.svg' = 'Figure_4.png'
-    'figure4_wcvi_robustness_v2.svg' = 'Figure_5.png'
-    'figureS1_priority_species_v2.svg' = 'Figure_S1.png'
-    'figureS2_pooling_row_disposition_v2.svg' = 'Figure_S2.png'
-    'figureS3_pooling_tau_v2.svg' = 'Figure_S3.png'
-    'figureS4_model_diagnostics_v2.svg' = 'Figure_S4.png'
-    'figure5_placebo_v2.svg' = 'Figure_S5.png'
-}
-
 foreach ($existing in Get-ChildItem -LiteralPath $figureDir -File) {
     Remove-Item -LiteralPath $existing.FullName -Force
 }
-foreach ($entry in $figureMap.GetEnumerator()) {
-    $svg = if ($entry.Key -eq 'figure1_workflow_v2.svg') {
-        Join-Path $journalRoot 'source_artwork\Figure_1.svg'
-    } elseif ($entry.Key -eq 'figure4_focal_specificity_v2.svg') {
-        Join-Path $journalRoot 'source_artwork\Figure_4.svg'
-    } else {
-        Join-Path $ProjectRoot ('manuscript\figures\' + $entry.Key)
-    }
-    $svgText = Get-Content -Raw -LiteralPath $svg
-    $widthMatch = [regex]::Match($svgText, '<svg[^>]*width=[''\"](\d+)')
-    $heightMatch = [regex]::Match($svgText, '<svg[^>]*height=[''\"](\d+)')
-    $width = if ($widthMatch.Success) { [int]$widthMatch.Groups[1].Value } else { 1200 }
-    $height = if ($heightMatch.Success) { [int]$heightMatch.Groups[1].Value } else { 800 }
-    $png = Join-Path $figureDir $entry.Value
-    $uri = [System.Uri]::new($svg).AbsoluteUri
-    & $browser --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files `
-        --force-device-scale-factor=4 --window-size="$width,$height" --screenshot="$png" $uri | Out-Null
-    if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $png) -or (Get-Item $png).Length -eq 0) {
-        throw "High-resolution export failed: $svg"
-    }
+$rscript = (Get-Command Rscript -ErrorAction SilentlyContinue).Source
+if (-not $rscript) { throw 'Rscript was not found.' }
+$env:RENV_CONFIG_AUTOLOADER_ENABLED = 'TRUE'
+& $rscript (Join-Path $ProjectRoot 'scripts\build_mer_figures_ggplot2_v2.R') $ProjectRoot
+if ($LASTEXITCODE -ne 0) { throw 'ggplot2 figure generation failed.' }
+if ((Get-ChildItem -LiteralPath $figureDir -Filter *.png).Count -ne 10) {
+    throw 'ggplot2 figure generation did not produce all ten PNG files.'
 }
 
 function Add-ReviewFormatting([string]$Path, [bool]$Blinded) {

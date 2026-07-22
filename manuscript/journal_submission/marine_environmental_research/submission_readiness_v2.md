@@ -9,7 +9,7 @@ Automated status: **PASS**
 - Main figures/tables: 5 / 3
 - Supplement figures/tables: 5 / 11
 - Claim classifications: confirmatory=3; secondary=2; exploratory=0; methodological=9; limitation=6
-- Checks passed: 37
+- Checks passed: 39
 - Checks failed: 0
 
 ## Human fields still required

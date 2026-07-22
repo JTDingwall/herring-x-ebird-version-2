@@ -46,8 +46,10 @@ try {
             }
         }
         finally {
-            $deck.Close()
-            $doc.Close($false)
+            try { $deck.Close() } catch { Write-Warning "Deck close warning for $($file.Name): $($_.Exception.Message)" }
+            try { $doc.Close($false) } catch { Write-Warning "Document close warning for $($file.Name): $($_.Exception.Message)" }
+            if ($deck) { [Runtime.InteropServices.Marshal]::ReleaseComObject($deck) | Out-Null }
+            if ($doc) { [Runtime.InteropServices.Marshal]::ReleaseComObject($doc) | Out-Null }
         }
     }
 }

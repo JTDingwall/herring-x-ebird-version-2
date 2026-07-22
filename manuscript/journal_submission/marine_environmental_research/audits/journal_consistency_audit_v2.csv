@@ -33,6 +33,8 @@
 "RENDER001","render","PASS","Missing or empty rendered files: "
 "RENDER002","render","PASS","Visual audit rows=13; failures=0."
 "FIG001","figure","PASS","All ten PNG figures meet at least the 500-dpi single-column pixel target."
+"FIG002","figure","PASS","Ten vector sources and one reproducible ggplot2 builder are present."
+"FIG003","figure","PASS","All ten figures passed frozen aggregate row/component accounting."
 "PRIV001","privacy","PASS","Protected field-name hits: "
 "BLIND001","anonymization","PASS","Identity strings in blinded manuscript: "
 "GIT001","repository","PASS","git diff --check passed."

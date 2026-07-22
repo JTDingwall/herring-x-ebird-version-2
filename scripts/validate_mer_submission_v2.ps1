@@ -125,6 +125,13 @@ try {
     $figRows = foreach($file in Get-ChildItem $figureDir -Filter '*.png'|Sort-Object Name){$img=[Drawing.Image]::FromFile($file.FullName);try{[pscustomobject]@{file=$file.Name;width_px=$img.Width;height_px=$img.Height;minimum_class=$(if($img.Width-ge 3543){'line/full-width capable'}elseif($img.Width-ge 1772){'combination/single-column capable'}else{'below target'});status=$(if($img.Width-ge 1772){'PASS'}else{'FAIL'})}}finally{$img.Dispose()}}
     Add-Check 'FIG001' 'figure' (($figRows|Where-Object status -eq 'FAIL').Count -eq 0 -and $figRows.Count -eq 10) "All ten PNG figures meet at least the 500-dpi single-column pixel target."
     Export-CsvUtf8Lf $figRows (Join-Path $auditDir 'figure_dimensions_v2.csv')
+    $figureBuilder = Join-Path $ProjectRoot 'scripts\build_mer_figures_ggplot2_v2.R'
+    $figureSvgs = @(Get-ChildItem (Join-Path $journalRoot 'source_artwork') -Filter 'Figure_*.svg')
+    $builderText = if(Test-Path $figureBuilder){Get-Content -Raw -LiteralPath $figureBuilder}else{''}
+    Add-Check 'FIG002' 'figure' ($figureSvgs.Count -eq 10 -and $builderText -match 'library\(ggplot2\)' -and $builderText -match 'save_figure') 'Ten vector sources and one reproducible ggplot2 builder are present.'
+    $figureDataAuditPath = Join-Path $auditDir 'figure_data_rebuild_audit_v2.csv'
+    $figureDataAudit = if(Test-Path $figureDataAuditPath){@(Import-Csv $figureDataAuditPath)}else{@()}
+    Add-Check 'FIG003' 'figure' ($figureDataAudit.Count -eq 10 -and ($figureDataAudit|Where-Object status -ne 'PASS').Count -eq 0) 'All ten figures passed frozen aggregate row/component accounting.'
 
     $protectedPattern = '(?i)(sampling_event_identifier|locality_id|observer_id|event_token)'
     $privacyHits = @()
@@ -156,22 +163,26 @@ try {
     $journalProv = [Collections.Generic.List[object]]::new()
     foreach($row in $baseProv){
         if($row.artifact_id -eq 'Figure 4'){
-            $copy=$row.PSObject.Copy();$copy.artifact_id='Figure 5';$journalProv.Add($copy);continue
+            $copy=$row.PSObject.Copy();$copy.artifact_id='Figure 5';$copy.source_file='outputs/stage4a_publication_v2/matched_sensitivity_table_v2.csv';$copy.source_hash=(Get-FileHash (Join-Path $ProjectRoot $copy.source_file) -Algorithm SHA256).Hash.ToLowerInvariant();$copy.generation_script='scripts/build_mer_figures_ggplot2_v2.R';$journalProv.Add($copy);continue
         }
         if($row.artifact_id -eq 'Figure 5'){
-            $copy=$row.PSObject.Copy();$copy.artifact_id='Figure S5';$copy.manuscript_location='supplement';$journalProv.Add($copy);continue
+            $copy=$row.PSObject.Copy();$copy.artifact_id='Figure S5';$copy.manuscript_location='supplement';$copy.source_file='outputs/stage4a_publication_v2/matched_sensitivity_table_v2.csv';$copy.source_hash=(Get-FileHash (Join-Path $ProjectRoot $copy.source_file) -Algorithm SHA256).Hash.ToLowerInvariant();$copy.generation_script='scripts/build_mer_figures_ggplot2_v2.R';$journalProv.Add($copy);continue
         }
         if($row.artifact_id -eq 'Table 1'){
             $copy=$row.PSObject.Copy();$copy.artifact_id='Table S11';$copy.manuscript_location='supplement';$journalProv.Add($copy);continue
         }
         if($row.artifact_id -eq 'Figure 1'){
-            $copy=$row.PSObject.Copy();$copy.caption='Scientific hypotheses and event-linked checklist design.';$copy.filters='registered ecological predictions and event-linked design';$copy.model_or_family_ids='M01,M02,M05,M29';$journalProv.Add($copy);continue
+            $copy=$row.PSObject.Copy();$copy.caption='Scientific hypotheses and event-linked checklist design.';$copy.filters='registered ecological predictions and event-linked design';$copy.model_or_family_ids='M01,M02,M05,M29';$copy.generation_script='scripts/build_mer_figures_ggplot2_v2.R';$journalProv.Add($copy);continue
         }
+        if($row.artifact_id -like 'Figure*'){$copy=$row.PSObject.Copy();$copy.generation_script='scripts/build_mer_figures_ggplot2_v2.R';$journalProv.Add($copy);continue}
         $journalProv.Add($row)
     }
-    $focalArtwork='manuscript/journal_submission/marine_environmental_research/source_artwork/Figure_4.svg'
+    $focalSpecies='outputs/stage4a_publication_v2/priority_a_species_table_v2.csv'
+    $focalM29='manuscript/journal_submission/marine_environmental_research/audits/sog_m29_audit_v2.csv'
+    $focalSources="$focalSpecies;$focalM29"
+    $focalHashes="$((Get-FileHash (Join-Path $ProjectRoot $focalSpecies) -Algorithm SHA256).Hash.ToLowerInvariant());$((Get-FileHash (Join-Path $ProjectRoot $focalM29) -Algorithm SHA256).Hash.ToLowerInvariant())"
     $hypothesisTable='manuscript/journal_submission/marine_environmental_research/generated/table1_hypotheses_v2.md'
-    $journalProv.Add([pscustomobject]@{artifact_id='Figure 4';manuscript_location='main';source_file=$focalArtwork;source_hash=(Get-FileHash $focalArtwork -Algorithm SHA256).Hash.ToLowerInvariant();generation_script=$focalArtwork;generation_commit=$GenerationCommit;filters='Surf Scoter and Short-billed Gull in SoG/WCVI plus SoG M29 taxa';model_or_family_ids='M02,M29';caption='Cross-region focal responses and the SoG specificity panel.';privacy_classification='public aggregate'})
+    $journalProv.Add([pscustomobject]@{artifact_id='Figure 4';manuscript_location='main';source_file=$focalSources;source_hash=$focalHashes;generation_script='scripts/build_mer_figures_ggplot2_v2.R';generation_commit=$GenerationCommit;filters='Surf Scoter and Short-billed Gull in SoG/WCVI plus SoG M29 taxa';model_or_family_ids='M02,M29';caption='Cross-region focal responses and the SoG specificity panel.';privacy_classification='public aggregate'})
     $journalProv.Add([pscustomobject]@{artifact_id='Table 1';manuscript_location='main';source_file=$hypothesisTable;source_hash=(Get-FileHash $hypothesisTable -Algorithm SHA256).Hash.ToLowerInvariant();generation_script=$hypothesisTable;generation_commit=$GenerationCommit;filters='H1-H4 synthesis of registered evidence';model_or_family_ids='M01,M02,M05,M29';caption='Biological predictions and observed evidence.';privacy_classification='public aggregate'})
     $prov = foreach($row in $journalProv){$out = if($row.artifact_id -like 'Figure*'){Join-Path $figureDir (($row.artifact_id -replace ' ','_')+'.png')}else{Join-Path $tableDir (($row.artifact_id -replace ' ','_')+'.csv')};[pscustomobject]@{artifact_id=$row.artifact_id;manuscript_location=$row.manuscript_location;journal_output_path=$(if(Test-Path $out){$out.Substring($ProjectRoot.Length+1).Replace('\','/')}else{'embedded_or_not_applicable'});journal_output_hash=$(if(Test-Path $out){(Get-FileHash $out -Algorithm SHA256).Hash.ToLowerInvariant()}else{''});source_file=$row.source_file;source_hash=$row.source_hash;generation_script=$row.generation_script;journal_render_script='scripts/render_mer_submission_v2.ps1';generation_commit=$GenerationCommit;filters=$row.filters;model_or_family_ids=$row.model_or_family_ids;caption=$row.caption;privacy_classification=$row.privacy_classification}}
     Export-CsvUtf8Lf $prov (Join-Path $auditDir 'figure_table_provenance_v2.csv')
