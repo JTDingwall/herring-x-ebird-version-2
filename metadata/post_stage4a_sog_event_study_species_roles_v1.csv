@@ -1,0 +1,14 @@
+analysis_taxon_id,common_name,presentation_role,ecological_reason
+atx_1930f23cc4f8,Surf Scoter,main_ecological_panel,direct roe-diving evidence
+atx_3083477933a8,White-winged Scoter,main_ecological_panel,direct roe-diving evidence
+atx_87b306550dba,Harlequin Duck,main_ecological_panel,roe-diving response
+atx_725074cbfcb6,Glaucous-winged Gull,main_ecological_panel,roe scavenging
+atx_e0e678a61ad7,Short-billed Gull,main_ecological_panel,roe scavenging
+atx_35518e24dfdd,Common Merganser,main_ecological_panel,active-spawn piscivory
+atx_fc0a9b777dcd,Bald Eagle,main_ecological_panel,shoreline scavenging candidate
+atx_04afbeb21fb0,Hooded Merganser,main_ecological_panel,weaker marine piscivory candidate
+atx_815c98107028,Mallard,main_ecological_panel,surface and vegetation-associated egg-use candidate
+atx_c9db024faf12,American Crow,main_ecological_panel,shoreline scavenging candidate
+atx_v2_000007,Common Raven,main_ecological_panel,shoreline scavenging candidate
+atx_eeefc021901e,Gadwall,supplementary_specificity_comparator,no strong direct herring mechanism assumed
+atx_8f0345249398,Northern Shoveler,supplementary_specificity_comparator,no strong direct herring mechanism assumed

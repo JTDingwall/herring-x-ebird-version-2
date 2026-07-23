@@ -88,6 +88,9 @@ Thumbs.db
 !outputs/stage4a_publication_v2/
 !outputs/stage4a_publication_v2/*.csv
 !outputs/stage2_design_lock/*.sha256
+!outputs/post_stage4a_sog_event_study_v1/
+!outputs/post_stage4a_sog_event_study_v1/*.csv
+!outputs/post_stage4a_sog_event_study_v1/*.yml
 
 # Local raw-input audit products may contain machine paths
 outputs/input_audit_local/**

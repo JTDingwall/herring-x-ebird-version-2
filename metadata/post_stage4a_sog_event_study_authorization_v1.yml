@@ -1,0 +1,53 @@
+authorization_version: post_stage4a_sog_event_study_authorization_v1
+authorized_at_local: 2026-07-22
+authorization_source: explicit_human_instruction_in_manuscript_review_session
+scientific_decision: AUTHORIZE_ADDITIVE_POST_RESULT_SOG_EVENT_STUDY_REFINEMENT
+human_instruction: >-
+  Implement the agreed KISS refinement: shorten the temporal windows, estimate
+  a near-versus-reference change through the event, promote Bald Eagle, Hooded
+  Merganser, Mallard, American Crow, and Common Raven in the main ecological
+  presentation, and move Gadwall and Northern Shoveler to a supplementary
+  specificity role.
+known_results_boundary:
+  stage4a_results_known: true
+  classification: post_result_ecologically_motivated_refinement
+  may_be_relabelled_prespecified_or_confirmatory: false
+authorized_population:
+  region: SoG
+  start_year: 2005
+  end_year: 2025
+  prospective_records_2026_plus: prohibited
+authorized_responses:
+  - checklist_detection
+  - positive_numeric_count_given_detection
+authorized_taxa:
+  core_species: all_49_frozen_named_species
+  specificity_comparators_detection_only: [Gadwall, Northern Shoveler]
+authorized_geometry:
+  near_km:
+    minimum_inclusive: 0
+    maximum_exclusive: 5
+  contemporaneous_reference_km:
+    minimum_inclusive: 5
+    maximum_inclusive: 20
+  source_points_only: true
+authorized_timing:
+  baseline_days: [-28, -15]
+  early_pre_days: [-14, -8]
+  immediate_pre_days: [-7, -1]
+  spawn_start_days: [0, 3]
+  early_egg_days: [4, 14]
+  late_egg_days: [15, 28]
+analysis_constraints:
+  independent_row: checklist
+  concurrent_links: additive_joint_period_by_zone_counts
+  full_event_taxon_grid_materialization: prohibited
+  stage4a_outputs_and_checkpoints: immutable
+  results_selected_model_changes: prohibited
+  gadwall_shoveler_main_figure: prohibited
+execution_prerequisites:
+  - committed_versioned_specification_and_code
+  - fixture_and_repository_tests_pass
+  - exact_production_environment_acknowledgement
+  - protected_input_hash_and_cardinality_gates_pass
+final_gate: PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW
