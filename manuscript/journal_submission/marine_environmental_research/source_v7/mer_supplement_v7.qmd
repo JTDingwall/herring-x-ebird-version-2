@@ -86,6 +86,19 @@ Gadwall and Northern Shoveler were detection-only specificity comparators, not g
 
 Gadwall did not reproduce the active interaction. Northern Shoveler did, and therefore falsified the third prespecified prediction and demonstrates residual time-varying structure. Candidate explanations include zone-specific migration or habitat use, shoreline access, checklist submission, preferential visitation, source-date or source-point classification, and indirect ecology. The comparator result limits causal and trophic-specific interpretation.
 
+The two nominated comparators understate the issue, because the core family contains further taxa with no established roe-feeding pathway that also rose during days 0–14:
+
+| Species | Outcome | Active 0–14 d (95% CI) | BH q |
+|---|---|---:|---:|
+| Northern Pintail | detection | 1.29 (1.18–1.42) | 7.32 × 10^-7^ |
+| Northern Shoveler (comparator) | detection | 1.24 (1.08–1.43) | 0.00564 |
+| American Wigeon | detection | 1.14 (1.07–1.21) | 1.38 × 10^-4^ |
+| American Wigeon | positive flock size | 1.11 (1.06–1.16) | 3.51 × 10^-5^ |
+| Mallard | positive flock size | 1.11 (1.08–1.14) | 3.69 × 10^-11^ |
+| Canada Goose | detection | 1.08 (1.02–1.14) | 0.0206 |
+
+Four of the five dabbling ducks in the study (Mallard, Northern Pintail, American Wigeon, Northern Shoveler) showed a positive active interaction in at least one component; Gadwall was the exception. Northern Pintail's detection interaction exceeded that of every species assigned to the main ecological panel. A two-species comparator panel drawn from a guild that mostly responds cannot bound the false-positive rate, and this is treated as a limitation of the comparator design in the main text rather than as a property of the herring signal.
+
 # Model completion and warnings
 
 The family contained 100 species-response fits and 1,400 contrast rows. Model statuses were 95 completed, one completed with a singular warning, three failed for insufficient support, and one failed numerically without fallback.

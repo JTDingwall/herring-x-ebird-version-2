@@ -65,6 +65,47 @@ into `figures_v7/`, `tables_v7/`, and `generated_v7/`.
 12. **Methodological citations added** for the difference-in-differences design
     (see verification note below).
 
+## Post-commit logic audit (applied after the first v7 commit)
+
+A follow-up audit of the argument chain found four problems, all now fixed:
+
+13. **The dabbling-duck cohort.** v7 (like v6) framed Northern Shoveler as the
+    single empirical warning of residual confounding. The family actually
+    contains a cohort: Northern Pintail (detection 1.29), Northern Shoveler
+    (1.24), American Wigeon (1.14 detection / 1.11 count), Mallard (1.11 count),
+    and Canada Goose (1.08 detection). Four of the five dabbling ducks in the
+    study rose, and Northern Pintail's detection interaction exceeds that of
+    every species in the main panel. Adding Figure 2 and Table 2 put this
+    evidence in the paper without the argument using it. The Abstract, Results,
+    Discussion §1/§3/§5, Limitations, and Conclusions now do.
+14. **An inverted claim.** The Discussion said Gadwall's null "argues against an
+    analysis that mechanically pushes every dabbling duck upward." The data show
+    the opposite: Gadwall is the lone exception among five. That sentence was
+    defensible in v6 only because the off-panel species were unreported; once
+    Figure 2 existed it was contradicted by the paper's own figure. Replaced
+    with an explicit statement that the two-species comparator panel was too
+    small to bound the false-positive rate.
+15. **Taxonomic errors.** A sentence describing off-panel increases called
+    Greater Scaup (a diving duck), American Wigeon (a dabbling duck), and
+    Double-crested Cormorant (not a duck) "sea ducks with well-established
+    associations with herring spawn." Corrected and split by taxon. Separately,
+    "the two mergansers" ignored Red-breasted Merganser, which Figure 2 shows;
+    now "the three mergansers in the family," with its count-only response
+    reported.
+16. **Post-treatment conditioning.** Conditional count is estimated only on
+    checklists where the species was detected, so where detection itself
+    responds to exposure the count contrast is computed on a sample whose
+    composition shifts with exposure. Discussion §2 now distinguishes the three
+    count-only species (where this is minor) from the four two-component species
+    (where it is not).
+17. **Panel provenance.** Methods now cite the versioned species-roles registry
+    and its per-species `ecological_reason`, note the execution-time gate, and
+    disclose two limitations: the mechanistic criteria are not applied
+    exhaustively, and the earlier analysis emphasized twelve species of which
+    six were not carried forward (Black Oystercatcher, Black Turnstone, Canada
+    Goose, Common Loon, Great Blue Heron, Red-breasted Merganser), four of which
+    have BH-significant interactions here in both directions.
+
 ## Journal-compliance fixes
 
 | Item | v6 | v7 |
