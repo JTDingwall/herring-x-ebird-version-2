@@ -1,0 +1,59 @@
+unit_label,analysis_taxon_id,detections,positive_numeric,prevalence
+American Crow,atx_c9db024faf12,116210,112180,0.53504
+Glaucous-winged Gull,atx_725074cbfcb6,89556,85053,0.41232
+Mallard,atx_815c98107028,85899,81526,0.39548
+Bald Eagle,atx_fc0a9b777dcd,84220,83359,0.38775
+Canada Goose,atx_b3d3ea90f9cb,71195,68271,0.32779
+Common Raven,atx_v2_000007,61628,60940,0.28374
+Bufflehead,atx_99238953638b,51310,50039,0.23623
+Great Blue Heron,atx_7b80ddaff058,51018,50285,0.23489
+American Wigeon,atx_a113baee5693,36606,34665,0.16854
+Double-crested Cormorant,atx_a444854c6b66,29460,29011,0.13564
+Common Merganser,atx_35518e24dfdd,28183,27776,0.12976
+Short-billed Gull,atx_e0e678a61ad7,23236,22003,0.10698
+Common Goldeneye,atx_82312e6f2848,21750,21195,0.10014
+Hooded Merganser,atx_04afbeb21fb0,20644,20340,0.09505
+Pelagic Cormorant,atx_35707a9578d5,19153,18881,0.08818
+Surf Scoter,atx_1930f23cc4f8,17168,16632,0.07904
+Common Loon,atx_9ae1aa9b7fdf,15581,15359,0.07174
+Northern Pintail,atx_7d980a7c8c37,15322,14278,0.07054
+Gadwall,atx_eeefc021901e,13885,13337,0.06393
+Black Oystercatcher,atx_v2_000002,13761,13626,0.06336
+Red-breasted Merganser,atx_c2d1fbbaf6d3,13631,13364,0.06276
+Horned Grebe,atx_6b4cfd1ab927,13259,13054,0.06105
+Harlequin Duck,atx_87b306550dba,12221,12030,0.05627
+Northern Shoveler,atx_8f0345249398,11367,10662,0.05233
+Barrow's Goldeneye,atx_d7dd9536145c,11234,10960,0.05172
+Lesser Scaup,atx_d002764a39e8,9786,9378,0.04506
+Red-necked Grebe,atx_86eda7ed9025,8232,8109,0.0379
+California Gull,atx_c12b832d2b03,7038,6644,0.0324
+Pigeon Guillemot,atx_8608f2ed61cf,6406,6342,0.02949
+Pacific Loon,atx_c34f23342a55,6182,6049,0.02846
+Dunlin,atx_v2_000003,6089,5908,0.02803
+White-winged Scoter,atx_3083477933a8,4935,4706,0.02272
+Iceland Gull,atx_aa5353f6d6d2,4763,4317,0.02193
+Ring-billed Gull,atx_08bb40b40c0a,4754,4549,0.02189
+Greater Scaup,atx_4ae57d328ec6,4708,4514,0.02168
+Black Turnstone,atx_15dd5efcd8d6,4492,4421,0.02068
+,atx_v2_000008,4346,4314,0.02001
+Bonaparte's Gull,atx_fadb8da1a816,4132,4025,0.01902
+Black-bellied Plover,atx_v2_000006,4054,3973,0.01866
+Brant,atx_59441ff7abde,3917,3796,0.01803
+Marbled Murrelet,atx_acf526bb8010,3120,3103,0.01436
+Long-tailed Duck,atx_40f730f5ad72,3070,2946,0.01413
+,atx_v2_000009,2758,2727,0.0127
+Brandt's Cormorant,atx_98ca0000b734,2610,2573,0.01202
+Common Murre,atx_136b0e66254b,2062,2023,0.00949
+American Herring Gull,atx_7571c026ae99,1957,1851,0.00901
+Rhinoceros Auklet,atx_6cbe5bbd310c,1833,1816,0.00844
+Black Scoter,atx_1328b44be502,1781,1684,0.0082
+Red-throated Loon,atx_04cf65098f13,1494,1488,0.00688
+Western Grebe,atx_ebf17f77fb66,1365,1346,0.00628
+Surfbird,atx_1812dd827ede,1079,1063,0.00497
+Western Gull,atx_5a9a3495d0ea,727,712,0.00335
+,atx_v2_000001,375,374,0.00173
+,atx_v2_000004,328,322,0.00151
+Glaucous Gull,atx_v2_000011,189,185,0.00087
+,atx_v2_000010,167,166,0.00077
+,atx_v2_000005,133,133,0.00061
+,atx_3c2dd2107fbb,,,1e-05
