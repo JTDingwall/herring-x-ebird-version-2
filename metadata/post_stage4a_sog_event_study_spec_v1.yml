@@ -108,6 +108,7 @@ validation:
   exact_zone_boundary_fixture: required
   concurrent_link_joint_pairing_fixture: required
   event_metadata_join_cardinality: one_to_many_then_aggregate_to_one
+  source_event_region_role: descriptive_not_join_key_missing_allowed
   model_geometry_and_singularity: fully_reported
   results_required_before_manuscript_claim_update: true
 final_gate: PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW

@@ -83,6 +83,35 @@ test_that("joint exposure rejects changed link cardinality", {
   )
 })
 
+test_that("source-event region is descriptive but checklist year must agree", {
+  events <- data.frame(
+    analysis_event_token = "a",
+    event_block_token = "block_a",
+    region = "SoG",
+    checklist_year = 2020L,
+    concurrent_links = 1L,
+    stringsAsFactors = FALSE
+  )
+  links <- data.frame(
+    analysis_event_token = "a",
+    region = NA_character_,
+    checklist_year = 2020L,
+    event_day = 0L,
+    distance_km = 1,
+    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    post_stage4a_add_joint_exposure_v1(events, links)$events$es_near_spawn_start,
+    1L
+  )
+  links$checklist_year <- 2019L
+  expect_error(
+    post_stage4a_add_joint_exposure_v1(events, links),
+    "checklist year disagreement",
+    fixed = TRUE
+  )
+})
+
 test_that("event-study contrasts implement the registered KISS estimands", {
   coefficient_names <- c("(Intercept)", post_stage4a_exposure_terms_v1())
   definitions <- post_stage4a_contrast_definitions_v1(coefficient_names)

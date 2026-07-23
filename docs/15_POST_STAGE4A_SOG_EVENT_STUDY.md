@@ -53,6 +53,12 @@ required cardinality is:
 The builder must verify the link count against the historical
 `concurrent_links` total for every selected checklist.
 
+The link cache's `region` field describes the herring source event, not the
+checklist population. It is not a join key and may be unavailable. Strait of
+Georgia population eligibility comes from the frozen checklist event metadata;
+source links are joined by analysis checklist token, checked against checklist
+year, and retained regardless of the descriptive source-region label.
+
 ## Estimand
 
 For period \(p\), the principal contrast is:

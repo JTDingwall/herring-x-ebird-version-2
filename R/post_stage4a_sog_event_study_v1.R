@@ -89,11 +89,9 @@ post_stage4a_add_joint_exposure_v1 <- function(events, links) {
     stop("POST_STAGE4A_EVENT_STUDY_LINK_JOIN_GATE: unmatched selected link",
          call. = FALSE)
   }
-  if (!all(as.character(selected_links$region) ==
-           as.character(events$region[link_match])) ||
-      !all(as.integer(selected_links$checklist_year) ==
+  if (!all(as.integer(selected_links$checklist_year) ==
            as.integer(events$checklist_year[link_match]))) {
-    stop("POST_STAGE4A_EVENT_STUDY_LINK_JOIN_GATE: region or year disagreement",
+    stop("POST_STAGE4A_EVENT_STUDY_LINK_JOIN_GATE: checklist year disagreement",
          call. = FALSE)
   }
 
