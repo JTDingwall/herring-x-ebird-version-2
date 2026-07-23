@@ -1,0 +1,13 @@
+"term","zone","period","exposed_checklists","exposure_links","event_blocks","checklist_years"
+"es_near_baseline","near","baseline",8077,14559,47,20
+"es_reference_baseline","reference","baseline",25992,69546,56,21
+"es_near_early_pre","near","early_pre",4512,7315,46,
+"es_reference_early_pre","reference","early_pre",15467,35784,55,21
+"es_near_immediate_pre","near","immediate_pre",4587,7367,44,
+"es_reference_immediate_pre","reference","immediate_pre",15169,35880,52,21
+"es_near_spawn_start","near","spawn_start",2992,4922,44,20
+"es_reference_spawn_start","reference","spawn_start",9759,21434,55,21
+"es_near_early_egg","near","early_egg",7018,12441,47,20
+"es_reference_early_egg","reference","early_egg",22927,59303,54,21
+"es_near_late_egg","near","late_egg",8712,15748,49,21
+"es_reference_late_egg","reference","late_egg",28655,76964,56,21

@@ -94,3 +94,8 @@ Thumbs.db
 
 # Local raw-input audit products may contain machine paths
 outputs/input_audit_local/**
+
+# Local manuscript render QA intermediates
+manuscript/journal_submission/marine_environmental_research/rendered_v6_html/**
+manuscript/journal_submission/marine_environmental_research/audits/pdf_page_renders_v6/**
+manuscript/journal_submission/marine_environmental_research/audits/docx_visual_conversion_v6/**

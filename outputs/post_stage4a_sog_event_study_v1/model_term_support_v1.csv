@@ -1,0 +1,1201 @@
+"model_version_id","analysis_taxon_id","unit_label","analysis_role","region","outcome","term","exposed_model_rows"
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",969
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",3684
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",509
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",2024
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",468
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1877
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",311
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",1143
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",724
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",2536
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",790
+"SOG_EVENT_STUDY_v1","atx_04afbeb21fb0","Hooded Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",2689
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",72
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",280
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",34
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",139
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",38
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",135
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",20
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",66
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",50
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",164
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",57
+"SOG_EVENT_STUDY_v1","atx_04cf65098f13","Red-throated Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",177
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",514
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",742
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",239
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",458
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",266
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",429
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",218
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",336
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",362
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",588
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",317
+"SOG_EVENT_STUDY_v1","atx_08bb40b40c0a","Ring-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",562
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_near_baseline",8074
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_reference_baseline",25986
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_near_early_pre",4511
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_reference_early_pre",15466
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_near_immediate_pre",4586
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_reference_immediate_pre",15167
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_near_spawn_start",2991
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_reference_spawn_start",9757
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_near_early_egg",7016
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_reference_early_egg",22922
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_near_late_egg",8709
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","detection","es_reference_late_egg",28650
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",259
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",438
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",148
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",293
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",166
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",311
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",125
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",211
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",212
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",279
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",145
+"SOG_EVENT_STUDY_v1","atx_1328b44be502","Black Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",205
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",151
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",361
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",66
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",203
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",40
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",158
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",42
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",108
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",81
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",202
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",62
+"SOG_EVENT_STUDY_v1","atx_136b0e66254b","Common Murre","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",188
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",287
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",893
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",168
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",490
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",146
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",408
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",101
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",303
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",168
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",459
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",115
+"SOG_EVENT_STUDY_v1","atx_15dd5efcd8d6","Black Turnstone","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",437
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",45
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",181
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",22
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",100
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",71
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",53
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",24
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",95
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",22
+"SOG_EVENT_STUDY_v1","atx_1812dd827ede","Surfbird","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",70
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_near_baseline",8075
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_reference_baseline",25987
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_near_early_pre",4511
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_reference_early_pre",15466
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_near_immediate_pre",4586
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_reference_immediate_pre",15167
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_near_spawn_start",2991
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_reference_spawn_start",9758
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_near_early_egg",7017
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_reference_early_egg",22923
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_near_late_egg",8710
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","detection","es_reference_late_egg",28651
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1510
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",3174
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",841
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",1878
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",851
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1751
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",567
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",1180
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",985
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",1895
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",974
+"SOG_EVENT_STUDY_v1","atx_1930f23cc4f8","Surf Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",1913
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",499
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",902
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",273
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",618
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",304
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",626
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",259
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",457
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",387
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",641
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",343
+"SOG_EVENT_STUDY_v1","atx_3083477933a8","White-winged Scoter","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",626
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_near_baseline",8072
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_reference_baseline",25966
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_near_early_pre",4510
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_reference_early_pre",15456
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_near_immediate_pre",4584
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_reference_immediate_pre",15164
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_near_spawn_start",2990
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_reference_spawn_start",9751
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_near_early_egg",7016
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_reference_early_egg",22910
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_near_late_egg",8706
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","detection","es_reference_late_egg",28634
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1552
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",4885
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",761
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",2718
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",860
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",2668
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",643
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",1729
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",1224
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",3340
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",1318
+"SOG_EVENT_STUDY_v1","atx_35518e24dfdd","Common Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",3581
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1008
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",2507
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",538
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",1507
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",581
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1500
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",418
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",1014
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",900
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",2198
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",916
+"SOG_EVENT_STUDY_v1","atx_35707a9578d5","Pelagic Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",2543
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",381
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",721
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",227
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",490
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",215
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",453
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",206
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",361
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",330
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",461
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",227
+"SOG_EVENT_STUDY_v1","atx_40f730f5ad72","Long-tailed Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",341
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_near_baseline",8027
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_reference_baseline",25851
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_near_early_pre",4484
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_reference_early_pre",15376
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_near_immediate_pre",4560
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_reference_immediate_pre",15079
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_near_spawn_start",2971
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_reference_spawn_start",9690
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_near_early_egg",6959
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_reference_early_egg",22770
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_near_late_egg",8646
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","detection","es_reference_late_egg",28507
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",374
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",982
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",232
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",639
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",278
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",725
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",272
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",567
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",453
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",876
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",344
+"SOG_EVENT_STUDY_v1","atx_4ae57d328ec6","Greater Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",772
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",345
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",637
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",226
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",494
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",302
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",601
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",272
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",499
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",556
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",872
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",573
+"SOG_EVENT_STUDY_v1","atx_59441ff7abde","Brant","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",871
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_near_baseline",8058
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_reference_baseline",25936
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_near_early_pre",4499
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_reference_early_pre",15432
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_near_immediate_pre",4580
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_reference_immediate_pre",15146
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_near_spawn_start",2984
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_reference_spawn_start",9743
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_near_early_egg",7000
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_reference_early_egg",22895
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_near_late_egg",8703
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","detection","es_reference_late_egg",28621
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",65
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",135
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",30
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",75
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",42
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",82
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",39
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",75
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",58
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",106
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",44
+"SOG_EVENT_STUDY_v1","atx_5a9a3495d0ea","Western Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",86
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_near_baseline",8071
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_reference_baseline",25981
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_near_early_pre",4507
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_reference_early_pre",15455
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_near_immediate_pre",4585
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_reference_immediate_pre",15167
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_reference_spawn_start",9757
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_near_early_egg",7014
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_reference_early_egg",22913
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_near_late_egg",8704
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","detection","es_reference_late_egg",28640
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1108
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",2426
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",609
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",1409
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",606
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1321
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",423
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",910
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",845
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",1675
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",805
+"SOG_EVENT_STUDY_v1","atx_6b4cfd1ab927","Horned Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",1702
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",46
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",123
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",28
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",101
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",22
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",90
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",80
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",44
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",195
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",40
+"SOG_EVENT_STUDY_v1","atx_6cbe5bbd310c","Rhinoceros Auklet","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",203
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_near_baseline",8072
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_reference_baseline",25967
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_near_early_pre",4508
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_reference_early_pre",15450
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_near_immediate_pre",4585
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_reference_immediate_pre",15160
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_near_spawn_start",2988
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_reference_spawn_start",9752
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_near_early_egg",7012
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_reference_early_egg",22919
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_near_late_egg",8708
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","detection","es_reference_late_egg",28633
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",4261
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",11336
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",2249
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",6451
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",2344
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",6225
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",1535
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",3959
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",3431
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",8845
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",3979
+"SOG_EVENT_STUDY_v1","atx_725074cbfcb6","Glaucous-winged Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",10518
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_near_baseline",8068
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_reference_baseline",25979
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_near_early_pre",4511
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_reference_early_pre",15466
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_near_immediate_pre",4586
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_reference_immediate_pre",15167
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_reference_early_egg",22924
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_near_late_egg",8711
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","detection","es_reference_late_egg",28653
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",171
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",377
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",113
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",278
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",183
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",377
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",221
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",349
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",311
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",460
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",194
+"SOG_EVENT_STUDY_v1","atx_7571c026ae99","American Herring Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",343
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1774
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",6059
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",958
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",3584
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",1031
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",3658
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",779
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",2424
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",1555
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",5502
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",1989
+"SOG_EVENT_STUDY_v1","atx_7b80ddaff058","Great Blue Heron","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",6697
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",713
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",2743
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",430
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",1661
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",456
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1693
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",354
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",1134
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",675
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",2262
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",755
+"SOG_EVENT_STUDY_v1","atx_7d980a7c8c37","Northern Pintail","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",2441
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",3535
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",11007
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",1973
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",6654
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",2140
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",6733
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",1484
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",4432
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",3118
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",10003
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",3833
+"SOG_EVENT_STUDY_v1","atx_815c98107028","Mallard","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",11711
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_near_baseline",8060
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_reference_baseline",25938
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_near_early_pre",4501
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_reference_early_pre",15419
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_near_immediate_pre",4577
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_reference_immediate_pre",15124
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_near_spawn_start",2989
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_reference_spawn_start",9727
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_near_early_egg",7005
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_reference_early_egg",22870
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_near_late_egg",8703
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","detection","es_reference_late_egg",28595
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1966
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",4698
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",1061
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",2664
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",1101
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",2624
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",693
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",1618
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",1249
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",2830
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",1052
+"SOG_EVENT_STUDY_v1","atx_82312e6f2848","Common Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",2449
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",167
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",675
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",126
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",477
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",119
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",467
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",103
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",348
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",266
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",788
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",270
+"SOG_EVENT_STUDY_v1","atx_8608f2ed61cf","Pigeon Guillemot","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",870
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",573
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",1241
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",324
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",823
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",304
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",720
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",214
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",546
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",544
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",1100
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",641
+"SOG_EVENT_STUDY_v1","atx_86eda7ed9025","Red-necked Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",1262
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",880
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",2283
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",426
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",1346
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",462
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1283
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",381
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",871
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",553
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",1459
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",539
+"SOG_EVENT_STUDY_v1","atx_87b306550dba","Harlequin Duck","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",1540
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",143
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",433
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",94
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",263
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",90
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",263
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",90
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",205
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",135
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",318
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",108
+"SOG_EVENT_STUDY_v1","atx_98ca0000b734","Brandt's Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",296
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",3225
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",9352
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",1725
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",5345
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",1811
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",5100
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",1202
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",3307
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",2319
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",6772
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",2640
+"SOG_EVENT_STUDY_v1","atx_99238953638b","Bufflehead","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",7394
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_near_early_pre",4511
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_reference_early_pre",15466
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_near_immediate_pre",4586
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_reference_immediate_pre",15168
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",990
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",2421
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",501
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",1471
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",486
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1350
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",319
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",892
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",801
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",2004
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",964
+"SOG_EVENT_STUDY_v1","atx_9ae1aa9b7fdf","Common Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",2394
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_reference_baseline",25990
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_reference_spawn_start",9758
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","detection","es_reference_late_egg",28653
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",2526
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",6136
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",1379
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",3525
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",1481
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",3487
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",1071
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",2323
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",2114
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",4598
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",2373
+"SOG_EVENT_STUDY_v1","atx_a113baee5693","American Wigeon","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",4762
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1366
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",4222
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",744
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",2456
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",719
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",2348
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",534
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",1543
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",1149
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",3456
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",1158
+"SOG_EVENT_STUDY_v1","atx_a444854c6b66","Double-crested Cormorant","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",3795
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_near_baseline",8073
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_reference_baseline",25984
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_near_early_pre",4511
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_reference_early_pre",15466
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_near_immediate_pre",4586
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_reference_immediate_pre",15167
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_reference_early_egg",22924
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","detection","es_reference_late_egg",28654
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",483
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",999
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",278
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",598
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",348
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",668
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",322
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",522
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",477
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",788
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",315
+"SOG_EVENT_STUDY_v1","atx_aa5353f6d6d2","Iceland Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",533
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",83
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",315
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",43
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",165
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",44
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",158
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",26
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",111
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",76
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",250
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",87
+"SOG_EVENT_STUDY_v1","atx_acf526bb8010","Marbled Murrelet","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",343
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_near_baseline",8075
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_reference_baseline",25967
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_near_early_pre",4511
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_reference_early_pre",15459
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_near_immediate_pre",4585
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_reference_immediate_pre",15165
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_reference_spawn_start",9753
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_near_early_egg",7015
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_reference_early_egg",22915
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_near_late_egg",8711
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","detection","es_reference_late_egg",28644
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",2679
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",7523
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",1520
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",4731
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",1715
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",4925
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",1174
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",3230
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",2664
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",7610
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",3445
+"SOG_EVENT_STUDY_v1","atx_b3d3ea90f9cb","Canada Goose","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",9421
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",482
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",834
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",324
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",717
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",467
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",979
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",514
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",843
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",858
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",1410
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",739
+"SOG_EVENT_STUDY_v1","atx_c12b832d2b03","California Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",1247
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_near_baseline",8073
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_reference_baseline",25967
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_near_early_pre",4510
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_reference_early_pre",15451
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_near_immediate_pre",4584
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_reference_immediate_pre",15164
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_near_spawn_start",2990
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_reference_spawn_start",9751
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_near_early_egg",7016
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_reference_early_egg",22910
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_near_late_egg",8708
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","detection","es_reference_late_egg",28640
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1105
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",2531
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",573
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",1475
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",488
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1266
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",349
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",788
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",713
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",1634
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",788
+"SOG_EVENT_STUDY_v1","atx_c2d1fbbaf6d3","Red-breasted Merganser","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",1774
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",508
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",965
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",277
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",608
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",209
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",484
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",170
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",355
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",307
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",600
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",300
+"SOG_EVENT_STUDY_v1","atx_c34f23342a55","Pacific Loon","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",604
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",4370
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",12750
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",2469
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",7894
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",2722
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",8058
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",1757
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",5215
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",4138
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",12397
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",5087
+"SOG_EVENT_STUDY_v1","atx_c9db024faf12","American Crow","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",15457
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_near_baseline",8027
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_reference_baseline",25857
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_near_early_pre",4481
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_reference_early_pre",15380
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_near_immediate_pre",4560
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_reference_immediate_pre",15083
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_near_spawn_start",2971
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_reference_spawn_start",9692
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_near_early_egg",6956
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_reference_early_egg",22774
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_near_late_egg",8651
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","detection","es_reference_late_egg",28514
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",367
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",1590
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",207
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",891
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",199
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",852
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",162
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",562
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",410
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",1233
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",416
+"SOG_EVENT_STUDY_v1","atx_d002764a39e8","Lesser Scaup","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",1448
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_near_baseline",8059
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_reference_baseline",25922
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_near_early_pre",4502
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_reference_early_pre",15400
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_near_immediate_pre",4577
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_reference_immediate_pre",15103
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_near_spawn_start",2990
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_reference_spawn_start",9720
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_near_early_egg",7002
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_reference_early_egg",22843
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_near_late_egg",8698
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","detection","es_reference_late_egg",28581
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1018
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",2195
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",544
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",1191
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",552
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1251
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",352
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",736
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",741
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",1503
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",637
+"SOG_EVENT_STUDY_v1","atx_d7dd9536145c","Barrow's Goldeneye","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",1373
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",1634
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",3938
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",866
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",2297
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",1011
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",2396
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",774
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",1680
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",1550
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",3217
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",1462
+"SOG_EVENT_STUDY_v1","atx_e0e678a61ad7","Short-billed Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",3391
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_near_baseline",8074
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_reference_baseline",25987
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_near_early_pre",4510
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_reference_early_pre",15464
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_near_immediate_pre",4586
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_reference_immediate_pre",15167
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_near_spawn_start",2991
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_reference_spawn_start",9758
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_near_early_egg",7017
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_reference_early_egg",22926
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_near_late_egg",8711
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","detection","es_reference_late_egg",28654
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",95
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",230
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",39
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",120
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",43
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",118
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",22
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",67
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",56
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",144
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",44
+"SOG_EVENT_STUDY_v1","atx_ebf17f77fb66","Western Grebe","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",145
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",39
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",136
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",32
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",95
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",62
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",204
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",99
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",215
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",311
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",491
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",478
+"SOG_EVENT_STUDY_v1","atx_fadb8da1a816","Bonaparte's Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",820
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",3240
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",10709
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",1840
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",6584
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",1945
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",6567
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",1444
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",4415
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",3021
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",9802
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",3559
+"SOG_EVENT_STUDY_v1","atx_fc0a9b777dcd","Bald Eagle","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",11721
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",771
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",2028
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",433
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",1189
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",414
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",1141
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",285
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",809
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",572
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",1486
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",558
+"SOG_EVENT_STUDY_v1","atx_v2_000002","Black Oystercatcher","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",1518
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",424
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",1030
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",227
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",581
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",216
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",544
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",160
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",385
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",263
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",649
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",272
+"SOG_EVENT_STUDY_v1","atx_v2_000003","Dunlin","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",748
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",349
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",749
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",171
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",427
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",173
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",427
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",117
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",308
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",202
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",510
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",232
+"SOG_EVENT_STUDY_v1","atx_v2_000006","Black-bellied Plover","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",596
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",2366
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",7123
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",1345
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",4335
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",1333
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",4341
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",852
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",2878
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",2007
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",6658
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",2579
+"SOG_EVENT_STUDY_v1","atx_v2_000007","Common Raven","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",8316
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_baseline",46
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_baseline",29
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_pre",
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_pre",25
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_immediate_pre",
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_immediate_pre",49
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_spawn_start",43
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_spawn_start",35
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_early_egg",81
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_early_egg",55
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_near_late_egg",51
+"SOG_EVENT_STUDY_v1","atx_v2_000011","Glaucous Gull","core_species","SoG","positive_numeric_count_given_detection","es_reference_late_egg",40
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_eeefc021901e","Gadwall","specificity_comparator","SoG","detection","es_reference_late_egg",28655
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_near_baseline",8077
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_reference_baseline",25992
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_near_early_pre",4512
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_reference_early_pre",15467
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_near_immediate_pre",4587
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_reference_immediate_pre",15169
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_near_spawn_start",2992
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_reference_spawn_start",9759
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_near_early_egg",7018
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_reference_early_egg",22927
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_near_late_egg",8712
+"SOG_EVENT_STUDY_v1","atx_8f0345249398","Northern Shoveler","specificity_comparator","SoG","detection","es_reference_late_egg",28655

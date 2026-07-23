@@ -38,6 +38,14 @@ TIMING_CONTRASTS = [
     "did_early_egg",
     "did_late_egg",
 ]
+PERIOD_TABLE_CONTRASTS = [
+    "near_minus_reference_baseline",
+    "did_pre_14_day",
+    "did_spawn_start",
+    "did_early_egg",
+    "did_late_egg",
+    "did_active_0_14_day",
+]
 TIMING_LABELS = {
     "did_pre_7_day": "Pre-spawn\n(-7 to -1 d)",
     "did_spawn_start": "Spawn start\n(0 to 3 d)",
@@ -159,6 +167,13 @@ def write_tables(
     ].copy()
     timing.to_csv(
         tables_dir / "Table_4_main_species_timing_v6.csv", index=False
+    )
+    periods = effects[
+        effects["contrast"].isin(PERIOD_TABLE_CONTRASTS)
+        & effects["unit_label"].isin(MAIN_SPECIES)
+    ].copy()
+    periods.to_csv(
+        tables_dir / "Table_4_main_species_periods_v6.csv", index=False
     )
     effects[effects["analysis_role"].eq("core_species")].to_csv(
         tables_dir / "Table_S_event_study_all_49_species_v6.csv", index=False
@@ -317,7 +332,11 @@ def plot_timing(effects: pd.DataFrame, figures_dir: Path) -> None:
         axis.set_yticklabels(species, fontsize=9)
         axis.set_title(OUTCOME_LABELS[outcome])
     colorbar = fig.colorbar(image, ax=axes, fraction=0.025, pad=0.02)
-    colorbar.set_label("Log ratio of near/reference ratios")
+    colorbar.set_label(
+        "Log ratio of near/reference ratios",
+        fontsize=9,
+        labelpad=7,
+    )
     fig.suptitle(
         "Species-specific change in the near/reference contrast through spawning",
         fontsize=13,
@@ -331,11 +350,12 @@ def plot_timing(effects: pd.DataFrame, figures_dir: Path) -> None:
         ha="center",
         fontsize=9,
     )
-    fig.subplots_adjust(left=0.19, right=0.90, bottom=0.11, top=0.91, wspace=0.08)
+    fig.subplots_adjust(left=0.19, right=0.84, bottom=0.11, top=0.91, wspace=0.08)
     fig.savefig(
         figures_dir / "Figure_4_sog_event_timing_v6.png",
         dpi=400,
         bbox_inches="tight",
+        pad_inches=0.15,
         facecolor="white",
     )
     plt.close(fig)

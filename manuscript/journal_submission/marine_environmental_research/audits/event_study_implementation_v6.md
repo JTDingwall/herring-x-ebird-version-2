@@ -30,37 +30,36 @@
 - Added deterministic table and figure builders for manuscript integration after
   complete execution.
 
-## Not executed in this environment
+## Executed and verified
 
-The protected event metadata, source-point links, sparse bird states, and
-ambiguity masks are not present here, and `Rscript` is unavailable. No protected
-row was opened and no biological estimate was produced.
+The fixture workflow and full repository R tests passed. Production was executed
+with the exact acknowledgement
+`through_2025_post_result_refinement_v1` using committed analysis code
+`6bfef2c5b828ca392255d5b3365a2f84b8a2f9f2`.
 
-The analysis runner therefore remains deliberately gated on:
-
-1. committed code and specification;
-2. passing R fixtures and repository tests;
-3. the exact production acknowledgement;
-4. the frozen source-link hash;
-5. historical event and sparse-state cardinalities;
-6. exclusion of every record after 2025.
+The frozen source-link hash, historical cardinalities, joint concurrent-link
+pairing, protected-input hashes, and 2025 response cutoff passed. The released
+family contains only privacy-safe aggregates. Protected checkpoints and
+record-level derivatives were not opened for interpretation or tracked.
 
 ## Manuscript consequence
 
-The v5 manuscript is not silently updated with invented or recycled timing
-results. Its registered M05/M08 results remain historical evidence. The v6
-source gate requires the complete new output family and human scientific review
-before the abstract, Results, Discussion, tables, or figures are revised.
+The complete output family received a scientific decision of **pass with
+qualifications**. The v6 Strait of Georgia-only manuscript was therefore revised
+using the new interaction results. Historical registered M05/M08 results remain
+unchanged and are labelled as historical Stage 4A evidence in the supplement.
+No historical coefficient was recycled as a new event-study result.
 
-## Remaining validation
+## Validation summary
 
-- Run the fixture and full R test suite in the repository's R environment.
-- Commit the implementation before production access.
-- Execute the complete 100-component family:
-  49 core species x 2 responses, plus 2 detection-only specificity comparators.
-- Review insufficient-support failures, convergence, rank deficiency, and
-  singular fits before interpreting coefficients.
-- Confirm all 11 main species have complete primary and timing contrasts.
-- Review Gadwall and Northern Shoveler only as specificity evidence.
-- Build v6 assets, revise the ecology narrative, render the DOCX/PDF, and inspect
-  every page.
+- All 100 components were attempted: 49 core species x 2 responses, plus 2
+  detection-only specificity comparators.
+- All 22 main-panel components completed without convergence, rank-deficiency,
+  or singularity problems.
+- Three supplementary count components failed support, Glaucous Gull detection
+  failed numerically without fallback, and Western Gull count was singular.
+- Gadwall was null for the primary active interaction; Northern Shoveler was
+  positive and is disclosed as evidence of residual confounding.
+- Exponentiation, confidence intervals, BH multiplicity adjustment, hashes,
+  privacy, and frozen-output preservation passed independent audit.
+- Manuscript assets were generated from the complete aggregate family.
