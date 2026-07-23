@@ -1,0 +1,2023 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Codex <codex@openai.com>
+Date: Wed, 22 Jul 2026 20:56:37 -0700
+Subject: [PATCH] Add SoG spawn event-study refinement
+
+---
+ .gitignore                                    |   3 +
+ R/post_stage4a_sog_event_study_v1.R           | 838 ++++++++++++++++++
+ docs/15_POST_STAGE4A_SOG_EVENT_STUDY.md       | 120 +++
+ .../audits/event_study_implementation_v6.md   |  66 ++
+ .../source_v6/README.md                       |  29 +
+ ...age4a_sog_event_study_authorization_v1.yml |  53 ++
+ .../post_stage4a_sog_event_study_spec_v1.yml  | 113 +++
+ ...age4a_sog_event_study_species_roles_v1.csv |  14 +
+ scripts/build_mer_v6_event_study_assets.py    | 359 ++++++++
+ scripts/run_post_stage4a_sog_event_study_v1.R | 116 +++
+ .../run_post_stage4a_sog_event_study_v1.ps1   |  32 +
+ tests/testthat/helper-load.R                  |   3 +-
+ .../test-post-stage4a-sog-event-study-v1.R    | 158 ++++
+ 13 files changed, 1903 insertions(+), 1 deletion(-)
+ create mode 100644 R/post_stage4a_sog_event_study_v1.R
+ create mode 100644 docs/15_POST_STAGE4A_SOG_EVENT_STUDY.md
+ create mode 100644 manuscript/journal_submission/marine_environmental_research/audits/event_study_implementation_v6.md
+ create mode 100644 manuscript/journal_submission/marine_environmental_research/source_v6/README.md
+ create mode 100644 metadata/post_stage4a_sog_event_study_authorization_v1.yml
+ create mode 100644 metadata/post_stage4a_sog_event_study_spec_v1.yml
+ create mode 100644 metadata/post_stage4a_sog_event_study_species_roles_v1.csv
+ create mode 100644 scripts/build_mer_v6_event_study_assets.py
+ create mode 100644 scripts/run_post_stage4a_sog_event_study_v1.R
+ create mode 100644 scripts/run_post_stage4a_sog_event_study_v1.ps1
+ create mode 100644 tests/testthat/test-post-stage4a-sog-event-study-v1.R
+
+diff --git a/.gitignore b/.gitignore
+index 855d28c..6ebba51 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -88,6 +88,9 @@ Thumbs.db
+ !outputs/stage4a_publication_v2/
+ !outputs/stage4a_publication_v2/*.csv
+ !outputs/stage2_design_lock/*.sha256
++!outputs/post_stage4a_sog_event_study_v1/
++!outputs/post_stage4a_sog_event_study_v1/*.csv
++!outputs/post_stage4a_sog_event_study_v1/*.yml
+ 
+ # Local raw-input audit products may contain machine paths
+ outputs/input_audit_local/**
+diff --git a/R/post_stage4a_sog_event_study_v1.R b/R/post_stage4a_sog_event_study_v1.R
+new file mode 100644
+index 0000000..44ff46e
+--- /dev/null
++++ b/R/post_stage4a_sog_event_study_v1.R
+@@ -0,0 +1,838 @@
++post_stage4a_period_spec_v1 <- function() {
++  data.frame(
++    period = c("baseline", "early_pre", "immediate_pre", "spawn_start",
++               "early_egg", "late_egg"),
++    minimum_day = c(-28L, -14L, -7L, 0L, 4L, 15L),
++    maximum_day = c(-15L, -8L, -1L, 3L, 14L, 28L),
++    duration_days = c(14L, 7L, 7L, 4L, 11L, 14L),
++    stringsAsFactors = FALSE
++  )
++}
++
++post_stage4a_exposure_terms_v1 <- function() {
++  periods <- post_stage4a_period_spec_v1()$period
++  as.vector(outer(c("near", "reference"), periods,
++                  function(zone, period) paste("es", zone, period, sep = "_")))
++}
++
++.post_stage4a_release_count_v1 <- function(x, threshold = 20L) {
++  ifelse(is.finite(x) & x > 0 & x < threshold, NA_real_, x)
++}
++
++.post_stage4a_require_fields_v1 <- function(x, required, label) {
++  missing <- setdiff(required, names(x))
++  if (length(missing)) {
++    stop(label, " is missing required fields: ", paste(missing, collapse = ", "),
++         call. = FALSE)
++  }
++  invisible(TRUE)
++}
++
++post_stage4a_classify_links_v1 <- function(links) {
++  .post_stage4a_require_fields_v1(
++    links,
++    c("analysis_event_token", "event_day", "distance_km"),
++    "event-study link table"
++  )
++  event_day <- suppressWarnings(as.integer(links$event_day))
++  distance_km <- suppressWarnings(as.numeric(links$distance_km))
++  if (anyNA(event_day) || anyNA(distance_km) ||
++      any(distance_km < 0 | distance_km > 20.0001)) {
++    stop("POST_STAGE4A_EVENT_STUDY_LINK_RANGE_GATE: invalid day or distance",
++         call. = FALSE)
++  }
++  period <- rep(NA_character_, length(event_day))
++  spec <- post_stage4a_period_spec_v1()
++  for (i in seq_len(nrow(spec))) {
++    use <- event_day >= spec$minimum_day[[i]] &
++      event_day <= spec$maximum_day[[i]]
++    period[use] <- spec$period[[i]]
++  }
++  zone <- ifelse(distance_km < 5, "near", "reference")
++  term <- ifelse(
++    is.na(period), NA_character_,
++    paste("es", zone, period, sep = "_")
++  )
++  data.frame(
++    analysis_event_token = as.character(links$analysis_event_token),
++    period = period,
++    zone = zone,
++    term = term,
++    stringsAsFactors = FALSE
++  )
++}
++
++post_stage4a_add_joint_exposure_v1 <- function(events, links) {
++  if (!requireNamespace("data.table", quietly = TRUE)) {
++    stop("data.table is required for joint exposure construction", call. = FALSE)
++  }
++  event_required <- c(
++    "analysis_event_token", "event_block_token", "region", "checklist_year",
++    "concurrent_links"
++  )
++  link_required <- c(
++    "analysis_event_token", "region", "checklist_year", "event_day",
++    "distance_km"
++  )
++  .post_stage4a_require_fields_v1(events, event_required, "event metadata")
++  .post_stage4a_require_fields_v1(links, link_required, "source-point links")
++  if (anyDuplicated(events$analysis_event_token)) {
++    stop("POST_STAGE4A_EVENT_STUDY_EVENT_CARDINALITY_GATE: duplicate event token",
++         call. = FALSE)
++  }
++
++  event_tokens <- as.character(events$analysis_event_token)
++  selected_links <- links[as.character(links$analysis_event_token) %in% event_tokens,
++                          link_required, drop = FALSE]
++  link_match <- match(selected_links$analysis_event_token, event_tokens)
++  if (anyNA(link_match)) {
++    stop("POST_STAGE4A_EVENT_STUDY_LINK_JOIN_GATE: unmatched selected link",
++         call. = FALSE)
++  }
++  if (!all(as.character(selected_links$region) ==
++           as.character(events$region[link_match])) ||
++      !all(as.integer(selected_links$checklist_year) ==
++           as.integer(events$checklist_year[link_match]))) {
++    stop("POST_STAGE4A_EVENT_STUDY_LINK_JOIN_GATE: region or year disagreement",
++         call. = FALSE)
++  }
++
++  link_counts <- table(selected_links$analysis_event_token)
++  observed_link_counts <- as.integer(link_counts[event_tokens])
++  observed_link_counts[is.na(observed_link_counts)] <- 0L
++  expected_link_counts <- as.integer(events$concurrent_links)
++  if (!identical(observed_link_counts, expected_link_counts)) {
++    stop("POST_STAGE4A_EVENT_STUDY_LINK_CARDINALITY_GATE: concurrent-link totals changed",
++         call. = FALSE)
++  }
++
++  classified <- post_stage4a_classify_links_v1(selected_links)
++  classified <- classified[!is.na(classified$term), , drop = FALSE]
++  terms <- post_stage4a_exposure_terms_v1()
++  if (!all(classified$term %in% terms)) {
++    stop("POST_STAGE4A_EVENT_STUDY_TERM_GATE: unregistered joint term",
++         call. = FALSE)
++  }
++
++  counts <- data.table::as.data.table(classified)[
++    , .(exposure_links = .N),
++    by = .(analysis_event_token, term)
++  ]
++  wide <- data.table::dcast(
++    counts,
++    analysis_event_token ~ term,
++    value.var = "exposure_links",
++    fill = 0L
++  )
++  event_dt <- data.table::as.data.table(data.table::copy(events))
++  event_dt[, event_study_row_order__ := .I]
++  joined <- merge(
++    event_dt, wide,
++    by = "analysis_event_token",
++    all.x = TRUE,
++    sort = FALSE
++  )
++  data.table::setorder(joined, event_study_row_order__)
++  joined[, event_study_row_order__ := NULL]
++  if (nrow(joined) != nrow(events) ||
++      anyDuplicated(joined$analysis_event_token)) {
++    stop("POST_STAGE4A_EVENT_STUDY_AGGREGATION_GATE: model-row cardinality changed",
++         call. = FALSE)
++  }
++  for (term in terms) {
++    if (!term %in% names(joined)) joined[, (term) := 0L]
++    data.table::set(
++      joined,
++      which(is.na(joined[[term]])),
++      term,
++      0L
++    )
++    joined[, (term) := as.integer(get(term))]
++  }
++
++  target_links <- rowSums(as.data.frame(joined[, ..terms]))
++  if (any(target_links > joined$concurrent_links)) {
++    stop("POST_STAGE4A_EVENT_STUDY_JOINT_EXPOSURE_GATE: joint totals exceed links",
++         call. = FALSE)
++  }
++
++  support <- do.call(rbind, lapply(terms, function(term) {
++    pieces <- strsplit(sub("^es_", "", term), "_", fixed = TRUE)[[1L]]
++    zone <- pieces[[1L]]
++    period <- paste(pieces[-1L], collapse = "_")
++    use <- joined[[term]] > 0L
++    data.frame(
++      term = term,
++      zone = zone,
++      period = period,
++      exposed_checklists = .post_stage4a_release_count_v1(sum(use)),
++      exposure_links = .post_stage4a_release_count_v1(sum(joined[[term]])),
++      event_blocks = .post_stage4a_release_count_v1(
++        length(unique(joined$event_block_token[use]))
++      ),
++      checklist_years = .post_stage4a_release_count_v1(
++        length(unique(joined$checklist_year[use]))
++      ),
++      stringsAsFactors = FALSE
++    )
++  }))
++  list(events = as.data.frame(joined), support = support)
++}
++
++post_stage4a_formula_v1 <- function(response) {
++  fixed <- c(
++    post_stage4a_exposure_terms_v1(),
++    "factor(checklist_year)", "protocol", "log_duration",
++    "log_effort_distance", "observer_count"
++  )
++  stats::as.formula(paste(
++    response, "~", paste(fixed, collapse = " + "),
++    "+ (1 | event_block_token) + (1 | observer_cluster_token) +",
++    "(1 | location_cluster_token)"
++  ))
++}
++
++.post_stage4a_model_messages_v1 <- function(
++    optimizer_code, engine_messages, singular_fit) {
++  messages <- if (is.null(engine_messages)) character() else
++    as.character(engine_messages)
++  singular_notice <- grepl("boundary (singular) fit", messages, fixed = TRUE)
++  blocking <- messages[!(singular_fit & singular_notice)]
++  optimizer_pass <- is.null(optimizer_code) || all(optimizer_code == 0L)
++  text <- if (!length(messages)) "" else {
++    substr(gsub("[\r\n]+", " ", paste(messages, collapse = "; ")), 1L, 240L)
++  }
++  if (!optimizer_pass && !nzchar(text)) {
++    text <- paste0("optimizer_code_", paste(optimizer_code, collapse = "_"))
++  }
++  list(converged = optimizer_pass && !length(blocking), message = text)
++}
++
++.post_stage4a_contrast_vector_v1 <- function(coefficient_names, weights) {
++  vector <- stats::setNames(rep(0, length(coefficient_names)), coefficient_names)
++  if (!all(names(weights) %in% coefficient_names)) return(NULL)
++  vector[names(weights)] <- as.numeric(weights)
++  vector
++}
++
++post_stage4a_contrast_definitions_v1 <- function(coefficient_names) {
++  term <- function(zone, period) paste("es", zone, period, sep = "_")
++  spatial <- function(period) {
++    stats::setNames(c(1, -1), c(term("near", period),
++                                term("reference", period)))
++  }
++  did <- function(period) {
++    stats::setNames(
++      c(1, -1, -1, 1),
++      c(term("near", period), term("reference", period),
++        term("near", "baseline"), term("reference", "baseline"))
++    )
++  }
++  combine <- function(...) {
++    pieces <- list(...)
++    result <- numeric()
++    for (piece in pieces) {
++      for (name in names(piece)) {
++        result[[name]] <- if (name %in% names(result)) result[[name]] +
++          piece[[name]] else piece[[name]]
++      }
++    }
++    result
++  }
++  scale_weights <- function(x, scale) x * scale
++
++  periods <- post_stage4a_period_spec_v1()$period
++  rows <- lapply(periods, function(period) {
++    list(
++      contrast = paste0("near_minus_reference_", period),
++      contrast_type = "near_minus_reference",
++      ecological_period = period,
++      primary_estimand = FALSE,
++      weights = spatial(period)
++    )
++  })
++  nonbaseline <- setdiff(periods, "baseline")
++  rows <- c(rows, lapply(nonbaseline, function(period) {
++    list(
++      contrast = paste0("did_", period),
++      contrast_type = "difference_in_differences",
++      ecological_period = period,
++      primary_estimand = FALSE,
++      weights = did(period)
++    )
++  }))
++  rows[[length(rows) + 1L]] <- list(
++    contrast = "did_pre_14_day",
++    contrast_type = "duration_weighted_difference_in_differences",
++    ecological_period = "pre_14_day",
++    primary_estimand = FALSE,
++    weights = combine(
++      scale_weights(did("early_pre"), 0.5),
++      scale_weights(did("immediate_pre"), 0.5)
++    )
++  )
++  rows[[length(rows) + 1L]] <- list(
++    contrast = "did_pre_7_day",
++    contrast_type = "difference_in_differences",
++    ecological_period = "pre_7_day",
++    primary_estimand = FALSE,
++    weights = did("immediate_pre")
++  )
++  rows[[length(rows) + 1L]] <- list(
++    contrast = "did_active_0_14_day",
++    contrast_type = "duration_weighted_difference_in_differences",
++    ecological_period = "active_0_14_day",
++    primary_estimand = TRUE,
++    weights = combine(
++      scale_weights(did("spawn_start"), 4 / 15),
++      scale_weights(did("early_egg"), 11 / 15)
++    )
++  )
++  for (i in seq_along(rows)) {
++    rows[[i]]$vector <- .post_stage4a_contrast_vector_v1(
++      coefficient_names, rows[[i]]$weights
++    )
++  }
++  rows
++}
++
++.post_stage4a_empty_fit_v1 <- function(
++    taxon_id, unit_label, analysis_role, outcome, n, status) {
++  definitions <- post_stage4a_contrast_definitions_v1(
++    c("(Intercept)", post_stage4a_exposure_terms_v1())
++  )
++  effect <- do.call(rbind, lapply(definitions, function(definition) {
++    data.frame(
++      model_version_id = "SOG_EVENT_STUDY_v1",
++      analysis_taxon_id = taxon_id,
++      unit_label = unit_label,
++      analysis_role = analysis_role,
++      region = "SoG",
++      outcome = outcome,
++      contrast = definition$contrast,
++      contrast_type = definition$contrast_type,
++      ecological_period = definition$ecological_period,
++      primary_estimand = definition$primary_estimand,
++      estimate = NA_real_,
++      standard_error = NA_real_,
++      conf_low = NA_real_,
++      conf_high = NA_real_,
++      ratio = NA_real_,
++      ratio_conf_low = NA_real_,
++      ratio_conf_high = NA_real_,
++      p_value = NA_real_,
++      q_value = NA_real_,
++      n = .post_stage4a_release_count_v1(n),
++      status = status,
++      stringsAsFactors = FALSE
++    )
++  }))
++  diagnostic <- data.frame(
++    model_version_id = "SOG_EVENT_STUDY_v1",
++    analysis_taxon_id = taxon_id,
++    unit_label = unit_label,
++    analysis_role = analysis_role,
++    region = "SoG",
++    outcome = outcome,
++    converged = FALSE,
++    singular_fit = NA,
++    rank_deficient = NA,
++    convergence_message = status,
++    n = .post_stage4a_release_count_v1(n),
++    status = status,
++    stringsAsFactors = FALSE
++  )
++  list(effect = effect, diagnostic = diagnostic, term_support = data.frame())
++}
++
++post_stage4a_fit_one_v1 <- function(
++    dat, taxon_id, unit_label, analysis_role, outcome,
++    checkpoint_path, cache_signature) {
++  if (file.exists(checkpoint_path)) {
++    cached <- readRDS(checkpoint_path)
++    if (identical(cached$cache_signature, cache_signature)) return(cached$result)
++  }
++  if (outcome == "detection") {
++    use <- !is.na(dat$detection)
++    response <- "detection"
++  } else if (outcome == "positive_numeric_count_given_detection") {
++    use <- is.finite(dat$numeric_count) & dat$numeric_count > 0
++    response <- "log_count"
++  } else {
++    stop("POST_STAGE4A_EVENT_STUDY_OUTCOME_GATE: unsupported outcome",
++         call. = FALSE)
++  }
++  d <- dat[use, , drop = FALSE]
++  if (outcome == "positive_numeric_count_given_detection") {
++    d$log_count <- log(d$numeric_count)
++  }
++  terms <- post_stage4a_exposure_terms_v1()
++  term_support <- data.frame(
++    model_version_id = "SOG_EVENT_STUDY_v1",
++    analysis_taxon_id = taxon_id,
++    unit_label = unit_label,
++    analysis_role = analysis_role,
++    region = "SoG",
++    outcome = outcome,
++    term = terms,
++    exposed_model_rows = vapply(
++      terms, function(term) sum(d[[term]] > 0L), integer(1L)
++    ),
++    stringsAsFactors = FALSE
++  )
++  term_support$exposed_model_rows <- .post_stage4a_release_count_v1(
++    term_support$exposed_model_rows
++  )
++  insufficient_terms <- is.na(term_support$exposed_model_rows) |
++    term_support$exposed_model_rows < 20L
++  response_values <- if (response %in% names(d)) d[[response]] else numeric()
++  if (nrow(d) < 20L || length(unique(response_values)) < 2L ||
++      any(insufficient_terms)) {
++    result <- .post_stage4a_empty_fit_v1(
++      taxon_id, unit_label, analysis_role, outcome, nrow(d),
++      "failed_insufficient_support"
++    )
++    result$term_support <- term_support
++    saveRDS(list(cache_signature = cache_signature, result = result),
++            checkpoint_path)
++    return(result)
++  }
++
++  formula <- post_stage4a_formula_v1(response)
++  fit <- try(
++    if (outcome == "detection") {
++      lme4::glmer(
++        formula, data = d, family = stats::binomial(), nAGQ = 0L,
++        control = lme4::glmerControl(
++          optimizer = "nloptwrap",
++          calc.derivs = FALSE,
++          optCtrl = list(maxeval = 10000L)
++        )
++      )
++    } else {
++      lme4::lmer(
++        formula, data = d, REML = TRUE,
++        control = lme4::lmerControl(
++          optimizer = "nloptwrap",
++          calc.derivs = FALSE,
++          optCtrl = list(maxeval = 10000L)
++        )
++      )
++    },
++    silent = TRUE
++  )
++  if (inherits(fit, "try-error")) {
++    result <- .post_stage4a_empty_fit_v1(
++      taxon_id, unit_label, analysis_role, outcome, nrow(d),
++      "failed_numerical_fit_no_fallback"
++    )
++    result$term_support <- term_support
++    saveRDS(list(cache_signature = cache_signature, result = result),
++            checkpoint_path)
++    return(result)
++  }
++
++  beta <- lme4::fixef(fit)
++  covariance <- as.matrix(stats::vcov(fit))
++  singular_fit <- lme4::isSingular(fit, tol = 1e-4)
++  classification <- .post_stage4a_model_messages_v1(
++    fit@optinfo$conv$opt,
++    fit@optinfo$conv$lme4$messages,
++    singular_fit
++  )
++  rank_deficient <- length(beta) <
++    ncol(stats::model.matrix(lme4::nobars(formula), d))
++  model_status <- if (!classification$converged) {
++    "failed_convergence"
++  } else if (singular_fit) {
++    "completed_with_singular_warning"
++  } else if (rank_deficient) {
++    "completed_with_rank_deficiency_warning"
++  } else {
++    "completed"
++  }
++
++  definitions <- post_stage4a_contrast_definitions_v1(names(beta))
++  effects <- do.call(rbind, lapply(definitions, function(definition) {
++    vector <- definition$vector
++    if (is.null(vector)) {
++      estimate <- standard_error <- p_value <- NA_real_
++      status <- "failed_contrast_geometry"
++    } else {
++      estimate <- sum(vector * beta)
++      variance <- drop(t(vector) %*% covariance %*% vector)
++      standard_error <- if (is.finite(variance) && variance >= 0) {
++        sqrt(variance)
++      } else {
++        NA_real_
++      }
++      p_value <- if (is.finite(standard_error) && standard_error > 0) {
++        2 * stats::pnorm(-abs(estimate / standard_error))
++      } else {
++        NA_real_
++      }
++      status <- if (is.finite(estimate) && is.finite(standard_error) &&
++                    standard_error > 0) model_status else
++        "failed_contrast_geometry"
++    }
++    conf_low <- estimate - 1.959963984540054 * standard_error
++    conf_high <- estimate + 1.959963984540054 * standard_error
++    data.frame(
++      model_version_id = "SOG_EVENT_STUDY_v1",
++      analysis_taxon_id = taxon_id,
++      unit_label = unit_label,
++      analysis_role = analysis_role,
++      region = "SoG",
++      outcome = outcome,
++      contrast = definition$contrast,
++      contrast_type = definition$contrast_type,
++      ecological_period = definition$ecological_period,
++      primary_estimand = definition$primary_estimand,
++      estimate = estimate,
++      standard_error = standard_error,
++      conf_low = conf_low,
++      conf_high = conf_high,
++      ratio = exp(estimate),
++      ratio_conf_low = exp(conf_low),
++      ratio_conf_high = exp(conf_high),
++      p_value = p_value,
++      q_value = NA_real_,
++      n = .post_stage4a_release_count_v1(nrow(d)),
++      status = status,
++      stringsAsFactors = FALSE
++    )
++  }))
++  diagnostic <- data.frame(
++    model_version_id = "SOG_EVENT_STUDY_v1",
++    analysis_taxon_id = taxon_id,
++    unit_label = unit_label,
++    analysis_role = analysis_role,
++    region = "SoG",
++    outcome = outcome,
++    converged = classification$converged,
++    singular_fit = singular_fit,
++    rank_deficient = rank_deficient,
++    convergence_message = classification$message,
++    n = .post_stage4a_release_count_v1(nrow(d)),
++    status = model_status,
++    stringsAsFactors = FALSE
++  )
++  result <- list(
++    effect = effects,
++    diagnostic = diagnostic,
++    term_support = term_support
++  )
++  saveRDS(list(cache_signature = cache_signature, result = result),
++          checkpoint_path)
++  result
++}
++
++post_stage4a_adjust_multiplicity_v1 <- function(effects) {
++  effects$multiplicity_family <- paste(
++    effects$analysis_role,
++    effects$outcome,
++    effects$contrast,
++    sep = "__"
++  )
++  effects$q_value <- NA_real_
++  for (family in unique(effects$multiplicity_family)) {
++    index <- which(
++      effects$multiplicity_family == family &
++      is.finite(effects$p_value)
++    )
++    effects$q_value[index] <- stats::p.adjust(
++      effects$p_value[index], method = "BH"
++    )
++  }
++  effects
++}
++
++.post_stage4a_sha256_v1 <- function(path) {
++  digest::digest(path, algo = "sha256", file = TRUE, serialize = FALSE)
++}
++
++.post_stage4a_write_csv_v1 <- function(x, path) {
++  con <- file(path, open = "wb")
++  on.exit(close(con), add = TRUE)
++  utils::write.table(
++    x, con, sep = ",", row.names = FALSE, col.names = TRUE,
++    na = "", qmethod = "double", eol = "\n"
++  )
++}
++
++run_post_stage4a_sog_event_study_v1 <- function(
++    execution_code_commit,
++    output_dir = "outputs/post_stage4a_sog_event_study_v1") {
++  acknowledgement <- "through_2025_post_result_refinement_v1"
++  if (!identical(Sys.getenv("POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED"),
++                 acknowledgement)) {
++    stop(
++      "Production requires the exact post-Stage 4A event-study acknowledgement",
++      call. = FALSE
++    )
++  }
++  packages <- c("data.table", "digest", "lme4", "yaml")
++  missing <- packages[!vapply(
++    packages, requireNamespace, logical(1L), quietly = TRUE
++  )]
++  if (length(missing)) {
++    stop("Missing packages: ", paste(missing, collapse = ", "), call. = FALSE)
++  }
++
++  protected_files <- c(
++    event_metadata =
++      "data/derived/stage4a_protected/stage4a_event_metadata.tsv.gz",
++    source_links =
++      "data/derived/stage3_phase2_protected/metadata_source_point_links.tsv.gz",
++    reported_states =
++      "data/derived/stage4a_protected/stage4a_reported_states.tsv.gz",
++    ambiguity_masks =
++      "data/derived/stage4a_protected/stage4a_ambiguity_masks.tsv.gz"
++  )
++  if (!all(file.exists(protected_files))) {
++    stop("Protected through-2025 event-study inputs are unavailable",
++         call. = FALSE)
++  }
++  source_link_hash <- .post_stage4a_sha256_v1(
++    protected_files[["source_links"]]
++  )
++  if (!identical(
++      source_link_hash,
++      "f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b"
++  )) {
++    stop("POST_STAGE4A_EVENT_STUDY_SOURCE_LINK_HASH_GATE: mismatch",
++         call. = FALSE)
++  }
++  protected_hashes <- vapply(
++    protected_files, .post_stage4a_sha256_v1, character(1L)
++  )
++
++  events_all <- .stage4a_read_gz(protected_files[["event_metadata"]])
++  if (nrow(events_all) != 239934L) {
++    stop("POST_STAGE4A_EVENT_STUDY_EVENT_CARDINALITY_GATE: expected 239934 rows",
++         call. = FALSE)
++  }
++  if (any(as.integer(events_all$checklist_year) > 2025L)) {
++    stop("POST_STAGE4A_EVENT_STUDY_YEAR_GATE: 2026+ data encountered",
++         call. = FALSE)
++  }
++  events_all <- .stage4a_prepare_events(events_all)
++  selected <- events_all$region == "SoG" &
++    events_all$checklist_year >= 2005L &
++    events_all$checklist_year <= 2025L
++  if (anyNA(selected) || sum(selected) != 217200L) {
++    stop("POST_STAGE4A_EVENT_STUDY_SOG_SCOPE_GATE: expected 217200 events",
++         call. = FALSE)
++  }
++  events <- events_all[selected, , drop = FALSE]
++  rm(events_all)
++  if (!all(stage4a_effort_eligible(
++      events$protocol, events$duration_minutes,
++      events$effort_distance_km, events$observer_count))) {
++    stop("POST_STAGE4A_EVENT_STUDY_EFFORT_GATE: ineligible checklist",
++         call. = FALSE)
++  }
++  stage4a_validate_folds(events)
++
++  links <- .stage4a_read_gz(protected_files[["source_links"]])
++  joint <- post_stage4a_add_joint_exposure_v1(events, links)
++  events <- joint$events
++  support <- joint$support
++  rm(links, joint)
++
++  states_all <- .stage4a_read_gz(protected_files[["reported_states"]])
++  masks_all <- .stage4a_read_gz(protected_files[["ambiguity_masks"]])
++  if (nrow(states_all) != 1169612L || nrow(masks_all) != 5834L) {
++    stop("POST_STAGE4A_EVENT_STUDY_SPARSE_STATE_CARDINALITY_GATE: changed",
++         call. = FALSE)
++  }
++  selected_tokens <- events$analysis_event_token
++  states <- states_all[
++    states_all$analysis_event_token %in% selected_tokens, , drop = FALSE
++  ]
++  masks <- masks_all[
++    masks_all$analysis_event_token %in% selected_tokens, , drop = FALSE
++  ]
++  rm(states_all, masks_all)
++
++  support_registry <- utils::read.csv(
++    "outputs/stage2_design_lock/species_support_summary.csv",
++    stringsAsFactors = FALSE
++  )
++  species_registry <- utils::read.csv(
++    "metadata/canonical_species_registry.csv",
++    stringsAsFactors = FALSE
++  )
++  roles <- utils::read.csv(
++    "metadata/post_stage4a_sog_event_study_species_roles_v1.csv",
++    stringsAsFactors = FALSE
++  )
++  core_taxa <- support_registry$analysis_taxon_id[which(
++    support_registry$named_species_recommendation == "named_species_core"
++  )]
++  comparator_taxa <- roles$analysis_taxon_id[
++    roles$presentation_role == "supplementary_specificity_comparator"
++  ]
++  if (length(core_taxa) != 49L || length(comparator_taxa) != 2L ||
++      anyDuplicated(c(core_taxa, comparator_taxa))) {
++    stop("POST_STAGE4A_EVENT_STUDY_TAXON_GATE: taxon scope changed",
++         call. = FALSE)
++  }
++  main_taxa <- roles$analysis_taxon_id[
++    roles$presentation_role == "main_ecological_panel"
++  ]
++  if (length(main_taxa) != 11L || !all(main_taxa %in% core_taxa)) {
++    stop("POST_STAGE4A_EVENT_STUDY_MAIN_PANEL_GATE: expected 11 core taxa",
++         call. = FALSE)
++  }
++
++  protected_dir <- "data/derived/post_stage4a_sog_event_study_v1"
++  checkpoint_dir <- file.path(protected_dir, "checkpoints")
++  dir.create(checkpoint_dir, recursive = TRUE, showWarnings = FALSE)
++  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
++  code_signature <- paste(
++    execution_code_commit,
++    protected_hashes,
++    .post_stage4a_sha256_v1(
++      "metadata/post_stage4a_sog_event_study_spec_v1.yml"
++    ),
++    sep = "|",
++    collapse = "|"
++  )
++
++  results <- list()
++  cursor <- 0L
++  all_taxa <- c(core_taxa, comparator_taxa)
++  for (taxon_id in all_taxa) {
++    unit_label <- species_registry$common_name[
++      match(taxon_id, species_registry$analysis_taxon_id)
++    ]
++    if (length(unit_label) != 1L || is.na(unit_label) || !nzchar(unit_label)) {
++      stop("POST_STAGE4A_EVENT_STUDY_TAXON_NAME_GATE: unresolved taxon",
++           call. = FALSE)
++    }
++    analysis_role <- if (taxon_id %in% comparator_taxa) {
++      "specificity_comparator"
++    } else {
++      "core_species"
++    }
++    denominator <- stage4a_materialize_taxon(
++      events, states, masks, taxon_id
++    )
++    outcomes <- if (analysis_role == "specificity_comparator") {
++      "detection"
++    } else {
++      c("detection", "positive_numeric_count_given_detection")
++    }
++    for (outcome in outcomes) {
++      cursor <- cursor + 1L
++      checkpoint <- file.path(
++        checkpoint_dir,
++        paste(taxon_id, outcome, "rds", sep = "_")
++      )
++      results[[cursor]] <- post_stage4a_fit_one_v1(
++        denominator, taxon_id, unit_label, analysis_role, outcome,
++        checkpoint, code_signature
++      )
++    }
++  }
++
++  effects <- do.call(rbind, lapply(results, `[[`, "effect"))
++  diagnostics <- do.call(rbind, lapply(results, `[[`, "diagnostic"))
++  term_support <- do.call(rbind, lapply(results, `[[`, "term_support"))
++  effects <- post_stage4a_adjust_multiplicity_v1(effects)
++  main_panel <- effects[
++    effects$analysis_taxon_id %in% main_taxa &
++      effects$contrast %in% c(
++        "did_pre_14_day", "did_pre_7_day", "did_spawn_start",
++        "did_early_egg", "did_late_egg", "did_active_0_14_day"
++      ),
++    , drop = FALSE
++  ]
++  comparators <- effects[
++    effects$analysis_role == "specificity_comparator", , drop = FALSE
++  ]
++
++  .post_stage4a_write_csv_v1(
++    effects, file.path(output_dir, "effect_estimates_v1.csv")
++  )
++  .post_stage4a_write_csv_v1(
++    diagnostics, file.path(output_dir, "model_diagnostics_v1.csv")
++  )
++  .post_stage4a_write_csv_v1(
++    term_support, file.path(output_dir, "model_term_support_v1.csv")
++  )
++  .post_stage4a_write_csv_v1(
++    support, file.path(output_dir, "joint_exposure_support_v1.csv")
++  )
++  .post_stage4a_write_csv_v1(
++    main_panel, file.path(output_dir, "main_species_panel_v1.csv")
++  )
++  .post_stage4a_write_csv_v1(
++    comparators, file.path(output_dir, "specificity_comparators_v1.csv")
++  )
++
++  status_counts <- as.list(table(diagnostics$status))
++  execution_record <- list(
++    execution_version = "post_stage4a_sog_event_study_v1",
++    executed_at_utc = format(
++      as.POSIXct(Sys.time(), tz = "UTC"),
++      "%Y-%m-%dT%H:%M:%SZ"
++    ),
++    execution_code_commit = execution_code_commit,
++    analysis_status = "post_result_ecologically_motivated_refinement",
++    historical_stage4a_outputs_modified = FALSE,
++    region = "SoG",
++    years = c(2005L, 2025L),
++    eligible_checklists = nrow(events),
++    core_species = length(core_taxa),
++    main_panel_species = length(main_taxa),
++    specificity_comparators = length(comparator_taxa),
++    model_components = nrow(diagnostics),
++    model_status_counts = status_counts,
++    protected_input_hashes = as.list(protected_hashes),
++    source_link_hash_gate = "PASS",
++    concurrent_link_joint_pairing_gate = "PASS",
++    records_2026_plus_read = 0L,
++    comments_read = 0L,
++    shoreline_fields_read = 0L,
++    full_event_taxon_grid_expanded = FALSE,
++    final_gate = "PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW"
++  )
++  yaml::write_yaml(
++    execution_record,
++    file.path(output_dir, "execution_record_v1.yml")
++  )
++
++  output_files <- file.path(
++    output_dir,
++    c(
++      "effect_estimates_v1.csv",
++      "model_diagnostics_v1.csv",
++      "model_term_support_v1.csv",
++      "joint_exposure_support_v1.csv",
++      "main_species_panel_v1.csv",
++      "specificity_comparators_v1.csv",
++      "execution_record_v1.yml"
++    )
++  )
++  manifest <- data.frame(
++    file = gsub("\\\\", "/", output_files),
++    sha256 = vapply(
++      output_files, .post_stage4a_sha256_v1, character(1L)
++    ),
++    stringsAsFactors = FALSE
++  )
++  .post_stage4a_write_csv_v1(
++    manifest, file.path(output_dir, "output_hash_manifest_v1.csv")
++  )
++  message(
++    "POST_STAGE4A_SOG_EVENT_STUDY_GATE=",
++    "PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW"
++  )
++  invisible(list(
++    effects = effects,
++    diagnostics = diagnostics,
++    support = support
++  ))
++}
+diff --git a/docs/15_POST_STAGE4A_SOG_EVENT_STUDY.md b/docs/15_POST_STAGE4A_SOG_EVENT_STUDY.md
+new file mode 100644
+index 0000000..8829894
+--- /dev/null
++++ b/docs/15_POST_STAGE4A_SOG_EVENT_STUDY.md
+@@ -0,0 +1,120 @@
++# Post-Stage 4A Strait of Georgia event-study refinement
++
++## Decision
++
++This is an additive, post-results refinement. It does not overwrite, relabel, or
++silently replace Stage 4A. The original model outputs remain the complete record
++of the registered analysis.
++
++The refinement addresses one specific alternative explanation: birds may appear
++near recorded spawning at the same time as spring migration without responding
++locally to herring. The new estimand asks whether the near-versus-reference
++difference changes through the event relative to its own pre-spawn baseline.
++
++## KISS design
++
++The analysis retains the two response components because they answer different
++ecological questions:
++
++1. Was the species reported on a greater share of complete checklists?
++2. When a finite numeric count was reported, was the reported flock larger?
++
++It adds one model structure, fitted separately by species and response. There is
++no ordination, community index, spline, zero-inflation layer, machine-learning
++model, or outcome-selected temporal collapse.
++
++| Period | Days relative to recorded onset | Purpose |
++|---|---:|---|
++| Baseline | -28 to -15 | Pre-event spatial difference |
++| Early pre-spawn | -14 to -8 | First half of the 14-day pre period |
++| Immediate pre-spawn | -7 to -1 | Tighter anticipatory/staging check |
++| Spawn start | 0 to 3 | Adult aggregation and recorded deposition onset |
++| Early egg | 4 to 14 | Early attached-egg availability |
++| Late egg | 15 to 28 | Later egg or post-deposition availability |
++
++Near is less than 5 km from a recorded source point. Reference is 5-20 km away.
++The primary active interval is 0-14 days. Its estimate is the duration-weighted
++combination of the 0-3 and 4-14 day interaction contrasts.
++
++## Why joint exposure fields are required
++
++The historical protected cache contains separate totals for time bins and
++distance rings. Those margins cannot identify which time belongs to which
++distance when a checklist links to more than one herring event. Multiplying the
++margins would invent pairings.
++
++The refinement therefore returns to the already frozen, hashed source-point link
++table and counts each linked event in its actual period-by-zone cell. All links
++remain additive, but each checklist remains one independent model row. The
++required cardinality is:
++
++`source links (many) -> analysis checklist token (one aggregate model row)`
++
++The builder must verify the link count against the historical
++`concurrent_links` total for every selected checklist.
++
++## Estimand
++
++For period \(p\), the principal contrast is:
++
++\[
++\left(\text{near}_p-\text{reference}_p\right)
++-
++\left(\text{near}_{baseline}-\text{reference}_{baseline}\right).
++\]
++
++On the logit scale this is a ratio of detection odds ratios. On the log-count
++scale it is a ratio of conditional flock-size ratios. Exponentiated values above
++one mean that the near/reference contrast became more positive than it was
++during the baseline period.
++
++This controls a Strait-wide temporal change if it affects near and reference
++checklists similarly, and it subtracts persistent near/reference differences
++measured during baseline. It does not establish individual movement or eliminate
++time-varying local habitat, event-date error, preferential visitation, or an
++unmeasured factor that changes differently between zones.
++
++## Species
++
++All 49 frozen named species are fitted and reported. The main ecological panel
++contains the six previously emphasized taxa plus Bald Eagle, Hooded Merganser,
++Mallard, American Crow, and Common Raven. This promotion changes presentation,
++not denominator eligibility.
++
++Gadwall and Northern Shoveler are fitted only as detection specificity
++comparators and reported in the supplement. They are not called negative
++controls, because their migration and habitat use may also covary with spawning
++bays.
++
++## Execution boundary
++
++Production requires:
++
++- committed versioned code and specification;
++- a passing fixture/test run;
++- the exact environment acknowledgement
++  `POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED=through_2025_post_result_refinement_v1`;
++- the frozen protected link hash and historical cache cardinalities;
++- zero records from 2026 onward.
++
++Only privacy-safe aggregate estimates, support summaries, diagnostics, and
++hashes may be tracked. Manuscript results must not be changed until the complete
++output family has run and passed human scientific review.
++
++## Execution commands
++
++From the repository root in PowerShell, after committing this implementation:
++
++```powershell
++.\scripts\run_post_stage4a_sog_event_study_v1.ps1 -Mode fixture
++
++$env:POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED =
++  "through_2025_post_result_refinement_v1"
++.\scripts\run_post_stage4a_sog_event_study_v1.ps1 -Mode production
++
++python .\scripts\build_mer_v6_event_study_assets.py
++```
++
++The production command is checkpointed by species and response. A restarted run
++reuses only checkpoints with the same committed code and protected-input
++signature.
+diff --git a/manuscript/journal_submission/marine_environmental_research/audits/event_study_implementation_v6.md b/manuscript/journal_submission/marine_environmental_research/audits/event_study_implementation_v6.md
+new file mode 100644
+index 0000000..c77a535
+--- /dev/null
++++ b/manuscript/journal_submission/marine_environmental_research/audits/event_study_implementation_v6.md
+@@ -0,0 +1,66 @@
++# Strait of Georgia event-study implementation audit (v6)
++
++## Implemented
++
++- Versioned the user's 2026-07-22 authorization as a post-results,
++  ecologically motivated refinement.
++- Preserved every historical Stage 4A output, checkpoint, specification, and
++  interpretation as immutable.
++- Replaced the 28-day pre-spawn category for the new analysis with:
++  - baseline: -28 to -15 days;
++  - early pre-spawn: -14 to -8 days;
++  - immediate pre-spawn: -7 to -1 days.
++- Kept spawn start (0-3 days), early egg availability (4-14 days), and late egg
++  availability (15-28 days) separate.
++- Defined a primary active interval for days 0-14 as a duration-weighted linear
++  contrast of spawn-start and early-egg coefficients.
++- Implemented a near/reference difference-in-differences relative to the
++  -28 to -15 day baseline.
++- Preserved one checklist as one model row and all concurrent herring-event links
++  as additive exposure counts.
++- Added a hard gate that rejects construction from separate time and distance
++  margins; true joint period-by-zone counts are rebuilt from the frozen link
++  table.
++- Retained detection and positive numeric flock size as separate responses.
++- Fit all 49 frozen named species; promoted Bald Eagle, Hooded Merganser,
++  Mallard, American Crow, and Common Raven into the 11-species main ecological
++  panel.
++- Reclassified Gadwall and Northern Shoveler as supplementary specificity
++  comparators and aligned them to the new detection estimand.
++- Added deterministic table and figure builders for manuscript integration after
++  complete execution.
++
++## Not executed in this environment
++
++The protected event metadata, source-point links, sparse bird states, and
++ambiguity masks are not present here, and `Rscript` is unavailable. No protected
++row was opened and no biological estimate was produced.
++
++The analysis runner therefore remains deliberately gated on:
++
++1. committed code and specification;
++2. passing R fixtures and repository tests;
++3. the exact production acknowledgement;
++4. the frozen source-link hash;
++5. historical event and sparse-state cardinalities;
++6. exclusion of every record after 2025.
++
++## Manuscript consequence
++
++The v5 manuscript is not silently updated with invented or recycled timing
++results. Its registered M05/M08 results remain historical evidence. The v6
++source gate requires the complete new output family and human scientific review
++before the abstract, Results, Discussion, tables, or figures are revised.
++
++## Remaining validation
++
++- Run the fixture and full R test suite in the repository's R environment.
++- Commit the implementation before production access.
++- Execute the complete 100-component family:
++  49 core species x 2 responses, plus 2 detection-only specificity comparators.
++- Review insufficient-support failures, convergence, rank deficiency, and
++  singular fits before interpreting coefficients.
++- Confirm all 11 main species have complete primary and timing contrasts.
++- Review Gadwall and Northern Shoveler only as specificity evidence.
++- Build v6 assets, revise the ecology narrative, render the DOCX/PDF, and inspect
++  every page.
+diff --git a/manuscript/journal_submission/marine_environmental_research/source_v6/README.md b/manuscript/journal_submission/marine_environmental_research/source_v6/README.md
+new file mode 100644
+index 0000000..74abf45
+--- /dev/null
++++ b/manuscript/journal_submission/marine_environmental_research/source_v6/README.md
+@@ -0,0 +1,29 @@
++# Marine Environmental Research manuscript v6 status
++
++Version 6 is intentionally gated on the complete Strait of Georgia event-study
++output family. Do not copy the historical M05 timing coefficients into the new
++event-study sections and do not render a submission manuscript with placeholder
++results.
++
++After the production analysis reaches
++`PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW`:
++
++1. Run `scripts/build_mer_v6_event_study_assets.py`.
++2. Review every model failure, singular warning, main-panel interval, and the two
++   specificity-comparator families.
++3. Revise the v5 abstract, Methods timing section, Results timing section,
++   Discussion migration section, main species table, and Figures 3-4.
++4. Keep the complete historical M05 and M08 results in the supplement, labeled
++   as the registered Stage 4A analyses.
++5. Describe the new model as a post-results, ecologically motivated refinement.
++6. Render the DOCX and inspect every page before release.
++
++The v6 front-facing interpretation should use:
++
++- the 0-14 day duration-weighted difference-in-differences as the primary active
++  contrast;
++- the -7 to -1, 0 to 3, 4 to 14, and 15 to 28 day contrasts for timing;
++- all 11 main ecological species;
++- Gadwall and Northern Shoveler only as supplementary specificity comparators.
++
++No v6 result claim is valid until the complete output family has run.
+diff --git a/metadata/post_stage4a_sog_event_study_authorization_v1.yml b/metadata/post_stage4a_sog_event_study_authorization_v1.yml
+new file mode 100644
+index 0000000..96eb118
+--- /dev/null
++++ b/metadata/post_stage4a_sog_event_study_authorization_v1.yml
+@@ -0,0 +1,53 @@
++authorization_version: post_stage4a_sog_event_study_authorization_v1
++authorized_at_local: 2026-07-22
++authorization_source: explicit_human_instruction_in_manuscript_review_session
++scientific_decision: AUTHORIZE_ADDITIVE_POST_RESULT_SOG_EVENT_STUDY_REFINEMENT
++human_instruction: >-
++  Implement the agreed KISS refinement: shorten the temporal windows, estimate
++  a near-versus-reference change through the event, promote Bald Eagle, Hooded
++  Merganser, Mallard, American Crow, and Common Raven in the main ecological
++  presentation, and move Gadwall and Northern Shoveler to a supplementary
++  specificity role.
++known_results_boundary:
++  stage4a_results_known: true
++  classification: post_result_ecologically_motivated_refinement
++  may_be_relabelled_prespecified_or_confirmatory: false
++authorized_population:
++  region: SoG
++  start_year: 2005
++  end_year: 2025
++  prospective_records_2026_plus: prohibited
++authorized_responses:
++  - checklist_detection
++  - positive_numeric_count_given_detection
++authorized_taxa:
++  core_species: all_49_frozen_named_species
++  specificity_comparators_detection_only: [Gadwall, Northern Shoveler]
++authorized_geometry:
++  near_km:
++    minimum_inclusive: 0
++    maximum_exclusive: 5
++  contemporaneous_reference_km:
++    minimum_inclusive: 5
++    maximum_inclusive: 20
++  source_points_only: true
++authorized_timing:
++  baseline_days: [-28, -15]
++  early_pre_days: [-14, -8]
++  immediate_pre_days: [-7, -1]
++  spawn_start_days: [0, 3]
++  early_egg_days: [4, 14]
++  late_egg_days: [15, 28]
++analysis_constraints:
++  independent_row: checklist
++  concurrent_links: additive_joint_period_by_zone_counts
++  full_event_taxon_grid_materialization: prohibited
++  stage4a_outputs_and_checkpoints: immutable
++  results_selected_model_changes: prohibited
++  gadwall_shoveler_main_figure: prohibited
++execution_prerequisites:
++  - committed_versioned_specification_and_code
++  - fixture_and_repository_tests_pass
++  - exact_production_environment_acknowledgement
++  - protected_input_hash_and_cardinality_gates_pass
++final_gate: PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW
+diff --git a/metadata/post_stage4a_sog_event_study_spec_v1.yml b/metadata/post_stage4a_sog_event_study_spec_v1.yml
+new file mode 100644
+index 0000000..dfc01be
+--- /dev/null
++++ b/metadata/post_stage4a_sog_event_study_spec_v1.yml
+@@ -0,0 +1,113 @@
++specification_version: post_stage4a_sog_event_study_spec_v1
++authorization_record: metadata/post_stage4a_sog_event_study_authorization_v1.yml
++analysis_status: post_result_ecologically_motivated_refinement
++historical_stage4a:
++  status: immutable
++  outputs_overwritten: false
++  interpretation: retained_as_complete_registered_analysis
++scientific_question: >-
++  Does the near-versus-reference difference in bird checklist detection or
++  positive reported flock size increase at herring-spawn onset or egg
++  availability relative to the same spatial difference before spawning?
++population:
++  region: SoG
++  years: [2005, 2025]
++  complete_checklists_only: true
++  protocols: [stationary, traveling]
++  duration_minutes: [5, 300]
++  maximum_travel_distance_km: 5
++  observer_count: [1, 10]
++  maximum_source_point_link_distance_km: 20
++  prospective_records_2026_plus: prohibited
++outcomes:
++  detection:
++    family: binomial
++    link: logit
++    interpretation: checklist_reporting_not_occupancy
++  positive_numeric_count_given_detection:
++    family: lognormal
++    fitted_response: log_numeric_count
++    interpretation: relative_reported_flock_size_conditional_on_numeric_detection
++  unquantified_X_as_numeric: prohibited
++  ambiguity_as_zero: prohibited
++periods:
++  baseline: {minimum_day: -28, maximum_day: -15, duration_days: 14}
++  early_pre: {minimum_day: -14, maximum_day: -8, duration_days: 7}
++  immediate_pre: {minimum_day: -7, maximum_day: -1, duration_days: 7}
++  spawn_start: {minimum_day: 0, maximum_day: 3, duration_days: 4}
++  early_egg: {minimum_day: 4, maximum_day: 14, duration_days: 11}
++  late_egg: {minimum_day: 15, maximum_day: 28, duration_days: 14}
++zones:
++  near: {minimum_km: 0, maximum_km_exclusive: 5}
++  reference: {minimum_km: 5, maximum_km_inclusive: 20}
++exposure_encoding:
++  unit: linked_recorded_source_event
++  joint_terms: period_by_zone_additive_counts
++  independent_model_row: checklist
++  checklist_duplication: prohibited
++  derive_joint_terms_by_multiplying_marginal_counts: prohibited
++  concurrent_links: all_retained
++model:
++  engine_detection: lme4_glmer_nAGQ0
++  engine_positive_count: lme4_lmer_REML
++  fixed_terms:
++    - all_12_joint_period_by_zone_counts
++    - factor_checklist_year
++    - protocol
++    - log_duration_minutes
++    - log_effort_distance_plus_one
++    - observer_count
++  random_intercepts:
++    - herring_event_block
++    - observer_cluster
++    - generalized_location_cluster
++  simplified_fallback: prohibited
++contrasts:
++  period_near_minus_reference:
++    expression: near_period_minus_reference_period
++    role: descriptive_spatial_difference
++  period_difference_in_differences:
++    expression: >-
++      (near_period - reference_period) -
++      (near_baseline - reference_baseline)
++    role: primary_migration_and_persistent_site_adjusted_timing_contrast
++  pre_14_day:
++    expression: >-
++      0.5 * did_early_pre + 0.5 * did_immediate_pre
++    role: primary_pre_spawn_summary
++  pre_7_day:
++    expression: did_immediate_pre
++    role: tighter_pre_spawn_sensitivity
++  active_0_14_day:
++    expression: >-
++      (4 / 15) * did_spawn_start + (11 / 15) * did_early_egg
++    role: primary_active_interval
++multiplicity:
++  core_species:
++    correction: BH
++    family: outcome_by_named_contrast_across_49_species
++  specificity_comparators:
++    correction: BH
++    family: detection_contrast_across_2_comparators
++  all_estimates_visible: true
++species_presentation:
++  main_panel_source: metadata/post_stage4a_sog_event_study_species_roles_v1.csv
++  all_49_core_species_reported_in_supplement: true
++  gadwall_and_northern_shoveler:
++    label: specificity_comparators
++    main_dedicated_figure: false
++    supplement_complete_results: true
++privacy:
++  release_threshold: 20
++  protected_rows_committed: false
++  identifiers_committed: false
++  coordinates_committed: false
++  protected_paths_committed: false
++validation:
++  exact_period_boundary_fixture: required
++  exact_zone_boundary_fixture: required
++  concurrent_link_joint_pairing_fixture: required
++  event_metadata_join_cardinality: one_to_many_then_aggregate_to_one
++  model_geometry_and_singularity: fully_reported
++  results_required_before_manuscript_claim_update: true
++final_gate: PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW
+diff --git a/metadata/post_stage4a_sog_event_study_species_roles_v1.csv b/metadata/post_stage4a_sog_event_study_species_roles_v1.csv
+new file mode 100644
+index 0000000..27938e0
+--- /dev/null
++++ b/metadata/post_stage4a_sog_event_study_species_roles_v1.csv
+@@ -0,0 +1,14 @@
++analysis_taxon_id,common_name,presentation_role,ecological_reason
++atx_1930f23cc4f8,Surf Scoter,main_ecological_panel,direct roe-diving evidence
++atx_3083477933a8,White-winged Scoter,main_ecological_panel,direct roe-diving evidence
++atx_87b306550dba,Harlequin Duck,main_ecological_panel,roe-diving response
++atx_725074cbfcb6,Glaucous-winged Gull,main_ecological_panel,roe scavenging
++atx_e0e678a61ad7,Short-billed Gull,main_ecological_panel,roe scavenging
++atx_35518e24dfdd,Common Merganser,main_ecological_panel,active-spawn piscivory
++atx_fc0a9b777dcd,Bald Eagle,main_ecological_panel,shoreline scavenging candidate
++atx_04afbeb21fb0,Hooded Merganser,main_ecological_panel,weaker marine piscivory candidate
++atx_815c98107028,Mallard,main_ecological_panel,surface and vegetation-associated egg-use candidate
++atx_c9db024faf12,American Crow,main_ecological_panel,shoreline scavenging candidate
++atx_v2_000007,Common Raven,main_ecological_panel,shoreline scavenging candidate
++atx_eeefc021901e,Gadwall,supplementary_specificity_comparator,no strong direct herring mechanism assumed
++atx_8f0345249398,Northern Shoveler,supplementary_specificity_comparator,no strong direct herring mechanism assumed
+diff --git a/scripts/build_mer_v6_event_study_assets.py b/scripts/build_mer_v6_event_study_assets.py
+new file mode 100644
+index 0000000..63903b8
+--- /dev/null
++++ b/scripts/build_mer_v6_event_study_assets.py
+@@ -0,0 +1,359 @@
++#!/usr/bin/env python3
++"""Build manuscript-safe v6 tables and figures from completed event-study outputs.
++
++This script reads only tracked, privacy-safe aggregate CSV files. It refuses to
++run until the complete post-Stage 4A execution record has reached its human
++review gate.
++"""
++
++from __future__ import annotations
++
++import argparse
++import math
++from pathlib import Path
++
++import matplotlib.pyplot as plt
++import numpy as np
++import pandas as pd
++import yaml
++
++
++FINAL_GATE = "PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW"
++MAIN_SPECIES = [
++    "Surf Scoter",
++    "White-winged Scoter",
++    "Harlequin Duck",
++    "Glaucous-winged Gull",
++    "Short-billed Gull",
++    "Common Merganser",
++    "Bald Eagle",
++    "Hooded Merganser",
++    "Mallard",
++    "American Crow",
++    "Common Raven",
++]
++TIMING_CONTRASTS = [
++    "did_pre_7_day",
++    "did_spawn_start",
++    "did_early_egg",
++    "did_late_egg",
++]
++TIMING_LABELS = {
++    "did_pre_7_day": "Pre-spawn\n(-7 to -1 d)",
++    "did_spawn_start": "Spawn start\n(0 to 3 d)",
++    "did_early_egg": "Early egg\n(4 to 14 d)",
++    "did_late_egg": "Late egg\n(15 to 28 d)",
++}
++OUTCOME_LABELS = {
++    "detection": "Checklist detection",
++    "positive_numeric_count_given_detection": "Positive flock size",
++}
++
++
++def parse_args() -> argparse.Namespace:
++    parser = argparse.ArgumentParser()
++    parser.add_argument(
++        "--results-dir",
++        type=Path,
++        default=Path("outputs/post_stage4a_sog_event_study_v1"),
++    )
++    parser.add_argument(
++        "--manuscript-dir",
++        type=Path,
++        default=Path(
++            "manuscript/journal_submission/marine_environmental_research"
++        ),
++    )
++    return parser.parse_args()
++
++
++def validate_inputs(results_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
++    execution_path = results_dir / "execution_record_v1.yml"
++    effects_path = results_dir / "effect_estimates_v1.csv"
++    diagnostics_path = results_dir / "model_diagnostics_v1.csv"
++    for path in (execution_path, effects_path, diagnostics_path):
++        if not path.is_file():
++            raise FileNotFoundError(f"Required completed output is missing: {path}")
++    execution = yaml.safe_load(execution_path.read_text(encoding="utf-8"))
++    if execution.get("final_gate") != FINAL_GATE:
++        raise RuntimeError("Event-study execution has not reached its review gate")
++    if execution.get("historical_stage4a_outputs_modified") is not False:
++        raise RuntimeError("Historical Stage 4A immutability was not verified")
++    effects = pd.read_csv(effects_path)
++    diagnostics = pd.read_csv(diagnostics_path)
++    required = {
++        "analysis_taxon_id",
++        "unit_label",
++        "analysis_role",
++        "outcome",
++        "contrast",
++        "ratio",
++        "ratio_conf_low",
++        "ratio_conf_high",
++        "q_value",
++        "status",
++    }
++    missing = required.difference(effects.columns)
++    if missing:
++        raise ValueError(f"Effect table is missing columns: {sorted(missing)}")
++    if diagnostics.shape[0] != 100:
++        raise ValueError(
++            f"Expected 100 species-response fits, found {diagnostics.shape[0]}"
++        )
++    core = effects[effects["analysis_role"].eq("core_species")]
++    if core["analysis_taxon_id"].nunique() != 49:
++        raise ValueError("Expected the complete 49-species core family")
++    comparators = effects[
++        effects["analysis_role"].eq("specificity_comparator")
++    ]
++    if comparators["analysis_taxon_id"].nunique() != 2:
++        raise ValueError("Expected two aligned specificity comparators")
++    if set(MAIN_SPECIES).difference(set(core["unit_label"])):
++        raise ValueError("One or more main ecological species are missing")
++    return effects, diagnostics
++
++
++def ci_text(row: pd.Series) -> str:
++    values = [row["ratio"], row["ratio_conf_low"], row["ratio_conf_high"]]
++    if not all(math.isfinite(float(value)) for value in values):
++        return "Model component unavailable"
++    return (
++        f"{row['ratio']:.2f} "
++        f"({row['ratio_conf_low']:.2f}-{row['ratio_conf_high']:.2f})"
++    )
++
++
++def write_tables(
++    effects: pd.DataFrame, tables_dir: Path, generated_dir: Path
++) -> None:
++    tables_dir.mkdir(parents=True, exist_ok=True)
++    generated_dir.mkdir(parents=True, exist_ok=True)
++    active = effects[
++        effects["contrast"].eq("did_active_0_14_day")
++        & effects["unit_label"].isin(MAIN_SPECIES)
++    ].copy()
++    active["ratio_95_ci"] = active.apply(ci_text, axis=1)
++    active["bh_q"] = active["q_value"].map(
++        lambda value: "" if pd.isna(value) else f"{value:.3g}"
++    )
++    active["outcome"] = active["outcome"].map(OUTCOME_LABELS)
++    active = active[
++        [
++            "unit_label",
++            "outcome",
++            "ratio_95_ci",
++            "bh_q",
++            "status",
++        ]
++    ].rename(
++        columns={
++            "unit_label": "species",
++            "ratio_95_ci": "active_0_14_ratio_95_ci",
++        }
++    )
++    active.to_csv(tables_dir / "Table_3_main_species_active_v6.csv", index=False)
++
++    timing = effects[
++        effects["contrast"].isin(TIMING_CONTRASTS)
++        & effects["unit_label"].isin(MAIN_SPECIES)
++    ].copy()
++    timing.to_csv(
++        tables_dir / "Table_4_main_species_timing_v6.csv", index=False
++    )
++    effects[effects["analysis_role"].eq("core_species")].to_csv(
++        tables_dir / "Table_S_event_study_all_49_species_v6.csv", index=False
++    )
++    effects[effects["analysis_role"].eq("specificity_comparator")].to_csv(
++        tables_dir / "Table_S_specificity_comparators_v6.csv", index=False
++    )
++
++    completed_active = active[active["status"].str.startswith("completed")]
++    supported = completed_active[
++        completed_active["bh_q"].ne("")
++        & pd.to_numeric(completed_active["bh_q"], errors="coerce").lt(0.05)
++    ]
++    lines = [
++        "# Event-study result handoff",
++        "",
++        "This text is generated from the complete aggregate output family. It is a "
++        "numerical handoff for scientific interpretation, not final manuscript prose.",
++        "",
++        f"- Main-species active components available: {completed_active.shape[0]}/"
++        f"{len(MAIN_SPECIES) * 2}.",
++        f"- Main-species active components with BH q < 0.05: {supported.shape[0]}.",
++        "- The exponentiated interaction is a ratio of near/reference ratios "
++        "relative to the -28 to -15 day baseline.",
++        "- Values above one indicate that the near/reference contrast became more "
++        "positive than its baseline value.",
++        "",
++    ]
++    for _, row in supported.sort_values(
++        ["outcome", "species"]
++    ).iterrows():
++        lines.append(
++            f"- {row['species']} - {row['outcome']}: "
++            f"{row['active_0_14_ratio_95_ci']}, BH q={row['bh_q']}."
++        )
++    (generated_dir / "event_study_results_handoff_v6.md").write_text(
++        "\n".join(lines) + "\n", encoding="utf-8"
++    )
++
++
++def plot_active(effects: pd.DataFrame, figures_dir: Path) -> None:
++    data = effects[
++        effects["contrast"].eq("did_active_0_14_day")
++        & effects["unit_label"].isin(MAIN_SPECIES)
++    ].copy()
++    order = list(reversed(MAIN_SPECIES))
++    fig, axes = plt.subplots(1, 2, figsize=(11.0, 7.6), sharey=True)
++    for axis, outcome in zip(axes, OUTCOME_LABELS):
++        panel = (
++            data[data["outcome"].eq(outcome)]
++            .set_index("unit_label")
++            .reindex(order)
++        )
++        y = np.arange(len(order))
++        ratio = panel["ratio"].to_numpy(dtype=float)
++        low = panel["ratio_conf_low"].to_numpy(dtype=float)
++        high = panel["ratio_conf_high"].to_numpy(dtype=float)
++        finite = (
++            np.isfinite(ratio)
++            & np.isfinite(low)
++            & np.isfinite(high)
++            & (ratio > 0)
++            & (low > 0)
++            & (high > 0)
++        )
++        axis.axvline(1, color="#666666", linewidth=1, linestyle="--")
++        axis.errorbar(
++            ratio[finite],
++            y[finite],
++            xerr=np.vstack(
++                [ratio[finite] - low[finite], high[finite] - ratio[finite]]
++            ),
++            fmt="o",
++            color="#1f5d78",
++            ecolor="#1f5d78",
++            capsize=2,
++            markersize=5,
++        )
++        axis.set_xscale("log")
++        axis.set_xlabel("Ratio of near/reference ratios (95% CI)")
++        axis.set_title(OUTCOME_LABELS[outcome])
++        axis.grid(axis="x", color="#dddddd", linewidth=0.7)
++        axis.set_yticks(y)
++        axis.set_yticklabels(order)
++    fig.suptitle(
++        "Bird response during days 0-14 relative to the pre-spawn baseline",
++        fontsize=13,
++        y=0.99,
++    )
++    fig.text(
++        0.5,
++        0.01,
++        "Values >1 indicate a more positive near/reference contrast than during "
++        "days -28 to -15.",
++        ha="center",
++        fontsize=9,
++    )
++    fig.tight_layout(rect=(0, 0.04, 1, 0.96))
++    fig.savefig(
++        figures_dir / "Figure_3_sog_active_event_study_v6.png",
++        dpi=400,
++        bbox_inches="tight",
++        facecolor="white",
++    )
++    plt.close(fig)
++
++
++def plot_timing(effects: pd.DataFrame, figures_dir: Path) -> None:
++    data = effects[
++        effects["contrast"].isin(TIMING_CONTRASTS)
++        & effects["unit_label"].isin(MAIN_SPECIES)
++    ].copy()
++    species = MAIN_SPECIES
++    fig, axes = plt.subplots(1, 2, figsize=(12.2, 8.2), sharey=True)
++    finite_logs = np.log(data.loc[data["ratio"].gt(0), "ratio"])
++    if finite_logs.empty:
++        raise RuntimeError("No finite main-panel timing ratios are available")
++    limit = max(0.1, float(np.nanquantile(np.abs(finite_logs), 0.95)))
++    for axis, outcome in zip(axes, OUTCOME_LABELS):
++        panel = data[data["outcome"].eq(outcome)].pivot(
++            index="unit_label", columns="contrast", values="ratio"
++        )
++        panel = panel.reindex(index=species, columns=TIMING_CONTRASTS)
++        q_panel = data[data["outcome"].eq(outcome)].pivot(
++            index="unit_label", columns="contrast", values="q_value"
++        ).reindex(index=species, columns=TIMING_CONTRASTS)
++        image = axis.imshow(
++            np.log(panel.to_numpy(dtype=float)),
++            cmap="RdBu_r",
++            vmin=-limit,
++            vmax=limit,
++            aspect="auto",
++        )
++        for row in range(len(species)):
++            for column in range(len(TIMING_CONTRASTS)):
++                value = panel.iat[row, column]
++                q_value = q_panel.iat[row, column]
++                label = "" if pd.isna(value) else f"{value:.2f}"
++                if not pd.isna(q_value) and q_value < 0.05:
++                    label += "*"
++                axis.text(
++                    column,
++                    row,
++                    label,
++                    ha="center",
++                    va="center",
++                    fontsize=7.5,
++                    color="black",
++                )
++        axis.set_xticks(range(len(TIMING_CONTRASTS)))
++        axis.set_xticklabels(
++            [TIMING_LABELS[value] for value in TIMING_CONTRASTS],
++            fontsize=8,
++        )
++        axis.set_yticks(range(len(species)))
++        axis.set_yticklabels(species, fontsize=9)
++        axis.set_title(OUTCOME_LABELS[outcome])
++    colorbar = fig.colorbar(image, ax=axes, fraction=0.025, pad=0.02)
++    colorbar.set_label("Log ratio of near/reference ratios")
++    fig.suptitle(
++        "Species-specific change in the near/reference contrast through spawning",
++        fontsize=13,
++        y=0.98,
++    )
++    fig.text(
++        0.5,
++        0.015,
++        "Cells show exponentiated difference-in-differences; * denotes BH q < 0.05 "
++        "within the 49-species outcome-contrast family.",
++        ha="center",
++        fontsize=9,
++    )
++    fig.subplots_adjust(left=0.19, right=0.90, bottom=0.11, top=0.91, wspace=0.08)
++    fig.savefig(
++        figures_dir / "Figure_4_sog_event_timing_v6.png",
++        dpi=400,
++        bbox_inches="tight",
++        facecolor="white",
++    )
++    plt.close(fig)
++
++
++def main() -> int:
++    args = parse_args()
++    effects, _ = validate_inputs(args.results_dir)
++    tables_dir = args.manuscript_dir / "tables_v6"
++    figures_dir = args.manuscript_dir / "figures_v6"
++    generated_dir = args.manuscript_dir / "generated_v6"
++    figures_dir.mkdir(parents=True, exist_ok=True)
++    write_tables(effects, tables_dir, generated_dir)
++    plot_active(effects, figures_dir)
++    plot_timing(effects, figures_dir)
++    print("MER_V6_EVENT_STUDY_ASSETS=PASS")
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/run_post_stage4a_sog_event_study_v1.R b/scripts/run_post_stage4a_sog_event_study_v1.R
+new file mode 100644
+index 0000000..5d0a0e8
+--- /dev/null
++++ b/scripts/run_post_stage4a_sog_event_study_v1.R
+@@ -0,0 +1,116 @@
++#!/usr/bin/env Rscript
++
++args <- commandArgs(trailingOnly = TRUE)
++mode <- if (length(args)) args[[1L]] else "fixture"
++if (!mode %in% c("fixture", "production")) {
++  stop("mode must be fixture or production", call. = FALSE)
++}
++
++Sys.setenv(RENV_CONFIG_AUTOLOADER_ENABLED = "FALSE")
++source(file.path("R", "stage4a_core.R"), local = FALSE)
++source(file.path("R", "stage4a_production.R"), local = FALSE)
++source(file.path("R", "post_stage4a_sog_event_study_v1.R"), local = FALSE)
++
++if (mode == "fixture") {
++  periods <- post_stage4a_period_spec_v1()
++  stopifnot(
++    identical(periods$minimum_day, c(-28L, -14L, -7L, 0L, 4L, 15L)),
++    identical(periods$maximum_day, c(-15L, -8L, -1L, 3L, 14L, 28L))
++  )
++  events <- data.frame(
++    analysis_event_token = sprintf("fixture_%02d", 1:12),
++    event_block_token = sprintf("block_%02d", 1:12),
++    observer_cluster_token = sprintf("observer_%02d", 1:12),
++    location_cluster_token = sprintf("location_%02d", 1:12),
++    region = "SoG",
++    checklist_year = 2020L,
++    concurrent_links = c(2L, rep(1L, 11L)),
++    stringsAsFactors = FALSE
++  )
++  boundary_days <- c(
++    -7L, 4L, -28L, -15L, -14L, -8L, -1L, 0L, 3L, 14L, 15L, 28L, 29L
++  )
++  boundary_distances <- c(
++    4.9, 7, 4.9, 5, 4.9, 5, 4.9, 5, 4.9, 5, 4.9, 20, 4.9
++  )
++  links <- data.frame(
++    analysis_event_token = c("fixture_01", "fixture_01",
++                             sprintf("fixture_%02d", 2:12)),
++    region = "SoG",
++    checklist_year = 2020L,
++    event_day = boundary_days,
++    distance_km = boundary_distances,
++    stringsAsFactors = FALSE
++  )
++  joint <- post_stage4a_add_joint_exposure_v1(events, links)
++  stopifnot(
++    nrow(joint$events) == nrow(events),
++    !anyDuplicated(joint$events$analysis_event_token),
++    joint$events$es_near_immediate_pre[[1L]] == 1L,
++    joint$events$es_reference_early_egg[[1L]] == 1L,
++    sum(joint$events[post_stage4a_exposure_terms_v1()]) == 12L
++  )
++  names_for_contrast <- c("(Intercept)", post_stage4a_exposure_terms_v1())
++  definitions <- post_stage4a_contrast_definitions_v1(names_for_contrast)
++  active <- definitions[
++    vapply(definitions, function(x) x$contrast == "did_active_0_14_day",
++           logical(1L))
++  ][[1L]]
++  pre14 <- definitions[
++    vapply(definitions, function(x) x$contrast == "did_pre_14_day",
++           logical(1L))
++  ][[1L]]
++  stopifnot(
++    abs(sum(active$vector)) < 1e-12,
++    abs(sum(pre14$vector)) < 1e-12,
++    isTRUE(all.equal(
++      active$vector[["es_near_spawn_start"]], 4 / 15
++    )),
++    isTRUE(all.equal(
++      active$vector[["es_near_early_egg"]], 11 / 15
++    )),
++    isTRUE(all.equal(
++      pre14$vector[["es_near_early_pre"]], 0.5
++    )),
++    isTRUE(all.equal(
++      pre14$vector[["es_near_immediate_pre"]], 0.5
++    ))
++  )
++  message("POST_STAGE4A_SOG_EVENT_STUDY_FIXTURE=PASS")
++  quit(status = 0L)
++}
++
++code_files <- c(
++  ".gitignore",
++  "R/post_stage4a_sog_event_study_v1.R",
++  "scripts/run_post_stage4a_sog_event_study_v1.R",
++  "scripts/run_post_stage4a_sog_event_study_v1.ps1",
++  "metadata/post_stage4a_sog_event_study_spec_v1.yml",
++  "metadata/post_stage4a_sog_event_study_authorization_v1.yml",
++  "metadata/post_stage4a_sog_event_study_species_roles_v1.csv",
++  "docs/15_POST_STAGE4A_SOG_EVENT_STUDY.md",
++  "tests/testthat/helper-load.R",
++  "tests/testthat/test-post-stage4a-sog-event-study-v1.R"
++)
++dirty <- system2(
++  "git",
++  c("status", "--porcelain", "--untracked-files=all", "--", code_files),
++  stdout = TRUE,
++  stderr = TRUE
++)
++if (length(dirty) && any(nzchar(dirty))) {
++  stop(
++    "Production is blocked until the event-study code and specification are committed",
++    call. = FALSE
++  )
++}
++execution_code_commit <- system2(
++  "git", c("rev-parse", "HEAD"), stdout = TRUE
++)
++if (length(execution_code_commit) != 1L ||
++    !grepl("^[0-9a-f]{40}$", execution_code_commit)) {
++  stop("Unable to resolve the committed execution code", call. = FALSE)
++}
++run_post_stage4a_sog_event_study_v1(
++  execution_code_commit = execution_code_commit
++)
+diff --git a/scripts/run_post_stage4a_sog_event_study_v1.ps1 b/scripts/run_post_stage4a_sog_event_study_v1.ps1
+new file mode 100644
+index 0000000..e4623bc
+--- /dev/null
++++ b/scripts/run_post_stage4a_sog_event_study_v1.ps1
+@@ -0,0 +1,32 @@
++param(
++    [ValidateSet('fixture', 'production')]
++    [string]$Mode = 'fixture'
++)
++
++$ErrorActionPreference = 'Stop'
++$repoRoot = Split-Path -Parent $PSScriptRoot
++$runner = Join-Path $PSScriptRoot 'run_post_stage4a_sog_event_study_v1.R'
++
++if (-not (Get-Command Rscript -ErrorAction SilentlyContinue)) {
++    throw 'Rscript is not available on PATH.'
++}
++if ($Mode -eq 'production' -and
++    $env:POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED -ne
++        'through_2025_post_result_refinement_v1') {
++    throw @'
++Production requires:
++$env:POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED =
++  "through_2025_post_result_refinement_v1"
++'@
++}
++
++Push-Location $repoRoot
++try {
++    & Rscript --no-init-file $runner $Mode
++    if ($LASTEXITCODE -ne 0) {
++        throw "Event-study runner exited with code $LASTEXITCODE."
++    }
++}
++finally {
++    Pop-Location
++}
+diff --git a/tests/testthat/helper-load.R b/tests/testthat/helper-load.R
+index 405c23f..c4e4242 100644
+--- a/tests/testthat/helper-load.R
++++ b/tests/testthat/helper-load.R
+@@ -7,6 +7,7 @@ for (file in c("assert.R", "config.R", "join_assertions.R", "input_manifest.R",
+                "model_registry.R", "privacy_scan.R", "stage4a_pooling_repair_spec_v2.R",
+                "stage4a_pooling_repair_execute_v2.R", "stage4a_pooling_report_v2.R",
+                "stage4a_publication_sensitivity_v2.R",
+-               "stage4a_publication_report_v2.R")) {
++               "stage4a_publication_report_v2.R",
++               "post_stage4a_sog_event_study_v1.R")) {
+   source(repo_file("R", file))
+ }
+diff --git a/tests/testthat/test-post-stage4a-sog-event-study-v1.R b/tests/testthat/test-post-stage4a-sog-event-study-v1.R
+new file mode 100644
+index 0000000..a7f4674
+--- /dev/null
++++ b/tests/testthat/test-post-stage4a-sog-event-study-v1.R
+@@ -0,0 +1,158 @@
++test_that("event-study period and zone boundaries are exact", {
++  days <- c(
++    -29L, -28L, -15L, -14L, -8L, -7L, -1L, 0L, 3L,
++    4L, 14L, 15L, 28L, 29L
++  )
++  links <- data.frame(
++    analysis_event_token = sprintf("event_%02d", seq_along(days)),
++    event_day = days,
++    distance_km = rep(c(4.999, 5), length.out = length(days)),
++    stringsAsFactors = FALSE
++  )
++  got <- post_stage4a_classify_links_v1(links)
++  expect_identical(
++    got$period,
++    c(
++      NA_character_, "baseline", "baseline", "early_pre", "early_pre",
++      "immediate_pre", "immediate_pre", "spawn_start", "spawn_start",
++      "early_egg", "early_egg", "late_egg", "late_egg", NA_character_
++    )
++  )
++  expect_identical(
++    got$zone,
++    rep(c("near", "reference"), length.out = length(days))
++  )
++  edge <- data.frame(
++    analysis_event_token = c("near", "reference", "outer"),
++    event_day = 0L,
++    distance_km = c(0, 5, 20),
++    stringsAsFactors = FALSE
++  )
++  edge_got <- post_stage4a_classify_links_v1(edge)
++  expect_identical(edge_got$zone, c("near", "reference", "reference"))
++})
++
++test_that("joint exposure preserves concurrent event pairing and model rows", {
++  events <- data.frame(
++    analysis_event_token = c("a", "b"),
++    event_block_token = c("block_a", "block_b"),
++    region = "SoG",
++    checklist_year = 2020L,
++    concurrent_links = c(2L, 1L),
++    stringsAsFactors = FALSE
++  )
++  links <- data.frame(
++    analysis_event_token = c("a", "a", "b"),
++    region = "SoG",
++    checklist_year = 2020L,
++    event_day = c(-7L, 4L, 20L),
++    distance_km = c(2, 8, 1),
++    stringsAsFactors = FALSE
++  )
++  got <- post_stage4a_add_joint_exposure_v1(events, links)
++  expect_equal(nrow(got$events), 2L)
++  expect_false(anyDuplicated(got$events$analysis_event_token) > 0L)
++  expect_equal(got$events$es_near_immediate_pre[[1L]], 1L)
++  expect_equal(got$events$es_reference_early_egg[[1L]], 1L)
++  expect_equal(got$events$es_near_early_egg[[1L]], 0L)
++  expect_equal(got$events$es_near_late_egg[[2L]], 1L)
++  expect_equal(sum(got$events[post_stage4a_exposure_terms_v1()]), 3L)
++})
++
++test_that("joint exposure rejects changed link cardinality", {
++  events <- data.frame(
++    analysis_event_token = "a",
++    event_block_token = "block_a",
++    region = "SoG",
++    checklist_year = 2020L,
++    concurrent_links = 2L,
++    stringsAsFactors = FALSE
++  )
++  links <- data.frame(
++    analysis_event_token = "a",
++    region = "SoG",
++    checklist_year = 2020L,
++    event_day = 0L,
++    distance_km = 1,
++    stringsAsFactors = FALSE
++  )
++  expect_error(
++    post_stage4a_add_joint_exposure_v1(events, links),
++    "concurrent-link totals changed",
++    fixed = TRUE
++  )
++})
++
++test_that("event-study contrasts implement the registered KISS estimands", {
++  coefficient_names <- c("(Intercept)", post_stage4a_exposure_terms_v1())
++  definitions <- post_stage4a_contrast_definitions_v1(coefficient_names)
++  by_name <- stats::setNames(definitions, vapply(
++    definitions, `[[`, character(1L), "contrast"
++  ))
++  active <- by_name[["did_active_0_14_day"]]$vector
++  pre14 <- by_name[["did_pre_14_day"]]$vector
++  pre7 <- by_name[["did_pre_7_day"]]$vector
++  expect_equal(sum(active), 0, tolerance = 1e-12)
++  expect_equal(active[["es_near_spawn_start"]], 4 / 15)
++  expect_equal(active[["es_reference_spawn_start"]], -4 / 15)
++  expect_equal(active[["es_near_early_egg"]], 11 / 15)
++  expect_equal(active[["es_reference_early_egg"]], -11 / 15)
++  expect_equal(active[["es_near_baseline"]], -1)
++  expect_equal(active[["es_reference_baseline"]], 1)
++  expect_equal(pre14[["es_near_early_pre"]], 0.5)
++  expect_equal(pre14[["es_near_immediate_pre"]], 0.5)
++  expect_equal(pre7, by_name[["did_immediate_pre"]]$vector)
++})
++
++test_that("production fitting has no simplified fallback or prospective access", {
++  code <- paste(
++    readLines(
++      repo_file("R", "post_stage4a_sog_event_study_v1.R"),
++      warn = FALSE
++    ),
++    collapse = "\n"
++  )
++  expect_match(code, "lme4::glmer", fixed = TRUE)
++  expect_match(code, "lme4::lmer", fixed = TRUE)
++  expect_match(code, "nAGQ = 0L", fixed = TRUE)
++  expect_match(code, "REML = TRUE", fixed = TRUE)
++  expect_match(code, "failed_numerical_fit_no_fallback", fixed = TRUE)
++  expect_false(grepl("stats::glm\\(", code))
++  expect_false(grepl("stats::lm\\(", code))
++  expect_match(code, "checklist_year) > 2025L", fixed = TRUE)
++  for (term in c(
++      "event_block_token", "observer_cluster_token",
++      "location_cluster_token")) {
++    expect_match(code, paste0("(1 | ", term, ")"), fixed = TRUE)
++  }
++})
++
++test_that("species roles promote requested taxa and demote comparators", {
++  roles <- utils::read.csv(
++    repo_file(
++      "metadata",
++      "post_stage4a_sog_event_study_species_roles_v1.csv"
++    ),
++    stringsAsFactors = FALSE
++  )
++  main <- roles$common_name[
++    roles$presentation_role == "main_ecological_panel"
++  ]
++  expect_setequal(
++    intersect(
++      main,
++      c(
++        "Bald Eagle", "Hooded Merganser", "Mallard",
++        "American Crow", "Common Raven"
++      )
++    ),
++    c(
++      "Bald Eagle", "Hooded Merganser", "Mallard",
++      "American Crow", "Common Raven"
++    )
++  )
++  comparators <- roles$common_name[
++    roles$presentation_role == "supplementary_specificity_comparator"
++  ]
++  expect_setequal(comparators, c("Gadwall", "Northern Shoveler"))
++})
