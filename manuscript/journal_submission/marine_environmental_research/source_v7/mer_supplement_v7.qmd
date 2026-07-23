@@ -39,6 +39,36 @@ Exponentiated detection values are ratios of near/reference odds ratios. Exponen
 
 The primary active contrast is the duration-weighted combination of days 0–3 and 4–14, weighted 4/15 and 11/15 respectively. The pre-spawn summary equally combines days −14 to −8 and −7 to −1, giving the −14 to −1 day window used in the main text and in Figure 3 of the manuscript. The immediate pre-spawn window of days −7 to −1 is reported separately in Table S2. All fixed windows and weights were executed without outcome-selected collapse.
 
+# Taxonomic and count-state rules
+
+Taxa follow eBird/Clements taxonomy v2025. Three taxa in the 49-species family
+sit on a taxonomic change within the 2005–2025 window and are resolved to a
+single fixed analysis concept by versioned mapping: Short-billed Gull (the former
+Mew Gull; common-name and concept change), American Herring Gull (from the split
+of the Herring Gull complex), and Iceland Gull (which absorbed Thayer's Gull).
+Because the event study includes calendar year as a fixed factor and estimates a
+within-year near-versus-reference difference-in-differences, a taxonomy change
+that shifts a reported concept equally in both zones within a year is absorbed by
+the year factor and differenced out of the interaction; only a within-year,
+spatially structured reporting change at a split boundary could bias it, which is
+second order.
+
+Each detection carried one explicit count state:
+
+| State | Meaning | Enters detection | Enters count |
+|---|---|---|---|
+| `numeric` | a finite reported count greater than zero | yes | yes |
+| `X` | present but unquantified | yes | no |
+| `ambiguity_affected` | identity or count ambiguous under the frozen rules | yes | no |
+
+Lower-bound reports, ambiguous records, structural unknowns, and finite exact
+counts remained distinct; none was silently recoded. An unquantified `X` never
+became a numeric count, and an ambiguous record was never coerced to a zero
+(nondetection). Across the modeled family, `numeric` accounts for the large
+majority of detections, `X` for a small fraction that rises with exposure for the
+strongest aggregators (main text, Discussion 4.2), and `ambiguity_affected` for a
+negligible remainder.
+
 # Complete event-study evidence
 
 The complete family contains 49 core species, both response components where supported, and every registered contrast. Table S1 (`Table_S1_event_study_all_49_species_v7.csv`) retains estimates, standard errors, confidence intervals, ratios, p-values, BH q-values, model sample sizes, status, and multiplicity family for the whole core family.
