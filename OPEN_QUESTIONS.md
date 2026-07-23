@@ -2,9 +2,15 @@
 
 Everything here needs a decision the diagnostics cannot make, a place where a
 diagnostic conflicts with a manuscript claim, or a structural change the plan
-says to propose rather than execute. No manuscript prose has been changed. The
-frozen specification, the species-roles registry, and the earlier registered
-analysis outputs are untouched.
+says to propose rather than execute. The frozen specification, the species-roles
+registry, and the earlier registered analysis outputs are untouched.
+
+**Update (edits applied).** With author authorization, the diagnostic-vs-claim
+wording changes A1 (same-day to contemporaneous), A2 (dabbler roe-pathway
+softening), and A3 (nominated-user rewording) have now been applied to the
+manuscript, and the section E1 restructuring (Limitations folded into the
+Discussion, Conclusions cut) has been executed. See `CHANGES.md`. The items that
+still require an author decision are B1, B2, and C1 below.
 
 ## A. Diagnostic conflicts with a current manuscript claim
 
