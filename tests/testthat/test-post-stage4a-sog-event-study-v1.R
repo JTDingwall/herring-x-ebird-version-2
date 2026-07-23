@@ -156,6 +156,27 @@ test_that("production fitting has no simplified fallback or prospective access",
   }
 })
 
+test_that("parallel worker gate is bounded and rejects invalid values", {
+  variable <- "POST_STAGE4A_SOG_EVENT_STUDY_WORKERS"
+  old <- Sys.getenv(variable, unset = NA_character_)
+  on.exit({
+    if (is.na(old)) {
+      Sys.unsetenv(variable)
+    } else {
+      do.call(Sys.setenv, stats::setNames(list(old), variable))
+    }
+  }, add = TRUE)
+  do.call(Sys.setenv, stats::setNames(list("4"), variable))
+  expect_equal(post_stage4a_worker_count_v1(51L), 4L)
+  expect_equal(post_stage4a_worker_count_v1(2L), 2L)
+  do.call(Sys.setenv, stats::setNames(list("0"), variable))
+  expect_error(
+    post_stage4a_worker_count_v1(51L),
+    "workers must be a positive integer",
+    fixed = TRUE
+  )
+})
+
 test_that("species roles promote requested taxa and demote comparators", {
   roles <- utils::read.csv(
     repo_file(

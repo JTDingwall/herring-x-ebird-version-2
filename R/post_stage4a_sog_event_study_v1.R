@@ -545,6 +545,18 @@ post_stage4a_adjust_multiplicity_v1 <- function(effects) {
   effects
 }
 
+post_stage4a_worker_count_v1 <- function(maximum) {
+  requested <- suppressWarnings(as.integer(Sys.getenv(
+    "POST_STAGE4A_SOG_EVENT_STUDY_WORKERS",
+    unset = "4"
+  )))
+  if (length(requested) != 1L || is.na(requested) || requested < 1L) {
+    stop("POST_STAGE4A_EVENT_STUDY_WORKER_GATE: workers must be a positive integer",
+         call. = FALSE)
+  }
+  min(requested, as.integer(maximum))
+}
+
 .post_stage4a_sha256_v1 <- function(path) {
   digest::digest(path, algo = "sha256", file = TRUE, serialize = FALSE)
 }
@@ -556,6 +568,41 @@ post_stage4a_adjust_multiplicity_v1 <- function(effects) {
     x, con, sep = ",", row.names = FALSE, col.names = TRUE,
     na = "", qmethod = "double", eol = "\n"
   )
+}
+
+post_stage4a_fit_taxon_v1 <- function(
+    events, states, masks, taxon_id, species_registry, comparator_taxa,
+    checkpoint_dir, code_signature) {
+  unit_label <- species_registry$common_name[
+    match(taxon_id, species_registry$analysis_taxon_id)
+  ]
+  if (length(unit_label) != 1L || is.na(unit_label) || !nzchar(unit_label)) {
+    stop("POST_STAGE4A_EVENT_STUDY_TAXON_NAME_GATE: unresolved taxon",
+         call. = FALSE)
+  }
+  analysis_role <- if (taxon_id %in% comparator_taxa) {
+    "specificity_comparator"
+  } else {
+    "core_species"
+  }
+  denominator <- stage4a_materialize_taxon(
+    events, states, masks, taxon_id
+  )
+  outcomes <- if (analysis_role == "specificity_comparator") {
+    "detection"
+  } else {
+    c("detection", "positive_numeric_count_given_detection")
+  }
+  lapply(outcomes, function(outcome) {
+    checkpoint <- file.path(
+      checkpoint_dir,
+      paste(taxon_id, outcome, "rds", sep = "_")
+    )
+    post_stage4a_fit_one_v1(
+      denominator, taxon_id, unit_label, analysis_role, outcome,
+      checkpoint, code_signature
+    )
+  })
 }
 
 run_post_stage4a_sog_event_study_v1 <- function(
@@ -698,42 +745,48 @@ run_post_stage4a_sog_event_study_v1 <- function(
     collapse = "|"
   )
 
-  results <- list()
-  cursor <- 0L
   all_taxa <- c(core_taxa, comparator_taxa)
-  for (taxon_id in all_taxa) {
-    unit_label <- species_registry$common_name[
-      match(taxon_id, species_registry$analysis_taxon_id)
-    ]
-    if (length(unit_label) != 1L || is.na(unit_label) || !nzchar(unit_label)) {
-      stop("POST_STAGE4A_EVENT_STUDY_TAXON_NAME_GATE: unresolved taxon",
-           call. = FALSE)
-    }
-    analysis_role <- if (taxon_id %in% comparator_taxa) {
-      "specificity_comparator"
-    } else {
-      "core_species"
-    }
-    denominator <- stage4a_materialize_taxon(
-      events, states, masks, taxon_id
+  workers <- post_stage4a_worker_count_v1(length(all_taxa))
+  fit_one_taxon <- function(taxon_id) {
+    post_stage4a_fit_taxon_v1(
+      events, states, masks, taxon_id, species_registry, comparator_taxa,
+      checkpoint_dir, code_signature
     )
-    outcomes <- if (analysis_role == "specificity_comparator") {
-      "detection"
-    } else {
-      c("detection", "positive_numeric_count_given_detection")
-    }
-    for (outcome in outcomes) {
-      cursor <- cursor + 1L
-      checkpoint <- file.path(
-        checkpoint_dir,
-        paste(taxon_id, outcome, "rds", sep = "_")
-      )
-      results[[cursor]] <- post_stage4a_fit_one_v1(
-        denominator, taxon_id, unit_label, analysis_role, outcome,
-        checkpoint, code_signature
-      )
-    }
   }
+  if (workers == 1L) {
+    results_by_taxon <- lapply(all_taxa, fit_one_taxon)
+  } else {
+    cluster <- parallel::makePSOCKcluster(workers)
+    results_by_taxon <- tryCatch({
+      parallel::clusterEvalQ(cluster, {
+        Sys.setenv(RENV_CONFIG_AUTOLOADER_ENABLED = "FALSE")
+        source(file.path("R", "stage4a_core.R"), local = FALSE)
+        source(file.path("R", "stage4a_production.R"), local = FALSE)
+        source(
+          file.path("R", "post_stage4a_sog_event_study_v1.R"),
+          local = FALSE
+        )
+        NULL
+      })
+      parallel::clusterExport(
+        cluster,
+        c(
+          "events", "states", "masks", "species_registry",
+          "comparator_taxa", "checkpoint_dir", "code_signature"
+        ),
+        envir = environment()
+      )
+      parallel::parLapply(cluster, all_taxa, function(taxon_id) {
+        post_stage4a_fit_taxon_v1(
+          events, states, masks, taxon_id, species_registry, comparator_taxa,
+          checkpoint_dir, code_signature
+        )
+      })
+    }, finally = {
+      parallel::stopCluster(cluster)
+    })
+  }
+  results <- unlist(results_by_taxon, recursive = FALSE)
 
   effects <- do.call(rbind, lapply(results, `[[`, "effect"))
   diagnostics <- do.call(rbind, lapply(results, `[[`, "diagnostic"))
@@ -786,6 +839,7 @@ run_post_stage4a_sog_event_study_v1 <- function(
     core_species = length(core_taxa),
     main_panel_species = length(main_taxa),
     specificity_comparators = length(comparator_taxa),
+    parallel_workers = workers,
     model_components = nrow(diagnostics),
     model_status_counts = status_counts,
     protected_input_hashes = as.list(protected_hashes),

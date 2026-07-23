@@ -124,3 +124,9 @@ python .\scripts\build_mer_v6_event_study_assets.py
 The production command is checkpointed by species and response. A restarted run
 reuses only checkpoints with the same committed code and protected-input
 signature.
+
+Production schedules taxa across four local PSOCK workers by default. This is
+execution-only parallelism: each worker loads the same committed functions and
+fits the unchanged species-response model. The worker count is recorded in the
+execution record and can be reduced with
+`POST_STAGE4A_SOG_EVENT_STUDY_WORKERS` when local memory is constrained.

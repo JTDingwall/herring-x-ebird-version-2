@@ -50,6 +50,10 @@ exposure_encoding:
 model:
   engine_detection: lme4_glmer_nAGQ0
   engine_positive_count: lme4_lmer_REML
+  execution:
+    default_parallel_workers: 4
+    scheduling_unit: taxon
+    model_definition_changed_by_scheduling: false
   fixed_terms:
     - all_12_joint_period_by_zone_counts
     - factor_checklist_year
