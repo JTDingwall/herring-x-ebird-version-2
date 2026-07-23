@@ -1,0 +1,5 @@
+- Complete checklists revealed heterogeneous bird associations near recorded spawn.
+- Detection and conditional flock-size patterns often differed among species.
+- Surf Scoter associations were positive in both main coastal regions.
+- Six registered event windows did not share one community-wide trajectory.
+- Non-null specificity comparators limited simple ecological attribution.
