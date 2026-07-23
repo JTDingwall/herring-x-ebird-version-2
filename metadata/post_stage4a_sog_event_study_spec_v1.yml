@@ -1,0 +1,118 @@
+specification_version: post_stage4a_sog_event_study_spec_v1
+authorization_record: metadata/post_stage4a_sog_event_study_authorization_v1.yml
+analysis_status: post_result_ecologically_motivated_refinement
+historical_stage4a:
+  status: immutable
+  outputs_overwritten: false
+  interpretation: retained_as_complete_registered_analysis
+scientific_question: >-
+  Does the near-versus-reference difference in bird checklist detection or
+  positive reported flock size increase at herring-spawn onset or egg
+  availability relative to the same spatial difference before spawning?
+population:
+  region: SoG
+  years: [2005, 2025]
+  complete_checklists_only: true
+  protocols: [stationary, traveling]
+  duration_minutes: [5, 300]
+  maximum_travel_distance_km: 5
+  observer_count: [1, 10]
+  maximum_source_point_link_distance_km: 20
+  prospective_records_2026_plus: prohibited
+outcomes:
+  detection:
+    family: binomial
+    link: logit
+    interpretation: checklist_reporting_not_occupancy
+  positive_numeric_count_given_detection:
+    family: lognormal
+    fitted_response: log_numeric_count
+    interpretation: relative_reported_flock_size_conditional_on_numeric_detection
+  unquantified_X_as_numeric: prohibited
+  ambiguity_as_zero: prohibited
+periods:
+  baseline: {minimum_day: -28, maximum_day: -15, duration_days: 14}
+  early_pre: {minimum_day: -14, maximum_day: -8, duration_days: 7}
+  immediate_pre: {minimum_day: -7, maximum_day: -1, duration_days: 7}
+  spawn_start: {minimum_day: 0, maximum_day: 3, duration_days: 4}
+  early_egg: {minimum_day: 4, maximum_day: 14, duration_days: 11}
+  late_egg: {minimum_day: 15, maximum_day: 28, duration_days: 14}
+zones:
+  near: {minimum_km: 0, maximum_km_exclusive: 5}
+  reference: {minimum_km: 5, maximum_km_inclusive: 20}
+exposure_encoding:
+  unit: linked_recorded_source_event
+  joint_terms: period_by_zone_additive_counts
+  independent_model_row: checklist
+  checklist_duplication: prohibited
+  derive_joint_terms_by_multiplying_marginal_counts: prohibited
+  concurrent_links: all_retained
+model:
+  engine_detection: lme4_glmer_nAGQ0
+  engine_positive_count: lme4_lmer_REML
+  execution:
+    default_parallel_workers: 4
+    scheduling_unit: taxon
+    model_definition_changed_by_scheduling: false
+  fixed_terms:
+    - all_12_joint_period_by_zone_counts
+    - factor_checklist_year
+    - protocol
+    - log_duration_minutes
+    - log_effort_distance_plus_one
+    - observer_count
+  random_intercepts:
+    - herring_event_block
+    - observer_cluster
+    - generalized_location_cluster
+  simplified_fallback: prohibited
+contrasts:
+  period_near_minus_reference:
+    expression: near_period_minus_reference_period
+    role: descriptive_spatial_difference
+  period_difference_in_differences:
+    expression: >-
+      (near_period - reference_period) -
+      (near_baseline - reference_baseline)
+    role: primary_migration_and_persistent_site_adjusted_timing_contrast
+  pre_14_day:
+    expression: >-
+      0.5 * did_early_pre + 0.5 * did_immediate_pre
+    role: primary_pre_spawn_summary
+  pre_7_day:
+    expression: did_immediate_pre
+    role: tighter_pre_spawn_sensitivity
+  active_0_14_day:
+    expression: >-
+      (4 / 15) * did_spawn_start + (11 / 15) * did_early_egg
+    role: primary_active_interval
+multiplicity:
+  core_species:
+    correction: BH
+    family: outcome_by_named_contrast_across_49_species
+  specificity_comparators:
+    correction: BH
+    family: detection_contrast_across_2_comparators
+  all_estimates_visible: true
+species_presentation:
+  main_panel_source: metadata/post_stage4a_sog_event_study_species_roles_v1.csv
+  all_49_core_species_reported_in_supplement: true
+  gadwall_and_northern_shoveler:
+    label: specificity_comparators
+    main_dedicated_figure: false
+    supplement_complete_results: true
+privacy:
+  release_threshold: 20
+  protected_rows_committed: false
+  identifiers_committed: false
+  coordinates_committed: false
+  protected_paths_committed: false
+validation:
+  exact_period_boundary_fixture: required
+  exact_zone_boundary_fixture: required
+  concurrent_link_joint_pairing_fixture: required
+  event_metadata_join_cardinality: one_to_many_then_aggregate_to_one
+  source_event_region_role: descriptive_not_join_key_missing_allowed
+  model_geometry_and_singularity: fully_reported
+  results_required_before_manuscript_claim_update: true
+final_gate: PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW

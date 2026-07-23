@@ -1,0 +1,23 @@
+species,outcome,active_0_14_ratio_95_ci,bh_q,status
+Hooded Merganser,Checklist detection,0.97 (0.90-1.04),0.581,completed
+Hooded Merganser,Positive flock size,1.01 (0.97-1.05),0.731,completed
+Surf Scoter,Checklist detection,0.99 (0.92-1.07),0.867,completed
+Surf Scoter,Positive flock size,1.25 (1.16-1.34),5.37e-09,completed
+White-winged Scoter,Checklist detection,0.91 (0.82-1.01),0.177,completed
+White-winged Scoter,Positive flock size,1.31 (1.17-1.46),3.52e-06,completed
+Common Merganser,Checklist detection,1.19 (1.12-1.26),1.13e-07,completed
+Common Merganser,Positive flock size,1.11 (1.07-1.15),4.96e-07,completed
+Glaucous-winged Gull,Checklist detection,1.12 (1.06-1.18),0.00059,completed
+Glaucous-winged Gull,Positive flock size,1.21 (1.18-1.25),2.01e-36,completed
+Mallard,Checklist detection,1.04 (0.98-1.09),0.312,completed
+Mallard,Positive flock size,1.11 (1.08-1.14),3.69e-11,completed
+Harlequin Duck,Checklist detection,1.09 (0.99-1.20),0.163,completed
+Harlequin Duck,Positive flock size,1.22 (1.17-1.28),3.48e-16,completed
+American Crow,Checklist detection,1.01 (0.96-1.06),0.81,completed
+American Crow,Positive flock size,1.00 (0.98-1.03),0.815,completed
+Short-billed Gull,Checklist detection,1.22 (1.14-1.30),1.13e-07,completed
+Short-billed Gull,Positive flock size,1.36 (1.29-1.44),1.36e-25,completed
+Bald Eagle,Checklist detection,1.08 (1.03-1.13),0.00333,completed
+Bald Eagle,Positive flock size,1.07 (1.05-1.08),1.57e-13,completed
+Common Raven,Checklist detection,0.94 (0.90-0.98),0.026,completed
+Common Raven,Positive flock size,1.01 (1.00-1.03),0.215,completed

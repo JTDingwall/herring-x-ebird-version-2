@@ -1,0 +1,32 @@
+execution_version: post_stage4a_sog_event_study_v1
+executed_at_utc: '2026-07-23T06:32:06Z'
+execution_code_commit: 6bfef2c5b828ca392255d5b3365a2f84b8a2f9f2
+analysis_status: post_result_ecologically_motivated_refinement
+historical_stage4a_outputs_modified: no
+region: SoG
+years:
+- 2005
+- 2025
+eligible_checklists: 217200
+core_species: 49
+main_panel_species: 11
+specificity_comparators: 2
+parallel_workers: 4
+model_components: 100
+model_status_counts:
+  completed: 95
+  completed_with_singular_warning: 1
+  failed_insufficient_support: 3
+  failed_numerical_fit_no_fallback: 1
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  source_links: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+source_link_hash_gate: PASS
+concurrent_link_joint_pairing_gate: PASS
+records_2026_plus_read: 0
+comments_read: 0
+shoreline_fields_read: 0
+full_event_taxon_grid_expanded: no
+final_gate: PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW
