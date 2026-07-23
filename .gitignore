@@ -42,6 +42,7 @@ config/local.yml
 .idea/
 .DS_Store
 Thumbs.db
+~$*.docx
 
 # Explicitly restricted eBird fields or likely extracts
 *sampling_event_identifier*

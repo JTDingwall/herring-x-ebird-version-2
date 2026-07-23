@@ -1,0 +1,3 @@
+test_id,command,status,warning_count,notes
+repository_test_suite,Rscript --vanilla tests/testthat.R,PASS,192,"All testthat contexts completed with no failures; warnings were repeated invalid-UTF-8 notices from the working-tree privacy scanner while rendered binary files were present."
+manuscript_validation,powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate_mer_v3_submission.ps1,PASS,0,"All manuscript validation checks passed before this execution record was appended."
