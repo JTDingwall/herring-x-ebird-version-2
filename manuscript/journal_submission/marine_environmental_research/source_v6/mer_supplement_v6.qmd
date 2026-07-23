@@ -6,6 +6,7 @@ date: ""
 bibliography: mer_references_v6.bib
 format:
   docx:
+    reference-doc: mer_v6_times_new_roman_reference.docx
     toc: true
     toc-depth: 3
     number-sections: true

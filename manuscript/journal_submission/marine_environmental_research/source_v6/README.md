@@ -9,7 +9,12 @@ Files:
 - `mer_manuscript_unblinded_v6.qmd`: 8,000-9,000-word ecology manuscript;
 - `mer_supplement_v6.qmd`: complete-family status, specificity, failures, and
   immutable Stage 4A M05/M08 inventory;
-- `mer_references_v6.bib`: author-year reference library.
+- `mer_references_v6.bib`: author-year reference library;
+- `mer_v6_times_new_roman_reference.docx`: Word style reference used by both
+  manuscript sources to enforce Times New Roman.
+
+The print stylesheet applies Times New Roman to the HTML/PDF render, and the
+Word reference document applies the same family to DOCX styles.
 
 The main interpretation uses the duration-weighted 0-14 day
 near/reference difference-in-differences and retains checklist detection and

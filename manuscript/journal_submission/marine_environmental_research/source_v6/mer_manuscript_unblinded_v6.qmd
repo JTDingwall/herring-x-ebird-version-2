@@ -9,6 +9,7 @@ bibliography: mer_references_v6.bib
 link-citations: true
 format:
   docx:
+    reference-doc: mer_v6_times_new_roman_reference.docx
     toc: false
     number-sections: true
     fig-width: 6.5
