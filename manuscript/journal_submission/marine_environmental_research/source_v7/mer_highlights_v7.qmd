@@ -1,0 +1,23 @@
+---
+title: "Highlights"
+author:
+  - name: "Jacob T. Dingwall"
+date: ""
+format:
+  docx:
+    reference-doc: mer_v7_times_new_roman_reference.docx
+    toc: false
+    number-sections: false
+  html:
+    css: mer_v7_print.css
+    number-sections: false
+execute:
+  enabled: false
+lang: en
+---
+
+- Bird near/reference contrasts rose after recorded herring spawn onset
+- Reported flock size responded more often than checklist detection
+- Gulls and sea ducks rose; Ring-billed Gull fell in both components
+- Positive effects came after onset, not in the 14 days before it
+- A comparator taxon also rose, limiting causal interpretation

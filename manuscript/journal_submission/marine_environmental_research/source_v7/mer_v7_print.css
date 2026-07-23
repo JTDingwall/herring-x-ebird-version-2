@@ -1,0 +1,36 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+figcaption,
+code,
+pre,
+kbd,
+samp {
+  font-family: "Times New Roman", Times, serif;
+}
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.65in;
+  }
+
+  body {
+    font-size: 10.5pt;
+    line-height: 1.28;
+  }
+
+  #refs {
+    font-size: 8pt;
+    line-height: 1.08;
+  }
+
+  figure {
+    break-inside: avoid;
+  }
+}
