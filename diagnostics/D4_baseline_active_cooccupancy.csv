@@ -1,0 +1,5 @@
+quantity,count,fraction_of_modeled
+checklists in >=1 baseline cell,30542,0.3272
+checklists in >=1 active cell,33800,0.3621
+checklists in baseline AND active (via different events),5163,0.0553
+total checklists with modeled exposure,93342,1

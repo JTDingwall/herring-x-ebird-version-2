@@ -1,0 +1,13 @@
+cell,VIF
+baseline_near,1.22
+early_pre_near,1.23
+immediate_pre_near,1.25
+spawn_start_near,1.23
+early_egg_near,1.25
+late_egg_near,1.23
+baseline_reference,1.24
+early_pre_reference,1.24
+immediate_pre_reference,1.26
+spawn_start_reference,1.24
+early_egg_reference,1.26
+late_egg_reference,1.26
