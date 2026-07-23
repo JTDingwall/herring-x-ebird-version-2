@@ -1,0 +1,157 @@
+---
+title: "Supplementary material: Coastal-bird responses through Pacific herring spawning in the Strait of Georgia"
+author:
+  - name: "Jacob T. Dingwall"
+date: ""
+bibliography: mer_references_v7.bib
+format:
+  docx:
+    reference-doc: mer_v7_times_new_roman_reference.docx
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  html:
+    css: mer_v7_print.css
+    toc: true
+    toc-depth: 3
+    number-sections: true
+execute:
+  enabled: false
+lang: en
+---
+
+# Scope and version relationship
+
+This supplement accompanies the Strait of Georgia event-study refinement reported in the main manuscript. The refinement is additive and post-result: it does not overwrite, relabel, or supersede the earlier registered analysis of the same linked data, whose tables, figures, locks, hashes, execution record, and manuscript remain unchanged.
+
+The complete aggregate family is reported in `outputs/post_stage4a_sog_event_study_v1/`, with manuscript-ready copies in `tables_v7/`. No protected checklist, observer, locality, source-event identifier, exact coordinate, comment, shoreline field, model object, checkpoint, or record-level derivative is included.
+
+# Event-study estimand
+
+The refinement asks whether the near/reference difference changes through recorded spawning relative to the same spatial difference during days −28 to −15. Near is <5 km from a recorded source point and reference is 5–20 km. Six joint periods are crossed with the two zones. All concurrent source-event links are counted in their observed joint cell, while one checklist remains one model row.
+
+For period *p*, the contrast is:
+
+> (near at period *p* − reference at period *p*) −
+> (near at baseline − reference at baseline).
+
+Exponentiated detection values are ratios of near/reference odds ratios. Exponentiated conditional-count values are ratios of near/reference geometric-mean positive-count ratios. Values above one indicate a more positive spatial contrast than baseline; they do not estimate population change.
+
+The primary active contrast is the duration-weighted combination of days 0–3 and 4–14, weighted 4/15 and 11/15 respectively. The pre-spawn summary equally combines days −14 to −8 and −7 to −1, giving the −14 to −1 day window used in the main text and in Figure 3 of the manuscript. The immediate pre-spawn window of days −7 to −1 is reported separately in Table S2. All fixed windows and weights were executed without outcome-selected collapse.
+
+# Complete event-study evidence
+
+The complete family contains 49 core species, both response components where supported, and every registered contrast. Table S1 (`Table_S1_event_study_all_49_species_v7.csv`) retains estimates, standard errors, confidence intervals, ratios, p-values, BH q-values, model sample sizes, status, and multiplicity family for the whole core family.
+
+Table S2 (`Table_S2_main_species_periods_v7.csv`) gives the baseline difference, the 14-day pre-spawn summary, the immediate pre-spawn window, spawn start, early egg, late egg, and the primary active contrast for the eleven species discussed individually in the main text: Surf Scoter, White-winged Scoter, Harlequin Duck, Common Merganser, Hooded Merganser, Glaucous-winged Gull, Short-billed Gull, Bald Eagle, Mallard, American Crow, and Common Raven.
+
+Across estimable core species, BH-adjusted interaction counts were:
+
+| Contrast | Detection positive | Detection negative | Count positive | Count negative |
+|---|---:|---:|---:|---:|
+| Pre-spawn, −14 to −1 d | 0 | 0 | 1 | 0 |
+| Immediate pre-spawn, −7 to −1 d | 0 | 0 | 2 | 0 |
+| Spawn start, 0–3 d | 10 | 4 | 13 | 0 |
+| Early egg, 4–14 d | 12 | 2 | 21 | 1 |
+| Late egg, 15–28 d | 10 | 2 | 13 | 0 |
+| Primary active, 0–14 d | 13 | 6 | 19 | 1 |
+
+Counts refer to BH q < 0.05 within the 49-species outcome-and-contrast family. They are descriptive summaries of correlated contrasts, not independent binomial trials. Detection was estimable for 48 of 49 species and conditional count for 46.
+
+# Family extremes outside the eleven discussed species
+
+The eleven species discussed individually in the main text were named before execution and are not the largest effects in the family. Table 2 of the main manuscript (`Table_2_family_extremes_v7.csv`) lists every BH-significant negative active interaction and every BH-significant positive active interaction outside that panel. The largest positive interactions in the family were American Herring Gull detection 1.49 (1.29–1.71), Iceland Gull detection 1.43 (1.30–1.57), and Long-tailed Duck conditional count 1.49 (1.33–1.67).
+
+Six detection interactions were negative at BH q < 0.05:
+
+| Species | Detection interaction (95% CI) | BH q |
+|---|---:|---:|
+| Rhinoceros Auklet | 0.71 (0.55–0.91) | 0.0245 |
+| Western Grebe | 0.74 (0.60–0.92) | 0.0232 |
+| Ring-billed Gull | 0.79 (0.69–0.90) | 0.00159 |
+| Black-bellied Plover | 0.84 (0.74–0.95) | 0.0232 |
+| Common Loon | 0.90 (0.84–0.97) | 0.0217 |
+| Common Raven | 0.94 (0.90–0.98) | 0.0260 |
+
+Ring-billed Gull was the only species negative in both components, with a conditional count interaction of 0.83 (0.74–0.94; q = 0.00956). Its decline is not consistent with a mechanism defined at the level of the gull guild, and it is discussed in the main text on that basis.
+
+# Specificity comparators
+
+Gadwall and Northern Shoveler were detection-only specificity comparators, not guaranteed negative controls. Their complete results are in Table S3 (`Table_S3_specificity_comparators_v7.csv`).
+
+| Species | Baseline near/reference | Pre-spawn | Spawn start | Early egg | Late egg | Active 0–14 d |
+|---|---|---|---|---|---|---|
+| Gadwall | 0.88 (0.80–0.97), q = 0.024 | 0.94, q = 0.419 | 1.02, q = 0.856 | 1.03, q = 0.701 | 1.05, q = 0.506 | 1.03 (0.90–1.17), q = 0.704 |
+| Northern Shoveler | 1.00 (0.90–1.11), q = 0.949 | 1.07, q = 0.419 | 1.24, q = 0.0917 | 1.25, q = 0.0114 | 1.27, q = 0.00246 | 1.24 (1.08–1.43), q = 0.00564 |
+
+Gadwall did not reproduce the active interaction. Northern Shoveler did, and therefore falsified the third prespecified prediction and demonstrates residual time-varying structure. Candidate explanations include zone-specific migration or habitat use, shoreline access, checklist submission, preferential visitation, source-date or source-point classification, and indirect ecology. The comparator result limits causal and trophic-specific interpretation.
+
+The two nominated comparators understate the issue, because the core family contains further taxa with no established roe-feeding pathway that also rose during days 0–14:
+
+| Species | Outcome | Active 0–14 d (95% CI) | BH q |
+|---|---|---:|---:|
+| Northern Pintail | detection | 1.29 (1.18–1.42) | 7.32 × 10^-7^ |
+| Northern Shoveler (comparator) | detection | 1.24 (1.08–1.43) | 0.00564 |
+| American Wigeon | detection | 1.14 (1.07–1.21) | 1.38 × 10^-4^ |
+| American Wigeon | positive flock size | 1.11 (1.06–1.16) | 3.51 × 10^-5^ |
+| Mallard | positive flock size | 1.11 (1.08–1.14) | 3.69 × 10^-11^ |
+| Canada Goose | detection | 1.08 (1.02–1.14) | 0.0206 |
+
+Four of the five dabbling ducks in the study (Mallard, Northern Pintail, American Wigeon, Northern Shoveler) showed a positive active interaction in at least one component; Gadwall was the exception. Northern Pintail's detection interaction exceeded that of every species assigned to the main ecological panel. A two-species comparator panel drawn from a guild that mostly responds cannot bound the false-positive rate, and this is treated as a limitation of the comparator design in the main text rather than as a property of the herring signal.
+
+# Model completion and warnings
+
+The family contained 100 species-response fits and 1,400 contrast rows. Model statuses were 95 completed, one completed with a singular warning, three failed for insufficient support, and one failed numerically without fallback.
+
+| Species | Outcome | Status | Qualification |
+|---|---|---|---|
+| Surfbird | conditional positive count | failed insufficient support | joint-cell support gate failed |
+| Rhinoceros Auklet | conditional positive count | failed insufficient support | joint-cell support gate failed |
+| Glaucous Gull | detection | failed numerical fit, no fallback | generic failure code retained; no simplified fit |
+| Glaucous Gull | conditional positive count | failed insufficient support | joint-cell support gate failed |
+| Western Gull | conditional positive count | completed with singular warning | estimate retained with warning |
+
+All 22 fits for the eleven discussed species completed without convergence failure, rank deficiency, or singularity. The smallest released joint-cell support among them was 259 rows. Global joint support ranged from 2,992 near-zone checklists at spawn start to 28,655 reference-zone checklists in late egg. Exact year counts for near early- and immediate-pre cells were suppressed because fewer than 20 checklist years were represented.
+
+# Numerical, multiplicity, privacy, and integrity checks
+
+All 1,344 finite contrast rows reproduced their exponentiated estimates and confidence limits. No written estimate was `NaN` or infinite. BH q-values were independently recalculated across all 42 role-outcome-contrast families and matched with a maximum absolute difference of 1.78 × 10^-15^.
+
+The production execution used committed code `6bfef2c5b828ca392255d5b3365a2f84b8a2f9f2`. Four protected-input hashes and seven released-output hashes passed. The source-link hash and concurrent-link joint-pairing gates passed. Zero records from 2026 onward were read. The release privacy scan detected no checklist, observer, locality, coordinate, credential, or protected-path violation. Outputs of the earlier registered analysis had no tracked changes.
+
+# Historical registered analyses
+
+The following registered outputs remain part of the complete scientific record and are retained unchanged:
+
+- historical M05 timing and distance family: `tables_v3/Table_S2_all_M05_time_distance_effects_v3.csv`;
+- historical M05 guild timing family: `tables_v3/Table_S2a_guild_event_time_effects_v3.csv`;
+- historical M08 active-minus-contemporaneous-reference contrasts: `tables_v3/Table_S12_M08_active_minus_reference_v3.csv`;
+- historical M02 complete species effects: `tables_v3/Table_S1_all_species_effects_v3.csv`; and
+- historical M29 specificity results: `tables_v3/Table_4_specificity_sensitivity_v3.csv`.
+
+M05 used the registered six-window timing structure with early pre-spawn (−42 to −29 d) as baseline and separate additive time and distance margins. M08 was the registered active-minus-reference contrast for the historical active classification. Neither is the present joint period-by-zone difference-in-differences. The historical legacy aggregate release also did not identify the component-level engine after its allowed fitting path. Those facts are preserved rather than repaired retrospectively.
+
+# Reproducibility and governance
+
+Fixture execution tested exact period and zone boundaries, concurrent-link pairing, join cardinality, detection and count semantics, and protected-input guards. Production required the explicit acknowledgement `through_2025_post_result_refinement_v1`. No result was used to change the fixed periods, the primary 0–14 day weights, species definitions, eligibility, model structure, or the specificity panel.
+
+Manuscript figures and tables are rebuilt from the released aggregate outputs by `scripts/build_mer_v7_event_study_assets.py`, which refuses to run unless the execution record reports its review gate and the complete 49-species family is present.
+
+Current results are exploratory and estimand-refining until prospective confirmation. The 2026–2028 response remains locked and may not be inspected through an interim look. A future confirmation must use the complete prospective release and an approved execution package.
+
+# Supplementary file inventory
+
+Every file below is cited in this supplement or in the main manuscript.
+
+| File | Cited as | Content |
+|---|---|---|
+| `Table_S1_event_study_all_49_species_v7.csv` | Table S1 | complete core-species effect family, all contrasts |
+| `Table_S2_main_species_periods_v7.csv` | Table S2 | baseline, pre-spawn, immediate pre-spawn, onset, egg, and active contrasts for the eleven discussed species |
+| `Table_S3_specificity_comparators_v7.csv` | Table S3 | Gadwall and Northern Shoveler detection families |
+| `Table_1_main_species_active_v7.csv` | Table 1 (main text) | eleven-species primary 0–14 day interactions |
+| `Table_2_family_extremes_v7.csv` | Table 2 (main text) | all BH-significant negative interactions and all BH-significant positive interactions outside the eleven |
+| `model_diagnostics_v1.csv` | Section 6 | all fit states, warnings, and failures |
+| `model_term_support_v1.csv` | Section 6 | joint-cell model support |
+| `joint_exposure_support_v1.csv` | Section 6 | global period-by-zone support |
+| `execution_record_v1.yml` | Section 7 | authorization, hashes, counts, and final gate |
+| `output_hash_manifest_v1.csv` | Section 7 | hashes for released aggregate outputs |
