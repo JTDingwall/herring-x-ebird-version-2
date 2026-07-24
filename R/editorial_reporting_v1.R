@@ -115,6 +115,13 @@ editorial_analysis_status_v1 <- function(output_dir) {
       "infeasible"
     }
   }
+  engine_completed_species <- function(outcome) {
+    if (is.null(engine_results)) return(0L)
+    length(unique(engine_results$species[
+      engine_results$outcome == outcome &
+        engine_results$comparison == "active_minus_pre14"
+    ]))
+  }
   requested <- c(
     "Verified inventory and support",
     "Direct active-minus-pre A14 and A7 contrasts",
@@ -202,8 +209,14 @@ editorial_analysis_status_v1 <- function(output_dir) {
     "48 reporting and 46 conditional-count models",
     "49 species; 41 estimable models",
     "Existing Iceland Gull probe exceeded one hour",
-    "Package availability/attempt recorded separately",
-    "No equivalent mixed truncated engine in frozen library",
+    sprintf(
+      "%d of 3 frozen species completed",
+      engine_completed_species("checklist_reporting")
+    ),
+    sprintf(
+      "%d of 3 frozen species completed",
+      engine_completed_species("conditional_positive_numeric_count")
+    ),
     rep("See sensitivity_support.csv", 8),
     "No frozen alternative", "Archived through 2025",
     "49 species x 12 terms; cells <20 suppressed",
