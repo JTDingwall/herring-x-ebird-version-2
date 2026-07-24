@@ -160,7 +160,11 @@ $sensitivityResults = (
   "$($count.primary_bh_remains_bh_significant), respectively, remained " +
   "BH-significant. The nearest-event analysis produced " +
   "$($reporting.sensitivity_bh_significant) BH-significant reporting and " +
-  "$($count.sensitivity_bh_significant) BH-significant count contrasts. " +
+  "$($count.sensitivity_bh_significant) BH-significant count contrasts " +
+  "($($reporting.sensitivity_bh_positive) positive and " +
+  "$($reporting.sensitivity_bh_negative) negative for reporting; " +
+  "$($count.sensitivity_bh_positive) positive and " +
+  "$($count.sensitivity_bh_negative) negative for reported count). " +
   "$materialResults Alternative-engine checks remained limited to the two " +
   "previously completed representatives; no new engine or model family was " +
   "run."

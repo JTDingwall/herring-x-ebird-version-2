@@ -153,16 +153,22 @@ summary_display$sign_concordance <- paste0(
     digits = 1L, format = "f"
   ), "%)"
 )
+summary_display$nearest_bh_direction <- paste0(
+  summary_display$sensitivity_bh_positive,
+  " positive / ",
+  summary_display$sensitivity_bh_negative,
+  " negative"
+)
 summary_display <- summary_display[, c(
   "outcome", "primary_estimable", "sensitivity_estimable",
   "sign_concordance", "primary_bh_significant",
-  "sensitivity_bh_significant", "direction_reversals",
+  "nearest_bh_direction", "direction_reversals",
   "material_interpretation_changes"
 )]
 names(summary_display) <- c(
   "Outcome", "Primary estimable", "Nearest-event estimable",
   "Sign concordance", "Primary BH q < 0.05",
-  "Nearest-event BH q < 0.05", "Sign reversals",
+  "Nearest-event BH positive / negative", "Sign reversals",
   "Material interpretation changes"
 )
 
