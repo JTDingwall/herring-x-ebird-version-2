@@ -1,0 +1,28 @@
+species,outcome,direction,in_main_panel,ratio_95_ci,q_value
+Black-bellied Plover,Checklist reporting,negative,False,0.84 (0.74-0.95),0.0232353783587373
+Common Loon,Checklist reporting,negative,False,0.90 (0.84-0.97),0.0217081373667214
+Common Raven,Checklist reporting,negative,True,0.94 (0.90-0.98),0.0260159303832114
+Rhinoceros Auklet,Checklist reporting,negative,False,0.71 (0.55-0.91),0.0244530652940455
+Ring-billed Gull,Checklist reporting,negative,False,0.79 (0.69-0.90),0.0015874244172746
+Western Grebe,Checklist reporting,negative,False,0.74 (0.60-0.92),0.0232353783587373
+American Herring Gull,Checklist reporting,positive,False,1.49 (1.29-1.71),7.32068735907864e-07
+American Wigeon,Checklist reporting,positive,False,1.14 (1.07-1.21),0.0001379824903493
+California Gull,Checklist reporting,positive,False,1.22 (1.11-1.33),0.0001379824903493
+Canada Goose,Checklist reporting,positive,False,1.08 (1.02-1.14),0.0205508830616646
+Greater Scaup,Checklist reporting,positive,False,1.14 (1.03-1.26),0.0260159303832114
+Iceland Gull,Checklist reporting,positive,False,1.43 (1.30-1.57),2.43489051828041e-12
+Lesser Scaup,Checklist reporting,positive,False,1.24 (1.10-1.40),0.0029633493503376
+Northern Pintail,Checklist reporting,positive,False,1.29 (1.18-1.42),7.32068735907864e-07
+Red-necked Grebe,Checklist reporting,positive,False,1.12 (1.02-1.23),0.0324206062821807
+Ring-billed Gull,Conditional positive numeric count,negative,False,0.83 (0.74-0.94),0.00955997673052
+American Wigeon,Conditional positive numeric count,positive,False,1.11 (1.06-1.16),3.50771130604944e-05
+Barrow's Goldeneye,Conditional positive numeric count,positive,False,1.11 (1.02-1.19),0.0213200650557642
+Bufflehead,Conditional positive numeric count,positive,False,1.10 (1.07-1.13),6.40727654802475e-11
+California Gull,Conditional positive numeric count,positive,False,1.22 (1.12-1.34),5.01873476253868e-05
+Common Goldeneye,Conditional positive numeric count,positive,False,1.22 (1.18-1.27),1.71179562430148e-21
+Double-crested Cormorant,Conditional positive numeric count,positive,False,1.13 (1.08-1.17),1.28493089915524e-07
+Great Blue Heron,Conditional positive numeric count,positive,False,1.04 (1.01-1.07),0.00955997673052
+Greater Scaup,Conditional positive numeric count,positive,False,1.18 (1.05-1.32),0.0162348042540871
+Iceland Gull,Conditional positive numeric count,positive,False,1.36 (1.23-1.51),1.38009291167071e-08
+Long-tailed Duck,Conditional positive numeric count,positive,False,1.49 (1.33-1.67),1.63751333214542e-11
+Red-breasted Merganser,Conditional positive numeric count,positive,False,1.10 (1.05-1.17),0.0006940434704539
