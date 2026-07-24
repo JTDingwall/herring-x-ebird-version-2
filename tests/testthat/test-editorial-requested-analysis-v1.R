@@ -161,3 +161,14 @@ testthat::test_that("zero-row CSV schema is constructed explicitly", {
   testthat::expect_equal(nrow(empty), 0L)
   testthat::expect_identical(names(empty), c("a", "b"))
 })
+
+testthat::test_that("engine validation slugs retain initial capitals", {
+  testthat::expect_identical(
+    editorial_validation_slug_v1("Glaucous-winged Gull"),
+    "glaucous_winged_gull"
+  )
+  testthat::expect_identical(
+    editorial_validation_slug_v1("Brandt's Cormorant"),
+    "brandt_s_cormorant"
+  )
+})
