@@ -155,7 +155,8 @@ run_editorial_qa_v1 <- function(
   )
   add_check(
     "finite_x_contrasts_match_checkpoints",
-    finite_difference < 1e-12, finite_difference, "<1e-12", 1e-12
+    finite_difference < 1e-8, finite_difference,
+    "<1e-8 absolute CSV serialization tolerance", 1e-8
   )
 
   prediction_parts <- lapply(checkpoint_results, `[[`, "predictions")
