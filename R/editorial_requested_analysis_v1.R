@@ -881,9 +881,9 @@ editorial_inventory_v1 <- function(events, selected_links, classified_links,
     stringsAsFactors = FALSE
   )
   support <- classified_links[, .(
-    checklists = uniqueN(analysis_event_token),
+    checklists = data.table::uniqueN(analysis_event_token),
     event_links = .N,
-    source_events = uniqueN(herring_source_token)
+    source_events = data.table::uniqueN(herring_source_token)
   ), by = .(period, zone, term)]
   support <- support[order(match(period, post_stage4a_period_spec_v1()$period),
                            match(zone, c("near", "reference"))), ]
