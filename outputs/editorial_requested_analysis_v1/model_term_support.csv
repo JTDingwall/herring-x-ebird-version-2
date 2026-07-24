@@ -1,0 +1,1765 @@
+"analysis_taxon_id","species","outcome","term","exposed_rows","finite_numeric_rows","unquantified_x_rows"
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_near_baseline",8077,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_reference_baseline",25992,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_near_early_pre",4512,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_reference_early_pre",15467,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_near_spawn_start",2992,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_near_early_egg",7018,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_reference_early_egg",22927,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_near_late_egg",8712,,
+"atx_04afbeb21fb0","Hooded Merganser","checklist_reporting","es_reference_late_egg",28655,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_near_baseline",969,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_reference_baseline",3684,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_near_early_pre",509,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_reference_early_pre",2024,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_near_immediate_pre",468,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_reference_immediate_pre",1877,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_near_spawn_start",311,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_reference_spawn_start",1143,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_near_early_egg",724,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_reference_early_egg",2536,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_near_late_egg",790,,
+"atx_04afbeb21fb0","Hooded Merganser","conditional_positive_numeric_count","es_reference_late_egg",2689,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_near_baseline",8077,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_reference_baseline",25992,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_near_early_pre",4512,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_reference_early_pre",15467,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_near_spawn_start",2992,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_near_early_egg",7018,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_reference_early_egg",22927,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_near_late_egg",8712,,
+"atx_04cf65098f13","Red-throated Loon","checklist_reporting","es_reference_late_egg",28655,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_near_baseline",72,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_reference_baseline",280,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_near_early_pre",34,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_reference_early_pre",139,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_near_immediate_pre",38,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_reference_immediate_pre",135,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_near_spawn_start",20,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_reference_spawn_start",66,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_near_early_egg",50,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_reference_early_egg",164,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_near_late_egg",57,,
+"atx_04cf65098f13","Red-throated Loon","conditional_positive_numeric_count","es_reference_late_egg",177,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_near_baseline",8077,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_reference_baseline",25992,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_near_early_pre",4512,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_reference_early_pre",15467,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_near_spawn_start",2992,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_near_early_egg",7018,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_reference_early_egg",22927,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_near_late_egg",8712,,
+"atx_08bb40b40c0a","Ring-billed Gull","checklist_reporting","es_reference_late_egg",28655,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_near_baseline",514,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_reference_baseline",742,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_near_early_pre",239,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_reference_early_pre",458,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_near_immediate_pre",266,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_reference_immediate_pre",429,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_near_spawn_start",218,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_reference_spawn_start",336,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_near_early_egg",362,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_reference_early_egg",588,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_near_late_egg",317,,
+"atx_08bb40b40c0a","Ring-billed Gull","conditional_positive_numeric_count","es_reference_late_egg",562,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_near_baseline",8074,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_reference_baseline",25986,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_near_early_pre",4511,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_reference_early_pre",15466,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_near_immediate_pre",4586,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_reference_immediate_pre",15167,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_near_spawn_start",2991,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_reference_spawn_start",9757,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_near_early_egg",7016,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_reference_early_egg",22922,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_near_late_egg",8709,,
+"atx_1328b44be502","Black Scoter","checklist_reporting","es_reference_late_egg",28650,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_near_baseline",259,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_reference_baseline",438,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_near_early_pre",148,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_reference_early_pre",293,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_near_immediate_pre",166,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_reference_immediate_pre",311,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_near_spawn_start",125,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_reference_spawn_start",211,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_near_early_egg",212,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_reference_early_egg",279,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_near_late_egg",145,,
+"atx_1328b44be502","Black Scoter","conditional_positive_numeric_count","es_reference_late_egg",205,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_near_baseline",8077,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_reference_baseline",25992,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_near_early_pre",4512,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_reference_early_pre",15467,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_near_spawn_start",2992,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_near_early_egg",7018,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_reference_early_egg",22927,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_near_late_egg",8712,,
+"atx_136b0e66254b","Common Murre","checklist_reporting","es_reference_late_egg",28655,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_near_baseline",151,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_reference_baseline",361,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_near_early_pre",66,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_reference_early_pre",203,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_near_immediate_pre",40,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_reference_immediate_pre",158,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_near_spawn_start",42,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_reference_spawn_start",108,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_near_early_egg",81,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_reference_early_egg",202,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_near_late_egg",62,,
+"atx_136b0e66254b","Common Murre","conditional_positive_numeric_count","es_reference_late_egg",188,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_near_baseline",8077,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_reference_baseline",25992,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_near_early_pre",4512,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_reference_early_pre",15467,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_near_spawn_start",2992,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_near_early_egg",7018,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_reference_early_egg",22927,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_near_late_egg",8712,,
+"atx_15dd5efcd8d6","Black Turnstone","checklist_reporting","es_reference_late_egg",28655,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_near_baseline",287,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_reference_baseline",893,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_near_early_pre",168,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_reference_early_pre",490,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_near_immediate_pre",146,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_reference_immediate_pre",408,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_near_spawn_start",101,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_reference_spawn_start",303,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_near_early_egg",168,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_reference_early_egg",459,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_near_late_egg",115,,
+"atx_15dd5efcd8d6","Black Turnstone","conditional_positive_numeric_count","es_reference_late_egg",437,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_near_baseline",8077,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_reference_baseline",25992,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_near_early_pre",4512,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_reference_early_pre",15467,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_near_spawn_start",2992,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_near_early_egg",7018,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_reference_early_egg",22927,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_near_late_egg",8712,,
+"atx_1812dd827ede","Surfbird","checklist_reporting","es_reference_late_egg",28655,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_near_baseline",45,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_reference_baseline",181,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_near_early_pre",22,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_reference_early_pre",100,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_near_immediate_pre",,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_reference_immediate_pre",71,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_near_spawn_start",,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_reference_spawn_start",53,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_near_early_egg",24,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_reference_early_egg",95,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_near_late_egg",22,,
+"atx_1812dd827ede","Surfbird","conditional_positive_numeric_count","es_reference_late_egg",70,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_near_baseline",8075,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_reference_baseline",25987,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_near_early_pre",4511,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_reference_early_pre",15466,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_near_immediate_pre",4586,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_reference_immediate_pre",15167,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_near_spawn_start",2991,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_reference_spawn_start",9758,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_near_early_egg",7017,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_reference_early_egg",22923,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_near_late_egg",8710,,
+"atx_1930f23cc4f8","Surf Scoter","checklist_reporting","es_reference_late_egg",28651,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_near_baseline",1510,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_reference_baseline",3174,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_near_early_pre",841,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_reference_early_pre",1878,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_near_immediate_pre",851,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_reference_immediate_pre",1751,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_near_spawn_start",567,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_reference_spawn_start",1180,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_near_early_egg",985,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_reference_early_egg",1895,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_near_late_egg",974,,
+"atx_1930f23cc4f8","Surf Scoter","conditional_positive_numeric_count","es_reference_late_egg",1913,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_near_baseline",8077,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_reference_baseline",25992,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_near_early_pre",4512,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_reference_early_pre",15467,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_near_spawn_start",2992,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_near_early_egg",7018,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_reference_early_egg",22927,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_near_late_egg",8712,,
+"atx_3083477933a8","White-winged Scoter","checklist_reporting","es_reference_late_egg",28655,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_near_baseline",499,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_reference_baseline",902,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_near_early_pre",273,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_reference_early_pre",618,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_near_immediate_pre",304,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_reference_immediate_pre",626,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_near_spawn_start",259,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_reference_spawn_start",457,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_near_early_egg",387,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_reference_early_egg",641,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_near_late_egg",343,,
+"atx_3083477933a8","White-winged Scoter","conditional_positive_numeric_count","es_reference_late_egg",626,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_near_baseline",8072,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_reference_baseline",25966,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_near_early_pre",4510,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_reference_early_pre",15456,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_near_immediate_pre",4584,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_reference_immediate_pre",15164,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_near_spawn_start",2990,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_reference_spawn_start",9751,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_near_early_egg",7016,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_reference_early_egg",22910,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_near_late_egg",8706,,
+"atx_35518e24dfdd","Common Merganser","checklist_reporting","es_reference_late_egg",28634,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_near_baseline",1552,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_reference_baseline",4885,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_near_early_pre",761,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_reference_early_pre",2718,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_near_immediate_pre",860,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_reference_immediate_pre",2668,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_near_spawn_start",643,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_reference_spawn_start",1729,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_near_early_egg",1224,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_reference_early_egg",3340,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_near_late_egg",1318,,
+"atx_35518e24dfdd","Common Merganser","conditional_positive_numeric_count","es_reference_late_egg",3581,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_near_baseline",8077,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_reference_baseline",25992,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_near_early_pre",4512,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_reference_early_pre",15467,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_near_spawn_start",2992,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_near_early_egg",7018,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_reference_early_egg",22927,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_near_late_egg",8712,,
+"atx_35707a9578d5","Pelagic Cormorant","checklist_reporting","es_reference_late_egg",28655,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_near_baseline",1008,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_reference_baseline",2507,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_near_early_pre",538,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_reference_early_pre",1507,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_near_immediate_pre",581,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_reference_immediate_pre",1500,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_near_spawn_start",418,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_reference_spawn_start",1014,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_near_early_egg",900,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_reference_early_egg",2198,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_near_late_egg",916,,
+"atx_35707a9578d5","Pelagic Cormorant","conditional_positive_numeric_count","es_reference_late_egg",2543,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_near_baseline",8077,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_reference_baseline",25992,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_near_early_pre",4512,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_reference_early_pre",15467,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_near_spawn_start",2992,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_near_early_egg",7018,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_reference_early_egg",22927,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_near_late_egg",8712,,
+"atx_40f730f5ad72","Long-tailed Duck","checklist_reporting","es_reference_late_egg",28655,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_near_baseline",381,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_reference_baseline",721,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_near_early_pre",227,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_reference_early_pre",490,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_near_immediate_pre",215,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_reference_immediate_pre",453,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_near_spawn_start",206,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_reference_spawn_start",361,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_near_early_egg",330,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_reference_early_egg",461,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_near_late_egg",227,,
+"atx_40f730f5ad72","Long-tailed Duck","conditional_positive_numeric_count","es_reference_late_egg",341,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_near_baseline",8027,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_reference_baseline",25851,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_near_early_pre",4484,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_reference_early_pre",15376,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_near_immediate_pre",4560,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_reference_immediate_pre",15079,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_near_spawn_start",2971,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_reference_spawn_start",9690,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_near_early_egg",6959,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_reference_early_egg",22770,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_near_late_egg",8646,,
+"atx_4ae57d328ec6","Greater Scaup","checklist_reporting","es_reference_late_egg",28507,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_near_baseline",374,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_reference_baseline",982,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_near_early_pre",232,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_reference_early_pre",639,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_near_immediate_pre",278,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_reference_immediate_pre",725,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_near_spawn_start",272,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_reference_spawn_start",567,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_near_early_egg",453,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_reference_early_egg",876,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_near_late_egg",344,,
+"atx_4ae57d328ec6","Greater Scaup","conditional_positive_numeric_count","es_reference_late_egg",772,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_near_baseline",8077,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_reference_baseline",25992,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_near_early_pre",4512,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_reference_early_pre",15467,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_near_spawn_start",2992,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_near_early_egg",7018,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_reference_early_egg",22927,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_near_late_egg",8712,,
+"atx_59441ff7abde","Brant","checklist_reporting","es_reference_late_egg",28655,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_near_baseline",345,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_reference_baseline",637,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_near_early_pre",226,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_reference_early_pre",494,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_near_immediate_pre",302,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_reference_immediate_pre",601,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_near_spawn_start",272,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_reference_spawn_start",499,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_near_early_egg",556,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_reference_early_egg",872,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_near_late_egg",573,,
+"atx_59441ff7abde","Brant","conditional_positive_numeric_count","es_reference_late_egg",871,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_near_baseline",8058,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_reference_baseline",25936,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_near_early_pre",4499,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_reference_early_pre",15432,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_near_immediate_pre",4580,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_reference_immediate_pre",15146,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_near_spawn_start",2984,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_reference_spawn_start",9743,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_near_early_egg",7000,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_reference_early_egg",22895,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_near_late_egg",8703,,
+"atx_5a9a3495d0ea","Western Gull","checklist_reporting","es_reference_late_egg",28621,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_near_baseline",65,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_reference_baseline",135,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_near_early_pre",30,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_reference_early_pre",75,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_near_immediate_pre",42,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_reference_immediate_pre",82,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_near_spawn_start",39,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_reference_spawn_start",75,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_near_early_egg",58,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_reference_early_egg",106,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_near_late_egg",44,,
+"atx_5a9a3495d0ea","Western Gull","conditional_positive_numeric_count","es_reference_late_egg",86,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_near_baseline",8071,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_reference_baseline",25981,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_near_early_pre",4507,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_reference_early_pre",15455,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_near_immediate_pre",4585,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_reference_immediate_pre",15167,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_near_spawn_start",2992,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_reference_spawn_start",9757,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_near_early_egg",7014,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_reference_early_egg",22913,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_near_late_egg",8704,,
+"atx_6b4cfd1ab927","Horned Grebe","checklist_reporting","es_reference_late_egg",28640,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_near_baseline",1108,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_reference_baseline",2426,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_near_early_pre",609,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_reference_early_pre",1409,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_near_immediate_pre",606,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_reference_immediate_pre",1321,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_near_spawn_start",423,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_reference_spawn_start",910,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_near_early_egg",845,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_reference_early_egg",1675,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_near_late_egg",805,,
+"atx_6b4cfd1ab927","Horned Grebe","conditional_positive_numeric_count","es_reference_late_egg",1702,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_near_baseline",8077,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_reference_baseline",25992,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_near_early_pre",4512,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_reference_early_pre",15467,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_near_spawn_start",2992,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_near_early_egg",7018,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_reference_early_egg",22927,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_near_late_egg",8712,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","checklist_reporting","es_reference_late_egg",28655,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_near_baseline",46,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_reference_baseline",123,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_near_early_pre",28,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_reference_early_pre",101,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_near_immediate_pre",22,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_reference_immediate_pre",90,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_near_spawn_start",,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_reference_spawn_start",80,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_near_early_egg",44,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_reference_early_egg",195,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_near_late_egg",40,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","conditional_positive_numeric_count","es_reference_late_egg",203,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_near_baseline",8072,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_reference_baseline",25967,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_near_early_pre",4508,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_reference_early_pre",15450,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_near_immediate_pre",4585,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_reference_immediate_pre",15160,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_near_spawn_start",2988,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_reference_spawn_start",9752,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_near_early_egg",7012,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_reference_early_egg",22919,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_near_late_egg",8708,,
+"atx_725074cbfcb6","Glaucous-winged Gull","checklist_reporting","es_reference_late_egg",28633,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_near_baseline",4261,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_reference_baseline",11336,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_near_early_pre",2249,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_reference_early_pre",6451,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_near_immediate_pre",2344,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_reference_immediate_pre",6225,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_near_spawn_start",1535,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_reference_spawn_start",3959,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_near_early_egg",3431,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_reference_early_egg",8845,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_near_late_egg",3979,,
+"atx_725074cbfcb6","Glaucous-winged Gull","conditional_positive_numeric_count","es_reference_late_egg",10518,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_near_baseline",8068,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_reference_baseline",25979,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_near_early_pre",4511,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_reference_early_pre",15466,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_near_immediate_pre",4586,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_reference_immediate_pre",15167,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_near_spawn_start",2992,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_near_early_egg",7018,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_reference_early_egg",22924,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_near_late_egg",8711,,
+"atx_7571c026ae99","American Herring Gull","checklist_reporting","es_reference_late_egg",28653,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_near_baseline",171,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_reference_baseline",377,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_near_early_pre",113,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_reference_early_pre",278,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_near_immediate_pre",183,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_reference_immediate_pre",377,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_near_spawn_start",221,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_reference_spawn_start",349,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_near_early_egg",311,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_reference_early_egg",460,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_near_late_egg",194,,
+"atx_7571c026ae99","American Herring Gull","conditional_positive_numeric_count","es_reference_late_egg",343,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_near_baseline",8077,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_reference_baseline",25992,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_near_early_pre",4512,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_reference_early_pre",15467,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_near_spawn_start",2992,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_near_early_egg",7018,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_reference_early_egg",22927,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_near_late_egg",8712,,
+"atx_7b80ddaff058","Great Blue Heron","checklist_reporting","es_reference_late_egg",28655,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_near_baseline",1774,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_reference_baseline",6059,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_near_early_pre",958,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_reference_early_pre",3584,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_near_immediate_pre",1031,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_reference_immediate_pre",3658,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_near_spawn_start",779,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_reference_spawn_start",2424,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_near_early_egg",1555,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_reference_early_egg",5502,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_near_late_egg",1989,,
+"atx_7b80ddaff058","Great Blue Heron","conditional_positive_numeric_count","es_reference_late_egg",6697,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_near_baseline",8077,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_reference_baseline",25992,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_near_early_pre",4512,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_reference_early_pre",15467,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_near_spawn_start",2992,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_near_early_egg",7018,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_reference_early_egg",22927,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_near_late_egg",8712,,
+"atx_7d980a7c8c37","Northern Pintail","checklist_reporting","es_reference_late_egg",28655,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_near_baseline",713,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_reference_baseline",2743,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_near_early_pre",430,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_reference_early_pre",1661,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_near_immediate_pre",456,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_reference_immediate_pre",1693,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_near_spawn_start",354,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_reference_spawn_start",1134,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_near_early_egg",675,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_reference_early_egg",2262,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_near_late_egg",755,,
+"atx_7d980a7c8c37","Northern Pintail","conditional_positive_numeric_count","es_reference_late_egg",2441,,
+"atx_815c98107028","Mallard","checklist_reporting","es_near_baseline",8077,,
+"atx_815c98107028","Mallard","checklist_reporting","es_reference_baseline",25992,,
+"atx_815c98107028","Mallard","checklist_reporting","es_near_early_pre",4512,,
+"atx_815c98107028","Mallard","checklist_reporting","es_reference_early_pre",15467,,
+"atx_815c98107028","Mallard","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_815c98107028","Mallard","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_815c98107028","Mallard","checklist_reporting","es_near_spawn_start",2992,,
+"atx_815c98107028","Mallard","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_815c98107028","Mallard","checklist_reporting","es_near_early_egg",7018,,
+"atx_815c98107028","Mallard","checklist_reporting","es_reference_early_egg",22927,,
+"atx_815c98107028","Mallard","checklist_reporting","es_near_late_egg",8712,,
+"atx_815c98107028","Mallard","checklist_reporting","es_reference_late_egg",28655,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_near_baseline",3535,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_reference_baseline",11007,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_near_early_pre",1973,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_reference_early_pre",6654,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_near_immediate_pre",2140,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_reference_immediate_pre",6733,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_near_spawn_start",1484,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_reference_spawn_start",4432,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_near_early_egg",3118,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_reference_early_egg",10003,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_near_late_egg",3833,,
+"atx_815c98107028","Mallard","conditional_positive_numeric_count","es_reference_late_egg",11711,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_near_baseline",8060,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_reference_baseline",25938,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_near_early_pre",4501,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_reference_early_pre",15419,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_near_immediate_pre",4577,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_reference_immediate_pre",15124,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_near_spawn_start",2989,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_reference_spawn_start",9727,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_near_early_egg",7005,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_reference_early_egg",22870,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_near_late_egg",8703,,
+"atx_82312e6f2848","Common Goldeneye","checklist_reporting","es_reference_late_egg",28595,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_near_baseline",1966,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_reference_baseline",4698,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_near_early_pre",1061,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_reference_early_pre",2664,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_near_immediate_pre",1101,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_reference_immediate_pre",2624,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_near_spawn_start",693,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_reference_spawn_start",1618,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_near_early_egg",1249,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_reference_early_egg",2830,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_near_late_egg",1052,,
+"atx_82312e6f2848","Common Goldeneye","conditional_positive_numeric_count","es_reference_late_egg",2449,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_near_baseline",8077,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_reference_baseline",25992,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_near_early_pre",4512,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_reference_early_pre",15467,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_near_spawn_start",2992,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_near_early_egg",7018,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_reference_early_egg",22927,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_near_late_egg",8712,,
+"atx_8608f2ed61cf","Pigeon Guillemot","checklist_reporting","es_reference_late_egg",28655,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_near_baseline",167,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_reference_baseline",675,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_near_early_pre",126,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_reference_early_pre",477,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_near_immediate_pre",119,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_reference_immediate_pre",467,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_near_spawn_start",103,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_reference_spawn_start",348,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_near_early_egg",266,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_reference_early_egg",788,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_near_late_egg",270,,
+"atx_8608f2ed61cf","Pigeon Guillemot","conditional_positive_numeric_count","es_reference_late_egg",870,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_near_baseline",8077,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_reference_baseline",25992,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_near_early_pre",4512,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_reference_early_pre",15467,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_near_spawn_start",2992,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_near_early_egg",7018,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_reference_early_egg",22927,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_near_late_egg",8712,,
+"atx_86eda7ed9025","Red-necked Grebe","checklist_reporting","es_reference_late_egg",28655,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_near_baseline",573,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_reference_baseline",1241,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_near_early_pre",324,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_reference_early_pre",823,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_near_immediate_pre",304,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_reference_immediate_pre",720,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_near_spawn_start",214,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_reference_spawn_start",546,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_near_early_egg",544,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_reference_early_egg",1100,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_near_late_egg",641,,
+"atx_86eda7ed9025","Red-necked Grebe","conditional_positive_numeric_count","es_reference_late_egg",1262,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_near_baseline",8077,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_reference_baseline",25992,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_near_early_pre",4512,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_reference_early_pre",15467,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_near_spawn_start",2992,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_near_early_egg",7018,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_reference_early_egg",22927,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_near_late_egg",8712,,
+"atx_87b306550dba","Harlequin Duck","checklist_reporting","es_reference_late_egg",28655,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_near_baseline",880,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_reference_baseline",2283,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_near_early_pre",426,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_reference_early_pre",1346,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_near_immediate_pre",462,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_reference_immediate_pre",1283,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_near_spawn_start",381,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_reference_spawn_start",871,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_near_early_egg",553,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_reference_early_egg",1459,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_near_late_egg",539,,
+"atx_87b306550dba","Harlequin Duck","conditional_positive_numeric_count","es_reference_late_egg",1540,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_near_baseline",8077,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_reference_baseline",25992,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_near_early_pre",4512,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_reference_early_pre",15467,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_near_spawn_start",2992,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_near_early_egg",7018,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_reference_early_egg",22927,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_near_late_egg",8712,,
+"atx_98ca0000b734","Brandt's Cormorant","checklist_reporting","es_reference_late_egg",28655,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_near_baseline",143,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_reference_baseline",433,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_near_early_pre",94,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_reference_early_pre",263,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_near_immediate_pre",90,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_reference_immediate_pre",263,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_near_spawn_start",90,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_reference_spawn_start",205,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_near_early_egg",135,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_reference_early_egg",318,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_near_late_egg",108,,
+"atx_98ca0000b734","Brandt's Cormorant","conditional_positive_numeric_count","es_reference_late_egg",296,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_near_baseline",8077,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_reference_baseline",25992,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_near_early_pre",4512,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_reference_early_pre",15467,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_near_spawn_start",2992,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_near_early_egg",7018,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_reference_early_egg",22927,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_near_late_egg",8712,,
+"atx_99238953638b","Bufflehead","checklist_reporting","es_reference_late_egg",28655,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_near_baseline",3225,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_reference_baseline",9352,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_near_early_pre",1725,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_reference_early_pre",5345,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_near_immediate_pre",1811,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_reference_immediate_pre",5100,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_near_spawn_start",1202,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_reference_spawn_start",3307,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_near_early_egg",2319,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_reference_early_egg",6772,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_near_late_egg",2640,,
+"atx_99238953638b","Bufflehead","conditional_positive_numeric_count","es_reference_late_egg",7394,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_near_baseline",8077,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_reference_baseline",25992,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_near_early_pre",4511,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_reference_early_pre",15466,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_near_immediate_pre",4586,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_reference_immediate_pre",15168,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_near_spawn_start",2992,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_near_early_egg",7018,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_reference_early_egg",22927,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_near_late_egg",8712,,
+"atx_9ae1aa9b7fdf","Common Loon","checklist_reporting","es_reference_late_egg",28655,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_near_baseline",990,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_reference_baseline",2421,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_near_early_pre",501,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_reference_early_pre",1471,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_near_immediate_pre",486,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_reference_immediate_pre",1350,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_near_spawn_start",319,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_reference_spawn_start",892,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_near_early_egg",801,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_reference_early_egg",2004,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_near_late_egg",964,,
+"atx_9ae1aa9b7fdf","Common Loon","conditional_positive_numeric_count","es_reference_late_egg",2394,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_near_baseline",8077,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_reference_baseline",25990,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_near_early_pre",4512,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_reference_early_pre",15467,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_near_spawn_start",2992,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_reference_spawn_start",9758,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_near_early_egg",7018,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_reference_early_egg",22927,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_near_late_egg",8712,,
+"atx_a113baee5693","American Wigeon","checklist_reporting","es_reference_late_egg",28653,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_near_baseline",2526,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_reference_baseline",6136,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_near_early_pre",1379,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_reference_early_pre",3525,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_near_immediate_pre",1481,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_reference_immediate_pre",3487,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_near_spawn_start",1071,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_reference_spawn_start",2323,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_near_early_egg",2114,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_reference_early_egg",4598,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_near_late_egg",2373,,
+"atx_a113baee5693","American Wigeon","conditional_positive_numeric_count","es_reference_late_egg",4762,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_near_baseline",8077,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_reference_baseline",25992,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_near_early_pre",4512,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_reference_early_pre",15467,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_near_spawn_start",2992,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_near_early_egg",7018,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_reference_early_egg",22927,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_near_late_egg",8712,,
+"atx_a444854c6b66","Double-crested Cormorant","checklist_reporting","es_reference_late_egg",28655,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_near_baseline",1366,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_reference_baseline",4222,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_near_early_pre",744,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_reference_early_pre",2456,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_near_immediate_pre",719,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_reference_immediate_pre",2348,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_near_spawn_start",534,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_reference_spawn_start",1543,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_near_early_egg",1149,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_reference_early_egg",3456,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_near_late_egg",1158,,
+"atx_a444854c6b66","Double-crested Cormorant","conditional_positive_numeric_count","es_reference_late_egg",3795,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_near_baseline",8073,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_reference_baseline",25984,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_near_early_pre",4511,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_reference_early_pre",15466,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_near_immediate_pre",4586,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_reference_immediate_pre",15167,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_near_spawn_start",2992,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_near_early_egg",7018,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_reference_early_egg",22924,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_near_late_egg",8712,,
+"atx_aa5353f6d6d2","Iceland Gull","checklist_reporting","es_reference_late_egg",28654,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_near_baseline",483,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_reference_baseline",999,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_near_early_pre",278,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_reference_early_pre",598,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_near_immediate_pre",348,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_reference_immediate_pre",668,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_near_spawn_start",322,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_reference_spawn_start",522,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_near_early_egg",477,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_reference_early_egg",788,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_near_late_egg",315,,
+"atx_aa5353f6d6d2","Iceland Gull","conditional_positive_numeric_count","es_reference_late_egg",533,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_near_baseline",8077,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_reference_baseline",25992,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_near_early_pre",4512,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_reference_early_pre",15467,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_near_spawn_start",2992,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_near_early_egg",7018,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_reference_early_egg",22927,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_near_late_egg",8712,,
+"atx_acf526bb8010","Marbled Murrelet","checklist_reporting","es_reference_late_egg",28655,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_near_baseline",83,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_reference_baseline",315,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_near_early_pre",43,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_reference_early_pre",165,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_near_immediate_pre",44,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_reference_immediate_pre",158,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_near_spawn_start",26,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_reference_spawn_start",111,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_near_early_egg",76,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_reference_early_egg",250,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_near_late_egg",87,,
+"atx_acf526bb8010","Marbled Murrelet","conditional_positive_numeric_count","es_reference_late_egg",343,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_near_baseline",8075,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_reference_baseline",25967,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_near_early_pre",4511,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_reference_early_pre",15459,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_near_immediate_pre",4585,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_reference_immediate_pre",15165,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_near_spawn_start",2992,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_reference_spawn_start",9753,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_near_early_egg",7015,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_reference_early_egg",22915,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_near_late_egg",8711,,
+"atx_b3d3ea90f9cb","Canada Goose","checklist_reporting","es_reference_late_egg",28644,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_near_baseline",2679,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_reference_baseline",7523,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_near_early_pre",1520,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_reference_early_pre",4731,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_near_immediate_pre",1715,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_reference_immediate_pre",4925,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_near_spawn_start",1174,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_reference_spawn_start",3230,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_near_early_egg",2664,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_reference_early_egg",7610,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_near_late_egg",3445,,
+"atx_b3d3ea90f9cb","Canada Goose","conditional_positive_numeric_count","es_reference_late_egg",9421,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_near_baseline",8077,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_reference_baseline",25992,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_near_early_pre",4512,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_reference_early_pre",15467,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_near_spawn_start",2992,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_near_early_egg",7018,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_reference_early_egg",22927,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_near_late_egg",8712,,
+"atx_c12b832d2b03","California Gull","checklist_reporting","es_reference_late_egg",28655,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_near_baseline",482,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_reference_baseline",834,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_near_early_pre",324,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_reference_early_pre",717,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_near_immediate_pre",467,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_reference_immediate_pre",979,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_near_spawn_start",514,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_reference_spawn_start",843,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_near_early_egg",858,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_reference_early_egg",1410,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_near_late_egg",739,,
+"atx_c12b832d2b03","California Gull","conditional_positive_numeric_count","es_reference_late_egg",1247,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_near_baseline",8073,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_reference_baseline",25967,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_near_early_pre",4510,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_reference_early_pre",15451,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_near_immediate_pre",4584,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_reference_immediate_pre",15164,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_near_spawn_start",2990,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_reference_spawn_start",9751,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_near_early_egg",7016,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_reference_early_egg",22910,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_near_late_egg",8708,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","checklist_reporting","es_reference_late_egg",28640,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_near_baseline",1105,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_reference_baseline",2531,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_near_early_pre",573,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_reference_early_pre",1475,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_near_immediate_pre",488,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_reference_immediate_pre",1266,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_near_spawn_start",349,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_reference_spawn_start",788,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_near_early_egg",713,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_reference_early_egg",1634,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_near_late_egg",788,,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","conditional_positive_numeric_count","es_reference_late_egg",1774,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_near_baseline",8077,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_reference_baseline",25992,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_near_early_pre",4512,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_reference_early_pre",15467,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_near_spawn_start",2992,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_near_early_egg",7018,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_reference_early_egg",22927,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_near_late_egg",8712,,
+"atx_c34f23342a55","Pacific Loon","checklist_reporting","es_reference_late_egg",28655,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_near_baseline",508,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_reference_baseline",965,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_near_early_pre",277,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_reference_early_pre",608,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_near_immediate_pre",209,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_reference_immediate_pre",484,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_near_spawn_start",170,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_reference_spawn_start",355,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_near_early_egg",307,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_reference_early_egg",600,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_near_late_egg",300,,
+"atx_c34f23342a55","Pacific Loon","conditional_positive_numeric_count","es_reference_late_egg",604,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_near_baseline",8077,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_reference_baseline",25992,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_near_early_pre",4512,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_reference_early_pre",15467,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_near_spawn_start",2992,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_near_early_egg",7018,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_reference_early_egg",22927,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_near_late_egg",8712,,
+"atx_c9db024faf12","American Crow","checklist_reporting","es_reference_late_egg",28655,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_near_baseline",4370,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_reference_baseline",12750,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_near_early_pre",2469,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_reference_early_pre",7894,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_near_immediate_pre",2722,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_reference_immediate_pre",8058,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_near_spawn_start",1757,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_reference_spawn_start",5215,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_near_early_egg",4138,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_reference_early_egg",12397,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_near_late_egg",5087,,
+"atx_c9db024faf12","American Crow","conditional_positive_numeric_count","es_reference_late_egg",15457,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_near_baseline",8027,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_reference_baseline",25857,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_near_early_pre",4481,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_reference_early_pre",15380,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_near_immediate_pre",4560,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_reference_immediate_pre",15083,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_near_spawn_start",2971,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_reference_spawn_start",9692,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_near_early_egg",6956,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_reference_early_egg",22774,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_near_late_egg",8651,,
+"atx_d002764a39e8","Lesser Scaup","checklist_reporting","es_reference_late_egg",28514,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_near_baseline",367,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_reference_baseline",1590,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_near_early_pre",207,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_reference_early_pre",891,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_near_immediate_pre",199,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_reference_immediate_pre",852,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_near_spawn_start",162,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_reference_spawn_start",562,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_near_early_egg",410,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_reference_early_egg",1233,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_near_late_egg",416,,
+"atx_d002764a39e8","Lesser Scaup","conditional_positive_numeric_count","es_reference_late_egg",1448,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_near_baseline",8059,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_reference_baseline",25922,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_near_early_pre",4502,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_reference_early_pre",15400,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_near_immediate_pre",4577,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_reference_immediate_pre",15103,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_near_spawn_start",2990,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_reference_spawn_start",9720,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_near_early_egg",7002,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_reference_early_egg",22843,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_near_late_egg",8698,,
+"atx_d7dd9536145c","Barrow's Goldeneye","checklist_reporting","es_reference_late_egg",28581,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_near_baseline",1018,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_reference_baseline",2195,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_near_early_pre",544,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_reference_early_pre",1191,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_near_immediate_pre",552,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_reference_immediate_pre",1251,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_near_spawn_start",352,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_reference_spawn_start",736,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_near_early_egg",741,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_reference_early_egg",1503,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_near_late_egg",637,,
+"atx_d7dd9536145c","Barrow's Goldeneye","conditional_positive_numeric_count","es_reference_late_egg",1373,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_near_baseline",8077,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_reference_baseline",25992,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_near_early_pre",4512,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_reference_early_pre",15467,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_near_spawn_start",2992,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_near_early_egg",7018,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_reference_early_egg",22927,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_near_late_egg",8712,,
+"atx_e0e678a61ad7","Short-billed Gull","checklist_reporting","es_reference_late_egg",28655,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_near_baseline",1634,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_reference_baseline",3938,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_near_early_pre",866,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_reference_early_pre",2297,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_near_immediate_pre",1011,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_reference_immediate_pre",2396,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_near_spawn_start",774,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_reference_spawn_start",1680,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_near_early_egg",1550,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_reference_early_egg",3217,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_near_late_egg",1462,,
+"atx_e0e678a61ad7","Short-billed Gull","conditional_positive_numeric_count","es_reference_late_egg",3391,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_near_baseline",8074,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_reference_baseline",25987,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_near_early_pre",4510,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_reference_early_pre",15464,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_near_immediate_pre",4586,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_reference_immediate_pre",15167,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_near_spawn_start",2991,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_reference_spawn_start",9758,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_near_early_egg",7017,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_reference_early_egg",22926,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_near_late_egg",8711,,
+"atx_ebf17f77fb66","Western Grebe","checklist_reporting","es_reference_late_egg",28654,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_near_baseline",95,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_reference_baseline",230,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_near_early_pre",39,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_reference_early_pre",120,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_near_immediate_pre",43,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_reference_immediate_pre",118,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_near_spawn_start",22,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_reference_spawn_start",67,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_near_early_egg",56,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_reference_early_egg",144,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_near_late_egg",44,,
+"atx_ebf17f77fb66","Western Grebe","conditional_positive_numeric_count","es_reference_late_egg",145,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_near_baseline",8077,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_reference_baseline",25992,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_near_early_pre",4512,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_reference_early_pre",15467,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_near_spawn_start",2992,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_near_early_egg",7018,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_reference_early_egg",22927,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_near_late_egg",8712,,
+"atx_fadb8da1a816","Bonaparte's Gull","checklist_reporting","es_reference_late_egg",28655,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_near_baseline",39,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_reference_baseline",136,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_near_early_pre",32,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_reference_early_pre",95,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_near_immediate_pre",62,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_reference_immediate_pre",204,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_near_spawn_start",99,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_reference_spawn_start",215,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_near_early_egg",311,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_reference_early_egg",491,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_near_late_egg",478,,
+"atx_fadb8da1a816","Bonaparte's Gull","conditional_positive_numeric_count","es_reference_late_egg",820,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_near_baseline",8077,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_reference_baseline",25992,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_near_early_pre",4512,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_reference_early_pre",15467,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_near_spawn_start",2992,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_near_early_egg",7018,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_reference_early_egg",22927,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_near_late_egg",8712,,
+"atx_fc0a9b777dcd","Bald Eagle","checklist_reporting","es_reference_late_egg",28655,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_near_baseline",3240,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_reference_baseline",10709,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_near_early_pre",1840,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_reference_early_pre",6584,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_near_immediate_pre",1945,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_reference_immediate_pre",6567,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_near_spawn_start",1444,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_reference_spawn_start",4415,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_near_early_egg",3021,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_reference_early_egg",9802,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_near_late_egg",3559,,
+"atx_fc0a9b777dcd","Bald Eagle","conditional_positive_numeric_count","es_reference_late_egg",11721,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_near_baseline",8077,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_reference_baseline",25992,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_near_early_pre",4512,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_reference_early_pre",15467,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_near_spawn_start",2992,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_near_early_egg",7018,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_reference_early_egg",22927,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_near_late_egg",8712,,
+"atx_v2_000002","Black Oystercatcher","checklist_reporting","es_reference_late_egg",28655,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_near_baseline",771,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_reference_baseline",2028,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_near_early_pre",433,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_reference_early_pre",1189,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_near_immediate_pre",414,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_reference_immediate_pre",1141,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_near_spawn_start",285,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_reference_spawn_start",809,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_near_early_egg",572,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_reference_early_egg",1486,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_near_late_egg",558,,
+"atx_v2_000002","Black Oystercatcher","conditional_positive_numeric_count","es_reference_late_egg",1518,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_near_baseline",8077,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_reference_baseline",25992,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_near_early_pre",4512,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_reference_early_pre",15467,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_near_spawn_start",2992,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_near_early_egg",7018,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_reference_early_egg",22927,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_near_late_egg",8712,,
+"atx_v2_000003","Dunlin","checklist_reporting","es_reference_late_egg",28655,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_near_baseline",424,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_reference_baseline",1030,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_near_early_pre",227,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_reference_early_pre",581,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_near_immediate_pre",216,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_reference_immediate_pre",544,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_near_spawn_start",160,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_reference_spawn_start",385,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_near_early_egg",263,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_reference_early_egg",649,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_near_late_egg",272,,
+"atx_v2_000003","Dunlin","conditional_positive_numeric_count","es_reference_late_egg",748,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_near_baseline",8077,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_reference_baseline",25992,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_near_early_pre",4512,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_reference_early_pre",15467,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_near_spawn_start",2992,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_near_early_egg",7018,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_reference_early_egg",22927,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_near_late_egg",8712,,
+"atx_v2_000006","Black-bellied Plover","checklist_reporting","es_reference_late_egg",28655,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_near_baseline",349,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_reference_baseline",749,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_near_early_pre",171,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_reference_early_pre",427,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_near_immediate_pre",173,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_reference_immediate_pre",427,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_near_spawn_start",117,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_reference_spawn_start",308,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_near_early_egg",202,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_reference_early_egg",510,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_near_late_egg",232,,
+"atx_v2_000006","Black-bellied Plover","conditional_positive_numeric_count","es_reference_late_egg",596,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_near_baseline",8077,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_reference_baseline",25992,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_near_early_pre",4512,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_reference_early_pre",15467,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_near_spawn_start",2992,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_near_early_egg",7018,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_reference_early_egg",22927,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_near_late_egg",8712,,
+"atx_v2_000007","Common Raven","checklist_reporting","es_reference_late_egg",28655,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_near_baseline",2366,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_reference_baseline",7123,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_near_early_pre",1345,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_reference_early_pre",4335,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_near_immediate_pre",1333,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_reference_immediate_pre",4341,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_near_spawn_start",852,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_reference_spawn_start",2878,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_near_early_egg",2007,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_reference_early_egg",6658,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_near_late_egg",2579,,
+"atx_v2_000007","Common Raven","conditional_positive_numeric_count","es_reference_late_egg",8316,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_near_baseline",8077,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_reference_baseline",25992,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_near_early_pre",4512,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_reference_early_pre",15467,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_near_immediate_pre",4587,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_reference_immediate_pre",15169,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_near_spawn_start",2992,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_reference_spawn_start",9759,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_near_early_egg",7018,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_reference_early_egg",22927,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_near_late_egg",8712,,
+"atx_v2_000011","Glaucous Gull","checklist_reporting","es_reference_late_egg",28655,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_near_baseline",46,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_reference_baseline",29,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_near_early_pre",,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_reference_early_pre",25,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_near_immediate_pre",,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_reference_immediate_pre",49,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_near_spawn_start",43,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_reference_spawn_start",35,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_near_early_egg",81,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_reference_early_egg",55,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_near_late_egg",51,,
+"atx_v2_000011","Glaucous Gull","conditional_positive_numeric_count","es_reference_late_egg",40,,
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_near_baseline",987,969,
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_reference_baseline",3755,3684,71
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_near_early_pre",518,509,
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_reference_early_pre",2060,2024,36
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_near_immediate_pre",476,468,
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_reference_immediate_pre",1915,1877,38
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_near_spawn_start",317,311,
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_reference_spawn_start",1163,1143,20
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_near_early_egg",738,724,
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_reference_early_egg",2576,2536,40
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_near_late_egg",809,790,
+"atx_04afbeb21fb0","Hooded Merganser","finite_numeric_vs_x","es_reference_late_egg",2735,2689,46
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_near_baseline",72,72,0
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_reference_baseline",280,280,0
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_near_early_pre",34,34,0
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_reference_early_pre",139,139,0
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_near_immediate_pre",38,38,0
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_reference_immediate_pre",136,135,
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_near_spawn_start",20,20,0
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_reference_spawn_start",66,66,0
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_near_early_egg",50,50,0
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_reference_early_egg",165,164,
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_near_late_egg",57,57,0
+"atx_04cf65098f13","Red-throated Loon","finite_numeric_vs_x","es_reference_late_egg",180,177,
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_near_baseline",535,514,21
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_reference_baseline",790,742,48
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_near_early_pre",248,239,
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_reference_early_pre",484,458,26
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_near_immediate_pre",275,266,
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_reference_immediate_pre",453,429,24
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_near_spawn_start",226,218,
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_reference_spawn_start",347,336,
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_near_early_egg",376,362,
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_reference_early_egg",621,588,33
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_near_late_egg",328,317,
+"atx_08bb40b40c0a","Ring-billed Gull","finite_numeric_vs_x","es_reference_late_egg",601,562,39
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_near_baseline",278,259,
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_reference_baseline",479,438,41
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_near_early_pre",163,148,
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_reference_early_pre",317,291,26
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_near_immediate_pre",179,166,
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_reference_immediate_pre",335,310,25
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_near_spawn_start",132,124,
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_reference_spawn_start",225,210,
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_near_early_egg",227,212,
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_reference_early_egg",302,279,23
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_near_late_egg",155,145,
+"atx_1328b44be502","Black Scoter","finite_numeric_vs_x","es_reference_late_egg",222,205,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_near_baseline",153,151,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_reference_baseline",368,361,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_near_early_pre",69,66,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_reference_early_pre",207,203,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_near_immediate_pre",43,40,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_reference_immediate_pre",162,158,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_near_spawn_start",43,42,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_reference_spawn_start",111,108,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_near_early_egg",84,81,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_reference_early_egg",206,202,
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_near_late_egg",62,62,0
+"atx_136b0e66254b","Common Murre","finite_numeric_vs_x","es_reference_late_egg",190,188,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_near_baseline",300,287,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_reference_baseline",917,893,24
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_near_early_pre",177,168,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_reference_early_pre",508,490,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_near_immediate_pre",156,146,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_reference_immediate_pre",425,408,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_near_spawn_start",102,101,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_reference_spawn_start",308,303,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_near_early_egg",175,168,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_reference_early_egg",469,459,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_near_late_egg",116,115,
+"atx_15dd5efcd8d6","Black Turnstone","finite_numeric_vs_x","es_reference_late_egg",442,437,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_near_baseline",46,45,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_reference_baseline",183,181,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_near_early_pre",23,22,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_reference_early_pre",101,100,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_near_immediate_pre",,,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_reference_immediate_pre",74,71,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_near_spawn_start",,,0
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_reference_spawn_start",54,53,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_near_early_egg",24,24,0
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_reference_early_egg",97,95,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_near_late_egg",23,22,
+"atx_1812dd827ede","Surfbird","finite_numeric_vs_x","es_reference_late_egg",71,70,
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_near_baseline",1583,1509,74
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_reference_baseline",3295,3173,122
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_near_early_pre",911,841,70
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_reference_early_pre",1960,1876,84
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_near_immediate_pre",905,851,54
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_reference_immediate_pre",1843,1750,93
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_near_spawn_start",595,566,29
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_reference_spawn_start",1247,1179,68
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_near_early_egg",1062,985,77
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_reference_early_egg",2006,1895,111
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_near_late_egg",1012,973,39
+"atx_1930f23cc4f8","Surf Scoter","finite_numeric_vs_x","es_reference_late_egg",1999,1912,87
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_near_baseline",530,499,31
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_reference_baseline",967,902,65
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_near_early_pre",298,273,25
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_reference_early_pre",663,618,45
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_near_immediate_pre",333,304,29
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_reference_immediate_pre",682,626,56
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_near_spawn_start",279,259,20
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_reference_spawn_start",487,457,30
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_near_early_egg",422,387,35
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_reference_early_egg",693,641,52
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_near_late_egg",368,343,25
+"atx_3083477933a8","White-winged Scoter","finite_numeric_vs_x","es_reference_late_egg",669,626,43
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_near_baseline",1578,1552,26
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_reference_baseline",4957,4880,77
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_near_early_pre",773,761,
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_reference_early_pre",2750,2710,40
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_near_immediate_pre",876,860,
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_reference_immediate_pre",2717,2664,53
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_near_spawn_start",655,642,
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_reference_spawn_start",1756,1727,29
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_near_early_egg",1251,1224,27
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_reference_early_egg",3396,3340,56
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_near_late_egg",1333,1318,
+"atx_35518e24dfdd","Common Merganser","finite_numeric_vs_x","es_reference_late_egg",3625,3579,46
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_near_baseline",1030,1008,22
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_reference_baseline",2540,2507,33
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_near_early_pre",556,538,
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_reference_early_pre",1523,1507,
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_near_immediate_pre",603,581,22
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_reference_immediate_pre",1526,1500,26
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_near_spawn_start",428,418,
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_reference_spawn_start",1032,1014,
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_near_early_egg",920,900,20
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_reference_early_egg",2231,2198,33
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_near_late_egg",931,916,
+"atx_35707a9578d5","Pelagic Cormorant","finite_numeric_vs_x","es_reference_late_egg",2581,2543,38
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_near_baseline",399,381,
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_reference_baseline",752,721,31
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_near_early_pre",245,227,
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_reference_early_pre",521,490,31
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_near_immediate_pre",239,215,24
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_reference_immediate_pre",498,453,45
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_near_spawn_start",215,206,
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_reference_spawn_start",385,361,24
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_near_early_egg",366,330,36
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_reference_early_egg",508,461,47
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_near_late_egg",239,227,
+"atx_40f730f5ad72","Long-tailed Duck","finite_numeric_vs_x","es_reference_late_egg",367,341,26
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_near_baseline",376,365,
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_reference_baseline",997,957,40
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_near_early_pre",241,227,
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_reference_early_pre",661,628,33
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_near_immediate_pre",295,276,
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_reference_immediate_pre",753,710,43
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_near_spawn_start",281,269,
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_reference_spawn_start",581,556,25
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_near_early_egg",476,440,36
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_reference_early_egg",912,851,61
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_near_late_egg",356,340,
+"atx_4ae57d328ec6","Greater Scaup","finite_numeric_vs_x","es_reference_late_egg",785,747,38
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_near_baseline",356,345,
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_reference_baseline",658,637,21
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_near_early_pre",239,226,
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_reference_early_pre",519,494,25
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_near_immediate_pre",324,302,22
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_reference_immediate_pre",635,601,34
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_near_spawn_start",280,272,
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_reference_spawn_start",518,499,
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_near_early_egg",586,556,30
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_reference_early_egg",913,872,41
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_near_late_egg",594,573,21
+"atx_59441ff7abde","Brant","finite_numeric_vs_x","es_reference_late_egg",906,871,35
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_near_baseline",67,64,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_reference_baseline",141,135,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_near_early_pre",35,30,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_reference_early_pre",81,74,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_near_immediate_pre",44,42,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_reference_immediate_pre",88,82,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_near_spawn_start",39,39,0
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_reference_spawn_start",77,74,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_near_early_egg",62,56,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_reference_early_egg",110,104,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_near_late_egg",44,43,
+"atx_5a9a3495d0ea","Western Gull","finite_numeric_vs_x","es_reference_late_egg",86,86,0
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_near_baseline",1135,1106,29
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_reference_baseline",2464,2422,42
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_near_early_pre",630,608,22
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_reference_early_pre",1439,1408,31
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_near_immediate_pre",635,605,30
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_reference_immediate_pre",1351,1319,32
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_near_spawn_start",430,423,
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_reference_spawn_start",924,910,
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_near_early_egg",865,845,20
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_reference_early_egg",1704,1674,30
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_near_late_egg",812,804,
+"atx_6b4cfd1ab927","Horned Grebe","finite_numeric_vs_x","es_reference_late_egg",1721,1698,23
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_near_baseline",47,46,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_reference_baseline",124,123,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_near_early_pre",29,28,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_reference_early_pre",102,101,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_near_immediate_pre",22,22,0
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_reference_immediate_pre",92,90,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_near_spawn_start",,,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_reference_spawn_start",82,80,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_near_early_egg",44,44,0
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_reference_early_egg",196,195,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_near_late_egg",41,40,
+"atx_6cbe5bbd310c","Rhinoceros Auklet","finite_numeric_vs_x","es_reference_late_egg",206,203,
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_near_baseline",4498,4246,252
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_reference_baseline",12018,11307,711
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_near_early_pre",2408,2240,168
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_reference_early_pre",6885,6434,451
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_near_immediate_pre",2525,2339,186
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_reference_immediate_pre",6675,6213,462
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_near_spawn_start",1681,1531,150
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_reference_spawn_start",4257,3949,308
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_near_early_egg",3680,3419,261
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_reference_early_egg",9439,8821,618
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_near_late_egg",4188,3973,215
+"atx_725074cbfcb6","Glaucous-winged Gull","finite_numeric_vs_x","es_reference_late_egg",11081,10506,575
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_near_baseline",181,171,
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_reference_baseline",398,376,22
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_near_early_pre",126,111,
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_reference_early_pre",300,275,25
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_near_immediate_pre",203,182,21
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_reference_immediate_pre",404,377,27
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_near_spawn_start",241,220,21
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_reference_spawn_start",375,347,28
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_near_early_egg",334,309,25
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_reference_early_egg",491,457,34
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_near_late_egg",209,194,
+"atx_7571c026ae99","American Herring Gull","finite_numeric_vs_x","es_reference_late_egg",365,343,22
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_near_baseline",1796,1774,22
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_reference_baseline",6190,6059,131
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_near_early_pre",976,958,
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_reference_early_pre",3668,3584,84
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_near_immediate_pre",1049,1031,
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_reference_immediate_pre",3741,3658,83
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_near_spawn_start",787,779,
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_reference_spawn_start",2475,2424,51
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_near_early_egg",1577,1555,22
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_reference_early_egg",5610,5502,108
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_near_late_egg",2017,1989,28
+"atx_7b80ddaff058","Great Blue Heron","finite_numeric_vs_x","es_reference_late_egg",6809,6697,112
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_near_baseline",755,713,42
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_reference_baseline",2976,2743,233
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_near_early_pre",465,430,35
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_reference_early_pre",1796,1661,135
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_near_immediate_pre",484,456,28
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_reference_immediate_pre",1830,1693,137
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_near_spawn_start",366,354,
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_reference_spawn_start",1218,1134,84
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_near_early_egg",703,675,28
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_reference_early_egg",2440,2262,178
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_near_late_egg",770,755,
+"atx_7d980a7c8c37","Northern Pintail","finite_numeric_vs_x","es_reference_late_egg",2620,2441,179
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_near_baseline",3730,3535,195
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_reference_baseline",11723,11007,716
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_near_early_pre",2105,1973,132
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_reference_early_pre",7092,6654,438
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_near_immediate_pre",2267,2140,127
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_reference_immediate_pre",7189,6733,456
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_near_spawn_start",1564,1484,80
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_reference_spawn_start",4721,4432,289
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_near_early_egg",3304,3118,186
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_reference_early_egg",10627,10003,624
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_near_late_egg",4044,3833,211
+"atx_815c98107028","Mallard","finite_numeric_vs_x","es_reference_late_egg",12371,11711,660
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_near_baseline",2023,1955,68
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_reference_baseline",4752,4607,145
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_near_early_pre",1109,1054,55
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_reference_early_pre",2694,2607,87
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_near_immediate_pre",1149,1095,54
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_reference_immediate_pre",2646,2543,103
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_near_spawn_start",718,690,28
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_reference_spawn_start",1641,1583,58
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_near_early_egg",1309,1239,70
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_reference_early_egg",2836,2737,99
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_near_late_egg",1070,1046,24
+"atx_82312e6f2848","Common Goldeneye","finite_numeric_vs_x","es_reference_late_egg",2436,2374,62
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_near_baseline",170,167,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_reference_baseline",681,675,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_near_early_pre",130,126,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_reference_early_pre",483,477,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_near_immediate_pre",121,119,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_reference_immediate_pre",472,467,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_near_spawn_start",105,103,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_reference_spawn_start",352,348,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_near_early_egg",272,266,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_reference_early_egg",798,788,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_near_late_egg",274,270,
+"atx_8608f2ed61cf","Pigeon Guillemot","finite_numeric_vs_x","es_reference_late_egg",885,870,
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_near_baseline",584,573,
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_reference_baseline",1269,1241,28
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_near_early_pre",337,324,
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_reference_early_pre",845,823,22
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_near_immediate_pre",319,304,
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_reference_immediate_pre",744,720,24
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_near_spawn_start",218,214,
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_reference_spawn_start",554,546,
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_near_early_egg",553,544,
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_reference_early_egg",1114,1100,
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_near_late_egg",649,641,
+"atx_86eda7ed9025","Red-necked Grebe","finite_numeric_vs_x","es_reference_late_egg",1278,1262,
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_near_baseline",898,880,
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_reference_baseline",2334,2283,51
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_near_early_pre",445,426,
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_reference_early_pre",1386,1346,40
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_near_immediate_pre",482,462,20
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_reference_immediate_pre",1325,1283,42
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_near_spawn_start",393,381,
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_reference_spawn_start",893,871,22
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_near_early_egg",582,553,29
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_reference_early_egg",1500,1459,41
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_near_late_egg",549,539,
+"atx_87b306550dba","Harlequin Duck","finite_numeric_vs_x","es_reference_late_egg",1569,1540,29
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_near_baseline",144,143,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_reference_baseline",438,433,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_near_early_pre",97,94,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_reference_early_pre",266,263,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_near_immediate_pre",95,90,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_reference_immediate_pre",270,263,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_near_spawn_start",93,90,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_reference_spawn_start",207,205,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_near_early_egg",137,135,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_reference_early_egg",325,318,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_near_late_egg",110,108,
+"atx_98ca0000b734","Brandt's Cormorant","finite_numeric_vs_x","es_reference_late_egg",302,296,
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_near_baseline",3323,3225,98
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_reference_baseline",9613,9352,261
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_near_early_pre",1811,1725,86
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_reference_early_pre",5511,5345,166
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_near_immediate_pre",1882,1811,71
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_reference_immediate_pre",5271,5100,171
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_near_spawn_start",1247,1202,45
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_reference_spawn_start",3413,3307,106
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_near_early_egg",2419,2319,100
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_reference_early_egg",6976,6772,204
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_near_late_egg",2698,2640,58
+"atx_99238953638b","Bufflehead","finite_numeric_vs_x","es_reference_late_egg",7572,7394,178
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_near_baseline",1017,990,27
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_reference_baseline",2478,2421,57
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_near_early_pre",520,501,
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_reference_early_pre",1506,1471,35
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_near_immediate_pre",505,486,
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_reference_immediate_pre",1381,1349,32
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_near_spawn_start",327,319,
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_reference_spawn_start",907,892,
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_near_early_egg",825,801,24
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_reference_early_egg",2040,2003,37
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_near_late_egg",976,964,
+"atx_9ae1aa9b7fdf","Common Loon","finite_numeric_vs_x","es_reference_late_egg",2422,2394,28
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_near_baseline",2654,2525,129
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_reference_baseline",6525,6131,394
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_near_early_pre",1458,1379,79
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_reference_early_pre",3759,3525,234
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_near_immediate_pre",1562,1481,81
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_reference_immediate_pre",3712,3487,225
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_near_spawn_start",1116,1071,45
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_reference_spawn_start",2463,2323,140
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_near_early_egg",2215,2114,101
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_reference_early_egg",4878,4598,280
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_near_late_egg",2483,2373,110
+"atx_a113baee5693","American Wigeon","finite_numeric_vs_x","es_reference_late_egg",5016,4761,255
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_near_baseline",1397,1366,31
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_reference_baseline",4301,4222,79
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_near_early_pre",763,744,
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_reference_early_pre",2491,2456,35
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_near_immediate_pre",738,719,
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_reference_immediate_pre",2385,2348,37
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_near_spawn_start",543,534,
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_reference_spawn_start",1569,1543,26
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_near_early_egg",1169,1149,20
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_reference_early_egg",3520,3456,64
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_near_late_egg",1179,1158,21
+"atx_a444854c6b66","Double-crested Cormorant","finite_numeric_vs_x","es_reference_late_egg",3862,3795,67
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_near_baseline",522,478,44
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_reference_baseline",1080,993,87
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_near_early_pre",309,277,32
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_reference_early_pre",654,596,58
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_near_immediate_pre",395,348,47
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_reference_immediate_pre",751,668,83
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_near_spawn_start",381,322,59
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_reference_spawn_start",589,521,68
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_near_early_egg",542,475,67
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_reference_early_egg",885,786,99
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_near_late_egg",338,314,24
+"atx_aa5353f6d6d2","Iceland Gull","finite_numeric_vs_x","es_reference_late_egg",579,532,47
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_near_baseline",85,83,
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_reference_baseline",316,315,
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_near_early_pre",43,43,0
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_reference_early_pre",165,165,0
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_near_immediate_pre",44,44,0
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_reference_immediate_pre",160,158,
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_near_spawn_start",26,26,0
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_reference_spawn_start",111,111,0
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_near_early_egg",77,76,
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_reference_early_egg",252,250,
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_near_late_egg",89,87,
+"atx_acf526bb8010","Marbled Murrelet","finite_numeric_vs_x","es_reference_late_egg",346,343,
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_near_baseline",2807,2677,130
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_reference_baseline",7863,7508,355
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_near_early_pre",1596,1519,77
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_reference_early_pre",4941,4723,218
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_near_immediate_pre",1795,1715,80
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_reference_immediate_pre",5137,4913,224
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_near_spawn_start",1218,1174,44
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_reference_spawn_start",3385,3228,157
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_near_early_egg",2769,2663,106
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_reference_early_egg",7923,7595,328
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_near_late_egg",3564,3443,121
+"atx_b3d3ea90f9cb","Canada Goose","finite_numeric_vs_x","es_reference_late_egg",9778,9408,370
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_near_baseline",517,482,35
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_reference_baseline",886,834,52
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_near_early_pre",353,324,29
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_reference_early_pre",777,717,60
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_near_immediate_pre",523,467,56
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_reference_immediate_pre",1079,979,100
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_near_spawn_start",576,514,62
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_reference_spawn_start",926,843,83
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_near_early_egg",972,858,114
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_reference_early_egg",1561,1410,151
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_near_late_egg",791,739,52
+"atx_c12b832d2b03","California Gull","finite_numeric_vs_x","es_reference_late_egg",1328,1247,81
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_near_baseline",1133,1104,29
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_reference_baseline",2584,2525,59
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_near_early_pre",597,573,24
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_reference_early_pre",1514,1472,42
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_near_immediate_pre",509,488,21
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_reference_immediate_pre",1306,1262,44
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_near_spawn_start",360,348,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_reference_spawn_start",805,786,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_near_early_egg",735,713,22
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_reference_early_egg",1680,1634,46
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_near_late_egg",805,786,
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","finite_numeric_vs_x","es_reference_late_egg",1810,1766,44
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_near_baseline",520,508,
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_reference_baseline",995,965,30
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_near_early_pre",291,277,
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_reference_early_pre",632,608,24
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_near_immediate_pre",223,209,
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_reference_immediate_pre",504,484,20
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_near_spawn_start",174,170,
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_reference_spawn_start",360,355,
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_near_early_egg",319,307,
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_reference_early_egg",617,600,
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_near_late_egg",303,300,
+"atx_c34f23342a55","Pacific Loon","finite_numeric_vs_x","es_reference_late_egg",617,604,
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_near_baseline",4542,4370,172
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_reference_baseline",13310,12750,560
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_near_early_pre",2582,2469,113
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_reference_early_pre",8226,7894,332
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_near_immediate_pre",2843,2722,121
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_reference_immediate_pre",8431,8058,373
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_near_spawn_start",1833,1757,76
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_reference_spawn_start",5434,5215,219
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_near_early_egg",4302,4138,164
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_reference_early_egg",12901,12397,504
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_near_late_egg",5275,5087,188
+"atx_c9db024faf12","American Crow","finite_numeric_vs_x","es_reference_late_egg",16036,15457,579
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_near_baseline",371,358,
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_reference_baseline",1637,1559,78
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_near_early_pre",211,205,
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_reference_early_pre",922,876,46
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_near_immediate_pre",204,197,
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_reference_immediate_pre",878,833,45
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_near_spawn_start",161,158,
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_reference_spawn_start",576,548,28
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_near_early_egg",407,400,
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_reference_early_egg",1267,1202,65
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_near_late_egg",419,407,
+"atx_d002764a39e8","Lesser Scaup","finite_numeric_vs_x","es_reference_late_egg",1494,1415,79
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_near_baseline",1036,1008,28
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_reference_baseline",2178,2121,57
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_near_early_pre",559,536,23
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_reference_early_pre",1183,1153,30
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_near_immediate_pre",574,546,28
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_reference_immediate_pre",1231,1191,40
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_near_spawn_start",359,348,
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_reference_spawn_start",730,708,22
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_near_early_egg",759,734,25
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_reference_early_egg",1481,1437,44
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_near_late_egg",650,635,
+"atx_d7dd9536145c","Barrow's Goldeneye","finite_numeric_vs_x","es_reference_late_egg",1350,1311,39
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_near_baseline",1738,1634,104
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_reference_baseline",4167,3938,229
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_near_early_pre",948,866,82
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_reference_early_pre",2472,2297,175
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_near_immediate_pre",1125,1011,114
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_reference_immediate_pre",2614,2396,218
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_near_spawn_start",864,774,90
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_reference_spawn_start",1814,1680,134
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_near_early_egg",1710,1550,160
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_reference_early_egg",3475,3217,258
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_near_late_egg",1548,1462,86
+"atx_e0e678a61ad7","Short-billed Gull","finite_numeric_vs_x","es_reference_late_egg",3585,3391,194
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_near_baseline",99,95,
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_reference_baseline",233,230,
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_near_early_pre",43,39,
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_reference_early_pre",122,120,
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_near_immediate_pre",45,43,
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_reference_immediate_pre",120,118,
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_near_spawn_start",22,22,0
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_reference_spawn_start",68,67,
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_near_early_egg",56,56,0
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_reference_early_egg",144,144,0
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_near_late_egg",44,44,0
+"atx_ebf17f77fb66","Western Grebe","finite_numeric_vs_x","es_reference_late_egg",146,145,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_near_baseline",39,39,0
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_reference_baseline",137,136,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_near_early_pre",34,32,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_reference_early_pre",99,95,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_near_immediate_pre",65,62,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_reference_immediate_pre",212,204,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_near_spawn_start",105,99,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_reference_spawn_start",226,215,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_near_early_egg",328,311,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_reference_early_egg",516,491,25
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_near_late_egg",490,478,
+"atx_fadb8da1a816","Bonaparte's Gull","finite_numeric_vs_x","es_reference_late_egg",848,820,28
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_near_baseline",3280,3240,40
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_reference_baseline",10874,10709,165
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_near_early_pre",1873,1840,33
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_reference_early_pre",6702,6584,118
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_near_immediate_pre",1977,1945,32
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_reference_immediate_pre",6670,6567,103
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_near_spawn_start",1464,1444,20
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_reference_spawn_start",4482,4415,67
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_near_early_egg",3062,3021,41
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_reference_early_egg",9950,9802,148
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_near_late_egg",3594,3559,35
+"atx_fc0a9b777dcd","Bald Eagle","finite_numeric_vs_x","es_reference_late_egg",11869,11721,148
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_near_baseline",778,771,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_reference_baseline",2049,2028,21
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_near_early_pre",442,433,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_reference_early_pre",1202,1189,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_near_immediate_pre",420,414,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_reference_immediate_pre",1154,1141,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_near_spawn_start",288,285,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_reference_spawn_start",818,809,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_near_early_egg",582,572,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_reference_early_egg",1501,1486,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_near_late_egg",559,558,
+"atx_v2_000002","Black Oystercatcher","finite_numeric_vs_x","es_reference_late_egg",1529,1518,
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_near_baseline",442,424,
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_reference_baseline",1070,1030,40
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_near_early_pre",239,227,
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_reference_early_pre",606,581,25
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_near_immediate_pre",226,216,
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_reference_immediate_pre",568,544,24
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_near_spawn_start",162,160,
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_reference_spawn_start",396,385,
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_near_early_egg",272,263,
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_reference_early_egg",674,649,25
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_near_late_egg",274,272,
+"atx_v2_000003","Dunlin","finite_numeric_vs_x","es_reference_late_egg",775,748,27
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_near_baseline",362,349,
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_reference_baseline",773,749,24
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_near_early_pre",180,171,
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_reference_early_pre",445,427,
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_near_immediate_pre",186,173,
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_reference_immediate_pre",448,427,21
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_near_spawn_start",119,117,
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_reference_spawn_start",312,308,
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_near_early_egg",210,202,
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_reference_early_egg",520,510,
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_near_late_egg",234,232,
+"atx_v2_000006","Black-bellied Plover","finite_numeric_vs_x","es_reference_late_egg",604,596,
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_near_baseline",2405,2366,39
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_reference_baseline",7220,7123,97
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_near_early_pre",1371,1345,26
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_reference_early_pre",4400,4335,65
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_near_immediate_pre",1357,1333,24
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_reference_immediate_pre",4407,4341,66
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_near_spawn_start",870,852,
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_reference_spawn_start",2927,2878,49
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_near_early_egg",2042,2007,35
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_reference_early_egg",6761,6658,103
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_near_late_egg",2613,2579,34
+"atx_v2_000007","Common Raven","finite_numeric_vs_x","es_reference_late_egg",8414,8316,98
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_near_baseline",46,46,0
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_reference_baseline",29,29,0
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_near_early_pre",,,0
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_reference_early_pre",25,25,0
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_near_immediate_pre",,,0
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_reference_immediate_pre",49,49,0
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_near_spawn_start",43,43,0
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_reference_spawn_start",35,35,0
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_near_early_egg",82,81,
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_reference_early_egg",56,55,
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_near_late_egg",52,51,
+"atx_v2_000011","Glaucous Gull","finite_numeric_vs_x","es_reference_late_egg",41,40,

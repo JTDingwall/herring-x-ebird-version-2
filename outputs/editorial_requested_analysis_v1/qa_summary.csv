@@ -1,0 +1,31 @@
+"check","status","observed","expected","tolerance"
+"primary_contrast_row_count","PASS","196","196",
+"finite_x_contrast_row_count","PASS","98","98",
+"diagnostic_row_count","PASS","147","147",
+"absolute_prediction_row_count","PASS","2256","2256",
+"binary_sensitivity_contrast_row_count","PASS","196","196",
+"binary_sensitivity_diagnostic_row_count","PASS","98","98",
+"engine_validation_result_row_count","PASS","4","4",
+"engine_validation_diagnostic_row_count","PASS","2","2",
+"link_count_support_row_count","PASS","9163","9163",
+"primary_contrast_key_unique","PASS","0","0",
+"finite_x_contrast_key_unique","PASS","0","0",
+"prediction_key_unique","PASS","0","0",
+"sensitivity_key_unique","PASS","0","0",
+"engine_validation_key_unique","PASS","0","0",
+"link_count_support_key_unique","PASS","0","0",
+"ratio_matches_exponentiated_estimate","PASS","5.10702591327572e-15","<1e-12",1e-12
+"ratio_ci_low_matches_exponentiated_ci","PASS","5.10702591327572e-15","<1e-12",1e-12
+"ratio_ci_high_matches_exponentiated_ci","PASS","1.52766688188422e-13","<1e-12",1e-12
+"p_and_q_in_unit_interval","PASS","all finite","[0,1]",
+"full_covariance_flag","PASS","294","294",
+"engine_ratio_matches_exponentiated_estimate","PASS","1.77635683940025e-15","<1e-12",1e-12
+"engine_validation_completed_with_full_covariance","PASS","4 2","4 result rows and 2 diagnostic rows completed",
+"core_checkpoint_count","PASS","147","147",
+"primary_contrasts_match_checkpoints","PASS","4.88498130835069e-15","<1e-12",1e-12
+"finite_x_contrasts_match_checkpoints","PASS","3.0267983675003e-09","<1e-8 absolute CSV serialization tolerance",1e-08
+"absolute_predictions_match_checkpoints","PASS","2.1316282072803e-13","<1e-12",1e-12
+"holdout_records_read","PASS","0","0",
+"historical_outputs_modified","PASS","FALSE FALSE","FALSE FALSE",
+"auxiliary_holdout_records_read","PASS","4 of 4","4 of 4 execution records report zero",
+"privacy_column_gate","PASS","PASS","PASS",

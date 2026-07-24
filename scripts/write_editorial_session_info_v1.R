@@ -27,5 +27,7 @@ if (!all(loaded)) {
 output_path <- file.path(
   "outputs", "editorial_requested_analysis_v1", "session_info.txt"
 )
-capture.output(sessionInfo(), file = output_path)
+session <- capture.output(sessionInfo())
+session <- sub("[[:space:]]+$", "", session)
+writeLines(session, output_path, useBytes = TRUE)
 message("EDITORIAL_SESSION_INFO_GATE=PASS")

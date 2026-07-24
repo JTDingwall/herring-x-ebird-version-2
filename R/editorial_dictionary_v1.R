@@ -220,6 +220,9 @@ run_editorial_dictionary_v1 <- function(
     }
     lines <- c(lines, "")
   }
+  while (length(lines) && !nzchar(lines[[length(lines)]])) {
+    lines <- lines[-length(lines)]
+  }
   dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
   writeLines(lines, path, useBytes = TRUE)
   rows <- do.call(rbind, dictionary_rows)

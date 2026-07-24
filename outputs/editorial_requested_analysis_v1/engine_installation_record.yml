@@ -1,0 +1,15 @@
+analysis_version: editorial_engine_validation_v1
+analysis_status: frozen_post_result_exploratory_refinement_not_preregistered
+installation_scope: ignored_isolated_validation_library
+isolated_library: data/derived/editorial_requested_analysis_v1/glmmtmb_library
+glmmTMB_version: 1.1.14
+TMB_version: 1.9.21
+initial_project_TMB_version: 1.9.19
+dependency_alignment: TMB_1.9.21_installed_before_project_fit
+smoke_test:
+  family: binomial_logit
+  data: synthetic_no_project_data
+  positive_definite_hessian: true
+  status: PASS
+records_2026_plus_read: 0
+protected_rows_released: 0
