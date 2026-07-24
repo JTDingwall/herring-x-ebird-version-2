@@ -28,7 +28,7 @@ try {
       $next = $document.GoTo(1, 1, $page + 1)
       $range.End = $next.Start - 1
     } else {
-      $range.End = $document.Content.End - 1
+      $range.End = $document.Content.End
     }
     $range.CopyAsPicture()
     Start-Sleep -Milliseconds 150
@@ -57,7 +57,11 @@ try {
   }
   $presentation.Slides.Add(1, 12) | Out-Null
   $presentation.Saved = -1
-  $presentation.Close()
+  try {
+    $presentation.Close()
+  } catch {
+    Write-Output "PAGE_PRESENTATION_CLOSE_WARNING=temporary_close_failed"
+  }
 
   $pageImages = @(
     Get-ChildItem -LiteralPath $output -Filter "page-*.png" |
@@ -120,7 +124,11 @@ try {
   }
   $contact.Slides.Add(1, 12) | Out-Null
   $contact.Saved = -1
-  $contact.Close()
+  try {
+    $contact.Close()
+  } catch {
+    Write-Output "CONTACT_PRESENTATION_CLOSE_WARNING=temporary_close_failed"
+  }
   $document.Close(0)
 
   Write-Output "DOCX_PAGE_RENDER=PASS"

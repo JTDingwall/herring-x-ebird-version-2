@@ -17,7 +17,7 @@ testthat::test_that("conventional exposure design was selected before fitting", 
     design$selection_used_effect_estimates
   ))
   testthat::expect_equal(
-    design$count_species_supported[design$selected],
+    design$supported_conditional_count_components[design$selected],
     41L
   )
 })
@@ -105,7 +105,7 @@ testthat::test_that("conventional release manifest reproduces", {
     stringsAsFactors = FALSE
   )
 
-  testthat::expect_equal(nrow(manifest), 10L)
+  testthat::expect_equal(nrow(manifest), 7L)
   paths <- file.path(output, manifest$file)
   testthat::expect_true(all(file.exists(paths)))
   observed <- vapply(

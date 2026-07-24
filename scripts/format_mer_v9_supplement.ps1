@@ -11,7 +11,6 @@ $qaDir = Join-Path $ProjectRoot (
   "manuscript\journal_submission\marine_environmental_research\" +
   "rendered_v9_qa"
 )
-$pdf = Join-Path $qaDir "mer_supplement_v9.pdf"
 New-Item -ItemType Directory -Path $qaDir -Force | Out-Null
 
 $word = New-Object -ComObject Word.Application
@@ -46,11 +45,9 @@ try {
   }
 
   $document.Save()
-  $document.ExportAsFixedFormat($pdf, 17)
   Write-Output "SUPPLEMENT_FORMAT=PASS"
   Write-Output ("TABLES=" + $document.Tables.Count)
   Write-Output ("PAGES=" + $document.ComputeStatistics(2))
-  Write-Output "PDF=$pdf"
   $document.Close(0)
 } finally {
   $word.Quit()

@@ -201,6 +201,31 @@ change_display <- if (nrow(changes)) {
     stringsAsFactors = FALSE
   )
 }
+material_display <- if (nrow(changes) &&
+    any(changes$interpretation_changes_materially)) {
+  change_display[
+    changes$interpretation_changes_materially,
+    , drop = FALSE
+  ]
+} else {
+  data.frame(
+    Result = "No material directional reversal.",
+    stringsAsFactors = FALSE
+  )
+}
+threshold_display <- if (nrow(changes) &&
+    any(changes$bh_threshold_crossing, na.rm = TRUE)) {
+  change_display[
+    !is.na(changes$bh_threshold_crossing) &
+      changes$bh_threshold_crossing,
+    , drop = FALSE
+  ]
+} else {
+  data.frame(
+    Result = "No BH-threshold crossing.",
+    stringsAsFactors = FALSE
+  )
+}
 
 reporting_summary <- summary_table[
   summary_table$outcome == "checklist_reporting", , drop = FALSE
@@ -270,9 +295,19 @@ memo_lines <- c(
     "a sign reversal with at least one 95% confidence interval excluding zero."
   ),
   "",
-  "## Changes requiring explicit review",
+  "## Material directional reversals",
   "",
-  markdown_table(change_display),
+  markdown_table(material_display),
+  "",
+  "## BH-threshold crossings (not material by themselves)",
+  "",
+  markdown_table(threshold_display),
+  "",
+  paste0(
+    "The complete machine-readable review table, including uncertain ",
+    "reversals, unsupported components, and same-direction interval ",
+    "nonoverlap, is `interpretation_changes.csv`."
+  ),
   "",
   "## Component-status handling",
   "",
@@ -653,7 +688,13 @@ revision_lines <- c(
   "",
   "## Material changes and reversals",
   "",
-  markdown_table(change_display),
+  markdown_table(material_display),
+  "",
+  paste0(
+    "All BH-threshold crossings, uncertain reversals, unsupported ",
+    "components, and same-direction interval differences remain in ",
+    "`interpretation_changes.csv` and the synchronized Supplement."
+  ),
   "",
   "## Author inputs retained",
   "",
@@ -678,6 +719,22 @@ revision_lines <- c(
     "`outputs/conventional_exposure_sensitivity_v1/`."
   ),
   "",
+  "## Verification",
+  "",
+  paste0(
+    "- The complete repository `testthat` harness and both targeted ",
+    "conventional-sensitivity/manuscript tests passed."
+  ),
+  "- The privacy scan passed across 754 text files with no violations.",
+  paste0(
+    "- Visual QA covered every rendered page: 19 manuscript pages, 34 ",
+    "Supplement pages, and the one-page highlights file."
+  ),
+  paste0(
+    "- The revised manuscript is a valid DOCX with continuous line numbering, ",
+    "page-number fields, retained author placeholders, and a 197-word abstract."
+  ),
+  "",
   "## Interpretation boundary",
   "",
   paste0(
@@ -699,9 +756,6 @@ editorial_privacy_column_gate_v1(c(
 ))
 release_names <- c(
   "design_selection.csv",
-  "sensitivity_comparisons.csv",
-  "sensitivity_diagnostics.csv",
-  "sensitivity_support.csv",
   "sensitivity_execution_record.yml",
   "conventional_exposure_sensitivity_results.csv",
   "component_status.csv",

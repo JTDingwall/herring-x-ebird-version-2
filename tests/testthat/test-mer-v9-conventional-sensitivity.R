@@ -32,9 +32,12 @@ testthat::test_that("revised v9 manuscript is valid and submission-ready", {
   entries <- utils::unzip(manuscript, list = TRUE)$Name
   testthat::expect_true(all(c(
     "[Content_Types].xml", "word/document.xml",
-    "word/settings.xml", "word/media/rId30.png",
-    "word/media/rId34.png", "word/media/rId38.png"
+    "word/settings.xml"
   ) %in% entries))
+  testthat::expect_equal(
+    sum(grepl("^word/media/.*\\.png$", entries)),
+    3L
+  )
   text <- docx_plain_text(manuscript)
   testthat::expect_match(text, "deterministic nearest-event", fixed = TRUE)
   testthat::expect_match(

@@ -28,6 +28,7 @@ $material = @(
     $_.interpretation_changes_materially -eq "TRUE"
   }
 )
+$materialNames = "none"
 
 if ($material.Count -eq 0) {
   $materialAbstract = "No component met the prespecified material-change rule."
@@ -171,6 +172,47 @@ $sensitivityResults = (
   "run."
 )
 
+$mainFindings = (
+  "Direct comparison of the active period with the preceding 14 days " +
+  "produced 13 positive checklist-reporting and 18 positive conditional-" +
+  "count A14 contrasts after BH adjustment in the primary analysis. The " +
+  "nearest-event sensitivity preserved 11 of 13 primary-BH reporting signs " +
+  "and all 18 primary-BH count signs; 7 reporting and 17 count contrasts, " +
+  "respectively, remained BH-significant. It produced seven positive and two " +
+  "negative BH-significant reporting contrasts and 19 positive count " +
+  "contrasts. Four components met the fixed material-reversal rule: " +
+  "$materialNames. The conditional reported-count conclusion is therefore " +
+  "substantially more robust to exposure encoding than the species-specific " +
+  "checklist-reporting conclusion."
+)
+
+$scoterInterpretation = (
+  "In the primary analysis, Surf and White-winged Scoters had positive A14 " +
+  "conditional reported-count contrasts without corresponding reporting " +
+  "contrasts, while Harlequin Duck increased in both outcomes. Under " +
+  "nearest-event assignment, all three reported-count signs remained " +
+  "positive; the White-winged Scoter count remained BH-significant and Surf " +
+  "Scoter and Harlequin Duck count evidence strengthened. In contrast, Surf " +
+  "Scoter reporting became negative and BH-significant, and Harlequin Duck " +
+  "reporting reversed sign without remaining significant. The reported-count " +
+  "pattern is compatible with larger reported groups at a subset of used " +
+  "sites, but the reporting component is exposure-encoding-sensitive and " +
+  "does not identify individual movement or demonstrate consumption."
+)
+
+$dabblingInterpretation = (
+  "The dabbling-duck findings continue to limit trophic interpretation, but " +
+  "their reporting details are exposure-encoding-sensitive. Northern " +
+  "Pintail's reporting sign remained positive under nearest-event assignment " +
+  "but no longer passed BH adjustment. American Wigeon reporting reversed " +
+  "from a primary positive BH result to a near-zero negative estimate, a " +
+  "material reversal under the fixed rule; its reported-count estimate " +
+  "remained positive and became BH-significant. Mallard's positive primary " +
+  "reported-count result was also preserved. These patterns still show that " +
+  "an event-linked coefficient is not specific evidence of herring " +
+  "consumption or movement."
+)
+
 $spatialLimit = (
   "Spatial exposure remains approximate. Distances run from a checklist " +
   "point to a recorded source point, not from the complete travelled route " +
@@ -229,7 +271,6 @@ $qaDir = Join-Path $ProjectRoot (
   "manuscript\journal_submission\marine_environmental_research\" +
   "rendered_v9_qa"
 )
-$pdfPath = Join-Path $qaDir "mer_manuscript_unblinded_v9_revised_clean.pdf"
 New-Item -ItemType Directory -Path $qaDir -Force | Out-Null
 
 $word = New-Object -ComObject Word.Application
@@ -267,6 +308,9 @@ try {
   Set-ParagraphByNeedle $document "Checklist reporting was estimable for 48 core species" $completion
   Set-ParagraphByNeedle $document "Among reports with either a finite number or X" $finiteX
   Set-ParagraphByNeedle $document "Replacing additive event-link counts with binary any-link indicators" $sensitivityResults
+  Set-ParagraphByNeedle $document "Direct comparison of the active period with the preceding 14 days changed" $mainFindings
+  Set-ParagraphByNeedle $document "The scoter and Harlequin Duck results are compatible" $scoterInterpretation
+  Set-ParagraphByNeedle $document "The dabbling-duck findings limit trophic interpretation" $dabblingInterpretation
   Set-ParagraphByNeedle $document "Spatial exposure remains approximate" $spatialLimit
   Set-ParagraphByNeedle $document "The reporting models used nAGQ = 0" $incomplete
   Set-ParagraphByNeedle $document "The most useful remaining statistical work" $future
@@ -300,11 +344,9 @@ try {
   }
 
   $document.Save()
-  $document.ExportAsFixedFormat($pdfPath, 17)
   Write-Output "MANUSCRIPT_UPDATE=PASS"
   Write-Output "ABSTRACT_WORDS=$abstractWords"
   Write-Output ("PAGES=" + $document.ComputeStatistics(2))
-  Write-Output "PDF=$pdfPath"
   $document.Close(0)
 } finally {
   $word.Quit()

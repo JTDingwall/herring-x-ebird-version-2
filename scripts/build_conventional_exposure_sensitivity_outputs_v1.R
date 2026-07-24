@@ -200,6 +200,11 @@ names(results)[names(results) == "ratio_conf_low"] <-
 names(results)[names(results) == "ratio_conf_high"] <-
   "sensitivity_ratio_conf_high"
 names(results)[names(results) == "status"] <- "sensitivity_status"
+results$changed_component <- paste0(
+  "for each checklist with modeled-window links, one minimum-distance ",
+  "event retained; checklists without a modeled link retained with all ",
+  "exposure terms zero; deterministic source-token tie break"
+)
 
 result_path <- file.path(
   output_dir, "conventional_exposure_sensitivity_results.csv"
