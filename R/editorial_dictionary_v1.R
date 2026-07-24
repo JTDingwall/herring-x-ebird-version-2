@@ -32,12 +32,14 @@ editorial_field_descriptions_v1 <- function() {
     singular_fit = "Whether one or more fitted random-effect variance components were on the boundary at tolerance 1e-4.",
     rank_deficient = "Whether the fixed-effect model matrix lost rank.",
     optimizer_code = "Native optimizer return code; zero means the optimizer completed.",
+    positive_definite_hessian = "Whether the glmmTMB standard-error Hessian was positive definite.",
     convergence_message = "Truncated optimizer or lme4 convergence message.",
     maximum_absolute_gradient = "Maximum absolute raw derivative component reported by the fitted model.",
     event_block_variance = "Estimated variance of the event-block random intercept.",
     observer_variance = "Estimated variance of the observer-cluster random intercept.",
     location_variance = "Estimated variance of the generalized-location random intercept.",
     residual_variance = "Estimated residual variance for the log-Gaussian count model; blank for binomial models.",
+    dispersion_parameter = "Estimated glmmTMB negative-binomial dispersion parameter; nonapplicable to the binomial validation.",
     reproduction_max_abs_estimate_difference = "Maximum absolute difference from matching frozen historical component estimates.",
     term = "Joint period-by-zone exposure predictor name.",
     exposed_rows = "Model rows with a positive value of the named exposure term; counts below 20 are suppressed.",
@@ -135,7 +137,11 @@ editorial_field_descriptions_v1 <- function() {
     q75_link_estimate = "Third quartile of finite compound estimates on the link scale.",
     dependence_aware_family_test = "Disposition of the cross-species dependence-aware family test.",
     model_components = "Number of species-by-outcome model components in the status group.",
-    analysis_group = "Primary/finite-X family or named sensitivity to which the status count applies."
+    analysis_group = "Primary/finite-X family or named sensitivity to which the status count applies.",
+    check = "Name of a deterministic QA gate.",
+    observed = "Value observed by the QA gate.",
+    expected = "Required value or range for the QA gate.",
+    tolerance = "Absolute numerical tolerance where applicable."
   )
 }
 
@@ -159,6 +165,9 @@ editorial_table_descriptions_v1 <- function() {
     "family_timing_summary.csv" = "Descriptive full-family A14 sign, BH, and distribution summary.",
     "completion_failure_log.csv" = "Complete model-component counts by outcome, status, and analysis group.",
     "analysis_status.csv" = "Machine-readable disposition of every editorial request.",
+    "engine_validation_results.csv" = "Representative glmmTMB A14/A7 estimates joined to their primary counterparts.",
+    "engine_validation_diagnostics.csv" = "Convergence, Hessian, gradient, dispersion, and random-effect diagnostics for representative glmmTMB fits.",
+    "qa_summary.csv" = "Deterministic checkpoint, algebra, key, holdout, and privacy QA results.",
     "output_hash_manifest.csv" = "SHA-256 manifest for released editorial output files."
   )
 }

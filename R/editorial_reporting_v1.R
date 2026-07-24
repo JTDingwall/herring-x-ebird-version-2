@@ -293,9 +293,9 @@ editorial_make_forest_v1 <- function(data, outcome, stem, figure_dir) {
     x, ggplot2::aes(x = estimate, y = species, colour = classification)
   ) +
     ggplot2::geom_vline(xintercept = 0, colour = "grey55", linewidth = 0.35) +
-    ggplot2::geom_errorbarh(
-      ggplot2::aes(xmin = conf_low, xmax = conf_high), height = 0,
-      linewidth = 0.35
+    ggplot2::geom_errorbar(
+      ggplot2::aes(xmin = conf_low, xmax = conf_high),
+      orientation = "y", width = 0, linewidth = 0.35
     ) +
     ggplot2::geom_point(size = 1.7) +
     ggplot2::scale_colour_manual(values = c(
@@ -368,9 +368,10 @@ editorial_make_figures_v1 <- function(
       ggplot2::geom_vline(
         xintercept = 0, colour = "grey55", linewidth = 0.35
       ) +
-      ggplot2::geom_errorbarh(
+      ggplot2::geom_errorbar(
         ggplot2::aes(xmin = low_plot, xmax = high_plot),
-        height = 0, linewidth = 0.35, colour = "#555555"
+        orientation = "y", width = 0, linewidth = 0.35,
+        colour = "#555555"
       ) +
       ggplot2::geom_point(size = 1.6, colour = "#0072B2") +
       ggplot2::labs(
@@ -472,7 +473,9 @@ editorial_make_figures_v1 <- function(
     ggplot2::scale_y_log10() +
     ggplot2::labs(
       title = "Observed support for additive modeled-window link counts",
-      subtitle = "Checklist frequency; logarithmic y-axis",
+      subtitle = paste0(
+        "Checklist frequency; cells below 20 omitted; logarithmic y-axis"
+      ),
       x = "Modeled-window source-event links per checklist",
       y = "Eligible checklists (log10 scale)"
     ) +
