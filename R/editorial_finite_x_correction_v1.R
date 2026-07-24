@@ -34,6 +34,27 @@ editorial_write_output_manifest_v1 <- function(output_dir) {
   editorial_write_csv_v1(manifest, manifest_path)
 }
 
+editorial_normalize_completed_optimizer_warnings_v1 <- function(
+    diagnostics, contrasts) {
+  completed_with_warning <- diagnostics$status == "failed_convergence" &
+    !is.na(diagnostics$optimizer_code) &
+    as.character(diagnostics$optimizer_code) == "0"
+  keys <- paste(
+    diagnostics$analysis_taxon_id[completed_with_warning],
+    diagnostics$outcome[completed_with_warning], sep = "|"
+  )
+  diagnostics$status[completed_with_warning] <-
+    "completed_with_convergence_warning"
+  contrast_keys <- paste(
+    contrasts$analysis_taxon_id, contrasts$outcome, sep = "|"
+  )
+  contrasts$status[
+    contrasts$status == "failed_convergence" & contrast_keys %in% keys
+  ] <- "completed_with_convergence_warning"
+  list(diagnostics = diagnostics, contrasts = contrasts,
+       normalized_keys = keys)
+}
+
 editorial_process_finite_x_taxon_v1 <- function(
     taxon_id, events, states, masks, species_registry, checkpoint_dir,
     run_signature, base_design, frozen_effects, period_zone_support) {
@@ -191,13 +212,35 @@ run_editorial_finite_x_correction_v1 <- function(
     stringsAsFactors = FALSE
   )
   base_design <- editorial_base_design_v1(events)
-  run_signature <- paste(
+  fit_signature_components <- c(
     "finite_x_source_label_correction_v1",
     editorial_sha256_v1("docs/editorial_requested_analysis_spec.md"),
     editorial_sha256_v1("R/editorial_requested_analysis_v1.R"),
-    editorial_sha256_v1("R/editorial_finite_x_correction_v1.R"),
-    observed_hashes, sep = "|", collapse = "|"
+    observed_hashes
   )
+  run_signature <- paste(fit_signature_components, collapse = "|")
+  # Reuse a completed finite-X checkpoint family when only this orchestration
+  # file changed. The fitted-model signature still has to contain the current
+  # frozen spec, fit-code hash, and every protected-input hash.
+  existing_checkpoint <- file.path(
+    checkpoint_dir,
+    paste(core_taxa[[1L]], "finite_numeric_vs_x", "rds", sep = "_")
+  )
+  if (file.exists(existing_checkpoint)) {
+    existing_cache <- try(readRDS(existing_checkpoint), silent = TRUE)
+    if (!inherits(existing_cache, "try-error") &&
+        is.character(existing_cache$cache_signature) &&
+        length(existing_cache$cache_signature) == 1L) {
+      suffix <- paste(core_taxa[[1L]], "finite_numeric_vs_x", sep = "|")
+      candidate <- sub(
+        paste0("\\|", suffix, "$"), "", existing_cache$cache_signature
+      )
+      candidate_components <- strsplit(candidate, "|", fixed = TRUE)[[1L]]
+      if (all(fit_signature_components %in% candidate_components)) {
+        run_signature <- candidate
+      }
+    }
+  }
   dir.create(checkpoint_dir, recursive = TRUE, showWarnings = FALSE)
 
   workers <- suppressWarnings(as.integer(Sys.getenv(
@@ -294,11 +337,29 @@ run_editorial_finite_x_correction_v1 <- function(
     file.path(output_dir, "absolute_predictions.csv"), predictions
   )
 
+  all_diagnostics_path <- file.path(output_dir, "model_diagnostics.csv")
+  primary_contrasts_path <- file.path(
+    output_dir, "active_minus_pre_contrasts.csv"
+  )
+  all_diagnostics <- utils::read.csv(
+    all_diagnostics_path, stringsAsFactors = FALSE, check.names = FALSE
+  )
+  primary_contrasts <- utils::read.csv(
+    primary_contrasts_path, stringsAsFactors = FALSE, check.names = FALSE
+  )
+  normalized <- editorial_normalize_completed_optimizer_warnings_v1(
+    all_diagnostics, primary_contrasts
+  )
+  editorial_write_csv_v1(normalized$diagnostics, all_diagnostics_path)
+  editorial_write_csv_v1(normalized$contrasts, primary_contrasts_path)
+
   execution_path <- file.path(output_dir, "execution_record.yml")
   execution <- yaml::read_yaml(execution_path)
   execution$finite_x_source_label_correction <- "PASS"
   execution$finite_x_source_labels <- c("X", "unquantified_X")
   execution$finite_x_correction_code_commit <- code_commit
+  execution$completed_optimizer_warning_classifications <-
+    length(normalized$normalized_keys)
   execution$finite_x_corrected_at_utc <- format(
     as.POSIXct(Sys.time(), tz = "UTC"), "%Y-%m-%dT%H:%M:%SZ"
   )

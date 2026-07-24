@@ -79,3 +79,28 @@ testthat::test_that("finite-versus-X mapping preserves distinct count states", {
     c(FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE)
   )
 })
+
+testthat::test_that("optimizer code zero is retained as a completed warning", {
+  diagnostics <- data.frame(
+    analysis_taxon_id = c("a", "b"),
+    outcome = c("count", "count"),
+    optimizer_code = c(0, 1),
+    status = c("failed_convergence", "failed_convergence")
+  )
+  contrasts <- data.frame(
+    analysis_taxon_id = c("a", "b"),
+    outcome = c("count", "count"),
+    status = c("failed_convergence", "failed_convergence")
+  )
+  result <- editorial_normalize_completed_optimizer_warnings_v1(
+    diagnostics, contrasts
+  )
+  testthat::expect_identical(
+    result$diagnostics$status,
+    c("completed_with_convergence_warning", "failed_convergence")
+  )
+  testthat::expect_identical(
+    result$contrasts$status,
+    c("completed_with_convergence_warning", "failed_convergence")
+  )
+})
