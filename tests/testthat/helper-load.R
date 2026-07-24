@@ -11,6 +11,7 @@ for (file in c("assert.R", "config.R", "join_assertions.R", "input_manifest.R",
                "post_stage4a_sog_event_study_v1.R",
                "editorial_requested_analysis_v1.R",
                "editorial_finite_x_correction_v1.R",
-               "editorial_sensitivity_v1.R")) {
+               "editorial_sensitivity_v1.R",
+               "editorial_linearity_diagnostics_v1.R")) {
   source(repo_file("R", file))
 }
