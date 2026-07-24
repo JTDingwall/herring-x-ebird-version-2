@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='540.00pt' height='360.00pt' viewBox='0 0 540.00 360.00'>
+<g class='svglite'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw1NDAuMDB8MC4wMHwzNjAuMDA='>
+    <rect x='0.00' y='0.00' width='540.00' height='360.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw1NDAuMDB8MC4wMHwzNjAuMDA=)'>
+<rect x='0.000000000000064' y='0.000000000000057' width='540.00' height='360.00' style='stroke-width: 0.97; stroke: none; fill: #FFFFFF;' />
+</g>
+<defs>
+  <clipPath id='cpMzAuMTN8NTM1LjAyfDM1LjMzfDMzMS4zNg=='>
+    <rect x='30.13' y='35.33' width='504.89' height='296.04' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMzAuMTN8NTM1LjAyfDM1LjMzfDMzMS4zNg==)'>
+<polyline points='30.13,317.91 535.02,317.91 ' style='stroke-width: 0.97; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='30.13,214.40 535.02,214.40 ' style='stroke-width: 0.97; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='30.13,110.89 535.02,110.89 ' style='stroke-width: 0.97; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='78.99,331.36 78.99,35.33 ' style='stroke-width: 0.97; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='160.42,331.36 160.42,35.33 ' style='stroke-width: 0.97; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='241.86,331.36 241.86,35.33 ' style='stroke-width: 0.97; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='323.29,331.36 323.29,35.33 ' style='stroke-width: 0.97; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='404.72,331.36 404.72,35.33 ' style='stroke-width: 0.97; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='486.16,331.36 486.16,35.33 ' style='stroke-width: 0.97; stroke: #EBEBEB; stroke-linecap: butt;' />
+<rect x='42.34' y='214.40' width='73.29' height='103.51' style='stroke-width: 0.97; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CC79A7;' />
+<rect x='286.64' y='172.99' width='73.29' height='144.91' style='stroke-width: 0.97; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CC79A7;' />
+<rect x='123.78' y='90.19' width='73.29' height='227.72' style='stroke-width: 0.97; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CC79A7;' />
+<rect x='449.51' y='69.49' width='73.29' height='248.42' style='stroke-width: 0.97; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CC79A7;' />
+<rect x='368.08' y='48.78' width='73.29' height='269.12' style='stroke-width: 0.97; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CC79A7;' />
+<rect x='205.21' y='110.89' width='73.29' height='207.02' style='stroke-width: 0.97; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CC79A7;' />
+</g>
+<g clip-path='url(#cpMC4wMHw1NDAuMDB8MC4wMHwzNjAuMDA=)'>
+<text x='25.64' y='320.77' text-anchor='end' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='4.45px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='25.64' y='217.26' text-anchor='end' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='4.45px' lengthAdjust='spacingAndGlyphs'>5</text>
+<text x='25.64' y='113.75' text-anchor='end' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='8.91px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text x='78.99' y='341.58' text-anchor='middle' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='13.58px' lengthAdjust='spacingAndGlyphs'>&lt;20</text>
+<text x='160.42' y='341.58' text-anchor='middle' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='29.39px' lengthAdjust='spacingAndGlyphs'>100-499</text>
+<text x='241.86' y='341.58' text-anchor='middle' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='26.94px' lengthAdjust='spacingAndGlyphs'>10000+</text>
+<text x='323.29' y='341.58' text-anchor='middle' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='20.48px' lengthAdjust='spacingAndGlyphs'>20-99</text>
+<text x='404.72' y='341.58' text-anchor='middle' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='38.30px' lengthAdjust='spacingAndGlyphs'>2000-9999</text>
+<text x='486.16' y='341.58' text-anchor='middle' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='33.84px' lengthAdjust='spacingAndGlyphs'>500-1999</text>
+<text x='282.57' y='352.92' text-anchor='middle' style='font-size: 10.00px; font-family: "Arial";' textLength='88.92px' lengthAdjust='spacingAndGlyphs'>Checklists per block</text>
+<text transform='translate(12.15,183.34) rotate(-90)' text-anchor='middle' style='font-size: 10.00px; font-family: "Arial";' textLength='56.70px' lengthAdjust='spacingAndGlyphs'>Event blocks</text>
+<text x='4.98' y='28.24' style='font-size: 10.00px; font-family: "Arial";' textLength='246.25px' lengthAdjust='spacingAndGlyphs'>Number of event blocks by eligible-checklist support bin</text>
+<text x='4.98' y='13.58' style='font-size: 12.00px; font-family: "Arial";' textLength='242.77px' lengthAdjust='spacingAndGlyphs'>Outcome-blind event-block influence potential</text>
+</g>
+</g>
+</svg>

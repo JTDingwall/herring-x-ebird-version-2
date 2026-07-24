@@ -8,6 +8,11 @@ for (file in c("assert.R", "config.R", "join_assertions.R", "input_manifest.R",
                "stage4a_pooling_repair_execute_v2.R", "stage4a_pooling_report_v2.R",
                "stage4a_publication_sensitivity_v2.R",
                "stage4a_publication_report_v2.R",
-               "post_stage4a_sog_event_study_v1.R")) {
+               "post_stage4a_sog_event_study_v1.R",
+               "editorial_requested_analysis_v1.R",
+               "editorial_finite_x_correction_v1.R",
+               "editorial_sensitivity_v1.R",
+               "editorial_linearity_diagnostics_v1.R",
+               "editorial_engine_validation_v1.R")) {
   source(repo_file("R", file))
 }

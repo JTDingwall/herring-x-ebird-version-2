@@ -1,0 +1,4 @@
+"outcome","comparison","family_species","estimable_species","completed_species","failed_or_unsupported_species","singular_warning_species","convergence_warning_species","positive_estimates","negative_estimates","bh_q_lt_0_05","bh_positive","bh_negative","median_link_estimate","q25_link_estimate","q75_link_estimate","dependence_aware_family_test"
+"checklist_reporting","active_minus_pre14",49,48,48,1,0,0,28,20,13,13,0,0.0223449057757097,-0.0388921321179338,0.132859630799763,"not_completed_descriptive_only"
+"conditional_positive_numeric_count","active_minus_pre14",49,46,46,3,1,1,42,4,18,18,0,0.0699231785555054,0.0211087627484013,0.1293395144634,"not_completed_descriptive_only"
+"finite_numeric_vs_x","active_minus_pre14",49,41,41,8,30,0,18,23,0,0,0,-0.0232826480389564,-0.135880746718353,0.174123299421165,"not_completed_descriptive_only"
