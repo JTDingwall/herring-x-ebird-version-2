@@ -91,18 +91,30 @@ editorial_completion_log_v1 <- function(output_dir) {
 }
 
 editorial_analysis_status_v1 <- function(output_dir) {
+  sensitivity_results <- editorial_reporting_read_v1(
+    output_dir, "sensitivity_comparisons.csv"
+  )
   has_sensitivity <- function(id) {
-    path <- file.path(
-      output_dir, paste0("sensitivity_comparisons__", id, ".csv")
-    )
-    if (file.exists(path)) "completed" else "partial"
+    if (!is.null(sensitivity_results) &&
+        any(sensitivity_results$sensitivity_id == id)) {
+      "completed"
+    } else {
+      "partial"
+    }
   }
   linearity_status <- if (file.exists(file.path(
       output_dir, "link_count_outcome_support.csv"
   ))) "completed" else "partial"
-  validation_status <- if (file.exists(file.path(
-      output_dir, "engine_validation_results.csv"
-  ))) "partial" else "infeasible"
+  engine_results <- editorial_reporting_read_v1(
+    output_dir, "engine_validation_results.csv"
+  )
+  engine_status <- function(outcome) {
+    if (!is.null(engine_results) && any(engine_results$outcome == outcome)) {
+      "partial"
+    } else {
+      "infeasible"
+    }
+  }
   requested <- c(
     "Verified inventory and support",
     "Direct active-minus-pre A14 and A7 contrasts",
@@ -130,7 +142,9 @@ editorial_analysis_status_v1 <- function(output_dir) {
   )
   status <- c(
     "completed", "completed", "partial", "completed", "completed",
-    "completed", "infeasible", validation_status, validation_status,
+    "completed", "infeasible",
+    engine_status("checklist_reporting"),
+    engine_status("conditional_positive_numeric_count"),
     has_sensitivity("binary_any_link"),
     has_sensitivity("nearest_event"),
     has_sensitivity("cap_8"),
@@ -595,6 +609,26 @@ editorial_write_handoff_v1 <- function(
       )
     }, character(1L)), collapse = "\n\n")
   }
+  engine <- editorial_reporting_read_v1(
+    output_dir, "engine_validation_results.csv"
+  )
+  engine_text <- if (is.null(engine)) {
+    "No representative `glmmTMB` fit completed within the recorded compute disposition."
+  } else {
+    a14_engine <- engine[
+      engine$comparison == "active_minus_pre14" &
+        is.finite(engine$estimate) &
+        is.finite(engine$primary_estimate), , drop = FALSE
+    ]
+    paste(vapply(seq_len(nrow(a14_engine)), function(i) {
+      row <- a14_engine[i, , drop = FALSE]
+      sprintf(
+        "The `%s` validation for %s completed with A14 estimate %.3f versus %.3f under the primary engine; the direction was %s.",
+        row$engine, row$species, row$estimate, row$primary_estimate,
+        if (isTRUE(row$direction_concordant)) "concordant" else "discordant"
+      )
+    }, character(1L)), collapse = "\n\n")
+  }
   failed <- diagnostics[grepl("^failed", diagnostics$status), , drop = FALSE]
   failed_text <- paste(
     sprintf("- %s — %s: `%s`.", failed$species, failed$outcome,
@@ -662,7 +696,9 @@ editorial_write_handoff_v1 <- function(
     "",
     sensitivity_text,
     "",
-    "A warm-started Iceland Gull nAGQ=1 probe already exceeded roughly one hour without an estimate, so the frozen 30-minute representative-fit budget classifies that engine as infeasible here. The exact `glmmTMB` and mixed zero-truncated-NB feasibility/installation disposition is retained in the status and engine logs; a fixed-effect-only truncated count model is not treated as equivalent.",
+    engine_text,
+    "",
+    "A warm-started Iceland Gull nAGQ=1 probe already exceeded roughly one hour without an estimate, so the frozen 30-minute representative-fit budget classifies that engine as infeasible here. Representative `glmmTMB` validation remains partial because the frozen set contains three species per outcome and each fit has a 30-minute wall-time cap. A fixed-effect-only truncated count model is not treated as equivalent.",
     "",
     "No alternative event-study radius was frozen before response inspection, so none was invented. A shifted-onset placebo could not be placed within the frozen ±28-day link window without overlapping the real active window or risking contamination by concurrent known spawning. It is recorded infeasible rather than forced.",
     "",
