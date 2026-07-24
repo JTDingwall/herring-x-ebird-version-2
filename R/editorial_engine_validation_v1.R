@@ -122,7 +122,8 @@ editorial_glmmtmb_fit_one_v1 <- function(
 }
 
 editorial_validation_slug_v1 <- function(x) {
-  tolower(gsub("[^a-z0-9]+", "_", x))
+  slug <- gsub("[^a-z0-9]+", "_", tolower(x))
+  gsub("^_+|_+$", "", slug)
 }
 
 editorial_collate_engine_validation_v1 <- function(output_dir) {
