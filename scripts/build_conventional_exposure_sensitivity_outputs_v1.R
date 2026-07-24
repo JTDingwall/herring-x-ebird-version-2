@@ -260,8 +260,9 @@ sensitivity_status <- prepare_status(
   sensitivity_diagnostics,
   "nearest_event_sensitivity",
   paste0(
-    "one minimum-distance modeled-window event retained per checklist; ",
-    "deterministic source-token tie break"
+    "for each checklist with modeled-window links, one minimum-distance ",
+    "event retained; checklists without a modeled link retained with all ",
+    "exposure terms zero; deterministic source-token tie break"
   )
 )
 status_core <- c(

@@ -112,8 +112,9 @@ $methodSensitivity = (
   "models for 19 of 49 species, whereas deterministic nearest-event " +
   "assignment retained all 217,200 checklists, full fixed-effect rank, and " +
   "count-model support for 41 species. The nearest-event encoding retained " +
-  "one minimum-distance modeled-window event per checklist with a " +
-  "deterministic tie break. No response estimate or fitted result informed " +
+  "one minimum-distance event for each checklist with modeled-window links, " +
+  "using a deterministic tie break; checklists without such a link retained " +
+  "all-zero exposure terms. No response estimate or fitted result informed " +
   "this choice, and no other new sensitivity was fitted."
 )
 

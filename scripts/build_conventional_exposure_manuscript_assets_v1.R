@@ -432,8 +432,10 @@ supplement_lines <- c(
   paste0(
     "The primary model retains all concurrent checklist-to-event links ",
     "additively. The conventional sensitivity assigns each checklist to one ",
-    "minimum-distance event within the modeled window, using a deterministic ",
-    "source-token tie break. The sensitivity retains the same checklist ",
+    "minimum-distance event for each checklist with modeled-window links, ",
+    "using a deterministic source-token tie break; checklists without such ",
+    "a link remain in the frame with all exposure terms set to zero. The ",
+    "sensitivity retains the same checklist ",
     "eligibility, <5 km near and 5–20 km reference zones, six timing periods, ",
     "A14 active-minus-pre contrast, adjustment variables, three random ",
     "intercepts, 95% confidence intervals, and 49-species BH families."
