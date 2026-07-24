@@ -104,3 +104,48 @@ testthat::test_that("optimizer code zero is retained as a completed warning", {
     c("completed_with_convergence_warning", "failed_convergence")
   )
 })
+
+testthat::test_that("outcome-blind link transformations are deterministic", {
+  terms <- post_stage4a_exposure_terms_v1()
+  events <- data.frame(
+    analysis_event_token = c("a", "b"),
+    event_block_token = c("e1", "e2"),
+    observer_cluster_token = c("o1", "o2"),
+    location_cluster_token = c("l1", "l2"),
+    protocol = c("stationary", "traveling"),
+    concurrent_links = c(2L, 1L),
+    high_precision_2km = c(TRUE, TRUE),
+    stringsAsFactors = FALSE
+  )
+  for (term in terms) events[[term]] <- 0L
+  events$es_near_baseline <- c(10L, 1L)
+  events$es_reference_early_pre <- c(2L, 0L)
+  links <- data.frame(
+    analysis_event_token = c("a", "a", "b"),
+    distance_km = c(4, 1, 6),
+    herring_source_token = c("z", "y", "x"),
+    term = c(
+      "es_near_baseline", "es_reference_early_pre",
+      "es_reference_early_pre"
+    ),
+    period = c("baseline", "early_pre", "early_pre"),
+    zone = c("near", "reference", "reference"),
+    stringsAsFactors = FALSE
+  )
+  binary <- editorial_sensitivity_transform_v1(
+    "binary_any_link", events, links
+  )$events
+  capped <- editorial_sensitivity_transform_v1(
+    "cap_8", events, links
+  )$events
+  nearest <- editorial_sensitivity_transform_v1(
+    "nearest_event", events, links
+  )$events
+  testthat::expect_equal(binary$es_near_baseline, c(1L, 1L))
+  testthat::expect_equal(capped$es_near_baseline, c(8L, 1L))
+  testthat::expect_equal(nearest$es_near_baseline, c(0L, 0L))
+  testthat::expect_equal(nearest$es_reference_early_pre, c(1L, 1L))
+  testthat::expect_equal(
+    rowSums(nearest[terms]), c(1, 1)
+  )
+})

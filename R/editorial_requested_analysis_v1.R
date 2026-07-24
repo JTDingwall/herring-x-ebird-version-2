@@ -511,7 +511,7 @@ editorial_random_variances_v1 <- function(fit) {
 
 editorial_fit_model_v1 <- function(
     dat, outcome, taxon_id, unit_label, checkpoint_path, cache_signature,
-    base_design, frozen_effects) {
+    base_design, frozen_effects, compute_predictions = TRUE) {
   if (file.exists(checkpoint_path)) {
     cached <- readRDS(checkpoint_path)
     if (identical(cached$cache_signature, cache_signature)) {
@@ -689,9 +689,13 @@ editorial_fit_model_v1 <- function(
   } else {
     0
   }
-  predictions <- editorial_predictions_v1(
-    beta, covariance, sigma, outcome, taxon_id, unit_label, base_design
-  )
+  predictions <- if (compute_predictions) {
+    editorial_predictions_v1(
+      beta, covariance, sigma, outcome, taxon_id, unit_label, base_design
+    )
+  } else {
+    data.frame()
+  }
   result <- list(
     contrasts = effects$contrasts,
     diagnostics = diagnostics,
