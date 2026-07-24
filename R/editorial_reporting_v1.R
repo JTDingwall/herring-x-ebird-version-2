@@ -11,6 +11,9 @@ editorial_family_summary_v1 <- function(output_dir) {
   finite_x <- editorial_reporting_read_v1(
     output_dir, "finite_vs_x_results.csv"
   )
+  finite_x_a14 <- finite_x[
+    finite_x$comparison == "active_minus_pre14", , drop = FALSE
+  ]
   all <- rbind(primary, finite_x)
   all <- all[all$comparison == "active_minus_pre14", , drop = FALSE]
   outcomes <- unique(all$outcome)
@@ -632,14 +635,12 @@ editorial_write_handoff_v1 <- function(
     sprintf(
       "The finite-numeric-versus-X observation-process model was estimable for %d species. No A14 contrast survived the separate 49-species BH family (minimum q approximately %.3f); %d completed fits carried singular warnings. This does not establish a known direction of selection bias.",
       fx$estimable_species,
-      min(editorial_reporting_read_v1(
-        output_dir, "finite_vs_x_results.csv"
-      )$q_value, na.rm = TRUE),
+      min(finite_x_a14$q_value, na.rm = TRUE),
       fx$singular_warning_species
     ),
     "",
     sprintf(
-      "Absolute standardization makes the ratios less dramatic. For example, the observed-covariate A14 contrast was %.2f additional conditional numeric reports on the arithmetic-mean scale for Short-billed Gull (95%% CI %.2f to %.2f), and %.2f percentage points for Glaucous-winged Gull checklist reporting (95%% CI %.2f to %.2f). These set all random intercepts and nonselected link predictors to zero before averaging over the observed adjustment distribution.",
+      "Absolute standardization makes the ratios less dramatic. For example, the observed-covariate A14 contrast was %.2f units in the modeled conditional arithmetic-mean numeric count for Short-billed Gull (95%% CI %.2f to %.2f), and %.2f percentage points for Glaucous-winged Gull checklist reporting (95%% CI %.2f to %.2f). These set all random intercepts and nonselected link predictors to zero before averaging over the observed adjustment distribution.",
       short_bill$estimate, short_bill$conf_low, short_bill$conf_high,
       100 * glaucous_wing$estimate, 100 * glaucous_wing$conf_low,
       100 * glaucous_wing$conf_high

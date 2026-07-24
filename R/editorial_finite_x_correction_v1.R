@@ -21,7 +21,9 @@ editorial_replace_outcome_rows_v1 <- function(
 
 editorial_write_output_manifest_v1 <- function(output_dir) {
   manifest_path <- file.path(output_dir, "output_hash_manifest.csv")
-  output_files <- list.files(output_dir, full.names = TRUE)
+  output_files <- sort(list.files(
+    output_dir, full.names = TRUE, recursive = TRUE
+  ), method = "radix")
   output_files <- output_files[
     normalizePath(output_files, winslash = "/", mustWork = FALSE) !=
       normalizePath(manifest_path, winslash = "/", mustWork = FALSE)
