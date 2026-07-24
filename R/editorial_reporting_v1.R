@@ -495,7 +495,11 @@ editorial_make_figures_v1 <- function(
     links$distribution == "analysis_window_links_exact", , drop = FALSE
   ]
   links$link_count <- as.integer(links$category)
-  links <- links[is.finite(links$link_count), , drop = FALSE]
+  links <- links[
+    is.finite(links$link_count) &
+      is.finite(links$checklists) &
+      links$checklists > 0, , drop = FALSE
+  ]
   link_plot <- ggplot2::ggplot(
     links, ggplot2::aes(x = link_count, y = checklists)
   ) +
@@ -582,6 +586,12 @@ editorial_write_handoff_v1 <- function(
   report <- get_family("checklist_reporting")
   count <- get_family("conditional_positive_numeric_count")
   fx <- get_family("finite_numeric_vs_x")
+  finite_x <- editorial_reporting_read_v1(
+    output_dir, "finite_vs_x_results.csv"
+  )
+  finite_x_a14 <- finite_x[
+    finite_x$comparison == "active_minus_pre14", , drop = FALSE
+  ]
   diagnostics <- editorial_reporting_read_v1(
     output_dir, "model_diagnostics.csv"
   )
@@ -612,12 +622,15 @@ editorial_write_handoff_v1 <- function(
       sensitivity$comparison == "active_minus_pre14" &
         is.finite(sensitivity$estimate), , drop = FALSE
     ]
-    by_id <- split(sx, sx$sensitivity_id)
-    paste(vapply(names(by_id), function(id) {
-      x <- by_id[[id]]
+    groups <- interaction(
+      sx$sensitivity_id, sx$outcome, drop = TRUE, lex.order = TRUE
+    )
+    by_group <- split(sx, groups)
+    paste(vapply(by_group, function(x) {
       sprintf(
-        "`%s`: %d/%d finite estimates retained the primary sign; median absolute link-scale change %.3f.",
-        id, sum(x$direction_concordant %in% TRUE, na.rm = TRUE),
+        "`%s` / `%s`: %d/%d finite estimates retained the primary sign; median absolute link-scale change %.3f.",
+        x$sensitivity_id[[1L]], x$outcome[[1L]],
+        sum(x$direction_concordant %in% TRUE, na.rm = TRUE),
         nrow(x), stats::median(abs(x$estimate_difference_from_primary))
       )
     }, character(1L)), collapse = "\n\n")

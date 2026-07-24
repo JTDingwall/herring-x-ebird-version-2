@@ -59,6 +59,26 @@ run_editorial_qa_v1 <- function(
     file.path(output_dir, "absolute_predictions.csv"),
     stringsAsFactors = FALSE, check.names = FALSE
   )
+  sensitivity <- utils::read.csv(
+    file.path(output_dir, "sensitivity_comparisons.csv"),
+    stringsAsFactors = FALSE, check.names = FALSE
+  )
+  sensitivity_diagnostics <- utils::read.csv(
+    file.path(output_dir, "sensitivity_diagnostics.csv"),
+    stringsAsFactors = FALSE, check.names = FALSE
+  )
+  engine <- utils::read.csv(
+    file.path(output_dir, "engine_validation_results.csv"),
+    stringsAsFactors = FALSE, check.names = FALSE
+  )
+  engine_diagnostics <- utils::read.csv(
+    file.path(output_dir, "engine_validation_diagnostics.csv"),
+    stringsAsFactors = FALSE, check.names = FALSE
+  )
+  link_support <- utils::read.csv(
+    file.path(output_dir, "link_count_outcome_support.csv"),
+    stringsAsFactors = FALSE, check.names = FALSE
+  )
   add_check("primary_contrast_row_count", nrow(primary) == 196L,
             nrow(primary), 196L)
   add_check("finite_x_contrast_row_count", nrow(finite_x) == 98L,
@@ -67,6 +87,18 @@ run_editorial_qa_v1 <- function(
             nrow(diagnostics), 147L)
   add_check("absolute_prediction_row_count", nrow(predictions) == 2256L,
             nrow(predictions), 2256L)
+  add_check("binary_sensitivity_contrast_row_count",
+            nrow(sensitivity) == 196L, nrow(sensitivity), 196L)
+  add_check("binary_sensitivity_diagnostic_row_count",
+            nrow(sensitivity_diagnostics) == 98L,
+            nrow(sensitivity_diagnostics), 98L)
+  add_check("engine_validation_result_row_count", nrow(engine) == 4L,
+            nrow(engine), 4L)
+  add_check("engine_validation_diagnostic_row_count",
+            nrow(engine_diagnostics) == 2L,
+            nrow(engine_diagnostics), 2L)
+  add_check("link_count_support_row_count", nrow(link_support) == 9163L,
+            nrow(link_support), 9163L)
 
   contrast_key <- c(
     "analysis_taxon_id", "outcome", "comparison"
@@ -83,6 +115,24 @@ run_editorial_qa_v1 <- function(
             anyDuplicated(finite_key), 0L)
   add_check("prediction_key_unique", !anyDuplicated(prediction_key),
             anyDuplicated(prediction_key), 0L)
+  sensitivity_key <- paste(
+    sensitivity$sensitivity_id, sensitivity$analysis_taxon_id,
+    sensitivity$outcome, sensitivity$comparison, sep = "|"
+  )
+  engine_key <- paste(
+    engine$engine, engine$analysis_taxon_id,
+    engine$outcome, engine$comparison, sep = "|"
+  )
+  link_key <- paste(
+    link_support$analysis_taxon_id, link_support$term,
+    link_support$link_count, sep = "|"
+  )
+  add_check("sensitivity_key_unique", !anyDuplicated(sensitivity_key),
+            anyDuplicated(sensitivity_key), 0L)
+  add_check("engine_validation_key_unique", !anyDuplicated(engine_key),
+            anyDuplicated(engine_key), 0L)
+  add_check("link_count_support_key_unique", !anyDuplicated(link_key),
+            anyDuplicated(link_key), 0L)
 
   all_contrasts <- rbind(primary, finite_x)
   finite <- is.finite(all_contrasts$estimate)
@@ -119,6 +169,27 @@ run_editorial_qa_v1 <- function(
     all(all_contrasts$full_covariance_used %in% TRUE),
     sum(all_contrasts$full_covariance_used %in% TRUE),
     nrow(all_contrasts)
+  )
+  engine_finite <- is.finite(engine$estimate)
+  engine_ratio_difference <- max(abs(
+    engine$ratio[engine_finite] - exp(engine$estimate[engine_finite])
+  ))
+  add_check(
+    "engine_ratio_matches_exponentiated_estimate",
+    engine_ratio_difference < 1e-12,
+    engine_ratio_difference, "<1e-12", 1e-12
+  )
+  add_check(
+    "engine_validation_completed_with_full_covariance",
+    all(engine$status == "completed") &&
+      all(engine$full_covariance_used %in% TRUE) &&
+      all(engine_diagnostics$status == "completed") &&
+      all(engine_diagnostics$positive_definite_hessian %in% TRUE),
+    paste(
+      sum(engine$status == "completed"),
+      sum(engine_diagnostics$status == "completed")
+    ),
+    "4 result rows and 2 diagnostic rows completed"
   )
 
   checkpoint_paths <- list.files(
@@ -191,6 +262,26 @@ run_editorial_qa_v1 <- function(
       execution$historical_stage4a_outputs_modified,
       execution$frozen_event_study_outputs_modified
     ), "FALSE FALSE"
+  )
+  auxiliary_records <- c(
+    file.path(output_dir, "sensitivity_execution_record.yml"),
+    file.path(output_dir, "linearity_execution_record.yml"),
+    list.files(
+      output_dir, pattern = "^engine_validation_execution__.*\\.yml$",
+      full.names = TRUE
+    )
+  )
+  auxiliary_execution <- lapply(auxiliary_records, yaml::read_yaml)
+  auxiliary_holdout_reads <- vapply(
+    auxiliary_execution,
+    function(record) identical(record$records_2026_plus_read, 0L),
+    logical(1L)
+  )
+  add_check(
+    "auxiliary_holdout_records_read",
+    length(auxiliary_execution) == 4L && all(auxiliary_holdout_reads),
+    paste(sum(auxiliary_holdout_reads), "of", length(auxiliary_execution)),
+    "4 of 4 execution records report zero"
   )
   editorial_privacy_column_gate_v1(list.files(
     output_dir, full.names = TRUE
