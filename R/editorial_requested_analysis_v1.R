@@ -259,8 +259,8 @@ editorial_scenario_values_v1 <- function() {
                           post_stage4a_exposure_terms_v1())
   make <- function(...) {
     out <- zero
-    values <- list(...)
-    for (value in values) out[[names(value)]] <- unname(value)
+    values <- c(...)
+    out[names(values)] <- unname(values)
     out
   }
   list(

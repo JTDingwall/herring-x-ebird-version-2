@@ -45,6 +45,18 @@ testthat::test_that("prediction contrast algebra is baseline adjusted", {
   testthat::expect_equal(result[["active_minus_pre14"]], 0.15)
 })
 
+testthat::test_that("prediction scenarios retain named exposure weights", {
+  scenarios <- editorial_scenario_values_v1()
+  testthat::expect_equal(scenarios$baseline_near[["es_near_baseline"]], 1)
+  testthat::expect_equal(
+    scenarios$active_near[["es_near_spawn_start"]], 4 / 15
+  )
+  testthat::expect_equal(
+    scenarios$active_reference[["es_reference_early_egg"]], 11 / 15
+  )
+  testthat::expect_equal(sum(scenarios$pre14_near), 1)
+})
+
 testthat::test_that("privacy gate rejects protected identifier columns", {
   path <- tempfile(fileext = ".csv")
   on.exit(unlink(path), add = TRUE)
