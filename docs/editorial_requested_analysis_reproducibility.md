@@ -19,6 +19,8 @@ not a preregistration.
 - Reporting/dictionary framework: `99f0e95`, `0c3fbd6`
 - Checkpoint-backed QA: `fb9b589`, `19026dc`
 - Representative `glmmTMB` validation runner: `476b8b0`
+- Validation/reporting release hardening: `d58b271`, `397bfc6`, `b5eb2d4`,
+  `abc9f71`, `c6c4498`, `b5ca493`, `7e59ed9`, `f1020d6`
 
 The manuscript-editing worktree and branch were not switched, reset, rebased,
 stashed, merged, or modified. Historical Stage 4A specifications, locks,
@@ -74,6 +76,7 @@ Rscript --vanilla scripts/run_editorial_engine_validation_component_v1.R
 Rscript --vanilla scripts/run_editorial_reporting_v1.R
 Rscript --vanilla scripts/run_editorial_dictionary_v1.R
 Rscript --vanilla scripts/run_editorial_qa_v1.R
+Rscript --vanilla scripts/write_editorial_session_info_v1.R
 ```
 
 Sensitivity components were selected with
@@ -81,6 +84,16 @@ Sensitivity components were selected with
 components were selected with the frozen species/outcome pair in
 `EDITORIAL_VALIDATION_SPECIES` and `EDITORIAL_VALIDATION_OUTCOME`. Each
 representative engine fit had a 30-minute external wall-time budget.
+
+The completed alternative-engine validation consists of one frozen
+representative per outcome: Iceland Gull reporting under binomial-logit
+`glmmTMB`, and Glaucous-winged Gull positive numeric count under mixed
+zero-truncated NB2. Both completed inside the cap with positive-definite
+Hessians and directionally concordant A14 contrasts. The other four frozen
+representatives were not run and are reported as incomplete, not silently
+generalized. The binary-any-link full family completed; the other prespecified
+sensitivity families remain partial or infeasible as itemized in
+`analysis_status.csv`.
 
 ## Corrections and resumability
 
@@ -116,11 +129,16 @@ The final numerical QA script checks:
 - exact agreement of saved tables with protected checkpoint objects, within
   an explicit `1e-8` absolute CSV-serialization tolerance;
 - exact agreement of all 2,256 absolute predictions with their checkpoints;
+- unique keys, ratio algebra, completed statuses, and positive-definite
+  Hessians for the released alternative-engine validation rows;
+- exact row counts and unique keys for binary-link sensitivity and
+  link-count support tables;
 - zero holdout reads and no historical-output mutation;
 - absence of prohibited identifier/coordinate columns.
 
-The full repository test suite, the repository privacy scan, figure rendering,
-dictionary missing-field gate, output hash manifest, and Git status checks are
+The expanded numerical gate passed all 30 checks. The full repository fixture
+suite and repository privacy scan passed. Figure rendering, the dictionary
+missing-field gate, the output hash manifest, and Git status checks are
 recorded in the final handoff. Complete fit and failure counts are in
 `completion_failure_log.csv`; requested-analysis dispositions are in
 `analysis_status.csv`; per-execution YAML records retain component completion,
