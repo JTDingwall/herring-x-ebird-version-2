@@ -1,0 +1,20 @@
+---
+title: "Highlights"
+author:
+  - name: "Jacob T. Dingwall"
+date: ""
+format:
+  docx:
+    reference-doc: ../source_v7/mer_v7_times_new_roman_reference.docx
+    toc: false
+    number-sections: false
+execute:
+  enabled: false
+lang: en
+---
+
+- Nearest-event sensitivity retained all 217,200 eligible checklists
+- Exposure signs agreed for 34/48 reporting and 34/41 count estimates
+- Reported-count associations were more often BH-significant than reporting
+- 4 component(s) met the prespecified material-change rule
+- Results are event-linked associations, not occupancy or abundance effects

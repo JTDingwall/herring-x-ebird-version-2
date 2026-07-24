@@ -1,0 +1,8 @@
+"file","bytes","sha256"
+"design_selection.csv",1529,"b7c0eca037f7a633d22e9b700f747079a4a78c93b8dbc530dc54bdbac7b739db"
+"sensitivity_execution_record.yml",735,"ea8dad783d706e77e50d6d31958c063839b44ba5aae03ba7940e76169d70b261"
+"conventional_exposure_sensitivity_results.csv",91209,"7709606f22c5322aecfe8b7ffa497565e78b9da589258922ca99cb77e82acb09"
+"component_status.csv",215104,"f9a8e1b4f5770ae5a74ef4e2d3b7982d567075d340f5df6b166d4172358253df"
+"comparison_summary.csv",559,"c3ebd952477e101ebd12e51bc27fa4ed76579251bc1bb140d3d8277c5ffb183b"
+"interpretation_changes.csv",48548,"25704a3a40eadb846d4a94d431d12673963ec1e729c2b697da08e8a8e620da7a"
+"interpretation_memo.md",5838,"efee210f25dbc2548540050568fb6cc2574e7429f1348b7a07fc7f41fd0f2c0d"

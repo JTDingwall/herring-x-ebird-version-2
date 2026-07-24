@@ -298,6 +298,8 @@ run_editorial_sensitivities_v1 <- function(
     output_dir = "outputs/editorial_requested_analysis_v1",
     checkpoint_dir =
       "data/derived/editorial_requested_analysis_v1/sensitivity_checkpoints",
+    primary_contrasts_path =
+      file.path(output_dir, "active_minus_pre_contrasts.csv"),
     code_commit = NA_character_) {
   acknowledgement <- "through_2025_editorial_post_result_v1"
   if (!identical(
@@ -399,7 +401,7 @@ run_editorial_sensitivities_v1 <- function(
     stop("EDITORIAL_SPECIES_FAMILY_GATE: expected 49 species", call. = FALSE)
   }
   primary_contrasts <- utils::read.csv(
-    file.path(output_dir, "active_minus_pre_contrasts.csv"),
+    primary_contrasts_path,
     stringsAsFactors = FALSE
   )
   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)

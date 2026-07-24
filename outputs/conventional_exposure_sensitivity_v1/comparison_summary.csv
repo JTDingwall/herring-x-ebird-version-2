@@ -1,0 +1,3 @@
+"outcome","primary_estimable","sensitivity_estimable","paired_estimable","sign_concordant","sign_concordance_fraction","primary_bh_significant","primary_bh_paired","primary_bh_sign_preserved","primary_bh_remains_bh_significant","sensitivity_bh_significant","sensitivity_bh_positive","sensitivity_bh_negative","direction_reversals","bh_threshold_crossings","material_interpretation_changes"
+"checklist_reporting",48,49,48,34,0.708333333333333,13,13,11,7,9,7,2,14,8,3
+"conditional_positive_numeric_count",46,41,41,34,0.829268292682927,18,18,18,17,19,19,0,7,3,1
