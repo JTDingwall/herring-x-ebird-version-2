@@ -149,3 +149,15 @@ testthat::test_that("outcome-blind link transformations are deterministic", {
     rowSums(nearest[terms]), c(1, 1)
   )
 })
+
+testthat::test_that("zero-row CSV schema is constructed explicitly", {
+  path <- tempfile(fileext = ".csv")
+  on.exit(unlink(path), add = TRUE)
+  utils::write.csv(
+    data.frame(a = 1:2, b = c("x", "y")), path, row.names = FALSE
+  )
+  schema <- utils::read.csv(path, nrows = 1L)
+  empty <- schema[0L, , drop = FALSE]
+  testthat::expect_equal(nrow(empty), 0L)
+  testthat::expect_identical(names(empty), c("a", "b"))
+})

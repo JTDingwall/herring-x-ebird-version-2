@@ -310,10 +310,11 @@ run_editorial_finite_x_correction_v1 <- function(
   predictions <- if (length(prediction_parts)) {
     do.call(rbind, prediction_parts)
   } else {
-    utils::read.csv(
+    prediction_schema <- utils::read.csv(
       file.path(output_dir, "absolute_predictions.csv"),
-      stringsAsFactors = FALSE, nrows = 0L, check.names = FALSE
+      stringsAsFactors = FALSE, nrows = 1L, check.names = FALSE
     )
+    prediction_schema[0L, , drop = FALSE]
   }
   observed <- do.call(rbind, lapply(results, `[[`, "observed"))
   finite_summary <- do.call(rbind, lapply(results, `[[`, "finite_summary"))
@@ -336,6 +337,43 @@ run_editorial_finite_x_correction_v1 <- function(
   editorial_replace_outcome_rows_v1(
     file.path(output_dir, "absolute_predictions.csv"), predictions
   )
+  prediction_path <- file.path(output_dir, "absolute_predictions.csv")
+  all_predictions <- utils::read.csv(
+    prediction_path, stringsAsFactors = FALSE, check.names = FALSE
+  )
+  prediction_key <- paste(
+    all_predictions$analysis_taxon_id, all_predictions$outcome,
+    all_predictions$prediction_configuration, all_predictions$quantity,
+    sep = "|"
+  )
+  duplicated_keys <- duplicated(prediction_key)
+  if (any(duplicated_keys)) {
+    duplicate_groups <- split(
+      seq_len(nrow(all_predictions)), prediction_key
+    )
+    inconsistent <- vapply(duplicate_groups, function(index) {
+      if (length(index) < 2L) return(FALSE)
+      length(unique(do.call(
+        paste, c(all_predictions[index, , drop = FALSE], sep = "\r")
+      ))) != 1L
+    }, logical(1L))
+    if (any(inconsistent)) {
+      stop(
+        "EDITORIAL_PREDICTION_KEY_GATE: conflicting duplicate predictions",
+        call. = FALSE
+      )
+    }
+    all_predictions <- all_predictions[!duplicated_keys, , drop = FALSE]
+    editorial_write_csv_v1(all_predictions, prediction_path)
+  }
+  if (anyDuplicated(paste(
+      all_predictions$analysis_taxon_id, all_predictions$outcome,
+      all_predictions$prediction_configuration, all_predictions$quantity,
+      sep = "|"
+    ))) {
+    stop("EDITORIAL_PREDICTION_KEY_GATE: duplicate rows remain",
+         call. = FALSE)
+  }
 
   all_diagnostics_path <- file.path(output_dir, "model_diagnostics.csv")
   primary_contrasts_path <- file.path(
