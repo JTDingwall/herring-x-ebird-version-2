@@ -6,8 +6,8 @@ not a preregistration.
 ## Repository history
 
 - Analysis branch: `analysis/editorial-required-analyses`
-- Isolated worktree:
-  `C:\Users\dingw\AppData\Local\Temp\herring-x-ebird-editorial-required-analyses`
+- Execution used an isolated worktree outside the manuscript-editing worktree;
+  its machine-local path is intentionally not retained in the release record.
 - Exact base commit: `c1f1970045274df353c7874b351a58fd0df06fdb`
 - Frozen specification commit: `a0c4ef5`
 - Primary implementation commits: `f040bac`, `6bcf1c3`, `7098d82`
@@ -44,11 +44,9 @@ Strait of Georgia population. Protected checkpoints are under
 ## Execution environment
 
 R was invoked with `--vanilla`,
-`RENV_CONFIG_AUTOLOADER_ENABLED=FALSE`, and the archived project library:
-
-`C:\Users\dingw\OneDrive\Documents\GitHub\herring-x-ebird-version-2\renv\library\windows\R-4.5\x86_64-w64-mingw32`
-
-The exact session and relevant package versions are written to
+`RENV_CONFIG_AUTOLOADER_ENABLED=FALSE`, and the archived project library
+`renv/library/windows/R-4.5/x86_64-w64-mingw32`. The exact session and relevant
+package versions are written to
 `outputs/editorial_requested_analysis_v1/session_info.txt`.
 
 The frozen specification permitted one isolated `glmmTMB` installation attempt.
