@@ -60,7 +60,18 @@ if (mode == "fixture") {
     vapply(definitions, function(x) x$contrast == "did_pre_14_day",
            logical(1L))
   ][[1L]]
+  new_contrast <- definitions[
+    vapply(definitions, function(x) x$contrast == "active_minus_pre_14_day",
+           logical(1L))
+  ][[1L]]
   stopifnot(
+    ## The primary estimand's baseline terms cancel algebraically.
+    abs(new_contrast$vector[["es_near_baseline"]]) < 1e-12,
+    abs(new_contrast$vector[["es_reference_baseline"]]) < 1e-12,
+    isTRUE(all.equal(
+      unname(new_contrast$vector),
+      unname(active$vector - pre14$vector)
+    )),
     abs(sum(active$vector)) < 1e-12,
     abs(sum(pre14$vector)) < 1e-12,
     isTRUE(all.equal(
@@ -83,7 +94,9 @@ if (mode == "fixture") {
 code_files <- c(
   ".gitignore",
   "R/post_stage4a_sog_event_study_v1.R",
+  "R/post_stage4a_sog_event_study_laplace_sensitivity_v1.R",
   "scripts/run_post_stage4a_sog_event_study_v1.R",
+  "scripts/run_post_stage4a_laplace_sensitivity_v1.R",
   "scripts/run_post_stage4a_sog_event_study_v1.ps1",
   "metadata/post_stage4a_sog_event_study_spec_v1.yml",
   "metadata/post_stage4a_sog_event_study_authorization_v1.yml",

@@ -91,6 +91,28 @@ Thumbs.db
 !outputs/post_stage4a_sog_event_study_v1/
 !outputs/post_stage4a_sog_event_study_v1/*.csv
 !outputs/post_stage4a_sog_event_study_v1/*.yml
+# Refit of the event study carrying the archived primary contrast. Written to
+# a new version so the hash-locked v1 release above is never overwritten.
+!outputs/post_stage4a_sog_event_study_v1_1/
+!outputs/post_stage4a_sog_event_study_v1_1/*.csv
+!outputs/post_stage4a_sog_event_study_v1_1/*.yml
+# Labelled Laplace (nAGQ = 1) reporting sensitivity, not the primary path.
+!outputs/post_stage4a_sog_event_study_laplace_v1/
+!outputs/post_stage4a_sog_event_study_laplace_v1/*.csv
+!outputs/post_stage4a_sog_event_study_laplace_v1/*.yml
+# Pre-onset summary derived from the frozen release; no refitting.
+!outputs/post_stage4a_sog_event_study_pretrend_v1/
+!outputs/post_stage4a_sog_event_study_pretrend_v1/*.csv
+!outputs/post_stage4a_sog_event_study_pretrend_v1/*.yml
+# Per-component fixed effects and covariance matrices. These are aggregate
+# model summaries, strictly less disclosive than the effect estimates already
+# released, and they let any future contrast be evaluated without a refit.
+# Allowlisted so the artefacts can be archived; committing them stays a
+# deliberate act.
+!outputs/post_stage4a_sog_event_study_model_summaries_v1/
+!outputs/post_stage4a_sog_event_study_model_summaries_v1/*.rds
+!outputs/post_stage4a_sog_event_study_laplace_model_summaries_v1/
+!outputs/post_stage4a_sog_event_study_laplace_model_summaries_v1/*.rds
 
 # Local raw-input audit products may contain machine paths
 outputs/input_audit_local/**

@@ -1,0 +1,15 @@
+execution_version: post_stage4a_sog_event_study_pretrend_v1
+executed_at_utc: '2026-07-24T23:27:39Z'
+analysis_status: derived_from_frozen_release_no_refit
+refitting_performed: no
+protected_inputs_read: 0
+source_release: outputs/post_stage4a_sog_event_study_v1/effect_estimates_v1.csv
+source_release_sha256: fc5a45bdce112c01461b5193af4a4627529336278e89aecf92861b7d50a6f00b
+outcomes:
+- detection
+- positive_numeric_count_given_detection
+pre_onset_contrasts:
+- did_early_pre
+- did_immediate_pre
+- did_pre_14_day
+final_gate: PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW

@@ -206,3 +206,114 @@ test_that("species roles promote requested taxa and demote comparators", {
   ]
   expect_setequal(comparators, c("Gadwall", "Northern Shoveler"))
 })
+
+test_that("active_minus_pre_14_day carries zero weight on both baseline terms", {
+  names_for_contrast <- c("(Intercept)", post_stage4a_exposure_terms_v1())
+  definitions <- post_stage4a_contrast_definitions_v1(names_for_contrast)
+  pick <- function(id) {
+    definitions[
+      vapply(definitions, function(x) x$contrast == id, logical(1L))
+    ][[1L]]
+  }
+  new_contrast <- pick("active_minus_pre_14_day")
+
+  ## The baseline terms cancel algebraically: the active half contributes
+  ## -1 to es_near_baseline and +1 to es_reference_baseline, and the negated
+  ## pre half contributes +1 and -1.
+  expect_lt(abs(new_contrast$weights[["es_near_baseline"]]), 1e-12)
+  expect_lt(abs(new_contrast$weights[["es_reference_baseline"]]), 1e-12)
+  expect_lt(abs(new_contrast$vector[["es_near_baseline"]]), 1e-12)
+  expect_lt(abs(new_contrast$vector[["es_reference_baseline"]]), 1e-12)
+
+  ## It is exactly the released active contrast minus the released pre
+  ## contrast, so its point estimate is reproducible from the frozen release.
+  expect_equal(
+    unname(new_contrast$vector),
+    unname(pick("did_active_0_14_day")$vector - pick("did_pre_14_day")$vector)
+  )
+  expect_lt(abs(sum(new_contrast$vector)), 1e-12)
+  expect_true(new_contrast$primary_estimand)
+  expect_identical(
+    new_contrast$contrast_type,
+    "duration_weighted_difference_in_differences"
+  )
+
+  ## Duration weights: 4 and 11 of the 15 active days, and half of each
+  ## seven-day pre-onset window.
+  expect_equal(new_contrast$vector[["es_near_spawn_start"]], 4 / 15)
+  expect_equal(new_contrast$vector[["es_near_early_egg"]], 11 / 15)
+  expect_equal(new_contrast$vector[["es_near_early_pre"]], -0.5)
+  expect_equal(new_contrast$vector[["es_near_immediate_pre"]], -0.5)
+})
+
+test_that("the new contrast reproduces the frozen release point estimates", {
+  release <- repo_file(
+    "outputs", "post_stage4a_sog_event_study_v1", "effect_estimates_v1.csv"
+  )
+  skip_if_not(file.exists(release))
+  effects <- utils::read.csv(release, stringsAsFactors = FALSE)
+  key <- function(x) paste(x$analysis_taxon_id, x$outcome, sep = "|")
+  active <- effects[effects$contrast == "did_active_0_14_day", , drop = FALSE]
+  pre <- effects[effects$contrast == "did_pre_14_day", , drop = FALSE]
+  pre <- pre[match(key(active), key(pre)), , drop = FALSE]
+  derived <- exp(active$estimate - pre$estimate)
+
+  spot <- function(species, outcome) {
+    derived[active$unit_label == species & active$outcome == outcome]
+  }
+  expect_equal(spot("Surf Scoter", "positive_numeric_count_given_detection"),
+               1.3038, tolerance = 1e-4)
+  expect_equal(spot("Surf Scoter", "detection"), 1.0034, tolerance = 1e-4)
+  expect_equal(spot("Harlequin Duck", "detection"), 1.1503, tolerance = 1e-4)
+})
+
+test_that("multiplicity keys the new contrast into its own family", {
+  effects <- data.frame(
+    analysis_role = "core_species",
+    outcome = "detection",
+    contrast = rep(c("did_active_0_14_day", "active_minus_pre_14_day"),
+                   each = 10L),
+    p_value = rep(seq(0.001, 0.5, length.out = 10L), times = 2L),
+    stringsAsFactors = FALSE
+  )
+  adjusted <- post_stage4a_adjust_multiplicity_v1(effects)
+  expect_identical(length(unique(adjusted$multiplicity_family)), 2L)
+  expect_true(
+    "core_species__detection__active_minus_pre_14_day" %in%
+      adjusted$multiplicity_family
+  )
+  ## Each family is adjusted over its own ten tests, not twenty.
+  first <- adjusted$q_value[adjusted$contrast == "did_active_0_14_day"]
+  expect_equal(first, stats::p.adjust(effects$p_value[1:10], method = "BH"))
+})
+
+test_that("the frozen v1 release directory cannot be overwritten", {
+  expect_error(
+    .post_stage4a_guard_frozen_outputs_v1(
+      "outputs/post_stage4a_sog_event_study_v1"
+    ),
+    "FROZEN_OUTPUT_GATE"
+  )
+  expect_true(
+    .post_stage4a_guard_frozen_outputs_v1(
+      "outputs/post_stage4a_sog_event_study_v1_1"
+    )
+  )
+})
+
+test_that("nAGQ above Laplace is refused for three crossed random effects", {
+  expect_error(
+    post_stage4a_fit_one_v1(
+      data.frame(), "atx", "Bird", "core_species", "detection",
+      tempfile(), "signature", NULL, nAGQ = 2L
+    ),
+    "NAGQ_GATE"
+  )
+  expect_error(
+    post_stage4a_fit_one_v1(
+      data.frame(), "atx", "Bird", "core_species", "detection",
+      tempfile(), "signature", NULL, nAGQ = -1L
+    ),
+    "NAGQ_GATE"
+  )
+})
