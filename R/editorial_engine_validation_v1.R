@@ -15,10 +15,14 @@ editorial_glmmtmb_variances_v1 <- function(fit) {
     location_variance = NA_real_
   )
   variance <- glmmTMB::VarCorr(fit)$cond
-  mapping <- c(
-    event_block_token = "event_block_variance",
-    observer_cluster_token = "observer_variance",
-    location_cluster_token = "location_variance"
+  mapping <- stats::setNames(
+    c(
+      "event_block_variance", "observer_variance", "location_variance"
+    ),
+    c(
+      "event_block_token", "observer_cluster_token",
+      "location_cluster_token"
+    )
   )
   for (group in names(mapping)) {
     if (group %in% names(variance)) {

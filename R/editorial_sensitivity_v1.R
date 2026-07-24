@@ -91,16 +91,15 @@ editorial_sensitivity_transform_v1 <- function(
       phase_links$period %in% c("early_pre", "immediate_pre"),
       "pre", "active"
     )
-    link_cells <- unique(rbind(
-      data.frame(
-        analysis_event_token = classified_links$analysis_event_token,
-        cell = classified_links$zone, stringsAsFactors = FALSE
-      ),
-      data.frame(
-        analysis_event_token = phase_links$analysis_event_token,
-        cell = phase_links$phase, stringsAsFactors = FALSE
-      )
-    ))
+    zone_cells <- classified_links[
+      , c("analysis_event_token", "zone"), drop = FALSE
+    ]
+    names(zone_cells)[2L] <- "cell"
+    phase_cells <- phase_links[
+      , c("analysis_event_token", "phase"), drop = FALSE
+    ]
+    names(phase_cells)[2L] <- "cell"
+    link_cells <- unique(rbind(zone_cells, phase_cells))
     metadata <- events[
       , c(
         "analysis_event_token", "observer_cluster_token",
