@@ -68,3 +68,14 @@ testthat::test_that("privacy gate rejects protected identifier columns", {
     "EDITORIAL_PRIVACY_COLUMN_GATE"
   )
 })
+
+testthat::test_that("finite-versus-X mapping preserves distinct count states", {
+  count_type <- c(
+    "numeric", "X", "unquantified_X", "lower_bound",
+    "ambiguity_affected", "zero_filled", NA_character_
+  )
+  testthat::expect_identical(
+    editorial_is_unquantified_x_v1(count_type),
+    c(FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE)
+  )
+})

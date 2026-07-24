@@ -2,6 +2,14 @@ editorial_release_count_v1 <- function(x, threshold = 20L) {
   ifelse(is.finite(x) & x > 0 & x < threshold, NA_real_, x)
 }
 
+editorial_is_unquantified_x_v1 <- function(count_type) {
+  # The frozen sparse state table uses the source label "X". Some internal
+  # Stage 4A materializations synthesize the semantically equivalent label
+  # "unquantified_X". Keep this mapping explicit and do not fold lower-bound
+  # or ambiguity-affected records into the unquantified-X state.
+  !is.na(count_type) & count_type %in% c("X", "unquantified_X")
+}
+
 editorial_write_csv_v1 <- function(x, path) {
   dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
   con <- file(path, open = "wb")
@@ -520,7 +528,9 @@ editorial_fit_model_v1 <- function(
     dat$model_response <- log(dat$numeric_count)
   } else if (outcome == "finite_numeric_vs_x") {
     use <- !is.na(dat$detection) & dat$detection == 1L &
-      !dat$ambiguity_flag & dat$count_type %in% c("numeric", "unquantified_X")
+      !dat$ambiguity_flag &
+      (dat$count_type == "numeric" |
+         editorial_is_unquantified_x_v1(dat$count_type))
     response <- "model_response"
     dat$model_response <- ifelse(dat$count_type == "numeric", 1L, 0L)
   } else {
@@ -597,7 +607,11 @@ editorial_fit_model_v1 <- function(
   rank_deficient <- length(beta) < ncol(stats::model.matrix(
     lme4::nobars(formula), d
   ))
-  status <- if (!converged) {
+  optimizer_completed <- length(optimizer_code) == 1L &&
+    !is.na(optimizer_code) && optimizer_code == 0L
+  status <- if (!converged && optimizer_completed) {
+    "completed_with_convergence_warning"
+  } else if (!converged) {
     "failed_convergence"
   } else if (singular) {
     "completed_with_singular_warning"
@@ -702,7 +716,7 @@ editorial_observed_summaries_v1 <- function(
     reported <- use & dat$detection == 1L & !is.na(dat$detection)
     finite <- reported & dat$count_type == "numeric" &
       is.finite(dat$numeric_count) & dat$numeric_count > 0
-    x <- reported & dat$count_type == "unquantified_X"
+    x <- reported & editorial_is_unquantified_x_v1(dat$count_type)
     lower <- reported & dat$count_type == "lower_bound"
     other <- reported & !(finite | x | lower)
     denominator <- sum(use)
@@ -750,7 +764,8 @@ editorial_finite_x_summary_v1 <- function(dat, taxon_id, unit_label) {
   reported <- dat$detection == 1L & !is.na(dat$detection)
   finite <- reported & !dat$ambiguity_flag & dat$count_type == "numeric" &
     is.finite(dat$numeric_count) & dat$numeric_count > 0
-  x <- reported & !dat$ambiguity_flag & dat$count_type == "unquantified_X"
+  x <- reported & !dat$ambiguity_flag &
+    editorial_is_unquantified_x_v1(dat$count_type)
   eligible <- finite | x
   data.frame(
     analysis_taxon_id = taxon_id,
