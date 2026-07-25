@@ -286,12 +286,139 @@ post_stage4a_contrast_definitions_v1 <- function(coefficient_names) {
       scale_weights(did("early_egg"), 11 / 15)
     )
   )
+  rows[[length(rows) + 1L]] <- list(
+    contrast = "active_minus_pre_14_day",
+    contrast_type = "duration_weighted_difference_in_differences",
+    ecological_period = "active_minus_pre_14_day",
+    primary_estimand = TRUE,
+    weights = combine(
+      scale_weights(did("spawn_start"), 4 / 15),
+      scale_weights(did("early_egg"), 11 / 15),
+      scale_weights(did("early_pre"), -0.5),
+      scale_weights(did("immediate_pre"), -0.5)
+    )
+  )
+  active_minus_pre_weights <- rows[[length(rows)]]$weights
+  if (!(abs(active_minus_pre_weights[["es_near_baseline"]]) < 1e-12 &&
+        abs(active_minus_pre_weights[["es_reference_baseline"]]) < 1e-12)) {
+    stop(
+      "POST_STAGE4A_EVENT_STUDY_CONTRAST_WEIGHT_GATE: ",
+      "active_minus_pre_14_day must carry zero weight on both baseline terms",
+      call. = FALSE
+    )
+  }
   for (i in seq_along(rows)) {
     rows[[i]]$vector <- .post_stage4a_contrast_vector_v1(
       coefficient_names, rows[[i]]$weights
     )
   }
   rows
+}
+
+.post_stage4a_model_summary_path_v1 <- function(dir, taxon_id, outcome) {
+  file.path(dir, paste(taxon_id, outcome, "model_summary_v1.rds", sep = "_"))
+}
+
+.post_stage4a_write_model_summary_v1 <- function(
+    dir, taxon_id, unit_label, analysis_role, outcome, status,
+    beta = NULL, covariance = NULL, gradient = NULL) {
+  if (is.null(dir)) return(invisible(NULL))
+  summary_object <- list(
+    model_version_id = "SOG_EVENT_STUDY_v1",
+    analysis_taxon_id = taxon_id,
+    unit_label = unit_label,
+    analysis_role = analysis_role,
+    region = "SoG",
+    outcome = outcome,
+    status = status,
+    fixed_effects = beta,
+    covariance = covariance,
+    gradient_check = gradient
+  )
+  saveRDS(
+    summary_object,
+    .post_stage4a_model_summary_path_v1(dir, taxon_id, outcome)
+  )
+  invisible(NULL)
+}
+
+.post_stage4a_gradient_check_v1 <- function(fit, devfun_factory) {
+  unavailable <- function(note) {
+    list(max_abs_gradient = NA_real_, gradient_check_status = note,
+         devfun_reference_deviation = NA_real_)
+  }
+  if (!identical(
+    Sys.getenv("POST_STAGE4A_EVENT_STUDY_GRADIENT_CHECK", unset = "1"), "1"
+  )) {
+    return(unavailable("gradient_check_disabled"))
+  }
+  if (!requireNamespace("numDeriv", quietly = TRUE)) {
+    return(unavailable("numDeriv_unavailable"))
+  }
+  devfun <- try(devfun_factory(), silent = TRUE)
+  if (inherits(devfun, "try-error") || !is.function(devfun)) {
+    return(unavailable("devfun_unavailable"))
+  }
+  ## The optimised criterion, on the same scale the deviance function
+  ## returns. Note stats::deviance() is NOT this quantity for a glmer fit
+  ## (it returns the sum of squared deviance residuals instead), so using it
+  ## here would spuriously fail every binomial component.
+  reference <- try(-2 * as.numeric(stats::logLik(fit)), silent = TRUE)
+  if (inherits(reference, "try-error") || length(reference) != 1L ||
+      !is.finite(reference)) {
+    return(unavailable("reference_criterion_unavailable"))
+  }
+  theta <- as.numeric(lme4::getME(fit, "theta"))
+  beta <- as.numeric(lme4::fixef(fit))
+  ## lmer, and glmer at nAGQ = 0, profile the fixed effects out of the
+  ## deviance function, so it takes theta alone. glmer at nAGQ >= 1 takes
+  ## c(theta, beta). Choose deterministically rather than by trial, so a
+  ## wrong-length call never reaches lme4.
+  nAGQ <- tryCatch(as.integer(fit@devcomp$dims[["nAGQ"]]), error = function(e) NA_integer_)
+  profiled <- lme4::isREML(fit) || is.na(nAGQ) || nAGQ < 1L
+  candidates <- if (profiled) {
+    list(theta = theta, theta_beta = c(theta, beta))
+  } else {
+    list(theta_beta = c(theta, beta), theta = theta)
+  }
+  best_name <- NA_character_
+  best_pars <- NULL
+  best_deviation <- Inf
+  for (name in names(candidates)) {
+    value <- try(
+      suppressMessages(suppressWarnings(devfun(candidates[[name]]))),
+      silent = TRUE
+    )
+    if (inherits(value, "try-error") || length(value) != 1L ||
+        !is.finite(value)) {
+      next
+    }
+    deviation <- abs(value - reference) / max(1, abs(reference))
+    if (deviation < best_deviation) {
+      best_deviation <- deviation
+      best_pars <- candidates[[name]]
+      best_name <- name
+    }
+    if (best_deviation <= 1e-6) break
+  }
+  if (is.null(best_pars)) return(unavailable("devfun_not_evaluable"))
+  if (best_deviation > 1e-6) {
+    result <- unavailable("devfun_reference_mismatch")
+    result$devfun_reference_deviation <- best_deviation
+    return(result)
+  }
+  gradient <- try(
+    numDeriv::grad(devfun, best_pars, method = "Richardson"),
+    silent = TRUE
+  )
+  if (inherits(gradient, "try-error") || !all(is.finite(gradient))) {
+    return(unavailable("gradient_not_computable"))
+  }
+  list(
+    max_abs_gradient = max(abs(gradient)),
+    gradient_check_status = paste0("computed_", best_name),
+    devfun_reference_deviation = best_deviation
+  )
 }
 
 .post_stage4a_empty_fit_v1 <- function(
@@ -336,6 +463,9 @@ post_stage4a_contrast_definitions_v1 <- function(coefficient_names) {
     singular_fit = NA,
     rank_deficient = NA,
     convergence_message = status,
+    max_abs_gradient = NA_real_,
+    gradient_check_status = "not_fitted",
+    devfun_reference_deviation = NA_real_,
     n = .post_stage4a_release_count_v1(n),
     status = status,
     stringsAsFactors = FALSE
@@ -345,8 +475,24 @@ post_stage4a_contrast_definitions_v1 <- function(coefficient_names) {
 
 post_stage4a_fit_one_v1 <- function(
     dat, taxon_id, unit_label, analysis_role, outcome,
-    checkpoint_path, cache_signature) {
-  if (file.exists(checkpoint_path)) {
+    checkpoint_path, cache_signature, model_summary_dir = NULL,
+    nAGQ = 0L) {
+  nAGQ <- as.integer(nAGQ)
+  if (length(nAGQ) != 1L || is.na(nAGQ) || nAGQ < 0L) {
+    stop("POST_STAGE4A_EVENT_STUDY_NAGQ_GATE: nAGQ must be a non-negative integer",
+         call. = FALSE)
+  }
+  if (nAGQ > 1L) {
+    ## lme4 supports adaptive Gauss-Hermite quadrature only for a single
+    ## scalar random effect; this model carries three crossed random
+    ## intercepts, so Laplace (nAGQ = 1) is the highest available order.
+    stop("POST_STAGE4A_EVENT_STUDY_NAGQ_GATE: nAGQ > 1 is unavailable for ",
+         "three crossed random intercepts", call. = FALSE)
+  }
+  summary_ready <- is.null(model_summary_dir) || file.exists(
+    .post_stage4a_model_summary_path_v1(model_summary_dir, taxon_id, outcome)
+  )
+  if (file.exists(checkpoint_path) && summary_ready) {
     cached <- readRDS(checkpoint_path)
     if (identical(cached$cache_signature, cache_signature)) return(cached$result)
   }
@@ -391,6 +537,10 @@ post_stage4a_fit_one_v1 <- function(
       "failed_insufficient_support"
     )
     result$term_support <- term_support
+    .post_stage4a_write_model_summary_v1(
+      model_summary_dir, taxon_id, unit_label, analysis_role, outcome,
+      "failed_insufficient_support"
+    )
     saveRDS(list(cache_signature = cache_signature, result = result),
             checkpoint_path)
     return(result)
@@ -400,7 +550,7 @@ post_stage4a_fit_one_v1 <- function(
   fit <- try(
     if (outcome == "detection") {
       lme4::glmer(
-        formula, data = d, family = stats::binomial(), nAGQ = 0L,
+        formula, data = d, family = stats::binomial(), nAGQ = nAGQ,
         control = lme4::glmerControl(
           optimizer = "nloptwrap",
           calc.derivs = FALSE,
@@ -425,6 +575,10 @@ post_stage4a_fit_one_v1 <- function(
       "failed_numerical_fit_no_fallback"
     )
     result$term_support <- term_support
+    .post_stage4a_write_model_summary_v1(
+      model_summary_dir, taxon_id, unit_label, analysis_role, outcome,
+      "failed_numerical_fit_no_fallback"
+    )
     saveRDS(list(cache_signature = cache_signature, result = result),
             checkpoint_path)
     return(result)
@@ -432,6 +586,32 @@ post_stage4a_fit_one_v1 <- function(
 
   beta <- lme4::fixef(fit)
   covariance <- as.matrix(stats::vcov(fit))
+  gradient_check <- .post_stage4a_gradient_check_v1(
+    fit,
+    function() {
+      if (outcome == "detection") {
+        lme4::glmer(
+          formula, data = d, family = stats::binomial(), nAGQ = nAGQ,
+          control = lme4::glmerControl(
+            optimizer = "nloptwrap",
+            calc.derivs = FALSE,
+            optCtrl = list(maxeval = 10000L)
+          ),
+          devFunOnly = TRUE
+        )
+      } else {
+        lme4::lmer(
+          formula, data = d, REML = TRUE,
+          control = lme4::lmerControl(
+            optimizer = "nloptwrap",
+            calc.derivs = FALSE,
+            optCtrl = list(maxeval = 10000L)
+          ),
+          devFunOnly = TRUE
+        )
+      }
+    }
+  )
   singular_fit <- lme4::isSingular(fit, tol = 1e-4)
   classification <- .post_stage4a_model_messages_v1(
     fit@optinfo$conv$opt,
@@ -511,6 +691,9 @@ post_stage4a_fit_one_v1 <- function(
     singular_fit = singular_fit,
     rank_deficient = rank_deficient,
     convergence_message = classification$message,
+    max_abs_gradient = gradient_check$max_abs_gradient,
+    gradient_check_status = gradient_check$gradient_check_status,
+    devfun_reference_deviation = gradient_check$devfun_reference_deviation,
     n = .post_stage4a_release_count_v1(nrow(d)),
     status = model_status,
     stringsAsFactors = FALSE
@@ -519,6 +702,11 @@ post_stage4a_fit_one_v1 <- function(
     effect = effects,
     diagnostic = diagnostic,
     term_support = term_support
+  )
+  .post_stage4a_write_model_summary_v1(
+    model_summary_dir, taxon_id, unit_label, analysis_role, outcome,
+    model_status,
+    beta = beta, covariance = covariance, gradient = gradient_check
   )
   saveRDS(list(cache_signature = cache_signature, result = result),
           checkpoint_path)
@@ -570,9 +758,16 @@ post_stage4a_worker_count_v1 <- function(maximum) {
   )
 }
 
+.post_stage4a_write_yaml_v1 <- function(x, path) {
+  con <- file(path, open = "wb")
+  on.exit(close(con), add = TRUE)
+  writeChar(yaml::as.yaml(x), con, eos = NULL)
+}
+
 post_stage4a_fit_taxon_v1 <- function(
     events, states, masks, taxon_id, species_registry, comparator_taxa,
-    checkpoint_dir, code_signature) {
+    checkpoint_dir, code_signature, model_summary_dir = NULL,
+    nAGQ = 0L) {
   unit_label <- species_registry$common_name[
     match(taxon_id, species_registry$analysis_taxon_id)
   ]
@@ -600,14 +795,31 @@ post_stage4a_fit_taxon_v1 <- function(
     )
     post_stage4a_fit_one_v1(
       denominator, taxon_id, unit_label, analysis_role, outcome,
-      checkpoint, code_signature
+      checkpoint, code_signature, model_summary_dir, nAGQ
     )
   })
 }
 
-run_post_stage4a_sog_event_study_v1 <- function(
-    execution_code_commit,
-    output_dir = "outputs/post_stage4a_sog_event_study_v1") {
+.post_stage4a_frozen_release_dir_v1 <-
+  "outputs/post_stage4a_sog_event_study_v1"
+
+.post_stage4a_guard_frozen_outputs_v1 <- function(output_dir) {
+  normalise <- function(path) {
+    sub("/+$", "", gsub("\\\\", "/", path))
+  }
+  if (identical(normalise(output_dir),
+                normalise(.post_stage4a_frozen_release_dir_v1))) {
+    stop(
+      "POST_STAGE4A_EVENT_STUDY_FROZEN_OUTPUT_GATE: ",
+      "the v1 release directory is hash-locked; write refits to a new ",
+      "versioned output directory instead",
+      call. = FALSE
+    )
+  }
+  invisible(TRUE)
+}
+
+.post_stage4a_require_authorization_v1 <- function() {
   acknowledgement <- "through_2025_post_result_refinement_v1"
   if (!identical(Sys.getenv("POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED"),
                  acknowledgement)) {
@@ -616,6 +828,10 @@ run_post_stage4a_sog_event_study_v1 <- function(
       call. = FALSE
     )
   }
+  invisible(TRUE)
+}
+
+post_stage4a_prepare_event_study_inputs_v1 <- function() {
   packages <- c("data.table", "digest", "lme4", "yaml")
   missing <- packages[!vapply(
     packages, requireNamespace, logical(1L), quietly = TRUE
@@ -731,10 +947,44 @@ run_post_stage4a_sog_event_study_v1 <- function(
          call. = FALSE)
   }
 
+  list(
+    events = events,
+    states = states,
+    masks = masks,
+    support = support,
+    species_registry = species_registry,
+    core_taxa = core_taxa,
+    comparator_taxa = comparator_taxa,
+    main_taxa = main_taxa,
+    protected_hashes = protected_hashes
+  )
+}
+
+run_post_stage4a_sog_event_study_v1 <- function(
+    execution_code_commit,
+    output_dir = "outputs/post_stage4a_sog_event_study_v1_1",
+    model_summary_dir =
+      "outputs/post_stage4a_sog_event_study_model_summaries_v1") {
+  .post_stage4a_guard_frozen_outputs_v1(output_dir)
+  .post_stage4a_require_authorization_v1()
+  prepared <- post_stage4a_prepare_event_study_inputs_v1()
+  events <- prepared$events
+  states <- prepared$states
+  masks <- prepared$masks
+  support <- prepared$support
+  species_registry <- prepared$species_registry
+  core_taxa <- prepared$core_taxa
+  comparator_taxa <- prepared$comparator_taxa
+  main_taxa <- prepared$main_taxa
+  protected_hashes <- prepared$protected_hashes
+  rm(prepared)
   protected_dir <- "data/derived/post_stage4a_sog_event_study_v1"
   checkpoint_dir <- file.path(protected_dir, "checkpoints")
   dir.create(checkpoint_dir, recursive = TRUE, showWarnings = FALSE)
   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+  if (!is.null(model_summary_dir)) {
+    dir.create(model_summary_dir, recursive = TRUE, showWarnings = FALSE)
+  }
   code_signature <- paste(
     execution_code_commit,
     protected_hashes,
@@ -750,7 +1000,7 @@ run_post_stage4a_sog_event_study_v1 <- function(
   fit_one_taxon <- function(taxon_id) {
     post_stage4a_fit_taxon_v1(
       events, states, masks, taxon_id, species_registry, comparator_taxa,
-      checkpoint_dir, code_signature
+      checkpoint_dir, code_signature, model_summary_dir
     )
   }
   if (workers == 1L) {
@@ -772,14 +1022,15 @@ run_post_stage4a_sog_event_study_v1 <- function(
         cluster,
         c(
           "events", "states", "masks", "species_registry",
-          "comparator_taxa", "checkpoint_dir", "code_signature"
+          "comparator_taxa", "checkpoint_dir", "code_signature",
+          "model_summary_dir"
         ),
         envir = environment()
       )
       parallel::parLapply(cluster, all_taxa, function(taxon_id) {
         post_stage4a_fit_taxon_v1(
           events, states, masks, taxon_id, species_registry, comparator_taxa,
-          checkpoint_dir, code_signature
+          checkpoint_dir, code_signature, model_summary_dir
         )
       })
     }, finally = {
@@ -822,8 +1073,23 @@ run_post_stage4a_sog_event_study_v1 <- function(
   .post_stage4a_write_csv_v1(
     comparators, file.path(output_dir, "specificity_comparators_v1.csv")
   )
+  active_minus_pre <- effects[
+    effects$contrast == "active_minus_pre_14_day", , drop = FALSE
+  ]
+  if (!nrow(active_minus_pre)) {
+    stop("POST_STAGE4A_EVENT_STUDY_CONTRAST_ARCHIVE_GATE: ",
+         "active_minus_pre_14_day produced no rows", call. = FALSE)
+  }
+  .post_stage4a_write_csv_v1(
+    active_minus_pre, file.path(output_dir, "active_minus_pre_contrasts_v1.csv")
+  )
 
   status_counts <- as.list(table(diagnostics$status))
+  gradient_counts <- as.list(table(diagnostics$gradient_check_status))
+  gradient_values <- suppressWarnings(as.numeric(
+    diagnostics$max_abs_gradient
+  ))
+  gradient_values <- gradient_values[is.finite(gradient_values)]
   execution_record <- list(
     execution_version = "post_stage4a_sog_event_study_v1",
     executed_at_utc = format(
@@ -842,6 +1108,19 @@ run_post_stage4a_sog_event_study_v1 <- function(
     parallel_workers = workers,
     model_components = nrow(diagnostics),
     model_status_counts = status_counts,
+    gradient_check_status_counts = gradient_counts,
+    gradient_components_checked = length(gradient_values),
+    max_abs_gradient_overall = if (length(gradient_values)) {
+      max(gradient_values)
+    } else {
+      NA_real_
+    },
+    active_minus_pre_contrast_archived = TRUE,
+    model_summary_dir = if (is.null(model_summary_dir)) {
+      "not_written"
+    } else {
+      gsub("\\\\", "/", model_summary_dir)
+    },
     protected_input_hashes = as.list(protected_hashes),
     source_link_hash_gate = "PASS",
     concurrent_link_joint_pairing_gate = "PASS",
@@ -851,7 +1130,7 @@ run_post_stage4a_sog_event_study_v1 <- function(
     full_event_taxon_grid_expanded = FALSE,
     final_gate = "PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW"
   )
-  yaml::write_yaml(
+  .post_stage4a_write_yaml_v1(
     execution_record,
     file.path(output_dir, "execution_record_v1.yml")
   )
@@ -865,6 +1144,7 @@ run_post_stage4a_sog_event_study_v1 <- function(
       "joint_exposure_support_v1.csv",
       "main_species_panel_v1.csv",
       "specificity_comparators_v1.csv",
+      "active_minus_pre_contrasts_v1.csv",
       "execution_record_v1.yml"
     )
   )
