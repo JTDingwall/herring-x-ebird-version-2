@@ -1,12 +1,22 @@
-# Referee reads report: ten items requiring no response-model refit
+# Referee reads report: Parts 1 and 2
 
-Reference commit: `1186d8eaaa29fba3a97da85c7a38298190592f05`.
+Part 1 reference commit: `1186d8eaaa29fba3a97da85c7a38298190592f05`.
 
-This report treats the analyses as post-result, exploratory estimand refinement. It does not alter the frozen release, rerun a protected response model, change the 49-species family, or inspect the 2026-2028 holdout.
+Part 2 execution code commit:
+`ef5e3e5176e1b36c51323943af63b873d890deed`.
+
+This combined report treats all analyses as post-result, exploratory estimand
+refinement. Part 1 comprises ten checks that required no response-model refit.
+Part 2 records the subsequently authorized versioned primary refit and the
+full-family Laplace feasibility attempt. Neither part altered the frozen v1
+release, changed the 49-species core family, or inspected the 2026-2028
+holdout.
+
+## Part 1: checks requiring no response-model refit
 
 ## Disagreements
 
-1. `outputs/post_stage4a_sog_event_study_v1_1/` is absent from both the current working tree and the worktree at the reference commit. The requested prior results are instead present in `outputs/editorial_requested_analysis_v1/` at the reference commit.
+1. At the Part 1 audit, `outputs/post_stage4a_sog_event_study_v1_1/` was absent from both the working tree and the worktree at the reference commit. The requested prior results were instead present in `outputs/editorial_requested_analysis_v1/` at the reference commit. Part 2 subsequently created the versioned `_v1_1` release described below.
 2. The separately described `figures_ggplot2/05_supp_pretrend_and_tables.R` was not attached and does not occur in the working tree, any branch, the reflog, the attachment directory, or unreachable Git blobs. I therefore could not reproduce that exact script run. I reconstructed its four requested products from the frozen release with `scripts/build_referee_reads_part1.R`; the numerical pre-trend statements reproduce.
 3. The earlier 850-source-event/51-block statement was described as an unsupported literal. Direct computation now reproduces both numbers exactly: 850 of 1,120 source events and 51 of 58 blocks have target-window links in both zones.
 
@@ -323,10 +333,10 @@ The reporting outcome does not reject equal guild means at 0.05. Reported number
 
 Sources: `outputs/post_stage4a_sog_event_study_v1/effect_estimates_v1.csv` and `metadata/canonical_species_registry.csv`. Released species contrasts and meta-regression results are in `outputs/referee_reads_v1/item10_species_timing_contrasts.csv`, `item10_guild_means.csv`, and `item10_meta_regression_tests.csv`.
 
-## Not answerable from disk
+## Part 1 limits before authorized Part 2
 
 1. A fitted nonlinear link-count response (spline, factor-coded counts, quadratic, cap, or saturation model) is not on disk. Answering functional-form linearity beyond the binary comparison and descriptive support tables requires a new response-model fit.
-2. Exact spawn-start/early-egg covariance is not persisted in the event-study checkpoints. Recovering it exactly would require an original fit object containing `vcov`, or a refit/versioned re-extraction.
+2. Exact spawn-start/early-egg covariance was not persisted in the original event-study checkpoints. Part 2 resolves the availability problem by persisting fixed effects and covariance matrices for 96 fitted components. The approximate Item 10 calculations above were not retroactively replaced.
 3. A dependence-preserving permutation for the paired outcome-asymmetry question is not available from aggregate coefficients and would require a prespecified row-level scheme plus repeated response-model fits.
 4. The exact supplied supplementary-table script is unavailable. Its requested artifacts and numerical assertions were reconstructed, but the absent script itself cannot be verified.
 
@@ -357,3 +367,108 @@ No other item required a response-model fit.
 - No source checklist, observer, locality, event, block, or coordinate identifier was released.
 - Nothing in `outputs/post_stage4a_sog_event_study_v1/` was modified, regenerated, or overwritten.
 - The supplied DOCX was not edited.
+
+## Part 2: authorized versioned refit
+
+Human authorization was supplied on 2026-07-25 as: "Run Part 2 now." The
+repository's exact through-2025 post-result-refinement acknowledgement was set
+only in the execution process. The work ran in the isolated
+`codex/referee-part2-run` worktree so the manuscript branch and Part 1
+artifacts were not changed during execution.
+
+Both fixture modes passed before production:
+
+- `POST_STAGE4A_SOG_EVENT_STUDY_FIXTURE=PASS`
+- `POST_STAGE4A_LAPLACE_SENSITIVITY_FIXTURE=PASS`
+
+The full primary production refit returned:
+
+`POST_STAGE4A_SOG_EVENT_STUDY_GATE=PASS_PENDING_HUMAN_POST_STAGE4A_EVENT_STUDY_REVIEW`
+
+The execution used all concurrent event links additively. The source-link
+hash, event/link join cardinality, concurrent-link pairing, year,
+registered-taxon, and frozen-output gates passed. It attempted all 100
+registered components and wrote 100 component summaries: 96 contain
+dimensionally valid fixed-effect and covariance matrices, while four preserve
+the explicit failure status. The eight-file output manifest recomputes exactly
+(8/8 SHA-256 matches).
+
+### Active minus pre-onset result
+
+The archived contrast is:
+
+`did_active_0_14_day - did_pre_14_day`
+
+BH adjustment was performed within each complete 49-species core family.
+
+| Outcome | Registered core species | Estimable | Adjusted-significant positive | Adjusted-significant negative |
+|---|---:|---:|---:|---:|
+| Checklist reporting | 49 | 48 | 13 | 0 |
+| Reported number conditional on a positive numeric report | 49 | 46 | 18 | 0 |
+
+These are the prespecified acceptance counts. The absence of
+adjusted-significant negatives is an observed result, not an execution gate.
+
+### Component status
+
+| Status | Components |
+|---|---:|
+| Completed | 95 |
+| Completed with singular warning | 1 |
+| Failed prespecified support | 3 |
+| Failed numerical fit, no fallback | 1 |
+
+The three support failures are the reported-number components for Surfbird,
+Rhinoceros Auklet, and Glaucous Gull. The numerical failure is Glaucous Gull
+reporting. They remain visible in the diagnostics; no fallback model was
+silently substituted.
+
+### Gradient limitation
+
+The locked local R library did not contain `numDeriv`. The runner therefore
+recorded `gradient_check_status = numDeriv_unavailable` for all 96 fitted
+components and `not_fitted` for the other four. `max_abs_gradient` is `NA`, as
+designed. No gradient distribution can be reported from this execution, and
+the completed status must not be interpreted as a successful gradient check.
+
+### Laplace sensitivity
+
+The exact full-family `nAGQ = 1` reporting sensitivity was attempted with four
+workers for one hour. All four workers remained responsive and CPU-bound, but
+none of the first four fits completed. The attempt produced 0/49 checkpoints
+and 0/49 model summaries before the process ceiling.
+
+Status:
+
+`COMPUTATIONALLY_INFEASIBLE_NO_COMPLETED_FIT_WITHIN_ONE_HOUR`
+
+No smaller adjusted-significant-only family was substituted because its BH
+q-values would not be comparable with the 49-species primary family. The
+Laplace attempt yields no effect estimate and no evidence for or against
+robustness.
+
+### Part 2 artifacts and governance
+
+Primary versioned outputs:
+
+- `outputs/post_stage4a_sog_event_study_v1_1/`
+- `outputs/post_stage4a_sog_event_study_model_summaries_v1/`
+
+Laplace feasibility record:
+
+- `outputs/post_stage4a_sog_event_study_laplace_v1/infeasibility_record.yml`
+
+Final checks:
+
+- The hash-locked `outputs/post_stage4a_sog_event_study_v1/` release was not
+  modified or regenerated.
+- No 2026-2028 response record was read.
+- No M31 fit or interim holdout look was performed.
+- No raw checklist, observer, locality, event, block, or coordinate identifier
+  was released.
+- The official repository privacy scanner passed across 775 text files in the
+  isolated Part 2 worktree.
+- The primary execution record reports `records_2026_plus_read: 0`,
+  `comments_read: 0`, `shoreline_fields_read: 0`, source-link hash gate `PASS`,
+  and concurrent-link pairing gate `PASS`.
+- Scientific interpretation remains pending human review.
