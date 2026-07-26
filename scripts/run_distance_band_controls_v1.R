@@ -580,31 +580,31 @@ palette <- c(
 )
 outcome_titles <- c(
   detection = "Checklist reporting",
-  positive_numeric_count_given_detection =
-    "Reported number, conditional on numeric detection"
+  positive_numeric_count_given_detection = "Reported number"
 )
 figure_path <- file.path(
   output_dir, "terrestrial_control_near_band_timing_v1.png"
 )
 png(figure_path, width = 2800, height = 1900, res = 220)
 par(mfrow = c(2, 2), oma = c(4, 2, 5, 1), family = "sans")
-for (outcome in names(outcome_titles)) {
-  outcome_data <- plot_data[get("outcome") == outcome]
+for (outcome_now in names(outcome_titles)) {
+  outcome_data <- plot_data[outcome == outcome_now]
   finite <- c(outcome_data$ratio_conf_low, outcome_data$ratio_conf_high)
   finite <- finite[is.finite(finite) & finite > 0]
   ylim <- range(finite)
   padding <- exp(0.12 * diff(log(ylim)))
   ylim <- c(ylim[[1L]] / padding, ylim[[2L]] * padding)
-  for (species in selected_names) {
-    d <- outcome_data[unit_label == species]
+  for (species_now in selected_names) {
+    d <- outcome_data[unit_label == species_now]
     d <- d[match(period_order, d$period)]
     x <- seq_along(period_order)
     par(mar = c(7.2, 5.5, 3.3, 1.2))
     plot(
       x, d$ratio, type = "b", log = "y", ylim = ylim,
       xaxt = "n", xlab = "", ylab = "Ratio versus same-band baseline",
-      pch = 21, bg = "white", col = palette[[species]],
-      lwd = 2, main = paste(species, "-", outcome_titles[[outcome]]),
+      pch = 21, bg = "white", col = palette[[species_now]],
+      lwd = 2,
+      main = paste(species_now, "\n", outcome_titles[[outcome_now]]),
       bty = "l"
     )
     axis(1, at = x, labels = period_labels, las = 2,
@@ -614,11 +614,11 @@ for (outcome in names(outcome_titles)) {
     segments(
       x[use], d$ratio_conf_low[use],
       x[use], d$ratio_conf_high[use],
-      col = palette[[species]], lwd = 1.3
+      col = palette[[species_now]], lwd = 1.3
     )
     points(
       x, d$ratio, pch = 21, bg = "white",
-      col = palette[[species]], lwd = 1.5
+      col = palette[[species_now]], lwd = 1.5
     )
   }
 }
