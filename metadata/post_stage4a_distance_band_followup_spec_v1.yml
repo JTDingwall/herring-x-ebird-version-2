@@ -1,0 +1,129 @@
+specification_version: post_stage4a_distance_band_followup_spec_v1
+authorization_record: metadata/post_stage4a_distance_band_followup_authorization_v1.yml
+analysis_status: post_result_exploratory_estimand_refinement
+population:
+  region: SoG
+  years: [2005, 2025]
+  eligible_checklists_expected: 217200
+  maximum_source_point_link_distance_km: 26
+  prospective_records_2026_plus: prohibited
+archived_species:
+  - Bald Eagle
+  - Glaucous-winged Gull
+archived_model_rule:
+  refit: prohibited
+  source:
+    - outputs/post_stage4a_distance_band_sensitivity_v2
+    - outputs/post_stage4a_gwgu_distance_band_sensitivity_v1
+multiplicity:
+  method: Benjamini-Hochberg
+  effects_family: within_species_outcome_period_across_13_distance_bands
+  effects_family_size: 13
+  tight_contrast_family: within_species_outcome_across_13_distance_bands
+  tight_contrast_family_size: 13
+  negative_controls_separate_from_primary_species: true
+direct_onset_profile_test:
+  estimand: spawn_start_profile_minus_pooled_pre_profile
+  spawn_start_days: [0, 3]
+  pooled_pre_definition: >-
+    Duration-weighted mean of early pre-spawn days -14 to -8 and immediate
+    pre-spawn days -7 to -1. Because both windows contain seven days, this is
+    0.5 times each archived coefficient.
+  hypothesis: all_13_band_contrasts_equal_zero
+  covariance: archived_exact_fixed_effect_covariance
+  statistic: Wald_chi_square
+  expected_df: 13
+tight_archived_contrast:
+  estimand: spawn_start_days_0_3_minus_immediate_pre_days_minus7_minus1
+  covariance: archived_exact_fixed_effect_covariance
+  intervals: normal_95_percent
+  report_minimum_bands: [band_0_2, band_2_4, band_4_6]
+control_selection:
+  mandatory: American Robin
+  candidates: [Chestnut-backed Chickadee, Dark-eyed Junco]
+  selection_rule: >-
+    Before fitting any control effect, select the candidate with the larger
+    minimum positive-numeric model-row support across the 78 joint
+    period-by-distance terms, provided both outcomes have at least 20 exposed
+    rows in every term. Break a tie using larger total positive-numeric support,
+    then alphabetical common name. Do not inspect effect direction.
+  selection_record: metadata/post_stage4a_distance_band_followup_control_selection_v1.yml
+control_predictions_locked_before_fit:
+  flat_near_band_all_periods: >-
+    Supports a water/resource-specific near-band spike rather than a general
+    checklist effect.
+  upward_near_band_at_recorded_event_midpoint: >-
+    Indicates general checklist inflation near recorded spawn locations at the
+    focal timing and confounds the waterbird interpretation.
+  downward_near_band_at_recorded_event_midpoint: >-
+    Indicates diversion of observer attention away from terrestrial birds and
+    is also a confound; a negative control response is not reassuring.
+control_outcomes:
+  detection:
+    family: binomial
+    link: logit
+    interpretation: checklist_reporting_not_occupancy
+  positive_numeric_count_given_detection:
+    family: gaussian_on_log_count
+    interpretation: relative_reported_number_conditional_on_numeric_detection
+  unquantified_X_as_numeric: prohibited
+  ambiguity_as_zero: prohibited
+control_family_boundary:
+  registered_49_species_family_changed: false
+  controls_enter_primary_multiplicity_family: false
+periods:
+  baseline: {minimum_day: -28, maximum_day: -15}
+  early_pre: {minimum_day: -14, maximum_day: -8}
+  immediate_pre: {minimum_day: -7, maximum_day: -1}
+  spawn_start: {minimum_day: 0, maximum_day: 3}
+  early_egg: {minimum_day: 4, maximum_day: 14}
+  late_egg: {minimum_day: 15, maximum_day: 28}
+distance_bands:
+  interval_km: 2
+  minimum_km: 0
+  maximum_km: 26
+  number_of_bands: 13
+exposure_encoding:
+  unit: linked_recorded_source_event
+  joint_terms: period_by_distance_band_additive_counts
+  independent_model_row: checklist
+  checklist_duplication: prohibited
+  all_concurrent_links_retained: true
+control_model:
+  engine_detection: lme4_glmer_nAGQ0
+  engine_positive_count: lme4_lmer_REML
+  fixed_terms:
+    - all_78_joint_period_by_distance_band_counts
+    - factor_checklist_year
+    - protocol
+    - log_duration_minutes
+    - log_effort_distance_plus_one
+    - observer_count
+  random_intercepts:
+    - herring_event_block
+    - observer_cluster
+    - generalized_location_cluster
+  simplified_fallback: prohibited
+seasonality_interpretation:
+  same_band_baseline_differencing: true
+  event_dates_spread_across_years_and_locations: report_from_archived_support
+  complete_control_for_seasonal_change_claimed: false
+onset_precision_gate:
+  anchor_used_by_existing_models: midpoint_of_StartDate_and_EndDate_else_available_endpoint
+  survey_visit_history_required_for_symmetric_refit: true
+  source_interval_width_is_not_survey_cadence: true
+  split_refit_if_gate_fails: prohibited
+privacy:
+  minimum_released_cell_size: 20
+  protected_rows_committed: false
+  identifiers_committed: false
+  coordinates_committed: false
+output_directory: outputs/post_stage4a_distance_band_followup_v1
+report: DISTANCE_BAND_FOLLOWUP_REPORT.md
+report_order:
+  - direct_onset_profile_test
+  - negative_controls
+  - multiplicity
+  - asymmetries_and_support
+  - tight_archived_contrast
+  - onset_precision_gate
