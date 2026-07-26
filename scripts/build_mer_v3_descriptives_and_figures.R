@@ -12,6 +12,13 @@ if (!file.exists(file.path(repo_root, "AGENTS.md"))) {
   stop("Run from the repository root.", call. = FALSE)
 }
 
+write_tables_enabled <- isTRUE(
+  getOption("herring.figure_builder.write_tables", TRUE)
+)
+save_figures_enabled <- isTRUE(
+  getOption("herring.figure_builder.save_figures", TRUE)
+)
+
 suppressPackageStartupMessages({
   library(ggplot2)
   library(sf)
@@ -21,13 +28,20 @@ pkg_root <- file.path(repo_root, "manuscript", "journal_submission",
                       "marine_environmental_research")
 dirs <- file.path(pkg_root, c("source_v3", "generated_v3", "figures_v3",
                               "tables_v3", "rendered_v3", "audits"))
-invisible(lapply(dirs, dir.create, recursive = TRUE, showWarnings = FALSE))
+if (write_tables_enabled || save_figures_enabled) {
+  invisible(lapply(dirs, dir.create, recursive = TRUE, showWarnings = FALSE))
+}
 
 path <- function(...) file.path(repo_root, ...)
 out_path <- function(subdir, name) file.path(pkg_root, subdir, name)
 read_csv <- function(...) read.csv(path(...), check.names = FALSE,
                                    na.strings = "")
-write_csv <- function(x, f) write.csv(x, f, row.names = FALSE, na = "")
+write_csv <- function(x, f) {
+  if (write_tables_enabled) {
+    write.csv(x, f, row.names = FALSE, na = "")
+  }
+  invisible(x)
+}
 
 assert <- function(ok, msg) if (!isTRUE(ok)) stop(msg, call. = FALSE)
 num <- function(x) suppressWarnings(as.numeric(x))
@@ -409,6 +423,9 @@ theme_mer <- function(base_size = 10.5) {
 cap <- function(x) paste(strwrap(x, width = 105), collapse = "\n")
 
 save_plot <- function(p, stem, width, height) {
+  if (!save_figures_enabled) {
+    return(invisible(p))
+  }
   png_file <- out_path("figures_v3", paste0(stem, ".png"))
   pdf_file <- out_path("figures_v3", paste0(stem, ".pdf"))
   ggsave(png_file, p, width = width, height = height, units = "in", dpi = 600,
@@ -769,4 +786,76 @@ ry <- region_year[region_year$region %in% c("SoG", "WCVI") &
                      (region_year$region == "WCVI" & num(region_year$year) >= 2015)), ]
 write_csv(ry, out_path("tables_v3", "Table_S_temporal_sampling_support_v3.csv"))
 
-message("Built MER v3 descriptive tables and ggplot2 figures from tracked aggregate outputs only.")
+mer_v3_figures <- list(
+  Figure_1_study_area_map_v3 = p1,
+  Figure_2_descriptive_bird_patterns_v3 = p2,
+  Figure_3_focal_species_effects_v3 = p3,
+  Figure_4_event_time_v3 = p4,
+  Figure_5_specificity_distribution_v3 = p5,
+  Figure_6_regional_comparison_v3 = p6,
+  Figure_S1_exposure_design_v3 = pS1,
+  Figure_S2_sampling_support_map_v3 = pS2,
+  Figure_S3_complete_species_matrix_v3 = pS3,
+  Figure_S4_guild_synthesis_v3 = pS4,
+  Figure_S5_sensitivities_placebos_v3 = pS5,
+  Figure_S6_diagnostics_v3 = pS6
+)
+
+mer_v3_figure_sizes <- data.frame(
+  figure = names(mer_v3_figures),
+  width_in = rep(7.2, length(mer_v3_figures)),
+  height_in = c(6.0, 6.6, 7.2, 6.8, 5.0, 5.8, 4.2, 5.8, 10.2, 5.5, 6.0, 4.8),
+  stringsAsFactors = FALSE
+)
+
+mer_v3_figure_data <- list(
+  Figure_1_study_area_map_v3 = list(coastline = bc, region_summary = map_dat),
+  Figure_2_descriptive_bird_patterns_v3 = prev,
+  Figure_3_focal_species_effects_v3 = focal_plot,
+  Figure_4_event_time_v3 = etp,
+  Figure_5_specificity_distribution_v3 = dist_all,
+  Figure_6_regional_comparison_v3 = rec,
+  Figure_S1_exposure_design_v3 = schem,
+  Figure_S2_sampling_support_map_v3 = list(coastline = bc, region_summary = map_dat),
+  Figure_S3_complete_species_matrix_v3 = mat,
+  Figure_S4_guild_synthesis_v3 = guild_eff,
+  Figure_S5_sensitivities_placebos_v3 = sp,
+  Figure_S6_diagnostics_v3 = diag_plot
+)
+
+mer_v3_figure_sources <- c(
+  Figure_1_study_area_map_v3 =
+    "outputs/stage3_phase3_validation/fold_balance.csv; public generalized coastline",
+  Figure_2_descriptive_bird_patterns_v3 =
+    "outputs/stage4a_results/aggregate_sample_sizes.csv",
+  Figure_3_focal_species_effects_v3 =
+    "outputs/stage4a_results/effect_estimates.csv",
+  Figure_4_event_time_v3 =
+    "outputs/stage4a_publication_v2/event_time_table_v2.csv",
+  Figure_5_specificity_distribution_v3 =
+    "outputs/stage4a_results/effect_estimates.csv; outputs/stage4a_publication_v2/sog_falsification_claim_audit_v2.csv",
+  Figure_6_regional_comparison_v3 =
+    "outputs/stage4a_results/effect_estimates.csv",
+  Figure_S1_exposure_design_v3 =
+    "conceptual schematic of the registered exposure design",
+  Figure_S2_sampling_support_map_v3 =
+    "outputs/stage3_phase3_validation/fold_balance.csv; public generalized coastline",
+  Figure_S3_complete_species_matrix_v3 =
+    "outputs/stage4a_results/effect_estimates.csv",
+  Figure_S4_guild_synthesis_v3 =
+    "outputs/stage4a_publication_sensitivity_v2/sensitivity_effect_estimates_v2.csv",
+  Figure_S5_sensitivities_placebos_v3 =
+    "outputs/stage4a_publication_sensitivity_v2/sensitivity_effect_estimates_v2.csv",
+  Figure_S6_diagnostics_v3 =
+    "outputs/stage4a_results/model_geometry.csv; outputs/stage4a_publication_v2/singular_fit_claim_audit_v2.csv"
+)
+
+attr(mer_v3_figures, "figure_sizes") <- mer_v3_figure_sizes
+attr(mer_v3_figures, "source_data") <- mer_v3_figure_data
+attr(mer_v3_figures, "sources") <- mer_v3_figure_sources
+
+message(
+  "Built ", length(mer_v3_figures),
+  " editable MER v3 ggplot2 objects from tracked aggregate outputs only",
+  if (save_figures_enabled) " and exported the figure files." else "."
+)

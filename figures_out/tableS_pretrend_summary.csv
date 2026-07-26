@@ -1,0 +1,5 @@
+"outcome","contrast","ecological_period","estimable_species","bh_q_lt_0_05","median_ratio","minimum_q_value"
+"detection","did_early_pre","early_pre",48,0,0.987481583249621,0.324468075269128
+"detection","did_immediate_pre","immediate_pre",48,0,0.989645589273902,0.0911809199147181
+"positive_numeric_count_given_detection","did_early_pre","early_pre",46,0,1.00849178549769,0.512513949926954
+"positive_numeric_count_given_detection","did_immediate_pre","immediate_pre",46,2,1.02107108548249,0.00943623938131454
