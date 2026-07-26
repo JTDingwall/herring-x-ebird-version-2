@@ -1,0 +1,51 @@
+validation_version: post_stage4a_distance_band_followup_validation_v1
+validated_at_local: 2026-07-26
+numeric_validation:
+  result: PASS
+  waterbird_effect_rows: 312
+  nominally_significant_waterbird_effects: 104
+  BH_significant_waterbird_effects: 84
+  direct_waterbird_profile_tests: 4
+  tight_archived_contrasts: 52
+  control_effect_rows: 312
+  control_model_components: 4
+  all_control_components_converged: true
+  singular_control_components: 0
+  rank_deficient_control_components: 0
+multiplicity_validation:
+  result: PASS
+  method: Benjamini-Hochberg
+  family_size: 13
+  recomputed_values_match_released_values: true
+manifest_validation:
+  result: PASS
+  archived_manifest_self_excluded: true
+  control_manifest_self_excluded: true
+  every_listed_SHA256_recomputed_exactly: true
+privacy_validation:
+  result: PASS
+  released_source_checklist_identifiers: 0
+  released_observer_identifiers: 0
+  released_locality_identifiers: 0
+  released_exact_coordinates: 0
+  released_protected_link_tokens: 0
+holdout_validation:
+  result: PASS
+  response_rows_2026_plus_persisted: 0
+boundary_validation:
+  frozen_stage4a_tracked_files_modified: 0
+  historical_waterbird_models_refit: 0
+  registered_species_family_changed: false
+  manuscript_files_modified: 0
+figure_validation:
+  result: PASS
+  file: terrestrial_control_near_band_timing_v1.png
+  dimensions_pixels: [2970, 1870]
+  sha256: 0b77efcd3383dca832de6d366c7f4dcc7c5c7687a63b694fc76c40ee97cffd34
+  visual_inspection: >-
+    Four panels use the correct outcome-specific data, readable labels,
+    complete intervals, a ratio-one reference, and explicit midpoint wording.
+markdown_link_validation:
+  result: PASS
+  missing_local_links: 0
+final_gate: PASS_PENDING_HUMAN_SCIENTIFIC_REVIEW
