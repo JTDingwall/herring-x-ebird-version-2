@@ -683,6 +683,10 @@ output_files <- list.files(
   output_dir, full.names = TRUE,
   pattern = "terrestrial_control_.*\\.(csv|yml|png)$"
 )
+output_files <- setdiff(
+  output_files,
+  file.path(output_dir, "terrestrial_control_hash_manifest_v1.csv")
+)
 manifest <- data.table(
   file = basename(output_files),
   sha256 = vapply(
