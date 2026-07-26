@@ -1,0 +1,4 @@
+"common_name","scientific_name","eligible_checklists","model_rows_detection","detected_checklists","structural_unknown_checklists","positive_numeric_model_rows","minimum_detection_term_support","minimum_positive_numeric_term_support","all_78_detection_terms_at_least_20","all_78_positive_numeric_terms_at_least_20","source_rows_released","selected_role","recommended_for_fit"
+"American Robin","Turdus migratorius",217200,217176,128256,24,125407,1166,549,TRUE,TRUE,FALSE,"mandatory_control",TRUE
+"Chestnut-backed Chickadee","Poecile rufescens",217200,217183,73926,17,72498,1166,334,TRUE,TRUE,FALSE,"candidate_second_control",TRUE
+"Dark-eyed Junco","Junco hyemalis",217200,217189,69965,11,68273,1166,322,TRUE,TRUE,FALSE,"candidate_second_control",FALSE
