@@ -61,21 +61,22 @@ rm(events_all)
 key <- function(x) paste(
   x$analysis_event_token, x$herring_source_token, sep = "\r"
 )
-inner_new <- links[as.numeric(links$distance_km) <= 20, , drop = FALSE]
-if (nrow(inner_new) != nrow(archived) ||
-    !setequal(key(inner_new), key(archived))) {
-  stop("PREFLIGHT_ARCHIVED_LINK_RECONCILIATION_GATE: 0-20 km changed",
+archived_key <- key(archived)
+extended_key <- key(links)
+if (anyDuplicated(archived_key) || anyDuplicated(extended_key) ||
+    !all(archived_key %in% extended_key)) {
+  stop("PREFLIGHT_ARCHIVED_LINK_RECONCILIATION_GATE: archived links changed",
        call. = FALSE)
 }
-new_index <- match(key(archived), key(inner_new))
+new_index <- match(archived_key, extended_key)
 if (anyNA(new_index) ||
     max(abs(
       as.numeric(archived$distance_km) -
-        as.numeric(inner_new$distance_km[new_index])
+        as.numeric(links$distance_km[new_index])
     )) > 0.0011 ||
-    !identical(
-      as.integer(archived$event_day),
-      as.integer(inner_new$event_day[new_index])
+    any(
+      as.integer(archived$event_day) !=
+        as.integer(links$event_day[new_index])
     )) {
   stop("PREFLIGHT_ARCHIVED_LINK_VALUE_GATE: 0-20 km changed",
        call. = FALSE)
@@ -85,6 +86,16 @@ if (any(as.numeric(links$distance_km) < 0 |
   stop("PREFLIGHT_EXTENDED_LINK_RANGE_GATE: invalid distance",
        call. = FALSE)
 }
+extra <- links[!extended_key %in% archived_key, , drop = FALSE]
+if (!nrow(extra) ||
+    any(as.numeric(extra$distance_km) < 20 |
+        as.numeric(extra$distance_km) > 26.0001)) {
+  stop("PREFLIGHT_EXTENSION_GATE: expected only new 20-26 km links",
+       call. = FALSE)
+}
+archived$link_provenance__ <- "archived_0_20"
+extra$link_provenance__ <- "new_20_26"
+links <- rbind(archived, extra)
 
 event_tokens <- as.character(events$analysis_event_token)
 selected_links <- links[
@@ -121,6 +132,12 @@ band_index <- findInterval(
   distance, breaks, rightmost.closed = TRUE, all.inside = TRUE
 )
 band_index[band_index == length(breaks)] <- length(breaks) - 1L
+# The historical cache is rounded to metres and includes its 20 km upper
+# boundary. Keep those archived boundary rows in 18-20 km; new-only rows
+# printed as 20.000 originated just beyond the old radius and enter 20-22 km.
+archived_upper_boundary <- selected_links$link_provenance__ ==
+  "archived_0_20" & distance == 20
+band_index[archived_upper_boundary] <- 10L
 band_min <- breaks[band_index]
 band_max <- breaks[band_index + 1L]
 band <- paste0("band_", band_min, "_", band_max)
@@ -245,13 +262,30 @@ utils::write.csv(
   row.names = FALSE, quote = TRUE, na = ""
 )
 record <- list(
-  status = "PASS_PENDING_CONCRETE_BAND_LOCK",
+  status = "PASS_CONCRETE_2KM_BANDS_SELECTED_NO_MODEL_FIT",
   analysis_status = "response_aware_support_only_no_model_fit",
   maximum_checklist_year_read = 2025L,
   records_2026_plus_read = 0L,
   response_models_fit = 0L,
   archived_0_20km_links_reconciled = TRUE,
+  archived_source_link_rows = nrow(archived),
+  extended_source_link_rows = nrow(links),
+  new_20_26km_source_link_rows = nrow(extra),
+  archived_source_link_sha256 =
+    .post_stage4a_sha256_v1(archived_link_path),
+  extended_source_link_sha256 =
+    .post_stage4a_sha256_v1(link_path),
+  rounded_20km_boundary_rule =
+    "archived_rows_to_18_20;new_only_rows_to_20_22",
   candidate_bands = 13L,
+  weakest_detection_term_rows = min(
+    support$exposed_model_rows[support$outcome == "detection"]
+  ),
+  weakest_conditional_count_term_rows = min(
+    support$exposed_model_rows[
+      support$outcome == "positive_numeric_count_given_detection"
+    ]
+  ),
   minimum_release_cell_size = 20L,
   protected_extended_links_committed = FALSE,
   exact_coordinates_released = FALSE,
