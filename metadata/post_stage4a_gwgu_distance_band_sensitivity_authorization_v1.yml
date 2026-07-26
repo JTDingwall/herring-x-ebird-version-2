@@ -1,0 +1,67 @@
+authorization_version: post_stage4a_gwgu_distance_band_sensitivity_authorization_v1
+authorized_at_local: 2026-07-26
+authorization_source: explicit_human_instruction_in_repository_session
+scientific_decision: AUTHORIZE_GLAUCOUS_WINGED_GULL_DISTANCE_BAND_TIMING_SENSITIVITY_V1
+human_instruction: >-
+  Run the same source-point distance sensitivity analysis through 26 km for
+  Glaucous-winged Gull, using successive 2 km intervals where model support is
+  adequate and increasing interval width if support is inadequate.
+known_results_boundary:
+  stage4a_results_known: true
+  bald_eagle_distance_band_results_known: true
+  classification: post_result_exploratory_estimand_refinement
+  may_be_relabelled_prespecified_or_confirmatory: false
+authorized_population:
+  region: SoG
+  start_year: 2005
+  end_year: 2025
+  prospective_records_2026_plus: prohibited
+authorized_responses:
+  - checklist_detection
+  - positive_numeric_count_given_detection
+authorized_taxa:
+  included: [Glaucous-winged Gull]
+  explicitly_excluded_from_refit: [Bald Eagle]
+authorized_geometry:
+  source_points_only: true
+  candidate_2km_bands:
+    - [0, 2]
+    - [2, 4]
+    - [4, 6]
+    - [6, 8]
+    - [8, 10]
+    - [10, 12]
+    - [12, 14]
+    - [14, 16]
+    - [16, 18]
+    - [18, 20]
+    - [20, 22]
+    - [22, 24]
+    - [24, 26]
+  upper_bound_26km_inclusive: true
+  adaptive_outer_bin_rule: >-
+    Starting at the outer edge, merge adjacent outer 2 km bands only when any
+    registered timing term has fewer than 20 exposed model rows in either
+    outcome. Lock the selected bands before fitting.
+authorized_timing:
+  baseline_days: [-28, -15]
+  early_pre_days: [-14, -8]
+  immediate_pre_days: [-7, -1]
+  spawn_start_days: [0, 3]
+  early_egg_days: [4, 14]
+  late_egg_days: [15, 28]
+analysis_constraints:
+  independent_row: checklist
+  concurrent_links: additive_joint_period_by_distance_band_counts
+  all_concurrent_links_retained: true
+  historical_bald_eagle_outputs_and_checkpoints: immutable
+  historical_stage4a_outputs_and_checkpoints: immutable
+  response_models_may_be_fit_only_after_concrete_gull_bands_are_committed: true
+  manuscript_edits: prohibited
+link_constraints:
+  reuse_reconciled_0_26km_link_cache: required
+  archived_0_20km_links_unchanged: required
+  ebd_response_fields_read: prohibited
+  exact_coordinates_released: false
+  protected_link_rows_committed: false
+final_gate: PASS_PENDING_HUMAN_GLAUCOUS_WINGED_GULL_26KM_DISTANCE_BAND_REVIEW
