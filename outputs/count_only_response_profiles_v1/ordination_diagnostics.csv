@@ -1,0 +1,5 @@
+"method","metric","value","seed"
+"PCA","PC1 variance explained percent",62.8294386629103,
+"PCA","PC2 variance explained percent",14.6701619175034,
+"NMDS","Kruskal stress",0.0943741898562142,20260726
+"NMDS","Spearman correlation of original and 2D ordination distances",0.973669919183333,20260726

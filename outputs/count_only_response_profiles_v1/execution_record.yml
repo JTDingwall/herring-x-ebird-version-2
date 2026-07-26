@@ -1,0 +1,17 @@
+analysis: aggregate-only conditional reported-number response profiles
+run_timestamp: 2026-07-25T21:40:05-0700
+r_version: R version 4.5.1 (2025-06-13 ucrt)
+source: outputs/post_stage4a_sog_event_study_v1/effect_estimates_v1.csv
+outcome: positive_numeric_count_given_detection
+disjoint_periods: early_pre, immediate_pre, spawn_start, early_egg, late_egg
+active_0_14_role: displayed_separately_as_duration_weighted_composite
+complete_case_species: 46
+nmds_seed: 20260726
+nmds_distance: Euclidean
+nmds_dimensions: 2
+response_models_fit_or_refit: false
+protected_checklist_frame_accessed: false
+holdout_accessed: false
+authorization_gate_set: false
+manuscript_edited: false
+script_md5: 6a5604532b1f441f58de9b3931ab8f69

@@ -1,0 +1,13 @@
+"contrast","short_label","figure_label","minimum_day","maximum_day","duration_days","role"
+"did_early_pre","Early pre","Early pre
+−14 to −8",-14,-8,7,"disjoint_period"
+"did_immediate_pre","Immediate pre","Immediate pre
+−7 to −1",-7,-1,7,"disjoint_period"
+"did_spawn_start","Spawn start","Spawn start
+0 to 3",0,3,4,"disjoint_period"
+"did_early_egg","Early egg","Early egg
+4 to 14",4,14,11,"disjoint_period"
+"did_late_egg","Late egg","Late egg
+15 to 28",15,28,14,"disjoint_period"
+"did_active_0_14_day","Active 0–14","Active 0–14
+composite",0,14,15,"duration_weighted_composite"

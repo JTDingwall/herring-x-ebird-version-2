@@ -1,0 +1,277 @@
+"feature_set","scheme","selected_k","analysis_taxon_id","common_name","cluster","assignment_stability","prevalence","bootstrap_replicates","seed"
+"A","unweighted",2,"atx_c9db024faf12","American Crow",1,0.981481481481482,0.53504,1000,20290726
+"A","unweighted",2,"atx_725074cbfcb6","Glaucous-winged Gull",1,0.707165109034268,0.41232,1000,20290726
+"A","unweighted",2,"atx_815c98107028","Mallard",1,0.987441130298273,0.39548,1000,20290726
+"A","unweighted",2,"atx_fc0a9b777dcd","Bald Eagle",1,0.926216640502355,0.38775,1000,20290726
+"A","unweighted",2,"atx_b3d3ea90f9cb","Canada Goose",1,0.993680884676145,0.32779,1000,20290726
+"A","unweighted",2,"atx_v2_000007","Common Raven",1,0.979591836734694,0.28374,1000,20290726
+"A","unweighted",2,"atx_99238953638b","Bufflehead",1,0.928237129485179,0.23623,1000,20290726
+"A","unweighted",2,"atx_7b80ddaff058","Great Blue Heron",1,0.948051948051948,0.23489,1000,20290726
+"A","unweighted",2,"atx_a113baee5693","American Wigeon",1,0.70398773006135,0.16854,1000,20290726
+"A","unweighted",2,"atx_a444854c6b66","Double-crested Cormorant",1,0.974842767295597,0.13564,1000,20290726
+"A","unweighted",2,"atx_35518e24dfdd","Common Merganser",1,0.62200956937799,0.12976,1000,20290726
+"A","unweighted",2,"atx_e0e678a61ad7","Short-billed Gull",2,0.728414442700157,0.10698,1000,20290726
+"A","unweighted",2,"atx_82312e6f2848","Common Goldeneye",2,0.686998394863563,0.10014,1000,20290726
+"A","unweighted",2,"atx_04afbeb21fb0","Hooded Merganser",1,0.990783410138249,0.09505,1000,20290726
+"A","unweighted",2,"atx_35707a9578d5","Pelagic Cormorant",1,0.971830985915493,0.08818,1000,20290726
+"A","unweighted",2,"atx_1930f23cc4f8","Surf Scoter",2,0.807874015748032,0.07904,1000,20290726
+"A","unweighted",2,"atx_9ae1aa9b7fdf","Common Loon",1,0.964723926380368,0.07174,1000,20290726
+"A","unweighted",2,"atx_7d980a7c8c37","Northern Pintail",1,0.545731707317073,0.07054,1000,20290726
+"A","unweighted",2,"atx_v2_000002","Black Oystercatcher",1,0.969793322734499,0.06336,1000,20290726
+"A","unweighted",2,"atx_c2d1fbbaf6d3","Red-breasted Merganser",1,0.958715596330275,0.06276,1000,20290726
+"A","unweighted",2,"atx_6b4cfd1ab927","Horned Grebe",1,0.965079365079365,0.06105,1000,20290726
+"A","unweighted",2,"atx_87b306550dba","Harlequin Duck",2,0.75077399380805,0.05627,1000,20290726
+"A","unweighted",2,"atx_d7dd9536145c","Barrow's Goldeneye",1,0.814528593508501,0.05172,1000,20290726
+"A","unweighted",2,"atx_d002764a39e8","Lesser Scaup",2,0.834905660377358,0.04506,1000,20290726
+"A","unweighted",2,"atx_86eda7ed9025","Red-necked Grebe",1,0.969889064976228,0.0379,1000,20290726
+"A","unweighted",2,"atx_c12b832d2b03","California Gull",1,0.414125200642055,0.0324,1000,20290726
+"A","unweighted",2,"atx_8608f2ed61cf","Pigeon Guillemot",1,0.964968152866242,0.02949,1000,20290726
+"A","unweighted",2,"atx_c34f23342a55","Pacific Loon",1,0.968944099378882,0.02846,1000,20290726
+"A","unweighted",2,"atx_v2_000003","Dunlin",1,0.953376205787781,0.02803,1000,20290726
+"A","unweighted",2,"atx_3083477933a8","White-winged Scoter",2,0.797077922077922,0.02272,1000,20290726
+"A","unweighted",2,"atx_aa5353f6d6d2","Iceland Gull",1,0.3546875,0.02193,1000,20290726
+"A","unweighted",2,"atx_08bb40b40c0a","Ring-billed Gull",1,0.993827160493827,0.02189,1000,20290726
+"A","unweighted",2,"atx_4ae57d328ec6","Greater Scaup",2,0.818910256410256,0.02168,1000,20290726
+"A","unweighted",2,"atx_15dd5efcd8d6","Black Turnstone",1,0.818181818181818,0.02068,1000,20290726
+"A","unweighted",2,"atx_fadb8da1a816","Bonaparte's Gull",2,0.875796178343949,0.01902,1000,20290726
+"A","unweighted",2,"atx_v2_000006","Black-bellied Plover",1,0.9152,0.01866,1000,20290726
+"A","unweighted",2,"atx_59441ff7abde","Brant",1,0.632165605095541,0.01803,1000,20290726
+"A","unweighted",2,"atx_acf526bb8010","Marbled Murrelet",1,0.80030487804878,0.01436,1000,20290726
+"A","unweighted",2,"atx_40f730f5ad72","Long-tailed Duck",2,0.919811320754717,0.01413,1000,20290726
+"A","unweighted",2,"atx_98ca0000b734","Brandt's Cormorant",1,0.99203821656051,0.01202,1000,20290726
+"A","unweighted",2,"atx_136b0e66254b","Common Murre",1,0.870491803278688,0.00949,1000,20290726
+"A","unweighted",2,"atx_7571c026ae99","American Herring Gull",1,0.406441717791411,0.00901,1000,20290726
+"A","unweighted",2,"atx_1328b44be502","Black Scoter",2,0.503987240829346,0.0082,1000,20290726
+"A","unweighted",2,"atx_04cf65098f13","Red-throated Loon",1,0.938438438438438,0.00688,1000,20290726
+"A","unweighted",2,"atx_ebf17f77fb66","Western Grebe",1,0.923452768729642,0.00628,1000,20290726
+"A","unweighted",2,"atx_5a9a3495d0ea","Western Gull",2,0.632075471698113,0.00335,1000,20290726
+"A","inverse_variance",3,"atx_c9db024faf12","American Crow",1,0.959311424100156,0.53504,1000,20290727
+"A","inverse_variance",3,"atx_725074cbfcb6","Glaucous-winged Gull",2,0.75,0.41232,1000,20290727
+"A","inverse_variance",3,"atx_815c98107028","Mallard",1,0.960244648318043,0.39548,1000,20290727
+"A","inverse_variance",3,"atx_fc0a9b777dcd","Bald Eagle",3,0.989345509893455,0.38775,1000,20290727
+"A","inverse_variance",3,"atx_b3d3ea90f9cb","Canada Goose",1,0.979166666666667,0.32779,1000,20290727
+"A","inverse_variance",3,"atx_v2_000007","Common Raven",1,0.858520900321543,0.28374,1000,20290727
+"A","inverse_variance",3,"atx_99238953638b","Bufflehead",2,0.4192,0.23623,1000,20290727
+"A","inverse_variance",3,"atx_7b80ddaff058","Great Blue Heron",2,0.170212765957447,0.23489,1000,20290727
+"A","inverse_variance",3,"atx_a113baee5693","American Wigeon",2,0.560126582278481,0.16854,1000,20290727
+"A","inverse_variance",3,"atx_a444854c6b66","Double-crested Cormorant",1,0.95952023988006,0.13564,1000,20290727
+"A","inverse_variance",3,"atx_35518e24dfdd","Common Merganser",2,0.743670886075949,0.12976,1000,20290727
+"A","inverse_variance",3,"atx_e0e678a61ad7","Short-billed Gull",2,0.81089258698941,0.10698,1000,20290727
+"A","inverse_variance",3,"atx_82312e6f2848","Common Goldeneye",2,0.699842022116904,0.10014,1000,20290727
+"A","inverse_variance",3,"atx_04afbeb21fb0","Hooded Merganser",1,0.975460122699387,0.09505,1000,20290727
+"A","inverse_variance",3,"atx_35707a9578d5","Pelagic Cormorant",1,0.947611710323575,0.08818,1000,20290727
+"A","inverse_variance",3,"atx_1930f23cc4f8","Surf Scoter",2,0.724137931034483,0.07904,1000,20290727
+"A","inverse_variance",3,"atx_9ae1aa9b7fdf","Common Loon",1,0.982945736434109,0.07174,1000,20290727
+"A","inverse_variance",3,"atx_7d980a7c8c37","Northern Pintail",2,0.671732522796353,0.07054,1000,20290727
+"A","inverse_variance",3,"atx_v2_000002","Black Oystercatcher",1,0.973143759873618,0.06336,1000,20290727
+"A","inverse_variance",3,"atx_c2d1fbbaf6d3","Red-breasted Merganser",1,0.944954128440367,0.06276,1000,20290727
+"A","inverse_variance",3,"atx_6b4cfd1ab927","Horned Grebe",1,0.978328173374613,0.06105,1000,20290727
+"A","inverse_variance",3,"atx_87b306550dba","Harlequin Duck",2,0.795631825273011,0.05627,1000,20290727
+"A","inverse_variance",3,"atx_d7dd9536145c","Barrow's Goldeneye",2,0.275590551181102,0.05172,1000,20290727
+"A","inverse_variance",3,"atx_d002764a39e8","Lesser Scaup",2,0.686786296900489,0.04506,1000,20290727
+"A","inverse_variance",3,"atx_86eda7ed9025","Red-necked Grebe",1,0.923566878980892,0.0379,1000,20290727
+"A","inverse_variance",3,"atx_c12b832d2b03","California Gull",2,0.727131782945736,0.0324,1000,20290727
+"A","inverse_variance",3,"atx_8608f2ed61cf","Pigeon Guillemot",1,0.947635135135135,0.02949,1000,20290727
+"A","inverse_variance",3,"atx_c34f23342a55","Pacific Loon",1,0.968181818181818,0.02846,1000,20290727
+"A","inverse_variance",3,"atx_v2_000003","Dunlin",1,0.937908496732026,0.02803,1000,20290727
+"A","inverse_variance",3,"atx_3083477933a8","White-winged Scoter",2,0.641993957703928,0.02272,1000,20290727
+"A","inverse_variance",3,"atx_aa5353f6d6d2","Iceland Gull",2,0.796529968454259,0.02193,1000,20290727
+"A","inverse_variance",3,"atx_08bb40b40c0a","Ring-billed Gull",1,0.966507177033493,0.02189,1000,20290727
+"A","inverse_variance",3,"atx_4ae57d328ec6","Greater Scaup",2,0.685714285714286,0.02168,1000,20290727
+"A","inverse_variance",3,"atx_15dd5efcd8d6","Black Turnstone",1,0.91566265060241,0.02068,1000,20290727
+"A","inverse_variance",3,"atx_fadb8da1a816","Bonaparte's Gull",2,0.635367762128325,0.01902,1000,20290727
+"A","inverse_variance",3,"atx_v2_000006","Black-bellied Plover",1,0.950769230769231,0.01866,1000,20290727
+"A","inverse_variance",3,"atx_59441ff7abde","Brant",2,0.6140625,0.01803,1000,20290727
+"A","inverse_variance",3,"atx_acf526bb8010","Marbled Murrelet",1,0.866454689984102,0.01436,1000,20290727
+"A","inverse_variance",3,"atx_40f730f5ad72","Long-tailed Duck",2,0.697305863708399,0.01413,1000,20290727
+"A","inverse_variance",3,"atx_98ca0000b734","Brandt's Cormorant",1,0.95625,0.01202,1000,20290727
+"A","inverse_variance",3,"atx_136b0e66254b","Common Murre",1,0.978090766823161,0.00949,1000,20290727
+"A","inverse_variance",3,"atx_7571c026ae99","American Herring Gull",2,0.714285714285714,0.00901,1000,20290727
+"A","inverse_variance",3,"atx_1328b44be502","Black Scoter",2,0.45,0.0082,1000,20290727
+"A","inverse_variance",3,"atx_04cf65098f13","Red-throated Loon",1,0.927492447129909,0.00688,1000,20290727
+"A","inverse_variance",3,"atx_ebf17f77fb66","Western Grebe",1,0.955384615384615,0.00628,1000,20290727
+"A","inverse_variance",3,"atx_5a9a3495d0ea","Western Gull",1,0.7584,0.00335,1000,20290727
+"A","reliability_shrunk",2,"atx_c9db024faf12","American Crow",1,0.990445859872611,0.53504,1000,20290728
+"A","reliability_shrunk",2,"atx_725074cbfcb6","Glaucous-winged Gull",2,0.666666666666667,0.41232,1000,20290728
+"A","reliability_shrunk",2,"atx_815c98107028","Mallard",1,0.992150706436421,0.39548,1000,20290728
+"A","reliability_shrunk",2,"atx_fc0a9b777dcd","Bald Eagle",1,0.644376899696049,0.38775,1000,20290728
+"A","reliability_shrunk",2,"atx_b3d3ea90f9cb","Canada Goose",1,0.994991652754591,0.32779,1000,20290728
+"A","reliability_shrunk",2,"atx_v2_000007","Common Raven",1,0.998463901689708,0.28374,1000,20290728
+"A","reliability_shrunk",2,"atx_99238953638b","Bufflehead",1,0.616692426584235,0.23623,1000,20290728
+"A","reliability_shrunk",2,"atx_7b80ddaff058","Great Blue Heron",1,0.757188498402556,0.23489,1000,20290728
+"A","reliability_shrunk",2,"atx_a113baee5693","American Wigeon",2,0.401284109149278,0.16854,1000,20290728
+"A","reliability_shrunk",2,"atx_a444854c6b66","Double-crested Cormorant",1,0.991652754590985,0.13564,1000,20290728
+"A","reliability_shrunk",2,"atx_35518e24dfdd","Common Merganser",2,0.701612903225806,0.12976,1000,20290728
+"A","reliability_shrunk",2,"atx_e0e678a61ad7","Short-billed Gull",2,0.938709677419355,0.10698,1000,20290728
+"A","reliability_shrunk",2,"atx_82312e6f2848","Common Goldeneye",2,0.889751552795031,0.10014,1000,20290728
+"A","reliability_shrunk",2,"atx_04afbeb21fb0","Hooded Merganser",1,0.992211838006231,0.09505,1000,20290728
+"A","reliability_shrunk",2,"atx_35707a9578d5","Pelagic Cormorant",1,0.9921875,0.08818,1000,20290728
+"A","reliability_shrunk",2,"atx_1930f23cc4f8","Surf Scoter",2,0.918495297805643,0.07904,1000,20290728
+"A","reliability_shrunk",2,"atx_9ae1aa9b7fdf","Common Loon",1,0.99236641221374,0.07174,1000,20290728
+"A","reliability_shrunk",2,"atx_7d980a7c8c37","Northern Pintail",2,0.570107858243451,0.07054,1000,20290728
+"A","reliability_shrunk",2,"atx_v2_000002","Black Oystercatcher",1,0.996918335901387,0.06336,1000,20290728
+"A","reliability_shrunk",2,"atx_c2d1fbbaf6d3","Red-breasted Merganser",1,0.971742543171115,0.06276,1000,20290728
+"A","reliability_shrunk",2,"atx_6b4cfd1ab927","Horned Grebe",1,0.996850393700787,0.06105,1000,20290728
+"A","reliability_shrunk",2,"atx_87b306550dba","Harlequin Duck",2,0.896166134185304,0.05627,1000,20290728
+"A","reliability_shrunk",2,"atx_d7dd9536145c","Barrow's Goldeneye",1,0.771384136858476,0.05172,1000,20290728
+"A","reliability_shrunk",2,"atx_d002764a39e8","Lesser Scaup",2,0.775888717156105,0.04506,1000,20290728
+"A","reliability_shrunk",2,"atx_86eda7ed9025","Red-necked Grebe",1,0.986363636363636,0.0379,1000,20290728
+"A","reliability_shrunk",2,"atx_c12b832d2b03","California Gull",2,0.814992025518341,0.0324,1000,20290728
+"A","reliability_shrunk",2,"atx_8608f2ed61cf","Pigeon Guillemot",1,0.995297805642633,0.02949,1000,20290728
+"A","reliability_shrunk",2,"atx_c34f23342a55","Pacific Loon",1,0.990769230769231,0.02846,1000,20290728
+"A","reliability_shrunk",2,"atx_v2_000003","Dunlin",1,0.99400299850075,0.02803,1000,20290728
+"A","reliability_shrunk",2,"atx_3083477933a8","White-winged Scoter",2,0.832565284178187,0.02272,1000,20290728
+"A","reliability_shrunk",2,"atx_aa5353f6d6d2","Iceland Gull",2,0.840625,0.02193,1000,20290728
+"A","reliability_shrunk",2,"atx_08bb40b40c0a","Ring-billed Gull",1,0.993769470404984,0.02189,1000,20290728
+"A","reliability_shrunk",2,"atx_4ae57d328ec6","Greater Scaup",2,0.848580441640379,0.02168,1000,20290728
+"A","reliability_shrunk",2,"atx_15dd5efcd8d6","Black Turnstone",1,0.979969183359014,0.02068,1000,20290728
+"A","reliability_shrunk",2,"atx_fadb8da1a816","Bonaparte's Gull",2,0.636363636363636,0.01902,1000,20290728
+"A","reliability_shrunk",2,"atx_v2_000006","Black-bellied Plover",1,0.995238095238095,0.01866,1000,20290728
+"A","reliability_shrunk",2,"atx_59441ff7abde","Brant",2,0.48841059602649,0.01803,1000,20290728
+"A","reliability_shrunk",2,"atx_acf526bb8010","Marbled Murrelet",1,0.906976744186046,0.01436,1000,20290728
+"A","reliability_shrunk",2,"atx_40f730f5ad72","Long-tailed Duck",2,0.896604938271605,0.01413,1000,20290728
+"A","reliability_shrunk",2,"atx_98ca0000b734","Brandt's Cormorant",1,0.996894409937888,0.01202,1000,20290728
+"A","reliability_shrunk",2,"atx_136b0e66254b","Common Murre",1,0.993846153846154,0.00949,1000,20290728
+"A","reliability_shrunk",2,"atx_7571c026ae99","American Herring Gull",2,0.680817610062893,0.00901,1000,20290728
+"A","reliability_shrunk",2,"atx_1328b44be502","Black Scoter",1,0.622611464968153,0.0082,1000,20290728
+"A","reliability_shrunk",2,"atx_04cf65098f13","Red-throated Loon",1,0.993453355155483,0.00688,1000,20290728
+"A","reliability_shrunk",2,"atx_ebf17f77fb66","Western Grebe",1,0.996835443037975,0.00628,1000,20290728
+"A","reliability_shrunk",2,"atx_5a9a3495d0ea","Western Gull",1,0.938291139240506,0.00335,1000,20290728
+"B","unweighted",2,"atx_c9db024faf12","American Crow",1,0.962178517397882,0.53504,1000,20290729
+"B","unweighted",2,"atx_725074cbfcb6","Glaucous-winged Gull",2,0.389908256880734,0.41232,1000,20290729
+"B","unweighted",2,"atx_815c98107028","Mallard",1,0.945226917057903,0.39548,1000,20290729
+"B","unweighted",2,"atx_fc0a9b777dcd","Bald Eagle",1,0.826833073322933,0.38775,1000,20290729
+"B","unweighted",2,"atx_b3d3ea90f9cb","Canada Goose",1,0.887820512820513,0.32779,1000,20290729
+"B","unweighted",2,"atx_v2_000007","Common Raven",1,0.969648562300319,0.28374,1000,20290729
+"B","unweighted",2,"atx_99238953638b","Bufflehead",1,0.985959438377535,0.23623,1000,20290729
+"B","unweighted",2,"atx_7b80ddaff058","Great Blue Heron",1,0.990566037735849,0.23489,1000,20290729
+"B","unweighted",2,"atx_a113baee5693","American Wigeon",1,0.794025157232704,0.16854,1000,20290729
+"B","unweighted",2,"atx_a444854c6b66","Double-crested Cormorant",1,0.950576606260296,0.13564,1000,20290729
+"B","unweighted",2,"atx_35518e24dfdd","Common Merganser",1,0.75801282051282,0.12976,1000,20290729
+"B","unweighted",2,"atx_e0e678a61ad7","Short-billed Gull",2,0.575949367088608,0.10698,1000,20290729
+"B","unweighted",2,"atx_82312e6f2848","Common Goldeneye",1,0.711180124223602,0.10014,1000,20290729
+"B","unweighted",2,"atx_04afbeb21fb0","Hooded Merganser",1,0.95144157814871,0.09505,1000,20290729
+"B","unweighted",2,"atx_35707a9578d5","Pelagic Cormorant",1,0.974320241691843,0.08818,1000,20290729
+"B","unweighted",2,"atx_1930f23cc4f8","Surf Scoter",1,0.84331797235023,0.07904,1000,20290729
+"B","unweighted",2,"atx_9ae1aa9b7fdf","Common Loon",1,0.954983922829582,0.07174,1000,20290729
+"B","unweighted",2,"atx_7d980a7c8c37","Northern Pintail",1,0.733532934131736,0.07054,1000,20290729
+"B","unweighted",2,"atx_v2_000002","Black Oystercatcher",1,0.971291866028708,0.06336,1000,20290729
+"B","unweighted",2,"atx_c2d1fbbaf6d3","Red-breasted Merganser",1,0.974777448071217,0.06276,1000,20290729
+"B","unweighted",2,"atx_6b4cfd1ab927","Horned Grebe",1,0.940366972477064,0.06105,1000,20290729
+"B","unweighted",2,"atx_87b306550dba","Harlequin Duck",2,0.331259720062208,0.05627,1000,20290729
+"B","unweighted",2,"atx_d7dd9536145c","Barrow's Goldeneye",1,0.939443535188216,0.05172,1000,20290729
+"B","unweighted",2,"atx_d002764a39e8","Lesser Scaup",2,0.3456,0.04506,1000,20290729
+"B","unweighted",2,"atx_86eda7ed9025","Red-necked Grebe",1,0.813374805598756,0.0379,1000,20290729
+"B","unweighted",2,"atx_c12b832d2b03","California Gull",2,0.494417862838915,0.0324,1000,20290729
+"B","unweighted",2,"atx_8608f2ed61cf","Pigeon Guillemot",1,0.940157480314961,0.02949,1000,20290729
+"B","unweighted",2,"atx_c34f23342a55","Pacific Loon",1,0.979032258064516,0.02846,1000,20290729
+"B","unweighted",2,"atx_v2_000003","Dunlin",1,0.936728395061728,0.02803,1000,20290729
+"B","unweighted",2,"atx_3083477933a8","White-winged Scoter",1,0.874622356495468,0.02272,1000,20290729
+"B","unweighted",2,"atx_aa5353f6d6d2","Iceland Gull",2,0.6976,0.02193,1000,20290729
+"B","unweighted",2,"atx_08bb40b40c0a","Ring-billed Gull",1,0.519319938176198,0.02189,1000,20290729
+"B","unweighted",2,"atx_4ae57d328ec6","Greater Scaup",2,0.412044374009509,0.02168,1000,20290729
+"B","unweighted",2,"atx_15dd5efcd8d6","Black Turnstone",1,0.958841463414634,0.02068,1000,20290729
+"B","unweighted",2,"atx_fadb8da1a816","Bonaparte's Gull",2,0.719806763285024,0.01902,1000,20290729
+"B","unweighted",2,"atx_v2_000006","Black-bellied Plover",1,0.9152,0.01866,1000,20290729
+"B","unweighted",2,"atx_59441ff7abde","Brant",1,0.967441860465116,0.01803,1000,20290729
+"B","unweighted",2,"atx_acf526bb8010","Marbled Murrelet",1,0.947535771065183,0.01436,1000,20290729
+"B","unweighted",2,"atx_40f730f5ad72","Long-tailed Duck",2,0.574534161490683,0.01413,1000,20290729
+"B","unweighted",2,"atx_98ca0000b734","Brandt's Cormorant",1,0.968543046357616,0.01202,1000,20290729
+"B","unweighted",2,"atx_136b0e66254b","Common Murre",1,0.95968992248062,0.00949,1000,20290729
+"B","unweighted",2,"atx_7571c026ae99","American Herring Gull",1,0.74922600619195,0.00901,1000,20290729
+"B","unweighted",2,"atx_1328b44be502","Black Scoter",1,0.912013536379019,0.0082,1000,20290729
+"B","unweighted",2,"atx_04cf65098f13","Red-throated Loon",1,0.987361769352291,0.00688,1000,20290729
+"B","unweighted",2,"atx_ebf17f77fb66","Western Grebe",1,0.648401826484018,0.00628,1000,20290729
+"B","unweighted",2,"atx_5a9a3495d0ea","Western Gull",1,0.759630200308166,0.00335,1000,20290729
+"B","inverse_variance",2,"atx_c9db024faf12","American Crow",1,0.930533117932149,0.53504,1000,20290730
+"B","inverse_variance",2,"atx_725074cbfcb6","Glaucous-winged Gull",2,0.885993485342019,0.41232,1000,20290730
+"B","inverse_variance",2,"atx_815c98107028","Mallard",2,0.451564828614009,0.39548,1000,20290730
+"B","inverse_variance",2,"atx_fc0a9b777dcd","Bald Eagle",2,0.908360128617363,0.38775,1000,20290730
+"B","inverse_variance",2,"atx_b3d3ea90f9cb","Canada Goose",1,0.285261489698891,0.32779,1000,20290730
+"B","inverse_variance",2,"atx_v2_000007","Common Raven",1,0.9248,0.28374,1000,20290730
+"B","inverse_variance",2,"atx_99238953638b","Bufflehead",1,0.899691358024691,0.23623,1000,20290730
+"B","inverse_variance",2,"atx_7b80ddaff058","Great Blue Heron",1,0.870676691729323,0.23489,1000,20290730
+"B","inverse_variance",2,"atx_a113baee5693","American Wigeon",2,0.896331738437002,0.16854,1000,20290730
+"B","inverse_variance",2,"atx_a444854c6b66","Double-crested Cormorant",1,0.800618238021638,0.13564,1000,20290730
+"B","inverse_variance",2,"atx_35518e24dfdd","Common Merganser",2,0.927469135802469,0.12976,1000,20290730
+"B","inverse_variance",2,"atx_e0e678a61ad7","Short-billed Gull",2,0.918918918918919,0.10698,1000,20290730
+"B","inverse_variance",2,"atx_82312e6f2848","Common Goldeneye",2,0.686943620178042,0.10014,1000,20290730
+"B","inverse_variance",2,"atx_04afbeb21fb0","Hooded Merganser",1,0.959501557632399,0.09505,1000,20290730
+"B","inverse_variance",2,"atx_35707a9578d5","Pelagic Cormorant",1,0.8859375,0.08818,1000,20290730
+"B","inverse_variance",2,"atx_1930f23cc4f8","Surf Scoter",1,0.816745655608215,0.07904,1000,20290730
+"B","inverse_variance",2,"atx_9ae1aa9b7fdf","Common Loon",1,0.9359375,0.07174,1000,20290730
+"B","inverse_variance",2,"atx_7d980a7c8c37","Northern Pintail",2,0.945337620578778,0.07054,1000,20290730
+"B","inverse_variance",2,"atx_v2_000002","Black Oystercatcher",1,0.97125567322239,0.06336,1000,20290730
+"B","inverse_variance",2,"atx_c2d1fbbaf6d3","Red-breasted Merganser",1,0.865718799368088,0.06276,1000,20290730
+"B","inverse_variance",2,"atx_6b4cfd1ab927","Horned Grebe",1,0.819805194805195,0.06105,1000,20290730
+"B","inverse_variance",2,"atx_87b306550dba","Harlequin Duck",2,0.686838124054463,0.05627,1000,20290730
+"B","inverse_variance",2,"atx_d7dd9536145c","Barrow's Goldeneye",1,0.786184210526316,0.05172,1000,20290730
+"B","inverse_variance",2,"atx_d002764a39e8","Lesser Scaup",2,0.716923076923077,0.04506,1000,20290730
+"B","inverse_variance",2,"atx_86eda7ed9025","Red-necked Grebe",2,0.860215053763441,0.0379,1000,20290730
+"B","inverse_variance",2,"atx_c12b832d2b03","California Gull",2,0.811011904761905,0.0324,1000,20290730
+"B","inverse_variance",2,"atx_8608f2ed61cf","Pigeon Guillemot",1,0.970542635658915,0.02949,1000,20290730
+"B","inverse_variance",2,"atx_c34f23342a55","Pacific Loon",1,0.864197530864197,0.02846,1000,20290730
+"B","inverse_variance",2,"atx_v2_000003","Dunlin",1,0.965023847376789,0.02803,1000,20290730
+"B","inverse_variance",2,"atx_3083477933a8","White-winged Scoter",1,0.951713395638629,0.02272,1000,20290730
+"B","inverse_variance",2,"atx_aa5353f6d6d2","Iceland Gull",2,0.970542635658915,0.02193,1000,20290730
+"B","inverse_variance",2,"atx_08bb40b40c0a","Ring-billed Gull",1,0.92018779342723,0.02189,1000,20290730
+"B","inverse_variance",2,"atx_4ae57d328ec6","Greater Scaup",2,0.686305732484076,0.02168,1000,20290730
+"B","inverse_variance",2,"atx_15dd5efcd8d6","Black Turnstone",1,0.798484848484848,0.02068,1000,20290730
+"B","inverse_variance",2,"atx_fadb8da1a816","Bonaparte's Gull",2,0.754746835443038,0.01902,1000,20290730
+"B","inverse_variance",2,"atx_v2_000006","Black-bellied Plover",1,0.955423476968796,0.01866,1000,20290730
+"B","inverse_variance",2,"atx_59441ff7abde","Brant",1,0.662015503875969,0.01803,1000,20290730
+"B","inverse_variance",2,"atx_acf526bb8010","Marbled Murrelet",1,0.828843106180666,0.01436,1000,20290730
+"B","inverse_variance",2,"atx_40f730f5ad72","Long-tailed Duck",2,0.693290734824281,0.01413,1000,20290730
+"B","inverse_variance",2,"atx_98ca0000b734","Brandt's Cormorant",1,0.811819595645412,0.01202,1000,20290730
+"B","inverse_variance",2,"atx_136b0e66254b","Common Murre",1,0.901800327332242,0.00949,1000,20290730
+"B","inverse_variance",2,"atx_7571c026ae99","American Herring Gull",2,0.926100628930818,0.00901,1000,20290730
+"B","inverse_variance",2,"atx_1328b44be502","Black Scoter",1,0.881977671451356,0.0082,1000,20290730
+"B","inverse_variance",2,"atx_04cf65098f13","Red-throated Loon",1,0.804724409448819,0.00688,1000,20290730
+"B","inverse_variance",2,"atx_ebf17f77fb66","Western Grebe",1,0.95024077046549,0.00628,1000,20290730
+"B","inverse_variance",2,"atx_5a9a3495d0ea","Western Gull",1,0.594202898550725,0.00335,1000,20290730
+"B","reliability_shrunk",2,"atx_c9db024faf12","American Crow",1,0.66,0.53504,1000,20290731
+"B","reliability_shrunk",2,"atx_725074cbfcb6","Glaucous-winged Gull",2,0.69359756097561,0.41232,1000,20290731
+"B","reliability_shrunk",2,"atx_815c98107028","Mallard",2,0.790243902439024,0.39548,1000,20290731
+"B","reliability_shrunk",2,"atx_fc0a9b777dcd","Bald Eagle",2,0.845911949685535,0.38775,1000,20290731
+"B","reliability_shrunk",2,"atx_b3d3ea90f9cb","Canada Goose",2,0.69047619047619,0.32779,1000,20290731
+"B","reliability_shrunk",2,"atx_v2_000007","Common Raven",1,0.631496062992126,0.28374,1000,20290731
+"B","reliability_shrunk",2,"atx_99238953638b","Bufflehead",2,0.497553017944535,0.23623,1000,20290731
+"B","reliability_shrunk",2,"atx_7b80ddaff058","Great Blue Heron",2,0.668885191347754,0.23489,1000,20290731
+"B","reliability_shrunk",2,"atx_a113baee5693","American Wigeon",2,0.898617511520737,0.16854,1000,20290731
+"B","reliability_shrunk",2,"atx_a444854c6b66","Double-crested Cormorant",2,0.739130434782609,0.13564,1000,20290731
+"B","reliability_shrunk",2,"atx_35518e24dfdd","Common Merganser",2,0.865671641791045,0.12976,1000,20290731
+"B","reliability_shrunk",2,"atx_e0e678a61ad7","Short-billed Gull",2,0.6368,0.10698,1000,20290731
+"B","reliability_shrunk",2,"atx_82312e6f2848","Common Goldeneye",2,0.756329113924051,0.10014,1000,20290731
+"B","reliability_shrunk",2,"atx_04afbeb21fb0","Hooded Merganser",1,0.625382262996942,0.09505,1000,20290731
+"B","reliability_shrunk",2,"atx_35707a9578d5","Pelagic Cormorant",2,0.568111455108359,0.08818,1000,20290731
+"B","reliability_shrunk",2,"atx_1930f23cc4f8","Surf Scoter",2,0.679331306990882,0.07904,1000,20290731
+"B","reliability_shrunk",2,"atx_9ae1aa9b7fdf","Common Loon",1,0.653354632587859,0.07174,1000,20290731
+"B","reliability_shrunk",2,"atx_7d980a7c8c37","Northern Pintail",2,0.850847457627119,0.07054,1000,20290731
+"B","reliability_shrunk",2,"atx_v2_000002","Black Oystercatcher",1,0.6120826709062,0.06336,1000,20290731
+"B","reliability_shrunk",2,"atx_c2d1fbbaf6d3","Red-breasted Merganser",2,0.566978193146417,0.06276,1000,20290731
+"B","reliability_shrunk",2,"atx_6b4cfd1ab927","Horned Grebe",2,0.499210110584518,0.06105,1000,20290731
+"B","reliability_shrunk",2,"atx_87b306550dba","Harlequin Duck",2,0.767123287671233,0.05627,1000,20290731
+"B","reliability_shrunk",2,"atx_d7dd9536145c","Barrow's Goldeneye",2,0.7171875,0.05172,1000,20290731
+"B","reliability_shrunk",2,"atx_d002764a39e8","Lesser Scaup",2,0.874015748031496,0.04506,1000,20290731
+"B","reliability_shrunk",2,"atx_86eda7ed9025","Red-necked Grebe",2,0.84984520123839,0.0379,1000,20290731
+"B","reliability_shrunk",2,"atx_c12b832d2b03","California Gull",2,0.709415584415584,0.0324,1000,20290731
+"B","reliability_shrunk",2,"atx_8608f2ed61cf","Pigeon Guillemot",1,0.63265306122449,0.02949,1000,20290731
+"B","reliability_shrunk",2,"atx_c34f23342a55","Pacific Loon",2,0.499205087440382,0.02846,1000,20290731
+"B","reliability_shrunk",2,"atx_v2_000003","Dunlin",1,0.6384,0.02803,1000,20290731
+"B","reliability_shrunk",2,"atx_3083477933a8","White-winged Scoter",2,0.558028616852146,0.02272,1000,20290731
+"B","reliability_shrunk",2,"atx_aa5353f6d6d2","Iceland Gull",2,0.656580937972769,0.02193,1000,20290731
+"B","reliability_shrunk",2,"atx_08bb40b40c0a","Ring-billed Gull",1,0.690332326283988,0.02189,1000,20290731
+"B","reliability_shrunk",2,"atx_4ae57d328ec6","Greater Scaup",2,0.848909657320872,0.02168,1000,20290731
+"B","reliability_shrunk",2,"atx_15dd5efcd8d6","Black Turnstone",2,0.629969418960245,0.02068,1000,20290731
+"B","reliability_shrunk",2,"atx_fadb8da1a816","Bonaparte's Gull",2,0.910060975609756,0.01902,1000,20290731
+"B","reliability_shrunk",2,"atx_v2_000006","Black-bellied Plover",1,0.687211093990755,0.01866,1000,20290731
+"B","reliability_shrunk",2,"atx_59441ff7abde","Brant",2,0.703049759229534,0.01803,1000,20290731
+"B","reliability_shrunk",2,"atx_acf526bb8010","Marbled Murrelet",2,0.596969696969697,0.01436,1000,20290731
+"B","reliability_shrunk",2,"atx_40f730f5ad72","Long-tailed Duck",2,0.706605222734255,0.01413,1000,20290731
+"B","reliability_shrunk",2,"atx_98ca0000b734","Brandt's Cormorant",2,0.621753246753247,0.01202,1000,20290731
+"B","reliability_shrunk",2,"atx_136b0e66254b","Common Murre",1,0.591527987897126,0.00949,1000,20290731
+"B","reliability_shrunk",2,"atx_7571c026ae99","American Herring Gull",2,0.808868501529052,0.00901,1000,20290731
+"B","reliability_shrunk",2,"atx_1328b44be502","Black Scoter",2,0.61128526645768,0.0082,1000,20290731
+"B","reliability_shrunk",2,"atx_04cf65098f13","Red-throated Loon",2,0.619344773790952,0.00688,1000,20290731
+"B","reliability_shrunk",2,"atx_ebf17f77fb66","Western Grebe",1,0.648062015503876,0.00628,1000,20290731
+"B","reliability_shrunk",2,"atx_5a9a3495d0ea","Western Gull",2,0.89,0.00335,1000,20290731

@@ -1,0 +1,7 @@
+"figure","question","chart_type","data_grain","primary_caveat"
+"count_effect_heatmap_raw.png","What are the archived adjusted count effects by species and disjoint period?","diverging heatmap","species by archived period","Conditional reported-number model contrasts, not total bird abundance."
+"count_effect_heatmap_timing_shape.png","How does each species' timing shape differ after removing its overall level?","diverging heatmap","species by archived period","Conditional reported-number model contrasts, not total bird abundance."
+"count_profile_pca.png","What linear structure is present in standardized count profiles?","PCA scatter","species","Conditional reported-number model contrasts, not total bird abundance."
+"count_profile_nmds.png","What rank-order geometry is present in the same standardized profiles?","Euclidean NMDS scatter","species","Conditional reported-number model contrasts, not total bird abundance."
+"count_period_distribution_link.png","How are equal-species link effects distributed across periods?","boxplot with species points","species by archived period","Conditional reported-number model contrasts, not total bird abundance."
+"count_period_distribution_ratio.png","How are the same effects interpreted as reported-number ratios?","log-scale boxplot with species points","species by archived period","Conditional reported-number model contrasts, not total bird abundance."

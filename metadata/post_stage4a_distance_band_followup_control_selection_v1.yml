@@ -1,0 +1,29 @@
+selection_version: post_stage4a_distance_band_followup_control_selection_v1
+selected_at_local: 2026-07-26
+selection_basis: locked_support_only_rule
+effects_inspected_before_selection: false
+model_fit_execution_commit: b85171e1f8c5e9b8b56eb6407d40e569d23a6d4e
+checkpoint_signature_selection_sha256:
+  american_robin_detection: 03b50dbc9d5d07dc84cc7d7d0248c05458a920db241f853aaf1e9610a107b9b1
+  american_robin_positive_numeric_count_given_detection: 7aee304855918518cad708211c4f6ead566e42e16e78d099ef4123bd6d2b35a8
+  chestnut_backed_chickadee_detection: 7aee304855918518cad708211c4f6ead566e42e16e78d099ef4123bd6d2b35a8
+  chestnut_backed_chickadee_positive_numeric_count_given_detection: 7aee304855918518cad708211c4f6ead566e42e16e78d099ef4123bd6d2b35a8
+checkpoint_signature_policy: >-
+  Preserve each completed fit's committed scientific-input signature. The
+  only intervening selection-record changes added provenance fields and did
+  not change the selected taxa, model, response data, exposure data, or
+  specification.
+mandatory_control: American Robin
+selected_second_control: Chestnut-backed Chickadee
+selected_second_minimum_positive_numeric_term_support: 334
+selected_second_total_positive_numeric_model_rows: 72498
+unselected_candidate: Dark-eyed Junco
+unselected_candidate_minimum_positive_numeric_term_support: 322
+unselected_candidate_total_positive_numeric_model_rows: 68273
+tie_break_required: false
+all_78_detection_terms_at_least_20: true
+all_78_positive_numeric_terms_at_least_20: true
+support_evidence: outputs/post_stage4a_distance_band_followup_v1_preflight/control_candidate_support_v1.csv
+registered_49_species_family_changed: false
+controls_enter_primary_BH_family: false
+final_gate: PASS_COMMITTED_SELECTION_BEFORE_EFFECT_FIT

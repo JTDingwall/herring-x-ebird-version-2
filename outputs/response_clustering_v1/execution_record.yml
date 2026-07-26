@@ -1,0 +1,18 @@
+analysis: descriptive response-profile clustering
+run_timestamp: 2026-07-25T21:26:00-0700
+r_version: R version 4.5.1 (2025-06-13 ucrt)
+complete_case_species: 46
+gap_bootstrap_replicates: 500
+cluster_stability_bootstrap_replicates: 1000
+guild_label_permutations: 9999
+base_seed: 20260725
+k_rule: gap statistic first-SE-max over k=2..8
+linkage: Ward.D2
+distance: Euclidean
+alternative_algorithm: PAM
+guild_access: after all cluster solutions were fixed
+response_models_fit_or_refit: false
+holdout_accessed: false
+authorization_gate_set: false
+imputed_analysis_run: false
+script_md5: 33227e77cfb8d0ff816c3eba1e13681e

@@ -1,0 +1,3 @@
+"source","rows_read","declared_key","cardinality","duplicate_keys","matched_complete_case_species"
+"archived count-period effects",294,"analysis_taxon_id + contrast","one-to-one at the declared key",0,46
+"canonical species registry",58,"analysis_taxon_id","one-to-one at the declared key",0,46

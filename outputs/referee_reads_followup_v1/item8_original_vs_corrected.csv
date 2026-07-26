@@ -1,0 +1,3 @@
+"contrast","positive_both","positive_count_only","positive_reporting_only","negative_both","paired_species","reporting_positive","reporting_positive_proportion","count_positive","count_positive_proportion","discordant_pairs","exact_mcnemar_p_value","source_file","role"
+"did_active_0_14_day",28,11,1,6,46,29,0.630434782608696,39,0.847826086956522,12,0.00634765625,"outputs/post_stage4a_sog_event_study_v1/effect_estimates_v1.csv","original_item8_reproduced"
+"active_minus_pre_14_day",27,15,0,4,46,27,0.58695652173913,42,0.91304347826087,15,6.10351562500001e-05,"outputs/post_stage4a_sog_event_study_v1_1/active_minus_pre_contrasts_v1.csv","corrected_primary_contrast"
