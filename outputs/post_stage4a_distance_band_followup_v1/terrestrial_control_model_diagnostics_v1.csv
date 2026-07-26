@@ -1,0 +1,5 @@
+"model_version_id","analysis_taxon_id","unit_label","region","outcome","converged","singular_fit","rank_deficient","convergence_message","n","status"
+"SOG_DISTANCE_BAND_CONTROL_AMERICAN_ROBIN_v1","ctl_c7322190c88f","American Robin","SoG","detection",TRUE,FALSE,FALSE,"",217176,"completed"
+"SOG_DISTANCE_BAND_CONTROL_AMERICAN_ROBIN_v1","ctl_c7322190c88f","American Robin","SoG","positive_numeric_count_given_detection",TRUE,FALSE,FALSE,"",125407,"completed"
+"SOG_DISTANCE_BAND_CONTROL_CHESTNUT_BACKED_CHICKADEE_v1","ctl_c0ffb64cc4d8","Chestnut-backed Chickadee","SoG","detection",TRUE,FALSE,FALSE,"",217183,"completed"
+"SOG_DISTANCE_BAND_CONTROL_CHESTNUT_BACKED_CHICKADEE_v1","ctl_c0ffb64cc4d8","Chestnut-backed Chickadee","SoG","positive_numeric_count_given_detection",TRUE,FALSE,FALSE,"",72498,"completed"

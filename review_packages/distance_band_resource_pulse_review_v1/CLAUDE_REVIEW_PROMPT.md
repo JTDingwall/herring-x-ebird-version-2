@@ -1,27 +1,33 @@
 # Claude review prompt
 
-Review the matched Bald Eagle and Glaucous-winged Gull distance-band analyses
-linked from this package. Treat all results as post-result exploratory
-estimand refinement.
+Review the PR #17 follow-up led by
+[`DISTANCE_BAND_FOLLOWUP_REPORT.md`](../../DISTANCE_BAND_FOLLOWUP_REPORT.md).
+Treat every result as post-result exploratory estimand refinement.
 
 Please answer:
 
-1. Do the two analyses support the narrow claim that the strongest joint
-   resource-pulse response is spatially concentrated within 2 km of recorded
-   herring source points?
-2. Does the candidate manuscript paragraph accurately distinguish that claim
-   from a stronger, unsupported claim of smooth monotonic distance decay?
-3. Are same-band pre-spawn baselines, jointly estimated concurrent source
-   exposures, the two-part outcome definition, and the 0–26 km support
-   decision described clearly enough?
-4. Do the non-monotonic outer gull contrasts materially undermine the
-   spatial-concentration interpretation, or do they mainly constrain how it
-   should be worded?
-5. Are there multiplicity, model-geometry, selection, or interpretation issues
-   that should be stated before these results are added to the manuscript?
-6. Is the proposed paragraph manuscript-ready? If not, provide a corrected
-   replacement paragraph with no causal, abundance, occupancy, or
-   individual-movement overclaim.
+1. Does the exact 13-df archived-covariance hypothesis test directly support
+   the statement that the waterbird distance profile changes at the recorded
+   event-time anchor? Is the equal-duration pooled-pre definition defensible?
+2. Do the two terrestrial controls rule out a general 0–<2 km checklist
+   inflation at days 0–3? How much should American Robin’s significant full
+   reporting-profile test and immediate-pre elevation temper that conclusion?
+3. Is the distinction between the recorded `StartDate`–`EndDate` midpoint and
+   biological onset stated strongly enough? Was stopping the ±3-day refit
+   correct given the absence of survey-cadence data?
+4. Are the 13-member BH families coherent, and does the report identify every
+   surviving contrast and every nominally significant below-baseline cell
+   without hiding the difference between nominal and adjusted inference?
+5. Does the report give sufficient weight to the Bald Eagle reporting
+   asymmetry: significant during days 0–3 but not during active days 0–14?
+6. Does the 1,166-checklist headline cell, roughly half the 8–12 km support,
+   justify the precision claimed in the candidate paragraph?
+7. Do the tight days 0–3 versus days −7 to −1 contrasts materially strengthen
+   the localized-response interpretation after BH adjustment?
+8. Is the candidate review paragraph scientifically defensible? If not,
+   provide a replacement with no causal, occupancy, abundance,
+   individual-movement, smooth-decay, or precisely observed-onset overclaim.
 
-Prioritize scientific validity over prose polish. Cite the exact report,
-figure, table, or output row supporting each material criticism.
+Prioritize validity over prose polish. Cite the exact report section, figure,
+CSV row, covariance result, diagnostic, or execution record supporting each
+material conclusion.

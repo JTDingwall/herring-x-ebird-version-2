@@ -1,0 +1,2 @@
+"species","eligible_checklists","detection_model_rows","excluded_detection_rows","reason","complete_case_covariate_drop","response_model_refit"
+"Bald Eagle",217200,217199,1,"one prespecified structural unknown: ambiguity mask present without a resolved reported state",0,FALSE
