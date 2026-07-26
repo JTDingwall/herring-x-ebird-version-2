@@ -52,6 +52,12 @@ if (length(execution_commit) != 1L ||
 selection <- yaml::read_yaml(
   "metadata/post_stage4a_distance_band_followup_control_selection_v1.yml"
 )
+model_fit_execution_commit <- selection$model_fit_execution_commit
+if (length(model_fit_execution_commit) != 1L ||
+    !grepl("^[0-9a-f]{40}$", model_fit_execution_commit)) {
+  stop("CONTROL_PRODUCTION_SELECTION_GATE: fit commit is not locked",
+       call. = FALSE)
+}
 selected_names <- c(
   selection$mandatory_control, selection$selected_second_control
 )
@@ -297,7 +303,7 @@ for (species in selected_names) {
              "_", outcome, ".rds")
     )
     signature <- paste(
-      execution_commit, species, outcome,
+      model_fit_execution_commit, species, outcome,
       protected_hashes,
       .post_stage4a_sha256_v1(
         "metadata/post_stage4a_distance_band_followup_spec_v1.yml"
@@ -386,15 +392,15 @@ z95 <- 1.959963984540054
 bands <- post_stage4a_distance_band_spec_v2()$band
 tight_rows <- list()
 profile_rows <- list()
-for (species in selected_names) {
-  for (outcome in unique(effects$outcome)) {
+for (species_now in selected_names) {
+  for (outcome_now in unique(effects$outcome)) {
     f <- fixed_effects[
-      unit_label == species & get("outcome") == outcome
+      unit_label == species_now & outcome == outcome_now
     ]
     beta <- setNames(f$estimate, f$coefficient)
     beta <- beta[grep("^db_band_", names(beta))]
     cv <- exposure_covariance[
-      unit_label == species & get("outcome") == outcome
+      unit_label == species_now & outcome == outcome_now
     ]
     v <- cov_matrix(cv, names(beta))
     calc <- function(weights) {
@@ -415,7 +421,7 @@ for (species in selected_names) {
         paste("db", band, c("spawn_start", "immediate_pre"), sep = "_")
       ))
       data.table(
-        species = species, outcome = outcome, band = band,
+        species = species_now, outcome = outcome_now, band = band,
         estimate = out[["estimate"]],
         standard_error = out[["standard_error"]],
         conf_low = out[["conf_low"]], conf_high = out[["conf_high"]],
@@ -427,7 +433,7 @@ for (species in selected_names) {
     }))
     tight[, p_value_bh_13 := p.adjust(p_value, method = "BH")]
     tight[, significant_bh_0_05 := p_value_bh_13 < 0.05]
-    tight_rows[[paste(species, outcome)]] <- tight
+    tight_rows[[paste(species_now, outcome_now)]] <- tight
 
     cmat <- matrix(
       0, nrow = length(bands), ncol = length(beta),
@@ -442,8 +448,8 @@ for (species in selected_names) {
     theta <- drop(cmat %*% beta)
     vtheta <- cmat %*% v %*% t(cmat)
     statistic <- drop(t(theta) %*% solve(vtheta, theta))
-    profile_rows[[paste(species, outcome)]] <- data.table(
-      species = species, outcome = outcome,
+    profile_rows[[paste(species_now, outcome_now)]] <- data.table(
+      species = species_now, outcome = outcome_now,
       contrast = "spawn_start_profile_minus_equal_duration_pooled_pre",
       statistic = statistic,
       degrees_of_freedom = 13L,
@@ -463,14 +469,14 @@ near <- effects[
 ]
 near_tight <- tight[band == "band_0_2"]
 classification_rows <- list()
-for (species in selected_names) {
-  for (outcome in unique(effects$outcome)) {
+for (species_now in selected_names) {
+  for (outcome_now in unique(effects$outcome)) {
     spawn <- near[
-      unit_label == species & get("outcome") == outcome &
+      unit_label == species_now & outcome == outcome_now &
         period == "spawn_start"
     ]
     jump <- near_tight[
-      get("species") == species & get("outcome") == outcome
+      species == species_now & outcome == outcome_now
     ]
     upward <- spawn$estimate > 0 & spawn$p_value_bh_13 < 0.05 &
       jump$estimate > 0 & jump$p_value_bh_13 < 0.05
@@ -486,8 +492,8 @@ for (species in selected_names) {
         "same_band_baseline_and_immediate_pre"
       )
     }
-    classification_rows[[paste(species, outcome)]] <- data.table(
-      species = species, outcome = outcome,
+    classification_rows[[paste(species_now, outcome_now)]] <- data.table(
+      species = species_now, outcome = outcome_now,
       classification = classification,
       spawn_start_ratio_vs_baseline = spawn$ratio,
       spawn_start_conf_low = spawn$ratio_conf_low,
@@ -627,6 +633,7 @@ execution_record <- list(
     as.POSIXct(Sys.time(), tz = "UTC"), "%Y-%m-%dT%H:%M:%SZ"
   ),
   execution_code_commit = execution_commit,
+  model_fit_execution_commit = model_fit_execution_commit,
   authorization_record =
     "metadata/post_stage4a_distance_band_followup_authorization_v1.yml",
   specification_record =

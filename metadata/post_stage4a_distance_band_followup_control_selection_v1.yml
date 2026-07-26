@@ -2,6 +2,7 @@ selection_version: post_stage4a_distance_band_followup_control_selection_v1
 selected_at_local: 2026-07-26
 selection_basis: locked_support_only_rule
 effects_inspected_before_selection: false
+model_fit_execution_commit: b85171e1f8c5e9b8b56eb6407d40e569d23a6d4e
 mandatory_control: American Robin
 selected_second_control: Chestnut-backed Chickadee
 selected_second_minimum_positive_numeric_term_support: 334
