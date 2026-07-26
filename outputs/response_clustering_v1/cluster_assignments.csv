@@ -1,0 +1,599 @@
+"feature_set","scheme","algorithm","k","selection_role","analysis_taxon_id","common_name","cluster"
+"A","unweighted","Ward.D2",2,"selected","atx_c9db024faf12","American Crow",1
+"A","unweighted","Ward.D2",2,"selected","atx_725074cbfcb6","Glaucous-winged Gull",1
+"A","unweighted","Ward.D2",2,"selected","atx_815c98107028","Mallard",1
+"A","unweighted","Ward.D2",2,"selected","atx_fc0a9b777dcd","Bald Eagle",1
+"A","unweighted","Ward.D2",2,"selected","atx_b3d3ea90f9cb","Canada Goose",1
+"A","unweighted","Ward.D2",2,"selected","atx_v2_000007","Common Raven",1
+"A","unweighted","Ward.D2",2,"selected","atx_99238953638b","Bufflehead",1
+"A","unweighted","Ward.D2",2,"selected","atx_7b80ddaff058","Great Blue Heron",1
+"A","unweighted","Ward.D2",2,"selected","atx_a113baee5693","American Wigeon",1
+"A","unweighted","Ward.D2",2,"selected","atx_a444854c6b66","Double-crested Cormorant",1
+"A","unweighted","Ward.D2",2,"selected","atx_35518e24dfdd","Common Merganser",1
+"A","unweighted","Ward.D2",2,"selected","atx_e0e678a61ad7","Short-billed Gull",2
+"A","unweighted","Ward.D2",2,"selected","atx_82312e6f2848","Common Goldeneye",2
+"A","unweighted","Ward.D2",2,"selected","atx_04afbeb21fb0","Hooded Merganser",1
+"A","unweighted","Ward.D2",2,"selected","atx_35707a9578d5","Pelagic Cormorant",1
+"A","unweighted","Ward.D2",2,"selected","atx_1930f23cc4f8","Surf Scoter",2
+"A","unweighted","Ward.D2",2,"selected","atx_9ae1aa9b7fdf","Common Loon",1
+"A","unweighted","Ward.D2",2,"selected","atx_7d980a7c8c37","Northern Pintail",1
+"A","unweighted","Ward.D2",2,"selected","atx_v2_000002","Black Oystercatcher",1
+"A","unweighted","Ward.D2",2,"selected","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"A","unweighted","Ward.D2",2,"selected","atx_6b4cfd1ab927","Horned Grebe",1
+"A","unweighted","Ward.D2",2,"selected","atx_87b306550dba","Harlequin Duck",2
+"A","unweighted","Ward.D2",2,"selected","atx_d7dd9536145c","Barrow's Goldeneye",1
+"A","unweighted","Ward.D2",2,"selected","atx_d002764a39e8","Lesser Scaup",2
+"A","unweighted","Ward.D2",2,"selected","atx_86eda7ed9025","Red-necked Grebe",1
+"A","unweighted","Ward.D2",2,"selected","atx_c12b832d2b03","California Gull",1
+"A","unweighted","Ward.D2",2,"selected","atx_8608f2ed61cf","Pigeon Guillemot",1
+"A","unweighted","Ward.D2",2,"selected","atx_c34f23342a55","Pacific Loon",1
+"A","unweighted","Ward.D2",2,"selected","atx_v2_000003","Dunlin",1
+"A","unweighted","Ward.D2",2,"selected","atx_3083477933a8","White-winged Scoter",2
+"A","unweighted","Ward.D2",2,"selected","atx_aa5353f6d6d2","Iceland Gull",1
+"A","unweighted","Ward.D2",2,"selected","atx_08bb40b40c0a","Ring-billed Gull",1
+"A","unweighted","Ward.D2",2,"selected","atx_4ae57d328ec6","Greater Scaup",2
+"A","unweighted","Ward.D2",2,"selected","atx_15dd5efcd8d6","Black Turnstone",1
+"A","unweighted","Ward.D2",2,"selected","atx_fadb8da1a816","Bonaparte's Gull",2
+"A","unweighted","Ward.D2",2,"selected","atx_v2_000006","Black-bellied Plover",1
+"A","unweighted","Ward.D2",2,"selected","atx_59441ff7abde","Brant",1
+"A","unweighted","Ward.D2",2,"selected","atx_acf526bb8010","Marbled Murrelet",1
+"A","unweighted","Ward.D2",2,"selected","atx_40f730f5ad72","Long-tailed Duck",2
+"A","unweighted","Ward.D2",2,"selected","atx_98ca0000b734","Brandt's Cormorant",1
+"A","unweighted","Ward.D2",2,"selected","atx_136b0e66254b","Common Murre",1
+"A","unweighted","Ward.D2",2,"selected","atx_7571c026ae99","American Herring Gull",1
+"A","unweighted","Ward.D2",2,"selected","atx_1328b44be502","Black Scoter",2
+"A","unweighted","Ward.D2",2,"selected","atx_04cf65098f13","Red-throated Loon",1
+"A","unweighted","Ward.D2",2,"selected","atx_ebf17f77fb66","Western Grebe",1
+"A","unweighted","Ward.D2",2,"selected","atx_5a9a3495d0ea","Western Gull",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_c9db024faf12","American Crow",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_725074cbfcb6","Glaucous-winged Gull",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_815c98107028","Mallard",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_fc0a9b777dcd","Bald Eagle",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_b3d3ea90f9cb","Canada Goose",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_v2_000007","Common Raven",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_99238953638b","Bufflehead",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_7b80ddaff058","Great Blue Heron",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_a113baee5693","American Wigeon",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_a444854c6b66","Double-crested Cormorant",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_35518e24dfdd","Common Merganser",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_e0e678a61ad7","Short-billed Gull",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_82312e6f2848","Common Goldeneye",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_04afbeb21fb0","Hooded Merganser",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_35707a9578d5","Pelagic Cormorant",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_1930f23cc4f8","Surf Scoter",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_9ae1aa9b7fdf","Common Loon",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_7d980a7c8c37","Northern Pintail",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_v2_000002","Black Oystercatcher",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_c2d1fbbaf6d3","Red-breasted Merganser",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_6b4cfd1ab927","Horned Grebe",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_87b306550dba","Harlequin Duck",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_d7dd9536145c","Barrow's Goldeneye",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_d002764a39e8","Lesser Scaup",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_86eda7ed9025","Red-necked Grebe",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_c12b832d2b03","California Gull",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_8608f2ed61cf","Pigeon Guillemot",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_c34f23342a55","Pacific Loon",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_v2_000003","Dunlin",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_3083477933a8","White-winged Scoter",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_aa5353f6d6d2","Iceland Gull",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_08bb40b40c0a","Ring-billed Gull",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_4ae57d328ec6","Greater Scaup",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_15dd5efcd8d6","Black Turnstone",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_fadb8da1a816","Bonaparte's Gull",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_v2_000006","Black-bellied Plover",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_59441ff7abde","Brant",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_acf526bb8010","Marbled Murrelet",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_40f730f5ad72","Long-tailed Duck",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_98ca0000b734","Brandt's Cormorant",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_136b0e66254b","Common Murre",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_7571c026ae99","American Herring Gull",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_1328b44be502","Black Scoter",3
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_04cf65098f13","Red-throated Loon",2
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_ebf17f77fb66","Western Grebe",1
+"A","unweighted","Ward.D2",3,"k_plus_1","atx_5a9a3495d0ea","Western Gull",3
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_c9db024faf12","American Crow",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_725074cbfcb6","Glaucous-winged Gull",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_815c98107028","Mallard",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_fc0a9b777dcd","Bald Eagle",2
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_b3d3ea90f9cb","Canada Goose",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_v2_000007","Common Raven",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_99238953638b","Bufflehead",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_7b80ddaff058","Great Blue Heron",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_a113baee5693","American Wigeon",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_a444854c6b66","Double-crested Cormorant",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_35518e24dfdd","Common Merganser",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_e0e678a61ad7","Short-billed Gull",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_82312e6f2848","Common Goldeneye",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_04afbeb21fb0","Hooded Merganser",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_35707a9578d5","Pelagic Cormorant",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_1930f23cc4f8","Surf Scoter",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_9ae1aa9b7fdf","Common Loon",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_7d980a7c8c37","Northern Pintail",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_v2_000002","Black Oystercatcher",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_6b4cfd1ab927","Horned Grebe",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_87b306550dba","Harlequin Duck",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_d7dd9536145c","Barrow's Goldeneye",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_d002764a39e8","Lesser Scaup",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_86eda7ed9025","Red-necked Grebe",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_c12b832d2b03","California Gull",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_8608f2ed61cf","Pigeon Guillemot",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_c34f23342a55","Pacific Loon",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_v2_000003","Dunlin",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_3083477933a8","White-winged Scoter",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_aa5353f6d6d2","Iceland Gull",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_08bb40b40c0a","Ring-billed Gull",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_4ae57d328ec6","Greater Scaup",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_15dd5efcd8d6","Black Turnstone",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_fadb8da1a816","Bonaparte's Gull",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_v2_000006","Black-bellied Plover",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_59441ff7abde","Brant",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_acf526bb8010","Marbled Murrelet",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_40f730f5ad72","Long-tailed Duck",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_98ca0000b734","Brandt's Cormorant",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_136b0e66254b","Common Murre",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_7571c026ae99","American Herring Gull",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_1328b44be502","Black Scoter",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_04cf65098f13","Red-throated Loon",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_ebf17f77fb66","Western Grebe",1
+"A","inverse_variance","Ward.D2",2,"k_minus_1","atx_5a9a3495d0ea","Western Gull",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_c9db024faf12","American Crow",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_725074cbfcb6","Glaucous-winged Gull",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_815c98107028","Mallard",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_fc0a9b777dcd","Bald Eagle",3
+"A","inverse_variance","Ward.D2",3,"selected","atx_b3d3ea90f9cb","Canada Goose",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_v2_000007","Common Raven",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_99238953638b","Bufflehead",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_7b80ddaff058","Great Blue Heron",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_a113baee5693","American Wigeon",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_a444854c6b66","Double-crested Cormorant",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_35518e24dfdd","Common Merganser",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_e0e678a61ad7","Short-billed Gull",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_82312e6f2848","Common Goldeneye",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_04afbeb21fb0","Hooded Merganser",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_35707a9578d5","Pelagic Cormorant",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_1930f23cc4f8","Surf Scoter",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_9ae1aa9b7fdf","Common Loon",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_7d980a7c8c37","Northern Pintail",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_v2_000002","Black Oystercatcher",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_6b4cfd1ab927","Horned Grebe",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_87b306550dba","Harlequin Duck",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_d7dd9536145c","Barrow's Goldeneye",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_d002764a39e8","Lesser Scaup",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_86eda7ed9025","Red-necked Grebe",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_c12b832d2b03","California Gull",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_8608f2ed61cf","Pigeon Guillemot",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_c34f23342a55","Pacific Loon",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_v2_000003","Dunlin",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_3083477933a8","White-winged Scoter",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_aa5353f6d6d2","Iceland Gull",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_08bb40b40c0a","Ring-billed Gull",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_4ae57d328ec6","Greater Scaup",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_15dd5efcd8d6","Black Turnstone",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_fadb8da1a816","Bonaparte's Gull",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_v2_000006","Black-bellied Plover",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_59441ff7abde","Brant",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_acf526bb8010","Marbled Murrelet",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_40f730f5ad72","Long-tailed Duck",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_98ca0000b734","Brandt's Cormorant",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_136b0e66254b","Common Murre",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_7571c026ae99","American Herring Gull",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_1328b44be502","Black Scoter",2
+"A","inverse_variance","Ward.D2",3,"selected","atx_04cf65098f13","Red-throated Loon",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_ebf17f77fb66","Western Grebe",1
+"A","inverse_variance","Ward.D2",3,"selected","atx_5a9a3495d0ea","Western Gull",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_c9db024faf12","American Crow",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_725074cbfcb6","Glaucous-winged Gull",2
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_815c98107028","Mallard",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_fc0a9b777dcd","Bald Eagle",3
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_b3d3ea90f9cb","Canada Goose",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_v2_000007","Common Raven",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_99238953638b","Bufflehead",2
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_7b80ddaff058","Great Blue Heron",2
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_a113baee5693","American Wigeon",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_a444854c6b66","Double-crested Cormorant",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_35518e24dfdd","Common Merganser",2
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_e0e678a61ad7","Short-billed Gull",2
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_82312e6f2848","Common Goldeneye",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_04afbeb21fb0","Hooded Merganser",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_35707a9578d5","Pelagic Cormorant",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_1930f23cc4f8","Surf Scoter",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_9ae1aa9b7fdf","Common Loon",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_7d980a7c8c37","Northern Pintail",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_v2_000002","Black Oystercatcher",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_6b4cfd1ab927","Horned Grebe",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_87b306550dba","Harlequin Duck",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_d7dd9536145c","Barrow's Goldeneye",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_d002764a39e8","Lesser Scaup",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_86eda7ed9025","Red-necked Grebe",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_c12b832d2b03","California Gull",2
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_8608f2ed61cf","Pigeon Guillemot",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_c34f23342a55","Pacific Loon",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_v2_000003","Dunlin",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_3083477933a8","White-winged Scoter",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_aa5353f6d6d2","Iceland Gull",2
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_08bb40b40c0a","Ring-billed Gull",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_4ae57d328ec6","Greater Scaup",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_15dd5efcd8d6","Black Turnstone",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_fadb8da1a816","Bonaparte's Gull",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_v2_000006","Black-bellied Plover",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_59441ff7abde","Brant",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_acf526bb8010","Marbled Murrelet",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_40f730f5ad72","Long-tailed Duck",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_98ca0000b734","Brandt's Cormorant",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_136b0e66254b","Common Murre",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_7571c026ae99","American Herring Gull",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_1328b44be502","Black Scoter",4
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_04cf65098f13","Red-throated Loon",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_ebf17f77fb66","Western Grebe",1
+"A","inverse_variance","Ward.D2",4,"k_plus_1","atx_5a9a3495d0ea","Western Gull",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_c9db024faf12","American Crow",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_725074cbfcb6","Glaucous-winged Gull",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_815c98107028","Mallard",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_fc0a9b777dcd","Bald Eagle",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_b3d3ea90f9cb","Canada Goose",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_v2_000007","Common Raven",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_99238953638b","Bufflehead",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_7b80ddaff058","Great Blue Heron",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_a113baee5693","American Wigeon",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_a444854c6b66","Double-crested Cormorant",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_35518e24dfdd","Common Merganser",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_e0e678a61ad7","Short-billed Gull",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_82312e6f2848","Common Goldeneye",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_04afbeb21fb0","Hooded Merganser",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_35707a9578d5","Pelagic Cormorant",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_1930f23cc4f8","Surf Scoter",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_9ae1aa9b7fdf","Common Loon",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_7d980a7c8c37","Northern Pintail",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_v2_000002","Black Oystercatcher",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_6b4cfd1ab927","Horned Grebe",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_87b306550dba","Harlequin Duck",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_d7dd9536145c","Barrow's Goldeneye",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_d002764a39e8","Lesser Scaup",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_86eda7ed9025","Red-necked Grebe",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_c12b832d2b03","California Gull",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_8608f2ed61cf","Pigeon Guillemot",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_c34f23342a55","Pacific Loon",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_v2_000003","Dunlin",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_3083477933a8","White-winged Scoter",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_aa5353f6d6d2","Iceland Gull",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_08bb40b40c0a","Ring-billed Gull",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_4ae57d328ec6","Greater Scaup",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_15dd5efcd8d6","Black Turnstone",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_fadb8da1a816","Bonaparte's Gull",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_v2_000006","Black-bellied Plover",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_59441ff7abde","Brant",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_acf526bb8010","Marbled Murrelet",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_40f730f5ad72","Long-tailed Duck",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_98ca0000b734","Brandt's Cormorant",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_136b0e66254b","Common Murre",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_7571c026ae99","American Herring Gull",2
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_1328b44be502","Black Scoter",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_04cf65098f13","Red-throated Loon",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_ebf17f77fb66","Western Grebe",1
+"A","reliability_shrunk","Ward.D2",2,"selected","atx_5a9a3495d0ea","Western Gull",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_c9db024faf12","American Crow",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_725074cbfcb6","Glaucous-winged Gull",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_815c98107028","Mallard",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_fc0a9b777dcd","Bald Eagle",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_b3d3ea90f9cb","Canada Goose",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_v2_000007","Common Raven",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_99238953638b","Bufflehead",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_7b80ddaff058","Great Blue Heron",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_a113baee5693","American Wigeon",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_a444854c6b66","Double-crested Cormorant",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_35518e24dfdd","Common Merganser",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_e0e678a61ad7","Short-billed Gull",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_82312e6f2848","Common Goldeneye",3
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_04afbeb21fb0","Hooded Merganser",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_35707a9578d5","Pelagic Cormorant",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_1930f23cc4f8","Surf Scoter",3
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_9ae1aa9b7fdf","Common Loon",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_7d980a7c8c37","Northern Pintail",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_v2_000002","Black Oystercatcher",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_6b4cfd1ab927","Horned Grebe",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_87b306550dba","Harlequin Duck",3
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_d7dd9536145c","Barrow's Goldeneye",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_d002764a39e8","Lesser Scaup",3
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_86eda7ed9025","Red-necked Grebe",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_c12b832d2b03","California Gull",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_8608f2ed61cf","Pigeon Guillemot",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_c34f23342a55","Pacific Loon",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_v2_000003","Dunlin",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_3083477933a8","White-winged Scoter",3
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_aa5353f6d6d2","Iceland Gull",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_08bb40b40c0a","Ring-billed Gull",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_4ae57d328ec6","Greater Scaup",3
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_15dd5efcd8d6","Black Turnstone",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_fadb8da1a816","Bonaparte's Gull",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_v2_000006","Black-bellied Plover",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_59441ff7abde","Brant",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_acf526bb8010","Marbled Murrelet",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_40f730f5ad72","Long-tailed Duck",3
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_98ca0000b734","Brandt's Cormorant",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_136b0e66254b","Common Murre",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_7571c026ae99","American Herring Gull",2
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_1328b44be502","Black Scoter",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_04cf65098f13","Red-throated Loon",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_ebf17f77fb66","Western Grebe",1
+"A","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_5a9a3495d0ea","Western Gull",1
+"B","unweighted","Ward.D2",2,"selected","atx_c9db024faf12","American Crow",1
+"B","unweighted","Ward.D2",2,"selected","atx_725074cbfcb6","Glaucous-winged Gull",2
+"B","unweighted","Ward.D2",2,"selected","atx_815c98107028","Mallard",1
+"B","unweighted","Ward.D2",2,"selected","atx_fc0a9b777dcd","Bald Eagle",1
+"B","unweighted","Ward.D2",2,"selected","atx_b3d3ea90f9cb","Canada Goose",1
+"B","unweighted","Ward.D2",2,"selected","atx_v2_000007","Common Raven",1
+"B","unweighted","Ward.D2",2,"selected","atx_99238953638b","Bufflehead",1
+"B","unweighted","Ward.D2",2,"selected","atx_7b80ddaff058","Great Blue Heron",1
+"B","unweighted","Ward.D2",2,"selected","atx_a113baee5693","American Wigeon",1
+"B","unweighted","Ward.D2",2,"selected","atx_a444854c6b66","Double-crested Cormorant",1
+"B","unweighted","Ward.D2",2,"selected","atx_35518e24dfdd","Common Merganser",1
+"B","unweighted","Ward.D2",2,"selected","atx_e0e678a61ad7","Short-billed Gull",2
+"B","unweighted","Ward.D2",2,"selected","atx_82312e6f2848","Common Goldeneye",1
+"B","unweighted","Ward.D2",2,"selected","atx_04afbeb21fb0","Hooded Merganser",1
+"B","unweighted","Ward.D2",2,"selected","atx_35707a9578d5","Pelagic Cormorant",1
+"B","unweighted","Ward.D2",2,"selected","atx_1930f23cc4f8","Surf Scoter",1
+"B","unweighted","Ward.D2",2,"selected","atx_9ae1aa9b7fdf","Common Loon",1
+"B","unweighted","Ward.D2",2,"selected","atx_7d980a7c8c37","Northern Pintail",1
+"B","unweighted","Ward.D2",2,"selected","atx_v2_000002","Black Oystercatcher",1
+"B","unweighted","Ward.D2",2,"selected","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"B","unweighted","Ward.D2",2,"selected","atx_6b4cfd1ab927","Horned Grebe",1
+"B","unweighted","Ward.D2",2,"selected","atx_87b306550dba","Harlequin Duck",2
+"B","unweighted","Ward.D2",2,"selected","atx_d7dd9536145c","Barrow's Goldeneye",1
+"B","unweighted","Ward.D2",2,"selected","atx_d002764a39e8","Lesser Scaup",2
+"B","unweighted","Ward.D2",2,"selected","atx_86eda7ed9025","Red-necked Grebe",1
+"B","unweighted","Ward.D2",2,"selected","atx_c12b832d2b03","California Gull",2
+"B","unweighted","Ward.D2",2,"selected","atx_8608f2ed61cf","Pigeon Guillemot",1
+"B","unweighted","Ward.D2",2,"selected","atx_c34f23342a55","Pacific Loon",1
+"B","unweighted","Ward.D2",2,"selected","atx_v2_000003","Dunlin",1
+"B","unweighted","Ward.D2",2,"selected","atx_3083477933a8","White-winged Scoter",1
+"B","unweighted","Ward.D2",2,"selected","atx_aa5353f6d6d2","Iceland Gull",2
+"B","unweighted","Ward.D2",2,"selected","atx_08bb40b40c0a","Ring-billed Gull",1
+"B","unweighted","Ward.D2",2,"selected","atx_4ae57d328ec6","Greater Scaup",2
+"B","unweighted","Ward.D2",2,"selected","atx_15dd5efcd8d6","Black Turnstone",1
+"B","unweighted","Ward.D2",2,"selected","atx_fadb8da1a816","Bonaparte's Gull",2
+"B","unweighted","Ward.D2",2,"selected","atx_v2_000006","Black-bellied Plover",1
+"B","unweighted","Ward.D2",2,"selected","atx_59441ff7abde","Brant",1
+"B","unweighted","Ward.D2",2,"selected","atx_acf526bb8010","Marbled Murrelet",1
+"B","unweighted","Ward.D2",2,"selected","atx_40f730f5ad72","Long-tailed Duck",2
+"B","unweighted","Ward.D2",2,"selected","atx_98ca0000b734","Brandt's Cormorant",1
+"B","unweighted","Ward.D2",2,"selected","atx_136b0e66254b","Common Murre",1
+"B","unweighted","Ward.D2",2,"selected","atx_7571c026ae99","American Herring Gull",1
+"B","unweighted","Ward.D2",2,"selected","atx_1328b44be502","Black Scoter",1
+"B","unweighted","Ward.D2",2,"selected","atx_04cf65098f13","Red-throated Loon",1
+"B","unweighted","Ward.D2",2,"selected","atx_ebf17f77fb66","Western Grebe",1
+"B","unweighted","Ward.D2",2,"selected","atx_5a9a3495d0ea","Western Gull",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_c9db024faf12","American Crow",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_725074cbfcb6","Glaucous-winged Gull",2
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_815c98107028","Mallard",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_fc0a9b777dcd","Bald Eagle",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_b3d3ea90f9cb","Canada Goose",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_v2_000007","Common Raven",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_99238953638b","Bufflehead",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_7b80ddaff058","Great Blue Heron",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_a113baee5693","American Wigeon",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_a444854c6b66","Double-crested Cormorant",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_35518e24dfdd","Common Merganser",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_e0e678a61ad7","Short-billed Gull",2
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_82312e6f2848","Common Goldeneye",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_04afbeb21fb0","Hooded Merganser",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_35707a9578d5","Pelagic Cormorant",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_1930f23cc4f8","Surf Scoter",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_9ae1aa9b7fdf","Common Loon",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_7d980a7c8c37","Northern Pintail",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_v2_000002","Black Oystercatcher",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_6b4cfd1ab927","Horned Grebe",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_87b306550dba","Harlequin Duck",2
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_d7dd9536145c","Barrow's Goldeneye",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_d002764a39e8","Lesser Scaup",2
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_86eda7ed9025","Red-necked Grebe",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_c12b832d2b03","California Gull",2
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_8608f2ed61cf","Pigeon Guillemot",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_c34f23342a55","Pacific Loon",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_v2_000003","Dunlin",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_3083477933a8","White-winged Scoter",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_aa5353f6d6d2","Iceland Gull",2
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_08bb40b40c0a","Ring-billed Gull",3
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_4ae57d328ec6","Greater Scaup",2
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_15dd5efcd8d6","Black Turnstone",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_fadb8da1a816","Bonaparte's Gull",2
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_v2_000006","Black-bellied Plover",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_59441ff7abde","Brant",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_acf526bb8010","Marbled Murrelet",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_40f730f5ad72","Long-tailed Duck",2
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_98ca0000b734","Brandt's Cormorant",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_136b0e66254b","Common Murre",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_7571c026ae99","American Herring Gull",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_1328b44be502","Black Scoter",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_04cf65098f13","Red-throated Loon",1
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_ebf17f77fb66","Western Grebe",3
+"B","unweighted","Ward.D2",3,"k_plus_1","atx_5a9a3495d0ea","Western Gull",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_c9db024faf12","American Crow",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_725074cbfcb6","Glaucous-winged Gull",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_815c98107028","Mallard",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_fc0a9b777dcd","Bald Eagle",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_b3d3ea90f9cb","Canada Goose",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_v2_000007","Common Raven",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_99238953638b","Bufflehead",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_7b80ddaff058","Great Blue Heron",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_a113baee5693","American Wigeon",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_a444854c6b66","Double-crested Cormorant",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_35518e24dfdd","Common Merganser",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_e0e678a61ad7","Short-billed Gull",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_82312e6f2848","Common Goldeneye",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_04afbeb21fb0","Hooded Merganser",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_35707a9578d5","Pelagic Cormorant",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_1930f23cc4f8","Surf Scoter",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_9ae1aa9b7fdf","Common Loon",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_7d980a7c8c37","Northern Pintail",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_v2_000002","Black Oystercatcher",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_6b4cfd1ab927","Horned Grebe",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_87b306550dba","Harlequin Duck",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_d7dd9536145c","Barrow's Goldeneye",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_d002764a39e8","Lesser Scaup",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_86eda7ed9025","Red-necked Grebe",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_c12b832d2b03","California Gull",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_8608f2ed61cf","Pigeon Guillemot",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_c34f23342a55","Pacific Loon",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_v2_000003","Dunlin",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_3083477933a8","White-winged Scoter",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_aa5353f6d6d2","Iceland Gull",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_08bb40b40c0a","Ring-billed Gull",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_4ae57d328ec6","Greater Scaup",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_15dd5efcd8d6","Black Turnstone",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_fadb8da1a816","Bonaparte's Gull",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_v2_000006","Black-bellied Plover",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_59441ff7abde","Brant",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_acf526bb8010","Marbled Murrelet",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_40f730f5ad72","Long-tailed Duck",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_98ca0000b734","Brandt's Cormorant",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_136b0e66254b","Common Murre",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_7571c026ae99","American Herring Gull",2
+"B","inverse_variance","Ward.D2",2,"selected","atx_1328b44be502","Black Scoter",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_04cf65098f13","Red-throated Loon",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_ebf17f77fb66","Western Grebe",1
+"B","inverse_variance","Ward.D2",2,"selected","atx_5a9a3495d0ea","Western Gull",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_c9db024faf12","American Crow",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_725074cbfcb6","Glaucous-winged Gull",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_815c98107028","Mallard",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_fc0a9b777dcd","Bald Eagle",3
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_b3d3ea90f9cb","Canada Goose",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_v2_000007","Common Raven",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_99238953638b","Bufflehead",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_7b80ddaff058","Great Blue Heron",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_a113baee5693","American Wigeon",3
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_a444854c6b66","Double-crested Cormorant",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_35518e24dfdd","Common Merganser",3
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_e0e678a61ad7","Short-billed Gull",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_82312e6f2848","Common Goldeneye",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_04afbeb21fb0","Hooded Merganser",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_35707a9578d5","Pelagic Cormorant",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_1930f23cc4f8","Surf Scoter",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_9ae1aa9b7fdf","Common Loon",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_7d980a7c8c37","Northern Pintail",3
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_v2_000002","Black Oystercatcher",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_c2d1fbbaf6d3","Red-breasted Merganser",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_6b4cfd1ab927","Horned Grebe",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_87b306550dba","Harlequin Duck",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_d7dd9536145c","Barrow's Goldeneye",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_d002764a39e8","Lesser Scaup",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_86eda7ed9025","Red-necked Grebe",3
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_c12b832d2b03","California Gull",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_8608f2ed61cf","Pigeon Guillemot",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_c34f23342a55","Pacific Loon",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_v2_000003","Dunlin",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_3083477933a8","White-winged Scoter",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_aa5353f6d6d2","Iceland Gull",3
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_08bb40b40c0a","Ring-billed Gull",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_4ae57d328ec6","Greater Scaup",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_15dd5efcd8d6","Black Turnstone",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_fadb8da1a816","Bonaparte's Gull",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_v2_000006","Black-bellied Plover",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_59441ff7abde","Brant",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_acf526bb8010","Marbled Murrelet",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_40f730f5ad72","Long-tailed Duck",2
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_98ca0000b734","Brandt's Cormorant",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_136b0e66254b","Common Murre",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_7571c026ae99","American Herring Gull",3
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_1328b44be502","Black Scoter",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_04cf65098f13","Red-throated Loon",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_ebf17f77fb66","Western Grebe",1
+"B","inverse_variance","Ward.D2",3,"k_plus_1","atx_5a9a3495d0ea","Western Gull",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_c9db024faf12","American Crow",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_725074cbfcb6","Glaucous-winged Gull",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_815c98107028","Mallard",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_fc0a9b777dcd","Bald Eagle",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_b3d3ea90f9cb","Canada Goose",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_v2_000007","Common Raven",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_99238953638b","Bufflehead",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_7b80ddaff058","Great Blue Heron",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_a113baee5693","American Wigeon",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_a444854c6b66","Double-crested Cormorant",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_35518e24dfdd","Common Merganser",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_e0e678a61ad7","Short-billed Gull",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_82312e6f2848","Common Goldeneye",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_04afbeb21fb0","Hooded Merganser",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_35707a9578d5","Pelagic Cormorant",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_1930f23cc4f8","Surf Scoter",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_9ae1aa9b7fdf","Common Loon",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_7d980a7c8c37","Northern Pintail",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_v2_000002","Black Oystercatcher",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_c2d1fbbaf6d3","Red-breasted Merganser",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_6b4cfd1ab927","Horned Grebe",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_87b306550dba","Harlequin Duck",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_d7dd9536145c","Barrow's Goldeneye",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_d002764a39e8","Lesser Scaup",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_86eda7ed9025","Red-necked Grebe",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_c12b832d2b03","California Gull",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_8608f2ed61cf","Pigeon Guillemot",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_c34f23342a55","Pacific Loon",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_v2_000003","Dunlin",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_3083477933a8","White-winged Scoter",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_aa5353f6d6d2","Iceland Gull",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_08bb40b40c0a","Ring-billed Gull",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_4ae57d328ec6","Greater Scaup",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_15dd5efcd8d6","Black Turnstone",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_fadb8da1a816","Bonaparte's Gull",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_v2_000006","Black-bellied Plover",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_59441ff7abde","Brant",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_acf526bb8010","Marbled Murrelet",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_40f730f5ad72","Long-tailed Duck",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_98ca0000b734","Brandt's Cormorant",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_136b0e66254b","Common Murre",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_7571c026ae99","American Herring Gull",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_1328b44be502","Black Scoter",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_04cf65098f13","Red-throated Loon",2
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_ebf17f77fb66","Western Grebe",1
+"B","reliability_shrunk","Ward.D2",2,"selected","atx_5a9a3495d0ea","Western Gull",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_c9db024faf12","American Crow",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_725074cbfcb6","Glaucous-winged Gull",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_815c98107028","Mallard",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_fc0a9b777dcd","Bald Eagle",3
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_b3d3ea90f9cb","Canada Goose",3
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_v2_000007","Common Raven",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_99238953638b","Bufflehead",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_7b80ddaff058","Great Blue Heron",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_a113baee5693","American Wigeon",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_a444854c6b66","Double-crested Cormorant",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_35518e24dfdd","Common Merganser",3
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_e0e678a61ad7","Short-billed Gull",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_82312e6f2848","Common Goldeneye",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_04afbeb21fb0","Hooded Merganser",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_35707a9578d5","Pelagic Cormorant",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_1930f23cc4f8","Surf Scoter",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_9ae1aa9b7fdf","Common Loon",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_7d980a7c8c37","Northern Pintail",3
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_v2_000002","Black Oystercatcher",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_c2d1fbbaf6d3","Red-breasted Merganser",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_6b4cfd1ab927","Horned Grebe",3
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_87b306550dba","Harlequin Duck",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_d7dd9536145c","Barrow's Goldeneye",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_d002764a39e8","Lesser Scaup",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_86eda7ed9025","Red-necked Grebe",3
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_c12b832d2b03","California Gull",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_8608f2ed61cf","Pigeon Guillemot",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_c34f23342a55","Pacific Loon",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_v2_000003","Dunlin",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_3083477933a8","White-winged Scoter",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_aa5353f6d6d2","Iceland Gull",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_08bb40b40c0a","Ring-billed Gull",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_4ae57d328ec6","Greater Scaup",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_15dd5efcd8d6","Black Turnstone",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_fadb8da1a816","Bonaparte's Gull",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_v2_000006","Black-bellied Plover",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_59441ff7abde","Brant",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_acf526bb8010","Marbled Murrelet",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_40f730f5ad72","Long-tailed Duck",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_98ca0000b734","Brandt's Cormorant",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_136b0e66254b","Common Murre",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_7571c026ae99","American Herring Gull",3
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_1328b44be502","Black Scoter",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_04cf65098f13","Red-throated Loon",2
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_ebf17f77fb66","Western Grebe",1
+"B","reliability_shrunk","Ward.D2",3,"k_plus_1","atx_5a9a3495d0ea","Western Gull",2

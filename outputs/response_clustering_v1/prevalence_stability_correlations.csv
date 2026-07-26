@@ -1,0 +1,7 @@
+"feature_set","scheme","selected_k","spearman_rho_assignment_stability_vs_prevalence","n_species"
+"A","inverse_variance",3,0.118347209374036,46
+"B","inverse_variance",2,0.0783866292888645,46
+"A","reliability_shrunk",2,-0.091581868640148,46
+"B","reliability_shrunk",2,0.107493061979648,46
+"A","unweighted",2,0.285969781066913,46
+"B","unweighted",2,0.111069996916435,46

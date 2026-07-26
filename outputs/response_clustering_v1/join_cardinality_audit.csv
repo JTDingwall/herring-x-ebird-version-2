@@ -1,0 +1,6 @@
+"source","rows_read","declared_key","cardinality","duplicate_keys","matched_complete_case_species"
+"species support",49,"analysis_taxon_id","one-to-one at the declared key",0,46
+"active-minus-pre",98,"analysis_taxon_id + outcome","one-to-one at the declared key",0,46
+"exact timing",94,"analysis_taxon_id + outcome","one-to-one at the declared key",0,46
+"full-period effects",588,"analysis_taxon_id + outcome + contrast","one-to-one at the declared key",0,46
+"registry post-clustering",58,"analysis_taxon_id","one-to-one at the declared key",0,46

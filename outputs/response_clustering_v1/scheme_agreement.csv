@@ -1,0 +1,7 @@
+"feature_set","scheme_1","scheme_2","k_1","k_2","adjusted_rand_index","normalized_mutual_information"
+"A","unweighted","inverse_variance",2,3,0.181833223031105,0.219426552583969
+"A","unweighted","reliability_shrunk",2,2,0.29581191412156,0.226498522581695
+"A","inverse_variance","reliability_shrunk",3,2,0.6300516051203,0.608620109505407
+"B","unweighted","inverse_variance",2,2,0.402474875230738,0.418472070484445
+"B","unweighted","reliability_shrunk",2,2,-0.105769230769231,0.116183759845737
+"B","inverse_variance","reliability_shrunk",2,2,0.0141366797701844,0.218687836168883
