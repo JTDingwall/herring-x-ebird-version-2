@@ -1,0 +1,47 @@
+"analysis_taxon_id","common_name","guild","NMDS1","NMDS2"
+"atx_04afbeb21fb0","Hooded Merganser","piscivore_active_spawn",-0.984059277448242,0.0896573694177849
+"atx_04cf65098f13","Red-throated Loon","piscivore_active_spawn",-0.998555378286457,-0.880828761157995
+"atx_08bb40b40c0a","Ring-billed Gull","gull_roe",-4.552363464867,0.855975075153193
+"atx_1328b44be502","Black Scoter","roe_diving_seaduck",-0.0179451138521672,-1.53546953450244
+"atx_136b0e66254b","Common Murre","alcid_piscivore",-0.451961976304523,2.52125598139784
+"atx_15dd5efcd8d6","Black Turnstone","intertidal_roe_shorebird",0.00880302799643347,0.159746886889523
+"atx_1930f23cc4f8","Surf Scoter","roe_diving_seaduck",0.787374291991066,-0.872994194661715
+"atx_3083477933a8","White-winged Scoter","roe_diving_seaduck",1.90629472703683,-0.331548124754576
+"atx_35518e24dfdd","Common Merganser","piscivore_active_spawn",-0.0603489579348552,0.479897080331757
+"atx_35707a9578d5","Pelagic Cormorant","piscivore_active_spawn",-0.399263906486616,-0.195855122073367
+"atx_40f730f5ad72","Long-tailed Duck","roe_diving_seaduck",3.42430054248547,-1.06451071371381
+"atx_4ae57d328ec6","Greater Scaup","roe_diving_seaduck",1.58719239196462,-2.11590717199184
+"atx_59441ff7abde","Brant","surface_vegetation_roe",-0.559410743824145,-0.435325434012679
+"atx_5a9a3495d0ea","Western Gull","gull_roe",-0.293958830287074,0.744270295190455
+"atx_6b4cfd1ab927","Horned Grebe","piscivore_active_spawn",-1.74222119022186,0.102600217947023
+"atx_725074cbfcb6","Glaucous-winged Gull","gull_roe",1.17496469419946,0.828525551603565
+"atx_7571c026ae99","American Herring Gull","gull_roe",-2.42683403199773,0.203156307926668
+"atx_7b80ddaff058","Great Blue Heron","shoreline_scavenger",-0.274880605308312,-0.00751979005917756
+"atx_7d980a7c8c37","Northern Pintail","surface_vegetation_roe",-0.415448689318836,0.244948217538111
+"atx_815c98107028","Mallard","surface_vegetation_roe",0.555085951322333,-0.12464406064545
+"atx_82312e6f2848","Common Goldeneye","roe_diving_seaduck",1.25159988877224,-0.483292584975097
+"atx_8608f2ed61cf","Pigeon Guillemot","alcid_piscivore",-1.18067867339999,-0.048820515978072
+"atx_86eda7ed9025","Red-necked Grebe","piscivore_active_spawn",-0.791318813540608,-0.267397747635438
+"atx_87b306550dba","Harlequin Duck","roe_diving_seaduck",0.823380485707934,0.288317832661349
+"atx_98ca0000b734","Brandt's Cormorant","piscivore_active_spawn",0.091431739664807,-0.147623703678124
+"atx_99238953638b","Bufflehead","roe_diving_seaduck",-0.295212434502536,0.119283988609171
+"atx_9ae1aa9b7fdf","Common Loon","piscivore_active_spawn",-1.10164694551921,0.28398305892589
+"atx_a113baee5693","American Wigeon","surface_vegetation_roe",0.206284446809314,0.0834017976414405
+"atx_a444854c6b66","Double-crested Cormorant","piscivore_active_spawn",0.426450827345842,0.476771035090905
+"atx_aa5353f6d6d2","Iceland Gull","gull_roe",3.08945499020985,1.09592737193684
+"atx_acf526bb8010","Marbled Murrelet","alcid_piscivore",0.0214192793978093,-0.843700693170021
+"atx_b3d3ea90f9cb","Canada Goose","surface_vegetation_roe",-0.985824643069661,0.380396473659803
+"atx_c12b832d2b03","California Gull","gull_roe",1.46770339164851,0.194934535904732
+"atx_c2d1fbbaf6d3","Red-breasted Merganser","piscivore_active_spawn",-0.102687954774256,0.713015753295875
+"atx_c34f23342a55","Pacific Loon","piscivore_active_spawn",0.0120840457801815,0.871771937826375
+"atx_c9db024faf12","American Crow","shoreline_scavenger",-1.00657827696527,-0.185844236503467
+"atx_d002764a39e8","Lesser Scaup","roe_diving_seaduck",0.252709581009815,-1.53290663862231
+"atx_d7dd9536145c","Barrow's Goldeneye","roe_diving_seaduck",0.339062843996547,-0.302984157056851
+"atx_e0e678a61ad7","Short-billed Gull","gull_roe",2.65376890035214,0.209005376026263
+"atx_ebf17f77fb66","Western Grebe","piscivore_active_spawn",-4.42104786183714,-0.432244552298392
+"atx_fadb8da1a816","Bonaparte's Gull","gull_roe",6.33275034317932,1.10207887634883
+"atx_fc0a9b777dcd","Bald Eagle","shoreline_scavenger",-0.252338635221934,0.984638303906649
+"atx_v2_000002","Black Oystercatcher","intertidal_roe_shorebird",-0.543351738765423,-0.166942701098314
+"atx_v2_000003","Dunlin","intertidal_roe_shorebird",-1.50177346334561,0.0201209355435249
+"atx_v2_000006","Black-bellied Plover","intertidal_roe_shorebird",-0.353921187909548,-1.01890333744365
+"atx_v2_000007","Common Raven","shoreline_scavenger",-0.698483595881517,-0.0584164847407933

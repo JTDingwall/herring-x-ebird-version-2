@@ -1,0 +1,23 @@
+R version 4.5.1 (2025-06-13 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+  LAPACK version 3.12.1
+
+locale:
+[1] LC_COLLATE=English_Canada.utf8  LC_CTYPE=English_Canada.utf8
+[3] LC_MONETARY=English_Canada.utf8 LC_NUMERIC=C
+[5] LC_TIME=English_Canada.utf8
+
+time zone: America/Vancouver
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base
+
+loaded via a namespace (and not attached):
+ [1] MASS_7.3-65     compiler_4.5.1  Matrix_1.7-3    tools_4.5.1
+ [5] parallel_4.5.1  mgcv_1.9-3      splines_4.5.1   nlme_3.1-168
+ [9] grid_4.5.1      permute_0.9-10  vegan_2.7-5     cluster_2.1.8.1
+[13] lattice_0.22-7
