@@ -1,0 +1,41 @@
+execution_version: post_stage4a_distance_band_sensitivity_v2
+executed_at_utc: '2026-07-26T15:46:19Z'
+execution_code_commit: 53cdc78a65f7a055500ffc92b8aacbdb4402eadd
+authorization_record: metadata/post_stage4a_distance_band_sensitivity_authorization_v2.yml
+authorization_record_sha256: 2054f2f8c3288a2fd8b2d24b6f9c0bdeb1aeef6dfb402ebc23e2034c2dbfffb2
+specification_sha256: 87198b25857a9d22ecf6fa4c45405db40c3d9d35ce174a2bfecf5e863ed0e991
+analysis_status: post_result_exploratory_estimand_refinement
+historical_stage4a_outputs_modified: no
+region: SoG
+years:
+- 2005
+- 2025
+taxon: Bald Eagle
+maximum_source_point_distance_km: 26
+plotted_distance_bands: 13
+eligible_checklists: 217200
+model_components: 2
+released_contrasts: 156
+model_status_counts:
+  completed: 2
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  source_links_archived: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  source_links_extended: 06a34a4d3880f2dd3a969d9976b901eff855ff7362e86ae40d75a38edd697dc2
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+source_link_hash_gate: PASS
+archived_0_20km_link_reconciliation_gate: PASS
+new_20_26km_links_only_gate: PASS
+concurrent_link_joint_pairing_gate: PASS
+records_2026_plus_read: 0
+comments_read: 0
+shoreline_fields_read: 0
+full_event_taxon_grid_expanded: no
+glaucous_winged_gull_fit: no
+manuscript_edited: no
+final_gate: PASS_PENDING_HUMAN_BALD_EAGLE_26KM_DISTANCE_BAND_REVIEW
+aggregate_postprocessing_commit: 53cdc78a65f7a055500ffc92b8aacbdb4402eadd
+aggregate_postprocessed_at_utc: '2026-07-26T15:46:36Z'
+distance_heterogeneity_tests: 14
+model_refit_during_postprocessing: no

@@ -1,0 +1,55 @@
+authorization_version: post_stage4a_distance_band_sensitivity_authorization_v1
+authorized_at_local: 2026-07-26
+authorization_source: explicit_human_instruction_in_repository_session
+scientific_decision: AUTHORIZE_BALD_EAGLE_DISTANCE_BAND_TIMING_SENSITIVITY_V1
+human_instruction: >-
+  Run a distance sensitivity test for Bald Eagle first, showing how its response
+  to spawn changes across successive 2 km distance intervals; use different
+  colours for distances and panel the figure. Refine this figure before
+  separately extending the analysis to Glaucous-winged Gull.
+known_results_boundary:
+  stage4a_results_known: true
+  classification: post_result_exploratory_estimand_refinement
+  may_be_relabelled_prespecified_or_confirmatory: false
+authorized_population:
+  region: SoG
+  start_year: 2005
+  end_year: 2025
+  prospective_records_2026_plus: prohibited
+authorized_responses:
+  - checklist_detection
+  - positive_numeric_count_given_detection
+authorized_taxa:
+  included: [Bald Eagle]
+  explicitly_deferred_until_separate_instruction: [Glaucous-winged Gull]
+authorized_geometry:
+  source_points_only: true
+  plotted_2km_bands:
+    - [0, 2]
+    - [2, 4]
+    - [4, 6]
+    - [6, 8]
+    - [8, 10]
+  adjustment_band_km: [10, 20]
+  upper_bound_20km_inclusive: true
+authorized_timing:
+  baseline_days: [-28, -15]
+  early_pre_days: [-14, -8]
+  immediate_pre_days: [-7, -1]
+  spawn_start_days: [0, 3]
+  early_egg_days: [4, 14]
+  late_egg_days: [15, 28]
+analysis_constraints:
+  independent_row: checklist
+  concurrent_links: additive_joint_period_by_distance_band_counts
+  all_concurrent_links_retained: true
+  full_event_taxon_grid_materialization: prohibited
+  historical_stage4a_outputs_and_checkpoints: immutable
+  result_selected_model_changes: prohibited
+  manuscript_edits: prohibited
+execution_prerequisites:
+  - committed_versioned_specification_and_code
+  - fixture_and_targeted_repository_tests_pass
+  - exact_production_environment_acknowledgement
+  - protected_input_hash_and_cardinality_gates_pass
+final_gate: PASS_PENDING_HUMAN_BALD_EAGLE_DISTANCE_BAND_REVIEW

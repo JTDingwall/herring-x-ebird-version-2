@@ -1,0 +1,5 @@
+"species","outcome","contrast","statistic","degrees_of_freedom","p_value"
+"American Robin","detection","spawn_start_profile_minus_equal_duration_pooled_pre",30.8936327241113,13,0.00349444356874536
+"American Robin","positive_numeric_count_given_detection","spawn_start_profile_minus_equal_duration_pooled_pre",12.8629384399188,13,0.458453652955905
+"Chestnut-backed Chickadee","detection","spawn_start_profile_minus_equal_duration_pooled_pre",15.2642957968923,13,0.291145199725649
+"Chestnut-backed Chickadee","positive_numeric_count_given_detection","spawn_start_profile_minus_equal_duration_pooled_pre",13.2033668743202,13,0.432228667175448

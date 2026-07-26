@@ -1,0 +1,3 @@
+"model_version_id","analysis_taxon_id","unit_label","region","outcome","converged","singular_fit","rank_deficient","convergence_message","n","status"
+"SOG_GLAUCOUS_WINGED_GULL_DISTANCE_BAND_v1","atx_725074cbfcb6","Glaucous-winged Gull","SoG","detection",TRUE,FALSE,FALSE,"",217037,"completed"
+"SOG_GLAUCOUS_WINGED_GULL_DISTANCE_BAND_v1","atx_725074cbfcb6","Glaucous-winged Gull","SoG","positive_numeric_count_given_detection",TRUE,FALSE,FALSE,"",85053,"completed"

@@ -1,0 +1,61 @@
+authorization_version: post_stage4a_distance_band_followup_authorization_v1
+authorized_at_local: 2026-07-26
+authorization_source: explicit_human_instruction_in_repository_session
+scientific_decision: AUTHORIZE_DISTANCE_BAND_FOLLOWUP_AND_TERRESTRIAL_CONTROLS_V1
+human_instruction: >-
+  Complete the six-item follow-up on PR 17: add within-profile BH adjustments;
+  compute archived-covariance onset-profile and tight-window contrasts; report
+  asymmetries, support, and the Bald Eagle denominator reconciliation; audit
+  recorded event-date precision; and run the unchanged 13-band machinery for
+  American Robin plus one support-selected terrestrial control.
+known_results_boundary:
+  stage4a_results_known: true
+  bald_eagle_distance_band_results_known: true
+  glaucous_winged_gull_distance_band_results_known: true
+  classification: post_result_exploratory_estimand_refinement
+  may_be_relabelled_prespecified_or_confirmatory: false
+authorized_population:
+  region: SoG
+  start_year: 2005
+  end_year: 2025
+  prospective_records_2026_plus: prohibited
+authorized_archived_recomputations:
+  refit_existing_species: prohibited
+  species: [Bald Eagle, Glaucous-winged Gull]
+  outcomes: [checklist_detection, positive_numeric_count_given_detection]
+  operations:
+    - within_species_outcome_period_BH_across_13_bands
+    - spawn_start_profile_minus_pooled_pre_profile_joint_test
+    - spawn_start_minus_immediate_pre_band_contrasts
+    - aggregate_support_and_denominator_reconciliation
+authorized_negative_controls:
+  mandatory: [American Robin]
+  support_selection_candidates: [Chestnut-backed Chickadee, Dark-eyed Junco]
+  number_selected_from_candidates: 1
+  outcomes: [checklist_detection, positive_numeric_count_given_detection]
+  machinery: unchanged_13_distance_bands_and_6_timing_periods
+  outside_registered_species_family: required
+  entry_into_primary_BH_family: prohibited
+  selection_must_precede_effect_fit: true
+authorized_onset_precision_audit:
+  open_DFO_fields: [StartDate, EndDate]
+  survey_visit_cadence_if_archived: permitted
+  protected_link_tokens: join_only_not_release
+conditional_symmetric_window_refit:
+  allowed_only_if_precision_gate_passes: true
+  precision_gate: >-
+    The archive must establish that event onset, rather than a representative
+    midpoint, was observed to within one or two days for the relevant source
+    events. Source-interval width alone is not sufficient evidence of survey
+    cadence or onset precision.
+  if_gate_fails: stop_without_refit_and_document
+analysis_constraints:
+  historical_stage4a_outputs_and_checkpoints: immutable
+  historical_distance_band_outputs_and_checkpoints: immutable
+  corrections_and_new_controls: additive_and_versioned
+  species_family_unchanged: true
+  manuscript_edits: prohibited
+  exact_coordinates_released: false
+  source_checklist_observer_locality_identifiers_released: false
+  protected_control_rows_committed: false
+final_gate: PASS_PENDING_HUMAN_DISTANCE_BAND_FOLLOWUP_REVIEW
