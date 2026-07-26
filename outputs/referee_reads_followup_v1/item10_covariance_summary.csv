@@ -1,0 +1,4 @@
+"outcome","components","mean_spawn_early_covariance","median_spawn_early_covariance","positive_covariance_components","zero_covariance_components","negative_covariance_components","mean_exact_se_divided_by_approximate","median_exact_se_divided_by_approximate"
+"all_components",94,0.00231022503313231,0.00110084010809816,94,0,0,0.800880779469887,0.820240439925215
+"detection",48,0.00249590946994452,0.00130711748168244,48,0,0,0.802680403327099,0.818988406842774
+"positive_numeric_count_given_detection",46,0.00211646735993696,0.00076604594893138,46,0,0,0.799002911097144,0.821641113142612
