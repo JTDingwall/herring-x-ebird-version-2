@@ -1,0 +1,27 @@
+"outcome","band","band_label","minimum_period_exposed_model_rows"
+"detection","band_0_2","0–2 km",1166
+"positive_numeric_count_given_detection","band_0_2","0–2 km",736
+"detection","band_10_12","10–12 km",2401
+"positive_numeric_count_given_detection","band_10_12","10–12 km",1203
+"detection","band_12_14","12–14 km",1879
+"positive_numeric_count_given_detection","band_12_14","12–14 km",959
+"detection","band_14_16","14–16 km",1974
+"positive_numeric_count_given_detection","band_14_16","14–16 km",968
+"detection","band_16_18","16–18 km",2066
+"positive_numeric_count_given_detection","band_16_18","16–18 km",962
+"detection","band_18_20","18–20 km",1936
+"positive_numeric_count_given_detection","band_18_20","18–20 km",1049
+"detection","band_2_4","2–4 km",1522
+"positive_numeric_count_given_detection","band_2_4","2–4 km",754
+"detection","band_20_22","20–22 km",1681
+"positive_numeric_count_given_detection","band_20_22","20–22 km",864
+"detection","band_22_24","22–24 km",1841
+"positive_numeric_count_given_detection","band_22_24","22–24 km",925
+"detection","band_24_26","24–26 km",2073
+"positive_numeric_count_given_detection","band_24_26","24–26 km",1048
+"detection","band_4_6","4–6 km",1960
+"positive_numeric_count_given_detection","band_4_6","4–6 km",957
+"detection","band_6_8","6–8 km",2046
+"positive_numeric_count_given_detection","band_6_8","6–8 km",935
+"detection","band_8_10","8–10 km",2327
+"positive_numeric_count_given_detection","band_8_10","8–10 km",1133
