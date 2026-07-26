@@ -425,10 +425,24 @@ precision_summary <- data.table(
 )
 write_csv(precision_summary, "event_date_precision_audit_v1.csv")
 
-manifest_files <- list.files(
-  output_dir, full.names = TRUE,
-  pattern = "\\.(csv)$"
+manifest_files <- file.path(
+  output_dir,
+  c(
+    "bald_eagle_distance_band_effects_bh_v1.csv",
+    "glaucous_winged_gull_distance_band_effects_bh_v1.csv",
+    "direct_onset_profile_tests_v1.csv",
+    "direct_onset_band_contrasts_v1.csv",
+    "tight_spawn_start_vs_immediate_pre_v1.csv",
+    "near_band_active_0_14_summary_v1.csv",
+    "below_baseline_inventory_v1.csv",
+    "near_band_headline_support_v1.csv",
+    "bald_eagle_denominator_reconciliation_v1.csv",
+    "event_date_precision_audit_v1.csv"
+  )
 )
+if (!all(file.exists(manifest_files))) {
+  stop("ARCHIVED_MANIFEST_GATE: expected output absent", call. = FALSE)
+}
 manifest <- data.table(
   file = basename(manifest_files),
   sha256 = vapply(
