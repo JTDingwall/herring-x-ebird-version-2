@@ -1,0 +1,101 @@
+specification_version: post_stage4a_distance_band_sensitivity_spec_v1
+authorization_record: metadata/post_stage4a_distance_band_sensitivity_authorization_v1.yml
+analysis_status: post_result_exploratory_estimand_refinement
+historical_stage4a:
+  status: immutable
+  outputs_overwritten: false
+scientific_question: >-
+  Within successive source-point distance bands, how does Bald Eagle checklist
+  reporting or positive reported number change through herring-spawn timing
+  relative to the same distance band's pre-spawn baseline?
+population:
+  region: SoG
+  years: [2005, 2025]
+  complete_checklists_only: true
+  protocols: [stationary, traveling]
+  duration_minutes: [5, 300]
+  maximum_travel_distance_km: 5
+  observer_count: [1, 10]
+  maximum_source_point_link_distance_km: 20
+  prospective_records_2026_plus: prohibited
+taxon:
+  common_name: Bald Eagle
+  analysis_taxon_id: atx_fc0a9b777dcd
+  family_membership_unchanged: true
+outcomes:
+  detection:
+    family: binomial
+    link: logit
+    interpretation: checklist_reporting_not_occupancy
+  positive_numeric_count_given_detection:
+    family: gaussian_on_log_count
+    interpretation: relative_reported_number_conditional_on_numeric_detection
+  unquantified_X_as_numeric: prohibited
+  ambiguity_as_zero: prohibited
+periods:
+  baseline: {minimum_day: -28, maximum_day: -15, duration_days: 14}
+  early_pre: {minimum_day: -14, maximum_day: -8, duration_days: 7}
+  immediate_pre: {minimum_day: -7, maximum_day: -1, duration_days: 7}
+  spawn_start: {minimum_day: 0, maximum_day: 3, duration_days: 4}
+  early_egg: {minimum_day: 4, maximum_day: 14, duration_days: 11}
+  late_egg: {minimum_day: 15, maximum_day: 28, duration_days: 14}
+distance_bands:
+  band_0_2: {minimum_km_inclusive: 0, maximum_km_exclusive: 2, plotted: true}
+  band_2_4: {minimum_km_inclusive: 2, maximum_km_exclusive: 4, plotted: true}
+  band_4_6: {minimum_km_inclusive: 4, maximum_km_exclusive: 6, plotted: true}
+  band_6_8: {minimum_km_inclusive: 6, maximum_km_exclusive: 8, plotted: true}
+  band_8_10: {minimum_km_inclusive: 8, maximum_km_inclusive: 10, plotted: true}
+  band_10_20: {minimum_km_exclusive: 10, maximum_km_inclusive: 20, plotted: false}
+exposure_encoding:
+  unit: linked_recorded_source_event
+  joint_terms: period_by_distance_band_additive_counts
+  independent_model_row: checklist
+  checklist_duplication: prohibited
+  all_36_joint_terms_in_model: true
+  derive_joint_terms_by_multiplying_marginal_counts: prohibited
+  concurrent_links: all_retained
+model:
+  engine_detection: lme4_glmer_nAGQ0
+  engine_positive_count: lme4_lmer_REML
+  fixed_terms:
+    - all_36_joint_period_by_distance_band_counts
+    - factor_checklist_year
+    - protocol
+    - log_duration_minutes
+    - log_effort_distance_plus_one
+    - observer_count
+  random_intercepts:
+    - herring_event_block
+    - observer_cluster
+    - generalized_location_cluster
+  simplified_fallback: prohibited
+contrasts:
+  within_band_period_minus_baseline:
+    expression: band_period_minus_same_band_baseline
+    plotted_periods: [early_pre, immediate_pre, spawn_start, early_egg, late_egg]
+  within_band_active_0_14:
+    expression: >-
+      (4 / 15) * band_spawn_start +
+      (11 / 15) * band_early_egg -
+      band_baseline
+    plotted: false
+inference:
+  intervals: exact_model_covariance_normal_95_percent
+  multiplicity: not_adjusted_single_taxon_exploratory_sensitivity
+  interpretation: association_not_causal_effect_or_abundance
+privacy:
+  minimum_released_cell_size: 20
+  protected_rows_committed: false
+  identifiers_committed: false
+  coordinates_committed: false
+  protected_paths_committed: false
+validation:
+  exact_period_boundary_fixture: required
+  exact_distance_boundary_fixture: required
+  concurrent_link_joint_pairing_fixture: required
+  event_metadata_join_cardinality: one_to_many_then_aggregate_to_one
+  checklist_year_join_agreement: required
+  model_geometry_and_singularity: fully_reported
+  figure_visual_inspection: required
+output_directory: outputs/post_stage4a_distance_band_sensitivity_v1
+final_gate: PASS_PENDING_HUMAN_BALD_EAGLE_DISTANCE_BAND_REVIEW
