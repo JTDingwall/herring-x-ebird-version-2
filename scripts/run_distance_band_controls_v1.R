@@ -4,6 +4,7 @@ Sys.setenv(RENV_CONFIG_AUTOLOADER_ENABLED = "FALSE")
 suppressPackageStartupMessages({
   library(data.table)
   library(digest)
+  library(ggplot2)
   library(lme4)
   library(yaml)
 })
@@ -573,6 +574,9 @@ plot_data <- rbindlist(list(
     )
   ]
 ), fill = TRUE)
+plot_data[, period_label := factor(
+  period, levels = period_order, labels = period_labels
+)]
 palette <- c(
   "American Robin" = "#3B7D23",
   "Chestnut-backed Chickadee" = "#6A4C93",
@@ -585,56 +589,60 @@ outcome_titles <- c(
 figure_path <- file.path(
   output_dir, "terrestrial_control_near_band_timing_v1.png"
 )
-png(figure_path, width = 2800, height = 1900, res = 220)
-par(mfrow = c(2, 2), oma = c(4, 2, 5, 1), family = "sans")
-for (outcome_now in names(outcome_titles)) {
-  outcome_data <- plot_data[outcome == outcome_now]
-  finite <- c(outcome_data$ratio_conf_low, outcome_data$ratio_conf_high)
-  finite <- finite[is.finite(finite) & finite > 0]
-  ylim <- range(finite)
-  padding <- exp(0.12 * diff(log(ylim)))
-  ylim <- c(ylim[[1L]] / padding, ylim[[2L]] * padding)
-  for (species_now in selected_names) {
-    d <- outcome_data[unit_label == species_now]
-    d <- d[match(period_order, d$period)]
-    x <- seq_along(period_order)
-    par(mar = c(7.2, 5.5, 3.3, 1.2))
-    plot(
-      x, d$ratio, type = "b", log = "y", ylim = ylim,
-      xaxt = "n", xlab = "", ylab = "Ratio versus same-band baseline",
-      pch = 21, bg = "white", col = palette[[species_now]],
-      lwd = 2,
-      main = paste(species_now, "\n", outcome_titles[[outcome_now]]),
-      bty = "l"
+plot_data[, outcome_label := factor(
+  outcome,
+  levels = names(outcome_titles),
+  labels = unname(outcome_titles)
+)]
+control_plot <- ggplot(
+  plot_data,
+  aes(
+    x = period_label, y = ratio, group = unit_label,
+    colour = unit_label
+  )
+) +
+  geom_hline(yintercept = 1, linetype = "dotted", colour = "#555555") +
+  geom_errorbar(
+    aes(ymin = ratio_conf_low, ymax = ratio_conf_high),
+    width = 0.10, linewidth = 0.45
+  ) +
+  geom_line(linewidth = 0.75) +
+  geom_point(shape = 21, fill = "white", size = 2.4, stroke = 0.8) +
+  facet_grid(outcome_label ~ unit_label) +
+  scale_colour_manual(values = palette[selected_names]) +
+  scale_y_log10() +
+  labs(
+    title = paste0(
+      "Terrestrial negative controls within 0-<2 km of recorded ",
+      "herring source points"
+    ),
+    subtitle = paste0(
+      "Same 13-band mixed-model machinery; ratios versus each band's ",
+      "days -28 to -15 baseline; 95% intervals"
+    ),
+    x = NULL,
+    y = "Ratio versus same-band baseline",
+    caption = paste0(
+      "Event time is anchored to the recorded StartDate-EndDate midpoint, ",
+      "not directly observed biological onset."
     )
-    axis(1, at = x, labels = period_labels, las = 2,
-         tick = FALSE, cex.axis = 0.72)
-    abline(h = 1, lty = 3, col = "#555555")
-    use <- d$period != "baseline"
-    segments(
-      x[use], d$ratio_conf_low[use],
-      x[use], d$ratio_conf_high[use],
-      col = palette[[species_now]], lwd = 1.3
-    )
-    points(
-      x, d$ratio, pch = 21, bg = "white",
-      col = palette[[species_now]], lwd = 1.5
-    )
-  }
-}
-mtext(
-  "Terrestrial negative controls within 0-<2 km of recorded herring source points",
-  outer = TRUE, side = 3, line = 2.2, cex = 1.25, font = 2
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "none",
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    strip.text = element_text(face = "bold", size = 10.5),
+    axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1),
+    plot.title = element_text(face = "bold", size = 15),
+    plot.subtitle = element_text(size = 10.5),
+    plot.caption = element_text(hjust = 0, colour = "#444444")
+  )
+ggsave(
+  figure_path, control_plot,
+  width = 13.5, height = 8.5, units = "in", dpi = 220,
+  bg = "white"
 )
-mtext(
-  "Same 13-band mixed-model machinery; ratios versus each band's days -28 to -15 baseline; 95% intervals",
-  outer = TRUE, side = 3, line = 0.7, cex = 0.78
-)
-mtext(
-  "Event time is anchored to the recorded StartDate-EndDate midpoint, not directly observed biological onset.",
-  outer = TRUE, side = 1, line = 1.5, cex = 0.72
-)
-dev.off()
 
 execution_record <- list(
   execution_version = "post_stage4a_distance_band_followup_controls_v1",
