@@ -302,15 +302,24 @@ for (species in selected_names) {
       paste0(gsub("[^A-Za-z0-9]+", "_", tolower(species)),
              "_", outcome, ".rds")
     )
+    component_key <- paste0(
+      gsub("[^A-Za-z0-9]+", "_", tolower(species)),
+      "_", outcome
+    )
+    fit_selection_sha <-
+      selection$checkpoint_signature_selection_sha256[[component_key]]
+    if (length(fit_selection_sha) != 1L ||
+        !grepl("^[0-9a-f]{64}$", fit_selection_sha)) {
+      stop("CONTROL_PRODUCTION_SELECTION_GATE: checkpoint hash absent",
+           call. = FALSE)
+    }
     signature <- paste(
       model_fit_execution_commit, species, outcome,
       protected_hashes,
       .post_stage4a_sha256_v1(
         "metadata/post_stage4a_distance_band_followup_spec_v1.yml"
       ),
-      .post_stage4a_sha256_v1(
-        "metadata/post_stage4a_distance_band_followup_control_selection_v1.yml"
-      ),
+      fit_selection_sha,
       sep = "|", collapse = "|"
     )
     result <- post_stage4a_fit_distance_band_component_v2(
@@ -634,6 +643,8 @@ execution_record <- list(
   ),
   execution_code_commit = execution_commit,
   model_fit_execution_commit = model_fit_execution_commit,
+  checkpoint_signature_selection_sha256 =
+    selection$checkpoint_signature_selection_sha256,
   authorization_record =
     "metadata/post_stage4a_distance_band_followup_authorization_v1.yml",
   specification_record =
