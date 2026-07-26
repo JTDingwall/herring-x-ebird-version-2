@@ -570,6 +570,7 @@ post_stage4a_plot_bald_eagle_distance_bands_v1 <- function(
   )
 
   grDevices::png(output_path, width = 3200, height = 1900, res = 240)
+  par(oma = c(3.2, 0, 6.5, 0), family = "sans")
   layout(
     matrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE),
     heights = c(0.24, 1)
