@@ -1,0 +1,142 @@
+execution_version: post_stage4a_staged_refit_execution_v1
+completed_stages: s1_anchor
+analysis_status: post_result_ecologically_motivated_refinement
+authorization_record: metadata/post_stage4a_staged_refit_authorization_v1.yml
+execution_code_commit: 58231e270154bdda2a13b2c4996fc6858f409e97
+executed_at_utc: '2026-07-28T04:12:02Z'
+elapsed_seconds: 7623.338757
+stage_timings_seconds:
+  priority_case_species_and_controls: 605.1627829
+  remaining_fixed_family: 6124.2358649
+random_seed: none_models_are_deterministic
+engines:
+  checklist_reporting: lme4::glmer binomial nAGQ=0
+  conditional_positive_numeric_count: lme4::lmer REML
+r_version: R version 4.5.1 (2025-06-13 ucrt)
+package_versions:
+  data.table: 1.18.4
+  digest: 0.6.39
+  lme4: 2.0.6
+  yaml: 2.3.12
+workers: 4
+population:
+  region: SoG
+  years:
+  - 2005
+  - 2025
+  eligible_checklists: 217200
+  fixed_family_species: 49
+  negative_controls:
+  - American Robin
+  - Chestnut-backed Chickadee
+  records_2026_plus_read: 0
+joins:
+  source_links_to_anchor_lookup: many_to_one_PASS_no_link_row_change
+  source_links_to_checklists: many_to_one_then_aggregate_to_one_checklist_PASS
+  control_ebd_reports_to_source_crosswalk: many_to_one_PASS_no_join_expansion
+  stage1_to_published_parent: one_to_one_98_rows_PASS
+  species_to_guild: many_species_to_one_guild_PASS
+  archived_to_extended_distance_links: one_to_one_archived_subset_PASS
+headline_primary_contrast:
+- outcome: checklist_reporting
+  positive_bh_q_lt_0_05: 14
+  negative_bh_q_lt_0_05: 1
+  estimable: 48
+- outcome: conditional_positive_numeric_count
+  positive_bh_q_lt_0_05: 19
+  negative_bh_q_lt_0_05: 0
+  estimable: 46
+model_issues:
+- stage: s1_anchor
+  analysis_taxon_id: atx_1812dd827ede
+  species: Surfbird
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s1_anchor
+  analysis_taxon_id: atx_5a9a3495d0ea
+  species: Western Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: yes
+  singular_fit: yes
+  rank_deficient: no
+  convergence_message: 'boundary (singular) fit: see help(''isSingular'')'
+  status: completed_with_singular_warning
+- stage: s1_anchor
+  analysis_taxon_id: atx_6cbe5bbd310c
+  species: Rhinoceros Auklet
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s1_anchor
+  analysis_taxon_id: atx_v2_000011
+  species: Glaucous Gull
+  analysis_role: core_species
+  outcome: checklist_reporting
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: 'Error : Downdated VtV is not positive definite '
+  status: failed_numerical_fit_no_fallback
+- stage: s1_anchor
+  analysis_taxon_id: atx_v2_000011
+  species: Glaucous Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+distance_model_issues: []
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  source_links_archived: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  source_links_extended: 06a34a4d3880f2dd3a969d9976b901eff855ff7362e86ae40d75a38edd697dc2
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+  control_extract: 70ecae25e7cb8888c6ee6ffbfb307a8a44bd22402190f7cfb07ad286755f4195
+herring_source_hash: 6d3b2c08e3586bde52f5fe2af602c63014468b54e49dc906bd1f8dfe6706e8ac
+published_parent_contrast_source: .worktrees/conventional-sensitivity-v9/outputs/editorial_requested_analysis_v1/active_minus_pre_contrasts.csv
+published_parent_contrast_hash: 8fe49d6f9d4edc60e248608c4cd9f35581932db762f711cf903227ed2d4ce861
+historical_parent_output_hashes:
+  outputs/post_stage4a_sog_event_study_v1/effect_estimates_v1.csv: fc5a45bdce112c01461b5193af4a4627529336278e89aecf92861b7d50a6f00b
+  outputs/post_stage4a_sog_event_study_v1/execution_record_v1.yml: 1438214102d6d4260563187ab3fdaf318d8326bdc21567a659480f636ebb2bda
+  outputs/post_stage4a_sog_event_study_v1/joint_exposure_support_v1.csv: 0a7ba9b0706de146b0819d4d1f38986e3b29bf8b1ba167a82188b75a0f6f5139
+  outputs/post_stage4a_sog_event_study_v1/main_species_panel_v1.csv: 6ded7b46502ce2f6de781f29b8b08607065c51a33b23ce8abced1c52239d9621
+  outputs/post_stage4a_sog_event_study_v1/model_diagnostics_v1.csv: 8f0332e1ae29717c01540cb165482f551e17f085ac5317b09e2aface1396365c
+  outputs/post_stage4a_sog_event_study_v1/model_term_support_v1.csv: a850ecd10e52402d3e37187d16092c06b8fa6aecb60a81bab1639d2f3956e98a
+  outputs/post_stage4a_sog_event_study_v1/output_hash_manifest_v1.csv: e62b3493592597cce23d2bf48324c2885c00f4734982050af51492eff621676b
+  outputs/post_stage4a_sog_event_study_v1/production_resume_stderr.log: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  outputs/post_stage4a_sog_event_study_v1/production_resume_stdout.log: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  outputs/post_stage4a_sog_event_study_v1/production_stderr.log: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  outputs/post_stage4a_sog_event_study_v1/production_stdout.log: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  outputs/post_stage4a_sog_event_study_v1/specificity_comparators_v1.csv: c13601533e438f8782516e0c8f358f26d7d6d63b638a686cadf7105e02d906b9
+historical_parent_outputs_modified: no
+protected_rows_released: 0
+privacy_column_gate: PASS
+stage1_gate: PASS_PENDING_HUMAN_STAGE1_REVIEW
+post_execution_corrections:
+- correction_version: post_stage4a_staged_refit_s1_anchor_audit_correction_v1
+  correction_code_commit: d28f1b4aa95828be83b2d5731be8558e0c9f6582
+  corrected_at_utc: '2026-07-28T04:20:25Z'
+  results_known_at_correction: yes
+  model_refit: no
+  protected_responses_read: no
+  reason: Literal NA date tokens were not counted as raw missing values, and the shift
+    distribution used the 20 km primary-link universe instead of the prespecified
+    26 km all-linked-event audit universe.
+  original_audit_preserved_as: outputs/post_stage4a_staged_refit_v1/s1_anchor/anchor_shift_audit_prevalidation_v1.csv
+  original_audit_sha256: 3e995a1a566fe42d216fe4786f0c4ec373e710f753f865d6b33411ceb8fa6953
+  corrected_linked_source_event_universe: all SoG 2005-2025 source events linked within
+    26 km
+  fitted_estimates_modified: no
