@@ -26,6 +26,10 @@ stage3_dose_amendment_gate_v1 <- function(
   invisible(amendment)
 }
 
+stage3_dose_elapsed_seconds_v1 <- function(started) {
+  as.numeric(difftime(Sys.time(), started, units = "secs"))
+}
+
 .stage3_dose_load_inputs_pre_amendment_v1 <-
   stage3_dose_load_inputs_v1
 
@@ -403,7 +407,7 @@ run_post_stage4a_stage3_dose_amended_sensitivities_v1 <- function(
     fit_lrt = FALSE, variant = "decomposed",
     workers = post_stage4a_worker_count_v1(length(inputs$taxa))
   )
-  timings$dive_only_seconds <- as.numeric(Sys.time() - phase)
+  timings$dive_only_seconds <- stage3_dose_elapsed_seconds_v1(phase)
   timings$surface_only_seconds <- 0
 
   phase <- Sys.time()
@@ -429,7 +433,7 @@ run_post_stage4a_stage3_dose_amended_sensitivities_v1 <- function(
   extent$extent_correlation <- extent_wide$extent_correlation
   extent$extent_event_n <- extent_wide$extent_event_n
   extent$length_grand_mean <- extent_wide$length_grand_mean
-  timings$extent_seconds <- as.numeric(Sys.time() - phase)
+  timings$extent_seconds <- stage3_dose_elapsed_seconds_v1(phase)
 
   phase <- Sys.time()
   placebo_results <- list()
@@ -449,7 +453,7 @@ run_post_stage4a_stage3_dose_amended_sensitivities_v1 <- function(
       )
   }
   placebo <- stage3_dose_placebo_tallies_v1(placebo_results)
-  timings$placebo_seconds <- as.numeric(Sys.time() - phase)
+  timings$placebo_seconds <- stage3_dose_elapsed_seconds_v1(phase)
 
   phase <- Sys.time()
   effort <- stage3_dose_effort_outcomes_v1(
@@ -466,7 +470,7 @@ run_post_stage4a_stage3_dose_amended_sensitivities_v1 <- function(
     primary_signature
   )
   timings$effort_guild_tercile_seconds <-
-    as.numeric(Sys.time() - phase)
+    stage3_dose_elapsed_seconds_v1(phase)
 
   parent_after <- lapply(
     parent_roots, staged_refit_amendment_snapshot_v1
@@ -507,7 +511,7 @@ run_post_stage4a_stage3_dose_amended_sensitivities_v1 <- function(
     executed_at_utc = format(
       Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"
     ),
-    elapsed_seconds = as.numeric(Sys.time() - started),
+    elapsed_seconds = stage3_dose_elapsed_seconds_v1(started),
     stage_timings_seconds = timings,
     completed_checkpoints = c(
       "checkpoint_1_case_species",
@@ -629,7 +633,7 @@ run_post_stage4a_stage3_dose_amended_sensitivities_v1 <- function(
   stage3_dose_checkpoint_marker_v1(
     file.path(protected_root, "checkpoint_3_complete.yml"),
     "checkpoint_3_amended_sensitivities",
-    amendment_execution_commit, Sys.time() - started,
+    amendment_execution_commit, stage3_dose_elapsed_seconds_v1(started),
     list(
       primary_model_code_commit = primary_model_code_commit,
       amendment_record =
