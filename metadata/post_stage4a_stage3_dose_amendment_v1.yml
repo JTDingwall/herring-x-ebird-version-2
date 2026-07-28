@@ -1,0 +1,58 @@
+amendment_version: post_stage4a_stage3_dose_amendment_v1
+created_at_local: 2026-07-28
+authority: author_instruction_in_current_codex_session
+analysis_status: post_result_method_sensitivity_amendment
+parent_spec: metadata/post_stage4a_stage3_dose_spec_v1.yml
+parent_spec_immutable: true
+
+reason:
+  linked_candidate_events: 1120
+  dive_observed_events: 950
+  dive_observed_percent: 84.82142857142857
+  surface_observed_events: 68
+  surface_observed_percent: 6.071428571428571
+  incomplete_method_events: 102
+  surface_only_conclusion: non_estimable
+  explanation: >-
+    The surface-only restriction is too small and unrepresentative to support
+    an interpreted mixed-model sensitivity. It must remain visible as
+    non-estimable and must not be fitted or described as evidence for or
+    against the primary result.
+
+replacement_method_sensitivity:
+  method: dive_only
+  linked_candidate_events: 950
+  role: consistent_majority_set
+  model: >-
+    Refit the decomposed Stage 3 dose model after retaining links only to
+    dive_only aggregated events. Retain the same real-anchor centring constant,
+    the full 49-species family, both outcomes, and all failure rows.
+  reporting: >-
+    Report the dive-only estimates alongside the primary estimates. Also
+    release explicit surface-only rows with estimates absent and status
+    non_estimable_insufficient_method_support_68_linked_events.
+
+missing_component_reconciliation:
+  linked_candidate_events_with_no_recorded_component: 125
+  descriptive_display: aggregated index may display as 0.00
+  scientific_state: unscorable_event_not_zero_spawn
+  required_model_handling: >-
+    Set no log-index value, drop before logging, and contribute zero only to
+    the dose covariate because the event is absent from the dose-scored link
+    set. Never interpret this as an observed zero-spawn event.
+  start_anchor_window_breakdown:
+    no_component_events_with_eligible_start_anchor_link: 121
+    no_component_events_outside_start_anchor_period_support: 4
+
+staging_disclosure:
+  checkpoint_1_case_species_completed_before_amendment_record: true
+  checkpoint_1_execution_code_commit: bbb524a98565d754efb16b6ac2508bdaa43fe2d1
+  amendment_changes_primary_case_or_family_model: false
+  amendment_changes:
+    - method sensitivity
+    - aggregate audit denominator and missing-component reconciliation
+  response_results_known_warning: >-
+    The amendment was received after checkpoint 1 production had completed.
+    It is additive, versioned, and does not alter the primary dose definition,
+    the two outcomes, the case-species fits, the fixed 49 family, the LRT, or
+    the multiplicity rules.
