@@ -22,7 +22,7 @@ survey_method,DFO,character,Three observed categories; method/measurement covari
 surface_index_t,DFO,numeric,Relative spawn-index component; missing is not zero
 macrocystis_index_t,DFO,numeric,Relative spawn-index component; missing is not zero
 understory_index_t,DFO,numeric,Relative spawn-index component; missing is not zero
-relative_spawn_index_t,derived,numeric,Sum of observed components; not absolute biomass
+relative_spawn_index_t,derived,numeric,Sum of the three components with unrecorded components treated as zero; not absolute biomass
 event_distance_km,derived,numeric,Checklist-to-event distance
 shoreline_distance_km,derived,numeric,Checklist-to-shoreline distance
 alongshore_distance_km,derived,numeric,Optional shoreline-network distance
