@@ -400,6 +400,7 @@ staged_refit_amendment_fit_pool_v1 <- function(
 
 staged_refit_amendment_fit_terrestrial_species_v1 <- function(
     controls, checkpoint_dir, cache_signature, analysis_variant) {
+  dir.create(checkpoint_dir, recursive = TRUE, showWarnings = FALSE)
   result <- staged_refit_fit_controls_v1(
     controls, checkpoint_dir,
     paste(cache_signature, analysis_variant, sep = "|")
