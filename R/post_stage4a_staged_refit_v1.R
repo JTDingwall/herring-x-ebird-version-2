@@ -1077,14 +1077,26 @@ staged_refit_parent_primary_v1 <- function() {
   )
   parent_key <- paste(parent$species, parent_outcome, sep = "\r")
   index <- match(pub_key, parent_key)
+  same_numeric <- function(left, right, tolerance = 1e-12) {
+    missing_left <- is.na(left)
+    missing_right <- is.na(right)
+    identical(missing_left, missing_right) &&
+      (
+        all(missing_left) ||
+          max(abs(left[!missing_left] - right[!missing_right])) <=
+            tolerance
+      )
+  }
   if (nrow(published) != 98L || anyNA(index) ||
       anyDuplicated(pub_key) ||
-      max(abs(
-        as.numeric(published$ratio) - as.numeric(parent$ratio[index])
-      )) > 1e-12 ||
-      max(abs(
-        as.numeric(published$q_value) - as.numeric(parent$q_value[index])
-      ), na.rm = TRUE) > 1e-12) {
+      !same_numeric(
+        as.numeric(published$ratio),
+        as.numeric(parent$ratio[index])
+      ) ||
+      !same_numeric(
+        as.numeric(published$q_value),
+        as.numeric(parent$q_value[index])
+      )) {
     stop(
       "STAGED_REFIT_PUBLISHED_PARENT_RECONCILIATION_GATE: manuscript table differs",
       call. = FALSE

@@ -165,6 +165,14 @@ test_that("Stage 1 guild timing joins the frozen exact parent one-to-one", {
   expect_false(any(got$changed_omnibus_significance))
 })
 
+test_that("Stage 1 reconciles the published parent including missing fits", {
+  withr::local_dir(project_root)
+  parent <- staged_refit_parent_primary_v1()
+  expect_equal(nrow(parent), 98L)
+  expect_equal(sum(is.na(parent$ratio)), 4L)
+  expect_equal(sum(is.na(parent$q_value)), 4L)
+})
+
 test_that("Stage 1 code retains mixed models, warnings, and no fallback", {
   code <- paste(
     readLines(
