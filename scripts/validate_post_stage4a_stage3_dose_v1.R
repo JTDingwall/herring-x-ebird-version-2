@@ -28,6 +28,7 @@ primary <- read("dose_estimates_49x2.csv")
 within_between <- read("dose_within_between.csv")
 lrt <- read("dose_lrt.csv")
 method <- read("dose_method_sensitivity.csv")
+audit <- read("index_aggregation_audit.csv")
 extent <- read("dose_extent_sensitivity.csv")
 effort <- read("dose_effort_outcomes.csv")
 placebo <- read("dose_placebo_tallies.csv")
@@ -54,6 +55,18 @@ stopifnot(
   )),
   setequal(unique(placebo$offset_days), c(-90L, 90L)),
   setequal(unique(tercile$within_year_tercile), 1:3)
+)
+stopifnot(
+  all(method$sensitivity == "dive_only"),
+  all(method$linked_candidate_events == 950L),
+  all(method$surface_linked_candidate_events == 68L),
+  all(method$surface_only_status ==
+        "non_estimable_insufficient_method_support_68_linked_events"),
+  audit$count[
+    audit$metric == "events_no_recorded_component"
+  ] == 125L,
+  audit$count[audit$metric == "dive_observed_events"] == 950L,
+  audit$count[audit$metric == "surface_observed_events"] == 68L
 )
 
 excluded <- c(
@@ -105,7 +118,7 @@ observed <- vapply(
   ),
   character(1L)
 )
-stopifnot(identical(observed, manifest$sha256))
+stopifnot(identical(unname(observed), manifest$sha256))
 
 report <- readLines("STAGE3_DOSE_REPORT.md", warn = FALSE)
 sentences <- paste(report[seq_len(min(12L, length(report)))],
@@ -114,6 +127,14 @@ stopifnot(
   grepl("prespecified Stage 3 dose pattern", sentences, fixed = TRUE),
   grepl("post-result estimand refinement", sentences, fixed = TRUE),
   any(grepl("What this analysis does not claim", report, fixed = TRUE))
+)
+stopifnot(
+  any(grepl(
+    "surface-only set contained 68/1,120", report, fixed = TRUE
+  )),
+  any(grepl(
+    "descriptive `0.00` for those 125 events", report, fixed = TRUE
+  ))
 )
 
 execution <- yaml::read_yaml(file.path(root, "execution_record_v1.yml"))
@@ -133,6 +154,17 @@ stopifnot(
   identical(
     execution$historical_withdrawn_control_outputs_retained_unchanged,
     TRUE
+  ),
+  identical(
+    execution$method_sensitivity$surface_only$model_fit, FALSE
+  ),
+  identical(
+    execution$method_sensitivity$dive_only$linked_candidate_events,
+    950L
+  ),
+  identical(
+    execution$index$linked_candidates_with_no_recorded_component,
+    125L
   )
 )
 

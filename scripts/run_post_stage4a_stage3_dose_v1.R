@@ -34,6 +34,10 @@ source(
   file.path("R", "post_stage4a_stage3_dose_v1.R"),
   local = FALSE
 )
+source(
+  file.path("R", "post_stage4a_stage3_dose_amendment_v1.R"),
+  local = FALSE
+)
 
 packages <- c("data.table", "digest", "lme4", "yaml")
 missing_packages <- packages[!vapply(
@@ -54,10 +58,12 @@ if (mode == "fixture") {
 
 tracked_scope <- c(
   "R/post_stage4a_stage3_dose_v1.R",
+  "R/post_stage4a_stage3_dose_amendment_v1.R",
   "scripts/run_post_stage4a_stage3_dose_v1.R",
   "scripts/run_post_stage4a_stage3_dose_v1.ps1",
   "scripts/validate_post_stage4a_stage3_dose_v1.R",
   "metadata/post_stage4a_stage3_dose_spec_v1.yml",
+  "metadata/post_stage4a_stage3_dose_amendment_v1.yml",
   "metadata/data_dictionary_v2.csv"
 )
 status <- system2(
@@ -94,13 +100,51 @@ if (mode == "case") {
   )
   cat("STAGE3_DOSE_CHECKPOINT_1_PASS\n")
 } else if (mode == "family") {
+  marker <- yaml::read_yaml(file.path(
+    "data", "derived", "post_stage4a_stage3_dose_v1",
+    "checkpoint_1_complete.yml"
+  ))
+  primary_model_code_commit <- marker$execution_code_commit
+  core_status <- system2(
+    "git",
+    c(
+      "diff", "--quiet", primary_model_code_commit, "--",
+      "R/post_stage4a_stage3_dose_v1.R"
+    ),
+    stdout = FALSE, stderr = FALSE
+  )
+  if (!identical(core_status, 0L)) {
+    stop(
+      "STAGE3_DOSE_PRIMARY_CODE_GATE: checkpoint 1 core changed",
+      call. = FALSE
+    )
+  }
   run_post_stage4a_stage3_dose_family_v1(
-    execution_code_commit, herring_path
+    primary_model_code_commit, herring_path
   )
   cat("STAGE3_DOSE_CHECKPOINT_2_PASS\n")
 } else if (mode == "sensitivities") {
-  run_post_stage4a_stage3_dose_sensitivities_v1(
-    execution_code_commit, herring_path
+  marker <- yaml::read_yaml(file.path(
+    "data", "derived", "post_stage4a_stage3_dose_v1",
+    "checkpoint_1_complete.yml"
+  ))
+  primary_model_code_commit <- marker$execution_code_commit
+  core_status <- system2(
+    "git",
+    c(
+      "diff", "--quiet", primary_model_code_commit, "--",
+      "R/post_stage4a_stage3_dose_v1.R"
+    ),
+    stdout = FALSE, stderr = FALSE
+  )
+  if (!identical(core_status, 0L)) {
+    stop(
+      "STAGE3_DOSE_PRIMARY_CODE_GATE: checkpoint 1 core changed",
+      call. = FALSE
+    )
+  }
+  run_post_stage4a_stage3_dose_amended_sensitivities_v1(
+    primary_model_code_commit, execution_code_commit, herring_path
   )
   cat("STAGE3_DOSE_CHECKPOINT_3_PASS\n")
 }
