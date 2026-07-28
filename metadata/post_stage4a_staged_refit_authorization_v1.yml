@@ -1,0 +1,111 @@
+authorization_version: post_stage4a_staged_refit_authorization_v1
+authorized_at_local: 2026-07-27
+authorization_source: explicit_human_instruction_in_cowork_session
+authorizing_human: Jacob T. Dingwall
+scientific_decision: AUTHORIZE_STAGED_REFIT_ANCHOR_DETECTABILITY_DOSE_V1
+human_instruction: >-
+  Run the three-stage refit described in
+  handoff/claude_session_2026-07-26/prompts/codex_staged_refit_prompt.md:
+  move the event anchor from the midpoint of the recorded spawn window to the
+  first recorded spawn date; add time-of-day and day-of-year detectability
+  covariates; add the relative spawn index as a dose exposure. Regenerate all
+  figures as vector PDF. Push to a branch with a review document.
+
+# The environment acknowledgement itself is set by the author in his own shell.
+# It is not set by any agent and is not stored in the repository.
+environment_acknowledgement:
+  variable: POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED
+  value: through_2025_post_result_refinement_v1
+  set_by: author_only
+  set_by_agent: prohibited
+
+known_results_boundary:
+  stage4a_results_known: true
+  distance_band_results_known: true
+  manuscript_v42_numbers_known: true
+  classification: post_result_ecologically_motivated_refinement
+  may_be_relabelled_prespecified_or_confirmatory: false
+  rationale_for_anchor_change: >-
+    metadata/data_dictionary_v2.csv already declares start_date the preferred
+    event timing anchor and end_date a fallback. The frozen spec used the
+    midpoint of both. This change restores the declared preference; it is not a
+    new hypothesis. It remains post-result and is labelled as such.
+
+authorized_population:
+  region: SoG
+  start_year: 2005
+  end_year: 2025
+  prospective_records_2026_plus: prohibited
+
+# This is broader than post_stage4a_distance_band_followup_authorization_v1,
+# which prohibited refitting. Refitting is the substance of this commission.
+authorized_refit:
+  refit_existing_species: permitted
+  species: fixed_49_species_family_unchanged
+  outcomes: [checklist_detection, positive_numeric_count_given_detection]
+  family_membership_changes: prohibited
+  dropping_non_converging_species: prohibited
+  stages:
+    s1_anchor:
+      day0: first_recorded_spawn_date_at_location
+      fallback_where_start_date_absent: end_date
+      all_other_terms: unchanged_from_frozen_spec
+    s2_detectability:
+      base: s1
+      adds: [minutes_from_sunrise, annual_harmonics_day_of_year]
+      harmonics: first_and_second_order
+      spline_substitution_for_lme4: required
+      optional: [log1p_prior_observer_checklists]
+    s3_dose:
+      base: s2
+      adds: twelve_period_by_zone_log_index_terms
+      primary_dose_term: log_index_within_location
+      decomposition: mundlak_within_and_between_location
+      nesting_permits_likelihood_ratio_test: true
+  stage_isolation: required
+  combined_single_run: prohibited
+
+authorized_negative_controls:
+  mandatory: [American Robin, Chestnut-backed Chickadee]
+  every_stage: required
+  outside_registered_species_family: required
+  entry_into_primary_BH_family: prohibited
+
+authorized_confound_analyses:
+  survey_method_covariate: required
+  surface_only_restriction_sensitivity: required
+  extent_log_length_sensitivity: required
+  index_extent_correlation_reported: required
+
+authorized_figure_regeneration:
+  all_main_and_supplementary_figures: permitted
+  format: vector_pdf_plus_600dpi_png
+  source: final_accepted_stage_only
+  hand_editing: prohibited
+
+multiplicity:
+  method: benjamini_hochberg
+  scope: within_49_species_family_per_outcome
+  unchanged_from_parent: true
+
+prohibited:
+  - overwriting outputs/post_stage4a_sog_event_study_v1
+  - accessing 2026 through 2028 confirmation records
+  - releasing record-level eBird data, identifying fields or exact coordinates
+  - relabelling any stage as prespecified or confirmatory
+  - changing manuscript results before human scientific review of the review document
+  - force-pushing or rewriting git history
+
+preconditions_before_production:
+  - committed versioned code and specification
+  - passing fixture run
+  - metadata/post_stage4a_staged_refit_spec_v1_yml committed before any fit
+  - zero records from 2026 onward
+
+downstream_review:
+  manuscript_update_gate: human_scientific_review_of_STAGED_REFIT_REVIEW_md
+  reviewer: author, assisted by Claude for manuscript integration
+  note: >-
+    Authorizing the run does not authorize changing the manuscript. Section 108
+    of docs/15_POST_STAGE4A_SOG_EVENT_STUDY.md holds: manuscript results must
+    not change until the complete output family has run and passed human review.
