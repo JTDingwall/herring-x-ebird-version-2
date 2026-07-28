@@ -1,0 +1,102 @@
+spec_version: post_stage4a_descriptive_summaries_v1
+created_at_local: 2026-07-28
+analysis_status: descriptive_only_post_result_manuscript_support
+parent_stage1_anchor: first_recorded_spawn_date_at_location
+end_date_fallback_when_start_absent: true
+
+scope:
+  region: SoG
+  checklist_years: [2005, 2025]
+  response_years_above_2025_accessed: false
+  fixed_registered_species: 49
+  models_fitted: false
+  statistical_tests_run: false
+  p_values_produced: false
+
+spawn_event_population:
+  analysis_events: >-
+    Unique frozen DFO source records in the Strait of Georgia, 2005-2025,
+    with a valid anchor and coordinate, whose source token occurs in the
+    frozen 0-20 km link table for an eligible SoG checklist.
+  all_strait_events: >-
+    All frozen DFO source records in the Strait of Georgia, 2005-2025, with a
+    valid anchor and coordinate, regardless of checklist linkage.
+  event_grain: one frozen DFO source row
+  event_identity_release: prohibited
+  start_anchor: StartDate where present, otherwise EndDate
+  span_days: EndDate minus StartDate where both are present
+  relative_spawn_index: >-
+    Surface + Macrocystis + Understory, with each unrecorded component
+    contributing zero to the derived total. Component missingness remains
+    separately counted. The total is not absolute biomass.
+  length_unit: metres
+  width_unit: metres
+  location_key_internal: StatisticalArea + Section + LocationCode
+  section_key_internal: StatisticalArea + Section
+
+checklist_population:
+  eligible_population: 217200 complete SoG checklists from 2005-2025
+  linked_definition: at least one frozen source-point link within 20 km
+  unlinked_reported_once: true
+  cells:
+    near_pre:
+      distance_km: "[0,5)"
+      event_days: "[-14,-1]"
+    reference_pre:
+      distance_km: "[5,20]"
+      event_days: "[-14,-1]"
+    near_active:
+      distance_km: "[0,5)"
+      event_days: "[0,14]"
+    reference_active:
+      distance_km: "[5,20]"
+      event_days: "[0,14]"
+  concurrent_link_rule: >-
+    Reduce links to one checklist-by-cell membership indicator. A checklist
+    may belong to more than one cell when concurrent events place it in
+    different cells; it is counted once within each cell and cells are not
+    summed or treated as independent samples.
+
+assemblage_definitions:
+  richness: number of detected members of the fixed 49-species registry
+  individual_total: >-
+    Sum of numeric counts only at checklist level. Unquantified X reports do
+    not contribute a fabricated count, so the result is explicitly a lower
+    bound.
+  x_percentage_denominator: positive registered-species checklist records
+  species_prevalence_denominator: unique near-active checklists
+  guild_share: >-
+    Species-checklist detections in each primary guild divided by all
+    registered-species detections on near-active checklists.
+  diversity_indices: excluded
+
+release_control:
+  suppression_threshold: 20
+  rule: counts from 1 through 19 are withheld
+  suppressed_display: "<20"
+  corresponding_percentages_suppressed: true
+  prohibited_fields:
+    - source checklist identifiers
+    - observer identifiers
+    - locality identifiers
+    - exact coordinates
+    - herring source tokens
+    - internal event tokens
+
+required_join_gates:
+  - eligible checklist token is unique
+  - source event token is unique
+  - links to source events are many-to-one with complete coverage
+  - reported states are unique by checklist and species
+  - cell membership is unique by checklist and cell
+  - checklist metrics join one-to-one before cell aggregation
+  - guild mapping is exactly one primary guild per registered species
+
+required_outputs:
+  - outputs/post_stage4a_descriptive_summaries_v1/spawn_event_summaries.csv
+  - outputs/post_stage4a_descriptive_summaries_v1/spawn_season_by_year.csv
+  - outputs/post_stage4a_descriptive_summaries_v1/assemblage_by_zone_period.csv
+  - outputs/post_stage4a_descriptive_summaries_v1/assemblage_top_species.csv
+  - outputs/post_stage4a_descriptive_summaries_v1/assemblage_guild_shares.csv
+  - outputs/post_stage4a_descriptive_summaries_v1/execution_record_v1.yml
+  - DESCRIPTIVE_SUMMARIES_REPORT.md
