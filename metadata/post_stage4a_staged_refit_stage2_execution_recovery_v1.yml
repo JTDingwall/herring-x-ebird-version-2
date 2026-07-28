@@ -1,0 +1,44 @@
+record_version: post_stage4a_staged_refit_stage2_execution_recovery_v1
+recorded_at_local: 2026-07-28
+analysis_stage: s2_detectability
+analysis_status: post_result_ecologically_motivated_refinement
+
+production_model_code:
+  execution_code_commit: 20cb597eda8d2d40a899f9d4f0d45e8eff835388
+  authorization_variable: POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED
+  authorization_expected_value: through_2025_post_result_refinement_v1
+  authorization_verified_before_each_production_resume: true
+  authorization_set_by_agent: false
+
+recovery:
+  issue: >-
+    The real-anchor and +90-day 49-by-2 families completed and were
+    checkpointed, but the first distance-band fit could not save because the
+    distance_3species checkpoint subdirectory had not been created.
+  scientific_model_changed: false
+  protected_input_changed: false
+  completed_checkpoint_deleted_or_overwritten: false
+  action:
+    - created the missing distance_3species checkpoint subdirectory
+    - resumed the exact committed model signature with one worker
+    - reused all completed real-anchor, placebo, terrestrial, effort, and
+      distance checkpoints
+  production_terminal_gate: PASS_PENDING_HUMAN_REVIEW_STOP_BEFORE_STAGE3
+
+post_execution_code_correction:
+  file: R/post_stage4a_staged_refit_stage2_v1.R
+  change: >-
+    Create and verify the distance checkpoint subdirectory before fitting.
+  affects_formula_estimand_or_data: false
+  production_results_rerun_after_correction: false
+  reason_not_rerun: >-
+    The guard reproduces the external directory creation used for the
+    successful continuation and does not alter any fitted model or output.
+
+validation:
+  validator: scripts/validate_post_stage4a_staged_refit_stage2_v1.R
+  result: PASS
+  repeated_passes: 2
+  output_manifest_rows: 18
+  independent_output_hash_reconciliation: PASS
+  stage3_started: false

@@ -492,6 +492,11 @@ staged_refit_s2_fit_effort_set_v1 <- function(
 staged_refit_s2_distance_analysis_v1 <- function(
     distance_events, states, masks, species_registry,
     terrestrial_denominators, checkpoint_dir, run_signature) {
+  dir.create(checkpoint_dir, recursive = TRUE, showWarnings = FALSE)
+  if (!dir.exists(checkpoint_dir)) {
+    stop("STAGED_REFIT_S2_DISTANCE_CHECKPOINT_GATE: directory unavailable",
+         call. = FALSE)
+  }
   old_formula <- get(
     "post_stage4a_distance_band_formula_v2",
     envir = .GlobalEnv
