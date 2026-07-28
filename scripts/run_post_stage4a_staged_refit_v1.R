@@ -122,6 +122,7 @@ code_files <- c(
   "R/post_stage4a_staged_refit_v1.R",
   "scripts/run_post_stage4a_staged_refit_v1.R",
   "scripts/run_post_stage4a_staged_refit_v1.ps1",
+  "scripts/correct_post_stage4a_staged_refit_s1_audit_v1.R",
   "metadata/post_stage4a_staged_refit_spec_v1.yml",
   "metadata/post_stage4a_staged_refit_authorization_v1.yml",
   "tests/testthat/test-post-stage4a-staged-refit-v1.R"

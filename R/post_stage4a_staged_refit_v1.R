@@ -57,6 +57,11 @@ staged_refit_clean_v1 <- function(x) {
   trimws(gsub("\ufeff", "", as.character(x), fixed = TRUE))
 }
 
+staged_refit_missing_text_v1 <- function(x) {
+  cleaned <- toupper(trimws(as.character(x)))
+  is.na(x) | cleaned %in% c("", "NA", "N/A", "NULL")
+}
+
 staged_refit_hash_token_v1 <- function(domain, value) {
   if (!requireNamespace("digest", quietly = TRUE)) {
     stop("digest is required for staged-refit token reconstruction",
@@ -102,10 +107,9 @@ staged_refit_build_anchor_lookup_v1 <- function(herring_path) {
       source, j = name, value = staged_refit_clean_v1(source[[name]])
     )
   }
-  blank <- function(x) is.na(x) | !nzchar(x)
   raw_rows <- nrow(source)
-  raw_start_missing <- sum(blank(source$StartDate))
-  raw_end_missing <- sum(blank(source$EndDate))
+  raw_start_missing <- sum(staged_refit_missing_text_v1(source$StartDate))
+  raw_end_missing <- sum(staged_refit_missing_text_v1(source$EndDate))
 
   source[, event_year__ := suppressWarnings(as.integer(Year))]
   source[, start_date__ := data.table::as.IDate(
@@ -220,7 +224,8 @@ staged_refit_reanchor_links_v1 <- function(links, anchor_lookup) {
 }
 
 staged_refit_anchor_audit_v1 <- function(
-    events, parent_links, anchored_links, anchor_lookup) {
+    events, parent_links, anchored_links, anchor_lookup,
+    distribution_links = anchored_links) {
   if (nrow(parent_links) != nrow(anchored_links)) {
     stop("STAGED_REFIT_ANCHOR_AUDIT_GATE: link rows differ", call. = FALSE)
   }
@@ -233,7 +238,7 @@ staged_refit_anchor_audit_v1 <- function(
          call. = FALSE)
   }
 
-  source_shift <- unique(anchored_links[, c(
+  source_shift <- unique(distribution_links[, c(
     "herring_source_token", "anchor_shift_days__", "anchor_fallback__"
   )])
   if (anyDuplicated(source_shift$herring_source_token)) {
@@ -1704,6 +1709,9 @@ run_post_stage4a_staged_refit_s1_v1 <- function(
   links_archived <- .stage4a_read_gz(
     protected_files[["source_links_archived"]]
   )
+  extended_links <- .stage4a_read_gz(
+    protected_files[["source_links_extended"]]
+  )
   selected_parent_links <- links_archived[
     links_archived$analysis_event_token %in% events$analysis_event_token,
     ,
@@ -1717,8 +1725,18 @@ run_post_stage4a_staged_refit_s1_v1 <- function(
     ,
     drop = FALSE
   ]
+  extended_anchored_links <- staged_refit_reanchor_links_v1(
+    extended_links, anchor_lookup
+  )
+  selected_extended_anchored_links <- extended_anchored_links[
+    extended_anchored_links$analysis_event_token %in%
+      events$analysis_event_token,
+    ,
+    drop = FALSE
+  ]
   audit <- staged_refit_anchor_audit_v1(
-    events, selected_parent_links, selected_anchored_links, anchor_lookup
+    events, selected_parent_links, selected_anchored_links, anchor_lookup,
+    distribution_links = selected_extended_anchored_links
   )
   joint <- post_stage4a_add_joint_exposure_v1(events, anchored_links)
   events_s1 <- joint$events
@@ -1861,9 +1879,6 @@ run_post_stage4a_staged_refit_s1_v1 <- function(
     staged_refit_guild_timing_v1(core_contrasts, species_registry)
   )
 
-  extended_links <- .stage4a_read_gz(
-    protected_files[["source_links_extended"]]
-  )
   distance_links <- staged_refit_distance_links_v1(
     links_archived, extended_links, anchor_lookup
   )

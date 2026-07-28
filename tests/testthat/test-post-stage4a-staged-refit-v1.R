@@ -1,6 +1,15 @@
 source(repo_file("R", "post_stage4a_distance_band_sensitivity_v2.R"))
 source(repo_file("R", "post_stage4a_staged_refit_v1.R"))
 
+test_that("Stage 1 recognizes literal missing-date tokens", {
+  expect_identical(
+    staged_refit_missing_text_v1(
+      c(NA_character_, "", " NA ", "N/A", "NULL", "2020-03-01")
+    ),
+    c(TRUE, TRUE, TRUE, TRUE, TRUE, FALSE)
+  )
+})
+
 test_that("Stage 1 reanchors a many-to-one source join without expansion", {
   lookup <- data.frame(
     herring_source_token = c("h0", "h1"),
