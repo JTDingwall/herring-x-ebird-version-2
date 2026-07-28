@@ -175,10 +175,20 @@ correction <- list(
 )
 existing_corrections <- execution$post_execution_corrections
 if (is.null(existing_corrections)) existing_corrections <- list()
+existing_versions <- vapply(
+  existing_corrections,
+  function(x) {
+    if (is.null(x$correction_version)) "" else x$correction_version
+  },
+  character(1L)
+)
+existing_corrections <- existing_corrections[
+  existing_versions != correction$correction_version
+]
 execution$post_execution_corrections <- c(
   existing_corrections, list(correction)
 )
-yaml::write_yaml(execution, execution_path)
+staged_refit_write_yaml_lf_v1(execution, execution_path)
 
 protected_result_hashes_after <- vapply(
   required_outputs, .post_stage4a_sha256_v1, character(1L)

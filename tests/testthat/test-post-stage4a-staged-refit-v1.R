@@ -10,6 +10,17 @@ test_that("Stage 1 recognizes literal missing-date tokens", {
   )
 })
 
+test_that("Stage 1 writes portable LF-only YAML", {
+  path <- tempfile(fileext = ".yml")
+  staged_refit_write_yaml_lf_v1(
+    list(status = "PASS", values = list(1L, 2L)), path
+  )
+  raw <- readBin(path, what = "raw", n = file.info(path)$size)
+  expect_false(any(raw[-length(raw)] == as.raw(13L) &
+                     raw[-1L] == as.raw(10L)))
+  expect_true(any(raw == as.raw(10L)))
+})
+
 test_that("Stage 1 reanchors a many-to-one source join without expansion", {
   lookup <- data.frame(
     herring_source_token = c("h0", "h1"),

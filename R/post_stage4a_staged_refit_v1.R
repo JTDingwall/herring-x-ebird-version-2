@@ -1613,6 +1613,14 @@ staged_refit_output_manifest_v1 <- function(root_dir) {
   )
 }
 
+staged_refit_write_yaml_lf_v1 <- function(x, path) {
+  text <- enc2utf8(yaml::as.yaml(x))
+  connection <- file(path, open = "wb")
+  on.exit(close(connection), add = TRUE)
+  writeBin(charToRaw(text), connection)
+  invisible(path)
+}
+
 run_post_stage4a_staged_refit_s1_v1 <- function(
     execution_code_commit,
     output_root = "outputs/post_stage4a_staged_refit_v1") {
@@ -2041,7 +2049,7 @@ run_post_stage4a_staged_refit_s1_v1 <- function(
     privacy_column_gate = "PASS",
     stage1_gate = "PASS_PENDING_HUMAN_STAGE1_REVIEW"
   )
-  yaml::write_yaml(
+  staged_refit_write_yaml_lf_v1(
     execution, file.path(output_root, "execution_record_v1.yml")
   )
   manifest <- staged_refit_output_manifest_v1(output_root)
