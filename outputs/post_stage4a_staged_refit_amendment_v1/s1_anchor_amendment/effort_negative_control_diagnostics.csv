@@ -1,0 +1,4 @@
+"amendment_version","stage","analysis_variant","outcome","engine","n","converged","singular_fit","rank_deficient","convergence_message","status"
+"post_stage4a_staged_refit_amendment_v1","s1_anchor_amendment","real_start_anchor","log_duration_minutes","lme4_lmer_REML",217200,TRUE,FALSE,FALSE,"","completed"
+"post_stage4a_staged_refit_amendment_v1","s1_anchor_amendment","real_start_anchor","log_effort_distance_plus_one","lme4_lmer_REML",217200,TRUE,FALSE,FALSE,"","completed"
+"post_stage4a_staged_refit_amendment_v1","s1_anchor_amendment","real_start_anchor","number_observers","lme4_lmer_REML",217200,TRUE,FALSE,FALSE,"","completed"
