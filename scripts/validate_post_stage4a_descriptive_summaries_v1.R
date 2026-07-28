@@ -105,7 +105,8 @@ if (
       ) ||
       !identical(execution$analysis_guards$p_values_produced, FALSE) ||
       !identical(execution$analysis_guards$maximum_response_year, 2025L) ||
-      !identical(execution$analysis_guards$start_date_anchor, TRUE)
+      !identical(execution$analysis_guards$start_date_anchor, TRUE) ||
+      !identical(execution$output_gate, "PASS")
 ) {
   stop("VALIDATION_SCOPE_GATE: execution guard changed",
        call. = FALSE)

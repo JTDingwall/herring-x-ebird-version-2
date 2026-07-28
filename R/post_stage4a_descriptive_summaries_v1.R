@@ -1080,10 +1080,9 @@ post_stage4a_descriptive_report_v1 <- function(
     sprintf(
       "- Do not describe the annual season spans as strictly calendar-year ranges without keeping the dates alongside them; the affected displayed source-year row(s) are %s.",
       season_mismatch_text
-    ),
-    ""
+    )
   )
-  writeLines(lines, output_path, useBytes = TRUE)
+  .stage4a_write_text_lf(lines, output_path)
   invisible(output_path)
 }
 
@@ -1428,7 +1427,7 @@ run_post_stage4a_descriptive_summaries_v1 <- function(
         "CRLF byte representation matching the registered frozen SHA-256",
       diversity_indices = "not calculated"
     ),
-    output_gate = "PASS_PENDING_REPORT_VALIDATION"
+    output_gate = "PASS"
   )
   execution_path <- file.path(output_root, "execution_record_v1.yml")
   staged_refit_write_yaml_lf_v1(execution, execution_path)
