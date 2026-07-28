@@ -1,0 +1,5 @@
+"cell","zone","period","checklists","richness_median","richness_q25","richness_q75","richness_mean","lower_bound_individuals_median","lower_bound_individuals_q25","lower_bound_individuals_q75","percent_with_registered_species","duration_minutes_median","effort_distance_km_median","observers_median","percent_positive_records_unquantified_x"
+"near_pre","near","pre",7940,5,2,10,6.82682619647355,41,6,147,91.6498740554156,40,0.55,1,4.63979337699474
+"near_active","near","active",9047,5,2,10,6.92925831767437,41,6,185.5,92.3952691499945,41,0.6,1,4.42980427188183
+"reference_pre","reference","pre",26139,4,2,8,5.69283446191515,23,4,91,90.4587015570603,41,0.6,1,3.78213097678169
+"reference_active","reference","active",28500,4,2,8,5.48350877192982,19,4,83,90.8771929824562,44,0.654,1,3.77847453288969

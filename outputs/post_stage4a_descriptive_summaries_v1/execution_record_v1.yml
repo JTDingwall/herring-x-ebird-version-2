@@ -1,0 +1,71 @@
+analysis_version: post_stage4a_descriptive_summaries_v1
+analysis_status: descriptive_only_post_result_manuscript_support
+execution_code_commit: 7265f701090029edd28eb5ff75f36438e2239313
+started_at_utc: '2026-07-28T20:29:47Z'
+finished_at_utc: '2026-07-28T20:30:38Z'
+elapsed_seconds: 50.8578169
+authorization:
+  variable: POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED
+  expected_value: through_2025_post_result_refinement_v1
+  verified_in_shell_before_production: yes
+  set_by_agent: no
+analysis_guards:
+  start_date_anchor: yes
+  end_date_fallback: yes
+  models_fitted: no
+  statistical_tests_run: no
+  p_values_produced: no
+  maximum_response_year: 2025
+  suppression_threshold: 20
+  privacy_column_gate: PASS
+input_hashes:
+  herring: 6d3b2c08e3586bde52f5fe2af602c63014468b54e49dc906bd1f8dfe6706e8ac
+  events: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  links: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+populations:
+  eligible_checklists: 217200
+  linked_checklists: 217200
+  unlinked_checklists: 0
+  linked_checklists_outside_four_cells: 162981
+  analysis_herring_events: 1120
+  all_strait_herring_events: 1163
+  fixed_registered_species: 49
+join_cardinality:
+  checklist_key: one row per analysis token PASS
+  links_to_checklists: many-to-one PASS
+  links_to_herring_events: many-to-one complete coverage PASS
+  states: unique checklist-by-species PASS
+  cell_membership: unique checklist-by-cell PASS
+  checklist_metrics: one-to-one PASS
+  guild_mapping: one primary guild per species PASS
+concurrent_event_handling:
+  all_links_retained: yes
+  within_cell_deduplication: one checklist membership indicator
+  checklists_in_multiple_cells: 14449
+  cells_may_be_summed_as_independent_samples: no
+missingness:
+  recorded_span_missing: <20
+  recorded_span_negative_interval: 0
+  anchor_calendar_year_mismatch: <20
+  length_missing: 92
+  width_missing: 103
+  no_spawn_component_recorded: 125
+  any_spawn_component_unrecorded: 1120
+  records_dropped_for_missing_component: 0
+  x_reports_converted_to_numeric: 0
+suppression:
+  counts_below_20_withheld: yes
+  suppressed_spawn_summary_rows: 8
+  top_species_small_count_rows: 0
+  guild_small_count_rows: 0
+package_versions:
+  R: 4.5.1
+  data.table: 1.18.4
+  yaml: 2.3.12
+source_notes:
+  official_source: Fisheries and Oceans Canada Pacific herring spawn index data 2025
+  frozen_source_line_endings: CRLF byte representation matching the registered frozen
+    SHA-256
+  diversity_indices: not calculated
+output_gate: PASS_PENDING_REPORT_VALIDATION
