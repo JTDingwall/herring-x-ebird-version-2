@@ -1,0 +1,86 @@
+authorization_version: post_stage4a_staged_refit_stage2_authorization_v1
+authorized_at_local: 2026-07-28
+authorization_source: explicit_human_instruction_in_codex_session
+authorizing_human: Jacob T. Dingwall
+decision: ADOPT_START_DATE_STAGE1_AND_AUTHORIZE_STAGE2_DETECTABILITY_V1
+
+known_results_boundary:
+  stage4a_results_known: true
+  staged_refit_stage1_results_known: true
+  staged_refit_stage1_amendment_results_known: true
+  analysis_status: post_result_ecologically_motivated_refinement
+  may_be_relabelled_prespecified_or_confirmatory: false
+
+adopted_stage1_result:
+  anchor: first_recorded_spawn_date_at_location
+  fallback_where_start_date_absent: end_date
+  primary_positive_bh_counts:
+    checklist_reporting: 14
+    conditional_positive_numeric_count: 19
+  status: adopted_for_stage2_base
+
+authorized_stage:
+  stage: s2_detectability
+  base: adopted_s1_start_date_anchor
+  only_added_fixed_effects:
+    - minutes_from_sunrise
+    - sin_2pi_doy_365
+    - cos_2pi_doy_365
+    - sin_4pi_doy_365
+    - cos_4pi_doy_365
+  minutes_from_sunrise:
+    scale: minutes
+    functional_form: linear
+    local_timezone: America/Vancouver
+  day_of_year:
+    source: local_observation_date
+    denominator: 365
+    harmonic_orders: [1, 2]
+  optional_observer_experience_covariate: skipped_to_preserve_stage_isolation
+  all_other_terms_engines_contrasts_and_bh_families: unchanged
+
+missingness_rule_recorded_before_fit:
+  rule: >-
+    Stage 2 is fit on the subset with a valid local start time, valid observation
+    date, valid WGS84 checklist coordinate, and a computable sunrise. No
+    imputation is used. Coverage and exclusions are reported before effects.
+  stage1_status: remains_primary_adopted_result
+
+amended_control_strategy:
+  amendment_record: metadata/post_stage4a_staged_refit_amendment_v1.yml
+  terrestrial_species_role: attention_displacement_not_negative_control
+  terrestrial_species:
+    - American Robin
+    - Chestnut-backed Chickadee
+  negative_control_outcomes:
+    - log_duration_minutes
+    - log_effort_distance_plus_one
+    - number_observers
+  placebo_recheck:
+    offset_days: 90
+    reason: test_the_single_positive_stage1_reporting_hit_after_adjustment
+  pooled_terrestrial_displacement: required
+
+required_stage2_comparisons:
+  items:
+    - terrestrial displacement, pooled and by species
+    - reporting guild timing omnibus versus stage1_p_0.1244
+    - stage1 duration contrast of 1.13 percent
+    - single positive reporting hit at placebo offset plus 90 days
+  classification_for_each: [weakens, holds, strengthens]
+  leading_alternative_explanation: unmodelled_seasonal_reporting_trend
+
+also_required:
+  - full fixed 49 species by two outcome refit
+  - three-species 13-band distance refit
+  - all prespecified models reported regardless of sign
+  - every failed or nonconverged fit retained and reported
+
+environment_acknowledgement:
+  variable: POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED
+  expected_value_source: metadata/post_stage4a_staged_refit_authorization_v1.yml
+  set_by_agent: prohibited
+
+stage_gate:
+  stage3_authorized_by_this_record: false
+  required_stop: report_stage2_before_stage3
