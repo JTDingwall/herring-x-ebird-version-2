@@ -37,9 +37,6 @@ if (Test-Path -LiteralPath $projectLibrary) {
 Push-Location $repoRoot
 try {
     & $detectabilityBuilder $Mode
-    if ($LASTEXITCODE -ne 0) {
-        throw "Detectability builder exited with code $LASTEXITCODE."
-    }
     & Rscript --no-init-file --no-site-file $rRunner $Mode
     if ($LASTEXITCODE -ne 0) {
         throw "Stage 2 runner exited with code $LASTEXITCODE."
