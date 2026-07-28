@@ -98,4 +98,3 @@ Diversity indices were not calculated because unquantified X reports are missing
 - Do not report Shannon or Simpson diversity from these records without a counted-subset analysis that explicitly states the expected downward bias from large flocks reported as X.
 - Do not interpret guild richness shares as shares of individuals; they are shares of detected species-checklist contributions.
 - Do not describe the annual season spans as strictly calendar-year ranges without keeping the dates alongside them; the affected displayed source-year row(s) are 2019.
-
