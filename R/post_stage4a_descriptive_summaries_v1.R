@@ -911,7 +911,7 @@ post_stage4a_descriptive_report_v1 <- function(
     "## 2. Spawn paragraph values, in manuscript order",
     "",
     sprintf(
-      "1. **Events.** The analysis used %s linked spawning events from %s valid Strait of Georgia events. The median number per year was %s, with a range from %s to %s across %s represented years.",
+      "1. **Events.** The analysis used %s spawning events linked to eligible SoG checklists; the frozen source contained %s valid records carrying the official SoG region label. The median number of linked events per year was %s, with a range from %s to %s across %s represented years. The linked-event total retains boundary events from adjacent source-region labels when they occur within 20 km, matching the main analysis.",
       lookup("analysis_events", "count", "analysis-linked"),
       lookup("all_strait_events", "count", "all valid Strait records"),
       lookup("events_per_year", "median", "analysis-linked"),
@@ -1166,11 +1166,6 @@ run_post_stage4a_descriptive_summaries_v1 <- function(
     stop("DESCRIPTIVE_ALL_STRAIT_GATE: invalid source population",
          call. = FALSE)
   }
-  if (!all(analysis_events$Region == "SoG")) {
-    stop("DESCRIPTIVE_REGION_GATE: linked event outside Strait",
-         call. = FALSE)
-  }
-
   spawn <- post_stage4a_descriptive_spawn_summaries_v1(
     analysis_events, all_strait_events
   )

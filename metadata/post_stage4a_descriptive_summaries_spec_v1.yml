@@ -15,9 +15,11 @@ scope:
 
 spawn_event_population:
   analysis_events: >-
-    Unique frozen DFO source records in the Strait of Georgia, 2005-2025,
-    with a valid anchor and coordinate, whose source token occurs in the
-    frozen 0-20 km link table for an eligible SoG checklist.
+    Unique valid frozen DFO source records from 2005-2025 whose source token
+    occurs in the frozen 0-20 km link table for an eligible SoG checklist.
+    Source-region labels are not used to discard boundary-linked exposure
+    records, so this population exactly matches the sources used by the main
+    SoG checklist analysis.
   all_strait_events: >-
     All frozen DFO source records in the Strait of Georgia, 2005-2025, with a
     valid anchor and coordinate, regardless of checklist linkage.
