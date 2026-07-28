@@ -591,10 +591,12 @@ post_stage4a_descriptive_assemblage_v1 <- function(
         lower_bound_individuals_q75 = individual_q[["q75"]],
         percent_with_registered_species =
           100 * mean(registered_richness > 0),
-        duration_minutes_median = stats::median(duration_minutes),
+        duration_minutes_median = as.numeric(
+          stats::median(duration_minutes)
+        ),
         effort_distance_km_median =
-          stats::median(effort_distance_km),
-        observers_median = stats::median(observer_count),
+          as.numeric(stats::median(effort_distance_km)),
+        observers_median = as.numeric(stats::median(observer_count)),
         positive_records = sum(positive_records),
         x_records = sum(x_records),
         percent_positive_records_unquantified_x =
