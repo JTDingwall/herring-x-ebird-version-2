@@ -301,6 +301,11 @@ staged_refit_s2_parallel_core_v1 <- function(
     taxa, events, states, masks, species_registry,
     checkpoint_dir, run_signature, workers) {
   if (!length(taxa)) return(list())
+  dir.create(checkpoint_dir, recursive = TRUE, showWarnings = FALSE)
+  if (!dir.exists(checkpoint_dir)) {
+    stop("STAGED_REFIT_S2_CHECKPOINT_GATE: directory unavailable",
+         call. = FALSE)
+  }
   workers <- min(as.integer(workers), length(taxa))
   fit_one <- function(taxon_id) {
     staged_refit_s2_process_core_taxon_v1(
