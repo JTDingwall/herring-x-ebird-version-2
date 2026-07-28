@@ -347,6 +347,19 @@ post_stage4a_descriptive_spawn_summaries_v1 <- function(
       season_q[[name]], "days", digits = 1L
     )
   }
+  b$add(
+    4L, "anchor_calendar_year_mismatch", "analysis-linked", "count",
+    sum(
+      as.integer(format(
+        as.Date(analysis_events$anchor_date__), "%Y"
+      )) != analysis_events$event_year__
+    ),
+    "events", "count",
+    note = paste(
+      "The anchor calendar year differed from the frozen source",
+      "event-year label; annual summaries retain the source label."
+    )
+  )
 
   index <- analysis_events$relative_spawn_index__
   index_q <- post_stage4a_descriptive_quantiles_v1(index)
@@ -498,8 +511,7 @@ post_stage4a_descriptive_checklist_metrics_v1 <- function(
   state$numeric_count__ <- suppressWarnings(
     as.numeric(state$numeric_count)
   )
-  state$x_record__ <- tolower(as.character(state$count_type)) ==
-    "unquantified_x"
+  state$x_record__ <- tolower(as.character(state$count_type)) == "x"
   state_dt <- data.table::as.data.table(state)
   metric <- state_dt[
     ,
@@ -659,7 +671,8 @@ post_stage4a_descriptive_assemblage_v1 <- function(
     rank = seq_len(.N),
     value = summed_numeric_individuals,
     display_value = format(
-      summed_numeric_individuals, big.mark = ",", scientific = FALSE
+      summed_numeric_individuals, big.mark = ",", scientific = FALSE,
+      trim = TRUE
     ),
     unit = "individuals_lower_bound",
     denominator = near_active_n
@@ -881,6 +894,19 @@ post_stage4a_descriptive_report_v1 <- function(
     ),
     character(1L)
   ), collapse = "; ")
+  season_mismatch <- season$year[
+    as.integer(format(
+      as.Date(season$first_anchor_date), "%Y"
+    )) != season$year |
+      as.integer(format(
+        as.Date(season$last_anchor_date), "%Y"
+      )) != season$year
+  ]
+  season_mismatch_text <- if (length(season_mismatch)) {
+    paste(season_mismatch, collapse = ", ")
+  } else {
+    "none"
+  }
   typical <- assemblage$typical
   lines <- c(
     "# Descriptive summaries for the opening of the Results",
@@ -1034,6 +1060,13 @@ post_stage4a_descriptive_report_v1 <- function(
       lookup("length_m_missing", "count", "analysis-linked"),
       lookup("width_m_missing", "count", "analysis-linked")
     ),
+    sprintf(
+      "- %s linked event anchors had a calendar year different from the frozen source event-year label. The annual series retains the source label; displayed affected years: %s.",
+      lookup(
+        "anchor_calendar_year_mismatch", "count", "analysis-linked"
+      ),
+      season_mismatch_text
+    ),
     "- Records through 2025 only were used. No 2026-2028 response record was accessed.",
     "- No event, checklist, observer, locality or exact-coordinate identifier is released.",
     "",
@@ -1044,6 +1077,10 @@ post_stage4a_descriptive_report_v1 <- function(
     "- Do not compare the four cells inferentially. They are unadjusted descriptives, concurrent-event membership can overlap, and effort differs across cells.",
     "- Do not report Shannon or Simpson diversity from these records without a counted-subset analysis that explicitly states the expected downward bias from large flocks reported as X.",
     "- Do not interpret guild richness shares as shares of individuals; they are shares of detected species-checklist contributions.",
+    sprintf(
+      "- Do not describe the annual season spans as strictly calendar-year ranges without keeping the dates alongside them; the affected displayed source-year row(s) are %s.",
+      season_mismatch_text
+    ),
     ""
   )
   writeLines(lines, output_path, useBytes = TRUE)
@@ -1349,6 +1386,14 @@ run_post_stage4a_descriptive_summaries_v1 <- function(
         post_stage4a_descriptive_release_count_v1(
           sum(analysis_events$span_invalid_negative__)
         ),
+      anchor_calendar_year_mismatch =
+        post_stage4a_descriptive_release_count_v1(
+          sum(
+            as.integer(format(
+              as.Date(analysis_events$anchor_date__), "%Y"
+            )) != analysis_events$event_year__
+          )
+        ),
       length_missing =
         post_stage4a_descriptive_release_count_v1(
           sum(!is.finite(analysis_events$length_m__))
@@ -1431,6 +1476,27 @@ post_stage4a_descriptive_fixture_v1 <- function() {
     is.na(out$value_numeric[out$metric_id == "small"]),
     out$display_value[out$metric_id == "small"] == "<20",
     out$value_numeric[out$metric_id == "large"] == 20
+  )
+  fixture_events <- data.frame(
+    analysis_event_token = c("a", "b"),
+    stringsAsFactors = FALSE
+  )
+  fixture_states <- data.frame(
+    analysis_event_token = c("a", "b"),
+    analysis_taxon_id = c("species_1", "species_1"),
+    detection = 1L,
+    numeric_count = c(NA_real_, 4),
+    count_type = c("X", "numeric"),
+    stringsAsFactors = FALSE
+  )
+  fixture_metrics <- post_stage4a_descriptive_checklist_metrics_v1(
+    fixture_events, fixture_states, "species_1"
+  )
+  stopifnot(
+    identical(fixture_metrics$metrics$x_records, c(1L, 0L)),
+    identical(
+      fixture_metrics$metrics$lower_bound_individuals, c(0, 4)
+    )
   )
   message("POST_STAGE4A_DESCRIPTIVE_SUMMARIES_FIXTURE=PASS")
   invisible(TRUE)

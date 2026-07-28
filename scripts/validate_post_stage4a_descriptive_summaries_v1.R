@@ -53,6 +53,10 @@ if (
         split(top$rank, top$ranking_metric),
         identical, logical(1L), 1:10
       )) ||
+      all(cell$percent_positive_records_unquantified_x == 0) ||
+      any(cell$percent_positive_records_unquantified_x < 0 |
+            cell$percent_positive_records_unquantified_x > 100) ||
+      any(trimws(top$display_value) != top$display_value) ||
       !isTRUE(all.equal(
         sum(guild$share_of_registered_richness_percent),
         100, tolerance = 1e-8
