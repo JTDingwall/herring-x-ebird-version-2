@@ -107,11 +107,20 @@ survive.
 | v24 | Full style pass, rebuilt from the clean v22 base rather than v23 |
 | v25 | First person removed from the body; limitations sentence removed from the abstract |
 | v26 | Scientific name at first mention of all 43 named species |
-| **v27** | **Current.** Count timing profile added to 3.4 as Figure 4; ordination null reported |
+| v27 | Count timing profile added to 3.4 as Figure 4; ordination null reported |
+| v30 | Author's second round: 15 comments, 5 insertions, 6 deletions |
+| v31 | The 15 v30 comments applied. Delivered as clean text, which was wrong: his comments sat unanswered and none of the work was visible. Also introduced two text corruptions and destroyed 12 of 15 comment anchors |
+| v32 | Rebuilt as tracked changes against v30 with his own edits accepted. v31 corruptions repaired. Distributed hedging cut, 24 places |
+| v33 | Ordination removed from 3.4; case study moved into 3.4 with a placeholder Figure 5; 17 headings retitled; italics fixed across tracked-change boundaries |
+| **v34** | **Current.** Case-study cross-reference repointed from phantom Figs. S4 to S6 at Figure 5 |
 
-**v27 in the outputs directory carries the author's tracked changes and 25
-comments**, made 26 July. Those are extracted to `AUTHOR_EDITS_v27.md` and are
-the most important input for the next revision.
+**Supplement is at v34**, with Figure S3 (the NMDS ordination) removed. Tables S1
+to S9 and Figures S1 to S2 are unchanged and keep their numbering.
+
+**v30 in the uploads directory carries the author's tracked changes and 15
+comments**, made 26 July. Every manuscript from v32 onward is tracked against
+v30-with-his-edits-accepted, so rejecting all changes returns exactly that
+document. Verify it with `tools/verify_v34.py` after any build.
 
 ---
 
@@ -155,7 +164,7 @@ overwritten by off-by-one indices, ambiguous genus abbreviations
 | Editorial requested contrasts | `outputs/editorial_requested_analysis_v1/` | Active-minus-pre contrasts, absolute predictions, binary any-link sensitivity |
 | Referee reads | `outputs/referee_reads_v1/` | Ten read-only items |
 | Referee reads follow-up | `outputs/referee_reads_followup_v1/` | Corrected McNemar and exact-covariance guild test |
-| Count-only response profiles | `outputs/count_only_response_profiles_v1/` | Family timing curve, heatmaps, PCA, NMDS |
+| Count-only response profiles | `outputs/count_only_response_profiles_v1/` | Family timing curve, heatmaps, PCA, NMDS. The ordination half is retained as a record but is not reported in the manuscript |
 | Distance bands, Bald Eagle | `outputs/post_stage4a_distance_band_sensitivity_v2/` | 13 bands to 26 km |
 | Distance bands, Glaucous-winged Gull | `outputs/post_stage4a_gwgu_distance_band_sensitivity_v1/` | 13 bands to 26 km |
 | Distance band follow-up | `outputs/post_stage4a_distance_band_followup_v1/` | BH correction, terrestrial controls, tight contrast |
@@ -169,8 +178,22 @@ overwritten by off-by-one indices, ambiguous genus abbreviations
 - **Family timing curve.** Equal-weight geometric mean count ratios across the
   five periods: 1.00, 1.03, 1.06, 1.11, 1.07. Share of species above one rises
   from 24 of 46 to 39 of 46.
-- **Ordination is a null.** Species do not form discrete response types and the
-  pre-assigned groups overlap in both PCA and NMDS. Reported as such.
+- **Ordination is a null, and is no longer reported.** Species do not form
+  discrete response types, and the pre-assigned groups overlapped in both PCA
+  and NMDS. The author cut it from the manuscript on 26 July: the surviving
+  claim in Section 3.4 now rests on the residual heterogeneity from the guild
+  timing test, which says the same thing without a second analysis. Figure S3
+  was removed from the supplement.
+
+  **Do not reinstate it, and do not delete the record that it was run.** The
+  outputs in `outputs/count_only_response_profiles_v1/` and
+  `outputs/response_clustering_v1/`, the report at
+  `RESPONSE_CLUSTERING_REPORT.md`, and the registry rows for M22 in
+  `metadata/model_registry.csv`, `metadata/model_progression_gate.csv` and
+  `metadata/hypothesis_model_multiplicity_registry.csv` all stay as they are.
+  They document an analysis that was performed and pre-registered. Removing them
+  would misrepresent what was done; a decision not to report a null is not a
+  licence to erase it.
 - **Distance bands.** Within 2 km both species are flat through both pre-spawn
   windows and rise at the anchor. Tight contrast, days 0 to 3 against days −7 to
   −1: gull reporting 1.31, gull counts 1.40, eagle counts 1.22 all survive BH;
