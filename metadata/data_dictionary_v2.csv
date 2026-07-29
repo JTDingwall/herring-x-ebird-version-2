@@ -23,6 +23,14 @@ surface_index_t,DFO,numeric,Relative spawn-index component; missing is not zero
 macrocystis_index_t,DFO,numeric,Relative spawn-index component; missing is not zero
 understory_index_t,DFO,numeric,Relative spawn-index component; missing is not zero
 relative_spawn_index_t,derived,numeric,Sum of the three components with unrecorded components treated as zero; not absolute biomass
+aggregated_relative_spawn_index_t,derived,numeric,Sum of row-level relative spawn index within Year + LocationCode + Section + SpawnNumber; events with no recorded component remain unscorable
+log_aggregated_relative_spawn_index,derived,numeric,Natural log of positive aggregated relative spawn index; no offset is added
+dose_total_period_zone,derived,numeric,Checklist-period-zone sum of event log index centred on the real-link weighted grand mean
+dose_within_location_period_zone,derived,numeric,Checklist-period-zone sum of event log index minus the unweighted positive-event location mean; primary Stage 3 dose component
+dose_between_location_period_zone,derived,numeric,Checklist-period-zone sum of the location event-log-index mean centred on the real-link weighted grand mean
+event_survey_method_group,derived,character,Aggregated event method set classified as surface_only dive_only incomplete_only mixed or missing
+aggregated_event_length_m,derived,numeric,Sum of finite positive survey-row spawn lengths within the aggregated event
+aggregated_event_extent_m2,derived,numeric,Sum of row-level positive length times positive width within the aggregated event
 event_distance_km,derived,numeric,Checklist-to-event distance
 shoreline_distance_km,derived,numeric,Checklist-to-shoreline distance
 alongshore_distance_km,derived,numeric,Optional shoreline-network distance
