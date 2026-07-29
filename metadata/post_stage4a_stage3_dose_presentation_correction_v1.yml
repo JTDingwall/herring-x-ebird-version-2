@@ -1,0 +1,21 @@
+correction_version: post_stage4a_stage3_dose_presentation_correction_v1
+created_at_local: 2026-07-28
+analysis_status: post_execution_presentation_correction
+execution_record: outputs/post_stage4a_stage3_dose_v1/execution_record_v1.yml
+execution_code_commit: eb484e12efe7e84801cdf2359eec3f382287bdc9
+authorization:
+  response_models_rerun: false
+  response_records_reopened: false
+scope:
+  - Rebuild STAGE3_DOSE_REPORT.md from validated aggregate outputs because the
+    generated report selected the pre-amendment audit-section name and printed
+    the index distribution as not estimable.
+  - Restore the quantitative within-between, method, extent, effort, placebo,
+    guild, species, tercile, failure, and warning summaries required by the
+    controlling prompt.
+  - Embed 600 dpi metadata in the existing 6000 by 4800 pixel PNG without
+    changing fitted values or the vector PDF.
+scientific_result_changed: false
+protected_checkpoints_changed: false
+parent_outputs_changed: false
+output_hash_manifest_must_be_refreshed: true

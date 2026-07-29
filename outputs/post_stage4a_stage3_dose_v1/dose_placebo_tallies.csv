@@ -1,0 +1,5 @@
+"analysis_version","offset_days","outcome","positive_bh_q_lt_0_05","negative_bh_q_lt_0_05","estimable_species","fixed_family_size","status"
+"post_stage4a_stage3_dose_v1",-90,"checklist_reporting",0,0,49,49,"completed_with_failures_retained"
+"post_stage4a_stage3_dose_v1",-90,"conditional_positive_numeric_count",0,0,14,49,"completed_with_failures_retained"
+"post_stage4a_stage3_dose_v1",90,"checklist_reporting",0,0,49,49,"completed_with_failures_retained"
+"post_stage4a_stage3_dose_v1",90,"conditional_positive_numeric_count",0,0,17,49,"completed_with_failures_retained"
