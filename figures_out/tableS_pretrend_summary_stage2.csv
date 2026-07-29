@@ -1,0 +1,5 @@
+outcome,contrast,estimable_species,median_ratio,minimum_ratio,maximum_ratio,bh_survivors
+checklist_reporting,did_early_pre,49,0.994920649927621,0.778832402501905,1.11148270361882,0
+checklist_reporting,did_immediate_pre,49,0.994786437379132,0.355634847405124,1.14014469580826,1
+conditional_positive_numeric_count,did_early_pre,46,0.997110321235393,0.769550565590371,1.16759624556855,0
+conditional_positive_numeric_count,did_immediate_pre,46,1.0013616449778,0.759694184108771,1.37934478559927,0
