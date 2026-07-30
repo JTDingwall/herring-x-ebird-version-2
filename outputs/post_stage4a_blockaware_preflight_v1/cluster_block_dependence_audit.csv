@@ -1,0 +1,4 @@
+"cluster_type","n_clusters","n_crossing_more_than_one_block","share_crossing","max_blocks_per_cluster","partitions_cleanly_by_block"
+"checklist",217200,0,0,1,TRUE
+"observer_cluster",29248,2495,0.0853049781181619,31,FALSE
+"location_cluster",22980,4631,0.201523063533507,20,FALSE

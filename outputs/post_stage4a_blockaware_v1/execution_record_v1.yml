@@ -1,0 +1,154 @@
+execution_version: post_stage4a_blockaware_v1
+analysis_status: post_result_block_aware_interval_recomputation
+specification_record: metadata/post_stage4a_blockaware_spec_v1.yml
+approved_method_source: handoff/claude_session_2026-07-26/prompts/codex_blockaware_prompt.md
+approved_method_source_sha256: 8ea854c3ac7558a476956b0bf7513abaf79621bfcd4ee123e7121d9d9a18567c
+execution_code_commit: 748338652ad104b8a9bf1e25762ced8339b67198
+execution_code_source_state: additive_versioned_files_recorded_by_sha256
+execution_code_hashes:
+  R/post_stage4a_blockaware_v1.R: 86f7bb78f4a25d697ef29e33abdaf7937296cd47658aba37bb7d81a6d3309686
+  scripts/run_post_stage4a_blockaware_v1.R: 68d111a7dd47a32bc16c32290660bba76368b42e51950b2757ece97fbc34fa23
+  scripts/run_post_stage4a_blockaware_v1.ps1: a4a480eff398693c0649e1746e8bea19226d2145a3738d6a1d163528b127b0a8
+  metadata/post_stage4a_blockaware_spec_v1.yml: 5165586af6ef1780ce9acd506b3c1fd64a68ab20818b724e1e4042dfa1d4119f
+  tests/testthat/test-post-stage4a-blockaware-v1.R: ed8aff4111bd79d6861fb0311cfc352883c63cfd50a657bdffda8cee5459229e
+executed_at_utc: '2026-07-30T03:12:44Z'
+elapsed_seconds: 8847.9848602
+stage_timings_seconds:
+  parallel_random_slope_family: 6108.4167349
+  serial_kenward_roger_pass: 2716.0153079
+authorization_env_var_verified_not_set_by_agent: yes
+population:
+  region: SoG
+  years:
+  - 2005
+  - 2025
+  checklists: 217200
+  fixed_family_species: 49
+  model_fits: 98
+  records_2026_plus_read: 0
+random_effect_structure:
+  event_block: correlated_intercept_and_one_random_slope
+  slope_predictor: normalized_active_minus_pre14_contrast_direction
+  normalization_check_unit_contrast: yes
+  observer_cluster: random_intercept
+  location_cluster: random_intercept
+  separate_slopes_per_exposure_term: no
+  profile_likelihood_intervals_computed: no
+engines:
+  checklist_reporting: lme4::glmer binomial nAGQ=0 with random slope
+  conditional_positive_numeric_count: lmerTest::lmer REML with random slope; lme4::lmer
+    plus the stored deviance function and Hessian, verified on three species to give
+    identical fixed effects and variance components
+interval_methods:
+  conditional_positive_numeric_count:
+    prespecified_primary: kenward_roger_via_pbkrtest
+    completed: 21
+    skipped_dense_inverse_memory_infeasible: 25
+    failed: 0
+    memory_budget_gb: 12.0
+    row_cap_implied_by_budget: 7723.0
+    execution_order: serial_pass_after_the_parallel_fitting_pass_to_bound_memory
+    infeasibility_cause: pbkrtest::vcovAdj forms chol2inv(chol(Sigma)) where Sigma
+      is the n by n marginal covariance; the inverse is dense, so the working set
+      grows as n squared and exceeds machine memory for the larger count models
+    fallback_where_infeasible: satterthwaite_denominator_df_via_lmerTest
+    fallback_corrects: denominator_degrees_of_freedom_only
+    kenward_roger_versus_satterthwaite_df_on_common_subset:
+      species: 21
+      median_absolute_df_difference: 24.3514699
+      median_kenward_roger_se_over_wald_se: 1.0344476
+  checklist_reporting:
+    prespecified_primary: wald_on_random_slope_binomial_fit
+    kenward_roger: not_applicable_to_binomial_glmm
+    satterthwaite: not_available_for_glmerMod
+    cluster_robust_cr0_cr1: prohibited_and_not_computed
+    label: weaker_of_the_two_outcomes
+multiplicity:
+  method: benjamini_hochberg
+  family: fixed_49_species_per_outcome
+  family_size: 49
+  non_estimable_p_value: 1
+  families_unchanged_from_stage2: yes
+tallies:
+- analysis_version: post_stage4a_blockaware_v1
+  outcome: checklist_reporting
+  multiplicity_family_size: 49
+  estimable_models: 48
+  non_estimable_models_assigned_p1: 1
+  stage2_fixed49_positive: 13
+  stage2_fixed49_negative: 2
+  blockaware_fixed49_positive: 13
+  blockaware_fixed49_negative: 3
+  blockaware_fixed49_total: 16
+  change_in_positive_direction: 0
+  uniform_satterthwaite_or_wald_positive: 13
+  uniform_wald_positive: 13
+  convergence_failures: 1
+  singular_fits: 22
+  kenward_roger_completed: 0
+  kenward_roger_skipped_memory: 0
+  inference_strength: weaker_prespecified_wald
+- analysis_version: post_stage4a_blockaware_v1
+  outcome: conditional_positive_numeric_count
+  multiplicity_family_size: 49
+  estimable_models: 46
+  non_estimable_models_assigned_p1: 3
+  stage2_fixed49_positive: 19
+  stage2_fixed49_negative: 0
+  blockaware_fixed49_positive: 15
+  blockaware_fixed49_negative: 0
+  blockaware_fixed49_total: 15
+  change_in_positive_direction: -4
+  uniform_satterthwaite_or_wald_positive: 15
+  uniform_wald_positive: 15
+  convergence_failures: 4
+  singular_fits: 15
+  kenward_roger_completed: 21
+  kenward_roger_skipped_memory: 25
+  inference_strength: kenward_roger_where_computable_else_satterthwaite
+bootstrap:
+  requested_repetitions: 999
+  decision: not_run
+  reason: One-way resampling of event blocks cannot preserve the crossed observer
+    and location dependence measured in the preflight audit.
+  observer_clusters_crossing_more_than_one_block: 2495
+  observer_clusters_total: 29248
+  location_clusters_crossing_more_than_one_block: 4631
+  location_clusters_total: 22980
+  checklists_partition_cleanly_by_block: yes
+  projected_core_hours: 1754.0775
+  projected_wall_clock_days: 6.644233
+  future_work: A resampling design that respects both crossed factors is a separate
+    methodological extension, not a parameter change to this run.
+  preflight_audit_sha256: 65a90631613d6999e10740a201d8bcfc424e9e4dd1734e03e920ee15c75345fa
+  preflight_projection_sha256: 46d9a55e79f9266776836e8bbce0a86dccd413c275958e047a153cc8d81a6fa8
+software:
+  r_version: R version 4.5.1 (2025-06-13 ucrt)
+  pbkrtest_version: 0.5.5
+  lmerTest_version: 3.2.1
+  lme4_version: 2.0.6
+  versioned_analysis_library: .analysis-library/blockaware_v1/R-4.5/x86_64-w64-mingw32
+  frozen_renv_library: renv/library/windows/R-4.5/x86_64-w64-mingw32
+  frozen_renv_library_modified: no
+  renv_lock_modified: no
+  renv_lock_sha256: 4a07931df945fcf4cfb03d2beb0e3700a818d540f04dcb31c62e83c12d2944ef
+workers: 5
+joins:
+  detectability_to_checklists: one_to_one_217200_rows_PASS
+  links_to_anchor_lookup: many_to_one_PASS
+  links_to_checklists: many_to_one_then_aggregate_to_one_checklist_PASS
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  detectability: 8a43d3f84d1914ab2b1ce53978aa5b40092b5a777924b8d0c376f975da03a429
+  source_links_archived: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+herring_source_hash: 6d3b2c08e3586bde52f5fe2af602c63014468b54e49dc906bd1f8dfe6706e8ac
+historical_stage1_outputs_modified: no
+historical_stage2_outputs_modified: no
+historical_parent_outputs_modified: no
+historical_diagnostic_outputs_modified: no
+preflight_outputs_modified: no
+privacy_column_gate: PASS
+manuscript_edited_in_this_run: no
+next_action: HUMAN_REVIEW_THEN_FIGURE_AND_MANUSCRIPT_UPDATE
