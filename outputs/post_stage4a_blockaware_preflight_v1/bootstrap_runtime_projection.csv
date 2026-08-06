@@ -1,0 +1,2 @@
+"requested_repetitions","species_in_family","outcomes","model_fits_per_repetition","total_model_fits","assumed_median_reporting_fit_seconds","assumed_median_count_fit_seconds","projected_seconds_per_repetition","projected_core_hours","usable_parallel_workers_memory_bound","projected_wall_clock_hours","projected_wall_clock_days","machine_cores","machine_memory_gb"
+999,49,2,98,97902,120,9,6321,1754.0775,11,159.461590909091,6.64423295454545,22,31.5

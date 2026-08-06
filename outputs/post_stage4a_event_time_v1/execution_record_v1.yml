@@ -1,0 +1,53 @@
+execution_version: post_stage4a_event_time_v1
+analysis_status: exploratory_single_species_descriptive_event_time
+confirmatory: no
+multiplicity_family_membership: none_not_a_registered_family
+interpretation_limits:
+  single_species_chosen_after_seeing_results: yes
+  no_benjamini_hochberg_applied: yes
+  random_slope_omitted: the block-aware random slope is defined on the pooled active-minus-pre14
+    direction and has no single counterpart at day resolution, so this model keeps
+    the Stage 2 event-block random intercept; the day intervals are therefore Stage
+    2 width and are narrower than a block-aware interval by roughly the 16 to 18 per
+    cent median widening measured in post_stage4a_blockaware_v1
+  day_estimates_are_not_independent: yes
+  effort_profile_is_descriptive_only: yes
+execution_code_commit: ccdda6714b030e23cab138de78e2cf2d87ae7ee5
+executed_at_utc: '2026-07-30T04:27:32Z'
+elapsed_seconds: 341.5219638
+species: Bald Eagle
+window_days:
+- -5
+- 5
+design:
+  contrast: for each day d, (near_d - reference_d) - (near_baseline - reference_baseline)
+  baseline_days:
+  - -28
+  - -15
+  near_zone_km: less than 5
+  reference_zone_km: 5 to 20
+  exposure_values: link counts, matching the registered design
+  registered_periods_outside_the_window: retained unchanged
+  exposure_terms: 32
+engines:
+  checklist_reporting: lme4::glmer binomial nAGQ=0
+  conditional_positive_numeric_count: lmerTest::lmer REML
+interval_methods:
+  checklist_reporting: wald
+  conditional_positive_numeric_count: satterthwaite_denominator_df
+population:
+  region: SoG
+  years:
+  - 2005
+  - 2025
+  checklists: 217200
+  records_2026_plus_read: 0
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  detectability: 8a43d3f84d1914ab2b1ce53978aa5b40092b5a777924b8d0c376f975da03a429
+  source_links_archived: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+herring_source_hash: 6d3b2c08e3586bde52f5fe2af602c63014468b54e49dc906bd1f8dfe6706e8ac
+privacy_column_gate: PASS
+historical_outputs_modified: no

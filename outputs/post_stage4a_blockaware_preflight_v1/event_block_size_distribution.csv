@@ -1,0 +1,2 @@
+"all_checklists","event_blocks_total","mean_per_block","sd_per_block","minimum_per_block","p10_per_block","p25_per_block","median_per_block","p75_per_block","p90_per_block","maximum_per_block","suppressed_cells_under_20","largest_block_share","five_largest_blocks_share","herfindahl_index","effective_clusters_inverse_herfindahl","basis"
+217200,58,3744.8275862069,4774.1423667684,,25.9,131,1032,6760.75,11705.1,17565,1,0.0808701657458564,0.312196132596685,0.0447802384864795,22.3312790150041,"all Stage 2 eligible checklists (not exposure restricted)"

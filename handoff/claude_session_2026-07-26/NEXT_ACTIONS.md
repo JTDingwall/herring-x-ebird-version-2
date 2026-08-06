@@ -1,108 +1,93 @@
 # Next actions
 
-Ordered by what unblocks the most. Items 1 to 4 are writing and need no new
-analysis. Items 5 onward need compute or the author.
+Rewritten 27 July 2026. The previous list ran to seven items; items 1 to 4 are
+done. See `STATUS_2026-07-27.md` for the full picture.
 
 ---
 
-## 1. Rewrite the Introduction against the author's comments
+## Done since the last version of this file
 
-Nine comments land here: 33, 35, 36, 42, 44, 47, 54, 67, 68, 69, 70, 74, 76, 77,
-83, 94. Read `AUTHOR_EDITS_v27.md` before touching anything.
+1. ~~Rewrite the Introduction against the author's comments~~ — v31 to v33
+2. ~~Restructure Section 2~~ — v31, with Table 1 added for the period definitions
+3. ~~Fix the day-0 definition~~ — v31, stated once with the endpoint spread
+4. ~~Add the distance-band result~~ — v33, moved into Section 3.4 as a case study
 
-Required changes of substance:
+Plus, unplanned: the whole manuscript was rebuilt as tracked changes, the 15
+author comments were answered and resolved, the ordination was removed, 17
+headings were retitled, and three rounds of prose work were done on AI-sounding
+constructions.
 
-- Spawns at a shoreline are **more rapid** than the current "three or four days".
-- Gulls also take **floating vegetation carrying eggs** and **herring pushed to
-  the surface or into very shallow water**.
-- Piscivores probably use **eggs as well as adults**; the current text asserts
-  the clean version. Write it as an expectation, not an established fact.
-- Name **genus or group names** where the text currently gestures at "loons,
-  mergansers, grebes and cormorants".
-- The Strait of Georgia is chosen because it has **the most data on both ends**.
-  Say that rather than the ecological justification currently there.
-- Cite **Dingwall et al. 2026**. The author asked for it; get the full reference
-  from him, do not invent it.
-- Replace the author's two placeholders: "display a degree of flexibility and
-  search capacity" and "*put something here about bird and herring conservation
-  and management*".
-- Repair "cause birds to observed at a greater rate" (author typo).
-- The closing paragraph needs the conventional shape of a final Introduction
-  paragraph in a science paper.
-- Say the two-week incubation **once**, not twice (comment 54).
+---
 
-Delete, do not rewrite: the four sentences flagged as bad closers (36, 47, 67,
-74, 77).
+## 1. Fill the seven author placeholders
 
-## 2. Restructure Section 2
+**Owner: Jacob.** Repository DOI (appears twice), funding statement,
+generative-AI declaration, acknowledgements, study-area map, and the full
+reference for **Dingwall et al. 2026**.
 
-Comment 97 is a specific structural instruction:
+The Dingwall reference is the one that blocks submission. It is cited in the
+Introduction and sits in the bibliography as a placeholder. It does not exist
+anywhere in the repository. Do not construct it.
 
-```
-2.1  Study Area
-     with a placeholder map showing coastal bird migrations
-     and the timing of major groups (shorebirds, etc.)
-2.2  Data Sources
-     2.2.1  eBird data: what it is, how it is collected, what was done to it
-     2.2.2  Herring data: same treatment
-     2.2.3  How the two were combined
-```
+## 1b. Run the staged refit
 
-Also here:
+**Owner: Jacob to authorize, then compute.** Prompt at
+`prompts/codex_staged_refit_prompt.md`. This supersedes
+`prompts/codex_spawn_dose_prompt.md`, which became Stage 3 of it.
 
-- **Capitalize section headings** (comment 98).
-- Remove "estimand" from the Section 2.4 heading (comment 122). Nobody uses it.
-- "The study was restricted to..." — "restricted" reads badly (comment 99).
-- **Define "event block" in plain language** (comment 108). The author's own
-  definition of X is the model: written from the user's point of view.
-- Section 2.2 is not readable or well structured (comment 112).
-- Do **not** reintroduce the taxonomy sentence or the exploratory disclosure.
-  Both were deleted deliberately.
+Three pending changes each require refitting the same 98 models, so they run as
+one job in three isolated stages:
 
-## 3. Fix the day-0 definition
+1. **Anchor.** Day 0 moves from the midpoint of the recorded spawn window to the
+   first recorded spawn date. The data dictionary already declares `start_date`
+   the preferred anchor; the frozen spec departed from it. Most events will not
+   move at all, since a span of zero or one day floors to a zero-day shift.
+2. **Detectability.** Adds minutes from sunrise and annual harmonics for day of
+   year, closing the eBird gap. Harmonics rather than a cyclic spline, because
+   the engines are lme4 and not mgcv.
+3. **Dose.** Spawn index as exposure, decomposed within and between locations.
 
-See `PROJECT_STATE.md` section 3. Day 0 is the midpoint of the DFO StartDate and
-EndDate fields, not an observed onset. Add one honest definition where the
-periods are defined, with the supporting spread (median endpoint span 1 day,
-75th percentile 2 days, 466 of 1,144 events same-day). After that, "recorded
-onset" is defensible shorthand and does not need thirty edits.
+It also regenerates every figure as vector PDF, which clears the one outright
+compliance failure, and produces Figure 5, which is currently a placeholder.
 
-## 4. Add the distance-band result
+Blocked on `POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED`.
 
-The review and proposed text are in `reviews/distance_band_review.md`. Since
-that review was written the follow-up run added BH correction, terrestrial
-controls and the tight contrast, so the text needs updating with:
+Returns `STAGED_REFIT_REVIEW.md` on a pull request. Read section 2 of that
+document first: it lists every sentence in v42 that the new numbers invalidate.
 
-- Tight contrast, days 0 to 3 against days −7 to −1, at 0 to 2 km: gull
-  reporting 1.31, gull counts 1.40, eagle counts 1.22 survive BH; eagle
-  reporting 1.23 does not.
-- Neither terrestrial control shows a near-band spike at the anchor. American
-  Robin is not flat overall: its reporting is elevated at 0 to 2 km during
-  immediate pre-spawn, BH q = 0.039, and its full reporting profile changes at
-  the anchor.
-- 84 of 312 waterbird contrasts survive the declared 13-band BH families.
-- The 0 to 2 km anchor cell holds 1,166 exposed checklists, the smallest in the
-  grid, roughly half the support of the 8 to 12 km cells.
+## 2. Produce Figure 5
 
-Place in Section 3.7 with the panel figures in the supplement. Add one sentence
-to Section 4.4: at 2 km resolution the response sits well inside the 5 km near
-zone, so that bound is conservative and dilutes the signal rather than creating
-it. That partly answers the standing objection that the bounds were never
-varied.
+**Owner: compute.** Currently a grey placeholder. The caption describes what it
+should show: event-time profiles at 2 km resolution for Bald Eagle,
+Glaucous-winged Gull and American Robin across the 13 distance bands, reporting
+and count ratios against the same-band baseline.
 
-## 5. Block-aware intervals
+Source data is in `outputs/post_stage4a_distance_band_sensitivity_v2/`,
+`outputs/post_stage4a_gwgu_distance_band_sensitivity_v1/` and
+`outputs/post_stage4a_distance_band_followup_v1/`.
 
-The only outstanding item that could change the counts of 13 and 18. Commission
-prompt at `prompts/codex_clustering_prompt.md`. Needs the authorization
-variable, which only the author sets.
+## 3. Figures as vector PDF
 
-## 6. Figures as vector PDF
+**Owner: anyone with R.** The one outright compliance failure. Six scripts in
+`figures_ggplot2/` have never been executed. Run `00_theme_mer.R` first.
 
-The one outright compliance failure. Six R scripts exist in the Claude session
-outputs under `figures_ggplot2/` and have never been run, because R was not
-available in that sandbox. Whoever picks this up with R should run them.
+## 4. Block-aware intervals
 
-## 7. Refresh the compliance checklist
+**Owner: Jacob, then compute.** The only outstanding item that could change the
+counts of 13 and 18. Prompt at `prompts/codex_clustering_prompt.md`. Blocked on
+`POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED`, which only the author sets.
+
+If it runs and the counts move, Section 4.4 already states the concern honestly,
+so the change would be a strengthening rather than a correction.
+
+## 5. Spawn biomass as an exposure
+
+**Owner: Jacob.** Explicitly deferred on 26 July. Comment 105: "I think we
+should try analysis using the biomass because we treat is as pretty true in the
+herring research world." Section 2.2 currently states the opposite. Do not soften
+that text or commission the refit without a decision.
+
+## 6. Refresh the compliance checklist
 
 Stale at v15. Lives in the Claude session outputs as
 `mer_submission_compliance_checklist.md`.
@@ -111,13 +96,24 @@ Stale at v15. Lives in the Claude session outputs as
 
 ## Standing verification requirement
 
-After **every** manuscript build, re-run the interval check: extract every
-`X.XX (Y.YY–Z.ZZ)` triple from the body and match against
-`figures_out/tableS_primary_contrast_49x2.csv` and
-`outputs/referee_reads_v1/item2_specificity_comparators.csv`. It has caught two
-real rounding errors. As of v27, 44 of 44 match.
+Run after **every** build, without exception:
 
-Also check after every build: paragraph count, italic run count, placeholder
-count, figure and equation paragraph count, reference count, and that no
-heading was overwritten by an off-by-one index. All of those have failed at
-least once in this project.
+```
+python3 tools/verify_v33.py          # structure, numbers, italics, comments
+python3 tools/ai_tells_scan.py <doc> # prose
+```
+
+The interval check extracts every `X.XX (Y.YY–Z.ZZ)` triple from the body and
+matches it against `figures_out/tableS_primary_contrast_49x2.csv` and
+`outputs/referee_reads_v1/item2_specificity_comparators.csv`. It has caught two
+real rounding errors that survived manual reading. As of v39, 43 of 43 match.
+
+Also check every time: paragraph count, italic runs including inside tracked
+changes, placeholder count, figure and equation count, reference count, comment
+anchors, and that no heading was overwritten by an off-by-one index. Every one
+of those has failed at least once in this project, several of them silently.
+
+**If a build uses tracked changes, verify both directions.** Accepting
+everything must reproduce the target text; rejecting everything must reproduce
+the baseline exactly. Both have caught real bugs, including one that deleted the
+model equation paragraph.

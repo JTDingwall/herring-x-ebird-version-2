@@ -1,0 +1,7 @@
+"model_version_id","analysis_taxon_id","unit_label","region","outcome","converged","singular_fit","rank_deficient","convergence_message","n","status"
+"SOG_STAGED_REFIT_S2_DISTANCE_BALD_EAGLE_v1","atx_fc0a9b777dcd","Bald Eagle","SoG","detection",TRUE,FALSE,FALSE,"",217199,"completed"
+"SOG_STAGED_REFIT_S2_DISTANCE_BALD_EAGLE_v1","atx_fc0a9b777dcd","Bald Eagle","SoG","positive_numeric_count_given_detection",TRUE,FALSE,FALSE,"",83359,"completed"
+"SOG_STAGED_REFIT_S2_DISTANCE_GLAUCOUS_WINGED_GULL_v1","atx_725074cbfcb6","Glaucous-winged Gull","SoG","detection",TRUE,FALSE,FALSE,"",217037,"completed"
+"SOG_STAGED_REFIT_S2_DISTANCE_GLAUCOUS_WINGED_GULL_v1","atx_725074cbfcb6","Glaucous-winged Gull","SoG","positive_numeric_count_given_detection",TRUE,FALSE,FALSE,"",85053,"completed"
+"SOG_STAGED_REFIT_S2_DISTANCE_AMERICAN_ROBIN_v1","ctl_c7322190c88f","American Robin","SoG","detection",TRUE,FALSE,FALSE,"",217176,"completed"
+"SOG_STAGED_REFIT_S2_DISTANCE_AMERICAN_ROBIN_v1","ctl_c7322190c88f","American Robin","SoG","positive_numeric_count_given_detection",TRUE,FALSE,FALSE,"",125407,"completed"

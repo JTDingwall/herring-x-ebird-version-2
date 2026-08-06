@@ -1,0 +1,51 @@
+authorization_version: post_stage4a_stage2_block_slope_diagnostic_authorization_v1
+authorized_at_local: 2026-07-28
+authorization_source: explicit_human_instruction_in_current_codex_session
+decision: AUTHORIZE_STAGE2_TOP10_COUNT_BLOCK_SLOPE_DIAGNOSTIC_V1
+
+human_instruction: >-
+  Do not run the full block-aware interval calculation yet. First, for the ten
+  species with the strongest count effects, fit the Stage 2 model with a random
+  slope for the active-minus-pre exposure contrast by event block, report the
+  estimated block-level slope variance with its interval, the distribution of
+  exposed checklists per block, and the inverse-Herfindahl effective number of
+  clusters. If the variance is near zero across the ten, stop; the bootstrap is
+  unnecessary and Section 4.4 should be rewritten rather than defended.
+
+known_results_boundary:
+  stage4a_results_known: true
+  staged_refit_stage1_results_known: true
+  staged_refit_stage2_results_known: true
+  analysis_status: post_result_exploratory_uncertainty_diagnostic
+  may_be_relabelled_prespecified_or_confirmatory: false
+
+authorized_scope:
+  source_stage: s2_detectability
+  outcome: conditional_positive_numeric_count
+  species_selection: top_10_descending_active_minus_pre14_estimate
+  added_random_slope: active_minus_pre14_by_event_block
+  variance_interval: profile_likelihood
+  cluster_distribution: aggregate_only
+  inverse_herfindahl_effective_clusters: required
+
+environment_acknowledgement:
+  variable: POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED
+  expected_value_source: metadata/post_stage4a_staged_refit_authorization_v1.yml
+  set_by_agent: prohibited
+
+not_authorized:
+  - full_event_block_bootstrap
+  - wild_cluster_bootstrap
+  - CR2_or_other_block_aware_primary_interval_sweep
+  - checklist_reporting_random_slope_models
+  - any_2026_through_2028_response_access
+  - historical_output_overwrite
+  - manuscript_or_supplement_edit
+  - stage3_dose_execution
+
+required_stop:
+  condition: near_zero_across_all_ten_under_frozen_operational_rule
+  action: >-
+    Report that finding, do not run the full bootstrap, and recommend rewriting
+    Section 4.4 rather than defending its current clustered-uncertainty claim.
+

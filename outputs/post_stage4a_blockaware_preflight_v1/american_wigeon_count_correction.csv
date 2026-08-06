@@ -1,0 +1,2 @@
+"species","outcome","p_value","stored_q_value","fixed49_q_value","crosses_0.05_threshold"
+"American Wigeon","conditional_positive_numeric_count",0.0211090746806272,0.0485508717654426,0.0517172329675366,TRUE

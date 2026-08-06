@@ -1,0 +1,84 @@
+execution_version: post_stage4a_staged_refit_amendment_execution_v1
+analysis_status: results_known_post_stage1_control_strategy_amendment
+amendment_record: metadata/post_stage4a_staged_refit_amendment_v1.yml
+original_species_control_output_status: retained_unchanged_reclassified_as_terrestrial_displacement
+execution_code_commit: 98d979cc1ebb3484b412df415d80bc75a040c97b
+executed_at_utc: '2026-07-28T07:33:08Z'
+elapsed_seconds: 8432.903698
+placebo:
+  seed: 20260727
+  randomness_used_for_execution_order_only: yes
+  fake_anchor_assignment_is_fixed: yes
+  execution_order_offsets_days:
+  - -90
+  - -180
+  - 180
+  - 90
+  reported_order_offsets_days:
+  - -180
+  - -90
+  - 90
+  - 180
+population:
+  region: SoG
+  years:
+  - 2005
+  - 2025
+  eligible_checklists: 217200
+  fixed_family_species: 49
+  records_2026_plus_read: 0
+long_span_event:
+  public_label: long_span_event_36day_v1
+  identifier_stored_only_in_protected_output: yes
+  recorded_span_days: 72
+  anchor_shift_days: 36
+  primary_20km_link_count: 118
+  stage1_window_link_count: 45
+joins:
+  widened_to_archived_link_overlap: one_to_one_PASS_no_historical_difference
+  links_to_anchor_lookup: many_to_one_PASS
+  links_to_checklists: many_to_one_then_aggregate_to_one_checklist_PASS
+  terrestrial_species_to_checklists: two_species_same_checklist_denominator_PASS
+  variant_to_real_primary: one_to_one_98_rows_PASS
+engines:
+  bird_reporting: lme4::glmer binomial nAGQ=0
+  bird_positive_count: lme4::lmer REML
+  effort_negative_control_outcomes: lme4::lmer REML
+model_status_counts:
+  placebo:
+    completed: 133
+    failed_insufficient_support: 259
+  long_span_exclusion:
+    completed: 93
+    completed_with_singular_warning: 1
+    failed_insufficient_support: 3
+    failed_numerical_fit_no_fallback: 1
+  effort:
+    completed: 3
+  pooled_displacement:
+    completed: 3
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  source_links_archived: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  source_links_extended: 06a34a4d3880f2dd3a969d9976b901eff855ff7362e86ae40d75a38edd697dc2
+  source_links_placebo: 2605fed6fd3e511dc634ce7ac684a54ec652730b261816bf903c2a8ff31b749c
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+  control_extract: 70ecae25e7cb8888c6ee6ffbfb307a8a44bd22402190f7cfb07ad286755f4195
+historical_stage1_output_hashes:
+  outputs/post_stage4a_staged_refit_v1/execution_record_v1.yml: f739ef8a66f41ed1b600c9c33f86fd901c58cb0d4c2de31838de77cef89851bc
+  outputs/post_stage4a_staged_refit_v1/negative_controls_all_stages.csv: 7071a4e183c9dc960323c8402799e057d10659e89ad4711877806643ebb41c61
+  outputs/post_stage4a_staged_refit_v1/output_hash_manifest_v1.csv: f4ab4481ae06d5f8c080af05d30b2adf7c9ca56758824ec63f02392350e2333b
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/anchor_shift_audit.csv: a43fa85e95ccfc93c755ef2892d78986af5c6074fcb15407842c84d8e7ef0893
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/anchor_shift_audit_prevalidation_v1.csv: 3e995a1a566fe42d216fe4786f0c4ec373e710f753f865d6b33411ceb8fa6953
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/delta_vs_parent.csv: df47a795c8f874888baeba5cb8013192152893b142ef7e154d840ed1f7fa31e0
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/distance_bands_3species.csv: c8a29c3d3d8dbefd57b172e610caa6b81f18c15fc92eaf72d5a18c5e7998f215
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/estimates_49x2.csv: bb165ee94c9c0a7b2894a3b6a10538ae6b60e324c36fc1f40eabebd0ef41555c
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/guild_timing.csv: 48524390966c103428387c2e202e2267a008e86f3e58980b4f63975af614ff5a
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/link_period_migration.csv: 21b29496bd89ca8c2c3034590033ee37372e660c989e532f712da6b165c4c544
+historical_stage1_outputs_modified: no
+historical_parent_outputs_modified: no
+protected_identifier_output_committed: no
+privacy_column_gate: PASS
+stage2_started: no
+gate: PASS_PENDING_HUMAN_AMENDED_STAGE1_REVIEW_STOP_BEFORE_STAGE2

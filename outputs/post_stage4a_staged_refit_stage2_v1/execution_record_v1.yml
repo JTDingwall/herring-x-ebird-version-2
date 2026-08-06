@@ -1,0 +1,599 @@
+execution_version: post_stage4a_staged_refit_stage2_execution_v1
+completed_stages:
+- s1_anchor_adopted
+- s2_detectability
+stage1_adoption_record: metadata/post_stage4a_staged_refit_stage2_authorization_v1.yml
+analysis_status: post_result_ecologically_motivated_refinement
+execution_code_commit: 20cb597eda8d2d40a899f9d4f0d45e8eff835388
+executed_at_utc: '2026-07-28T19:10:16Z'
+elapsed_seconds: 929.6133139
+stage_timings_seconds:
+  priority_case_displacement_effort_and_placebo: 67.18311
+  remaining_real_and_placebo_families: 14.1165221
+detectability:
+  eligible_stage1_checklists: 217200
+  complete_stage2_checklists: 217200
+  coverage_percent: 100.0
+  missingness_rule: 'complete-case: valid local start time, observation date, WGS84
+    coordinate and computable sunrise; no imputation; Stage 1 remains primary'
+  timezone: America/Vancouver
+  sunrise_algorithm: NOAA_90.833_degree_zenith_v1
+  annual_harmonics: orders_1_and_2_denominator_365
+  observer_experience_covariate: skipped_to_preserve_stage_isolation
+engines:
+  checklist_reporting: lme4::glmer binomial nAGQ=0
+  conditional_positive_numeric_count: lme4::lmer REML
+  effort_negative_control_outcomes: lme4::lmer REML
+r_version: R version 4.5.1 (2025-06-13 ucrt)
+package_versions:
+  data.table: 1.18.4
+  digest: 0.6.39
+  lme4: 2.0.6
+  yaml: 2.3.12
+workers: 1
+population:
+  region: SoG
+  years:
+  - 2005
+  - 2025
+  stage1_eligible_checklists: 217200
+  stage2_complete_checklists: 217200
+  fixed_family_species: 49
+  records_2026_plus_read: 0
+joins:
+  detectability_to_stage1_checklists: one_to_one_217200_rows_PASS
+  links_to_anchor_lookup: many_to_one_PASS
+  links_to_checklists: many_to_one_then_aggregate_to_one_checklist_PASS
+  species_to_guild: many_species_to_one_guild_PASS
+  stage2_to_stage1_primary: one_to_one_98_rows_PASS
+  stage2_to_stage1_placebo_p90: one_to_one_98_rows_PASS
+  terrestrial_species_to_checklists: two_species_same_checklist_denominator_PASS
+  archived_to_extended_distance_links: one_to_one_archived_subset_PASS
+headline_primary_contrast:
+- offset_days: .na.integer
+  outcome: checklist_reporting
+  positive_bh_q_lt_0_05: 13
+  negative_bh_q_lt_0_05: 2
+  estimable_species: 49
+  real_start_anchor_positive_bh: 14
+  positive_tally_fraction_of_real: 0.9285714
+- offset_days: .na.integer
+  outcome: conditional_positive_numeric_count
+  positive_bh_q_lt_0_05: 20
+  negative_bh_q_lt_0_05: 0
+  estimable_species: 46
+  real_start_anchor_positive_bh: 19
+  positive_tally_fraction_of_real: 1.0526316
+placebo_p90_tallies:
+- offset_days: 90
+  outcome: checklist_reporting
+  positive_bh_q_lt_0_05: 0
+  negative_bh_q_lt_0_05: 1
+  estimable_species: 49
+  real_start_anchor_positive_bh: 14
+  positive_tally_fraction_of_real: 0.0
+- offset_days: 90
+  outcome: conditional_positive_numeric_count
+  positive_bh_q_lt_0_05: 0
+  negative_bh_q_lt_0_05: 0
+  estimable_species: 18
+  real_start_anchor_positive_bh: 19
+  positive_tally_fraction_of_real: 0.0
+required_comparison_summary:
+- requested_result: terrestrial_displacement_american_robin
+  unit: American Robin
+  comparison: active_minus_pre14_reporting
+  s1_estimate: -0.0692634
+  s2_estimate: -0.0930746
+  s1_ratio: 0.9330808
+  s2_ratio: 0.9111255
+  s1_p_value: 0.0026192
+  s2_p_value: 7.4022206e-05
+  s1_q_value: 0.0052385
+  s2_q_value: 0.000148
+  change_classification: strengthens
+  sign_preserved: yes
+  survives_nominal_0_05: yes
+  survives_bh_0_05: yes
+  classification_rule: 'absolute log-effect (or omnibus Q) ratio: weakens <0.90, holds
+    0.90-1.10, strengthens >1.10'
+  leading_alternative_explanation: unmodelled_seasonal_reporting_trend
+- requested_result: terrestrial_displacement_chestnut-backed_chickadee
+  unit: Chestnut-backed Chickadee
+  comparison: active_minus_pre14_reporting
+  s1_estimate: -0.0513336
+  s2_estimate: -0.0536114
+  s1_ratio: 0.9499617
+  s2_ratio: 0.9478004
+  s1_p_value: 0.0429943
+  s2_p_value: 0.0349357
+  s1_q_value: 0.0429943
+  s2_q_value: 0.0349357
+  change_classification: holds
+  sign_preserved: yes
+  survives_nominal_0_05: yes
+  survives_bh_0_05: yes
+  classification_rule: 'absolute log-effect (or omnibus Q) ratio: weakens <0.90, holds
+    0.90-1.10, strengthens >1.10'
+  leading_alternative_explanation: unmodelled_seasonal_reporting_trend
+- requested_result: terrestrial_displacement_pooled
+  unit: American Robin + Chestnut-backed Chickadee
+  comparison: active_minus_pre14_reporting
+  s1_estimate: -0.0659962
+  s2_estimate: -0.0833912
+  s1_ratio: 0.9361344
+  s2_ratio: 0.9199911
+  s1_p_value: 0.0076624
+  s2_p_value: 0.0009199
+  s1_q_value: .na.real
+  s2_q_value: .na.real
+  change_classification: strengthens
+  sign_preserved: yes
+  survives_nominal_0_05: yes
+  survives_bh_0_05: .na
+  classification_rule: 'absolute log-effect (or omnibus Q) ratio: weakens <0.90, holds
+    0.90-1.10, strengthens >1.10'
+  leading_alternative_explanation: unmodelled_seasonal_reporting_trend
+- requested_result: reporting_guild_timing_omnibus
+  unit: seven reporting guilds
+  comparison: spawn_start_minus_early_egg_omnibus
+  s1_estimate: 10.0058736
+  s2_estimate: 10.1719616
+  s1_ratio: .na.real
+  s2_ratio: .na.real
+  s1_p_value: 0.1244049
+  s2_p_value: 0.1175946
+  s1_q_value: .na.real
+  s2_q_value: .na.real
+  change_classification: holds
+  sign_preserved: .na
+  survives_nominal_0_05: no
+  survives_bh_0_05: .na
+  classification_rule: 'absolute log-effect (or omnibus Q) ratio: weakens <0.90, holds
+    0.90-1.10, strengthens >1.10'
+  leading_alternative_explanation: unmodelled_seasonal_reporting_trend
+- requested_result: duration_negative_control
+  unit: log duration minutes
+  comparison: active_minus_pre14
+  s1_estimate: 0.0112511
+  s2_estimate: 0.0106158
+  s1_ratio: 1.0113146
+  s2_ratio: 1.0106724
+  s1_p_value: 0.0353159
+  s2_p_value: 0.0448113
+  s1_q_value: 0.1059478
+  s2_q_value: 0.1344338
+  change_classification: holds
+  sign_preserved: yes
+  survives_nominal_0_05: yes
+  survives_bh_0_05: no
+  classification_rule: 'absolute log-effect (or omnibus Q) ratio: weakens <0.90, holds
+    0.90-1.10, strengthens >1.10'
+  leading_alternative_explanation: unmodelled_seasonal_reporting_trend
+- requested_result: placebo_p90_positive_reporting_hit
+  unit: Dunlin
+  comparison: active_minus_pre14_reporting
+  s1_estimate: 1.6984514
+  s2_estimate: 1.1161427
+  s1_ratio: 5.4654771
+  s2_ratio: 3.053055
+  s1_p_value: 8.861326e-05
+  s2_p_value: 0.0037321
+  s1_q_value: 0.004342
+  s2_q_value: 0.0609574
+  change_classification: weakens
+  sign_preserved: yes
+  survives_nominal_0_05: yes
+  survives_bh_0_05: no
+  classification_rule: 'absolute log-effect (or omnibus Q) ratio: weakens <0.90, holds
+    0.90-1.10, strengthens >1.10'
+  leading_alternative_explanation: unmodelled_seasonal_reporting_trend
+model_issues:
+- stage: s2_detectability
+  analysis_taxon_id: atx_1812dd827ede
+  species: Surfbird
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_5a9a3495d0ea
+  species: Western Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: yes
+  singular_fit: yes
+  rank_deficient: no
+  convergence_message: 'boundary (singular) fit: see help(''isSingular'')'
+  status: completed_with_singular_warning
+- stage: s2_detectability
+  analysis_taxon_id: atx_6cbe5bbd310c
+  species: Rhinoceros Auklet
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_8608f2ed61cf
+  species: Pigeon Guillemot
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: no
+  rank_deficient: no
+  convergence_message: Model failed to converge with max|grad| = 0.00253932 (tol =
+    0.002, component 1)   See ?lme4::convergence and ?lme4::troubleshooting.
+  status: completed_with_convergence_warning
+- stage: s2_detectability
+  analysis_taxon_id: atx_v2_000011
+  species: Glaucous Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_04cf65098f13
+  species: Red-throated Loon
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_08bb40b40c0a
+  species: Ring-billed Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_1328b44be502
+  species: Black Scoter
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_136b0e66254b
+  species: Common Murre
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_15dd5efcd8d6
+  species: Black Turnstone
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_1812dd827ede
+  species: Surfbird
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_1930f23cc4f8
+  species: Surf Scoter
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_3083477933a8
+  species: White-winged Scoter
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_40f730f5ad72
+  species: Long-tailed Duck
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_4ae57d328ec6
+  species: Greater Scaup
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_59441ff7abde
+  species: Brant
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_5a9a3495d0ea
+  species: Western Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_6b4cfd1ab927
+  species: Horned Grebe
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_6cbe5bbd310c
+  species: Rhinoceros Auklet
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_7571c026ae99
+  species: American Herring Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_7d980a7c8c37
+  species: Northern Pintail
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_82312e6f2848
+  species: Common Goldeneye
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_86eda7ed9025
+  species: Red-necked Grebe
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_87b306550dba
+  species: Harlequin Duck
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_98ca0000b734
+  species: Brandt's Cormorant
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_aa5353f6d6d2
+  species: Iceland Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_acf526bb8010
+  species: Marbled Murrelet
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_c2d1fbbaf6d3
+  species: Red-breasted Merganser
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_c34f23342a55
+  species: Pacific Loon
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_d002764a39e8
+  species: Lesser Scaup
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_d7dd9536145c
+  species: Barrow's Goldeneye
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_ebf17f77fb66
+  species: Western Grebe
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_fadb8da1a816
+  species: Bonaparte's Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_v2_000003
+  species: Dunlin
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_v2_000006
+  species: Black-bellied Plover
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+- stage: s2_detectability
+  analysis_taxon_id: atx_v2_000011
+  species: Glaucous Gull
+  analysis_role: core_species
+  outcome: conditional_positive_numeric_count
+  converged: no
+  singular_fit: .na
+  rank_deficient: .na
+  convergence_message: failed_insufficient_support
+  status: failed_insufficient_support
+distance_model_issues: []
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  detectability: 8a43d3f84d1914ab2b1ce53978aa5b40092b5a777924b8d0c376f975da03a429
+  source_links_archived: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  source_links_extended: 06a34a4d3880f2dd3a969d9976b901eff855ff7362e86ae40d75a38edd697dc2
+  source_links_placebo: 2605fed6fd3e511dc634ce7ac684a54ec652730b261816bf903c2a8ff31b749c
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+  terrestrial_extract: 70ecae25e7cb8888c6ee6ffbfb307a8a44bd22402190f7cfb07ad286755f4195
+herring_source_hash: 6d3b2c08e3586bde52f5fe2af602c63014468b54e49dc906bd1f8dfe6706e8ac
+historical_stage1_output_hashes:
+  outputs/post_stage4a_staged_refit_v1/execution_record_v1.yml: f739ef8a66f41ed1b600c9c33f86fd901c58cb0d4c2de31838de77cef89851bc
+  outputs/post_stage4a_staged_refit_v1/negative_controls_all_stages.csv: 7071a4e183c9dc960323c8402799e057d10659e89ad4711877806643ebb41c61
+  outputs/post_stage4a_staged_refit_v1/output_hash_manifest_v1.csv: f4ab4481ae06d5f8c080af05d30b2adf7c9ca56758824ec63f02392350e2333b
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/anchor_shift_audit.csv: a43fa85e95ccfc93c755ef2892d78986af5c6074fcb15407842c84d8e7ef0893
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/anchor_shift_audit_prevalidation_v1.csv: 3e995a1a566fe42d216fe4786f0c4ec373e710f753f865d6b33411ceb8fa6953
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/delta_vs_parent.csv: df47a795c8f874888baeba5cb8013192152893b142ef7e154d840ed1f7fa31e0
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/distance_bands_3species.csv: c8a29c3d3d8dbefd57b172e610caa6b81f18c15fc92eaf72d5a18c5e7998f215
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/estimates_49x2.csv: bb165ee94c9c0a7b2894a3b6a10538ae6b60e324c36fc1f40eabebd0ef41555c
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/guild_timing.csv: 48524390966c103428387c2e202e2267a008e86f3e58980b4f63975af614ff5a
+  outputs/post_stage4a_staged_refit_v1/s1_anchor/link_period_migration.csv: 21b29496bd89ca8c2c3034590033ee37372e660c989e532f712da6b165c4c544
+historical_amendment_output_hashes:
+  outputs/post_stage4a_staged_refit_amendment_v1/execution_record_v1.yml: 4680371b77377db105413c71e544edf88067fd1e44d531a3d1bf630b4cfe1b03
+  outputs/post_stage4a_staged_refit_amendment_v1/output_hash_manifest_v1.csv: d3b3017ee257b31f091a439ad367d0836bca17cd34ec5c3c8fe413f31ecc4103
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/effort_long_span_exclusion.csv: 7686363e9e120b830f07edd3276bd404bd80a4a97612dd8eeb2743f507dcf111
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/effort_negative_control_diagnostics.csv: 3d4e100a8ebd6db0daa924879fedf7b1a1356e0f68b7f143c0758854b01b903f
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/effort_negative_control_outcomes.csv: 8510336112b917b834af7871e6ced66900aa47d41e4541b3ef637e528dd0c9a7
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/long_span_event_audit.csv: 40c9f041402aa8336eac4bd07f00c39bb6a7c8889f0f74341f4c52b0cb8dc4fd
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/long_span_exclusion_delta.csv: 4e00ae8a4ca95ecf9e08993c2c5d2922a0710638bde5c9be67bef6a0e3420596
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/long_span_exclusion_diagnostics.csv: df2f9c98dd8a4d563e534e5900a146bde6ff32e2c1994346ec15fa950e826156
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/long_span_exclusion_estimates_49x2.csv: 156bf0be15b07a564b051cf61e45e7b0862e38fe8f35c30a155fb98b5b756d7b
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/long_span_exclusion_tallies.csv: 67080ce639eb74423f2b499811387b4d19cbc57d30c4d76e1e58935f861cced1
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/placebo_diagnostics.csv: d29eaf4f8cb42f8a5572dffd72868d62b260f7667399dd4516045486a6aa60f3
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/placebo_estimates_49x2.csv: 2a1375ea25371cfdd34fc87cc7475c0ed2c15f1d572f0d0b8ad57c258552aec7
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/placebo_support.csv: 8dbf04a9b0fe4eecb64f44c2a214ec9b6bce1663f2337ba915be20b6cb9a41a7
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/placebo_tallies.csv: 5712c49c25a1c19757a8ccd6870295af288b11530ad7695cda85ffbd25ab36e6
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/pooled_terrestrial_diagnostics.csv: 8c53ee2f18cfbdf5cb81d4ceadd23c6656dff7b79d3687adef885f3b68082b94
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/pooled_terrestrial_displacement.csv: 7d77f0b1e0ec7cf2c59215d5a4fafe161f8a2fe5cf5b97a4d06a1b466c38e032
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/terrestrial_displacement_by_anchor.csv: ff489a34f8356c948280830bed6ed5a52de18a2597eb606e5dff217ecd9ff9ca
+  outputs/post_stage4a_staged_refit_amendment_v1/s1_anchor_amendment/widened_link_reconciliation.csv: c79bab92f8cf380e3e49bc63aa667b30dff5719077ea38b66b6dbf36906ab7ae
+historical_stage1_outputs_modified: no
+historical_amendment_outputs_modified: no
+historical_parent_outputs_modified: no
+privacy_column_gate: PASS
+stage3_started: no
+gate: PASS_PENDING_HUMAN_STAGE2_REVIEW_STOP_BEFORE_STAGE3

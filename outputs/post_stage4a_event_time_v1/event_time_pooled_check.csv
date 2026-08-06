@@ -1,0 +1,3 @@
+"analysis_version","outcome","comparison","estimate","standard_error","conf_low","conf_high","p_value","ratio","ratio_conf_low","ratio_conf_high","species"
+"post_stage4a_event_time_v1","checklist_reporting","mean_day_0_to_3_minus_mean_day_minus5_to_minus1",0.112466967548829,0.044771607772226,0.0247162287853125,0.200217706312346,0.0120043854996407,1.11903529182362,1.02502420688565,1.22166869419746,"Bald Eagle"
+"post_stage4a_event_time_v1","conditional_positive_numeric_count","mean_day_0_to_3_minus_mean_day_minus5_to_minus1",0.15226067877436,0.0143896209722441,0.124057539917579,0.18046381763114,3.63932806507968e-26,1.16446374785348,1.13208100897309,1.19777278243981,"Bald Eagle"

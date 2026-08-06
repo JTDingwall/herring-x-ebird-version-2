@@ -1,0 +1,140 @@
+execution_version: post_stage4a_stage3_dose_execution_v1
+analysis_status: post_result_estimand_refinement_not_confirmatory
+execution_code_commit: eb484e12efe7e84801cdf2359eec3f382287bdc9
+primary_model_code_commit: bbb524a98565d754efb16b6ac2508bdaa43fe2d1
+amendment_execution_commit: eb484e12efe7e84801cdf2359eec3f382287bdc9
+amendment_record: metadata/post_stage4a_stage3_dose_amendment_v1.yml
+executed_at_utc: '2026-07-29T06:33:04Z'
+elapsed_seconds: 748.8915770053863525
+stage_timings_seconds:
+  dive_only_seconds: 44.2361419200897217
+  surface_only_seconds: 0.0
+  extent_seconds: 50.7446949481964111
+  placebo_seconds: 94.2583467960357666
+  effort_guild_tercile_seconds: 525.5358970165252686
+completed_checkpoints:
+- checkpoint_1_case_species
+- checkpoint_2_fixed_49_family
+- checkpoint_3_amended_sensitivities
+authorization:
+  variable: POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED
+  exact_value_verified_in_process: yes
+  set_by_agent: no
+population:
+  region: SoG
+  years:
+  - 2005
+  - 2025
+  eligible_checklists: 217200
+  fixed_family_species: 49
+  linked_candidate_spawn_events: 1120
+  records_2026_plus_read: 0
+index:
+  transform: log(relative_spawn_index_t)
+  grand_mean_log_index: 6.2634858738215939
+  aggregation: sum rows within Year+LocationCode+Section+SpawnNumber
+  linked_candidates_with_no_recorded_component: 125
+  descriptive_zero_display_entered_as_zero_spawn: no
+  missing_component_rule: 125 unscorable linked events dropped before logging; 121
+    retained a start-anchor window link but contributed no dose
+  source_sha256: 6d3b2c08e3586bde52f5fe2af602c63014468b54e49dc906bd1f8dfe6706e8ac
+method_sensitivity:
+  surface_only:
+    linked_candidate_events: 68
+    percent: 6.0714285714285712
+    model_fit: no
+    status: non_estimable_insufficient_method_support
+  dive_only:
+    linked_candidate_events: 950
+    percent: 84.8214285714285694
+    start_anchor_window_events: 934
+    positive_dose_scored_events: 923
+    model_fit: yes
+    role: consistent_majority_set
+joins:
+  source_rows_to_aggregated_events: many_to_one_PASS
+  source_links_to_aggregated_events: many_to_one_PASS
+  links_to_checklists_then_aggregate: many_to_one_PASS
+  checklist_to_aggregated_event_link: unique_PASS
+  detectability_to_checklists: one_to_one_217200_PASS
+  species_to_primary_guild: many_to_one_seven_guilds_PASS
+engines:
+  checklist_reporting: lme4::glmer binomial nAGQ=0
+  conditional_positive_numeric_count: lme4::lmer log count; REML estimates; ML LRT
+  effort_outcomes: lme4::lmer REML
+multiplicity:
+  primary: BH fixed 49 separately by outcome for dose_did_active_minus_pre
+  likelihood_ratio: BH fixed 49 separately by outcome; separate from primary
+  effort: BH across three effort outcomes
+  placebo: BH fixed 49 separately by offset and outcome
+parent_stage2_bh_positive:
+  conditional_positive_numeric_count: 20
+  checklist_reporting: 13
+stage3_primary_tallies:
+  '1':
+    outcome: checklist_reporting
+    positive_bh_q_lt_0_05: 2
+    negative_bh_q_lt_0_05: 0
+    estimable_species: 49
+  '2':
+    outcome: conditional_positive_numeric_count
+    positive_bh_q_lt_0_05: 1
+    negative_bh_q_lt_0_05: 0
+    estimable_species: 46
+placebo_tallies:
+  '1':
+    analysis_version: post_stage4a_stage3_dose_v1
+    offset_days: -90
+    outcome: checklist_reporting
+    positive_bh_q_lt_0_05: 0
+    negative_bh_q_lt_0_05: 0
+    estimable_species: 49
+    fixed_family_size: 49
+    status: completed_with_failures_retained
+  '2':
+    analysis_version: post_stage4a_stage3_dose_v1
+    offset_days: -90
+    outcome: conditional_positive_numeric_count
+    positive_bh_q_lt_0_05: 0
+    negative_bh_q_lt_0_05: 0
+    estimable_species: 14
+    fixed_family_size: 49
+    status: completed_with_failures_retained
+  '3':
+    analysis_version: post_stage4a_stage3_dose_v1
+    offset_days: 90
+    outcome: checklist_reporting
+    positive_bh_q_lt_0_05: 0
+    negative_bh_q_lt_0_05: 0
+    estimable_species: 49
+    fixed_family_size: 49
+    status: completed_with_failures_retained
+  '4':
+    analysis_version: post_stage4a_stage3_dose_v1
+    offset_days: 90
+    outcome: conditional_positive_numeric_count
+    positive_bh_q_lt_0_05: 0
+    negative_bh_q_lt_0_05: 0
+    estimable_species: 17
+    fixed_family_size: 49
+    status: completed_with_failures_retained
+extent:
+  index_extent_pearson_correlation: 0.8762801857282688
+  eligible_events: 11908.0
+  link_grand_mean_log_length: 7.4229033926950363
+fit_diagnostics:
+  real_diagnostic_rows: 294
+  failed_real_effect_rows: .na.real
+  failed_real_lrt_rows: .na.real
+  warnings_real_diagnostic_rows: 294.0
+  no_fallback_models: yes
+full_fixed_effect_covariance_used: yes
+parent_outputs_unchanged: yes
+historical_withdrawn_control_outputs_retained_unchanged: yes
+r_version: R version 4.5.1 (2025-06-13 ucrt)
+package_versions:
+  data.table: 1.18.4
+  digest: 0.6.39
+  lme4: 2.0.6
+  yaml: 2.3.12
+workers: 4

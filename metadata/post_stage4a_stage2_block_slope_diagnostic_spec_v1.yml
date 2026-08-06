@@ -1,0 +1,99 @@
+specification_version: post_stage4a_stage2_block_slope_diagnostic_spec_v1
+authorization_record: metadata/post_stage4a_stage2_block_slope_diagnostic_authorization_v1.yml
+analysis_status: post_result_exploratory_uncertainty_diagnostic
+created_after_stage2_results_available: true
+
+question:
+  primary: >-
+    Is event-block heterogeneity in the Stage 2 active-minus-pre count
+    contrast near zero among the ten species with the largest positive
+    Stage 2 count effects?
+  secondary:
+    - distribution of exposed checklists across event blocks
+    - inverse-Herfindahl effective number of event-block clusters
+
+population:
+  region: SoG
+  years: [2005, 2025]
+  prospective_records_2026_plus: prohibited
+  stage2_complete_checklists: 217200
+
+species_selection:
+  source: outputs/post_stage4a_staged_refit_stage2_v1/s2_detectability/estimates_49x2.csv
+  outcome: conditional_positive_numeric_count
+  comparison: active_minus_pre14
+  estimable_only: true
+  ranking: descending_link_scale_estimate
+  number_selected: 10
+  frozen_before_random_slope_results: true
+
+model:
+  base: Stage 2 detectability count model
+  response: log_positive_numeric_count_given_detection
+  fixed_effects: unchanged_from_stage2
+  retained_random_intercepts:
+    - event_block
+    - observer_cluster
+    - generalized_location_cluster
+  added_random_effect:
+    grouping_factor: event_block
+    structure: correlated_intercept_and_one_random_slope
+    slope: active_minus_pre14
+    normalization: >-
+      If c is the registered fixed-effect contrast vector, the row-level
+      random-slope predictor is X c / (c'c). A unit random-slope deviation
+      therefore changes c'beta by one log-count unit.
+  estimator: lme4_lmer_REML
+  optimizer: nloptwrap
+  maximum_evaluations: 10000
+
+variance_interval:
+  parameter: event_block_active_minus_pre14_slope_variance
+  confidence_level: 0.95
+  method: REML_profile_likelihood_for_slope_SD_then_square_endpoints
+  bootstrap: prohibited_in_this_diagnostic
+
+near_zero_stop_rule:
+  point_estimate:
+    maximum_variance_each_species: 0.0025
+    equivalent_maximum_SD_each_species: 0.05
+  interval:
+    maximum_95_percent_upper_variance_each_species: 0.01
+    equivalent_maximum_95_percent_upper_SD_each_species: 0.10
+  decision: >-
+    Classify as near zero across the ten only if every fitted species passes
+    both thresholds and every profile interval is available. If so, stop
+    without the full block-aware interval calculation and recommend rewriting,
+    not defending, manuscript Section 4.4.
+
+cluster_distribution:
+  exposed_checklist_definition: >-
+    A Stage 2 checklist with a positive value in at least one of the twelve
+    registered period-by-zone exposure-link columns.
+  share_denominator: all_exposed_stage2_checklists
+  herfindahl: sum_of_squared_event_block_shares
+  effective_clusters: inverse_herfindahl
+  release: aggregate_quantiles_and_concentration_only
+
+joins:
+  detectability_to_stage1_checklists: one_to_one_required
+  source_links_to_start_date_anchor_lookup: many_to_one_required
+  source_links_to_checklists: many_to_one_then_aggregate_to_one_checklist_required
+  reported_states_to_selected_taxon_and_checklist: declared_materialization_path_unchanged
+
+privacy:
+  record_level_outputs: prohibited
+  event_block_identifiers_in_outputs: prohibited
+  checklist_observer_location_or_source_identifiers_in_outputs: prohibited
+  exact_coordinates_in_outputs: prohibited
+  aggregate_outputs_only: true
+  small_count_suppression_threshold: 20
+
+hard_boundaries:
+  - do_not_run_full_block_bootstrap
+  - do_not_fit_reporting_outcomes
+  - do_not_change_the_fixed_49_species_family
+  - do_not_access_2026_through_2028_responses
+  - do_not_modify_historical_stage4a_or_staged_refit_outputs
+  - do_not_edit_the_manuscript_or_supplement
+

@@ -1,0 +1,272 @@
+spec_version: post_stage4a_stage3_dose_spec_v1
+created_at_local: 2026-07-28
+analysis_status: post_result_estimand_refinement_not_confirmatory
+supersedes:
+  document: handoff/claude_session_2026-07-26/prompts/codex_staged_refit_prompt.md
+  section: 4 Stage 3
+controlling_instruction: >-
+  User-attached Stage 3 dose instruction received 2026-07-28.
+
+authorization:
+  record: metadata/post_stage4a_staged_refit_authorization_v1.yml
+  environment_variable: POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED
+  expected_value: through_2025_post_result_refinement_v1
+  set_by_agent: prohibited
+  maximum_response_year: 2025
+
+parent:
+  stage: s2_detectability
+  output_root: outputs/post_stage4a_staged_refit_stage2_v1
+  primary_model_terms:
+    - twelve period-by-zone link-count terms
+    - factor(checklist_year)
+    - protocol
+    - log_duration
+    - log_effort_distance
+    - observer_count
+    - minutes_from_sunrise
+    - annual harmonic 1 sine and cosine
+    - annual harmonic 2 sine and cosine
+    - event, observer, and location random intercepts
+  published_stage2_bh_positive:
+    conditional_positive_numeric_count: 20
+    checklist_reporting: 13
+  immutable: true
+
+species_scope:
+  family: fixed_49_registered_species
+  removals_prohibited: true
+  failed_fits_retained: true
+  excluded_from_stage3:
+    - American Robin
+    - Chestnut-backed Chickadee
+    - Gadwall
+    - Northern Shoveler
+  exclusion_reason: >-
+    The first two are withdrawn historical species controls and are not
+    refitted or reported in Stage 3. The latter two comparators were removed
+    from the manuscript and do not enter Stage 3.
+
+event_aggregation:
+  source: frozen DFO Pacific herring spawn-index source used by Stage 1
+  source_row_grain: one survey row
+  event_key_internal:
+    - Year
+    - LocationCode
+    - Section
+    - SpawnNumber
+  event_key_release: prohibited
+  component_fields:
+    - surface_index_t
+    - macrocystis_index_t
+    - understory_index_t
+  aggregation: >-
+    For each source row, an unrecorded component contributes zero only to the
+    derived row total. Survey-row totals are summed across every row sharing
+    the event key. A maximum-based alternative is prohibited.
+  unscorable_event: >-
+    If no component was recorded on any survey row in the event, drop the
+    event from dose scoring, report the count, and never treat it as zero
+    spawn.
+  nonpositive_scored_event: >-
+    log(index) requires a positive event total. Any event with at least one
+    recorded component but an aggregated total less than or equal to zero is
+    dropped separately and reported; no offset is added.
+  multirow_event: report count
+  diagnostics:
+    - aggregated index median, IQR, minimum, and maximum
+    - events with no recorded component
+    - nonpositive scored events
+    - events with more than one survey row
+    - survey-method group by aggregated-index summaries
+  survey_method_group: >-
+    Event-level set of nonmissing row methods: surface_only, dive_only,
+    incomplete_only, mixed, or missing.
+
+dose_definition:
+  transform: log(relative_spawn_index_t)
+  eligible_link: >-
+    A frozen source-point link for an eligible SoG checklist, in the registered
+    0-20 km zones and -28 to +28 day Stage 2 period support, whose aggregated
+    event has a positive score.
+  grand_mean: >-
+    Link-weighted mean log index over all real-anchor eligible links. Report
+    the constant and retain it unchanged for all real, placebo, and
+    sensitivity fits.
+  total_term: >-
+    For checklist i, period p and zone z, sum over eligible links of
+    log(index) minus the link-weighted grand mean.
+  location_key_internal:
+    - LocationCode
+    - Section
+  between_component: >-
+    Unweighted mean event log index across all positively scored events at the
+    location, then centred on the eligible-link grand mean.
+  within_component: >-
+    Event log index minus the unweighted location event mean. This is the
+    prespecified primary scientific dose component.
+  identity_gate: >-
+    At every event and checklist-period-zone cell, total centred dose must
+    equal within plus between centred dose to numerical tolerance.
+
+models:
+  outcomes:
+    checklist_reporting:
+      family: binomial_logit_glmer
+    conditional_positive_numeric_count:
+      family: gaussian_log_count_lmer
+  reduced_lrt_model: >-
+    Stage 2 fixed and random effects plus three event-survey-method link-count
+    covariates (dive_only, incomplete_only, mixed_or_missing), with
+    surface_only as reference.
+  total_dose_model: >-
+    Reduced LRT model plus twelve total centred-dose period-by-zone terms.
+  decomposed_primary_model: >-
+    Reduced LRT model plus twelve within-location and twelve between-location
+    centred-dose period-by-zone terms.
+  survey_method_covariate: >-
+    Checklist-level counts of eligible linked events in dive_only,
+    incomplete_only, and mixed_or_missing groups, with surface_only as the
+    reference. The identical terms occur in reduced and full models so the
+    likelihood-ratio comparison isolates dose.
+  likelihood_ratio_test:
+    comparison: total_dose_model versus reduced_lrt_model
+    fitting: maximum likelihood for both models
+    df_expected: 12
+    report_for_every_species_and_outcome: true
+  primary_key: dose_did_active_minus_pre
+  primary_component: within_location
+  contrast:
+    pre: mean of early_pre and immediate_pre
+    active: duration-weighted 4/15 spawn_start plus 11/15 early_egg
+    definition: active minus pre
+    reported_scale: exponentiated ratio per one-unit log-index contrast
+  exact_covariance: >-
+    Every linear-contrast variance uses the complete fixed-effect covariance
+    matrix, including all cross-terms among period-by-zone coefficients.
+
+sensitivities:
+  surface_only:
+    definition: retain links only to surface_only aggregated events
+    model: decomposed primary model
+    interpretation: compare sign and support with full fit
+  extent:
+    event_length: >-
+      Sum finite positive row lengths within the aggregated event.
+    event_extent: >-
+      Sum row-level length_m times width_m within the aggregated event where
+      both measures are finite and positive; do not multiply separately
+      summed row dimensions.
+    covariate: >-
+      Checklist-period-zone sum of centred log aggregated-event length over
+      eligible links.
+    correlation: >-
+      Pearson correlation between event log index and log aggregated-event
+      extent among events with positive finite extent.
+    model: decomposed primary model plus twelve centred log-length
+      period-by-zone terms
+  placebo:
+    offsets_days: [-90, 90]
+    model: decomposed primary dose model
+    grand_mean: reuse real-anchor constant
+    report: BH-positive within-location dose tallies by outcome and offset
+  effort_negative_control_outcomes:
+    outcomes:
+      - log_duration_minutes
+      - log_effort_distance_plus_one
+      - number_observers
+    model: decomposed primary dose model
+    covariates: drop the response effort variable and retain the other two
+    multiplicity: BH across the three outcomes
+  guild_meta:
+    groups: seven fixed primary feeding guilds
+    input: species within-location dose contrast
+    method: inverse-variance weighted fixed-effect meta-regression
+    variance: exact species contrast variance from full model covariance
+  tercile_figure:
+    species:
+      - Glaucous-winged Gull
+      - Bald Eagle
+    groups: within-year terciles of positive aggregated event index
+    model: Stage 2 twelve link-count terms refitted within each tercile
+    contrast: active minus pre
+    outcomes:
+      - checklist_reporting
+      - conditional_positive_numeric_count
+    claim: monotonicity is visual and not a separate hypothesis-test family
+    exports:
+      - vector PDF
+      - 600 dpi PNG
+
+multiplicity:
+  method: Benjamini-Hochberg
+  scope: fixed 49-species family separately per outcome
+  key: dose_did_active_minus_pre
+  separate_from_stage2_primary_family: true
+  lrt: BH-adjust separately per outcome and do not pool with dose contrast
+
+falsification_criteria:
+  supported: >-
+    The within-location dose contrast is positive and survives BH for a
+    meaningful number of species, the likelihood-ratio test is significant,
+    the signal holds under the surface-only restriction, and the effort
+    outcomes show no dose response.
+  not_supported: >-
+    The likelihood-ratio test is not significant, or the effect is carried
+    entirely by the between-location term, or it disappears when
+    log(length_m) is held constant.
+  uninterpretable: >-
+    Checklist duration shows a dose response, or the effect reverses between
+    the full and surface-only fits.
+  null_is_substantive: true
+
+staging:
+  checkpoint_1:
+    species:
+      - Glaucous-winged Gull
+      - Bald Eagle
+    scope: real-anchor total and decomposed models only
+  checkpoint_2:
+    species: remaining fixed family
+    scope: real-anchor total and decomposed models, BH, and LRT
+  checkpoint_3:
+    scope:
+      - surface-only sensitivity
+      - extent sensitivity
+      - effort negative-control outcomes
+      - dose placebo at -90 and +90 days
+      - guild meta-regression
+      - within-year tercile case-species fits and figure
+  combined_single_run: prohibited
+
+required_outputs:
+  root: outputs/post_stage4a_stage3_dose_v1
+  files:
+    - index_aggregation_audit.csv
+    - dose_estimates_49x2.csv
+    - dose_within_between.csv
+    - dose_lrt.csv
+    - dose_method_sensitivity.csv
+    - dose_extent_sensitivity.csv
+    - dose_effort_outcomes.csv
+    - dose_placebo_tallies.csv
+    - dose_guild_meta.csv
+    - dose_terciles_case_species.csv
+    - figures/dose_terciles_case_species.pdf
+    - figures/dose_terciles_case_species_600dpi.png
+    - execution_record_v1.yml
+  report: STAGE3_DOSE_REPORT.md
+
+standing_constraints:
+  parent_outputs_immutable:
+    - outputs/post_stage4a_sog_event_study_v1
+    - outputs/post_stage4a_staged_refit_v1
+    - outputs/post_stage4a_staged_refit_stage2_v1
+  protected_response_years_2026_2028_accessed: false
+  record_level_release: prohibited
+  exact_coordinates_release: prohibited
+  species_failures_reported_not_dropped: true
+  historical_withdrawn_control_outputs_retained_unchanged: true
+  manuscript_edits_authorized: false
+  force_push: prohibited
+  merge: prohibited

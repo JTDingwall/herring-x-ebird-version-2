@@ -1,0 +1,31 @@
+execution_version: post_stage4a_blockaware_preflight_v1
+analysis_status: pre_execution_engineering_pilot_and_dependence_audit
+scientific_estimates_produced: no
+executed_at_utc: '2026-07-29T19:44:15Z'
+elapsed_seconds: 17.9080288
+authorization_env_var_verified_not_set_by_agent: yes
+population:
+  region: SoG
+  years:
+  - 2005
+  - 2025
+  checklists: 217200
+  event_blocks: 58
+  records_2026_plus_read: 0
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  detectability: 8a43d3f84d1914ab2b1ce53978aa5b40092b5a777924b8d0c376f975da03a429
+  source_links_archived: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+herring_source_hash: 6d3b2c08e3586bde52f5fe2af602c63014468b54e49dc906bd1f8dfe6706e8ac
+joins:
+  detectability_to_checklists: one_to_one_217200_rows_PASS
+  links_to_anchor_lookup: many_to_one_PASS
+  links_to_checklists: many_to_one_then_aggregate_to_one_checklist_PASS
+privacy_column_gate: PASS
+r_version: R version 4.5.1 (2025-06-13 ucrt)
+stop_condition_triggered:
+  crossed_cluster_dependence: yes
+  runtime_infeasible_for_999_repetitions: yes
+next_action: AWAIT_HUMAN_METHOD_DECISION_DO_NOT_IMPROVISE

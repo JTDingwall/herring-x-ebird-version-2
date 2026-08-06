@@ -1,0 +1,21 @@
+"ranking_metric","rank","species","value","display_value","unit","denominator"
+"percentage_of_checklists",1,"American Crow",60.3404443461921,"60.3%","percent",9047
+"percentage_of_checklists",2,"Glaucous-winged Gull",53.2441693379021,"53.2%","percent",9047
+"percentage_of_checklists",3,"Mallard",48.7122803139162,"48.7%","percent",9047
+"percentage_of_checklists",4,"Bald Eagle",45.8383994694374,"45.8%","percent",9047
+"percentage_of_checklists",5,"Canada Goose",39.0626727091854,"39.1%","percent",9047
+"percentage_of_checklists",6,"Bufflehead",37.01779595446,"37.0%","percent",9047
+"percentage_of_checklists",7,"American Wigeon",32.9390958328728,"32.9%","percent",9047
+"percentage_of_checklists",8,"Common Raven",29.8220404553996,"29.8%","percent",9047
+"percentage_of_checklists",9,"Short-billed Gull",26.5833978114292,"26.6%","percent",9047
+"percentage_of_checklists",10,"Great Blue Heron",23.6100364761799,"23.6%","percent",9047
+"summed_numeric_individuals_lower_bound",1,"Surf Scoter",1496307,"1,496,307","individuals_lower_bound",9047
+"summed_numeric_individuals_lower_bound",2,"Glaucous-winged Gull",545863,"545,863","individuals_lower_bound",9047
+"summed_numeric_individuals_lower_bound",3,"Short-billed Gull",517476,"517,476","individuals_lower_bound",9047
+"summed_numeric_individuals_lower_bound",4,"Greater Scaup",268198,"268,198","individuals_lower_bound",9047
+"summed_numeric_individuals_lower_bound",5,"California Gull",225207,"225,207","individuals_lower_bound",9047
+"summed_numeric_individuals_lower_bound",6,"Mallard",154331,"154,331","individuals_lower_bound",9047
+"summed_numeric_individuals_lower_bound",7,"Brant",139739,"139,739","individuals_lower_bound",9047
+"summed_numeric_individuals_lower_bound",8,"American Wigeon",137953,"137,953","individuals_lower_bound",9047
+"summed_numeric_individuals_lower_bound",9,"Long-tailed Duck",127775,"127,775","individuals_lower_bound",9047
+"summed_numeric_individuals_lower_bound",10,"White-winged Scoter",113549,"113,549","individuals_lower_bound",9047

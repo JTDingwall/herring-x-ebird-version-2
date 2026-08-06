@@ -1,0 +1,3 @@
+"analysis_version","outcome","multiplicity_family_size","estimable_models","non_estimable_models_assigned_p1","stage2_fixed49_positive","stage2_fixed49_negative","blockaware_fixed49_positive","blockaware_fixed49_negative","blockaware_fixed49_total","change_in_positive_direction","uniform_satterthwaite_or_wald_positive","uniform_wald_positive","convergence_failures","singular_fits","kenward_roger_completed","kenward_roger_skipped_memory","inference_strength"
+"post_stage4a_blockaware_v1","checklist_reporting",49,48,1,13,2,13,3,16,0,13,13,1,22,0,0,"weaker_prespecified_wald"
+"post_stage4a_blockaware_v1","conditional_positive_numeric_count",49,46,3,19,0,15,0,15,-4,15,15,4,15,21,25,"kenward_roger_where_computable_else_satterthwaite"

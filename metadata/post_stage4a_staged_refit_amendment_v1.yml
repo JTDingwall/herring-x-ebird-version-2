@@ -1,0 +1,104 @@
+amendment_version: post_stage4a_staged_refit_amendment_v1
+amends: post_stage4a_staged_refit_authorization_v1
+amended_at_local: 2026-07-27
+amendment_source: explicit_human_instruction_in_cowork_session
+authorizing_human: Jacob T. Dingwall
+decision: REPLACE_SPECIES_NEGATIVE_CONTROLS_WITH_OUTCOME_AND_TIMING_CONTROLS
+
+trigger:
+  stage: s1_anchor
+  observation: >-
+    American Robin and Chestnut-backed Chickadee both returned significant
+    negative results in the two-species control family: robin reporting 0.933
+    (q = 0.0052), robin count 0.973 (q = 0.0166), chickadee reporting 0.950
+    (q = 0.0430).
+  interpretation_at_time_of_amendment: >-
+    Not read as a design failure. All three estimates are negative, whereas a
+    general observer-attention artefact would drive controls upward. The
+    direction is consistent with attention displacement: an observer at an
+    active spawn watches the water, and land birds go unrecorded on a complete
+    checklist.
+
+rationale: >-
+  The species controls were poorly matched and should not have been specified.
+  A negative control must share every confounder with the treated units except
+  the treatment. Here the dominant confounder is where the observer is looking,
+  which is nearly collinear with being a shoreline bird. Any species close
+  enough to share the observation process with scoters and gulls is also close
+  enough to plausibly contact the spawn; any species clearly untouched by the
+  spawn sits outside the observation process. Candidates were considered and
+  rejected: Belted Kingfisher and Great Blue Heron are piscivores, corvids are
+  already in the shoreline scavenger guild, Song Sparrow forages in wrack, and
+  Canada Goose shares shorelines with Brant, which responded. No species
+  threads the requirement.
+
+  The design therefore moves from a negative control species to a negative
+  control outcome and a placebo exposure, both standard in the
+  quasi-experimental literature already cited in the manuscript
+  (Larsen, Meng, and Kendall 2019; Wing, Simon, and Bello-Gomez 2018).
+
+superseded:
+  species_negative_controls:
+    status: retained_as_record_not_reported_as_controls
+    species: [American Robin, Chestnut-backed Chickadee]
+    outputs_retained: outputs/post_stage4a_staged_refit_v1/negative_controls_all_stages.csv
+    reporting_change: >-
+      These species are no longer described as negative controls. Their results
+      are reported as an estimate of terrestrial attention displacement.
+    manuscript_consequence: >-
+      Section 3.4 currently frames American Robin as a terrestrial control in
+      the 2 km case study. That framing must change.
+
+added_negative_control_outcomes:
+  rationale: >-
+    Measured on the identical checklists that produce the bird results, so they
+    share every confounder and cannot respond ecologically.
+  outcomes:
+    - log_duration_minutes
+    - log_effort_distance_plus_one
+    - number_observers
+  design: same twelve period-by-zone exposure terms, same random intercepts
+  covariate_handling: >-
+    Each outcome is removed from the covariate set when it serves as the
+    response, and the remaining two are retained.
+  interpretation:
+    null_expected: true
+    failure_meaning: >-
+      A positive active-minus-pre contrast on any effort outcome is direct
+      evidence that observer behaviour changed around recorded events, measured
+      without recourse to a substitute species.
+
+added_placebo_exposure:
+  rationale: >-
+    Uses the real 49 species rather than substitutes, and tests the design
+    rather than a proxy for it.
+  method: >-
+    Assign every event a fake anchor displaced well outside the spawning
+    window, rerun the full primary analysis, and count BH-surviving results.
+  offsets_days: [-180, -90, 90, 180]
+  seeded: true
+  expectation: near zero BH-surviving results at every offset
+  failure_meaning: >-
+    If the count and reporting tallies approach their real values at fake
+    anchors, the design manufactures them and no result stands.
+
+added_displacement_estimate:
+  rationale: >-
+    Converts a failed control into a measured quantity.
+  method: >-
+    Pool terrestrial species recorded on the same checklists and estimate the
+    active-minus-pre reporting contrast for that pooled set.
+  reporting: stated limitation with a magnitude attached
+
+unchanged:
+  - fixed 49-species family and its Benjamini-Hochberg structure
+  - three-stage ordering and stage isolation
+  - prohibition on overwriting outputs/post_stage4a_sog_event_study_v1
+  - manuscript update gate: human review of the stage reports
+  - environment acknowledgement set by the author only
+
+note_on_preregistration: >-
+  The species controls were named in post_stage4a_staged_refit_spec_v1.yml
+  before results existed. This amendment changes them after seeing Stage 1 and
+  is labelled as such. The original specification, the Stage 1 control results
+  and this amendment all remain in git history so the sequence is auditable.

@@ -1,0 +1,4 @@
+"outcome","engine","n_rows","measured_seconds_low","measured_seconds_high"
+"checklist_reporting","lme4_glmer_nAGQ0",217200,88.1,160
+"checklist_reporting_bootstrap_copy","lme4_glmer_nAGQ0",276986,75.5,211.6
+"conditional_positive_numeric_count","lme4_lmer_REML",112180,0.04,16.4

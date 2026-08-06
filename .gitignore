@@ -17,6 +17,7 @@ renv/library/
 .RData
 .Ruserdata
 .ci-library/
+.analysis-library/
 *.rds
 *.RDS
 *.qs
@@ -91,6 +92,15 @@ Thumbs.db
 !outputs/post_stage4a_sog_event_study_v1/
 !outputs/post_stage4a_sog_event_study_v1/*.csv
 !outputs/post_stage4a_sog_event_study_v1/*.yml
+!outputs/post_stage4a_blockaware_preflight_v1/
+!outputs/post_stage4a_blockaware_preflight_v1/*.csv
+!outputs/post_stage4a_blockaware_preflight_v1/*.yml
+!outputs/post_stage4a_blockaware_v1/
+!outputs/post_stage4a_blockaware_v1/*.csv
+!outputs/post_stage4a_blockaware_v1/*.yml
+!outputs/post_stage4a_event_time_v1/
+!outputs/post_stage4a_event_time_v1/*.csv
+!outputs/post_stage4a_event_time_v1/*.yml
 # Refit of the event study carrying the archived primary contrast. Written to
 # a new version so the hash-locked v1 release above is never overwritten.
 !outputs/post_stage4a_sog_event_study_v1_1/

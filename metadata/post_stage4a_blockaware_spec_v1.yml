@@ -1,0 +1,170 @@
+specification_version: post_stage4a_blockaware_spec_v1
+analysis_status: post_result_block_aware_interval_recomputation
+created_after_stage2_results_available: true
+
+authorization:
+  standing_record: metadata/post_stage4a_staged_refit_authorization_v1.yml
+  environment_acknowledgement_variable: POST_STAGE4A_SOG_EVENT_STUDY_AUTHORIZED
+  environment_acknowledgement_set_by_agent: prohibited
+  method_approval_source: handoff/claude_session_2026-07-26/prompts/codex_blockaware_prompt.md
+  method_approval_source_sha256: 8ea854c3ac7558a476956b0bf7513abaf79621bfcd4ee123e7121d9d9a18567c
+  note: >-
+    This file records an author-approved method, not a new authorization to
+    read protected data. The standing staged-refit authorization and the
+    author-set shell acknowledgement remain the only access gates.
+
+preflight:
+  record: outputs/post_stage4a_blockaware_preflight_v1
+  dependence_audit: cluster_block_dependence_audit.csv
+  runtime_projection: bootstrap_runtime_projection.csv
+  fixed49_verification: fixed49_multiplicity_verification.csv
+  read_before_execution: true
+
+question:
+  primary: >-
+    What are the active-minus-pre14 point estimates, intervals and
+    Benjamini-Hochberg outcomes for the fixed 49-species family and both
+    outcomes once event-block heterogeneity is modelled in the direction of
+    the estimand rather than in level only?
+  secondary:
+    - event-block slope variance and intercept-slope correlation for all 49 species and both outcomes
+    - decomposition of tally change into interval widening and point-estimate movement
+
+population:
+  region: SoG
+  years: [2005, 2025]
+  prospective_records_2026_plus: prohibited
+  stage2_complete_checklists: 217200
+
+species_family:
+  source: outputs/stage2_design_lock/species_support_summary.csv
+  selection: named_species_core
+  number: 49
+  subsetting: prohibited
+  outcomes:
+    - checklist_reporting
+    - conditional_positive_numeric_count
+  model_fits: 98
+
+model:
+  base: Stage 2 detectability model
+  fixed_effects: unchanged_from_stage2
+  retained_random_intercepts:
+    - observer_cluster
+    - generalized_location_cluster
+  replaced_random_effect:
+    grouping_factor: event_block
+    from: random_intercept_only
+    to: correlated_intercept_and_one_random_slope
+    slope: active_minus_pre14
+    variance_parameters: 2
+    correlation_parameters: 1
+    separate_slopes_per_exposure_term: prohibited
+    normalization: >-
+      If c is the registered fixed-effect contrast vector, the row-level
+      random-slope predictor is X c / (c'c). A unit random-slope deviation
+      therefore changes c'beta by one unit on the link scale.
+  engines:
+    checklist_reporting: lme4_glmer_binomial_nAGQ0
+    conditional_positive_numeric_count: lmerTest_lmer_REML
+    count_engine_note: >-
+      lmerTest::lmer is lme4::lmer with the deviance function and Hessian
+      retained, which the Satterthwaite denominator correction requires.
+      Verified on three species that the fixed effects and every variance
+      component are identical to lme4::lmer under the same control settings.
+  optimizer: nloptwrap
+  maximum_evaluations: 10000
+  profile_likelihood_intervals: prohibited_this_run
+
+intervals:
+  conditional_positive_numeric_count:
+    primary: kenward_roger
+    implementation: pbkrtest_vcovAdj_and_Lb_ddf
+    reference_distribution: t_with_kenward_roger_denominator_df
+    corrects: standard_error_and_denominator_degrees_of_freedom
+    inference_strength: stronger_of_the_two_outcomes
+    execution_order: serial_pass_after_the_parallel_fitting_pass
+    scale_limit_measured: >-
+      pbkrtest::vcovAdj forms chol2inv(chol(Sigma)) on the n by n marginal
+      covariance and the inverse is dense, so the working set grows as n
+      squared. Measured 21.7 s at n = 2,023 and 807.6 s at n = 8,109 with a
+      peak near 13.1 GB, an exponent of about 2.6 in n. Kenward-Roger is
+      therefore not computable for the larger count models on this machine.
+    where_not_computable:
+      fallback: satterthwaite_denominator_df_via_lmerTest_contest1D
+      fallback_corrects: denominator_degrees_of_freedom_only
+      fallback_does_not_correct: standard_error
+      labelling_required: per_species_interval_method_column
+      agreement_reported_on_species_where_both_computable: true
+  checklist_reporting:
+    primary: prespecified_wald_on_the_random_slope_binomial_fit
+    kenward_roger: not_applicable_to_binomial_glmm
+    satterthwaite_type_denominator_correction: not_available_for_glmerMod
+    cluster_robust_cr0_cr1: prohibited
+    inference_strength: weaker_of_the_two_outcomes_label_required
+
+multiplicity:
+  method: benjamini_hochberg
+  family: fixed_49_species_per_outcome
+  family_size: 49
+  non_estimable_or_interval_unavailable_p_value: 1
+  secondary_reported_convention: benjamini_hochberg_over_estimable_models_only
+  family_membership_changes: prohibited
+
+bootstrap:
+  requested_repetitions: 999
+  decision: not_run
+  reason: >-
+    One-way resampling of event blocks cannot preserve the crossed observer and
+    location dependence measured in the preflight audit: 2,495 of 29,248
+    observer clusters and 4,631 of 22,980 location clusters cross more than one
+    event block. A design that respects both crossed factors is a separate
+    methodological extension, not a parameter change to this run.
+  runtime_projection_core_hours: 1754.1
+  future_work: separate_methodological_extension
+
+reporting_requirements:
+  baseline_tallies:
+    conditional_positive_numeric_count_fixed49: 19
+    checklist_reporting_fixed49_positive_direction: 13
+    checklist_reporting_fixed49_negative_direction: 2
+    negative_direction_species:
+      - Bufflehead
+      - Common Raven
+  tally_change_mechanisms_reported_separately:
+    - interval_widening
+    - point_estimate_movement
+  convergence_failures: reported_not_dropped
+  tuning_to_protect_current_tallies: prohibited
+
+software:
+  frozen_project_library: renv/library/windows/R-4.5/x86_64-w64-mingw32
+  frozen_library_modification: prohibited
+  renv_lock_modification: prohibited
+  additional_analysis_library: .analysis-library/blockaware_v1/R-4.5/x86_64-w64-mingw32
+  additional_analysis_library_contents_recorded_in_execution_record: true
+
+joins:
+  detectability_to_stage1_checklists: one_to_one_required
+  source_links_to_start_date_anchor_lookup: many_to_one_required
+  source_links_to_checklists: many_to_one_then_aggregate_to_one_checklist_required
+  blockaware_to_stage2_primary: one_to_one_98_rows_required
+
+privacy:
+  record_level_outputs: prohibited
+  event_block_identifiers_in_outputs: prohibited
+  checklist_observer_location_or_source_identifiers_in_outputs: prohibited
+  exact_coordinates_in_outputs: prohibited
+  aggregate_outputs_only: true
+  small_count_suppression_threshold: 20
+
+hard_boundaries:
+  - do_not_run_the_999_replicate_bootstrap
+  - do_not_subset_the_fixed_49_species_family
+  - do_not_drop_species_that_fail_to_converge
+  - do_not_compute_profile_likelihood_intervals
+  - do_not_use_cluster_robust_cr0_or_cr1_variance
+  - do_not_access_2026_through_2028_responses
+  - do_not_modify_historical_stage4a_staged_refit_or_diagnostic_outputs
+  - do_not_modify_the_frozen_renv_library_or_renv_lock
+  - do_not_edit_the_manuscript_or_supplement_in_this_run

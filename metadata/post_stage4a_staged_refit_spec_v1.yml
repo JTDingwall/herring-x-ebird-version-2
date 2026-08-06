@@ -1,0 +1,81 @@
+specification_version: post_stage4a_staged_refit_spec_v1
+authorization_record: metadata/post_stage4a_staged_refit_authorization_v1.yml
+analysis_status: post_result_ecologically_motivated_refinement
+motivation: >-
+  author review 27 July 2026; anchor correction aligns the analysis with the
+  data dictionary's declared preferred anchor; detectability covariates close a
+  known eBird best-practice gap; dose tests comment 105
+created_after_stage4a_results_available: true
+parent_run: outputs/post_stage4a_sog_event_study_v1
+parent_run_status: immutable
+population:
+  region: SoG
+  years: [2005, 2025]
+  prospective_records_2026_plus: prohibited
+stages:
+  s1_anchor:
+    day0: first recorded spawn date
+    fallback_where_start_date_absent: end_date
+    changes_relative_to_parent: event_anchor_only
+    all_other_terms: unchanged
+  s2_detectability:
+    base: s1_anchor
+    adds:
+      - minutes_from_sunrise
+      - sin_2pi_doy_365
+      - cos_2pi_doy_365
+      - sin_4pi_doy_365
+      - cos_4pi_doy_365
+  s3_dose:
+    base: s2_detectability
+    adds: log relative spawn index, within/between decomposed
+    primary_dose_term: log_index_within
+    retains_all_twelve_link_count_terms: true
+family:
+  species: fixed 49 species, unchanged
+  outcomes:
+    - checklist_detection
+    - positive_numeric_count_given_detection
+  nonconverging_species_dropped: false
+multiplicity:
+  method: benjamini_hochberg
+  scope: within the 49-species family, per outcome
+negative_controls:
+  every_stage:
+    - American Robin
+    - Chestnut-backed Chickadee
+  included_in_primary_bh_family: false
+falsification:
+  anchor_change_safe:
+    criteria:
+      - the 18 count and 13 reporting increases surviving correction hold
+      - no species changes direction
+      - the guild timing test keeps its sign and significance
+  anchor_change_matters:
+    criteria:
+      - surviving counts move by more than two species in either outcome
+      - any headline species changes direction
+    action: report and rewrite the manuscript around the new numbers
+  detectability_answered:
+    criterion: results hold with time of day and season included
+  detectability_problem:
+    criterion: any headline result loses significance
+    reporting_priority: outranks every other result
+  dose_supported:
+    criteria:
+      - within-location dose contrast is positive
+      - within-location dose contrast survives BH for a meaningful number of species
+      - result holds under the surface-only restriction
+      - neither negative control shows a dose response
+  dose_not_supported:
+    criteria:
+      - likelihood ratio test is not significant
+      - effect is carried entirely by the between-location term
+      - effect disappears with log length held constant
+stage_isolation: required
+combined_single_run: prohibited
+privacy:
+  record_level_ebird_data_committed: false
+  identifying_fields_committed: false
+  exact_coordinates_committed: false
+  aggregate_outputs_only: true
