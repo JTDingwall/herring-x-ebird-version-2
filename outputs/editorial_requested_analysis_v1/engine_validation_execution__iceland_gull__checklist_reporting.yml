@@ -1,0 +1,15 @@
+analysis_version: editorial_engine_validation_v1
+code_commit: 476b8b0
+species: Iceland Gull
+outcome: checklist_reporting
+glmmTMB_version: 1.1.14
+TMB_version: 1.9.21
+completed_at_utc: '2026-07-24T03:39:57Z'
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  source_links: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+records_2026_plus_read: 0
+protected_rows_released: 0
+privacy_column_gate: PASS

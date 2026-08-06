@@ -1,0 +1,31 @@
+analysis_version: editorial_requested_analysis_v1
+analysis_status: frozen_post_result_exploratory_refinement_not_preregistered
+branch: analysis/editorial-required-analyses
+base_commit: c1f1970045274df353c7874b351a58fd0df06fdb
+frozen_specification_commit: a0c4ef5
+code_commit: 7098d82
+executed_at_utc: '2026-07-24T01:31:46Z'
+eligible_checklists: 217200
+source_herring_events: 1120
+event_blocks: 58
+observer_clusters: 29248
+generalized_locations: 22980
+support_qualified_species: 49
+workers: 4
+protected_input_hashes:
+  event_metadata: 03eaccdd46b5cba779f596e7ce96dacd5a509f51f6eae4c5c79daf706879a9b2
+  source_links: f26197d0a71fd177e77774ec9e5596563c127ec8eb0f948042aff51ad805567b
+  reported_states: 0f02ac6bdbb561a8e4df58cc8d53340ec29f9519b85a99f4748cb8367fc33cb5
+  ambiguity_masks: c0e063f8a8c6ccfb97535183d8e669a9f4bb1eaea31bae144dffa3d81d57d3ff
+records_2026_plus_read: 0
+protected_rows_released: 0
+historical_stage4a_outputs_modified: no
+frozen_event_study_outputs_modified: no
+privacy_column_gate: PASS
+finite_x_source_label_correction: PASS
+finite_x_source_labels:
+- X
+- unquantified_X
+finite_x_correction_code_commit: e38f060
+finite_x_corrected_at_utc: '2026-07-24T01:52:34Z'
+completed_optimizer_warning_classifications: 1

@@ -1,0 +1,13 @@
+"period","zone","term","checklists","event_links","source_events"
+"baseline","near","es_near_baseline",8077,14559,654
+"baseline","reference","es_reference_baseline",25992,69546,948
+"early_pre","near","es_near_early_pre",4512,7315,609
+"early_pre","reference","es_reference_early_pre",15467,35784,907
+"immediate_pre","near","es_near_immediate_pre",4587,7367,607
+"immediate_pre","reference","es_reference_immediate_pre",15169,35880,895
+"spawn_start","near","es_near_spawn_start",2992,4922,538
+"spawn_start","reference","es_reference_spawn_start",9759,21434,854
+"early_egg","near","es_near_early_egg",7018,12441,656
+"early_egg","reference","es_reference_early_egg",22927,59303,948
+"late_egg","near","es_near_late_egg",8712,15748,680
+"late_egg","reference","es_reference_late_egg",28655,76964,993

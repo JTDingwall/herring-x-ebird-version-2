@@ -1,0 +1,2 @@
+"sensitivity_id","retained_checklists","retained_fraction","event_blocks","observer_clusters","generalized_locations","transformed_event_link_total","checklists_with_transformed_links","maximum_transformed_link_total","changed_component","unchanged_components","response_fields_read_for_transform"
+"binary_any_link",217200,1,58,29248,22980,153867,93342,8,"each joint period-by-zone additive count replaced by 0/1","outcome; eligibility except named cohort restriction; periods; zones; covariates; three random-intercept groups; A14 contrast",0

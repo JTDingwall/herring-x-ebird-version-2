@@ -1,0 +1,7 @@
+"outcome","outcome_label","contrast","window_days","window_role","species_in_family","species_estimable","median_ratio","ratio_q25","ratio_q75","ratio_min","ratio_max","species_ratio_above_one","adjusted_significant","adjusted_significant_positive","adjusted_significant_negative","min_q_value"
+"detection","reporting","did_early_pre","-14 to -8","pre_onset",49,48,0.987481583249621,0.944127057425121,1.02879280622111,0.776995367002953,1.11708631897221,21,0,0,0,0.324468075269128
+"detection","reporting","did_immediate_pre","-7 to -1","pre_onset",49,48,0.989645589273902,0.929538190026017,1.05556840390761,0.76319172040735,1.2136696662146,21,0,0,0,0.0911809199147181
+"detection","reporting","did_pre_14_day","-14 to -1","pre_onset_combined",49,48,0.986913150793864,0.957080138677409,1.02147224917718,0.770062614916166,1.10639153526682,20,0,0,0,0.0708059812459365
+"positive_numeric_count_given_detection","reported number","did_early_pre","-14 to -8","pre_onset",49,46,1.00849178549769,0.9613543582941,1.03430834555211,0.757834671701922,1.14110810661847,24,0,0,0,0.512513949926954
+"positive_numeric_count_given_detection","reported number","did_immediate_pre","-7 to -1","pre_onset",49,46,1.02107108548249,0.979398320525422,1.05581055579346,0.818429598401288,1.55491687566349,31,2,2,0,0.00943623938131454
+"positive_numeric_count_given_detection","reported number","did_pre_14_day","-14 to -1","pre_onset_combined",49,46,1.01214681137007,0.979846225658534,1.04132363252081,0.812507107297847,1.27451160929357,28,1,1,0,0.0426286204549391
